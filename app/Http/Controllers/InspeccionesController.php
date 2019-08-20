@@ -19,9 +19,9 @@ class InspeccionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     
+
    public function index(Request $request)
-    {   
+    {
         return view('inspecciones.index');
 
     }
@@ -33,7 +33,7 @@ class InspeccionesController extends Controller
      */
     public function create()
     {
-        
+
         return view('inspeccion.create');
     }
 
@@ -54,21 +54,12 @@ class InspeccionesController extends Controller
         $h6 = $request->h6;
         $h7 = $request->h7;
         $h8 = $request->h8;
-        $c1 = $request->c1;
-        $c2 = $request->c2;
-        $c3 = $request->c3;
-        $c4 = $request->c4;
-        $c5 = $request->c5;
-        $c6 = $request->c6;
-        $c7 = $request->c7;
-        $c8 = $request->c8;
-        $observacion = $request->observacion;
         $matriculados_id = $request->matriculados_id;
 
         foreach ($request->matriculados_id as $key => $value) {
             $inspeccion = new Inspecciones;
             $inspeccion->fecha = $fecha;
-            $inspeccion->h1 = $h1[$key]; 
+            $inspeccion->h1 = $h1[$key];
             $inspeccion->h2 = $h2[$key];
             $inspeccion->h3 = $h3[$key];
             $inspeccion->h4 = $h4[$key];
@@ -76,20 +67,11 @@ class InspeccionesController extends Controller
             $inspeccion->h6 = $h6[$key];
             $inspeccion->h7 = $h7[$key];
             $inspeccion->h8 = $h8[$key];
-            $inspeccion->c1 = $c1[$key];
-            $inspeccion->c2 = $c2[$key];
-            $inspeccion->c3 = $c3[$key];
-            $inspeccion->c4 = $c4[$key];
-            $inspeccion->c5 = $c5[$key];
-            $inspeccion->c6 = $c6[$key];
-            $inspeccion->c7 = $c7[$key];   
-            $inspeccion->c8 = $c8[$key];
-            $inspeccion->observacion = $observacion[$key];
             $inspeccion->matriculados_id = $matriculados_id[$key];
-            $inspeccion->save();  
+            $inspeccion->save();
         }
        return redirect()->route('inspeccion.index')->with('info', 'Se agrego la inspeccion correctamente');
-    
+
     }
 
     /**
@@ -100,7 +82,7 @@ class InspeccionesController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -110,7 +92,7 @@ class InspeccionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(request $Request, $id)
-    {   
+    {
         $curso = Cursos::find($id);
         $fecha = $request->fecha;
         $h1 = $request->h1;
@@ -121,21 +103,12 @@ class InspeccionesController extends Controller
         $h6 = $request->h6;
         $h7 = $request->h7;
         $h8 = $request->h8;
-        $c1 = $request->c1;
-        $c2 = $request->c2;
-        $c3 = $request->c3;
-        $c4 = $request->c4;
-        $c5 = $request->c5;
-        $c6 = $request->c6;
-        $c7 = $request->c7;
-        $c8 = $request->c8;
-        $observacion = $request->observacion;
         $matriculados_id = $request->matriculados_id;
 
         foreach ($request->matriculados_id as $key => $value) {
             $inspeccion = new Inspecciones;
             $inspeccion->fecha = $fecha;
-            $inspeccion->h1 = $h1[$key]; 
+            $inspeccion->h1 = $h1[$key];
             $inspeccion->h2 = $h2[$key];
             $inspeccion->h3 = $h3[$key];
             $inspeccion->h4 = $h4[$key];
@@ -143,20 +116,11 @@ class InspeccionesController extends Controller
             $inspeccion->h6 = $h6[$key];
             $inspeccion->h7 = $h7[$key];
             $inspeccion->h8 = $h8[$key];
-            $inspeccion->c1 = $c1[$key];
-            $inspeccion->c2 = $c2[$key];
-            $inspeccion->c3 = $c3[$key];
-            $inspeccion->c4 = $c4[$key];
-            $inspeccion->c5 = $c5[$key];
-            $inspeccion->c6 = $c6[$key];
-            $inspeccion->c7 = $c7[$key];   
-            $inspeccion->c8 = $c8[$key];
-            $inspeccion->observacion = $observacion[$key];
             $inspeccion->matriculados_id = $matriculados_id[$key];
-            $inspeccion->save();  
+            $inspeccion->save();
         }
        return redirect()->route('home')->with('info', 'Se edito la inspeccion correctamente');
-    
+
     }
 
     /**
@@ -168,7 +132,7 @@ class InspeccionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
     }
 
     /**
@@ -179,7 +143,7 @@ class InspeccionesController extends Controller
      */
     public function destroy($id)
     {
-       
+
     }
     public function buscarInspeccionAlumno(Request $request,$id){
 
@@ -192,13 +156,15 @@ class InspeccionesController extends Controller
        ->get();
 
        return response()->json($curso);
-    
+
     }
-    public function mostrarDatosInspeccion(Request $request, $curso, $paralelo){
+    public function mostrarDatosInspeccion(Request $request, $curso, $especialidad, $paralelo){
         $curso = $request->curso;
+        $especialidad = $request->especialidad;
         $paralelo = $request->paralelo;
         $matriculado = DB::table('matriculados')
         ->where('matriculados.curso', 'LIKE', '%'.$curso.'%')
+        ->where('matriculados.especialidad', 'LIKE', '%'.$especialidad.'%')
         ->where('matriculados.paralelo', 'LIKE', '%'.$paralelo.'%')
         ->select(DB::raw('CONCAT(matriculados.apellidos," ", matriculados.nombres) as nombres'), 'matriculados.id as id')
         ->distinct()
@@ -227,11 +193,22 @@ class InspeccionesController extends Controller
     public function verReportes(Request $request)
     {
         $curso = $request->curso;
-        $paralelo = $request->paralelo;
-        $matriculados = DB::table('matriculados')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->distinct()->get();
+        $matriculados = DB::table('matriculados')->where('curso', $curso)->select('*')->distinct()->get();
        $pdf = PDF::loadView('pdf.reporte-individual', compact('matriculados', 'cargos', 'data'))->setPaper('a4', 'landscape');
 
         return $pdf->download('repo.pdf');
     }
-   
+
+    public function indexInspeccion()
+    {
+        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->select('*')->get();
+        return view('inspecciones.indexInspeccion', compact('inspeccion'));
+    }
+
+    public function inspeccionStore(Request $request)
+    {
+        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->where('')->select('*')->get();
+        return view('inspecciones.indexInspeccion', compact('inspeccion'));
+    }
+
 }

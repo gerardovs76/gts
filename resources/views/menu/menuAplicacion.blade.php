@@ -14,7 +14,7 @@
                 INSCRIPCIÓN
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
-              
+
                 <a class="dropdown-item" href="{{ route('inscripcion.create') }}">Nueva inscripción</a>
                 @can('inscripcion.perfil')
                 <a class="dropdown-item " href="{{ route('inscripcion.perfil') }}">Perfil</a>
@@ -37,12 +37,12 @@
                 @can('inscripcion.reportesInscritos')
                  <a class="dropdown-item" href="{{ route('inscripcion.reportesInscritos') }}">Exportar carga masiva para matriculados</a>
                  @endcan
-                  
-                 
+
+
               </div>
             </li>
             @endcan
-          
+
             @can('matricular.menu')
             <li class="nav-item dropdown">
               <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -178,6 +178,7 @@
                @can('inspeccion.reporte-individual')
               <a class="dropdown-item" href="{{ route('inspeccion.reporte-individual') }}">Reporte</a>
               @endcan
+              <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Lista de inspecciones</a>
               <a class="dropdown-item" href="#">ALERTA!</a>
               </div>
             </li>
@@ -299,7 +300,7 @@
               </div>
             </li>
             @endcan
-            
+
   </ul>
   <ul class="navbar-nav">
   @can('grafico.menu')
@@ -408,7 +409,7 @@
               </div>
             </li>
       </ul>
-                    <ul class="navbar-nav navbar-right">  
+                    <ul class="navbar-nav navbar-right">
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -436,19 +437,19 @@
                         @endguest
                     </ul>
     </div>
-    
+
   </nav>
 
-    
 
 
-<script> 
+
+<script>
         var mynotificationcount;
         function markPostAsRead(countofNotification){
          mynotificationcount= countofNotification;
        }
 </script>
-<script> 
+<script>
     $('#notification a').on('click', function(e){
         e.preventDefault();
         var href = this.href;
@@ -465,7 +466,7 @@
   $(document).ready(function(){
     $.get('tareas_count', function(response){
 
-      $('#badge').append('<span>'+response+'</span>'); 
+      $('#badge').append('<span>'+response+'</span>');
         });
   });
 

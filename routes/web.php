@@ -74,7 +74,7 @@ Route::get('profesor_perfil', 'ProfesorController@perfil')->name('profesor.perfi
 
 Route::get('profesor_perfil_cedula/{cedula}', 'ProfesorController@perfilProfesorCedula');
 
-Route::get('añadir_materias', 'ProfesorController@añadirMateriasProfesor')->name('profesor.añadirMaterias')->middleware('has.permission:profesor.añadirMaterias'); 
+Route::get('añadir_materias', 'ProfesorController@añadirMateriasProfesor')->name('profesor.añadirMaterias')->middleware('has.permission:profesor.añadirMaterias');
 
 Route::get('añadir_materias_profesor/{cedula}', 'ProfesorController@buscarMateriasProfesor');
 
@@ -246,6 +246,10 @@ Route::get('reporte-individual', 'InspeccionesController@reporteIndividual')->na
 Route::get('reporte-colectivo', 'InspeccionesController@reporteColectivo')->name('inspeccion.reporte-colectivo')->middleware('has.permission:inspeccion.reporte-colectivo');
 
 Route::post('repo', 'InspeccionesController@verReportes')->name('inspeccion.repo')->middleware('has.permission:inspeccion.repo');
+Route::get('index-inspecciones', 'InspeccionesController@indexInspeccion')->name('inspeccion.index-inspeccion');
+
+Route::post('store-inspeccion', 'InspeccionesController@inspeccionStore')->name('inspeccion.store-inspeccion');
+
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');
