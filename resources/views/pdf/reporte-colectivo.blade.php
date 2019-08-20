@@ -1,0 +1,1 @@
+reporte-colectivo.blade.php
