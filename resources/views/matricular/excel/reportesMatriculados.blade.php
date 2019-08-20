@@ -32,7 +32,7 @@
             <td>{{ $matriculado->telefono_factura }}</td>
             <td>{{ $matriculado->tipo_estudiante }}</td>
             <td>{{ $matriculado->codigo }}</td>
-            <td>{{ $matriculado->email }}></td>
+            <td>{{ $matriculado->email }}</td>
             <td>{{ $matriculado->fecha_creacion }}</td>
         </tr>
     @endforeach
