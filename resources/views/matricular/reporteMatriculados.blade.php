@@ -54,7 +54,7 @@
                    			<th>PARALELO</th>
                    			<th>TIPO ESTUDIANTE</th>
                                <th>CODIGO</th>
-                               <th>EDIT</th>
+                               <th>EDITAR</th>
                    		</tr>
                    	</thead>
 					    <tbody>
