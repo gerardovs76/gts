@@ -30,7 +30,7 @@ class MatriculacionRequest extends FormRequest
             'curso' => 'required',
             'especialidad' => 'required',
             'paralelo' => 'required',
-            'cedula_ruc' => 'required',
+            'cedula_r' => 'required',
             'razon_social' => 'required',
             'direccion_factura' => 'required',
             'telefono_factura' => 'required',

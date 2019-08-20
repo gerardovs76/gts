@@ -10,8 +10,8 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open(['route' => 'matricular.reporteStore', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center"></div>
@@ -32,18 +32,19 @@
 		</div>
 	</div>
 	<div class="form-group col-md-12">
-   									{!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'mostrarBusqueda']) !!}							
+   									{!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'mostrarBusqueda']) !!}
 								</div>
-				
+
 
 							<div class="form-group col-md-12">
-   									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR REPORTE', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'imprimir']) !!}							
+   									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR REPORTE', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'imprimir']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
-					</div>        
+                    </div>
+                    {!!Form::close()!!}
                    <table class="table table-hover table-striped" id="tableid" align="center">
                    	<thead>
                    		<tr>
@@ -52,14 +53,15 @@
                    			<th>CURSO</th>
                    			<th>PARALELO</th>
                    			<th>TIPO ESTUDIANTE</th>
-                   			<th>CODIGO</th>
+                               <th>CODIGO</th>
+                               <th>EDIT</th>
                    		</tr>
                    	</thead>
 					    <tbody>
 					    	<tr>
-					    		
+
 					    	</tr>
-					    
+
 					    </tbody>
 					</table>
 	</div>
@@ -67,13 +69,13 @@
 	$('#mostrarBusqueda').on('click', function(){
 		var curso = $('#curso').val();
 		var paralelo = $('#paralelo').val();
-		
-		
+
+
 
 		$.get('matricular-reporte-tabla/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
-			 console.log(index);
-				$('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.nombres+' '+obj.apellidos+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td></tr>');
+			 console.log(obj);
+				$('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.nombres+' '+obj.apellidos+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm btn-block float-right"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
 				$('#mostrarBusqueda').css("display", "none");
 				$('#imprimir').addClass("d-block");
 
