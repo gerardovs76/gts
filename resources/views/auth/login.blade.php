@@ -16,13 +16,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-    
+
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+
 
     <!-- Styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -39,14 +39,14 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
-                background: url('images/login.png')   no-repeat center center fixed; background-size: contain;
-              
+                background: url('images/login.PNG')   no-repeat center center fixed; background-size: contain;
+
                   -webkit-background-size: cover;
                   -moz-background-size: cover;
                   -o-background-size: cover;
                   background-size: cover;
             }
-        
+
     </style>
 
 </head>
@@ -56,7 +56,7 @@
                         <div class="col-md-6 col-md-offset-7">
                             @include('mensaje.partials.info')
                             <div >
-                
+
 
                 <div>
                     <form method="POST" action="{{ route('login') }}">
