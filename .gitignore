@@ -1,4 +1,5 @@
 .pdf
 .sql
 .env
+.env.example
 public
