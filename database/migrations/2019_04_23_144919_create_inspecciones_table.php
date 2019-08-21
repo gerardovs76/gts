@@ -24,16 +24,6 @@ class CreateInspeccionesTable extends Migration
             $table->string('h6');
             $table->string('h7');
             $table->string('h8');
-            $table->string('c1')->nullable();
-            $table->string('c2')->nullable();
-            $table->string('c3')->nullable();
-            $table->string('c4')->nullable();
-            $table->string('c5')->nullable();
-            $table->string('c6')->nullable();
-            $table->string('c7')->nullable();
-            $table->string('c8')->nullable();
-            $table->date('suspencion')->nullable();
-            $table->string('observacion')->nullable();
             $table->bigInteger('matriculados_id')->unsigned()->nullable();
             $table->foreign('matriculados_id')->references('id')->on('matriculados')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

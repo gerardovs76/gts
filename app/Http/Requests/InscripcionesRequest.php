@@ -47,7 +47,7 @@ class InscripcionesRequest extends FormRequest
             'tipo_estudiante' => 'required',
             'codigo_nuevo' => 'required|unique:inscripciones'
 
-    
+
                     ];
     }
 }

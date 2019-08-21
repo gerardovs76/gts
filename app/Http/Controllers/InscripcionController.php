@@ -20,7 +20,7 @@ use App\Http\Requests\InscripcionesRequest;
 use Mail;
 use Illuminate\Support\Facades\Input;
 use App\Exports\InscritosBloqueados;
-
+use App\ValidarIdentificacion;
 
 class InscripcionController extends Controller
 {
@@ -30,10 +30,10 @@ class InscripcionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $inscripcion = Inscripcion::all();
         return view('inscripcion.index', compact('inscripcion'));
-     
+
     }
 
     /**
@@ -56,10 +56,17 @@ class InscripcionController extends Controller
     {
         $date = Carbon::now();
         $years = $request->fecha_nacimiento;
+        $validate = new ValidarIdentificacion();
         if($request->tipo_estudiante == 'NUEVO')
         {
         $inscripcion = new Inscripcion;
-        $inscripcion->cedula  = $request->cedula;
+        if($validate->validarCedula($request->cedula))
+        {
+            $inscripcion->cedula  = $request->cedula;
+        }
+        else{
+            return redirect()->route('inscripcion.create')->with('error', 'Cedula en formato incorrecto');
+        }
         $inscripcion->nombres = $request->nombres;
         $inscripcion->apellidos  = $request->apellidos;
         $inscripcion->fecha_nacimiento  = $request->fecha_nacimiento;
@@ -95,6 +102,22 @@ class InscripcionController extends Controller
         $inscripcion->correo_madre = $request->correo_madre;
         $inscripcion->profesion_madre = $request->profesion_madre;
         $inscripcion->ocupacion_madre = $request->ocupacion_madre;
+        if($validate->validarRucPersonaNatural($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        elseif($validate->validarRucSociedadPrivada($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+
+        }
+        elseif($validate->validarRucSociedadPublica($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        else{
+            return redirect()->route('inscripcion.create')->with('error', 'Formato de RUC incorrecto');
+        }
         $inscripcion->cedrepresentante  = $request->cedrepresentante;
         $inscripcion->direccion_representante  = $request->direccion_representante;
         $inscripcion->movil= $request->movil;
@@ -106,7 +129,6 @@ class InscripcionController extends Controller
         $inscripcion->fecha_creacion = $date->format('Y-m-d');
         $inscripcion->paralelo = 'C';
         $inscripcion->save();
-
         $pdf = PDF::loadView('pdf.inscritos', compact('inscripcion'));
 
         return $pdf->download('inscritos.pdf');
@@ -114,7 +136,13 @@ class InscripcionController extends Controller
     elseif($request->tipo_estudiante == 'ANTIGUO'){
         $years = $request->fecha_nacimiento;
         $inscripcion = new Inscripcion;
-        $inscripcion->cedula  = $request->cedula;
+        if($validate->validarCedula($request->cedula))
+        {
+            $inscripcion->cedula  = $request->cedula;
+        }
+        else{
+            return redirect()->route('inscripcion.create')->with('error', 'Cedula en formato incorrecto');
+        }
         $inscripcion->nombres = $request->nombres;
         $inscripcion->apellidos  = $request->apellidos;
         $inscripcion->fecha_nacimiento  = $request->fecha_nacimiento;
@@ -150,7 +178,22 @@ class InscripcionController extends Controller
         $inscripcion->correo_madre = $request->correo_madre;
         $inscripcion->profesion_madre = $request->profesion_madre;
         $inscripcion->ocupacion_madre = $request->ocupacion_madre;
-        $inscripcion->cedrepresentante  = $request->cedrepresentante;
+        if($validate->validarRucPersonaNatural($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        elseif($validate->validarRucSociedadPrivada($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+
+        }
+        elseif($validate->validarRucSociedadPublica($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        else{
+            return redirect()->route('inscripcion.create')->with('error', 'Formato de RUC incorrecto');
+        }
         $inscripcion->direccion_representante  = $request->direccion_representante;
         $inscripcion->movil= $request->movil;
         $inscripcion->convencional =$request->convencional;
@@ -164,7 +207,7 @@ class InscripcionController extends Controller
         else{
             $inscripcion->tipo_estudiante = $request->tipo_estudiante;
         }
-       
+
         $inscripcion->save();
         $pdf = PDF::loadView('pdf.inscritos', compact('inscripcion'));
 
@@ -334,12 +377,12 @@ class InscripcionController extends Controller
         return view('inscripcion.importarData');
     }
     public function import(Request $request)
-    {     
-        
+    {
+
        Excel::import(new InscritosAntiguosImport, $request->import_file);
 
        return back()->with('info', 'Se ha cargado la informacion correctamente');
- }   
+ }
         public function buscarReporteInscritosUsuarios(){
 
         return Excel::download(new InscripcionesUsuariosE, 'usuarios-inscritos.xls');
