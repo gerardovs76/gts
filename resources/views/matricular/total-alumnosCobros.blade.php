@@ -16,7 +16,6 @@
 						<div class="panel panel-heading text-center"></div>
 						<div class="panel panel-body">
 							<div class="form-row">
-                                <div>
 								<div class="form-group col-md-4">
 		<strong>Curso: <br></strong>
 		<div class="input-group-prepend" id="curso">
