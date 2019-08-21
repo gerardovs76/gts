@@ -85,9 +85,9 @@
                                  <td style="display: none;">{{$i=1}}</td>
                                      @foreach($sep as $s)
                                          <tr>
-                                        <td>{{$i++}}</td>
-                                         <td>{{$s->nombres}}</td>
-                                         <td>{{$s->valor}}</td>
+                                        <td><strong>{{$i++}}</strong></td>
+                                         <td><strong>{{$s->nombres}}</strong></td>
+                                         <td><strong>{{$s->valor}}</strong></td>
                                          <td>70</td>
                                          @if(strpos($s->referencias, 'SEP') !== FALSE)
                                          @if(strpos($s->referencias, 'INICIAL 1') !== FALSE || strpos($s->referencias, 'INICIAL 2') !== FALSE || strpos($s->referencias, 'INI') !== FALSE)
