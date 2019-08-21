@@ -34,6 +34,9 @@
         <div class="form-group col-md-12">
                 {!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'mostrarBusqueda']) !!}
          </div>
+         <div class="form-group col-md-12">
+                {!!Form::button('<i class="fas fa-print"></i> IMPRIMIR', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'boton'])!!}
+         </div>
 
         <div class="form-group col-md-10 offset-md-4">
             @if(isset($curso) && isset($paralelo))
@@ -133,4 +136,14 @@
           });
       } );
        </script>
+       <script>
+            $('#boton').on('click', function(){
+                if($('#boton') != ''){
+
+                         window.print();
+                }
+
+         });
+
+        </script>
 @endsection
