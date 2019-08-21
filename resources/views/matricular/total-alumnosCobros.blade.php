@@ -47,7 +47,7 @@
             @endif
         </div>
 
-                                <div class="form-group col-md-10 offset-md-10">
+                                <div class="form-group col-md-10 offset-md-10" >
                                         <strong><em>Total de alumnos: </em></strong>
                                         @if(isset($sep))
                                         <p>{{count($sep)}}</p>
@@ -142,9 +142,12 @@
             {
                var divToPrint=document.getElementById("tableid");
                newWin= window.open("");
-               newWin.document.write(divToPrint.outerHTML);
-               newWin.print();
-               newWin.close();
+                    newWin.document.write('<style>@page{size:landscape;}</style><html><head><title></title>');
+                    newWin.document.write('</head><body >');
+                    newWin.document.write(divToPrint.outerHTML);
+                    newWin.document.write('</body></html>');
+                    newWin.print();
+                    newWin.close();
             }
 
             $('#boton').on('click',function(){
