@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 	<div class="container col-xs-12 col-sm-8 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
@@ -41,7 +40,7 @@
 
         <div class="form-group col-md-10 offset-md-4">
             @if(isset($curso) && isset($paralelo))
-            <h4><strong>Curso: {{$curso}} - Paralelo: {{$paralelo}}</strong></h4>
+            <h4 ><strong id="cursoP">Curso: {{$curso}} - Paralelo: {{$paralelo}}</strong></h4>
             @else
             <h4>Curso: - Paralelo:</h4>
             @endif
@@ -140,11 +139,14 @@
        <script>
             function printData()
             {
-               var divToPrint=document.getElementById("tableid");
+               var table=document.getElementById("tableid");
+               var cursoP = document.getElementById("cursoP");
+               console.log(cursoP);
                newWin= window.open("");
-                    newWin.document.write('<style>@page{size:landscape;}</style><html><head><title></title>');
-                    newWin.document.write('</head><body >');
-                    newWin.document.write(divToPrint.outerHTML);
+                    newWin.document.write('<style>@page{size:landscape;}@media print{table.test {font-family:Verdana, Arial;font-size:10px;}}</style><html><head><title></title>');
+                    newWin.document.write('</head><body><h2 align="center">'+cursoP.outerHTML+'</h2>');
+
+                    newWin.document.write(table.outerHTML);
                     newWin.document.write('</body></html>');
                     newWin.print();
                     newWin.close();
