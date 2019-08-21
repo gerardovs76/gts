@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Exception;
 
+
 class ValidarIdentificacion extends Model
 {
     protected $error = '';

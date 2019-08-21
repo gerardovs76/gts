@@ -102,7 +102,10 @@ class InscripcionController extends Controller
         $inscripcion->correo_madre = $request->correo_madre;
         $inscripcion->profesion_madre = $request->profesion_madre;
         $inscripcion->ocupacion_madre = $request->ocupacion_madre;
-        if($validate->validarRucPersonaNatural($request->cedrepresentante))
+        if($validate->validarCedula($request->cedrepresentante)){
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        elseif($validate->validarRucPersonaNatural($request->cedrepresentante))
         {
             $inscripcion->cedrepresentante = $request->cedrepresentante;
         }
@@ -116,7 +119,7 @@ class InscripcionController extends Controller
             $inscripcion->cedrepresentante = $request->cedrepresentante;
         }
         else{
-            return redirect()->route('inscripcion.create')->with('error', 'Formato de RUC incorrecto');
+            return redirect()->route('inscripcion.create')->with('error', 'Formato de CEDULA/RUC incorrecto');
         }
         $inscripcion->cedrepresentante  = $request->cedrepresentante;
         $inscripcion->direccion_representante  = $request->direccion_representante;
@@ -178,7 +181,11 @@ class InscripcionController extends Controller
         $inscripcion->correo_madre = $request->correo_madre;
         $inscripcion->profesion_madre = $request->profesion_madre;
         $inscripcion->ocupacion_madre = $request->ocupacion_madre;
-        if($validate->validarRucPersonaNatural($request->cedrepresentante))
+        if($validate->validarCedula($request->cedrepresentante))
+        {
+            $inscripcion->cedrepresentante = $request->cedrepresentante;
+        }
+        elseif($validate->validarRucPersonaNatural($request->cedrepresentante))
         {
             $inscripcion->cedrepresentante = $request->cedrepresentante;
         }
@@ -192,7 +199,7 @@ class InscripcionController extends Controller
             $inscripcion->cedrepresentante = $request->cedrepresentante;
         }
         else{
-            return redirect()->route('inscripcion.create')->with('error', 'Formato de RUC incorrecto');
+            return redirect()->route('inscripcion.create')->with('error', 'Formato de CEDULA/RUC incorrecto');
         }
         $inscripcion->direccion_representante  = $request->direccion_representante;
         $inscripcion->movil= $request->movil;
