@@ -68,9 +68,6 @@
                 @can('matricular.index-repo-matri')
                 <a class="dropdown-item" href="{{ route('matricular.index-repo-matri') }}">Reportes bloqueados</a>
                 @endcan
-                @can('matricular.total')
-                <a class="dropdown-item" href="{{ route('matricular.total')}}">Reporte total</a>
-                @endcan
                 <a class="dropdown-item" href="{{ route('matricular.total-alumnosCobros')}}">Matriculados total cobros</a>
               </div>
             </li>
