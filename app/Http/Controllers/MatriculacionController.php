@@ -13,8 +13,10 @@ use App\Http\Requests\MatriculacionRequest;
 use App\Imports\MatriculacionImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ReporteMatriculados;
+use App\Exports\ReporteCas;
 use App\Cargos;
 use App\Http\Requests\ImportMatriculados;
+use Illuminate\Support\Facades\Input;
 
 class MatriculacionController extends Controller
 {
@@ -38,8 +40,8 @@ class MatriculacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        return view('matricular.create', compact('cursos'));   
+    {
+        return view('matricular.create', compact('cursos'));
 }
 
     /**
@@ -49,11 +51,11 @@ class MatriculacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(MatriculacionRequest $request)
-    {   
+    {
 
 
         $date = Carbon::now();
-      
+
         $matricular = new Matriculacion;
         $matricular->inscripcion_id = $request->inscripcion_id;
         $matricular->cedula = $request->cedula;
@@ -72,7 +74,7 @@ class MatriculacionController extends Controller
         $matricular->save();
         return redirect()->route('matricular.index')->with('info', 'Se ha matriculado correctamente al estudiante');
 
-       
+
     }
 
     /**
@@ -108,7 +110,7 @@ class MatriculacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
 
         $matricular = Matriculacion::find($id);
         $matricular->inscripcion_id = $request->inscripcion_id;
@@ -140,7 +142,7 @@ class MatriculacionController extends Controller
         $matricular = Matriculacion::find($id);
         $matricular->delete();
         return back()->with('info', 'La matricula se ha eliminado correctamente');
-    } 
+    }
     public function buscarAlumnoMatriculado(Request $request, $cedula)
     {
         $cedula = $request->cedula;
@@ -174,17 +176,17 @@ class MatriculacionController extends Controller
 
         return response()->json($matriculados);
     }
-    
+
      public function import()
     {
         return view('matricular.import');
     }
     public function importMatriculacion(Request $request)
-    {     
+    {
        Excel::import(new MatriculacionImport, $request->import_file);
 
        return back()->with('info', 'Se ha cargado la informacion correctamente');
- }   
+ }
 
  public function reporteMatriculados()
  {
@@ -218,7 +220,7 @@ class MatriculacionController extends Controller
     $data = Carbon::now();
     $matriculado = Matriculacion::where('cedula', $request->cedula)->get();
     $cargos = Cargos::all();
-  
+
 
          $pdf = PDF::loadView('pdf.constancia-de-estudio', compact('matriculado', 'cargos', 'data'));
 
@@ -242,7 +244,7 @@ class MatriculacionController extends Controller
         return $pdf->download('matriculados-bloqueados.pdf');
 
  }
- 
+
  public function reporteMatriculadosTabla(Request $request, $curso, $paralelo)
  {
     $curso = $request->curso;
@@ -256,7 +258,7 @@ class MatriculacionController extends Controller
 
     return response()->json($matriculados);
  }
- 
+
  public function indexReporteMatriculados()
  {
      $matricular = Matriculacion::where('tipo_estudiante', 'BLOQUEADO')->whereIn('curso', ['DECIMO DE EGB', 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO'])->get();
@@ -265,7 +267,7 @@ class MatriculacionController extends Controller
 
  public function changeStatus(Request $request, $id)
     {
-        
+
 
         $matricular = Matriculacion::find($id);
         $matricular->tipo_estudiante = 'ANTIGUO';
@@ -313,12 +315,31 @@ class MatriculacionController extends Controller
         $cedula = $request->cedula;
         $date = Carbon::now();
         $date->format('Y-m-d');
-        
+
         $certificado = Matriculacion::where('cedula', $cedula)->select('apellidos', 'nombres', 'curso', 'paralelo', 'id')->groupBy('matriculados.id')->get();
         $pdf = PDF::loadView('pdf.certificado-matricula', compact('certificado', 'date'));
 
         return $pdf->download('matriculados-bloqueados.pdf');
     }
- 
+    public function cas()
+    {
+        return view('matricular.cas');
+    }
+    public function storeCas(Request $request)
+    {
+        $curso = $request->curso;
+        $paralelo = $request->paralelo;
+        $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get();
+        switch($request->printButton){
+            case 'excel':
+            return Excel::download(new ReporteCas($curso, $paralelo), 'reporte-cas.xls');
+            break;
+            case 'pdf':
+            $pdf = PDF::loadView('pdf.reporte-cas', compact('matriculados'));
+            return $pdf->download('reporte-cas.pdf');
+            break;
+        }
+    }
+
 
 }

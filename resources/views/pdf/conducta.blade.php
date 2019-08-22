@@ -18,7 +18,7 @@
 
 </style>
 <body>
-	<img src="images/logo-pauld.png" alt="" height="100" width="100" class="center">
+	<img src="images/lp.PNG" alt="" height="100" width="100" class="center">
 	<br><br><br>
 	<div>
 		<p style="text-align: center">CERTIFICADO DE CONDUCTA</p><br>

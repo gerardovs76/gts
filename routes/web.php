@@ -216,6 +216,10 @@ Route::get('matricular-certificado-matricula', 'MatriculacionController@certific
 
 Route::post('certificado-store', 'MatriculacionController@certificadoStore')->name('matricular.certificadoStore');
 
+Route::get('matricular-cas', 'MatriculacionController@cas')->name('matricular.cas');
+
+Route::post('matricular-cas-store', 'MatriculacionController@storeCas')->name('matricular.storeCas');
+
 
 Route::get('/matricular/reportes/matricular-reporte-tabla/{curso}/{paralelo}', 'MatriculacionController@reporteMatriculadosTabla');
 
