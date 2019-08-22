@@ -18,8 +18,8 @@
     <tbody>
     @foreach($matriculados as $matriculado)
         <tr>
-     
-            <td>{{ str_replace('-', '',$matriculado->cedula) }}</td>
+
+            <td>{{ str_replace('-', '',$matriculado->cedula_r) }}</td>
             <td>{{ $matriculado->fecha_inicio }}</td>
             <td>PENSIONES</td>
             <td>PENSIONES {{$matriculado->referencias}}</td>
@@ -50,6 +50,6 @@
             <td>{{ $matriculado->num_referencia }}</td>
         </tr>
         @endforeach
-    
+
     </tbody>
 </table>
