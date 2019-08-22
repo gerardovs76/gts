@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PDF INSCRITOS</title>
@@ -12,23 +12,23 @@
     margin: 0 auto;
     font-size: 10px;
 }
- 
+
 table#mitabla th {
     font-weight: bold;
     background-color: #E1E1E1;
     padding:1px;
 }
- 
+
 table#mitabla tbody tr:hover td {
     background-color: #F3F3F3;
 }
- 
+
 
 	</style>
 </head>
 <body>
-       <img src="{{url('images/logo-pauld.png')}}" alt="" height="100" width="100" class="center">
-        
+       <img src="images/logo-pauld.png" alt="" height="100" width="100" class="center">
+
         <h2 align="center">Sistema de inscripcion Paul Dirac</h2>
         <br><br><br>
         <h3>Estimado .- {{$inscripcion->apellidos}} {{$inscripcion->nombres}}</h3>

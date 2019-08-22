@@ -15,10 +15,10 @@
 		margin-right: 40%;
 		margin-left: 40%;
 	}
-	
+
 </style>
 <body>
-	<img src="{{ asset('images/logo-pauld.png') }}" alt="" height="100" width="100" class="center">
+	<img src="images/logo-pauld.png" alt="" height="100" width="100" class="center">
 	<br><br><br>
 	<div>
 		<p style="text-align: center">CERTIFICADO DE CONDUCTA</p><br>
@@ -29,7 +29,7 @@
 
 
 
-		
+
 		<p>EN QUITO, A LOS {{ $data->day }} DIAS DEL MES DE {{ $data->month }} DEL AÑO {{ $data->year }}.</p>
 	</div><br><br><br><br
 
@@ -43,7 +43,7 @@
 		<p style="text-align: center;">-----------------------------------------------</p>
 		<br>
 		<p style="text-align: center"></p>
-		
+
 	</div>
 
 

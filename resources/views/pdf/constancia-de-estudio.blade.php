@@ -15,10 +15,10 @@
 		margin-right: 40%;
 		margin-left: 40%;
 	}
-	
+
 </style>
 <body>
-	<img src="{{ asset('images/logo-pauld.png') }}" alt="" height="100" width="100" class="center">
+	<img src="'images/logo-pauld.png'" alt="" height="100" width="100" class="center">
 	<br><br><br>
 	<div>
 		<p style="text-align: center">CONSTANCIA DE ESTUDIO</p><br>
@@ -42,7 +42,7 @@
 		<p style="text-align: center;">-----------------------------------------------</p>
 		<br>
 		<p style="text-align: center"></p>
-		
+
 	</div>
 
 
