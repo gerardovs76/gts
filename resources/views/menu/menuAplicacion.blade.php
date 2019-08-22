@@ -69,7 +69,6 @@
                 <a class="dropdown-item" href="{{ route('matricular.index-repo-matri') }}">Reportes bloqueados</a>
                 @endcan
                 <a class="dropdown-item" href="{{ route('matricular.total-alumnosCobros')}}">Matriculados total cobros</a>
-                <a class="dropdown-item" href="{{ route('matricular.certificado-matricula')}}">Certificado de matriculas</a>
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
               </div>
             </li>
