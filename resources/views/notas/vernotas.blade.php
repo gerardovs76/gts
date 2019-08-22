@@ -10,8 +10,8 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open(['route' => 'notas.store']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
@@ -28,46 +28,46 @@
                                              <strong>Paralelo: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
-                                             {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el paralelo...']) }}
+                                             {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Seleccione el paralelo...']) }}
                                              </div>
                                              </div>
                                               <div class="form-group col-md-4">
                                              <strong>Quimestre: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
-                                             {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el quimestre...']) }}
+                                             {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6' , 'id' => 'quimestre', 'placeholder' => 'Seleccione el quimestre...']) }}
                                              </div>
                                              </div>
                                              <div class="form-group col-md-4">
                                              <strong>Parcial: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
-                                             {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el parcial...']) }}
+                                             {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6' , 'id' => 'parcial', 'placeholder' => 'Seleccione el parcial...']) }}
                                              </div>
                                              </div>
                                              <div class="form-group col-md-4">
                                              <strong>Materia: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
-                                             {{ Form::select('materia',[], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione la materia...']) }}
+                                             {{ Form::select('materia',[], null, ['class' => 'form-control col-md-6' , 'id' => 'materia', 'placeholder' => 'Seleccione la materia...']) }}
                                              </div>
                                              </div>
-                                           
+
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary',  'id' => 'verNotas']) !!}									
+   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary',  'id' => 'verNotas']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
 					</div>
-                   
-                  
+
+
                     <table class="table table-striped table-hover" id="tableid">
 			<thead>
 
-                    <tr>	
+                    <tr>
                     <th>
                     	<p>
                     	<strong>ALUMNOS</strong>
@@ -91,15 +91,15 @@
 					<th>
 						<p>PROMEDIO</p>
 					</th>
-                    </tr>	
+                    </tr>
                     </thead>
 					<tbody id="tableid">
 				<tr>
-				
+
 				</tr>
 			</tbody>
 		</table>
-	
+
 	</div>
 <script>
 	$('#paralelo').on('change', function(){
@@ -108,6 +108,7 @@
 		var parcial = $('#parcial').val();
 
 		$.get('cargar_materia/'+curso+'/'+paralelo, function(response){
+            console.log(response);
 			$.each(response, function(index, obj){
 				$('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
 
@@ -141,5 +142,5 @@
 
 
 </script>
-	  {{ Form::close() }}	
-@endsection 
+	  {{ Form::close() }}
+@endsection
