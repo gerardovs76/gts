@@ -310,7 +310,7 @@ class MatriculacionController extends Controller
     {
         return view('matricular.certificado-matricula');
     }
-    public function certificadoStore(Request $request)
+    public function certificadoStore(Request $request, $cedula)
     {
         $cedula = $request->cedula;
         $date = Carbon::now();

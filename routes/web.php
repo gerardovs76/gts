@@ -214,7 +214,7 @@ Route::get('matricular-bloqueados', 'MatriculacionController@reportesBloqueados'
 
 Route::get('matricular-certificado-matricula', 'MatriculacionController@certificadoMatricula')->name('matricular.certificado-matricula');
 
-Route::post('certificado-store', 'MatriculacionController@certificadoStore')->name('matricular.certificadoStore');
+Route::get('certificado-store/{cedula}', 'MatriculacionController@certificadoStore')->name('matricular.certificadoStore');
 
 Route::get('matricular-cas', 'MatriculacionController@cas')->name('matricular.cas');
 
