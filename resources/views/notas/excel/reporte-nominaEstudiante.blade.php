@@ -43,9 +43,10 @@
         </tr>
     </thead>
     <tbody>
+        {{$i=0}}
             @foreach($matriculados as $matriculado)
         <tr>
-            <td>1</td>
+            <td>{{$i++}}</td>
             <td>{{$matriculado->apellidos}}  {{$matriculado->nombres}}</td>
         </tr>
         @endforeach
