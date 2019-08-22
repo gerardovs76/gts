@@ -20,9 +20,9 @@
 		<tr>
 
          <td><strong>NIVEL: </strong></td>
-         <td>{{ $matriculados->curso }}</td>
+         <td>{{$curso}}</td>
          <td><strong>PARALELO: </strong></td>
-         <td>{{ $matriculados->paralelo }}</td>
+         <td>{{$paralelo}}</td>
 		</tr>
 		<tr>
 			<td><strong>JORNADA: </strong></td>
@@ -41,12 +41,13 @@
 		</tr>
 	</thead>
 	<tbody>
+        {{$i=1}}
             @foreach($matriculados as $matriculado)
 		<tr>
-			<td>1</td>
+			<td>{{$i++}}</td>
 			<td>{{ $matriculado->apellidos }} {{ $matriculado->nombres }}</td>
-			<td>111111</td>
-			<td>111111</td>
+			<td></td>
+			<td></td>
 			<td></td>
         </tr>
         @endforeach

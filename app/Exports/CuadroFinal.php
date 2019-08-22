@@ -24,11 +24,13 @@ class CuadroFinal implements FromView, ShouldAutoSize, WithEvents, WithDrawings
         $this->paralelo = $paralelo;
 
     }
-     public function view(): View 
+     public function view(): View
     {
          return view('notas.excel.reporte-cuadroFinal',[
             'matriculados' =>  Matriculacion::where('curso', $this->curso)->where('paralelo', $this->paralelo)
-            ->get()
+            ->get(),
+            'curso' => $this->curso,
+            'paralelo' => $this->paralelo
          ]);
     }
 
@@ -38,7 +40,7 @@ class CuadroFinal implements FromView, ShouldAutoSize, WithEvents, WithDrawings
         $drawing->setName('Logo');
         $drawing->setDescription('This is my logo');
         $drawing->setPath(public_path('/images/ministerio.png'));
-        $drawing->setHeight(90);
+        $drawing->setHeight(70);
         $drawing->setCoordinates('A1');
 
         return $drawing;
