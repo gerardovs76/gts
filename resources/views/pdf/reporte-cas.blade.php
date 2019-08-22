@@ -26,7 +26,7 @@ table#mitabla td {
 }
 	</style>
 <body>
-    <img src="{{asset('images/logo-pauld.png')}}" width="100" height="100" align="right">
+    <img src="images/lp.PNG" width="100" height="100" align="right">
     <h2 align="center"><strong>CAS</strong></h2>
     <br>
     <br>

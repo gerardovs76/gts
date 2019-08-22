@@ -36,7 +36,7 @@ class ReporteCas implements FromView, ShouldAutoSize, WithDrawings
         $drawing = new Drawing();
         $drawing->setName('Logo');
         $drawing->setDescription('This is my logo');
-        $drawing->setPath(public_path('/images/logo-pauld.png'));
+        $drawing->setPath(public_path('/images/lp.PNG'));
         $drawing->setWidth(90);
         $drawing->setCoordinates('A1');
         return $drawing;
