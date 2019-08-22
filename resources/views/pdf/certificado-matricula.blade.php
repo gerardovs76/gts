@@ -19,7 +19,7 @@
 </style>
 <body>
     <h6 style="float: left;"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h6>
-	<img src="images/logo-pauld.png" alt="" height="100" width="100">
+	<img src="images/lp.PNG" alt="" height="100" width="100">
 	<br><br><br>
 	<div>
 		<h3 style="text-align: center">CERTIFICADO DE MATRICULA</h3><br>
