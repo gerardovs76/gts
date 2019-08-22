@@ -212,6 +212,10 @@ Route::get('matricular/index/constancia', 'MatriculacionController@indexConstanc
 
 Route::get('matricular-bloqueados', 'MatriculacionController@reportesBloqueados')->name('matricular.reporte-bloqueados')->middleware('has.permission:matricular.reporte-bloqueados');
 
+Route::get('matricular-certificado-matricula', 'MatriculacionController@certificadoMatricula')->name('matricular.certificado-matricula');
+
+Route::post('certificado-store', 'MatriculacionController@certificadoStore')->name('matricular.certificadoStore');
+
 
 Route::get('/matricular/reportes/matricular-reporte-tabla/{curso}/{paralelo}', 'MatriculacionController@reporteMatriculadosTabla');
 

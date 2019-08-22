@@ -303,8 +303,21 @@ class MatriculacionController extends Controller
 
         $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->distinct()->get();
         return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo'));
+    }
+    public function certificadoMatricula()
+    {
+        return view('matricular.certificado-matricula');
+    }
+    public function certificadoStore(Request $request)
+    {
+        $cedula = $request->cedula;
+        $date = Carbon::now();
+        $date->format('Y-m-d');
+        
+        $certificado = Matriculacion::where('cedula', $cedula)->select('apellidos', 'nombres', 'curso', 'paralelo', 'id')->groupBy('matriculados.id')->get();
+        $pdf = PDF::loadView('pdf.certificado-matricula', compact('certificado', 'date'));
 
-
+        return $pdf->download('matriculados-bloqueados.pdf');
     }
  
 

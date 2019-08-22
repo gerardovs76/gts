@@ -142,9 +142,8 @@
                var cursoP = document.getElementById("cursoP");
                console.log(cursoP);
                newWin= window.open("");
-                    newWin.document.write('<style>@page{size:landscape;}@media print{table.test {font-family:Verdana, Arial;font-size:10px;}}</style><html><head><title></title>');
+                    newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:10px;}</style><html><head><title></title>');
                     newWin.document.write('</head><body><h2 align="center">'+cursoP.outerHTML+'</h2>');
-
                     newWin.document.write(table.outerHTML);
                     newWin.document.write('</body></html>');
                     newWin.print();
