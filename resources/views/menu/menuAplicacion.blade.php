@@ -83,9 +83,6 @@
               @can('materias.create')
                 <a class="dropdown-item" href="{{ route('materias.create') }}">Nueva materia</a>
                 @endcan
-                @can('materias.especiales')
-                <a class="dropdown-item" href="{{ route('materias.especiales') }}">Nueva materia especial</a>
-                @endcan
                 @can('materias.index')
                 <a class="dropdown-item" href="{{ route('materias.index') }}">Lista de materias</a>
                 @endcan
