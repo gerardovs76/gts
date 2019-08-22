@@ -24,11 +24,13 @@ class NominaEstudiante implements FromView, ShouldAutoSize, WithEvents
         $this->paralelo = $paralelo;
 
     }
-     public function view(): View 
+     public function view(): View
     {
          return view('notas.excel.reporte-nominaEstudiante',[
             'matriculados' =>  Matriculacion::where('curso', $this->curso)->where('paralelo', $this->paralelo)
-            ->get()
+            ->get(),
+            'curso' => $this->curso,
+            'paralelo' => $this->paralelo,
          ]);
     }
 

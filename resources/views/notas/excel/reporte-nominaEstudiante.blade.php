@@ -14,24 +14,20 @@
     </tr>
     <tr>
          <th scope="row"><strong>Nivel: </strong></th>
-         @foreach($matriculados as $matriculado)
-         <td>{{$matriculado->curso}}</td>
-         @endforeach
     </tr>
     <tr>
         <th scope="row"><strong>Promovido a: </strong></th>
+        <td>{{$curso}}</td>
     </tr>
     <tr>
         <th scope="row"><strong>Paralelo: </strong></th>
-        @foreach($matriculados as $matriculado)
-        <td>{{$matriculado->paralelo}}</td>
-        @endforeach
+        <td>{{$paralelo}}</td>
     </tr>
     <tr>
-      <th scope="row"><strong>RECTOR</strong></th>  
+      <th scope="row"><strong>RECTOR</strong></th>
     </tr>
     <tr>
-       <th scope="row"><strong>SECRETARIA</strong></th> 
+       <th scope="row"><strong>SECRETARIA</strong></th>
     </tr>
 
     </thead>
@@ -47,11 +43,11 @@
         </tr>
     </thead>
     <tbody>
+            @foreach($matriculados as $matriculado)
         <tr>
             <td>1</td>
-            @foreach($matriculados as $matriculado)
             <td>{{$matriculado->apellidos}}  {{$matriculado->nombres}}</td>
-            @endforeach
         </tr>
+        @endforeach
     </tbody>
 </table>
