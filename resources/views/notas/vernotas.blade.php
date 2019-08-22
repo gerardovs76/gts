@@ -127,10 +127,10 @@
 		$.get('cargar_notas/'+curso+'/'+paralelo+'/'+quimestre+'/'+parcial+'/'+materia, function(response){
 			console.log(response);
 			$.each(response, function(ind, opt){
-				if(opt.nota_final <= 7){
-					$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+opt.nota_ta+'</strong></td><td><strong>'+opt.nota_ti+'</strong></td><td><strong>'+opt.nota_tg+'</strong></td><td><strong>'+opt.nota_le+'</strong></td><td><strong>'+opt.nota_ev+'</strong></td><td style="color:red;">'+opt.nota_final+'</td></tr>');
+				if(opt.nota_final < 7){
+					$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta)+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti )+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:red;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
 				}else{
-				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+opt.nota_ta+'</strong></td><td><strong>'+opt.nota_ti+'</strong></td><td><strong>'+opt.nota_tg+'</strong></td><td><strong>'+opt.nota_le+'</strong></td><td><strong>'+opt.nota_ev+'</strong></td><td style="color:green;">'+opt.nota_final+'</td></tr>');
+				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta )+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti)+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:green;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
 
 					}
 
