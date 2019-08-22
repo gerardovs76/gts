@@ -8,7 +8,7 @@
     border-collapse: collapse;
     border: 1px solid #CCC;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 8px;
 }
 
 table#mitabla th {

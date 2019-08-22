@@ -1,6 +1,17 @@
 <h2 style="text-align: center;">CAS</h2>
 <table>
     <thead>
+            <tr>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
         <tr>
             <th><strong>CEDULA</strong></th>
             <th><strong>NOMBRES</strong></th>
@@ -17,6 +28,7 @@
     <tbody>
         @foreach($matriculados as $matri)
         <tr>
+
             <td><strong>{{$matri->cedula}}</strong></td>
             <td><strong>{{$matri->nombres}}</strong></td>
             <td><strong>{{$matri->apellidos}}</strong></td>

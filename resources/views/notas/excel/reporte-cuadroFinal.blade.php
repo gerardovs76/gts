@@ -1,36 +1,32 @@
 <table>
 	<thead>
 		<tr>
-			
+
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-		
+
 		</tr>
 		<tr>
-			
+
 		</tr>
 		<tr>
-			
+
 		</tr>
 		<tr>
-			
+
 		</tr>
 		<tr>
-	
+
          <td><strong>NIVEL: </strong></td>
-         @foreach($matriculados as $matriculado)
-         <td>{{ $matriculado->curso }}</td>
-         @endforeach
+         <td>{{ $matriculados->curso }}</td>
          <td><strong>PARALELO: </strong></td>
-         @foreach($matriculados as $matriculado)
-         <td>{{ $matriculado->paralelo }}</td>
-         @endforeach
+         <td>{{ $matriculados->paralelo }}</td>
 		</tr>
 		<tr>
 			<td><strong>JORNADA: </strong></td>
-		</tr>	
+		</tr>
 	</tbody>
 </table>
 
@@ -45,15 +41,14 @@
 		</tr>
 	</thead>
 	<tbody>
+            @foreach($matriculados as $matriculado)
 		<tr>
 			<td>1</td>
-			@foreach($matriculados as $matriculado)
 			<td>{{ $matriculado->apellidos }} {{ $matriculado->nombres }}</td>
-			@endforeach
 			<td>111111</td>
 			<td>111111</td>
 			<td></td>
-
-		</tr>
+        </tr>
+        @endforeach
 	</tbody>
 </table>

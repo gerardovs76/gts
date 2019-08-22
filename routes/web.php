@@ -174,11 +174,11 @@ Route::get('libreta-colectiva', 'NotasController@libretaColectiva')->name('notas
 
 Route::get('ver-notas-especiales', 'NotasController@verNotasEspeciales')->name('notas.verNotasEspeciales')->middleware('has.permission:notas.verNotasEspeciales');
 
-Route::get('notas/reportes/excel', 'NotasController@nominaEstudiante')->name('notas.reportesExcel')->middleware('notas.reportesExcel');
+Route::get('notas/reportes/excel', 'NotasController@nominaEstudiante')->name('notas.reportesExcel')->middleware('has.permission:notas.reportesExcel');
 
-Route::post('notas/reportes/todo', 'NotasController@reportesExcel')->name('notas.reportesExcelTodo')->middleware('notas.reportesExcelTodo');
+Route::post('notas/reportes/todo', 'NotasController@reportesExcel')->name('notas.reportesExcelTodo')->middleware('has.permission:notas.reportesExcelTodo');
 
-Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibretaColectiva')->name('notas.descargarLibretaColectiva')->middleware('notas.descargarLibretaColectiva');
+Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibretaColectiva')->name('notas.descargarLibretaColectiva')->middleware('has.permission:notas.descargarLibretaColectiva');
 
 //MATRICULACIÓN
 
