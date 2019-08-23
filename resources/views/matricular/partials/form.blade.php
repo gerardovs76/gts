@@ -1,8 +1,8 @@
 	<div class="panel panel-primary">
 	<div class="panel-heading text-center">DATOS DEL MATRICULADO</div>
-		
+
 	<div class="panel-body">
-	
+
 	<div class="form-row">
 		<div class="form-group col-md-4">
 		<strong>Cedula: <br></strong>
@@ -57,7 +57,7 @@
 		<input type="hidden" id="inscripcion" name="inscripcion">
 		<button type="button" id="seleccionarFactura" class="btn btn-primary">AGREGAR FACTURA</button>
 	</div>
-		
+
 	</div>
 </div>
 </div>
@@ -78,7 +78,7 @@
 					<span class="input-group-text"><i class="fas fa-users"></i></span>
 			{!! Form::text('razon_social', null, ['class' => 'form-control']) !!}
 			</div>
-						</div>		
+						</div>
 			<div class="form-group col-md-4">
 			<strong>Dirección: <br></strong>
 			<div class="input-group-prepend">
@@ -104,11 +104,11 @@
 			{!! Form::button('GUARDAR <i class="fas fa-save"></i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  !!}
 			      </div>
 			   </div>
-			</div>	
+			</div>
        </div>
-	
+
 <script>
-	
+
 	$('#cedula').on('change', function(event) {
 		event.preventDefault();
 		var matriculado = event.target.value;
@@ -117,12 +117,13 @@
 		$.get('buscar_matriculado/'+ matriculado , function(data) {
     	$.each(data, function(idx, opt) {
    			$('#nombres').val(opt.nombres);
-   			$('#apellidos').val(opt.apellidos);
+               $('#apellidos').val(opt.apellidos);
+               $('#codigo').val(opt.codigo_nuevo);
    			$('#inscripcion').append('<input type="hidden" class="col-md-1" name="inscripcion_id" id="inscripcion_id" value='+opt.id+'>');
 
    	   });
 	}
-	, 
+	,
 	'json');
 	});
 

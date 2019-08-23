@@ -8,9 +8,9 @@
 		<hr>
 		@include('notas.partials.error')
 		{!! Form::model($notas, ['route' => ['notas.update', $notas->id], 'method' => 'PUT']) !!}
-			
-			@include('notas.partials.form')
-			
+
+			@include('notas.partials.form-edit')
+
 		{!! Form::close() !!}
 	</div>
 	<!--<div class="col-xs-12 col-sm-4">

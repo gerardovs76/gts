@@ -141,14 +141,14 @@ class NotasController extends Controller
     public function update(Request $request, $id)
     {
         $notas = Notas::find($id);
-        $notas->curso    = $request->curso;
-        $notas->asignatura    = $request->asignatura;
-        $notas->tareas    = $request->tareas;
-        $notas->parcial_1    = $request->parcial_1;
-        $notas->parcial_2   = $request->parcial_2;
-        $notas->parcial_3   = $request->parcial_3;
-        $notas->examen_quimestral    = $request->examen_quimestral;
-        $notas->promedio    = $request->promedio;
+        $notas->curso = $request->curso;
+        $notas->asignatura = $request->asignatura;
+        $notas->tareas = $request->tareas;
+        $notas->parcial_1 = $request->parcial_1;
+        $notas->parcial_2 = $request->parcial_2;
+        $notas->parcial_3 = $request->parcial_3;
+        $notas->examen_quimestral = $request->examen_quimestral;
+        $notas->promedio = $request->promedio;
         $notas->save();
         return redirect()->route('notas.index');
     }
@@ -272,52 +272,6 @@ class NotasController extends Controller
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
-
-
-
-        foreach($notas as $nota)
-        {
-
-
-          if(($nota->nota_ta > '9') && ($nota->nota_ta == '10') &&($nota->nota_ti > '9') && ($nota->nota_ti == '10') && ($nota->nota_tg > '9') && ($nota->nota_tg == '10') &&($nota->nota_le > '9') && ($nota->nota_le == '10') &&($nota->nota_ev > '9') && ($nota->nota_ev == '10')){
-
-            $nota->nota_ta = 'A';
-            $nota->nota_ti = 'A';
-            $nota->nota_tg = 'A';
-            $nota->nota_le = 'A';
-            $nota->nota_ev = 'A';
-
-           }
-
-           elseif(($nota->nota_ta < '8.99') && ($nota->nota_ta == '7') &&($nota->nota_ti < '8.99') && ($nota->nota_ti == '7') &&($nota->nota_tg < '8.99') && ($nota->nota_tg == '7') &&($nota->nota_le < '8.99') && ($nota->nota_le == '7') &&($nota->nota_ev < '8.99') && ($nota->nota_ev == '7'))
-           {
-            $nota->nota_ta = 'B';
-            $nota->nota_ti = 'B';
-            $nota->nota_tg = 'B';
-            $nota->nota_le = 'B';
-            $nota->nota_ev = 'B';
-
-           }
-           elseif(($nota->nota_ta > '4.01') && ($nota->nota_ta == '6.99') && ($nota->nota_ti > '4.01') && ($nota->nota_ti == '6.99') && ($nota->nota_tg > '4.01') && ($nota->nota_tg == '6.99') && ($nota->nota_le > '4.01') && ($nota->nota_le == '6.99') && ($nota->nota_ev > '4.01') && ($nota->nota_ev == '6.99'))
-           {
-            $nota->nota_ta = 'C';
-            $nota->nota_ti = 'C';
-            $nota->nota_tg = 'C';
-            $nota->nota_le = 'C';
-            $nota->nota_ev = 'C';
-
-           }
-           elseif(($nota->nota_ta < '4.01') && ($nota->nota_ti < '4.01') && ($nota->nota_tg < '4.01') && ($nota->nota_le < '4.01') && ($nota->nota_ev < '4.01') && ($nota->nota_final < '4.01'))
-           {
-            $nota->nota_ta = 'D';
-            $nota->nota_ti = 'D';
-            $nota->nota_tg = 'D';
-            $nota->nota_le = 'D';
-            $nota->nota_ev = 'D';
-
-           }
-
-        }
 
          return response()->json($notas);
 

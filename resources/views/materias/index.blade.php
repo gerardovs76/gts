@@ -21,7 +21,6 @@
                     <th>TIPO MATERIA</th>
 					<th>EDITAR</th>
 					<th>BORRAR</th>
-
 				</tr>
 			</thead>
 			<tbody>

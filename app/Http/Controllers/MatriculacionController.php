@@ -146,7 +146,7 @@ class MatriculacionController extends Controller
     public function buscarAlumnoMatriculado(Request $request, $cedula)
     {
         $cedula = $request->cedula;
-        $matriculados = DB::table('inscripciones')->select('id','cedula' ,'nombres', 'apellidos')->where('cedula', 'LIKE', '%'.$cedula.'%')->get();
+        $matriculados = DB::table('inscripciones')->select('id','cedula' ,'nombres', 'apellidos', 'codigo_nuevo')->where('cedula', 'LIKE', '%'.$cedula.'%')->get();
         return response()->json($matriculados);
     }
 
