@@ -31,9 +31,9 @@
 		{!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo', 'placeholder' => 'Ingrese el paralelo']) !!}
 		</div>
     </div>
-    <div class="form-group col-md-12" id="genderM">
+    <div class="form-group col-md-2" id="genderM">
     </div>
-    <div class="form-group col-md-12" id="genderF">
+    <div class="form-group col-md-2" id="genderF">
     </div>
 	<div class="form-group col-md-12">
    									{!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'mostrarBusqueda']) !!}
