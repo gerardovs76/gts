@@ -22,7 +22,7 @@
 
 					{!! Form::open(['route' => 'matricular.reporteStore', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
-						<div class="panel panel-heading text-center"></div>
+						<div class="panel panel-heading text-center">SELECCIONE CURSO Y PARALELO O TODOS...</div>
 						<div class="panel panel-body">
 							<div class="form-row">
 								<div class="form-group col-md-4">
