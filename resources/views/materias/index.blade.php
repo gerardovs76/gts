@@ -16,10 +16,12 @@
 
 					<th>ID</th>
 					<th>MATERIA</th>
-					<th>CURSO</th>
+                    <th>CURSO</th>
+                    <th>PARALELO</th>
+                    <th>TIPO MATERIA</th>
 					<th>EDITAR</th>
 					<th>BORRAR</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -27,17 +29,19 @@
 				<tr>
 					<td>{{ $materia->id }}</td>
 					<td>{{ $materia->materia}}</td>
-					<td>{{ $materia->curso}}</td>
+                    <td>{{ $materia->curso}}</td>
+                    <td>{{$materia->paralelo}}</td>
+                    <td>{{$materia->tipo_materia}}</td>
 					<td width="20px">
-						<a href="{{ route('materias.edit', $materia->id) }}" class="btn btn-primary btn-sm btn-block float-right"><i class="far fa-edit"></i> 
+						<a href="{{ route('materias.edit', $materia->id) }}" class="btn btn-primary btn-sm btn-block float-right"><i class="far fa-edit"></i>
 							EDITAR
 						</a>
 					</td>
 					<td width="20px">
 						{!! Form::open(['route' => ['materias.destroy', $materia->id], 'method' => 'DELETE']) !!}
-							<button class="btn btn-danger btn-sm float-right"><i class="far fa-trash-alt"></i> 
+							<button class="btn btn-danger btn-sm float-right"><i class="far fa-trash-alt"></i>
 								BORRAR
-							</button>							
+							</button>
 						{!! Form::close() !!}
 					</td>
 				</tr>
