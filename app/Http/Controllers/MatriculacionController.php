@@ -143,9 +143,8 @@ class MatriculacionController extends Controller
         $matricular->delete();
         return back()->with('info', 'La matricula se ha eliminado correctamente');
     }
-    public function buscarAlumnoMatriculado(Request $request, $cedula)
+    public function buscarAlumnoMatriculado($cedula)
     {
-        $cedula = $request->cedula;
         $matriculados = DB::table('inscripciones')->select('id','cedula' ,'nombres', 'apellidos', 'codigo_nuevo')->where('cedula', 'LIKE', '%'.$cedula.'%')->get();
         return response()->json($matriculados);
     }
@@ -197,17 +196,32 @@ class MatriculacionController extends Controller
  {
     $curso = $request->curso;
     $paralelo = $request->paralelo;
+    $todos = $request->todos;
 
+    if(!empty($curso) && !empty($paralelo)){
     $matriculados = DB::table('matriculados')
     ->where('curso', $curso)
     ->where('paralelo', $paralelo)
     ->select('*')
     ->get();
-
-
     $pdf = PDF::loadView('pdf.reporte-matriculados', compact('matriculados'));
 
+    return $pdf->download('matriculados-reporte.pdf');
+    }
+    elseif(!empty($todos))
+    {
+        $matriculados = DB::table('matriculados')
+        ->select('*')
+        ->get();
+        $pdf = PDF::loadView('pdf.reporte-matriculados', compact('matriculados'));
+
         return $pdf->download('matriculados-reporte.pdf');
+    }
+    else
+    {
+        return view('matricular.reporteMatriculados')->with('error', 'Por favor ingresar opciones validas');
+    }
+
 
  }
  public function indexConstancia()
@@ -255,6 +269,14 @@ class MatriculacionController extends Controller
 
     return response()->json($matriculados);
  }
+ public function reporteMatriculadosTablaTodos()
+ {
+     $matriculados = DB::table('matriculados')
+     ->select('*')
+     ->get();
+
+     return response()->json($matriculados);
+ }
  public function genderMale($curso, $paralelo)
  {
      $male = DB::table('matriculados')
@@ -274,6 +296,27 @@ class MatriculacionController extends Controller
     ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
     ->where('matriculados.curso', $curso)
     ->where('matriculados.paralelo', $paralelo)
+    ->where('inscripciones.sexo', 'F')
+    ->select(DB::raw("count(inscripciones.sexo) as femenino"))
+    ->get();
+
+    return response()->json($female);
+ }
+ public function genderMaleTodos()
+ {
+     $male = DB::table('matriculados')
+     ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+     ->where('inscripciones.sexo', 'M')
+     ->select(DB::raw("count(inscripciones.sexo) as masculino"))
+     ->get();
+
+     return response()->json($male);
+ }
+
+ public function genderFemaleTodos()
+ {
+    $female = DB::table('matriculados')
+    ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
     ->where('inscripciones.sexo', 'F')
     ->select(DB::raw("count(inscripciones.sexo) as femenino"))
     ->get();

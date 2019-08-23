@@ -8,7 +8,15 @@
 		</h2>
 		</div>
 
-		<hr>
+        <hr>
+        @if(Session::has('error'))
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert">
+			<span>&times;</span>
+		</button>
+		{{ Session::get('error') }}
+    </div>
+        @endif
 		@include('notas.partials.info')
 
 
@@ -29,6 +37,13 @@
 <div class="input-group-prepend">
 					<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 		{!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo', 'placeholder' => 'Ingrese el paralelo']) !!}
+		</div>
+    </div>
+    <div class="form-group col-md-4">
+		<strong>Seleccionar todos: <br></strong>
+<div class="input-group-prepend">
+					<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+		{!! Form::select('todos',['TODOS' => 'TODOS'], null, ['class' => 'form-control col-md-8', 'id' => 'todos', 'placeholder' => 'Ingrese la seccion todos...']) !!}
 		</div>
     </div>
     <div class="form-group col-md-2" id="genderM">
@@ -71,9 +86,11 @@
 					</table>
 	</div>
 <script>
+        if(document.getElementById('curso') && document.getElementById('paralelo'))
+        {
 	$('#mostrarBusqueda').on('click', function(){
 		var curso = $('#curso').val();
-		var paralelo = $('#paralelo').val();
+        var paralelo = $('#paralelo').val();
 		$.get('matricular-reporte-tabla/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
 			 console.log(obj);
@@ -84,7 +101,6 @@
 			});
 		});
     });
-
     $('#mostrarBusqueda').on('click', function(){
         var curso = $('#curso').val();
         var paralelo = $('#paralelo').val();
@@ -103,5 +119,38 @@
            });
         });
     });
+    }
+    if(document.getElementById('todos')){
+        $('#mostrarBusqueda').on('click', function(){
+            $.get('tabla-todos', function(response){
+                $.each(response, function(index, obj){
+                 console.log(obj);
+                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.nombres+' '+obj.apellidos+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/certificado-store/'+obj.cedula+'" class="btn btn-success btn-sm"><i class="far fa-edit"></i>CERTIFICADO</a></td></tr>');
+                    $('#mostrarBusqueda').css("display", "none");
+                    $('#imprimir').addClass("d-block");
+
+                });
+            });
+        });
+
+        $('#mostrarBusqueda').on('click', function(){
+            $.get('matriculados-gender-male-todos', function(response){
+               $.each(response, function(index, obj){
+                   $('#genderM').append('<strong>Nro. Masculino: '+obj.masculino+'</strong>');
+               });
+            });
+        });
+        $('#mostrarBusqueda').on('click', function(){
+            $.get('matriculados-gender-female-todos', function(response){
+               $.each(response, function(index, obj){
+                   $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
+               });
+            });
+        });
+    }
+    else{
+        alert("Seleccione una opcion valida");
+    }
+
 </script>
 @endsection

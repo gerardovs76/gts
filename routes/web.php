@@ -220,6 +220,8 @@ Route::get('matricular-cas', 'MatriculacionController@cas')->name('matricular.ca
 
 Route::post('matricular-cas-store', 'MatriculacionController@storeCas')->name('matricular.storeCas');
 
+Route::get('/matricular/reportes/tabla-todos', 'MatriculacionController@reporteMatriculadosTablaTodos');
+
 
 Route::get('/matricular/reportes/matricular-reporte-tabla/{curso}/{paralelo}', 'MatriculacionController@reporteMatriculadosTabla');
 
@@ -238,6 +240,10 @@ Route::post('total-alumnos-store', 'MatriculacionController@totalAlumnosStore')-
 Route::get('matricular/reportes/matriculados-gender-male/{curso}/{paralelo}', 'MatriculacionController@genderMale');
 
 Route::get('matricular/reportes/matriculados-gender-female/{curso}/{paralelo}', 'MatriculacionController@genderFemale');
+
+Route::get('matricular/reportes/matriculados-gender-male-todos', 'MatriculacionController@genderMaleTodos');
+
+Route::get('matricular/reportes/matriculados-gender-female-todos', 'MatriculacionController@genderFemaleTodos');
 
 
 //INSPECCIÓN
