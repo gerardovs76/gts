@@ -50,12 +50,8 @@
     </div>
     <div class="form-group col-md-2" id="genderF">
     </div>
-	<div class="form-group col-md-12">
-   									{!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'mostrarBusqueda']) !!}
-								</div>
 
-
-							<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
    									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR REPORTE', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'imprimir']) !!}
 								</div>
 
@@ -86,10 +82,10 @@
 					</table>
 	</div>
 <script>
-        if(document.getElementById('curso') && document.getElementById('paralelo'))
-        {
-	$('#mostrarBusqueda').on('click', function(){
-		var curso = $('#curso').val();
+
+
+	$('#paralelo').on('change', function(){
+        var curso = $('#curso').val();
         var paralelo = $('#paralelo').val();
 		$.get('matricular-reporte-tabla/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
@@ -100,28 +96,20 @@
 
 			});
 		});
-    });
-    $('#mostrarBusqueda').on('click', function(){
-        var curso = $('#curso').val();
-        var paralelo = $('#paralelo').val();
         $.get('matriculados-gender-male/'+curso+'/'+paralelo, function(response){
            $.each(response, function(index, obj){
                $('#genderM').append('<strong>Nro. Masculino: '+obj.masculino+'</strong>');
            });
         });
-    });
-    $('#mostrarBusqueda').on('click', function(){
-        var curso = $('#curso').val();
-        var paralelo = $('#paralelo').val();
         $.get('matriculados-gender-female/'+curso+'/'+paralelo, function(response){
            $.each(response, function(index, obj){
                $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
            });
         });
     });
-    }
-    if(document.getElementById('todos')){
-        $('#mostrarBusqueda').on('click', function(){
+</script>
+<script>
+        $('#todos').on('change', function(){
             $.get('tabla-todos', function(response){
                 $.each(response, function(index, obj){
                  console.log(obj);
@@ -131,26 +119,16 @@
 
                 });
             });
-        });
-
-        $('#mostrarBusqueda').on('click', function(){
             $.get('matriculados-gender-male-todos', function(response){
                $.each(response, function(index, obj){
                    $('#genderM').append('<strong>Nro. Masculino: '+obj.masculino+'</strong>');
                });
             });
-        });
-        $('#mostrarBusqueda').on('click', function(){
             $.get('matriculados-gender-female-todos', function(response){
                $.each(response, function(index, obj){
                    $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
                });
             });
         });
-    }
-    else{
-        alert("Seleccione una opcion valida");
-    }
-
 </script>
 @endsection
