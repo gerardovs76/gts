@@ -245,11 +245,8 @@ class MatriculacionController extends Controller
 
  }
 
- public function reporteMatriculadosTabla(Request $request, $curso, $paralelo)
+ public function reporteMatriculadosTabla($curso, $paralelo)
  {
-    $curso = $request->curso;
-    $paralelo = $request->paralelo;
-
     $matriculados = DB::table('matriculados')
     ->where('curso', $curso)
     ->where('paralelo', $paralelo)
@@ -258,7 +255,31 @@ class MatriculacionController extends Controller
 
     return response()->json($matriculados);
  }
+ public function genderMale($curso, $paralelo)
+ {
+     $male = DB::table('matriculados')
+     ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+     ->where('matriculados.curso', $curso)
+     ->where('matriculados.paralelo', $paralelo)
+     ->where('inscripciones.sexo', 'M')
+     ->select(DB::raw("count(inscripciones.sexo) as masculino"))
+     ->get();
 
+     return response()->json($male);
+ }
+
+ public function genderFemale($curso, $paralelo)
+ {
+    $female = DB::table('matriculados')
+    ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+    ->where('matriculados.curso', $curso)
+    ->where('matriculados.paralelo', $paralelo)
+    ->where('inscripciones.sexo', 'F')
+    ->select(DB::raw("count(inscripciones.sexo) as femenino"))
+    ->get();
+
+    return response()->json($female);
+ }
  public function indexReporteMatriculados()
  {
      $matricular = Matriculacion::where('tipo_estudiante', 'BLOQUEADO')->whereIn('curso', ['DECIMO DE EGB', 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO'])->get();

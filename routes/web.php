@@ -235,6 +235,10 @@ Route::get('total-matricular', 'MatriculacionController@totalAlumnosCobros')->na
 
 Route::post('total-alumnos-store', 'MatriculacionController@totalAlumnosStore')->name('matricular.total-alumnosStore');
 
+Route::get('matricular/reportes/matriculados-gender-male/{curso}/{paralelo}', 'MatriculacionController@genderMale');
+
+Route::get('matricular/reportes/matriculados-gender-female/{curso}/{paralelo}', 'MatriculacionController@genderFemale');
+
 
 //INSPECCIÓN
 

@@ -30,7 +30,11 @@
 					<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 		{!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo', 'placeholder' => 'Ingrese el paralelo']) !!}
 		</div>
-	</div>
+    </div>
+    <div class="form-group col-md-12" id="genderM">
+    </div>
+    <div class="form-group col-md-12" id="genderF">
+    </div>
 	<div class="form-group col-md-12">
    									{!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'mostrarBusqueda']) !!}
 								</div>
@@ -70,9 +74,6 @@
 	$('#mostrarBusqueda').on('click', function(){
 		var curso = $('#curso').val();
 		var paralelo = $('#paralelo').val();
-
-
-
 		$.get('matricular-reporte-tabla/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
 			 console.log(obj);
@@ -82,6 +83,25 @@
 
 			});
 		});
-	});
+    });
+
+    $('#mostrarBusqueda').on('click', function(){
+        var curso = $('#curso').val();
+        var paralelo = $('#paralelo').val();
+        $.get('matriculados-gender-male/'+curso+'/'+paralelo, function(response){
+           $.each(response, function(index, obj){
+               $('#genderM').append('<strong>Nro. Masculino: '+obj.masculino+'</strong>');
+           });
+        });
+    });
+    $('#mostrarBusqueda').on('click', function(){
+        var curso = $('#curso').val();
+        var paralelo = $('#paralelo').val();
+        $.get('matriculados-gender-female/'+curso+'/'+paralelo, function(response){
+           $.each(response, function(index, obj){
+               $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
+           });
+        });
+    });
 </script>
 @endsection
