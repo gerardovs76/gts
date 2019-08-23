@@ -32,11 +32,11 @@ class NotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     
+
    public function index(Request $request)
-    {   
-      
-   
+    {
+
+
          return view('notas.index');
     }
 
@@ -165,25 +165,20 @@ class NotasController extends Controller
         $notas->delete();
         return back()->with('info', 'Las notas ha sido eliminada exitosamente');
     }
-     public function buscarMateriaAlumno(Request $request,$cursos, $paralelo){
+     public function buscarMateriaAlumno($cursos, $paralelo){
          if(Auth::user()->roles('super-admin'))
          {
-              $cursos = $request->curso;
-            $paralelo = $request->paralelo;
          $matriculado = DB::table('materias')
       ->select('materias.materia', 'materias.id')
       ->where('materias.curso',$cursos)
       ->where('materias.paralelo',$paralelo)
       ->get();
-      
+
       return response()->json($matriculado);
-             
+
          }
          elseif(Auth::user()->roles('profesor'))
          {
-        $cursos = $request->cursos;
-        $especialidad = $request->especialidad;
-        $paralelo = $request->paralelo;
         $users = Auth::user()->cedula;
          $matriculado = DB::table('materias_profesores')
          ->join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
@@ -198,11 +193,8 @@ class NotasController extends Controller
 }
 
     }
-    public function buscarAlumnoNotas(Request $request, $cursos, $paralelo)
+    public function buscarAlumnoNotas($cursos, $paralelo)
     {
-        $cursos = $request->cursos;
-        $paralelo = $request->paralelo;
-
         $matriculados = DB::table('matriculados')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"), 'matriculados.id as id')
         ->where('curso', 'LIKE', '%'.$cursos.'%')
@@ -220,15 +212,21 @@ class NotasController extends Controller
 
     }
 
-    public function cargarNotas(Request $request, $curso, $paralelo)
+    public function cargarNotas($curso, $paralelo)
     {
-        $curso = $request->curso;
-        $paralelo = $request->paralelo;
+    $materias = Materias::where('tipo_materia', '!=', 'SI')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->get();
 
+    return response()->json($materias);
+
+    }
+
+     public function cargarNotasEspeciales($curso, $paralelo)
+    {
     $materias = DB::table('materias')
     ->select('id', 'materia')
     ->where('curso', 'LIKE', '%'.$curso.'%')
     ->where('paralelo', 'LIKE', '%'.$paralelo.'%')
+    ->where('tipo_materia', '!=', 'NO')
     ->distinct()
     ->get();
 
@@ -236,34 +234,8 @@ class NotasController extends Controller
 
     }
 
-     public function cargarNotasEspeciales(Request $request, $curso, $paralelo)
+    public function cargarNotasAlumnos($curso, $paralelo, $quimestre, $parcial, $materia)
     {
-        $curso = $request->curso;
-        $paralelo = $request->paralelo;
-
-    $materias = DB::table('materias')
-    ->select('id', 'materia')
-    ->where('curso', 'LIKE', '%'.$curso.'%')
-    ->where('paralelo', 'LIKE', '%'.$paralelo.'%')
-    ->where('tipo_materia', 'SI')
-    ->distinct()
-    ->get();
-
-    return response()->json($materias);
-
-    }
-
-    public function cargarNotasAlumnos(Request $request, $curso, $paralelo, $quimestre, $parcial, $materia)
-    {
-
-        $curso = $request->curso;
-        $paralelo = $request->paralelo; 
-        $parcial = $request->parcial;
-        $materia = $request->materia;
-        $quimestre = $request->quimestre;
-
-
-
         $notas = DB::table('notas')
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
@@ -286,15 +258,8 @@ class NotasController extends Controller
     {
       return view('notas.vernotas-especiales');
     }
-    public function cargarNotasEspecialesAlumnos(Request $request, $curso, $paralelo, $quimestre, $parcial, $materia)
+    public function cargarNotasEspecialesAlumnos($curso, $paralelo, $quimestre, $parcial, $materia)
     {
-
-        $curso = $request->curso;
-        $paralelo = $request->paralelo; 
-        $parcial = $request->parcial;
-        $materia = $request->materia;
-        $quimestre = $request->quimestre;
-
         $notas = DB::table('notas')
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
@@ -312,8 +277,8 @@ class NotasController extends Controller
 
         foreach($notas as $nota)
         {
-        
-          
+
+
           if(($nota->nota_ta > '9') && ($nota->nota_ta == '10') &&($nota->nota_ti > '9') && ($nota->nota_ti == '10') && ($nota->nota_tg > '9') && ($nota->nota_tg == '10') &&($nota->nota_le > '9') && ($nota->nota_le == '10') &&($nota->nota_ev > '9') && ($nota->nota_ev == '10')){
 
             $nota->nota_ta = 'A';
@@ -321,9 +286,9 @@ class NotasController extends Controller
             $nota->nota_tg = 'A';
             $nota->nota_le = 'A';
             $nota->nota_ev = 'A';
-           
+
            }
-           
+
            elseif(($nota->nota_ta < '8.99') && ($nota->nota_ta == '7') &&($nota->nota_ti < '8.99') && ($nota->nota_ti == '7') &&($nota->nota_tg < '8.99') && ($nota->nota_tg == '7') &&($nota->nota_le < '8.99') && ($nota->nota_le == '7') &&($nota->nota_ev < '8.99') && ($nota->nota_ev == '7'))
            {
             $nota->nota_ta = 'B';
@@ -331,7 +296,7 @@ class NotasController extends Controller
             $nota->nota_tg = 'B';
             $nota->nota_le = 'B';
             $nota->nota_ev = 'B';
-           
+
            }
            elseif(($nota->nota_ta > '4.01') && ($nota->nota_ta == '6.99') && ($nota->nota_ti > '4.01') && ($nota->nota_ti == '6.99') && ($nota->nota_tg > '4.01') && ($nota->nota_tg == '6.99') && ($nota->nota_le > '4.01') && ($nota->nota_le == '6.99') && ($nota->nota_ev > '4.01') && ($nota->nota_ev == '6.99'))
            {
@@ -340,7 +305,7 @@ class NotasController extends Controller
             $nota->nota_tg = 'C';
             $nota->nota_le = 'C';
             $nota->nota_ev = 'C';
-            
+
            }
            elseif(($nota->nota_ta < '4.01') && ($nota->nota_ti < '4.01') && ($nota->nota_tg < '4.01') && ($nota->nota_le < '4.01') && ($nota->nota_ev < '4.01') && ($nota->nota_final < '4.01'))
            {
@@ -349,9 +314,9 @@ class NotasController extends Controller
             $nota->nota_tg = 'D';
             $nota->nota_le = 'D';
             $nota->nota_ev = 'D';
-           
+
            }
-               
+
         }
 
          return response()->json($notas);
@@ -365,8 +330,8 @@ class NotasController extends Controller
     public function sumaSupletorio(Request $request, $curso, $paralelo, $quimestre, $parcial, $materia)
     {
       $curso = $request->curso;
-      $paralelo = $request->paralelo; 
-      $quimestre = $request->quimestre; 
+      $paralelo = $request->paralelo;
+      $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $materia = $request->materia;
 
@@ -393,7 +358,7 @@ class NotasController extends Controller
       $matriculados_id = $request->matriculados_id;
       $nota_supletorio = $request->nota_supletorio;
       $promedio_notas = $request->promedio_notas;
-      $quimestre = $request->quimestre; 
+      $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $materias_id = $request->materia;
 
@@ -460,7 +425,7 @@ class NotasController extends Controller
 
     public function remedialStore(Request $request)
     {
-     
+
       $matriculados_id = $request->matriculados_id;
       $promedio_supletorio = $request->promedio_supletorio;
       $nota_remedial = $request->nota_remedial;
@@ -541,7 +506,7 @@ class NotasController extends Controller
       $nota_gracia = $request->nota_gracia;
       $promedio_remedial = $request->promedio_remedial;
       $quimestre = $request->quimestre;
-      $parcial = $request->parcial; 
+      $parcial = $request->parcial;
 
       foreach ($request->matriculados_id as $key => $value) {
         $gracia = new Gracia;
@@ -581,7 +546,7 @@ class NotasController extends Controller
       $curso = $request->curso;
       $especialidad = $request->especialidad;
       $paralelo = $request->paralelo;
-   
+
 
       $materias = DB::table('materias_especiales')
       ->select('materia', 'id')
@@ -637,7 +602,7 @@ class NotasController extends Controller
     public function asignarDatosProfesor()
     {
         if(Auth::user()->roles('super-admin')){
-            
+
         }
         elseif(Auth::user()->roles('profesor'))
         {
@@ -652,7 +617,7 @@ class NotasController extends Controller
 
       return response()->json($datos);
         }
-      
+
     }
 
     public function libretaIndividual()
@@ -667,7 +632,7 @@ class NotasController extends Controller
       $parcial = $request->get('parcial');
 
       $matriculados = Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos', 'curso', 'paralelo', 'quimestre', 'parcial')->where('cedula', $cedula)->groupBy('matriculados.id')->get();
-     
+
 
       $libreta = DB::table('notas')
       ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
@@ -679,7 +644,7 @@ class NotasController extends Controller
       ->distinct()
       ->groupBy('materias.id')
       ->get();
-     
+
      $representante = DB::table('inscripciones')
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.cedula', $cedula)
@@ -705,7 +670,7 @@ class NotasController extends Controller
       $user = Auth()->user()->cedula;
 
       $matriculados = Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos', 'curso', 'paralelo', 'quimestre', 'parcial')->where('cedula', $user)->groupBy('matriculados.id')->get();
-     
+
 
       $libreta = DB::table('notas')
       ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
@@ -717,7 +682,7 @@ class NotasController extends Controller
       ->distinct()
       ->groupBy('materias.id')
       ->get();
-     
+
      $representante = DB::table('inscripciones')
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.cedula', $user)
@@ -739,7 +704,7 @@ class NotasController extends Controller
 
       if($request->tipo_documento == 'NOMINA1')
       {
-        return Excel::download(new NominaEstudiante($curso, $paralelo), 'nomina-estudiante.xls');  
+        return Excel::download(new NominaEstudiante($curso, $paralelo), 'nomina-estudiante.xls');
       }
       else if($request->tipo_documento == 'NOMINA2'){
        return Excel::download(new CuadroFinal($curso, $paralelo), 'nomina2.xls');

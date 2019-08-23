@@ -30,7 +30,7 @@ class MateriasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         return view('materias.create');
     }
 
@@ -42,12 +42,12 @@ class MateriasController extends Controller
      */
     public function store(MateriasRequest $request)
     {
-       
+
         $materias = new Materias;
         $materias->materia = $request->materia;
         $materias->curso = $request->curso;
         $materias->especialidad = $request->especialidad;
-        $materias->paralelo = $request->paralelo; 
+        $materias->paralelo = $request->paralelo;
         $materias->tipo_materia = $request->tipo_materia;
         $materias->save();
 
@@ -89,11 +89,11 @@ class MateriasController extends Controller
     public function update(MateriasRequest $request, $id)
     {
         $materias = Materias::find($id);
-
         $materias->materia  = $request->materia;
         $materias->curso  = $request->curso;
         $materias->especialidad = $request->especialidad;
         $materias->paralelo = $request->paralelo;
+        $materias->tipo_materia = $request->tipo_materia;
         $materias->save();
 
         return redirect()->route('materias.index');
@@ -123,7 +123,7 @@ class MateriasController extends Controller
     }
 
     public function materiaEspecial()
-    {   
+    {
         return view('materias.materias_especiales');
 
     }
@@ -161,13 +161,13 @@ class MateriasController extends Controller
     public function añadirMateriaStore(Request $request)
 
     {
-        
+
             $materias = new MateriasProfesor;
             $materias->profesores_id = $request->profesores_id;
             $materias->materias_id = $request->materias_id;
             $materias->save();
 
-        
+
             return redirect()->route('profesor.añadirMaterias')->with('info', 'Se ha añadido la materia correctamente');
     }
 
