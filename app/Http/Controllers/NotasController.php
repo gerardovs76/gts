@@ -33,30 +33,14 @@ class NotasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-   public function index(Request $request)
+   public function index()
     {
-
-
          return view('notas.index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function editarNotas()
     {
-        $curso = Cursos::orderBy('id', 'ASC')->pluck('curso');
-        return view('notas.create', compact('curso'));
+        return view('notas.editar-notas');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
             $nota_ta = $request->nota_ta;
@@ -130,7 +114,6 @@ class NotasController extends Controller
         $notas = Notas::find($id);
         return view('notas.edit', compact('notas'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -140,19 +123,32 @@ class NotasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notas = Notas::find($id);
-        $notas->curso = $request->curso;
-        $notas->asignatura = $request->asignatura;
-        $notas->tareas = $request->tareas;
-        $notas->parcial_1 = $request->parcial_1;
-        $notas->parcial_2 = $request->parcial_2;
-        $notas->parcial_3 = $request->parcial_3;
-        $notas->examen_quimestral = $request->examen_quimestral;
-        $notas->promedio = $request->promedio;
-        $notas->save();
-        return redirect()->route('notas.index');
-    }
+        $nota_ta = $request->nota_ta;
+        $nota_ti = $request->nota_ti;
+        $nota_tg = $request->nota_tg;
+        $nota_le = $request->nota_le;
+        $nota_ev = $request->nota_ev;
+        $descripcion = $request->descripcion;
+        $matriculados_id = $request->matriculados_id;
+        $materias_id = $request->materias_id;
+        $parcial = $request->parcial;
+        $quimestre = $request->quimestre;
 
+            $nota = Notas::find($id);
+            $nota->nota_ta = $nota_ta;
+            $nota->nota_ti = $nota_ti;
+            $nota->nota_tg = $nota_tg;
+            $nota->nota_le = $nota_le;
+            $nota->nota_ev = $nota_ev;
+            $nota->descripcion = $descripcion;
+            $nota->matriculados_id = $matriculados_id;
+            $nota->materias_id = $materias_id;
+            $nota->parcial = $parcial;
+            $nota->quimestre = $quimestre;
+            $nota->save();
+
+        return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+        }
     /**
      * Remove the specified resource from storage.
      *
@@ -253,7 +249,21 @@ class NotasController extends Controller
         return response()->json($notas);
 
     }
+    public function notasEdit($idestudiante, $ttarea, $parcial, $quimestre, $materia)
+    {
+        $notas = DB::table('notas')
+        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+        ->join('materias', 'notas.materias_id', '=', 'materias.id')
+        ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+        ->where('notas.'.$ttarea.'', '!=', 'null')
+        ->where('matriculados.id', '=', $idestudiante)
+        ->where('notas.parcial', '=', $parcial)
+        ->where('notas.quimestre', '=', $quimestre)
+        ->where('notas.materias_id', $materia)
+        ->get();
 
+        return response()->json($notas);
+    }
     public function verNotasEspeciales()
     {
       return view('notas.vernotas-especiales');

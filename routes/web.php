@@ -112,6 +112,10 @@ Route::get('notas', 'NotasController@index')->name('notas.index')->middleware('h
 
 Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('has.permission:notas.store');
 
+Route::get('notas/{id}/edit', 'NotasController@edit')->name('notas.edit');
+
+Route::put('notas/{id}', 'NotasController@update')->name('notas.update');
+
 Route::get('buscar_notas/{curso}/{paralelo}', 'NotasController@buscarMateriaAlumno');
 
 Route::get('buscar_alumnos/{cursos}/{paralelo}', 'NotasController@buscarAlumnoNotas');
@@ -119,6 +123,8 @@ Route::get('buscar_alumnos/{cursos}/{paralelo}', 'NotasController@buscarAlumnoNo
 Route::get('asignar_nota/{curso}/{especialidad}/{paralelo}', 'TrabajosAcademicosController@asignarNota');
 
 Route::get('mostrar_notas/{curso}', 'NotasController@mostrardatosAlumnos');
+
+Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas');
 
 Route::get('mostrar_porcentaje/{curso}', 'NotasController@mostrarPorcentajeAlumnos');
 
@@ -155,6 +161,8 @@ Route::get('gracia_remedial/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}',
 Route::post('gracias', 'NotasController@graciaStore')->name('gracia.store')->middleware('has.permission:gracia.store');
 
 Route::get('gracia_promedio', 'NotasController@graciaPromedio');
+
+Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@notasEdit');
 
 Route::get('nota_especial', 'NotasController@notaEspeciales')->name('notas.especial')->middleware('has.permission:notas.especial');
 

@@ -7,7 +7,6 @@
 			REPORTE MATRICULADOS
 		</h2>
 		</div>
-
         <hr>
         @if(Session::has('error'))
 	<div class="alert alert-danger">
