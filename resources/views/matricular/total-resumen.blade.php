@@ -10,7 +10,9 @@
 		</div>
 
 		<hr>
-		@include('notas.partials.info')
+        @include('notas.partials.info')
+        <div class="container" id="allData">
+       <button class="btn btn-primary" id="boton"><i class="fas fa-print"></i>IMPRIMIR</button>
         <div class="card">
             <div class="card-header text-center">
               <strong>INICIAL 1</strong>
@@ -176,5 +178,22 @@
               <p><strong>Paralelo D Total: {{$tercD}} (Hombres: {{$tercDM}} Mujeres: {{$tercDF}})</strong></p>
             </div>
           </div>
-	</div>
+        </div>
+    </div>
+        <script>
+            function printData()
+            {
+               var allData=document.getElementById("allData");
+               newWin= window.open("");
+                    newWin.document.write(allData.outerHTML);
+                    newWin.print();
+                    newWin.close();
+            }
+
+            $('#boton').on('click',function(){
+                $('#boton').css("display", "none");
+            printData();
+            })
+
+        </script>
 @endsection
