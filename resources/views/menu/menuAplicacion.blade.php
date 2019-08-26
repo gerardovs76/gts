@@ -70,6 +70,7 @@
                 @endcan
                 <a class="dropdown-item" href="{{ route('matricular.total-alumnosCobros')}}">Matriculados total cobros</a>
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
+                <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
               </div>
             </li>
             @endcan

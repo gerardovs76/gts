@@ -158,13 +158,11 @@ class InspeccionesController extends Controller
        return response()->json($curso);
 
     }
-    public function mostrarDatosInspeccion(Request $request, $curso, $especialidad, $paralelo){
-        $curso = $request->curso;
-        $especialidad = $request->especialidad;
-        $paralelo = $request->paralelo;
+    public function mostrarDatosInspeccion($curso, $paralelo){
+
+
         $matriculado = DB::table('matriculados')
         ->where('matriculados.curso', 'LIKE', '%'.$curso.'%')
-        ->where('matriculados.especialidad', 'LIKE', '%'.$especialidad.'%')
         ->where('matriculados.paralelo', 'LIKE', '%'.$paralelo.'%')
         ->select(DB::raw('CONCAT(matriculados.apellidos," ", matriculados.nombres) as nombres'), 'matriculados.id as id')
         ->distinct()

@@ -230,6 +230,8 @@ Route::post('matricular-cas-store', 'MatriculacionController@storeCas')->name('m
 
 Route::get('/matricular/reportes/tabla-todos', 'MatriculacionController@reporteMatriculadosTablaTodos');
 
+Route::get('matricular-total-resumen', 'MatriculacionController@totalResumen')->name('matricular.total-resumen');
+
 
 Route::get('/matricular/reportes/matricular-reporte-tabla/{curso}/{paralelo}', 'MatriculacionController@reporteMatriculadosTabla');
 

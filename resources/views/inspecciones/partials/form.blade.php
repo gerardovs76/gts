@@ -48,8 +48,8 @@ input[type=number] {
                     {!! Form::date('fecha', null, ['class' => 'form-control col-md-10', 'placeholder' => 'Seleccione la fecha', 'id' => 'fecha']) !!}
                     </div>
                     </div>
-                    
-                </div>       				               	
+
+                </div>
  <script>
 
     // $('#curso').on('change', function(e){
@@ -75,7 +75,7 @@ input[type=number] {
         console.log(curso);
         console.log(especialidad);
         console.log(paralelo);
-        $.get('mostrar/datos/inspeccion/'+ curso + '/' + paralelo , function(data) { 
+        $.get('mostrar/datos/inspeccion/'+ curso + '/' + paralelo , function(data) {
             console.log(data);
             $('#tableid').empty();
         $.each(data, function(idx, opt) {
@@ -102,29 +102,29 @@ input[type=number] {
                 }else if(valorh1 == "08"){
                     $('#c8').val("1");
                 }
-                
+
  });
 
                 $('#h2').keyup(function(){
                 var valorh2 = $('#h2').val();
                 var c1 = $('#c1').val();
-                if(valorh2 == "01"){  
-                var suc1 = $('#c1').val() + Number(1); 
+                if(valorh2 == "01"){
+                var suc1 = $('#c1').val() + Number(1);
                 $('#c1').val(suc1);
                 }else if(valorh2 == "02"){
-                    var suc2 = $('#c2').val() + Number(1); 
+                    var suc2 = $('#c2').val() + Number(1);
 
                     $('#c2').val(suc2);
                 }else if(valorh2 == "03"){
-                    var suc3 = Number($('#c3').val()) + Number(1); 
+                    var suc3 = Number($('#c3').val()) + Number(1);
 
                     $('#c3').val(suc3);
                 }else if(valorh2 == "04"){
-                    var suc4 = Number($('#c4').val()) + Number(1); 
+                    var suc4 = Number($('#c4').val()) + Number(1);
 
                     $('#c4').val(suc4);
                 }else if(valorh2 == "05"){
-                    var suc5 = Number($('#c5').val()) + Number(1); 
+                    var suc5 = Number($('#c5').val()) + Number(1);
 
                     $('#c5').val(suc5);
                 }else if(valorh2 == "06"){
@@ -136,48 +136,48 @@ input[type=number] {
 
                     $('#c7').val(suc7);
                 }else if(valorh2 == "08"){
-                    var suc8 = Number($('#c8').val()) + Number(1); 
+                    var suc8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(suc8);
                 }
-                
+
  });
 
-                
+
 
                 $('#h3').keyup(function(){
                 var valorh3 = $('#h3').val();
                 if(valorh3 == "01"){
-                var sumc1 = Number($('#c1').val()) + Number(1); 
+                var sumc1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(sumc1);
                 }else if(valorh3 == "02"){
 
-                   var sumc2 = (Number($('#c2').val()) + Number(1)); 
+                   var sumc2 = (Number($('#c2').val()) + Number(1));
                     $('#c2').val(sumc2);
                 }else if(valorh3 == "03"){
 
-                     var sumc3 = Number($('#c3').val()) + Number(1); 
+                     var sumc3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(sumc3);
                 }else if(valorh3 == "04"){
-                    var sumc4 = Number($('#c4').val()) + Number(1); 
+                    var sumc4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(sumc4);
                 }else if(valorh3 == "05"){
 
-                    var sumc5 = Number($('#c5').val()) + Number(1); 
+                    var sumc5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(sumc5);
                 }else if(valorh3 == "06"){
 
-                   var sumc6 = Number($('#c6').val()) + Number(1); 
+                   var sumc6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(sumc6);
                 }else if(valorh3 == "07"){
 
-                    var sumc7 = Number($('#c7').val()) + Number(1); 
+                    var sumc7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(sumc7);
                 }else if(valorh3 == "08"){
 
-                    var sumc8 = Number($('#c8').val()) + Number(1); 
+                    var sumc8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(sumc8);
                 }
-                
+
  });
 
 
@@ -186,163 +186,163 @@ input[type=number] {
                 var valorh4 = $('#h4').val();
                 if(valorh4 == "01"){
 
-                 var sumac1 = Number($('#c1').val()) + Number(1); 
+                 var sumac1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(sumac1);
                 }else if(valorh4 == "02"){
-                    var sumac2 = Number($('#c2').val()) + Number(1); 
+                    var sumac2 = Number($('#c2').val()) + Number(1);
                     $('#c2').val(sumac2);
                 }else if(valorh4 == "03"){
-                     var sumac3 = Number($('#c3').val()) + Number(1); 
+                     var sumac3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(sumac3);
                 }else if(valorh4 == "04"){
-                    var sumac4 = Number($('#c4').val()) + Number(1); 
+                    var sumac4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(sumac4);
                 }else if(valorh4 == "05"){
-                   var sumac5 = Number($('#c5').val()) + Number(1); 
+                   var sumac5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(sumac5);
                 }else if(valorh4 == "06"){
-                  var sumac6 = Number($('#c6').val()) + Number(1); 
+                  var sumac6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(sumac6);
                 }else if(valorh4 == "07"){
-                   var sumac7 = Number($('#c7').val()) + Number(1); 
+                   var sumac7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(sumac7);
                 }else if(valorh4 == "08"){
-                  
-                    var sumac8 = Number($('#c8').val()) + Number(1); 
+
+                    var sumac8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(sumac8);
                 }
-                
+
  });
 
                 $('#h5').keyup(function(){
                 var valorh5 = $('#h5').val();
                 if(valorh5 == "01"){
-                 var s1 = Number($('#c1').val()) + Number(1); 
+                 var s1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(s1);
                 }else if(valorh5 == "02"){
-                     var s2 = Number($('#c2').val()) + Number(1); 
+                     var s2 = Number($('#c2').val()) + Number(1);
                     $('#c2').val(s2);
                 }else if(valorh5 == "03"){
-                    var s3 = Number($('#c3').val()) + Number(1); 
+                    var s3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(s3);
                 }else if(valorh5 == "04"){
-                     var s4 = Number($('#c4').val()) + Number(1); 
+                     var s4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(s4);
                 }else if(valorh5 == "05"){
-                   var s5 = Number($('#c5').val()) + Number(1); 
+                   var s5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(s5);
                 }else if(valorh5 == "06"){
-                    var s6 = Number($('#c6').val()) + Number(1); 
+                    var s6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(s6);
                 }else if(valorh5 == "07"){
-                   var s7 = Number($('#c7').val()) + Number(1); 
+                   var s7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(s7);
                 }else if(valorh5 == "08"){
-                     var s8 = Number($('#c8').val()) + Number(1); 
+                     var s8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(s8);
                 }
-                
+
  });
 
                 $('#h6').keyup(function(){
                 var valorh6 = $('#h6').val();
                 if(valorh6 == "01"){
-                var sumaac1 = Number($('#c1').val()) + Number(1); 
+                var sumaac1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(sumaac1);
                 }else if(valorh6 == "02"){
-                    var sumaac2 = Number($('#c2').val()) + Number(1); 
+                    var sumaac2 = Number($('#c2').val()) + Number(1);
                     $('#c2').val(sumaac2);
                 }else if(valorh6 == "03"){
-                    var sumaac3 = Number($('#c3').val()) + Number(1); 
+                    var sumaac3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(sumaac3);
                 }else if(valorh6 == "04"){
-                   var sumaac4 = Number($('#c4').val()) + Number(1); 
+                   var sumaac4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(sumaac4);
                 }else if(valorh6 == "05"){
-                   var sumaac5 = Number($('#c5').val()) + Number(1); 
+                   var sumaac5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(sumaac5);
                 }else if(valorh6 == "06"){
-                    var sumaac6 = Number($('#c6').val()) + Number(1); 
+                    var sumaac6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(sumaac6);
                 }else if(valorh6 == "07"){
-                     var sumaac7 = Number($('#c7').val()) + Number(1); 
+                     var sumaac7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(sumaac7);
                 }else if(valorh6 == "08"){
-                    var sumaac8 = Number($('#c8').val()) + Number(1); 
+                    var sumaac8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(sumaac8);
                 }
-               
+
  });
 
                 $('#h7').keyup(function(){
                 var valorh7 = $('#h7').val();
                 if(valorh7 == "01"){
-                var sumarc1 = Number($('#c1').val()) + Number(1); 
+                var sumarc1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(sumarc1);
                 }else if(valorh7 == "02"){
-                    var sumarc2 = Number($('#c2').val()) + Number(1); 
+                    var sumarc2 = Number($('#c2').val()) + Number(1);
                     $('#c2').val(sumarc2);
                 }else if(valorh7 == "03"){
-                   var sumarc3 = Number($('#c3').val()) + Number(1); 
+                   var sumarc3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(sumarc3);
                 }else if(valorh7 == "04"){
-                   var sumarc4 = Number($('#c4').val()) + Number(1); 
+                   var sumarc4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(sumarc4);
                 }else if(valorh7 == "05"){
-                    var sumarc5 = Number($('#c5').val()) + Number(1); 
+                    var sumarc5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(sumarc5);
                 }else if(valorh7 == "06"){
-                    var sumarc6 = Number($('#c6').val()) + Number(1); 
+                    var sumarc6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(sumarc6);
                 }else if(valorh7 == "07"){
-                    var sumarc7 = Number($('#c7').val()) + Number(1); 
+                    var sumarc7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(sumarc7);
                 }else if(valorh7 == "08"){
-                    var sumarc8 = Number($('#c8').val()) + Number(1); 
+                    var sumarc8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(sumarc8);
                 }
-                
+
  });
 
                 $('#h8').keyup(function(){
                 var valorh8 = $('#h8').val();
                 if(valorh8 == "01"){
-                var sumarC1 = Number($('#c1').val()) + Number(1); 
+                var sumarC1 = Number($('#c1').val()) + Number(1);
                 $('#c1').val(sumarC1);
                 }else if(valorh8 == "02"){
-                   var sumarC2 = Number($('#c2').val()) + Number(1); 
+                   var sumarC2 = Number($('#c2').val()) + Number(1);
                     $('#c2').val(sumarC2);
                 }else if(valorh8 == "03"){
-                    var sumarC3 = Number($('#c3').val()) + Number(1); 
+                    var sumarC3 = Number($('#c3').val()) + Number(1);
                     $('#c3').val(sumarC3);
                 }else if(valorh8 == "04"){
-                   var sumarC4 = Number($('#c4').val()) + Number(1); 
+                   var sumarC4 = Number($('#c4').val()) + Number(1);
                     $('#c4').val(sumarC4);
                 }else if(valorh8 == "05"){
-                   var sumarC5 = Number($('#c5').val()) + Number(1); 
+                   var sumarC5 = Number($('#c5').val()) + Number(1);
                     $('#c5').val(sumarC5);
                 }else if(valorh8 == "06"){
-                    var sumarC6 = Number($('#c6').val()) + Number(1); 
+                    var sumarC6 = Number($('#c6').val()) + Number(1);
                     $('#c6').val(sumarC6);
                 }else if(valorh8 == "07"){
-                    var sumarC7 = Number($('#c7').val()) + Number(1); 
+                    var sumarC7 = Number($('#c7').val()) + Number(1);
                     $('#c7').val(sumarC7);
                 }else if(valorh8 == "08"){
-                    var sumarC8 = Number($('#c8').val()) + Number(1); 
+                    var sumarC8 = Number($('#c8').val()) + Number(1);
                     $('#c8').val(sumarC8);
                 }
-               
+
  });
 
 
 
        });
     }
-    , 
+    ,
     'json');
 
 });
-     
+
 
 
 
