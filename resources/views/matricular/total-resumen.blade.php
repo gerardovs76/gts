@@ -13,7 +13,7 @@
 		@include('notas.partials.info')
         <div class="card">
             <div class="card-header text-center">
-              INICIAL 1
+              <strong>INICIAL 1</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$inicial1A}} (Hombres: {{$inicial1AM}} Mujeres: {{$inicial1AF}})</strong></p>
@@ -24,7 +24,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              INICIAL 2
+              <strong>INICIAL 2</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$inicial2A}} (Hombres: {{$inicial2AM}} Mujeres: {{$inicial2AF}})</strong></p>
@@ -35,7 +35,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              PRIMERO DE EGB
+              <strong>PRIMERO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$pA}} (Hombres: {{$pAM}} Mujeres: {{$pAF}})</strong></p>
@@ -46,7 +46,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              SEGUNDO DE EGB
+              <strong>SEGUNDO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$sA}} (Hombres: {{$sAM}} Mujeres: {{$sAF}})</strong></p>
@@ -57,7 +57,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              TERCERO DE EGB
+              <strong>TERCERO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$tA}} (Hombres: {{$tAM}} Mujeres: {{$tAF}})</strong></p>
@@ -68,7 +68,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              CUARTO DE EGB
+              <strong>CUARTO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$cA}} (Hombres: {{$cAM}} Mujeres: {{$cAF}})</strong></p>
@@ -79,7 +79,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              QUINTO DE EGB
+              <strong>QUINTO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$qA}} (Hombres: {{$qAM}} Mujeres: {{$qAF}})</strong></p>
@@ -90,7 +90,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              SEXTO DE EGB
+              <strong>SEXTO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$sexA}} (Hombres: {{$sexAM}} Mujeres: {{$sexAF}})</strong></p>
@@ -101,7 +101,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              SEPTIMO DE EGB
+              <strong>SEPTIMO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$sepA}} (Hombres: {{$sepAM}} Mujeres: {{$sepAF}})</strong></p>
@@ -112,7 +112,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              OCTAVO DE EGB
+              <strong>OCTAVO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$octA}} (Hombres: {{$octAM}} Mujeres: {{$octAF}})</strong></p>
@@ -123,7 +123,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              NOVENO DE EGB
+              <strong>NOVENO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$noA}} (Hombres: {{$noAM}} Mujeres: {{$noAF}})</strong></p>
@@ -134,7 +134,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              DECIMO DE EGB
+              <strong>DECIMO DE EGB</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$deA}} (Hombres: {{$deAM}} Mujeres: {{$deAF}})</strong></p>
@@ -145,7 +145,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              PRIMERO DE BACHILLERATO
+              <strong>PRIMERO DE BACHILLERATO</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$priA}} (Hombres: {{$priAM}} Mujeres: {{$priAF}})</strong></p>
@@ -156,7 +156,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              SEGUNDO DE BACHILLERATO
+              <strong>SEGUNDO DE BACHILLERATO</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$segA}} (Hombres: {{$segAM}} Mujeres: {{$segAF}})</strong></p>
@@ -167,7 +167,7 @@
           </div>
           <div class="card">
             <div class="card-header text-center">
-              TERCERO DE BACHILLERATO
+              <strong>TERCERO DE BACHILLERATO</strong>
             </div>
             <div class="card-body">
               <p><strong>Paralelo A Total: {{$tercA}} (Hombres: {{$tercAM}} Mujeres: {{$tercAF}})</strong></p>
