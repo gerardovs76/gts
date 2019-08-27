@@ -25,7 +25,7 @@
                     <th width="15%">
                         ALUMNOS
                     </th>
-                    <th style="text-align: center;">
+                    <th>
 						HORAS CLASES
 					</th>
                     </tr>
