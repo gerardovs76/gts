@@ -20,23 +20,25 @@
 
 				                <div class="panel-body">
 				                 {!! Form::open(['route' => 'frases.store']) !!}
-				             
 
-				                 	
 				                 	<div class="form-group">
-				                 		<strong>Ingrese el autor: <br></strong>
+                                         <strong>Ingrese el autor: <br></strong>
+                                         <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 				                 	{!! Form::text('autor', null, ['class' => 'form-control']) !!}
 				                 	</div>
-
+				                 	</div>
 				                 	<div class="form-group ">
-				                 		<strong>Ingrese la frase: <br></strong>
-				                 	{!! Form::textarea('frase', null, ['class' => 'form-control']) !!}	
+                                         <strong>Ingrese la frase: <br></strong>
+                                         <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+				                 	{!! Form::textarea('frase', null, ['class' => 'form-control']) !!}
+				                 	</div>
+				                 	</div>
+				                 	<div class="form-group">
+				                 	{!!Form::button('<i class="fa fa-paper-plane"></i> GUARDAR', ['class' => 'btn btn-primary btn-block', 'type' => 'submit'])!!}
 				                 	</div>
 
-				                 	<div class="form-group">
-				                 	<button type="submit" class="btn btn-primary btn-block">ENVIAR</button>
-				                 	</div>
-				                 
 				                 {!! Form::close() !!}
 
 				                </div>

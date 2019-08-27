@@ -291,25 +291,18 @@ class NotasController extends Controller
     {
         return view('notas.supletorios');
     }
-    public function sumaSupletorio(Request $request, $curso, $paralelo, $quimestre, $parcial, $materia)
+    public function sumaSupletorio($curso, $paralelo, $quimestre, $parcial, $materia)
     {
-      $curso = $request->curso;
-      $paralelo = $request->paralelo;
-      $quimestre = $request->quimestre;
-      $parcial = $request->parcial;
-      $materia = $request->materia;
-
-
        $notas = DB::table('notas')
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),
          DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
-        ->where('matriculados.curso', 'LIKE', '%'.$curso.'%')
-        ->where('matriculados.paralelo', 'LIKE', '%'.$paralelo.'%')
-        ->where('notas.quimestre', 'LIKE', '%'.$quimestre.'%')
-        ->where('notas.parcial', 'LIKE', '%'.$parcial.'%')
-        ->where('notas.materias_id', 'LIKE', '%'.$materia.'%')
+        ->where('matriculados.curso',$curso)
+        ->where('matriculados.paralelo',$paralelo)
+        ->where('notas.quimestre',$quimestre)
+        ->where('notas.parcial',$parcial)
+        ->where('notas.materias_id',$materia)
         ->havingRaw('nota_final <= 7')
         ->distinct()
         ->groupBy('matriculados.id')

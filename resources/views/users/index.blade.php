@@ -11,7 +11,7 @@
         </h2>
         </div>
         <hr>
-        
+
         @include('users.partials.info')
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">
@@ -33,21 +33,23 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 {{-- @can('users.show')
-   --}}                              
+   --}}
                                {{--  @endcan
              --}}                    {{-- @can('users.edit')
    --}}                              <td width="10px">
-                                    <a href="{{ route('users.edit', $user->id) }}" 
+                                    <a href="{{ route('users.edit', $user->id) }}"
                                     class="btn btn-sm btn-primary">
+                                    <i class="far fa-edit"></i>
                                         EDITAR
                                     </a>
                                 </td>
                                {{--  @endcan
              --}}                    {{-- @can('users.destroy') --}}
                                 <td width="10px">
-                                    {!! Form::open(['route' => ['users.destroy', $user->id], 
+                                    {!! Form::open(['route' => ['users.destroy', $user->id],
                                     'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>
                                             ELIMINAR
                                         </button>
                                     {!! Form::close() !!}

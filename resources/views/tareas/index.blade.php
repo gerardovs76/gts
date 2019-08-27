@@ -12,15 +12,15 @@
 	      {!! Form::open(['route' => 'tareas.store', 'enctype' => 'multipart/form-data']) !!}
 			<div class="panel panel-primary">
      <div class="panel-heading">TAREAS</div>
-          
+
      <div class="panel-body">
-     
+
      <div class="form-row">
            <div class="form-group col-md-4">
                <strong>Profesor: <br></strong>
-          <div class="input-group-prepend">    
+          <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::text('profesor', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}  
+          {!! Form::text('profesor', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}
           </div>
           </div>
 
@@ -36,7 +36,7 @@
           <div class="form-group col-md-4">
           <strong>Especialidad: <br></strong>
           <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>     
+          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
           {!! Form::select('especialidad', ['EDUCACION INICIAL' => 'EDUCACION INICIAL','EDUCACION GENERAL BASICA' => 'EDUCACION GENERAL BASICA','GENERAL UNIFICADO' => 'GENERAL UNIFICADO', 'TECNICO EN CONTABILIDAD' => 'TECNICO EN CONTABILIDAD', 'TECNICO EN INFORMATICA' => 'TECNICO EN INFORMATICA', 'TECNICO AUTOMOTRIZ' => 'TECNICO AUTOMOTRIZ', 'BACHILLERATO INTERNACIONAL' => 'BACHILLERATO INTERNACIONAL'], null, ['class' => 'form-control col-md-8 ', 'placeholder' => 'Ingrese la especialidad']) !!}
           </div>
           </div>
@@ -54,9 +54,9 @@
 </div>
 <div class="panel panel-primary">
 <div class="panel-heading">DATOS DE LA TAREA A ASIGNAR: </div>
-          
+
      <div class="panel-body">
-     
+
      <div class="form-row">
           <div class="form-group col-md-4">
           <strong>Fecha de entrega: <br></strong>
@@ -101,19 +101,17 @@
 </div>
 </div>
 </div>
-     
-     <div class="form-group col-md-4">
-     <a href="{{ route('matricular.index') }}" class="btn btn-primary float-right">       REGRESAR
-               </a>
-     {!! Form::submit('GUARDAR', ['class' => 'btn btn-primary float-center']) !!}
-               </div>
-		
+
+     <div class="form-group col-md-12">
+     {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+        </div>
+
 
 	</div>
 	{!! Form::close() !!}
-                    
+
 	<!--<div class="col-xs-12 col-sm-4">
 		@include('notas.partials.aside')
 	</div>-->
-	
-@endsection 
+
+@endsection

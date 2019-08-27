@@ -3,7 +3,7 @@
 @section('content')
 
         <div class="container">
-      
+
           <div style="background-color: #008cba; padding: 7px;">
     <h2 class="text-center" style="color: #fff;">
       EVENTOS
@@ -11,11 +11,11 @@
     </div>
     <hr>
             <div class="panel panel-primary">
- 
+
              <div class="panel-heading">NOVEDADES</div>
- 
-              <div class="panel-body">    
- 
+
+              <div class="panel-body">
+
                    {!! Form::open(array('route' => 'events.add','method'=>'POST','files'=>'true')) !!}
                     <div class="row">
                        <div class="col-xs-12 col-sm-12 col-md-12">
@@ -24,9 +24,9 @@
                           @elseif (Session::has('warnning'))
                               <div class="alert alert-danger">{{ Session::get('warnning') }}</div>
                           @endif
- 
+
                       </div>
- 
+
                       <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="form-group">
                             <strong>Nombre del evento: <br></strong>
@@ -37,7 +37,7 @@
                             </div>
                           </div>
                       </div>
- 
+
                       <div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="form-group">
                           <strong>Fecha de inicio: <br></strong>
@@ -48,7 +48,7 @@
                           </div>
                         </div>
                       </div>
- 
+
                       <div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="form-group">
                           <strong>Fecha final: <br></strong>
@@ -59,27 +59,27 @@
                           </div>
                         </div>
                       </div>
- 
+
                       <div class="col-xs-1 col-sm-1 col-md-1 text-center"> &nbsp;<br/>
-                      {!! Form::submit('Añadir evento',['class'=>'btn btn-primary']) !!}
+                      {!!Form::button('<i class="fas fa-plus"></i> AÑADIR EVENTO', ['class' => 'btn btn-primary'])!!}
                       </div>
                     </div>
                    {!! Form::close() !!}
- 
+
              </div>
- 
+
             </div>
-         
+
             <div class="panel panel-primary">
               <div class="panel-heading">Detalles del evento</div>
               <div class="panel-body">
                 {!! $calendar_details->calendar() !!}
                 {!! $calendar_details->script() !!}
-                 
-                 
+
+
               </div>
             </div>
- 
+
             </div>
 
 

@@ -10,32 +10,35 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open([]) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
 								<div class="form-group col-md-4">
-									<strong>Cedula: <br></strong>
+                                    <strong>Cedula: <br></strong>
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
 									{!! Form::text('cedula', null, ['class' => 'form-control col-md-6', 'id' => 'cedula', 'placeholder' => 'Seleccione un curso']) !!}
+                                </div>
 								</div>
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('REALIZAR BUSQUEDA', ['class' => 'btn btn-primary',  'id' => 'verReporte']) !!}									
+   									{!! Form::button('<i class="fas fa-search"></i> REALIZAR BUSQUEDA', ['class' => 'btn btn-primary',  'id' => 'verReporte']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
 					</div>
-                   
-                  
+
+
                     <table class="table table-striped table-hover" id="tableid">
 			<thead>
 
-                    <tr>	
+                    <tr>
                     <th>
                     	<p>
                     	<strong>NOMBRES</strong>
@@ -66,18 +69,18 @@
                     	<strong>OBSERVACIÓN</strong>
                     	</p>
                     </th>
-                    </tr>	
+                    </tr>
                     </thead>
 					<tbody>
 				<tr>
-				
+
 				</tr>
 			</tbody>
 		</table>
-	
+
 	</div>
 
-	  {{ Form::close() }}	
+	  {{ Form::close() }}
 	  <script>
 	  	$('#verReporte').on('click', function(){
 	  		var cedula = $('#cedula').val();
@@ -89,4 +92,4 @@
 	  	});
 
 	  </script>
-@endsection 
+@endsection

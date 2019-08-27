@@ -19,7 +19,7 @@
 			               <i>{{ $notification->data["envio_id"]["name"] }}</i> te ha enviado un mensaje: <b>{{ $notification->data["body"]}}</b><br>
 			                @endforeach
 
-				    				 
+
 				    			</div>
 				    			</div>
 
@@ -32,9 +32,9 @@
 
 				                <div class="panel-body">
 				                 {!! Form::open(['route' => 'mensaje.store']) !!}
-				             
 
-				                 	
+
+
 				                 	<div class="form-group">
 				                 	<select name="recibio_id" class="form-control">
 				                 		<option value="#">Seleccione el usuario</option>
@@ -45,13 +45,13 @@
 				                 	</div>
 
 				                 	<div class="form-group ">
-				                 	{!! Form::textarea('body', null, ['class' => 'form-control']) !!}	
+				                 	{!! Form::textarea('body', null, ['class' => 'form-control']) !!}
 				                 	</div>
 
 				                 	<div class="form-group">
-				                 	<button type="submit" class="btn btn-primary btn-block">ENVIAR</button>
+				                 	{!!Form::button('<i class="fa fa-paper-plane"></i> ENVIAR', ['class' => 'btn btn-primary btn-block', 'type' => 'submit'])!!}
 				                 	</div>
-				                 
+
 				                 {!! Form::close() !!}
 
 				                </div>

@@ -1,10 +1,16 @@
 <div class="form-group">
-	<strong>Nombre: <br></strong>
+    <strong>Nombre: <br></strong>
+    <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
+</div>
 <div class="form-group">
-	<strong>URL Amigable: <br></strong>
+    <strong>URL Amigable: <br></strong>
+    <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
+</div>
 </div>
 <div class="form-group">
 	<strong>Descripción: <br></strong>
@@ -32,5 +38,5 @@
     </ul>
 </div>
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+	{!!Form::button('<i class="fa fa-paper-plane"></i> GUARDAR', ['class' => 'btn btn-primary btn-block', 'type' => 'submit'])!!}
 </div>

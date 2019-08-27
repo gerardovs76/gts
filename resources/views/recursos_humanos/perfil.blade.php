@@ -10,31 +10,34 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
-								<div class="form-group col-md-4">
-									<strong>Cedula: <br></strong>
-									{!! Form::text('cedula', null, ['class' => 'form-control col-md-6', 'id' => 'cedula', 'placeholder' => 'Seleccione un curso']) !!}
-								</div>
+                                    <div class="form-group col-md-4">
+											<strong>Cedula: <br></strong>
+									<div class="input-group-prepend">
+														<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+											{!! Form::text('cedula', null, ['class' => 'form-control col-md-8' , 'id' => 'cedula']) !!}
+											</div>
+										</div>
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('REALIZAR BUSQUEDA', ['class' => 'btn btn-primary',  'id' => 'busqueda', 'type' => 'submit']) !!}									
+   									{!! Form::button('<i class="fas fa-search"></i> REALIZAR BUSQUEDA', ['class' => 'btn btn-primary',  'id' => 'busqueda']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
 					</div>
-                   
-                  
+
+
                     <table class="table table-striped table-hover" id="tableid">
 			<thead>
 
-                    <tr>	
+                    <tr>
                     <th>
                     	<p>
                     	<strong>NOMBRES Y APELLIDOS</strong>
@@ -49,15 +52,15 @@
 					<th>
 				<strong>ESTADO CIVIL</strong>
 					</th>
-                    </tr>	
+                    </tr>
                     </thead>
 					<tbody>
 				<tr>
-				
+
 				</tr>
 			</tbody>
 		</table>
-	
+
 	</div>
 
 
@@ -73,4 +76,4 @@
 	  	});
 
 	  </script>
-@endsection 
+@endsection

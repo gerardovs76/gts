@@ -10,7 +10,7 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
+
 					{!! Form::open(['route' => 'cobros.facturacion-store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">INTRODUZCA LOS DATOS PARA IMPORTAR LOS DATOS DE FACTURA...</div>
@@ -21,12 +21,12 @@
 									{!! Form::file('import_file', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Por favor que este en formato XLSX....']) !!}
 								</div>
                                 <div class="form-group col-md-10">
-                                {!! Form::button('ENVIAR DATOS', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
+                                {!! Form::button('<i class="fa fa-paper-plane"></i> ENVIAR DATOS', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                                 </div>
 							</div>
 							{!!Form::close()!!}
 						</div>
-                        
+
 					</div>
                     {!!Form::open(['route' => 'cobros.facturacion-exports', 'method' => 'POST'])!!}
                     <div class="panel panel-primary">
@@ -35,26 +35,35 @@
                     <div class="form-row">
 					<div class="form-group col-md-4">
                     <strong>Tipo factura: <br></strong>
+                    <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                     {!!Form::select('tipo_factura',['TOTAL' => 'TOTAL', 'PENSION' => 'PENSION'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
                     </div>
+					</div>
 					<div class="form-group col-md-4">
                     <strong>Fecha inicio: <br></strong>
+                    <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                     {!!Form::date('fecha_inicio', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
                     </div>
+					</div>
 					<div class="form-group col-md-4">
                     <strong>Fecha hasta: <br></strong>
+                    <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                     {!!Form::date('fecha_hasta', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
                     </div>
+					</div>
                     <div class="form-group col-md-10">
-                    {!!Form::button('ENVIAR DATOS', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
+                    {!!Form::button('<i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                     </div>
                     </div>
                     </div>
                     </div>
-                    {!!Form::close()!!}        
+                    {!!Form::close()!!}
                    <table class="table table-hover table-striped" id="tableid" style="display: none;" align="center">
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 	</div>

@@ -1,8 +1,8 @@
  <div class="panel panel-primary">
      <div class="panel-heading">COBROS</div>
-          
+
      <div class="panel-body">
-     
+
      <div class="form-row">
           <div class="form-group col-md-4">
           <strong>Curso: <br></strong>
@@ -27,9 +27,9 @@
 
 <div class="panel panel-primary" id="formularioValores" style="display: none;">
 <div class="panel-heading">VALORES A COBRAR</div>
-          
+
      <div class="panel-body">
-     
+
      <div class="form-row">
           <div class="form-group col-md-4">
           <strong>Matricula: <br></strong>
@@ -99,7 +99,7 @@
           <strong>Uniformes: <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::text('uniformes', null, ['class' => 'form-control col-md-8', 'placeholder' => 'En caso de que sea nuevo alumno...', 'id' => 'uniformes']) !!} 
+          {!! Form::text('uniformes', null, ['class' => 'form-control col-md-8', 'placeholder' => 'En caso de que sea nuevo alumno...', 'id' => 'uniformes']) !!}
           </div>
      </div>
 
@@ -110,15 +110,15 @@
           {!! Form::text('total', null, ['class' => 'form-control col-md-8', 'id' => 'total']) !!}
           </div>
      </div>
-     <div class="form-group col-md-8" id="guardar" style="display: none;">
-     {!! Form::submit('GUARDAR', ['class' => 'btn btn-primary float-center']) !!}
+     <div class="form-group col-md-12 col-md-offset-5" id="guardar" style="display: none;">
+     {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary'])!!}
                </div>
 </div>
 </div>
 </div>
-     
-     
-          
+
+
+
 
      </div>
 <script>
@@ -157,7 +157,7 @@
           console.log(suma);
 
           $('#total').val(suma);
-          
+
 
 
 

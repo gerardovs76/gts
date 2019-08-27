@@ -28,7 +28,7 @@
 					<input type="hidden" name="matriculados_id" id="matriculados_id">
 
 					<div class="form-group col-md-10">
-					{!! Form::button('AGREGAR OBSERVACIÓN', ['class' => 'btn btn-primary', 'id' => 'agregarObservacion']) !!}	
+					{!! Form::button('<i class="fas fa-plus"></i> AGREGAR OBSERVACIÓN', ['class' => 'btn btn-primary', 'id' => 'agregarObservacion']) !!}
 					</div>
 
 				</div>
@@ -37,7 +37,7 @@
 
 			<div class="panel panel-primary" id="formularioObservacion" style="display: none;">
 				<div class="panel panel-heading text-center">INSERTE LA OBSERVACIÓN</div>
-				<div class="panel panel-body">	
+				<div class="panel panel-body">
 					<div class="form-row">
 					<div class="form-group col-md-4">
 						<strong>Diagnostico: <br></strong>
@@ -68,7 +68,7 @@
 						{!! Form::button('GUARDAR', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'agregarObservacion']) !!}
 					</div>
 				</div>
-			</div>	
+			</div>
 
 
 <script>

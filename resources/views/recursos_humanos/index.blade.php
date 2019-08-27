@@ -10,12 +10,13 @@
 		<hr>
 		@include('recursos_humanos.partials.error')
 		{!! Form::open(['route' => 'recursos_humanos.store']) !!}
-			
-			@include('recursos_humanos.partials.form')
-			
-		
 
-	</div>
+			@include('recursos_humanos.partials.form')
+
+
+            {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+    </div>
+
 	{!! Form::close() !!}
 	<!--<div class="col-xs-12 col-sm-4">
 		@include('recursos_humanos.partials.aside')

@@ -34,25 +34,28 @@
                                 <td>{{ $role->name }}</td>
                                 {{-- @can('roles.show') --}}
                                 <td width="10px">
-                                    <a href="{{ route('roles.show', $role->id) }}" 
+                                    <a href="{{ route('roles.show', $role->id) }}"
                                     class="btn btn-sm btn-primary">
+                                    <i class="fas fa-eye"></i>
                                         VER
                                     </a>
                                 </td>
                                 {{-- @endcan
                                 @can('roles.edit') --}}
                                 <td width="10px">
-                                    <a href="{{ route('roles.edit', $role->id) }}" 
+                                    <a href="{{ route('roles.edit', $role->id) }}"
                                     class="btn btn-sm btn-primary">
+                                    <i class="far fa-edit"></i>
                                         EDITAR
                                     </a>
                                 </td>
                                {{--  @endcan
                                 @can('roles.destroy') --}}
                                 <td width="10px">
-                                    {!! Form::open(['route' => ['roles.destroy', $role->id], 
+                                    {!! Form::open(['route' => ['roles.destroy', $role->id],
                                     'method' => 'DELETE']) !!}
                                         <button class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
                                             ELIMINAR
                                         </button>
                                     {!! Form::close() !!}

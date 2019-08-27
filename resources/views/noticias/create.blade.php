@@ -21,27 +21,31 @@
 
 				                <div class="panel-body">
 				                 {!! Form::open(['route' => 'noticias.store']) !!}
-				             
-
-				                 	
 				                 	<div class="form-group">
-				                 		<strong>Nombre: <br></strong>
+                                         <strong>Nombre: <br></strong>
+                                         <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 				                 	{!! Form::text('nombre', null, ['class' => 'form-control']) !!}
+                                     </div>
 				                 	</div>
 				                 	<div class="form-group">
-				                 		<strong>Dirección: <br></strong>
+                                         <strong>Dirección: <br></strong>
+                                         <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 				                 	{!! Form::text('slug', null, ['class' => 'form-control']) !!}
 				                 	</div>
-
+				                 	</div>
 				                 	<div class="form-group ">
-				                 		<strong>Descripción: <br></strong>
-				                 	{!! Form::text('descripcion', null, ['class' => 'form-control']) !!}	
+                                         <strong>Descripción: <br></strong>
+                                         <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+				                 	{!! Form::text('descripcion', null, ['class' => 'form-control']) !!}
+				                 	</div>
+				                 	</div>
+				                 	<div class="form-group">
+				                 	{!!Form::button('<i class="fa fa-paper-plane"></i> GUARDAR', ['class' => 'btn btn-primary btn-block', 'type' => 'submit'])!!}
 				                 	</div>
 
-				                 	<div class="form-group">
-				                 	<button type="submit" class="btn btn-primary btn-block">ENVIAR</button>
-				                 	</div>
-				                 
 				                 {!! Form::close() !!}
 
 				                </div>
