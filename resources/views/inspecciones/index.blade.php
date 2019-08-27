@@ -15,7 +15,10 @@
 		{{--@include('notas.partials.info')--}}
 	      {!! Form::open(['route' => 'inspeccion.store']) !!}
 			@include('inspecciones.partials.form')
-		<table width="100%" class="table-hover table-condensed d-none" id="tablausuarios">
+
+
+		<table width="100%" class="table-hover table-condensed d-none" id="tablausuarios" >
+
 			<thead>
                     <tr>
                     <th width="15%">
@@ -27,6 +30,9 @@
 					<th>
 						CODIGO
 					</th>
+					<th>
+						 PROMEDIO
+					</th>
                     </tr>
                     </thead>
 					<tbody id="tableid" class="table table-striped table-hover">
@@ -34,6 +40,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="form-group col-md-12">
+            {!!Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'form-control btn btn-primary d-none', 'type' => 'submit', 'id' => 'guardar'])!!}
+        </div>
 	</div>
 	{!! Form::close() !!}
 
