@@ -17,11 +17,11 @@
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
+                                    @foreach($matriculados as $matriculado)
 							<div class="form-group col-md-4">
                                              <strong>Cedula: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
-                                             @foreach($matriculados as $matriculado)
                                              {{ Form::text('cedula', $matriculado->cedula, ['class' => 'form-control col-md-6' , 'id' => 'cedula', 'readonly']) }}
                                              </div>
                                              </div>
