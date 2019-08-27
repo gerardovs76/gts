@@ -20,6 +20,7 @@
 		<table width="100%" class="table-hover table-condensed d-none" id="tablausuarios" >
 
 			<thead>
+
                     <tr>
                     <th width="15%">
                         ALUMNOS
@@ -37,12 +38,14 @@
                     </thead>
 					<tbody id="tableid" class="table table-striped table-hover">
 				<tr>
+
 				</tr>
 			</tbody>
 		</table>
-		<div class="form-group col-md-12">
-            {!!Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'form-control btn btn-primary d-none', 'type' => 'submit', 'id' => 'guardar'])!!}
-        </div>
+		<div class="form-group">
+			{!! Form::button('<i class="fas fa-search"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit' 'id' => 'guardar']) !!}
+
+		</div>
 	</div>
 	{!! Form::close() !!}
 
