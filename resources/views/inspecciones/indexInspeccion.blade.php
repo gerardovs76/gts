@@ -22,7 +22,7 @@
                         </div>
                         </div>
                         <div class="form-group col-md-10">
-                            {!!Form::submit('Enviar', ['class' => 'btn btn-primary'])!!}
+                            {!!Form::button('<i class="fas fa-search"></i> BUSCAR', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                         </div>
 
         </div>
@@ -40,22 +40,22 @@
 					<th>APELLIDOS</th>
 					<th>CURSO</th>
 					<th>PARALELO</th>
-					<th>HORA1</th>
-                    <th>HORA2</th>
-                    <th>HORA3</th>
-                    <th>HORA4</th>
-                    <th>HORA5</th>
-                    <th>HORA6</th>
-                    <th>HORA7</th>
-                    <th>HORA8</th>
-                    <th>CODIGO1</th>
-                    <th>CODIGO2</th>
-                    <th>CODIGO3</th>
-                    <th>CODIGO4</th>
-                    <th>CODIGO5</th>
-                    <th>CODIGO6</th>
-                    <th>CODIGO7</th>
-                    <th>CODIGO8</th>
+					<th>H1</th>
+                    <th>H2</th>
+                    <th>H3</th>
+                    <th>H4</th>
+                    <th>H5</th>
+                    <th>H6</th>
+                    <th>H7</th>
+                    <th>H8</th>
+                    <th>CO1</th>
+                    <th>CO2</th>
+                    <th>CO3</th>
+                    <th>CO4</th>
+                    <th>CO5</th>
+                    <th>CO6</th>
+                    <th>CO7</th>
+                    <th>CO8</th>
 				</tr>
             </thead>
             @if(isset($inspeccion))

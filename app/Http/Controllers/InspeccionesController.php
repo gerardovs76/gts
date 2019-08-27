@@ -205,7 +205,8 @@ class InspeccionesController extends Controller
 
     public function inspeccionStore(Request $request)
     {
-        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->where('')->select('*')->get();
+        $fecha = $request->fecha;
+        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->where('inspecciones.fecha', $fecha)->select('*')->get();
         return view('inspecciones.indexInspeccion', compact('inspeccion'));
     }
 
