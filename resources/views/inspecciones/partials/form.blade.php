@@ -48,9 +48,6 @@ input[type=number] {
                     {!! Form::date('fecha', null, ['class' => 'form-control col-md-10', 'placeholder' => 'Seleccione la fecha', 'id' => 'fecha']) !!}
                     </div>
                     </div>
-                    <div class="form-group col-md-12">
-                        {!!Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'form-control btn btn-primary d-none', 'type' => 'submit', 'id' => 'guardar'])!!}
-                    </div>
 
                 </div>
  <script>
@@ -64,7 +61,7 @@ input[type=number] {
         $.each(data, function(idx, opt) {
             $('#guardar').addClass("d-block");
             $('#tablausuarios').addClass("d-block");
-            $('#tableid').append('<tr><td>'+ opt.nombres +'</td><td><input type="number" class="col-sm-1" name="h1[]" id="h1" value="0" ><input type="number" class="col-sm-1" name="h2[]" id="h2" value="0" ><input type="number" class="col-sm-1" name="h3[]" id="h3" value="0" ><input type="number" class="col-sm-1" name="h4[]" id="h4" value="0" ><input type="number" class="col-sm-1" name="h5[]" id="h5" value="0" ><input type="number" class="col-sm-1" name="h6[]" id="h6" value="0" ><input type="number" class="col-sm-1" name="h7[]" id="h7" value="0" ><input type="number" class="col-sm-1" name="h8[]" id="h8" value="0" ></td><td><input type="number" class="col-sm-1" name="c1[]" id="c1"><input type="number" class="col-sm-1" name="c2[]" id="c2"><input type="number" class="col-sm-1" name="c3[]" id="c3"><input type="number" class="col-sm-1" name="c4[]" id="c4"><input type="number" class="col-sm-1" name="c5[]" id="c5"><input type="number" class="col-sm-1" name="c6[]" id="c6"><input type="number" class="col-sm-1" name="c7[]" id="c7"><input type="number" class="col-sm-1" name="c8[]" id="c8"></td><td><input class="col-md-10" type="hidden" name="matriculados_id[]" id="matriculados_id" value='+ opt.id +'></td></tr>');
+            $('#tableid').append('<tr><td>'+ opt.nombres +'</td><td><input type="number" class="col-sm-1" name="h1[]" id="h1" value="0" ><input type="number" class="col-sm-1" name="h2[]" id="h2" value="0" ><input type="number" class="col-sm-1" name="h3[]" id="h3" value="0" ><input type="number" class="col-sm-1" name="h4[]" id="h4" value="0" ><input type="number" class="col-sm-1" name="h5[]" id="h5" value="0" ><input type="number" class="col-sm-1" name="h6[]" id="h6" value="0" ><input type="number" class="col-sm-1" name="h7[]" id="h7" value="0"><input type="number" class="col-sm-1" name="h8[]" id="h8" value="0" ></td><td><input class="col-md-10" type="hidden" name="matriculados_id[]" id="matriculados_id" value='+ opt.id +'></td></tr>');
                 });
             });
         });

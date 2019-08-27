@@ -28,12 +28,6 @@
                     <th>
 						HORAS CLASES
 					</th>
-					<th>
-						CODIGO
-					</th>
-					<th>
-						 PROMEDIO
-					</th>
                     </tr>
                     </thead>
 					<tbody id="tableid" class="table table-striped table-hover">
