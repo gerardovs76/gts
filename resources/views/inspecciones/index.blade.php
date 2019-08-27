@@ -43,7 +43,7 @@
 			</tbody>
 		</table>
 		<div class="form-group">
-			{!! Form::button('<i class="fas fa-search"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit' 'id' => 'guardar']) !!}
+			{!! Form::button('<i class="fas fa-search"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'guardar']) !!}
 
 		</div>
 	</div>
