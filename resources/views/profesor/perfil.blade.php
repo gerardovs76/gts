@@ -11,16 +11,15 @@
 		<hr>
 
 		@include('notas.partials.info')
-		
-	
-					
-					
+
+
+
+
 					<div class="panel panel-primary" id="panel-perfil">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
 							<div class="form-group col-md-4">
-
 						<strong>Cedula: <br></strong>
 						<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
@@ -29,21 +28,21 @@
 					</div>
 								<div class="form-group col-md-12">
 
-   									<button type="#" id="busqueda" class="btn btn-primary col-md-2"><i class="fas fa-save"></i> BUSQUEDA</button>	
+   									<button type="#" id="busqueda" class="btn btn-primary col-md-2"><i class="fas fa-save"></i> BUSQUEDA</button>
 
 								</div>
 								<div class="form-group col-md-12">
 
-   								
+
    									<button type="#" id="boton" class="btn btn-primary col-md-2"><a href="{{ route('profesor.perfil') }}" ></a><i class="fas fa-print"></i> IMPRIMIR</button>
 
 								</div>
 
-								
+
 							</div>
-							
+
 						</div>
-					</div>        
+					</div>
 
                    <table class="table table-hover table-striped" id="tableid">
                    	<thead>
@@ -60,10 +59,10 @@
                    		</tr>
                    	</thead>
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
-					
+
 	</div>
 
 	<script>
@@ -91,7 +90,7 @@
 				$('#panel-perfil').css("display", "none");
 					 window.print();
 			}
-        
+
      });
 
 	</script>

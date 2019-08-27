@@ -178,7 +178,7 @@ Route::get('libreta-individual', 'NotasController@libretaIndividual')->name('not
 
 Route::post('libreta-descargar', 'NotasController@descargarLibreta')->name('notas.libreta-descargar')->middleware('has.permission:notas.libreta-descargar');
 
-Route::get('libreta-colectiva', 'NotasController@libretaColectiva')->name('notas.libretaColectiva')->middleware('notas.libretaColectiva');
+Route::get('libreta-colectiva', 'NotasController@libretaColectiva')->name('notas.libretaColectiva')->middleware('has.permission:notas.libretaColectiva');
 
 Route::get('ver-notas-especiales', 'NotasController@verNotasEspeciales')->name('notas.verNotasEspeciales')->middleware('has.permission:notas.verNotasEspeciales');
 

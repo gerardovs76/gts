@@ -9,8 +9,8 @@
 		</div>
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open(['route' => 'notas.reportesExcelTodo', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">INGRESAR LOS DATOS PARA LA BUSQUEDA.</div>
@@ -40,15 +40,15 @@
 		</div>
 
 							<div class="form-group col-md-12">
-   									{!! Form::button('IMPRIMIR EXCEL', ['class' => 'btn btn-primary', 'type' => 'submit','name' => 'nomina1']) !!}							
+   									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR EXCEL', ['class' => 'btn btn-primary', 'type' => 'submit','name' => 'nomina1']) !!}
 								</div>
 							</div>
-							
+
 						</div>
-					</div>        
+					</div>
                    <table class="table table-hover table-striped" id="tableid" style="display: none;" align="center">
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 	</div>

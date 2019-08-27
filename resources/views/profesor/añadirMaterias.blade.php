@@ -15,51 +15,65 @@
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
-							<div class="form-group col-md-4">
-									<strong>Cedula: <br></strong>
-									{!! Form::text('cedula', null, ['class' => 'form-control col-md-6', 'id' => 'cedula', 'placeholder' => 'Ingrese la cedula']) !!}
-							</div>
-							<div class="form-group col-md-10">
-
-   									<button type="#" id="busqueda" class="btn btn-primary">BUSQUEDA</button>									
-								</div>
+						<div class="form-group col-md-4">
+                                <strong>Cedula: <br></strong>
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+                                {!! Form::text('cedula', null, ['class' => 'form-control col-md-8', 'placeholder' => 'Ingrese la cedula...', 'id' => 'cedula']) !!}
+                                </div>
+                        </div>
+						<div class="form-group col-md-10">
+                            {!!Form::button('<i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'id' => 'busqueda', 'type' => 'button'])!!}
 						</div>
-						
+						</div>
+
 					</div>
-					
+
 					{!! Form::open(['route' => 'materiasAñadir.store', 'id' => 'form-añadirMateria']) !!}
 					<div class="panel panel-primary" style="display: none;" id="panel">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA AÑADIR LA MATERIA AL PROFESOR </div>
 						<div class="panel panel-body">
 							<div class="form-row">
 								<div class="form-group col-md-4">
-									<strong>Seleccione el profesor: <br></strong>
-							{!! Form::select('profesores_id', ['Profesor' => 'Profesor'], null, ['class' => 'form-control col-md-6', 'id' => 'profesor']) !!}
-								</div>
+                                    <strong>Seleccione el profesor: <br></strong>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
+							{!! Form::select('profesores_id', ['Profesor' => 'Profesor'], null, ['class' => 'form-control col-md-8', 'id' => 'profesor']) !!}
+                                </div>
+                            </div>
 								<div class="form-group col-md-4">
-									<strong>Seleccione el curso de la materia: <br></strong>
+                                    <strong>Seleccione el curso de la materia: <br></strong>
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 							{!! Form::select('curso_materia',['INICIAL 1' => 'INICIAL 1', 'INICIAL 2' => 'INICIAL 2', 'PRIMERO DE EGB' => 'PRIMERO DE EGB', 'SEGUNDO DE EGB' => 'SEGUNDO DE EGB', 'TERCERO DE EGB' => 'TERCERO DE EGB', 'CUARTI DE EGB' => 'CUARTO DE EGB', 'QUINTO DE EGB' => 'QUINTO DE EGB', 'SEXTO DE EGB' => 'SEXTO DE EGB', 'SEPTIMO DE EGB' => 'SEPTIMO DE EGB', 'OCTAVO DE EGB' => 'OCTAVO DE EGB', 'NOVENO DE EGB' => 'NOVENO DE EGB', 'DECIMO DE EGB' => 'DECIMO DE EGB', 'PRIMERO DE BACHILLERATO' => 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO' => 'SEGUNDO DE BACHILLERATO', 'TERCERO DE BACHILLERATO' => 'TERCERO DE BACHILLERATO'], null, ['class' => 'form-control col-md-6', 'id' => 'curso_materia', 'placeholder' => 'Seleccione el curso...']) !!}
+                                </div>
 								</div>
 								<div class="form-group col-md-4">
-									<strong>Seleccione el paralelo de la materia: <br></strong>
+                                    <strong>Seleccione el paralelo de la materia: <br></strong>
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 							{!! Form::select('curso_materia',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F'], null, ['class' => 'form-control col-md-6', 'id' => 'paralelo', 'placeholder' => 'Seleccione el curso...']) !!}
+                                </div>
 								</div>
 								<div class="form-group col-md-4">
-									<strong>Seleccione las materias: <br></strong>
+                                    <strong>Seleccione las materias: <br></strong>
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 									{!! Form::select('materias_id', ['s' => 'Seleccione las materias...'], null, ['class' => 'form-control col-md-6', 'id' => 'materia_curso']) !!}
+                                </div>
 								</div>
-								<div class="form-group col-md-8">
-									{!! Form::button('GUARDAR', ['class' => 'btn btn-primary', 'id' => 'add', 'type' => 'submit']) !!}
-									
+								<div class="form-group col-md-12">
+									{!! Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'id' => 'add', 'type' => 'submit']) !!}
+
 								</div>
 						</div>
-			
-							
+
+
 						</div>
-					</div>        
+					</div>
                    <table class="table table-hover table-striped" id="tableid" style="display: none;" align="center">
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 					{!! Form::close() !!}

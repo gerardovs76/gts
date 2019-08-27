@@ -24,10 +24,7 @@
                         <div class="form-group col-md-10">
                             {!!Form::button('<i class="fas fa-search"></i> BUSCAR', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                         </div>
-
         </div>
-
-
         {!!Form::close()!!}
 		@include('notas.partials.info')
 		<div class="table-responsive">

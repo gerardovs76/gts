@@ -10,8 +10,8 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open(['route' => 'inspeccion.conducta', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center"></div>
@@ -26,16 +26,16 @@
 		</div>
 
 							<div class="form-group col-md-12">
-   									{!! Form::button('IMPRIMIR REPORTE', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}							
+   									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR REPORTE', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
-					</div>        
+					</div>
                    <table class="table table-hover table-striped" id="tableid" style="display: none;" align="center">
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 	</div>

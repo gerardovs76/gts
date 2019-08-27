@@ -30,10 +30,10 @@
                     </div>
                     </div>
             <div class="form-group col-md-12">
-            {!! Form::button(' <i class="fas fa-search"></i> IMPRIMIR EN EXCEL', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'excel', 'name' => 'printButton', 'value' => 'excel']) !!}
+            {!! Form::button(' <i class="fas fa-print"></i> IMPRIMIR EN EXCEL', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'excel', 'name' => 'printButton', 'value' => 'excel']) !!}
                         </div>
                         <div class="form-group col-md-12">
-                                {!! Form::button(' <i class="fas fa-search"></i> IMPRIMIR EN PDF', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'pdf', 'name' => 'printButton', 'value' => 'pdf']) !!}
+                                {!! Form::button(' <i class="fas fa-print"></i> IMPRIMIR EN PDF', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'pdf', 'name' => 'printButton', 'value' => 'pdf']) !!}
                                             </div>
                     </div>
                 </div>

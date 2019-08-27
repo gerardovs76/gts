@@ -1,8 +1,8 @@
 									<div class="panel panel-primary">
 										<div class="panel-heading text-center">PROCESO DE SEGUIMIENTO INDIVIDUAL</div>
-											
+
 										<div class="panel-body">
-										
+
 										<div class="form-row">
 											<div class="form-group col-md-4">
 											<strong>Cedula: <br></strong>
@@ -115,7 +115,7 @@
 											</div>
 									</div>
 									<div class="form-group col-md-10">
-												{!! Form::button('AGREGAR DETALLE', ['class' => 'btn btn-primary', 'id' => 'agregarDetalle'] )  !!}
+												{!! Form::button('<i class="fas fa-plus"></i> AGREGAR DETALLE', ['class' => 'btn btn-primary', 'id' => 'agregarDetalle'] )  !!}
 												      </div>
 											<input type="hidden" id="inscripcion" name="inscripcion">
 										</div>
@@ -128,28 +128,28 @@
 												<div class="form-row">
 													<div class="form-group col-md-4">
 														<strong>Fecha: <br></strong>
-													{!! Form::date('fecha', null, ['class' => 'form-control col-md-8']) !!}	
+													{!! Form::date('fecha', null, ['class' => 'form-control col-md-8']) !!}
 													</div>
 													<div class="form-group col-md-4">
 														<strong>Acción realizada: <br></strong>
-													{!! Form::text('accion_realizada', null, ['class' => 'form-control col-md-8']) !!}	
+													{!! Form::text('accion_realizada', null, ['class' => 'form-control col-md-8']) !!}
 													</div>
 
 													<div class="form-group col-md-4">
 														<strong>Sugerencias y observaciones: <br></strong>
 													{!! Form::text('sugerencias_observaciones', null, ['class' => 'form-control col-md-8']) !!}
-														
+
 													</div>
 
 													<div class="form-group col-md-4">
 														<strong>Responsable: <br></strong>
 														{!! Form::text('responsable', null, ['class' => 'form-control col-md-8']) !!}
 													</div>
-													<div class="form-group col-md-10">
-													{!! Form::button('GUARDAR', ['class' => 'btn btn-primary','type' => 'submit', 'id' => 'agregarDetalle'] )  !!}
-														
+													<div class="form-group col-md-12">
+													{!! Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'btn btn-primary form-control','type' => 'submit', 'id' => 'agregarDetalle'] )  !!}
+
 													</div>
-													
+
 												</div>
 											</div>
 										</div>
@@ -186,7 +186,7 @@
 
       });
 
- 
+
 </script>
 
 
