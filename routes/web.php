@@ -136,6 +136,8 @@ Route::get('cargar_materia/especial/{curso}/{paralelo}', 'NotasController@cargar
 
 Route::get('cargar_notas/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasAlumnos');
 
+Route::get('notas/cargar-notas-alumnos/{cedula}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasParaAlumnos');
+
 Route::get('cargar_notas/especial/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasEspecialesAlumnos');
 
 Route::get('notas_supletorios', 'NotasController@supletoriosNotas')->name('notas.supletorios')->middleware('has.permission:notas.supletorios');
@@ -188,6 +190,7 @@ Route::post('notas/reportes/todo', 'NotasController@reportesExcel')->name('notas
 
 Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibretaColectiva')->name('notas.descargarLibretaColectiva')->middleware('has.permission:notas.descargarLibretaColectiva');
 
+Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

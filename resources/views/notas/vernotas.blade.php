@@ -18,6 +18,7 @@
 						<div class="panel panel-body">
 							<div class="form-row">
 							    <div class="form-group col-md-4">
+                                        @if(Auth::user()->roles('super-admin'))
                                              <strong>Curso: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
@@ -31,6 +32,22 @@
                                              {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Seleccione el paralelo...']) }}
                                              </div>
                                              </div>
+                                             @elseif(Auth::user()->roles('profesor'))
+                                             <div class="form-group col-md-4">
+                                                    <strong>Curso: <br></strong>
+                                                    <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                    {{ Form::select('curso',['Ingrese el curso' => 'Ingrese el curso'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
+                                                    </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                    <strong>Paralelo: <br></strong>
+                                                    <div class="input-group-prepend">
+                                                         <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                    {{ Form::select('paralelo',['Ingrese el paralelo' => 'Ingrese el pararelo'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
+                                                    </div>
+                                                    </div>
+                                            @endif
                                               <div class="form-group col-md-4">
                                              <strong>Quimestre: <br></strong>
                                              <div class="input-group-prepend">
@@ -99,8 +116,23 @@
 				</tr>
 			</tbody>
 		</table>
+        {{ Form::close() }}
+    </div>
+</div>
+<script>
+        $(document).ready(function(){
+         $.get('asignar-nota-profesor', function(response){
+           console.log(response);
+           $.each(response, function(index, obj){
+             console.log(obj);
+             $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+             $('#especialidad').append('<option value="'+obj.especialidad+'">'+obj.especialidad+'</option>');
+             $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
 
-	</div>
+           });
+         });
+       });
+      </script>
 <script>
 	$('#paralelo').on('change', function(){
 		var curso = $('#curso').val();
@@ -142,5 +174,5 @@
 
 
 </script>
-	  {{ Form::close() }}
+
 @endsection

@@ -133,11 +133,12 @@
                 @endcan
                 <a class="dropdown-item" href="{{ route('notas.editar-notas')}}">Editar notas</a>
                 @can('notas.cargadas')
-                <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas</a>
+                <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
                 @endcan
                 @can('notas.verNotasEspeciales')
-                <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales</a>
+                <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales profesores</a>
                 @endcan
+                <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
                 @can('notas.supletorios')
                 <a class="dropdown-item" href="{{ route('notas.supletorios') }}">Supletorios</a>
                 @endcan

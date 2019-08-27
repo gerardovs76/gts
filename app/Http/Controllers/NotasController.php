@@ -681,5 +681,31 @@ class NotasController extends Controller
         return Excel::download(new CuadroFinal2($curso, $paralelo), 'cuadro-final.xls');
       }
     }
+    public function verNotasAlumnos()
+    {
+        $user = Auth::user()->cedula;
+        $matriculados = Matriculacion::where('cedula', $user)->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'cedula')->get();
+        $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('matriculados.cedula', $user)->pluck('materias.materia', 'materias.id');
+        return view('notas.ver-notas-alumnos', compact('matriculados', 'materias'));
+    }
+
+    public function cargarNotasParaAlumnos($cedula, $quimestre, $parcial, $materia)
+    {
+
+        $notas = DB::table('notas')
+        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+        ->join('materias', 'notas.materias_id', '=', 'materias.id')
+        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),DB::raw("ROUND(SUM(notas.nota_ev), 3) as nota_ev"), DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"))
+        ->where('matriculados.cedula', $cedula)
+        ->where('notas.quimestre',$quimestre)
+        ->where('notas.parcial',$parcial)
+        ->where('notas.materias_id',$materia)
+        ->distinct()
+        ->groupBy('matriculados.id')
+        ->get();
+
+
+        return response()->json($notas);
+    }
 
 }
