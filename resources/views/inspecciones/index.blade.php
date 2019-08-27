@@ -9,48 +9,36 @@
 		</div>
 		<marquee width="100%" scrolldelay="100" scrollamount="5" direction="left" loop="infinite"><strong>01.FALTA INJUSTIFICADA, 02. FALTA JUSTIFICADA, 03. ATRASO, 04. FUGA, 05. MAL UNIFORMADO, 06. PRESENTACIÓN PERSONAL, 07. LLAMADO ATENCIÓN, 08. INDISCIPLINA</strong>
 		</marquee>
-		
+
 		<hr>
 		@include('inspecciones.partials.info')
 		{{--@include('notas.partials.info')--}}
 	      {!! Form::open(['route' => 'inspeccion.store']) !!}
 			@include('inspecciones.partials.form')
-		
-
-		<table width="100%" class="table-hover table-condensed d-none" id="tablausuarios" >
-
-			<thead style="text-align: center;">
-
-                    <tr>	
+		<table width="100%" class="table-hover table-condensed d-none" id="tablausuarios">
+			<thead>
+                    <tr>
                     <th width="15%">
                         ALUMNOS
                     </th>
-                    <th> 
+                    <th>
 						HORAS CLASES
 					</th>
 					<th>
-						CODIGO	
+						CODIGO
 					</th>
-					<th>
-						 PROMEDIO
-					</th>
-                    </tr>	
+                    </tr>
                     </thead>
-					<tbody id="tableid" class="table table-striped table-hover" style="text-align: center;">
+					<tbody id="tableid" class="table table-striped table-hover">
 				<tr>
-				
 				</tr>
 			</tbody>
 		</table>
-		<div class="form-group">
-			{!! Form::submit('GUARDAR', ['class' => 'btn btn-primary  d-none', 'id' => 'guardar']) !!}
-			
-		</div>
 	</div>
 	{!! Form::close() !!}
-                    
+
 	<!--<div class="col-xs-12 col-sm-4">
 		@include('notas.partials.aside')
 	</div>-->
-	
-@endsection 
+
+@endsection
