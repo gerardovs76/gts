@@ -25,18 +25,17 @@
                     <th width="15%">
                         ALUMNOS
                     </th>
-                    <th>
+                    <th style="text-align: center;">
 						HORAS CLASES
 					</th>
                     </tr>
                     </thead>
 					<tbody id="tableid" class="table table-striped table-hover">
 				<tr>
-
 				</tr>
 			</tbody>
 		</table>
-			{!! Form::button('<i class="fas fa-search"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'guardar']) !!}
+			{!! Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'guardar']) !!}
 	</div>
 	{!! Form::close() !!}
 
