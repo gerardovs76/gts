@@ -60,13 +60,7 @@ class InscripcionController extends Controller
         if($request->tipo_estudiante == 'NUEVO')
         {
         $inscripcion = new Inscripcion;
-        if($validate->validarCedula($request->cedula))
-        {
-            $inscripcion->cedula  = $request->cedula;
-        }
-        else{
-            return redirect()->route('inscripcion.create')->with('error', 'Cedula en formato incorrecto');
-        }
+        $inscripcion->cedula  = $request->cedula;
         $inscripcion->nombres = $request->nombres;
         $inscripcion->apellidos  = $request->apellidos;
         $inscripcion->fecha_nacimiento  = $request->fecha_nacimiento;
@@ -139,13 +133,7 @@ class InscripcionController extends Controller
     elseif($request->tipo_estudiante == 'ANTIGUO'){
         $years = $request->fecha_nacimiento;
         $inscripcion = new Inscripcion;
-        if($validate->validarCedula($request->cedula))
-        {
-            $inscripcion->cedula  = $request->cedula;
-        }
-        else{
-            return redirect()->route('inscripcion.create')->with('error', 'Cedula en formato incorrecto');
-        }
+        $inscripcion->cedula  = $request->cedula;
         $inscripcion->nombres = $request->nombres;
         $inscripcion->apellidos  = $request->apellidos;
         $inscripcion->fecha_nacimiento  = $request->fecha_nacimiento;
