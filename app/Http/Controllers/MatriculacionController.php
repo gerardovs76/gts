@@ -28,7 +28,7 @@ class MatriculacionController extends Controller
 
     public function index()
     {
-        $matricular = Matriculacion::where('tipo_estudiante', '!=', 'BLOQUEADO')->orderBy('apellidos')->get();
+        $matricular = Matriculacion::where('tipo_estudiante', '!=', 'BLOQUEADO')->get();
         return view('matricular.index', compact('matricular'));
 
 
