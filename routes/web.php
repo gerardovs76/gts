@@ -144,9 +144,15 @@ Route::get('notas_supletorios', 'NotasController@supletoriosNotas')->name('notas
 
 Route::Get('suma_supletorio/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@sumaSupletorio');
 
+Route::get('suma-recuperacion/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@sumaRecuperacion');
+
 Route::post('supletorio_store', 'NotasController@supletorioStore')->name('supletorios.store')->middleware('has.permission:supletorios.store');
 
 Route::get('supletorios_promedio', 'NotasController@promedioSupletorio');
+
+Route::get('recuperacion-promedio/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@promedioRecuperacion');
+
+Route::post('recuperacion-store', 'NotasController@recuperacionStore')->name('recuperacion.store');
 
 Route::get('remedial', 'NotasController@remedialNotas')->name('notas.remedial')->middleware('has.permission:notas.remedial');
 
@@ -191,6 +197,8 @@ Route::post('notas/reportes/todo', 'NotasController@reportesExcel')->name('notas
 Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibretaColectiva')->name('notas.descargarLibretaColectiva')->middleware('has.permission:notas.descargarLibretaColectiva');
 
 Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos');
+
+Route::get('notas-recuperacion', 'NotasController@recuperacion')->name('notas.recuperacion');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

@@ -139,6 +139,7 @@
                 <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales profesores</a>
                 @endcan
                 <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
+                <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @can('notas.supletorios')
                 <a class="dropdown-item" href="{{ route('notas.supletorios') }}">Supletorios</a>
                 @endcan

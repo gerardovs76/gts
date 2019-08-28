@@ -10,6 +10,7 @@ use App\Matriculacion;
 use App\Supletorios;
 use App\Remediales;
 use App\Gracia;
+use App\Recuperacion;
 use App\MateriaEspeciales;
 use App\NotasEspeciales;
 use Illuminate\Support\Facades\Auth;
@@ -707,5 +708,72 @@ class NotasController extends Controller
 
         return response()->json($notas);
     }
+
+    public function recuperacion()
+    {
+        return view('notas.recuperacion');
+    }
+
+    public function sumaRecuperacion($curso, $paralelo, $quimestre, $parcial, $materia)
+    {
+       $notas = DB::table('notas')
+        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+        ->join('materias', 'notas.materias_id', '=', 'materias.id')
+        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),
+         DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
+        ->where('matriculados.curso',$curso)
+        ->where('matriculados.paralelo',$paralelo)
+        ->where('notas.quimestre',$quimestre)
+        ->where('notas.parcial',$parcial)
+        ->where('notas.materias_id',$materia)
+        ->havingRaw('nota_final <= 7')
+        ->distinct()
+        ->groupBy('matriculados.id')
+        ->get();
+
+        return response()->json($notas);
+    }
+    public function recuperacionStore(Request $request)
+    {
+
+      $matriculados_id = $request->matriculados_id;
+      $materias_id = $request->materias_id;
+      $nota_recuperacion = $request->nota_recuperacion;
+      $promedio_notas = $request->promedio_notas;
+      $quimestre = $request->quimestre;
+      $parcial = $request->parcial;
+
+      foreach ($request->matriculados_id as $key => $value) {
+        $recuperacion = new Recuperacion;
+        $recuperacion->matriculados_id = $matriculados_id[$key];
+        $recuperacion->materias_id = $materias_id[$key];
+        $recuperacion->nota_recuperacion = round($nota_recuperacion[$key], 4);
+        $recuperacion->promedio_notas = round($promedio_notas[$key], 4);
+        $recuperacion->quimestre = $quimestre[$key];
+        $recuperacion->parcial = $parcial[$key];
+        $recuperacion->save();
+      }
+      return redirect()->route('notas.recuperacion')->with('info', 'Se ha agregado la nota de recuperacion correctamente');
+
+    }
+
+    public function promedioRecuperacion($curso, $paralelo, $quimestre, $parcial, $materia)
+    {
+        $recuperacion = DB::table('recuperacion')
+      ->join('matriculados', 'recuperacion.matriculados_id', '=', 'matriculados.id')
+      ->where('matriculados.curso', $curso)
+      ->where('matriculados.paralelo', $paralelo)
+      ->where('recuperacion.quimestre', $quimestre)
+      ->where('recuperacion.parcial', $parcial)
+      ->where('recuperacion.materias_id', $materia)
+      ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),
+       DB::raw("(recuperacion.nota_recuperacion + recuperacion.promedio_notas) / 2 as promedio_recuperacion"), 'recuperacion.promedio_notas as promedio_notas', 'recuperacion.nota_recuperacion as nota_recuperacion')
+      ->distinct()
+      ->groupBy('matriculados.id')
+      ->get();
+
+      return response()->json($recuperacion);
+    }
+
 
 }

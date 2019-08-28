@@ -28,7 +28,7 @@ class MatriculacionController extends Controller
 
     public function index()
     {
-        $matricular = Matriculacion::where('tipo_estudiante', '!=', 'BLOQUEADO')->get();
+        $matricular = Matriculacion::where('tipo_estudiante', '!=', 'BLOQUEADO')->orderBy('apellidos')->get();
         return view('matricular.index', compact('matricular'));
 
 
@@ -367,7 +367,7 @@ class MatriculacionController extends Controller
         $curso = $request->curso;
         $paralelo = $request->paralelo;
 
-        $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->distinct()->get();
+        $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->orderBy('matriculados.apellidos')->distinct()->get();
         return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo'));
     }
     public function certificadoMatricula()
