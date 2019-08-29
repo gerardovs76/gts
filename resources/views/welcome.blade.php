@@ -134,8 +134,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-        <footer id="sticky-footer" class="py-4 bg-dark fixed-bottom">
-      <strong>Copyright &copy; 2019 GTS. Desarrollado por <a href="http://gtsenlinea.com/" style="color: blue;">GTS</a></strong>
+        <footer class="py-4 bg-dark fixed-bottom">
+      <strong>Copyright &copy; 2019 GTS. Desarrollado por <a href="http://gtsenlinea.com/" style="color: #ff8000;">GTS</a></strong>
   </footer>
   </div>
 </div>
