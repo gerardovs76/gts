@@ -25,7 +25,7 @@ class HorariosController extends Controller
        $paralelo = $request->paralelo;
     $file = $request->file('archivo');
     $extension = $file->getClientOriginalExtension();
-    $fillename = $curso.'-e-'.$paralelo.'.'.$extension;
+    $fillename = $curso.'-e-'.$paralelo.'.'.'png';
     \Storage::disk('local')->put($fillename,  \File::get($file));
 
     return redirect()->route('horarios.asignar-horarios-estudiantes')->with('info', 'Se ha cargado el horario correctamente');
@@ -36,7 +36,7 @@ class HorariosController extends Controller
        $paralelo = $request->paralelo;
     $file = $request->file('archivo');
     $extension = $file->getClientOriginalExtension();
-    $fillename = $curso.'-p-'.$paralelo.'.'.$extension;
+    $fillename = $curso.'-p-'.$paralelo.'.'.'png';
     \Storage::disk('local')->put($fillename,  \File::get($file));
 
     return redirect()->route('horarios.asignar-horarios-profesores')->with('info', 'Se ha cargado el horario correctamente');
