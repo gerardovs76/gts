@@ -365,6 +365,17 @@ Route::get('tareas_matriculados', 'TareasController@verTareasMatriculados');
 Route::get('tareas/download/{file}' , 'TareasController@downloadFile');
 
 Route::get('tareas_count', 'TareasController@countPush');
+//HORARIOS
+Route::get('asignar-horarios-estudiantes', 'HorariosController@horariosEstudiantes')->name('horarios.asignar-horarios-estudiantes');
+
+Route::get('asignar-horarios-profesores', 'HorariosController@horariosProfesores')->name('horarios.asignar-horarios-profesores');
+
+Route::get('ver-horarios', 'HorariosController@verHorarios')->name('horarios.ver-horarios');
+
+Route::post('asignar-estudiantes-store', 'HorariosController@horariosEstudianteStore')->name('horarios.estudiantes-store');
+
+Route::post('asignar-profesores-store', 'HorariosController@horariosProfesorStore')->name('horarios.profesores-store');
+
 //CRONOGRAMA
 Route::get('home', 'HomeController@cronograma')->name('home.index');
 

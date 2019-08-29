@@ -282,7 +282,9 @@
                 HORARIOS
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-                <a class="dropdown-item" href="#">Ver</a>
+                <a class="dropdown-item" href="{{route('horarios.asignar-horarios-estudiantes')}}">Asignar horarios estudiantes</a>
+                <a class="dropdown-item" href="{{route('horarios.asignar-horarios-profesores')}}">Asignar horarios profesores</a>
+                <a class="dropdown-item" href="{{route('horarios.ver-horarios')}}">Ver horarios</a>
               </div>
             </li>
             @endcan

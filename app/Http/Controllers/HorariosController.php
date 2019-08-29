@@ -6,80 +6,39 @@ use Illuminate\Http\Request;
 
 class HorariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     
-    public function index()
-    {
-        //
-    }
+   public function horariosEstudiantes()
+   {
+       return view('horarios.asignar-estudiantes');
+   }
+   public function horariosProfesores()
+   {
+       return view('horarios.asignar-profesores');
+   }
+   public function verHorarios()
+   {
+       return view('horarios.ver-horarios');
+   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   public function horariosEstudianteStore(Request $request)
+   {
+       $curso = $request->curso;
+       $paralelo = $request->paralelo;
+    $file = $request->file('archivo');
+    $extension = $file->getClientOriginalExtension();
+    $fillename = $curso.'-e-'.$paralelo.'.'.$extension;
+    \Storage::disk('local')->put($fillename,  \File::get($file));
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    return redirect()->route('horarios.asignar-horarios-estudiantes')->with('info', 'Se ha cargado el horario correctamente');
+   }
+   public function horariosProfesorStore(Request $request)
+   {
+       $curso = $request->curso;
+       $paralelo = $request->paralelo;
+    $file = $request->file('archivo');
+    $extension = $file->getClientOriginalExtension();
+    $fillename = $curso.'-p-'.$paralelo.'.'.$extension;
+    \Storage::disk('local')->put($fillename,  \File::get($file));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    return redirect()->route('horarios.asignar-horarios-profesores')->with('info', 'Se ha cargado el horario correctamente');
+   }
 }
