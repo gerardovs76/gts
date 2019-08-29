@@ -94,15 +94,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            footer{
-                background-color: black;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: white;
-  text-align: center;
-            }
+
             #enlace-boton{
                 background-color: #ff8000;
   color: white;
