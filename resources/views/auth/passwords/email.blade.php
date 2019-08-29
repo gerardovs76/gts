@@ -16,13 +16,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-    
+
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+
 
     <!-- Styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,10 +31,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+    <style>
+            html, body {
+                 background-color: #fff;
+                 color: #636b6f;
+                 font-family: 'Roboto', sans-serif;
+                 font-weight: 200;
+                 height: 100vh;
+                 margin: 0;
+                 background: url('images/login.PNG')   no-repeat center center fixed; background-size: contain;
+
+                   -webkit-background-size: cover;
+                   -moz-background-size: cover;
+                   -o-background-size: cover;
+                   background-size: cover;
+             }
+
+     </style>
 </head>
 <body>
 <div class="container">
-    <div class="row" style="justify-content: center; align-items: center;">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Recuperar contraseña') }}</div>

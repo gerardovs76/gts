@@ -95,7 +95,13 @@
                 margin-bottom: 30px;
             }
             footer{
-                text-align: center;
+                background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+  text-align: center;
             }
             #enlace-boton{
                 background-color: #ff8000;
@@ -141,9 +147,7 @@
 
         </div>
         <footer id="sticky-footer" class="py-4 bg-dark">
-    <div class="container">
-      <h3 id="piePagina"> <strong>Copyright &copy; 2019 GTS. Desarrollado por <a href="http://gtsenlinea.com/" style="color: blue;">GTS</a></strong></h3>
-    </div>
+      <strong>Copyright &copy; 2019 GTS. Desarrollado por <a href="http://gtsenlinea.com/" style="color: blue;">GTS</a></strong>
   </footer>
 </body>
 
