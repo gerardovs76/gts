@@ -22,7 +22,7 @@
 					<th>FECHA CREACION</th>
 					<th>EDITAR</th>
 					<th>BORRAR</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -32,8 +32,8 @@
 					<td>
 						<strong>{{ $ins->cedula }}</strong>
 					</td>
-					<td>{{ $ins->nombres}}</td>
 					<td>{{ $ins->apellidos}}</td>
+					<td>{{ $ins->nombres}}</td>
 					<td>{{ $ins->edad}}</td>
 					<td>{{ $ins->codigo_nuevo}}</td>
 					<td>{{ $ins->fecha_creacion}}</td>
@@ -46,7 +46,7 @@
 						{!! Form::open(['route' => ['inscripcion.destroy', $ins->id], 'method' => 'DELETE']) !!}
 							<button class="btn btn-danger btn-sm float-right"><i class="far fa-trash-alt"></i>
 								BORRAR
-							</button>							
+							</button>
 						{!! Form::close() !!}
 					</td>
 				</tr>

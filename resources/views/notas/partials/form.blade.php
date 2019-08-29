@@ -78,12 +78,12 @@
                                              <strong>Tipo de tarea: <br></strong>
                                              <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                             {{ Form::select('quimestre',['nota_ta[]' => 'TRABAJOS ACADEMICOS', 'nota_ti[]' => 'TAREAS INDIVIDUALES', 'nota_tg[]' => 'TAREAS GRUPALES', 'nota_le[]' => 'LECCIONES', 'nota_ev[]' =>  'EVALUACION'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
+                                             {{ Form::select('quimestre',['nota_ta[]' => 'TRABAJOS ACADEMICOS', 'nota_ti[]' => 'TAREAS INDIVIDUALES', 'nota_tg[]' => 'TAREAS GRUPALES', 'nota_le[]' => 'LECCIONES', 'nota_ev[]' =>  'EVALUACION', 'conducta[]' => 'CONDUCTA'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
                                              </div>
                                              </div>
                                              <div class="form-group col-md-6">
                                                {!! Form::button('<i class="fas fa-plus"></i> AGREGAR DESCRIPCION', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarDescripcion']) !!}
-                                                  
+
                                              </div>
                                              <div id="descripcion" class="form-group col-md-12" style="display: none;">
                                              <strong>Descripcion de la tarea: <br></strong>
@@ -94,10 +94,10 @@
                                              </div>
                                                <div id ="agregarNotas" class="form-group col-md-4" style="display: none;">
                                                {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarNotas']) !!}
-                                                  
+
                                              </div>
 
-                                             
+
 
                                    </div>
                                  </div>
@@ -115,8 +115,8 @@
             });
           });
         });
-       </script>  
-        
+       </script>
+
        <script>
         $('#paralelo').on('change', function() {
         var curso = $('#curso').val();
@@ -125,7 +125,7 @@
         console.log(curso);
         console.log(especialidad);
         console.log(paralelo);
-        
+
           $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
             console.log(data);
                     $('#materia').empty();
@@ -133,7 +133,7 @@
           $.each(data, function(index, regenciesObj){
                     $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
                     var materia = document.getElementById("materia").value;
-                    
+
                });
           });
      });
@@ -171,7 +171,7 @@
                $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input type="text" name='+tipoTarea+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
 
           });
-     });      
+     });
      });
      </script>
 

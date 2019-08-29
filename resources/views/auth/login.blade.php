@@ -52,13 +52,9 @@
 </head>
 <body>
     <div class="container">
+        @include('mensaje.partials.info')
                     <div class="row justify-content-center align-items-center" style="height: 100vh;">
                         <div class="col-md-6 col-md-offset-7">
-                            @include('mensaje.partials.info')
-                            <div >
-
-
-                <div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -104,24 +100,23 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    <i class="fa fa-paper-plane"></i> {{ __('Acceder') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-primary" href="{{ route('password.request') }}">
                                         {{ __('¿Olvidaste tu contraseña?') }}
                                     </a>
                                 @endif
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-                        </div>
-                    </div>
-                </div>
+
 
 </body>
 </html>

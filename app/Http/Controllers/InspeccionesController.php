@@ -55,6 +55,8 @@ class InspeccionesController extends Controller
         $h7 = $request->h7;
         $h8 = $request->h8;
         $matriculados_id = $request->matriculados_id;
+        $parcial = $request->parcial;
+        $quimestre = $request->quimestre;
 
         foreach ($request->matriculados_id as $key => $value) {
             $inspeccion = new Inspecciones;
@@ -68,6 +70,8 @@ class InspeccionesController extends Controller
             $inspeccion->h7 = $h7[$key];
             $inspeccion->h8 = $h8[$key];
             $inspeccion->matriculados_id = $matriculados_id[$key];
+            $inspeccion->parcial = $parcial;
+            $inspeccion->quimestre = $quimestre;
             $inspeccion->save();
         }
        return redirect()->route('inspeccion.index')->with('info', 'Se agrego la inspeccion correctamente');
@@ -91,35 +95,8 @@ class InspeccionesController extends Controller
      * @param  \App\Inspeccions  $Inspeccions
      * @return \Illuminate\Http\Response
      */
-    public function edit(request $Request, $id)
+    public function edit(Request $Request, $id)
     {
-        $curso = Cursos::find($id);
-        $fecha = $request->fecha;
-        $h1 = $request->h1;
-        $h2 = $request->h2;
-        $h3 = $request->h3;
-        $h4 = $request->h4;
-        $h5 = $request->h5;
-        $h6 = $request->h6;
-        $h7 = $request->h7;
-        $h8 = $request->h8;
-        $matriculados_id = $request->matriculados_id;
-
-        foreach ($request->matriculados_id as $key => $value) {
-            $inspeccion = new Inspecciones;
-            $inspeccion->fecha = $fecha;
-            $inspeccion->h1 = $h1[$key];
-            $inspeccion->h2 = $h2[$key];
-            $inspeccion->h3 = $h3[$key];
-            $inspeccion->h4 = $h4[$key];
-            $inspeccion->h5 = $h5[$key];
-            $inspeccion->h6 = $h6[$key];
-            $inspeccion->h7 = $h7[$key];
-            $inspeccion->h8 = $h8[$key];
-            $inspeccion->matriculados_id = $matriculados_id[$key];
-            $inspeccion->save();
-        }
-       return redirect()->route('home')->with('info', 'Se edito la inspeccion correctamente');
 
     }
 

@@ -16,6 +16,8 @@ class CreateInspeccionesTable extends Migration
         Schema::create('inspecciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('fecha');
+            $table->string('parcial');
+            $table->string('quimestre');
             $table->string('h1');
             $table->string('h2');
             $table->string('h3');

@@ -7,8 +7,27 @@
 
         <title>GTS</title>
 
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+
+
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+
+        <!-- Styles -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -27,7 +46,7 @@
                 height: 100vh;
                 margin: 0;
                 background: url('images/inicio2.png')   no-repeat center center fixed;
-              
+
                   -webkit-background-size: cover;
                   -moz-background-size: cover;
                   -o-background-size: cover;
@@ -78,7 +97,15 @@
             footer{
                 text-align: center;
             }
-            
+            #enlace-boton{
+                background-color: #ff8000;
+  color: white;
+  padding: 1em 1.5em;
+  text-transform: uppercase;
+  border-radius: 25px;
+  font-family: 'Roboto', sans-serif;
+            }
+
         </style>
     </head>
     <body>
@@ -86,12 +113,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Inicio</a>
+                        <a id="enlace-boton" href="{{ url('/home') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                    <a id="enlace-boton" href="{{ route('login') }}"><i class="fa fa-sign-in-alt"></i> Login</>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registrar</a>
+                            <a id="enlace-boton" href="{{ route('register') }}"><i class="fa fa-user-plus"></i> Registrar</a>
                         @endif
                     @endauth
                 </div>
@@ -101,7 +128,7 @@
                 <div class="title m-b-md">
                      {{-- <video width="400" controls autoplay muted loop id="video">
               <source src="{{ asset('video/tecnologia.mp4') }}" type="video/mp4">
-              
+
               Tu navegador no soporta videos de HTML5.
             </video> --}}
 

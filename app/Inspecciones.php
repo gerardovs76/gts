@@ -16,16 +16,10 @@ class Inspecciones extends Model
     	'h6',
     	'h7',
     	'h8',
-    	'c1',
-    	'c2',
-    	'c3',
-    	'c4',
-    	'c5',
-    	'c6',
-    	'c7',
-    	'c8',
     	'suspencion',
     	'observacion',
-    	'matriculados_id',
+        'matriculados_id',
+        'parcial',
+        'quimestre'
     ];
 }

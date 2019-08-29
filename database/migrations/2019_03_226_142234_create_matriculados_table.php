@@ -14,15 +14,15 @@ class CreateMatriculadosTable extends Migration
     public function up()
     {
         Schema::create('matriculados', function (Blueprint $table) {
-            $table->bigIncrements('id'); 
-            $table->bigInteger('inscripcion_id')->unsigned()->nullable();  
+            $table->bigIncrements('id');
+            $table->bigInteger('inscripcion_id')->unsigned()->nullable();
             $table->string('cedula');
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('curso');
             $table->string('especialidad')->nullable();
             $table->string('paralelo');
-            $table->string('cedula_ruc');
+            $table->string('cedula_r');
             $table->string('razon_social');
             $table->string('direccion_factura');
             $table->string('telefono_factura');
@@ -30,10 +30,10 @@ class CreateMatriculadosTable extends Migration
             $table->string('fecha_creacion');
             $table->string('codigo')->nullable();
             $table->timestamps();
-           
 
 
-            
+
+
         });
     }
 

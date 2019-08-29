@@ -29,6 +29,8 @@ class CreateNotaEspecialTable extends Migration
             $table->string('numero_tarea_tg')->nullable();
             $table->string('numero_tarea_le')->nullable();
             $table->string('numero_tarea_ev')->nullable();
+            $table->string('numero_conducta')->nullable();
+            $table->string('conducta')->nullable();
             $table->string('quimestre');
             $table->foreign('matriculados_id')->references('id')->on('matriculados')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('materias_id')->references('id')->on('materias')->onDelete('cascade')->onUpdate('cascade');

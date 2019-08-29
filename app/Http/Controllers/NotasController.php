@@ -54,6 +54,7 @@ class NotasController extends Controller
             $materias_id = $request->materias_id;
             $parcial = $request->parcial;
             $quimestre = $request->quimestre;
+            $conducta = $request->conducta;
 
             foreach ($request->matriculados_id as $key => $value) {
                 $nota = new Notas;
@@ -67,6 +68,7 @@ class NotasController extends Controller
                 $nota->materias_id = $materias_id[$key];
                 $nota->parcial = $parcial[$key];
                 $nota->quimestre = $quimestre[$key];
+                $nota->conducta = $conducta[$key];
                 if(!empty($nota_ta))
                 {
                     $nota->numero_tarea_ta = '1';
@@ -86,6 +88,10 @@ class NotasController extends Controller
                 else if(!empty($nota_ev))
                 {
                     $nota->numero_tarea_ev = '1';
+                }
+                else if(!empty($conducta))
+                {
+                    $nota->numero_conducta = '1';
                 }
                 $nota->save();
             }
@@ -236,7 +242,14 @@ class NotasController extends Controller
         $notas = DB::table('notas')
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
-        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),DB::raw("ROUND(SUM(notas.nota_ev), 3) as nota_ev"), DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"))
+        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),
+        DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),
+        DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),
+        DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),
+        DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
+        DB::raw("ROUND(SUM(notas.nota_ev), 3) as nota_ev"),
+        DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
+        DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"))
         ->where('matriculados.curso', 'LIKE', '%'.$curso.'%')
         ->where('matriculados.paralelo', 'LIKE', '%'.$paralelo.'%')
         ->where('notas.quimestre', 'LIKE', '%'.$quimestre.'%')

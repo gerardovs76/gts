@@ -13,12 +13,14 @@ class Notas extends Model
         'nota_tg',
         'nota_le',
         'nota_ev',
+        'numero_conducta',
         'matriculados_id',
         'materias_id',
         'descripcion',
         'parcial',
         'numero_tarea',
-        'quimestre'
+        'quimestre',
+        'conducta'
     ];
 
 }

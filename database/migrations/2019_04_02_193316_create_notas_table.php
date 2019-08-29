@@ -29,6 +29,8 @@ class CreateNotasTable extends Migration
             $table->string('numero_tarea_tg')->nullable();
             $table->string('numero_tarea_le')->nullable();
             $table->string('numero_tarea_ev')->nullable();
+            $table->string('numero_conducta')->nullable();
+            $table->string('conducta')->nullable();
             $table->string('quimestre');
             $table->timestamps();
         });

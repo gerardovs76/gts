@@ -16,13 +16,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-    
+
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+
 
     <!-- Styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -41,21 +41,21 @@
                 height: 100vh;
                 margin: 0;
                 background: url('images/registro.png')   no-repeat center center fixed;
-              
+
                   -webkit-background-size: cover;
                   -moz-background-size: cover;
                   -o-background-size: cover;
                   background-size: cover;
             }
-    
+
 </style>
 <body>
 
 <div class="container">
-    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="height: 95vh;">
         <div class="col-md-8 col-md-offset-1">
             <div>
-               
+
                 <div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -124,10 +124,10 @@
 
                         <input type="hidden" name="rol" id="rol">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-5">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Registrar') }}
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-sm-4">
+                                <button type="submit" class="btn btn-primary form-control">
+                                    <i class="fa fa-paper-plane"></i> {{ __('REGISTRAR') }}
                                 </button>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                     $('#rol').val('5');
                 }
                  });
-                
+
     });
 </script>
 
