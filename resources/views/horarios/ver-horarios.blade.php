@@ -86,13 +86,13 @@
             {
                 $('#botonModal').addClass("d-block");
                 $('#modal-title').append('<h4>'+curso+'-'+paralelo+'</h4>')
-                $('#modal-body').append('<img src="archivos/'+curso+'-p-'+paralelo+'.jpeg" id="imagenHorario" style="width: 760px; height: 700px;">');
+                $('#modal-body').append('<img src="archivos/'+curso+'-p-'+paralelo+'.PNG" id="imagenHorario" style="width: 760px; height: 700px;">');
             }
             else if(tipo == 'estudiante')
             {
                 $('#botonModal').addClass("d-block");
                 $('#modal-title').append('<h4>'+curso+'-'+paralelo+'</h4>')
-                $('#modal-body').append('<img src="archivos/'+curso+'-e-'+paralelo+'.jpeg" id="imagenHorario" style="width: 760px; height: 700px;">');
+                $('#modal-body').append('<img src="archivos/'+curso+'-e-'+paralelo+'.PNG" id="imagenHorario" style="width: 760px; height: 700px;">');
             }
         });
     </script>
