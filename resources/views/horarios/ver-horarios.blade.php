@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 	<div class="container col-xs-12 col-sm-8 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
 		<h2 class="text-center" style="color: #fff;">
@@ -76,8 +77,30 @@
                       </div>
                     </div>
     </div>
+    <style>
+        @media (min-width: $screen-sm-min) { // this is the 768px breakpoint
+            .modal-dialog {
+                max-width: 600px;
+                width: auto;
+            }
+        }
+
+        @media (min-width: $screen-md-min) { // this is the 992px breakpoint
+            .modal-dialog {
+                max-width: 800px;
+            }
+        }
+        .img-responsive-height
+            {
+            display: block;
+            width: auto;
+            max-height: 100%
+            }
+    </style>
+
     <script>
-        $('#boton').on('click', function(){
+        $('#boton').on('click', function(e){
+           e.preventDefault();
             var curso = $('#curso').val();
             var paralelo = $('#paralelo').val();
             var tipo = $('#tipo').val();
@@ -86,14 +109,15 @@
             {
                 $('#botonModal').addClass("d-block");
                 $('#modal-title').append('<h4>'+curso+'-'+paralelo+'</h4>')
-                $('#modal-body').append('<img src="archivos/'+curso+'-p-'+paralelo+'.png" id="imagenHorario" style="width: 760px; height: 700px;">');
+                $('#modal-body').append('<img class="img-responsive" src="archivos/'+curso+'-p-'+paralelo+'.png" id="imagenHorario" style="width: 760px; height: 700px;">');
             }
             else if(tipo == 'estudiante')
             {
                 $('#botonModal').addClass("d-block");
                 $('#modal-title').append('<h4>'+curso+'-'+paralelo+'</h4>')
-                $('#modal-body').append('<img src="archivos/'+curso+'-e-'+paralelo+'.png" id="imagenHorario" style="width: 760px; height: 700px;">');
+                $('#modal-body').append('<img class="img-responsive" src="archivos/'+curso+'-e-'+paralelo+'.png" id="imagenHorario" style="width: 760px; height: 700px;">');
             }
+
         });
     </script>
 @endsection
