@@ -82,7 +82,7 @@
                              <tbody>
                                  <td style="display: none;">{{$i=1}}</td>
                                      @foreach($sep as $s)
-                                     @if($s->valor !== 306.70 && $s->valor !== 314.00 && $s->valor !== 326.00 && $s->valor !== 353.50 && $s->valor !== 371.00 && $s->valor !== 196.70 && $s->valor !== 199.00 && $s->valor !== 201.00 && $s->valor !== 228.50 && $s->valor !== 246.00)
+                                     @if($s->valor !== 306.7 && $s->valor !== 314 && $s->valor !== 326 && $s->valor !== 353.5 && $s->valor !== 371 && $s->valor !== 196.7 && $s->valor !== 199 && $s->valor !== 201 && $s->valor !== 228.5 && $s->valor !== 246)
                                      <tr>
                                          <td><strong>{{$i++}}</strong></td>
                                           <td><strong>{{$s->nombres}}</strong></td>
