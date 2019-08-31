@@ -14,13 +14,12 @@ class FacturacionImport implements ToModel
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {   
-
+    {
       $refe = preg_replace('/\s\s+/', ' ', $row[33]);
       $refe2 = str_replace(' MAT PEN SERV', '', $refe);
       $fecha = str_replace(' ', '/', $row[2]);
       $fecha2 = str_replace(' ', '/', $row[3]);
-     
+
         return new Facturacion([
             'fecha_inicio' => $fecha,
             'fecha_fin' => $fecha2,

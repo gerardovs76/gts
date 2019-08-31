@@ -352,6 +352,8 @@ Route::get('facturacion-index', 'CobrosController@facturacion')->name('cobros.fa
 Route::post('facturacion-store', 'CobrosController@facturacionStore')->name('cobros.facturacion-store');
 
 Route::post('facturacion-exports', 'CobrosController@facturacionExports')->name('cobros.facturacion-exports');
+
+Route::post('facturacion-individual-store', 'CobrosController@facturacionIndividualStore')->name('cobros.facturacion-in-store');
 //TAREAS
 
 Route::get('tareas', 'TareasController@index')->name('tareas.index')->middleware('has.permission:tareas.index');

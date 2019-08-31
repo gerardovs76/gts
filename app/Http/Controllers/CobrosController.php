@@ -14,6 +14,8 @@ use App\Imports\FacturacionImport;
 use App\Exports\FacturacionPensionExport;
 use App\Exports\FacturacionTotalExport;
 use Storage;
+use App\Facturacion;
+use Illuminate\Support\Carbon;
 
 class CobrosController extends Controller
 {
@@ -24,12 +26,12 @@ class CobrosController extends Controller
      */
 
 
- 
 
-    
+
+
     public function index()
     {
-        
+
         return view('cobros.index', compact('cobros'));
     }
 
@@ -69,7 +71,7 @@ class CobrosController extends Controller
 
         return redirect()->route('cobros.index')->with('info', 'Se ha actualizado correctamente.');
 
-        
+
     }
 
     /**
@@ -121,7 +123,7 @@ class CobrosController extends Controller
 
         return redirect()->route('cobros.indexCobros')->with('info', 'Se han actualizado con exito los valores');
     }
- 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -149,10 +151,10 @@ class CobrosController extends Controller
         $fecha_hasta = $request->get('fecha_hasta');
 
         return Excel::download(new ReportesClientes($fecha, $tipo_estudiante, $fecha_hasta), 'reportes-clientes.xls');
-        
 
-    
-            
+
+
+
 }
     public function indexCobros()
     {
@@ -192,15 +194,38 @@ class CobrosController extends Controller
         $tipo_factura = $request->tipo_factura;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_hasta = $request->fecha_hasta;
-        
-        if($tipo_factura == 'TOTAL')
-        {
-            return Excel::download(new FacturacionTotalExport($fecha_inicio, $fecha_hasta), 'facturacion-total.xlsx');   
+        try {
+            if($tipo_factura == 'TOTAL'){
+                return Excel::download(new FacturacionTotalExport($fecha_inicio, $fecha_hasta), 'facturacion-total.xlsx');
+            }elseif($tipo_factura == 'PENSION'){
+                return Excel::download(new FacturacionPensionExport($fecha_inicio, $fecha_hasta), 'facturacion-pension.xlsx');
         }
-        elseif($tipo_factura == 'PENSION')
+        } catch (Exception $e) {
+            report($e);
 
-            return Excel::download(new FacturacionPensionExport($fecha_inicio, $fecha_hasta), 'facturacion-pension.xlsx');
-      
+            return false;
+        }
+
+
+    }
+
+    public function facturacionIndividualStore(Request $request)
+    {
+        $date = Carbon::now();
+        $facturacion = new Facturacion;
+        $facturacion->fecha_inicio = $request->fecha_inicio;
+        $facturacion->fecha_fin = $request->fecha_fin;
+        $facturacion->codigo = $request->codigo;
+        $facturacion->nombres = $request->nombres;
+        $facturacion->valor = $request->valor;
+        $facturacion->referencias = $request->referencias;
+        $facturacion->num_referencia = $request->num_referencia;
+        $facturacion->fecha_creacion = $date->format('Y-m-d');
+        $facturacion->save();
+
+        return redirect()->route('cobros.facturacion-index')->with('info', 'Se ha agregado la factura correctamente');
+
+
     }
 
 }

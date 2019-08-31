@@ -9,7 +9,8 @@
 		</div>
 
 		<hr>
-		@include('notas.partials.info')
+        @include('notas.partials.info')
+        @include('cobros.modal.modalFacturacion')
 
 					{!! Form::open(['route' => 'cobros.facturacion-store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
@@ -19,7 +20,11 @@
 								<div class="form-group col-md-4">
 									<strong>Archivo: <br></strong>
 									{!! Form::file('import_file', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Por favor que este en formato XLSX....']) !!}
-								</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <strong><em class="col-md-offset-6">En caso de ser pagos con tarjeta o efectivo...</em></strong>
+                                    <button type="button" class="btn btn-primary col-md-offset-6" data-toggle="modal" data-target="#modalFacturacion" id="botonModal"><i class="fas fa-plus"></i>AGREGAR FACTURA</button>
+                        </div>
                                 <div class="form-group col-md-10">
                                 {!! Form::button('<i class="fa fa-paper-plane"></i> ENVIAR DATOS', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                                 </div>
