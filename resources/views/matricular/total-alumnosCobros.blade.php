@@ -133,6 +133,14 @@
                          </table>
 
     </div>
+    <style>
+    @media print {
+        table {
+             max-width : 300px;
+             height : auto;
+        }
+    }
+</style>
     <script>
         $(document).ready(function() {
           $('#table').DataTable({
