@@ -10,6 +10,7 @@
 
 		<hr>
         @include('notas.partials.info')
+        @include('notas.partials.error')
         @include('cobros.modal.modalFacturacion')
 
 					{!! Form::open(['route' => 'cobros.facturacion-store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}

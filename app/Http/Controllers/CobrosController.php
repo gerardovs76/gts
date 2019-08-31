@@ -13,6 +13,7 @@ use App\Exports\ReportesClientes;
 use App\Imports\FacturacionImport;
 use App\Exports\FacturacionPensionExport;
 use App\Exports\FacturacionTotalExport;
+use App\Http\Requests\FacturacionRequest;
 use Storage;
 use App\Facturacion;
 use Illuminate\Support\Carbon;
@@ -209,7 +210,7 @@ class CobrosController extends Controller
 
     }
 
-    public function facturacionIndividualStore(Request $request)
+    public function facturacionIndividualStore(FacturacionRequest $request)
     {
         $date = Carbon::now();
         $facturacion = new Facturacion;
