@@ -82,7 +82,7 @@
                              <tbody>
                                  <td style="display: none;">{{$i=1}}</td>
                                      @foreach($sep as $s)
-                                     @if($s->valor !== '306.7' && $s->valor !== '314' && $s->valor !== '326' && $s->valor !== '353.5' && $s->valor !== '371.00' && $s->valor !== '196.7' && $s->valor !== '199' && $s->valor !== '201' && $s->valor !== '228.5' && $s->valor !== '246')
+                                     @if($s->valor !== '306.7' && $s->valor !== '314' && $s->valor !== '326' && $s->valor !== '353.5' && $s->valor !== '371' && $s->valor !== '196.7' && $s->valor !== '199' && $s->valor !== '201' && $s->valor !== '228.5' && $s->valor !== '246')
                                      <tr>
                                          <td><strong>{{$i++}}</strong></td>
                                           <td><strong>{{$s->nombres}}</strong></td>
@@ -144,23 +144,34 @@
       } );
        </script>
        <script>
-            function printData()
-            {
-               var table=document.getElementById("tableid");
-               var cursoP = document.getElementById("cursoP");
-               console.log(cursoP);
-               newWin= window.open("");
-                    newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:10px;}</style><html><head><title></title>');
-                    newWin.document.write('</head><body><h2 align="center">'+cursoP.outerHTML+'</h2>');
-                    newWin.document.write(table.outerHTML);
-                    newWin.document.write('</body></html>');
-                    newWin.print();
-                    newWin.close();
-            }
+        function printData()
+        {
+           var table=document.getElementById("tableid");
+           var cursoP = document.getElementById("cursoP");
+           var newWin= window.open("");
+           var is_chrome = Boolean(newWin.chrome);
+                newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:10px;}</style><html><head><title></title>');
+                newWin.document.write('</head><body><img src="images/lp.PNG" alt="" height="100" width="100" class="left"><img src="images/ib.png" alt="" height="100" width="130" style="float: right;"><h2 align="center">'+cursoP.outerHTML+'</h2>');
+                newWin.document.write(table.outerHTML);
+                newWin.document.write('</body></html>');
+                if (is_chrome) {
+ setTimeout(function() {
+    newWin.document.close();
+    newWin.focus();
+    newWin.print();
+    newWin.close();
+ }, 250);
+} else {
+    newWin.document.close();
+    newWin.focus();
+    newWin.print();
+    newWin.close();
+}
+        }
 
-            $('#boton').on('click',function(){
-            printData();
-            })
+        $('#boton').on('click',function(){
+        printData();
+        })
 
-        </script>
+    </script>
 @endsection
