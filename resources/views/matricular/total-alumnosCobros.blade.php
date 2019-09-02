@@ -110,6 +110,21 @@
                                          @endforeach
 
                              </tbody>
+                             @foreach($sep as $s)
+                             <tfoot>
+                                 <tr>
+                                     <td>
+
+                                     </td>
+                                     <td>
+                                        <em><strong>Valor total de nomina: </strong></em>
+                                     </td>
+                                     <td>
+                                         {{$s->valor_final}}
+                                     </td>
+                                 </tr>
+                             </tfoot>
+                             @endforeach
                              @else
                              <tbody>
                                  <tr>
