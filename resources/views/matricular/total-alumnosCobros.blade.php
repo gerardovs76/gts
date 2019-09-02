@@ -120,7 +120,7 @@
                                         <em><strong>Valor total de nomina: </strong></em>
                                      </td>
                                      <td>
-                                         {{$t->valor_final}}
+                                         <strong>{{$t->valor_final}}</strong>
                                      </td>
                                  </tr>
                              </tfoot>
