@@ -15,8 +15,7 @@
 
 
                      <div class="row">
-
-                              <div class="col-lg-2">
+                              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <div class="panel panel-primary">
                                   <div class="panel-heading text-center"><i class="fas fa-home"></i> Bienvenido</div>
                                   <div class="panel-body">
@@ -53,7 +52,7 @@
                              </div>
                            </div>
                      </div>
-                      <div class="col-lg-8">
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                       <div class="panel panel-primary">
                           <div class="panel-heading text-center"><i class="fas fa-calendar-alt"></i> CRONOGRAMA</div>
                             <div class="panel-body" id="calendar" >
@@ -62,7 +61,7 @@
                             </div>
                         </div>
                       </div>
-                      <div class="col-lg-2">
+                      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                       <div class="panel panel-primary">
                         <div class="panel panel-heading text-center"><i class="fas fa-quote-left"></i> Frases</div>
                         <div class="panel panel-body">
