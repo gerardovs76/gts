@@ -110,7 +110,7 @@
                                          @endforeach
 
                              </tbody>
-                             @foreach($sep as $s)
+                             @foreach($totalNomina as $t)
                              <tfoot>
                                  <tr>
                                      <td>
@@ -120,7 +120,7 @@
                                         <em><strong>Valor total de nomina: </strong></em>
                                      </td>
                                      <td>
-                                         {{$s->valor_final}}
+                                         {{$t->valor_final}}
                                      </td>
                                  </tr>
                              </tfoot>
