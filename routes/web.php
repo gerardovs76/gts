@@ -266,6 +266,8 @@ Route::get('matricular/reportes/matriculados-gender-male-todos', 'MatriculacionC
 
 Route::get('matricular/reportes/matriculados-gender-female-todos', 'MatriculacionController@genderFemaleTodos');
 
+Route::get('matricular-lista-total', 'MatriculacionController@listaTotal')->name('matricular.lista-total');
+
 
 //INSPECCIÓN
 
