@@ -61,7 +61,7 @@
                       </div>
 
                       <div class="col-xs-1 col-sm-1 col-md-1 text-center"> &nbsp;<br/>
-                      {!!Form::button('<i class="fas fa-plus"></i> AÑADIR EVENTO', ['class' => 'btn btn-primary'])!!}
+                      {!!Form::button('<i class="fas fa-plus"></i> AÑADIR EVENTO', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                       </div>
                     </div>
                    {!! Form::close() !!}
