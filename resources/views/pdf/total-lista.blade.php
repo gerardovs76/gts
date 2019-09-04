@@ -58,12 +58,26 @@ table#mitabla td {
                         <td><strong>{{$i1cf}}</strong></td>
                     </tr>
                     <tr>
-                            <td><strong>INI 1 - INICIAL 1</strong></td>
-                            <td><strong>PARD - PARALELO D</strong></td>
-                            <td><strong>{{$i1dm + $i1df}}</strong></td>
-                            <td><strong>{{$i1dm}}</strong></td>
-                            <td><strong>{{$i1df}}</strong></td>
+                            <td><strong>INI 2 - INICIAL 2</strong></td>
+                            <td><strong>PARA - PARALELO A</strong></td>
+                            <td><strong>{{$i2am + $i2af}}</strong></td>
+                            <td><strong>{{$i2am}}</strong></td>
+                            <td><strong>{{$i2af}}</strong></td>
                         </tr>
+                        <tr>
+                                <td><strong>INI 2 - INICIAL 2</strong></td>
+                                <td><strong>PARB - PARALELO B</strong></td>
+                                <td><strong>{{$i2bm + $i2bf}}</strong></td>
+                                <td><strong>{{$i2bm}}</strong></td>
+                                <td><strong>{{$i2bf}}</strong></td>
+                            </tr>
+                            <tr>
+                                    <td><strong>INI 2 - INICIAL 2</strong></td>
+                                    <td><strong>PARC - PARALELO C</strong></td>
+                                    <td><strong>{{$i2cm + $i2cf}}</strong></td>
+                                    <td><strong>{{$i2cm}}</strong></td>
+                                    <td><strong>{{$i2cf}}</strong></td>
+                                </tr>
             <tr>
                 <td border="0px"></td>
                 <td border="0px"><strong>TOTAL</strong></td>
