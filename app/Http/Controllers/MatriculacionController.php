@@ -653,10 +653,10 @@ class MatriculacionController extends Controller
     }
     public function listaTotal()
     {
-        $inicial1A = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'A']])->get();
-        $inicial1B = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'B']])->get();
-        $inicial1C = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'C']])->get();
-        $inicial1D = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'D']])->get();
+        $inicial1A = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'A']])->distinct()->get();
+        $inicial1B = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'B']])->distinct()->get();
+        $inicial1C = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'C']])->distinct()->get();
+        $inicial1D = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where([['matriculados.curso', 'INICIAL 1'], ['matriculados.paralelo', 'D']])->distinct()->get();
         $i1am = '0';
         $i1af = '0';
         $i1bm = '0';
