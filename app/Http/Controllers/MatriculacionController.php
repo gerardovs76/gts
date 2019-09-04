@@ -701,12 +701,38 @@ class MatriculacionController extends Controller
         $pdf = '0';
         $sam = '0';
         $saf = '0';
+        $sbm = '0';
+        $sbf = '0';
+        $scm = '0';
+        $scf = '0';
+        $sdm = '0';
+        $sdf = '0';
         $tam = '0';
         $taf = '0';
+        $tbm = '0';
+        $tbf = '0';
+        $tcm = '0';
+        $tcf = '0';
+        $tdm = '0';
+        $tdf = '0';
+        $cam = '0';
+        $caf = '0';
+        $cbm = '0';
+        $cbf = '0';
+        $ccm = '0';
+        $ccf = '0';
+        $cdm = '0';
+        $cdf = '0';
         $cam = '0';
         $caf = '0';
         $qam = '0';
         $qaf = '0';
+        $qbm = '0';
+        $qbf = '0';
+        $qcm = '0';
+        $qcf = '0';
+        $qdm = '0';
+        $qdf = '0';
         foreach($inicial1A as $ini1a)
         {
             if($ini1a->sexo == 'M')
@@ -817,11 +843,187 @@ class MatriculacionController extends Controller
                 $pdf++;
             }
         }
+        foreach($seA as $sea)
+        {
+            if($sea->sexo == 'M')
+            {
+                $sam++;
+            }
+            elseif($sea->sexo == 'F')
+            {
+                $saf++;
+            }
+        }
+        foreach($seB as $seb)
+        {
+            if($seb->sexo == 'M')
+            {
+                $sbm++;
+            }
+            elseif($seb->sexo == 'F')
+            {
+                $sbf++;
+            }
+        }
+        foreach($seC as $sc)
+        {
+            if($sc->sexo == 'M')
+            {
+                $scm++;
+            }
+            elseif($sc->sexo == 'F')
+            {
+                $scf++;
+            }
+        }
+        foreach($seD as $sd)
+        {
+            if($sd->sexo == 'M')
+            {
+                $sdm++;
+            }
+            elseif($sd->sexo == 'F')
+            {
+                $sdf++;
+            }
+        }
+        foreach($teA as $tea)
+        {
+            if($tea->sexo == 'M')
+            {
+                $tam++;
+            }
+            elseif($tea->sexo == 'F')
+            {
+                $taf++;
+            }
+        }
+        foreach($teB as $teb)
+        {
+            if($teb->sexo == 'M')
+            {
+                $tbm++;
+            }
+            elseif($teb->sexo == 'F')
+            {
+                $tbf++;
+            }
+        }
+        foreach($teC as $tc)
+        {
+            if($tc->sexo == 'M')
+            {
+                $tcm++;
+            }
+            elseif($tc->sexo == 'F')
+            {
+                $tcf++;
+            }
+        }
+        foreach($cuaD as $td)
+        {
+            if($td->sexo == 'M')
+            {
+                $tdm++;
+            }
+            elseif($td->sexo == 'F')
+            {
+                $tdf++;
+            }
+        }
+        foreach($cuaA as $cuaa)
+        {
+            if($cuaa->sexo == 'M')
+            {
+                $cam++;
+            }
+            elseif($cuaa->sexo == 'F')
+            {
+                $caf++;
+            }
+        }
+        foreach($cuaB as $cuab)
+        {
+            if($cuab->sexo == 'M')
+            {
+                $cbm++;
+            }
+            elseif($cuab->sexo == 'F')
+            {
+                $cbf++;
+            }
+        }
+        foreach($cuaC as $cuac)
+        {
+            if($cuac->sexo == 'M')
+            {
+                $ccm++;
+            }
+            elseif($cuac->sexo == 'F')
+            {
+                $ccf++;
+            }
+        }
+        foreach($cuaD as $cd)
+        {
+            if($cd->sexo == 'M')
+            {
+                $cdm++;
+            }
+            elseif($cd->sexo == 'F')
+            {
+                $cdf++;
+            }
+        }
+        foreach($quiA as $quia)
+        {
+            if($quia->sexo == 'M')
+            {
+                $qam++;
+            }
+            elseif($quia->sexo == 'F')
+            {
+                $qaf++;
+            }
+        }
+        foreach($quiB as $quib)
+        {
+            if($quib->sexo == 'M')
+            {
+                $qbm++;
+            }
+            elseif($quib->sexo == 'F')
+            {
+                $qbf++;
+            }
+        }
+        foreach($quiC as $quic)
+        {
+            if($quic->sexo == 'M')
+            {
+                $qcm++;
+            }
+            elseif($quic->sexo == 'F')
+            {
+                $ccf++;
+            }
+        }
+        foreach($quiD as $qd)
+        {
+            if($qd->sexo == 'M')
+            {
+                $qdm++;
+            }
+            elseif($qd->sexo == 'F')
+            {
+                $qdf++;
+            }
+        }
        $total = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->count();
        $totalM = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'M')->count();
        $totalF = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'F')->count();
        $date = Carbon::now();
-        $pdf = PDF::loadView('pdf.total-lista', compact('total', 'totalM', 'totalF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf'));
+        $pdf = PDF::loadView('pdf.total-lista', compact('total', 'totalM', 'totalF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf', 'sam', 'saf', 'sbm', 'sbf', 'scm', 'scf', 'sdm', 'sdf', 'tam', 'taf', 'tbm', 'tbf', 'tcm', 'tcf', 'tdm', 'tdf', 'cam', 'caf', 'cbm', 'cbf', 'ccm', 'ccf', 'cdm', 'cdf', 'qam', 'qaf', 'qbm', 'qbf', 'qcm', 'qcf', 'qdm', 'qdf'));
 
 
         return $pdf->download('matriculados-total-lista.pdf');

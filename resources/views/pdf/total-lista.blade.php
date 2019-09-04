@@ -72,20 +72,20 @@ table#mitabla td {
                                 <td><strong>{{$i2bf}}</strong></td>
                             </tr>
                             <tr>
-                                    <td><strong>INI 2 - INICIAL 2</strong></td>
-                                    <td><strong>PARC - PARALELO C</strong></td>
-                                    <td><strong>{{$i2cm + $i2cf}}</strong></td>
-                                    <td><strong>{{$i2cm}}</strong></td>
-                                    <td><strong>{{$i2cf}}</strong></td>
-                                </tr>
-                                <tr>
-                                        <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
-                                        <td><strong>PARA - PARALELO A</strong></td>
-                                        <td><strong>{{$pam + $paf}}</strong></td>
-                                        <td><strong>{{$pam}}</strong></td>
-                                        <td><strong>{{$paf}}</strong></td>
-                                    </tr>
-                                    <tr>
+                                            <td><strong>INI 2 - INICIAL 2</strong></td>
+                                            <td><strong>PARC - PARALELO C</strong></td>
+                                            <td><strong>{{$i2cm + $i2cf}}</strong></td>
+                                            <td><strong>{{$i2cm}}</strong></td>
+                                            <td><strong>{{$i2cf}}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                            <td><strong>PARA - PARALELO A</strong></td>
+                                            <td><strong>{{$pam + $paf}}</strong></td>
+                                            <td><strong>{{$pam}}</strong></td>
+                                            <td><strong>{{$paf}}</strong></td>
+                                        </tr>
+                                        <tr>
                                             <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
                                             <td><strong>PARB - PARALELO B</strong></td>
                                             <td><strong>{{$pbm + $pbf}}</strong></td>
@@ -93,19 +93,131 @@ table#mitabla td {
                                             <td><strong>{{$pbf}}</strong></td>
                                         </tr>
                                         <tr>
-                                                <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
-                                                <td><strong>PARC - PARALELO C</strong></td>
-                                                <td><strong>{{$pcm + $pcf}}</strong></td>
-                                                <td><strong>{{$pcm}}</strong></td>
-                                                <td><strong>{{$pcf}}</strong></td>
+                                            <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                            <td><strong>PARC - PARALELO C</strong></td>
+                                            <td><strong>{{$pcm + $pcf}}</strong></td>
+                                            <td><strong>{{$pcm}}</strong></td>
+                                            <td><strong>{{$pcf}}</strong></td>
+                                            </tr>
+                                        <tr>
+                                            <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                            <td><strong>PARD - PARALELO D</strong></td>
+                                            <td><strong>{{$pdm + $pdf}}</strong></td>
+                                            <td><strong>{{$pdm}}</strong></td>
+                                            <td><strong>{{$pdf}}</strong></td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>2do - SEGUNDO DE BASICA</strong></td>
+                                                <td><strong>PARA - PARALELO A</strong></td>
+                                                <td><strong>{{$sam + $saf}}</strong></td>
+                                                <td><strong>{{$sam}}</strong></td>
+                                                <td><strong>{{$saf}}</strong></td>
                                             </tr>
                                             <tr>
-                                                    <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
-                                                    <td><strong>PARD - PARALELO D</strong></td>
-                                                    <td><strong>{{$pdm + $pdf}}</strong></td>
-                                                    <td><strong>{{$pdm}}</strong></td>
-                                                    <td><strong>{{$pdf}}</strong></td>
+                                                <td><strong>2do - SEGUNDO DE BASICA</strong></td>
+                                                <td><strong>PARB - PARALELO B</strong></td>
+                                                <td><strong>{{$sbm + $sbf}}</strong></td>
+                                                <td><strong>{{$sbm}}</strong></td>
+                                                <td><strong>{{$sbf}}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>2do - SEGUNDO DE BASICA</strong></td>
+                                                <td><strong>PARC - PARALELO C</strong></td>
+                                                <td><strong>{{$scm + $scf}}</strong></td>
+                                                <td><strong>{{$scm}}</strong></td>
+                                                <td><strong>{{$scf}}</strong></td>
                                                 </tr>
+                                            <tr>
+                                                <td><strong>2do - SEGUNDO DE BASICA</strong></td>
+                                                <td><strong>PARD - PARALELO D</strong></td>
+                                                <td><strong>{{$sdm + $sdf}}</strong></td>
+                                                <td><strong>{{$sdm}}</strong></td>
+                                                <td><strong>{{$sdf}}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><strong>3ro - TERCERO DE BÁSICA</strong></td>
+                                                    <td><strong>PARA - PARALELO A</strong></td>
+                                                    <td><strong>{{$tam + $taf}}</strong></td>
+                                                    <td><strong>{{$tam}}</strong></td>
+                                                    <td><strong>{{$taf}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>3ro - TERCERO DE BÁSICA</strong></td>
+                                                    <td><strong>PARB - PARALELO B</strong></td>
+                                                    <td><strong>{{$tbm + $tbf}}</strong></td>
+                                                    <td><strong>{{$tbm}}</strong></td>
+                                                    <td><strong>{{$tbf}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>3ro - TERCERO DE BÁSICA</strong></td>
+                                                    <td><strong>PARC - PARALELO C</strong></td>
+                                                    <td><strong>{{$tcm + $tcf}}</strong></td>
+                                                    <td><strong>{{$tcm}}</strong></td>
+                                                    <td><strong>{{$tcf}}</strong></td>
+                                                    </tr>
+                                                <tr>
+                                                    <td><strong>3ro - TERCERO DE BÁSICA</strong></td>
+                                                    <td><strong>PARD - PARALELO D</strong></td>
+                                                    <td><strong>{{$tdm + $tdf}}</strong></td>
+                                                    <td><strong>{{$tdm}}</strong></td>
+                                                    <td><strong>{{$tdf}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                        <td><strong>4to - CUARTO DE BÁSICA</strong></td>
+                                                        <td><strong>PARA - PARALELO A</strong></td>
+                                                        <td><strong>{{$cam + $caf}}</strong></td>
+                                                        <td><strong>{{$cam}}</strong></td>
+                                                        <td><strong>{{$caf}}</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>4to - CUARTO DE BÁSICA</strong></td>
+                                                        <td><strong>PARB - PARALELO B</strong></td>
+                                                        <td><strong>{{$cbm + $cbf}}</strong></td>
+                                                        <td><strong>{{$cbm}}</strong></td>
+                                                        <td><strong>{{$cbf}}</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>4to - CUARTO DE BÁSICA</strong></td>
+                                                        <td><strong>PARC - PARALELO C</strong></td>
+                                                        <td><strong>{{$ccm + $ccf}}</strong></td>
+                                                        <td><strong>{{$ccm}}</strong></td>
+                                                        <td><strong>{{$ccf}}</strong></td>
+                                                        </tr>
+                                                    <tr>
+                                                        <td><strong>4to - CUARTO DE BÁSICA</strong></td>
+                                                        <td><strong>PARD - PARALELO D</strong></td>
+                                                        <td><strong>{{$cdm + $cdf}}</strong></td>
+                                                        <td><strong>{{$cdm}}</strong></td>
+                                                        <td><strong>{{$cdf}}</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><strong>5to - QUINTO DE BÁSICA</strong></td>
+                                                            <td><strong>PARA - PARALELO A</strong></td>
+                                                            <td><strong>{{$qam + $qaf}}</strong></td>
+                                                            <td><strong>{{$qam}}</strong></td>
+                                                            <td><strong>{{$qaf}}</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>5to - QUINTO DE BÁSICA</strong></td>
+                                                            <td><strong>PARB - PARALELO B</strong></td>
+                                                            <td><strong>{{$qbm + $qbf}}</strong></td>
+                                                            <td><strong>{{$qbm}}</strong></td>
+                                                            <td><strong>{{$qbf}}</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>5to - QUINTO DE BÁSICA</strong></td>
+                                                            <td><strong>PARC - PARALELO C</strong></td>
+                                                            <td><strong>{{$qcm + $qcf}}</strong></td>
+                                                            <td><strong>{{$qcm}}</strong></td>
+                                                            <td><strong>{{$qcf}}</strong></td>
+                                                            </tr>
+                                                        <tr>
+                                                            <td><strong>5to - QUINTO DE BÁSICA</strong></td>
+                                                            <td><strong>PARD - PARALELO D</strong></td>
+                                                            <td><strong>{{$qdm + $qdf}}</strong></td>
+                                                            <td><strong>{{$qdm}}</strong></td>
+                                                            <td><strong>{{$qdf}}</strong></td>
+                                                        </tr>
             <tr>
                 <td border="0px"></td>
                 <td border="0px"><strong>TOTAL</strong></td>
