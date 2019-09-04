@@ -303,61 +303,145 @@ table#mitabla td {
                                                                         <td><strong>{{$octdf}}</strong></td>
                                                                     </tr>
                                                                     <tr>
-                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                        <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARA - PARALELO A</strong></td>
+                                                                        <td><strong>{{$novam + $novaf}}</strong></td>
+                                                                        <td><strong>{{$novam}}</strong></td>
+                                                                        <td><strong>{{$novaf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARB - PARALELO B</strong></td>
+                                                                        <td><strong>{{$novbm + $novbf}}</strong></td>
+                                                                        <td><strong>{{$novbm}}</strong></td>
+                                                                        <td><strong>{{$novbf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                      <td><strong>PARC - PARALELO C</strong></td>
+                                                                        <td><strong>{{$novcm + $novcf}}</strong></td>
+                                                                        <td><strong>{{$novcm}}</strong></td>
+                                                                        <td><strong>{{$novcf}}</strong></td>
+                                                                        </tr>
+                                                                    <tr>
+                                                                        <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARD - PARALELO D</strong></td>
+                                                                        <td><strong>{{$novdm + $novdf}}</strong></td>
+                                                                        <td><strong>{{$novdm}}</strong></td>
+                                                                        <td><strong>{{$novdf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
                                                                             <td><strong>PARA - PARALELO A</strong></td>
-                                                                            <td><strong>{{$novam + $novaf}}</strong></td>
-                                                                            <td><strong>{{$novam}}</strong></td>
-                                                                            <td><strong>{{$novaf}}</strong></td>
+                                                                            <td><strong>{{$decam + $decaf}}</strong></td>
+                                                                            <td><strong>{{$decam}}</strong></td>
+                                                                             <td><strong>{{$decaf}}</strong></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
                                                                             <td><strong>PARB - PARALELO B</strong></td>
-                                                                            <td><strong>{{$novbm + $novbf}}</strong></td>
-                                                                            <td><strong>{{$novbm}}</strong></td>
-                                                                            <td><strong>{{$novbf}}</strong></td>
+                                                                            <td><strong>{{$decbm + $decbf}}</strong></td>
+                                                                            <td><strong>{{$decbm}}</strong></td>
+                                                                            <td><strong>{{$decbf}}</strong></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
                                                                             <td><strong>PARC - PARALELO C</strong></td>
-                                                                            <td><strong>{{$novcm + $novcf}}</strong></td>
-                                                                            <td><strong>{{$novcm}}</strong></td>
-                                                                            <td><strong>{{$novcf}}</strong></td>
+                                                                            <td><strong>{{$deccm + $deccf}}</strong></td>
+                                                                            <td><strong>{{$deccm}}</strong></td>
+                                                                            <td><strong>{{$deccf}}</strong></td>
                                                                             </tr>
                                                                         <tr>
-                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
                                                                             <td><strong>PARD - PARALELO D</strong></td>
-                                                                            <td><strong>{{$novdm + $novdf}}</strong></td>
-                                                                            <td><strong>{{$novdm}}</strong></td>
-                                                                            <td><strong>{{$novdf}}</strong></td>
+                                                                            <td><strong>{{$decdm + $decdf}}</strong></td>
+                                                                            <td><strong>{{$decdm}}</strong></td>
+                                                                            <td><strong>{{$decdf}}</strong></td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>1BGU - PRIMERO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
                                                                                 <td><strong>PARA - PARALELO A</strong></td>
-                                                                                <td><strong>{{$decam + $decaf}}</strong></td>
-                                                                                <td><strong>{{$decam}}</strong></td>
-                                                                                <td><strong>{{$decaf}}</strong></td>
+                                                                                <td><strong>{{$primam + $primaf}}</strong></td>
+                                                                                <td><strong>{{$primam}}</strong></td>
+                                                                                 <td><strong>{{$primaf}}</strong></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>1BGU - PRIMERO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
                                                                                 <td><strong>PARB - PARALELO B</strong></td>
-                                                                                <td><strong>{{$decbm + $decbf}}</strong></td>
-                                                                                <td><strong>{{$decbm}}</strong></td>
-                                                                                <td><strong>{{$decbf}}</strong></td>
+                                                                                <td><strong>{{$primbm + $primbf}}</strong></td>
+                                                                                <td><strong>{{$primbm}}</strong></td>
+                                                                                <td><strong>{{$primbf}}</strong></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>1BGU - PRIMERO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
                                                                                 <td><strong>PARC - PARALELO C</strong></td>
-                                                                                <td><strong>{{$deccm + $deccf}}</strong></td>
-                                                                                <td><strong>{{$deccm}}</strong></td>
-                                                                                <td><strong>{{$deccf}}dec</strong></td>
+                                                                                <td><strong>{{$primcm + $primcf}}</strong></td>
+                                                                                <td><strong>{{$primcm}}</strong></td>
+                                                                                <td><strong>{{$primcf}}</strong></td>
                                                                                 </tr>
                                                                             <tr>
-                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>1BGU - PRIMERO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
                                                                                 <td><strong>PARD - PARALELO D</strong></td>
-                                                                                <td><strong>{{$decdm + $decdf}}</strong></td>
-                                                                                <td><strong>{{$decdm}}</strong></td>
-                                                                                <td><strong>{{$decdf}}</strong></td>
+                                                                                <td><strong>{{$primdm + $primdf}}</strong></td>
+                                                                                <td><strong>{{$primdm}}</strong></td>
+                                                                                <td><strong>{{$primdf}}</strong></td>
                                                                             </tr>
+                                                                            <tr>
+                                                                                    <td><strong>2BGU - SEGUNDO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
+                                                                                    <td><strong>PARA - PARALELO A</strong></td>
+                                                                                    <td><strong>{{$segam + $segaf}}</strong></td>
+                                                                                    <td><strong>{{$segam}}</strong></td>
+                                                                                     <td><strong>{{$segaf}}</strong></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>2BGU - SEGUNDO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
+                                                                                    <td><strong>PARB - PARALELO B</strong></td>
+                                                                                    <td><strong>{{$segbm + $segbf}}</strong></td>
+                                                                                    <td><strong>{{$segbm}}</strong></td>
+                                                                                    <td><strong>{{$segbf}}</strong></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>2BGU - SEGUNDO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
+                                                                                    <td><strong>PARC - PARALELO C</strong></td>
+                                                                                    <td><strong>{{$segcm + $segcf}}</strong></td>
+                                                                                    <td><strong>{{$segcm}}</strong></td>
+                                                                                    <td><strong>{{$segcf}}</strong></td>
+                                                                                    </tr>
+                                                                                <tr>
+                                                                                    <td><strong>2BGU - SEGUNDO DE BACHILLERATO GENERAL UNIFICADO</strong></td>
+                                                                                    <td><strong>PARD - PARALELO D</strong></td>
+                                                                                    <td><strong>{{$segdm + $segdf}}</strong></td>
+                                                                                    <td><strong>{{$segdm}}</strong></td>
+                                                                                    <td><strong>{{$segdf}}</strong></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                        <td><strong>3BGU - TERCERO DE BACHILLERATO UNIFICADO</strong></td>
+                                                                                        <td><strong>PARA - PARALELO A</strong></td>
+                                                                                        <td><strong>{{$tercam + $tercaf}}</strong></td>
+                                                                                        <td><strong>{{$tercam}}</strong></td>
+                                                                                         <td><strong>{{$tercaf}}</strong></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><strong>3BGU - TERCERO DE BACHILLERATO UNIFICADO</strong></td>
+                                                                                        <td><strong>PARB - PARALELO B</strong></td>
+                                                                                        <td><strong>{{$tercbm + $tercbf}}</strong></td>
+                                                                                        <td><strong>{{$tercbm}}</strong></td>
+                                                                                        <td><strong>{{$tercbf}}</strong></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><strong>3BGU - TERCERO DE BACHILLERATO UNIFICADO</strong></td>
+                                                                                        <td><strong>PARC - PARALELO C</strong></td>
+                                                                                        <td><strong>{{$terccm + $terccf}}</strong></td>
+                                                                                        <td><strong>{{$terccm}}</strong></td>
+                                                                                        <td><strong>{{$terccf}}</strong></td>
+                                                                                        </tr>
+                                                                                    <tr>
+                                                                                        <td><strong>3BGU - TERCERO DE BACHILLERATO UNIFICADO</strong></td>
+                                                                                        <td><strong>PARD - PARALELO D</strong></td>
+                                                                                        <td><strong>{{$tercdm + $tercdf}}</strong></td>
+                                                                                        <td><strong>{{$tercdm}}</strong></td>
+                                                                                        <td><strong>{{$tercdf}}</strong></td>
+                                                                                    </tr>
 
             <tr>
                 <td border="0px"></td>
