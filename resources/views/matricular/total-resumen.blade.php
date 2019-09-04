@@ -13,6 +13,7 @@
         @include('notas.partials.info')
         <div class="container" id="allData">
        <button class="btn btn-primary" id="boton"><i class="fas fa-print"></i>IMPRIMIR</button>
+       <button class="btn btn-success" id="boton2"><i class="fas fa-print"></i>IMPRIMIR REPORTE TOTAL COBROS</button>
         <div class="card">
             <div class="card-header text-center">
               <strong>INICIAL 1</strong>
@@ -195,5 +196,10 @@
             printData();
             })
 
+        </script>
+        <script>
+                $('#boton2').click(function() {
+                    window.location = "matricular-lista-total";
+                 });
         </script>
 @endsection
