@@ -24,7 +24,7 @@ table#mitabla td {
     <img src="images/lp.PNG" width="100" height="100" align="right">
     <h5 align="left"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h5>
     <p><strong style="font-size: 6;">Fecha de impresión: {{$date}}</strong></p>
-    <h6><p><strong style="font-size: 8; margin-left: 20px">Listado Todos los cursos Todos los paralelos</strong><strong style="font-size: 8; margin-left: 600px;">Total estudiantes: {{$total}}</strong></p></h6>
+    <h6><p><strong style="font-size: 8; margin-left: 20px">Listado Todos los cursos Todos los paralelos</strong><strong style="font-size: 8; margin-left: 600px;">Total estudiantes: {{$totM + $totF}}</strong></p></h6>
     <table id="mitabla" border="1">
         <thead>
             <tr>
@@ -446,9 +446,9 @@ table#mitabla td {
             <tr>
                 <td border="0px"></td>
                 <td border="0px"><strong>TOTAL</strong></td>
-                <td><strong>{{$total}}</strong></td>
-                <td><strong>{{$totalM}}</strong></td>
-                <td><strong>{{$totalF}}</strong></td>
+                <td><strong>{{$totM + $totF}}</strong></td>
+                <td><strong>{{$totM}}</strong></td>
+                <td><strong>{{$totF}}</strong></td>
             </tr>
         </tbody>
     </table>

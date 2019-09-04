@@ -711,6 +711,7 @@ class MatriculacionController extends Controller
         $tercB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'TERCERO DE BACHILLERATO')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $tercC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'TERCERO DE BACHILLERATO')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $tercD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'TERCERO DE BACHILLERATO')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $total = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $i1am = '0';
         $i1af = '0';
         $i1bm = '0';
@@ -829,6 +830,9 @@ class MatriculacionController extends Controller
         $terccf = '0';
         $tercdm = '0';
         $tercdf = '0';
+        $tot = '0';
+        $totM = '0';
+        $totF = '0';
         foreach($inicial1A as $ini1a)
         {
             if($ini1a->sexo == 'M')
@@ -1467,11 +1471,19 @@ class MatriculacionController extends Controller
                 $tercdf++;
             }
         }
-       $total = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->count();
-       $totalM = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'M')->count();
-       $totalF = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'F')->count();
+        foreach($total as $to)
+        {
+            if($to->sexo == 'M')
+            {
+                $totM++;
+            }
+            elseif($to->sexo == 'F')
+            {
+                $totF++;
+            }
+        }
        $date = Carbon::now();
-        $pdf = PDF::loadView('pdf.total-lista', compact('total', 'totalM', 'totalF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf', 'sam', 'saf', 'sbm', 'sbf', 'scm', 'scf', 'sdm', 'sdf', 'tam', 'taf', 'tbm', 'tbf', 'tcm', 'tcf', 'tdm', 'tdf', 'cam', 'caf', 'cbm', 'cbf', 'ccm', 'ccf', 'cdm', 'cdf', 'qam', 'qaf', 'qbm', 'qbf', 'qcm', 'qcf', 'qdm', 'qdf', 'sexam', 'sexaf', 'sexbm', 'sexbf', 'sexcm', 'sexcf', 'sexdm', 'sexdf', 'sepam', 'sepaf', 'sepbm', 'sepbf', 'sepcm', 'sepcf', 'sepdm', 'sepdf', 'octam', 'octaf', 'octbm', 'octbf', 'octcm', 'octcf', 'octdm', 'octdf', 'novam', 'novaf', 'novbm', 'novbf', 'novcm', 'novcf', 'novdm', 'novdf', 'decam', 'decaf', 'decbm', 'decbf', 'deccm', 'deccf', 'decdm', 'decdf', 'primam', 'primaf', 'primbm', 'primbf', 'primcm', 'primcf', 'primdm', 'primdf', 'segam', 'segaf', 'segbm', 'segbf', 'segcm', 'segcf', 'segdm', 'segdf', 'tercam', 'tercaf', 'tercbm', 'tercbf', 'terccm', 'terccf', 'tercdm', 'tercdf'));
+        $pdf = PDF::loadView('pdf.total-lista', compact('totM', 'totF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf', 'sam', 'saf', 'sbm', 'sbf', 'scm', 'scf', 'sdm', 'sdf', 'tam', 'taf', 'tbm', 'tbf', 'tcm', 'tcf', 'tdm', 'tdf', 'cam', 'caf', 'cbm', 'cbf', 'ccm', 'ccf', 'cdm', 'cdf', 'qam', 'qaf', 'qbm', 'qbf', 'qcm', 'qcf', 'qdm', 'qdf', 'sexam', 'sexaf', 'sexbm', 'sexbf', 'sexcm', 'sexcf', 'sexdm', 'sexdf', 'sepam', 'sepaf', 'sepbm', 'sepbf', 'sepcm', 'sepcf', 'sepdm', 'sepdf', 'octam', 'octaf', 'octbm', 'octbf', 'octcm', 'octcf', 'octdm', 'octdf', 'novam', 'novaf', 'novbm', 'novbf', 'novcm', 'novcf', 'novdm', 'novdf', 'decam', 'decaf', 'decbm', 'decbf', 'deccm', 'deccf', 'decdm', 'decdf', 'primam', 'primaf', 'primbm', 'primbf', 'primcm', 'primcf', 'primdm', 'primdf', 'segam', 'segaf', 'segbm', 'segbf', 'segcm', 'segcf', 'segdm', 'segdf', 'tercam', 'tercaf', 'tercbm', 'tercbf', 'terccm', 'terccf', 'tercdm', 'tercdf'));
 
 
         return $pdf->download('matriculados-total-lista.pdf');
