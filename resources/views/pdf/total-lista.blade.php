@@ -218,6 +218,147 @@ table#mitabla td {
                                                             <td><strong>{{$qdm}}</strong></td>
                                                             <td><strong>{{$qdf}}</strong></td>
                                                         </tr>
+                                                        <tr>
+                                                                <td><strong>6to - SEXTO DE BÁSICA</strong></td>
+                                                                <td><strong>PARA - PARALELO A</strong></td>
+                                                                <td><strong>{{$sexam + $sexaf}}</strong></td>
+                                                                <td><strong>{{$sexam}}</strong></td>
+                                                                <td><strong>{{$sexaf}}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>6to - SEXTO DE BÁSICA</strong></td>
+                                                                <td><strong>PARB - PARALELO B</strong></td>
+                                                                <td><strong>{{$sexbm + $sexbf}}</strong></td>
+                                                                <td><strong>{{$sexbm}}</strong></td>
+                                                                <td><strong>{{$sexbf}}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>6to - SEXTO DE BÁSICA</strong></td>
+                                                                <td><strong>PARC - PARALELO C</strong></td>
+                                                                <td><strong>{{$sexcm + $sexcf}}</strong></td>
+                                                                <td><strong>{{$sexcm}}</strong></td>
+                                                                <td><strong>{{$sexcf}}</strong></td>
+                                                                </tr>
+                                                            <tr>
+                                                                <td><strong>6to - SEXTO DE BÁSICA</strong></td>
+                                                                <td><strong>PARD - PARALELO D</strong></td>
+                                                                <td><strong>{{$sexdm + $sexdf}}</strong></td>
+                                                                <td><strong>{{$sexdm}}</strong></td>
+                                                                <td><strong>{{$sexdf}}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td><strong>7mo - SEPTIMO DE BÁSICA</strong></td>
+                                                                    <td><strong>PARA - PARALELO A</strong></td>
+                                                                    <td><strong>{{$sepam + $sepaf}}</strong></td>
+                                                                    <td><strong>{{$sepam}}</strong></td>
+                                                                    <td><strong>{{$sepaf}}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>7mo - SEPTIMO DE BÁSICA</strong></td>
+                                                                    <td><strong>PARB - PARALELO B</strong></td>
+                                                                    <td><strong>{{$sepbm + $sepbf}}</strong></td>
+                                                                    <td><strong>{{$sepbm}}</strong></td>
+                                                                    <td><strong>{{$sepbf}}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>7mo - SEPTIMO DE BÁSICA</strong></td>
+                                                                    <td><strong>PARC - PARALELO C</strong></td>
+                                                                    <td><strong>{{$sepcm + $sepcf}}</strong></td>
+                                                                    <td><strong>{{$sepcm}}</strong></td>
+                                                                    <td><strong>{{$sepcf}}</strong></td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td><strong>7mo - SEPTIMO DE BÁSICA</strong></td>
+                                                                    <td><strong>PARD - PARALELO D</strong></td>
+                                                                    <td><strong>{{$sepdm + $sepdf}}</strong></td>
+                                                                    <td><strong>{{$sepdm}}</strong></td>
+                                                                    <td><strong>{{$sepdf}}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td><strong>8vo - OCTAVO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARA - PARALELO A</strong></td>
+                                                                        <td><strong>{{$octam + $octaf}}</strong></td>
+                                                                        <td><strong>{{$octam}}</strong></td>
+                                                                        <td><strong>{{$octaf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>8vo - OCTAVO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARB - PARALELO B</strong></td>
+                                                                        <td><strong>{{$octbm + $octbf}}</strong></td>
+                                                                        <td><strong>{{$octbm}}</strong></td>
+                                                                        <td><strong>{{$octbf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>8vo - OCTAVO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARC - PARALELO C</strong></td>
+                                                                        <td><strong>{{$octcm + $octcf}}</strong></td>
+                                                                        <td><strong>{{$octcm}}</strong></td>
+                                                                        <td><strong>{{$octcf}}</strong></td>
+                                                                        </tr>
+                                                                    <tr>
+                                                                        <td><strong>8vo - OCTAVO DE BÁSICA</strong></td>
+                                                                        <td><strong>PARD - PARALELO D</strong></td>
+                                                                        <td><strong>{{$octdm + $octdf}}</strong></td>
+                                                                        <td><strong>{{$octdm}}</strong></td>
+                                                                        <td><strong>{{$octdf}}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>PARA - PARALELO A</strong></td>
+                                                                            <td><strong>{{$novam + $novaf}}</strong></td>
+                                                                            <td><strong>{{$novam}}</strong></td>
+                                                                            <td><strong>{{$novaf}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>PARB - PARALELO B</strong></td>
+                                                                            <td><strong>{{$novbm + $novbf}}</strong></td>
+                                                                            <td><strong>{{$novbm}}</strong></td>
+                                                                            <td><strong>{{$novbf}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>PARC - PARALELO C</strong></td>
+                                                                            <td><strong>{{$novcm + $novcf}}</strong></td>
+                                                                            <td><strong>{{$novcm}}</strong></td>
+                                                                            <td><strong>{{$novcf}}</strong></td>
+                                                                            </tr>
+                                                                        <tr>
+                                                                            <td><strong>9no - NOVENO DE BÁSICA</strong></td>
+                                                                            <td><strong>PARD - PARALELO D</strong></td>
+                                                                            <td><strong>{{$novdm + $novdf}}</strong></td>
+                                                                            <td><strong>{{$novdm}}</strong></td>
+                                                                            <td><strong>{{$novdf}}</strong></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>PARA - PARALELO A</strong></td>
+                                                                                <td><strong>{{$decam + $decaf}}</strong></td>
+                                                                                <td><strong>{{$decam}}</strong></td>
+                                                                                <td><strong>{{$decaf}}</strong></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>PARB - PARALELO B</strong></td>
+                                                                                <td><strong>{{$decbm + $decbf}}</strong></td>
+                                                                                <td><strong>{{$decbm}}</strong></td>
+                                                                                <td><strong>{{$decbf}}</strong></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>PARC - PARALELO C</strong></td>
+                                                                                <td><strong>{{$deccm + $deccf}}</strong></td>
+                                                                                <td><strong>{{$deccm}}</strong></td>
+                                                                                <td><strong>{{$deccf}}dec</strong></td>
+                                                                                </tr>
+                                                                            <tr>
+                                                                                <td><strong>10mo - DECIMO DE BÁSICA</strong></td>
+                                                                                <td><strong>PARD - PARALELO D</strong></td>
+                                                                                <td><strong>{{$decdm + $decdf}}</strong></td>
+                                                                                <td><strong>{{$decdm}}</strong></td>
+                                                                                <td><strong>{{$decdf}}</strong></td>
+                                                                            </tr>
+
             <tr>
                 <td border="0px"></td>
                 <td border="0px"><strong>TOTAL</strong></td>

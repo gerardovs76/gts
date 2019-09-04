@@ -679,6 +679,26 @@ class MatriculacionController extends Controller
         $quiB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $quiC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $quiD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sexA = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sexB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sexC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sexD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sepA = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sepB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sepC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $sepD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $octA = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $octB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $octC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $octD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $novA = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $novB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $novC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $novD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $decA = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $decB = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'B')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $decC = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'C')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
+        $decD = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'D')->select('matriculados.curso', 'matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula', 'matriculados.codigo as codigo_mac', 'matriculados.paralelo', 'inscripciones.sexo', 'facturacion.codigo as codigo_fac', 'facturacion.valor', 'inscripciones.codigo_nuevo as codigo_ins')->distinct()->get();
         $i1am = '0';
         $i1af = '0';
         $i1bm = '0';
@@ -733,6 +753,46 @@ class MatriculacionController extends Controller
         $qcf = '0';
         $qdm = '0';
         $qdf = '0';
+        $sexam = '0';
+        $sexaf = '0';
+        $sexbm = '0';
+        $sexbf = '0';
+        $sexcm = '0';
+        $sexcf = '0';
+        $sexdm = '0';
+        $sexdf = '0';
+        $sepam = '0';
+        $sepaf = '0';
+        $sepbm = '0';
+        $sepbf = '0';
+        $sepcm = '0';
+        $sepcf = '0';
+        $sepdm = '0';
+        $sepdf = '0';
+        $octam = '0';
+        $octaf = '0';
+        $octbm = '0';
+        $octbf = '0';
+        $octcm = '0';
+        $octcf = '0';
+        $octdm = '0';
+        $octdf = '0';
+        $novam = '0';
+        $novaf = '0';
+        $novbm = '0';
+        $novbf = '0';
+        $novcm = '0';
+        $novcf = '0';
+        $novdm = '0';
+        $novdf = '0';
+        $decam = '0';
+        $decaf = '0';
+        $decbm = '0';
+        $decbf = '0';
+        $deccm = '0';
+        $deccf = '0';
+        $decdm = '0';
+        $decdf = '0';
         foreach($inicial1A as $ini1a)
         {
             if($ini1a->sexo == 'M')
@@ -1019,11 +1079,231 @@ class MatriculacionController extends Controller
                 $qdf++;
             }
         }
+        foreach($sexA as $sexa)
+        {
+            if($sexa->sexo == 'M')
+            {
+                $sexam++;
+            }
+            elseif($sexa->sexo == 'F')
+            {
+                $sexaf++;
+            }
+        }
+        foreach($sexB as $sexb)
+        {
+            if($sexb->sexo == 'M')
+            {
+                $sexbm++;
+            }
+            elseif($sexb->sexo == 'F')
+            {
+                $sexbf++;
+            }
+        }
+        foreach($sexC as $sexc)
+        {
+            if($sexc->sexo == 'M')
+            {
+                $sexcm++;
+            }
+            elseif($sexc->sexo == 'F')
+            {
+                $sexcf++;
+            }
+        }
+        foreach($sexD as $sexd)
+        {
+            if($sexd->sexo == 'M')
+            {
+                $sexdm++;
+            }
+            elseif($sexd->sexo == 'F')
+            {
+                $sexdf++;
+            }
+        }
+        foreach($sepA as $sepa)
+        {
+            if($sepa->sexo == 'M')
+            {
+                $sepam++;
+            }
+            elseif($sepa->sexo == 'F')
+            {
+                $sepaf++;
+            }
+        }
+        foreach($sepB as $sepb)
+        {
+            if($sepb->sexo == 'M')
+            {
+                $sepbm++;
+            }
+            elseif($sepb->sexo == 'F')
+            {
+                $sepbf++;
+            }
+        }
+        foreach($sepC as $sepc)
+        {
+            if($sepc->sexo == 'M')
+            {
+                $sepcm++;
+            }
+            elseif($sepc->sexo == 'F')
+            {
+                $sepcf++;
+            }
+        }
+        foreach($sepD as $sepd)
+        {
+            if($sepd->sexo == 'M')
+            {
+                $sepdm++;
+            }
+            elseif($sepd->sexo == 'F')
+            {
+                $sepdf++;
+            }
+        }
+        foreach($octA as $octa)
+        {
+            if($octa->sexo == 'M')
+            {
+                $octam++;
+            }
+            elseif($octa->sexo == 'F')
+            {
+                $octaf++;
+            }
+        }
+        foreach($octB as $octb)
+        {
+            if($octb->sexo == 'M')
+            {
+                $octbm++;
+            }
+            elseif($octb->sexo == 'F')
+            {
+                $octbf++;
+            }
+        }
+        foreach($octC as $octc)
+        {
+            if($octc->sexo == 'M')
+            {
+                $octcm++;
+            }
+            elseif($octc->sexo == 'F')
+            {
+                $octcf++;
+            }
+        }
+        foreach($octD as $octd)
+        {
+            if($octd->sexo == 'M')
+            {
+                $octdm++;
+            }
+            elseif($octd->sexo == 'F')
+            {
+                $octdf++;
+            }
+        }
+        foreach($novA as $nova)
+        {
+            if($nova->sexo == 'M')
+            {
+                $novam++;
+            }
+            elseif($nova->sexo == 'F')
+            {
+                $novaf++;
+            }
+        }
+        foreach($novB as $novb)
+        {
+            if($novb->sexo == 'M')
+            {
+                $novbm++;
+            }
+            elseif($novb->sexo == 'F')
+            {
+                $novbf++;
+            }
+        }
+        foreach($novC as $novc)
+        {
+            if($novc->sexo == 'M')
+            {
+                $novcm++;
+            }
+            elseif($novc->sexo == 'F')
+            {
+                $novcf++;
+            }
+        }
+        foreach($novD as $novd)
+        {
+            if($novd->sexo == 'M')
+            {
+                $novdm++;
+            }
+            elseif($novd->sexo == 'F')
+            {
+                $novdf++;
+            }
+        }
+        foreach($decA as $deca)
+        {
+            if($deca->sexo == 'M')
+            {
+                $decam++;
+            }
+            elseif($deca->sexo == 'F')
+            {
+                $decaf++;
+            }
+        }
+        foreach($decB as $decb)
+        {
+            if($decb->sexo == 'M')
+            {
+                $decbm++;
+            }
+            elseif($decb->sexo == 'F')
+            {
+                $decbf++;
+            }
+        }
+        foreach($decC as $decc)
+        {
+            if($decc->sexo == 'M')
+            {
+                $deccm++;
+            }
+            elseif($decc->sexo == 'F')
+            {
+                $deccf++;
+            }
+        }
+        foreach($decD as $decd)
+        {
+            if($decd->sexo == 'M')
+            {
+                $decdm++;
+            }
+            elseif($decd->sexo == 'F')
+            {
+                $decdf++;
+            }
+        }
        $total = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->count();
        $totalM = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'M')->count();
        $totalF = Matriculacion::join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')->join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('inscripciones.sexo', 'F')->count();
        $date = Carbon::now();
-        $pdf = PDF::loadView('pdf.total-lista', compact('total', 'totalM', 'totalF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf', 'sam', 'saf', 'sbm', 'sbf', 'scm', 'scf', 'sdm', 'sdf', 'tam', 'taf', 'tbm', 'tbf', 'tcm', 'tcf', 'tdm', 'tdf', 'cam', 'caf', 'cbm', 'cbf', 'ccm', 'ccf', 'cdm', 'cdf', 'qam', 'qaf', 'qbm', 'qbf', 'qcm', 'qcf', 'qdm', 'qdf'));
+        $pdf = PDF::loadView('pdf.total-lista', compact('total', 'totalM', 'totalF','date','i1am', 'i1af', 'i1bm', 'i1bf', 'i1cm', 'i1cf','i2am', 'i2af', 'i2bm', 'i2bf', 'i2cm', 'i2cf', 'pam', 'paf','pbm', 'pbf','pcm', 'pcf','pdm', 'pdf', 'sam', 'saf', 'sbm', 'sbf', 'scm', 'scf', 'sdm', 'sdf', 'tam', 'taf', 'tbm', 'tbf', 'tcm', 'tcf', 'tdm', 'tdf', 'cam', 'caf', 'cbm', 'cbf', 'ccm', 'ccf', 'cdm', 'cdf', 'qam', 'qaf', 'qbm', 'qbf', 'qcm', 'qcf', 'qdm', 'qdf', 'sexam', 'sexaf', 'sexbm', 'sexbf', 'sexcm', 'sexcf', 'sexdm', 'sexdf', 'sepam', 'sepaf', 'sepbm', 'sepbf', 'sepcm', 'sepcf', 'sepdm', 'sepdf', 'octam', 'octaf', 'octbm', 'octbf', 'octcm', 'octcf', 'octdm', 'octdf', 'novam', 'novaf', 'novbm', 'novbf', 'novcm', 'novcf', 'novdm', 'novdf', 'decam', 'decaf', 'decbm', 'decbf', 'deccm', 'deccf', 'decdm', 'decdf'));
 
 
         return $pdf->download('matriculados-total-lista.pdf');
