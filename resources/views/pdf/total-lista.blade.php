@@ -78,6 +78,34 @@ table#mitabla td {
                                     <td><strong>{{$i2cm}}</strong></td>
                                     <td><strong>{{$i2cf}}</strong></td>
                                 </tr>
+                                <tr>
+                                        <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                        <td><strong>PARA - PARALELO A</strong></td>
+                                        <td><strong>{{$pam + $paf}}</strong></td>
+                                        <td><strong>{{$pam}}</strong></td>
+                                        <td><strong>{{$paf}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                            <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                            <td><strong>PARB - PARALELO B</strong></td>
+                                            <td><strong>{{$pbm + $pbf}}</strong></td>
+                                            <td><strong>{{$pbm}}</strong></td>
+                                            <td><strong>{{$pbf}}</strong></td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                                <td><strong>PARC - PARALELO C</strong></td>
+                                                <td><strong>{{$pcm + $pcf}}</strong></td>
+                                                <td><strong>{{$pcm}}</strong></td>
+                                                <td><strong>{{$pcf}}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><strong>1ro - PRIMERO DE BÁSICA</strong></td>
+                                                    <td><strong>PARD - PARALELO D</strong></td>
+                                                    <td><strong>{{$pdm + $pdf}}</strong></td>
+                                                    <td><strong>{{$pdm}}</strong></td>
+                                                    <td><strong>{{$pdf}}</strong></td>
+                                                </tr>
             <tr>
                 <td border="0px"></td>
                 <td border="0px"><strong>TOTAL</strong></td>
