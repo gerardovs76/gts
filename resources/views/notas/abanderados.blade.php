@@ -9,7 +9,8 @@
 		</div>
 
 		<hr>
-		@include('notas.partials.info')
+        @include('notas.partials.info')
+        @include('notas.modal.abanderadosModal')
 
 
 					{!! Form::open(['route' => 'notas.abanderados-store']) !!}
@@ -34,6 +35,9 @@
                                                    <div id ="agregarNotas" class="form-group col-md-12">
                                                    {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary col-md-2', 'id' => 'agregarNotas']) !!}
 
+                                                 </div>
+                                                 <div class="form-group col-md-12">
+                                                     <button type="button" class="form-control col-md-2 btn btn-primary pull-right" id="abanderadosModal" data-toggle="modal" data-target="#modalAbanderados"><i class="fas fa-search"></i> REPORTE ABANDERADOS</button>
                                                  </div>
 
 
@@ -68,6 +72,32 @@
           {{ Form::close() }}
 
     </div>
+    <style>
+            .modal-header-primary {
+                color:#fff;
+                padding:9px 15px;
+                border-bottom:1px solid #eee;
+                background-color: #428bca;
+                -webkit-border-top-left-radius: 5px;
+                -webkit-border-top-right-radius: 5px;
+                -moz-border-radius-topleft: 5px;
+                -moz-border-radius-topright: 5px;
+                 border-top-left-radius: 5px;
+                 border-top-right-radius: 5px;
+            }
+            .modal-header-info {
+                color:#fff;
+                padding:9px 15px;
+                border-bottom:1px solid #eee;
+                background-color: #5bc0de;
+                -webkit-border-top-left-radius: 5px;
+                -webkit-border-top-right-radius: 5px;
+                -moz-border-radius-topleft: 5px;
+                -moz-border-radius-topright: 5px;
+                 border-top-left-radius: 5px;
+                 border-top-right-radius: 5px;
+            }
+    </style>
     <script>
             $('#agregarNotas').on('click', function(e){
                     e.preventDefault();

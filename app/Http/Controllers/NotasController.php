@@ -24,8 +24,7 @@ use App\Exports\CuadroFinal2;
 use App\Exports\SegundoQuimestre;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Abanderados;
-
-
+use App\Exports\AbanderadosExport;
 
 class NotasController extends Controller
 {
@@ -835,6 +834,14 @@ class NotasController extends Controller
         }
 
         return redirect()->route('notas.abanderados')->with('info', 'Se ha asignado correctamente la notas de abanderados');
+
+    }
+    public function abanderadosExcel(Request $request)
+    {
+        $curso = $request->curso;
+        $paralelo = $request->paralelo;
+
+        return Excel::download(new AbanderadosExport($curso, $paralelo), 'abanderados-reporte.xlsx');
 
     }
 
