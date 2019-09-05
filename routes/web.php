@@ -199,6 +199,12 @@ Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibre
 Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos');
 
 Route::get('notas-recuperacion', 'NotasController@recuperacion')->name('notas.recuperacion');
+
+Route::get('notas-abanderados', 'NotasController@abanderados')->name('notas.abanderados');
+
+Route::get('api-abanderados/{curso}/{paralelo}', 'NotasController@apiAbanderados');
+
+Route::post('abanderados-store', 'NotasController@abanderadoStore')->name('notas.abanderados-store');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

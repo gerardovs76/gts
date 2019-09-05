@@ -199,7 +199,7 @@
         </script>
         <script>
                 $('#boton2').click(function() {
-                    window.location = "matricular-lista-total";
+                    window.location = "matricular-lista-total"+;
                  });
         </script>
 @endsection

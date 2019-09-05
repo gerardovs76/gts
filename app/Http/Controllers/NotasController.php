@@ -23,6 +23,7 @@ use App\Exports\CuadroFinal;
 use App\Exports\CuadroFinal2;
 use App\Exports\SegundoQuimestre;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Abanderados;
 
 
 
@@ -786,6 +787,55 @@ class NotasController extends Controller
       ->get();
 
       return response()->json($recuperacion);
+    }
+
+    public function abanderados()
+    {
+        return view('notas.abanderados');
+    }
+
+    public function apiAbanderados($curso, $paralelo)
+    {
+        $matriculados = Matriculacion::where('curso', $curso)->where('paralelo', $paralelo)->select('id', 'nombres', 'apellidos', 'cedula')->get();
+
+        return response()->json($matriculados);
+    }
+    public function abanderadoStore(Request $request)
+    {
+        $matriculados_id = $request->matriculados_id;
+        $basica_2 = $request->basica_2;
+        $basica_3 = $request->basica_3;
+        $basica_4 = $request->basica_4;
+        $basica_5 = $request->basica_5;
+        $basica_6 = $request->basica_6;
+        $basica_7 = $request->basica_7;
+        $basica_8 = $request->basica_8;
+        $basica_9 = $request->basica_9;
+        $basica_10 = $request->basica_10;
+        $bachillerato_1 = $request->bachillerato_1;
+        $bachillerato_2 = $request->bachillerato_2;
+
+        foreach($request->bachillerato_2 as $key => $value)
+        {
+        $abanderados = new Abanderados;
+        $abanderados->matriculados_id = $matriculados_id[$key];
+        $abanderados->basica_2 = $basica_2[$key];
+        $abanderados->basica_3 = $basica_3[$key];
+        $abanderados->basica_4 = $basica_4[$key];
+        $abanderados->basica_5 = $basica_5[$key];
+        $abanderados->basica_6 = $basica_6[$key];
+        $abanderados->basica_7 = $basica_7[$key];
+        $abanderados->basica_8 = $basica_8[$key];
+        $abanderados->basica_9 = $basica_9[$key];
+        $abanderados->basica_10 = $basica_10[$key];
+        $abanderados->bachillerato_1 = $bachillerato_1[$key];
+        $abanderados->bachillerato_2 = $bachillerato_2[$key];
+        $abanderados->promedio_final = bcdiv((($basica_2[$key] + $basica_3[$key] + $basica_4[$key] + $basica_5[$key] + $basica_6[$key] + $basica_7[$key] + $basica_8[$key] + $basica_9[$key] + $basica_10[$key] + $bachillerato_1[$key] + $bachillerato_2[$key]) / 11 ), '1', '3');
+        $abanderados->save();
+        }
+
+        return redirect()->route('notas.abanderados')->with('info', 'Se ha asignado correctamente la notas de abanderados');
+
     }
 
 

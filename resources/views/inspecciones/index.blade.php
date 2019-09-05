@@ -22,7 +22,7 @@
 			<thead>
 
                     <tr>
-                    <th width="15%">
+                    <th>
                         ALUMNOS
                     </th>
                     <th>
