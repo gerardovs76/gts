@@ -8,12 +8,12 @@
 		</h2>
 		</div>
 
-		<hr>
+        <hr>
         @include('notas.partials.info')
-        @include('notas.modal.abanderadosModal')
 
 
-					{!! Form::open(['route' => 'notas.abanderados-store']) !!}
+
+                    {!! Form::open(['route' => 'notas.abanderados-store']) !!}
                     <div class="panel panel-primary">
                         <div class="panel panel-heading text-center">INGRESE LOS DATOS PARA LA BUSQUEDA</div>
                              <div class="panel panel-body">
@@ -70,6 +70,7 @@
 		</table>
 				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}
           {{ Form::close() }}
+          @include('notas.modal.abanderadosModal')
 
     </div>
     <style>
@@ -103,8 +104,11 @@
                     e.preventDefault();
                 var curso = $('#curso').val();
                 var paralelo = $('#paralelo').val();
+                console.log(curso);
+                console.log(paralelo);
 
                 $.get('api-abanderados/'+curso+'/'+paralelo, function(response){
+                    console.log(response);
                     $.each(response, function(index, obj){
                         console.log(obj);
                         $('#guardar').addClass("d-block");
