@@ -1,11 +1,12 @@
+
 {!!Form::open(['route' => 'cobros.facturacion-in-store'])!!}
 <div class="modal" id="modalFacturacion">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
 
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-title">DATOS DE LA FACTURA</h4>
+        <div class="modal-header modal-header-info text-center">
+          <h4 class="modal-title w-100"  id="modal-title">DATOS DE LA FACTURA</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
