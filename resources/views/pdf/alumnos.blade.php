@@ -26,6 +26,7 @@ table#mitabla td {
 	</style>
 </head>
 <body>
+    <img src="images/lp.PNG" alt="" width="100" height="100" class="pull-right">
 	<table id="mitabla">
 		<thead>
 			<tr>
@@ -39,7 +40,11 @@ table#mitabla td {
 		<tbody>
 			@foreach($inscritos as $ins)
 		<tr>
-		    <td>{{ $ins->nombres }}</td>
+            <td>{{ $ins->nombres }}</td>
+            <td>{{$ins->curso}}</td>
+            <td>{{$ins->edad}}</td>
+            <td>{{$ins->convencional}}</td>
+            <td>{{$ins->email}}</td>
 		</tr>
 			@endforeach
 		</tbody>
