@@ -22,9 +22,6 @@
                 @can('inscripcion.index')
                 <a class="dropdown-item" href="{{ route('inscripcion.index') }}">Lista de alumnos inscritos</a>
                 @endcan
-                @can('inscripcion.reportes')
-                <a class="dropdown-item" href="{{ route('inscripcion.reportes') }}">Reporte grupal PDF</a>
-                @endcan
                 @can('inscritos.excel')
                 <a class="dropdown-item" href="{{ route('inscritos.excel') }}">Reporte grupal EXCEL</a>
                 @endcan
