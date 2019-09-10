@@ -40,10 +40,6 @@ table#mitabla td {
 			@foreach($inscritos as $ins)
 		<tr>
 		    <td>{{ $ins->nombres }}</td>
-			<td>{{ $ins->curso }}</td>
-			<td>{{ $ins->edad }}</td>
-			<td>{{ $ins->convencional }}</td>
-			<td>{{ $ins->email }}</td>
 		</tr>
 			@endforeach
 		</tbody>

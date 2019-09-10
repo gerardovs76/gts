@@ -285,7 +285,7 @@ class InscripcionController extends Controller
 
     public function buscarReporteInscritos()
     {
-        $inscritos = Inscripcion::select('nombres', 'curso', 'edad', 'convencional', 'email')->get();
+        $inscritos = Inscripcion::all();
          $pdf = PDF::loadView('pdf.alumnos', compact('inscritos'));
 
         return $pdf->download('alumnos.pdf');
