@@ -41,7 +41,6 @@ table#mitabla td {
 			@foreach($inscritos as $ins)
 		<tr>
             <td>{{ $ins->nombres }}</td>
-            <td>{{$ins->edad}}</td>
 		</tr>
 			@endforeach
 		</tbody>
