@@ -22,7 +22,7 @@
 									{!! Form::file('import_file', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Por favor que este en formato XLSX....']) !!}
 								</div>
 								<div class="form-group col-md-12">
-   									{!! Form::button('<i class="fa fa-paper-plane"></i> ENVIAR', ['class' => 'btn btn-primary col-md-6', 'type' => 'submit']) !!}
+   									{!! Form::button('<i class="fa fa-paper-plane"></i> ENVIAR', ['class' => 'btn btn-primary col-sm-2', 'type' => 'submit']) !!}
 								</div>
 
 							</div>
