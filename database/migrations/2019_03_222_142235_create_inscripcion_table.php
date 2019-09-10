@@ -22,7 +22,6 @@ class CreateInscripcionTable extends Migration
             $table->string('tipo_estudiante');
             $table->string('edad');
             $table->string('curso');
-            $table->string('colegio_proveniente');
             $table->string('direccion_alumno');
             $table->string('sexo');
             $table->string('representante');
