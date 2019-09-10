@@ -336,7 +336,7 @@ class InscripcionController extends Controller
     public function import(Request $request)
 {
 
-       Excel::import(new InscritosAntiguosImport, $request->import_file);
+       Excel::import(new InscripcionImport, $request->import_file);
 
        return back()->with('info', 'Se ha cargado la informacion correctamente');
  }
