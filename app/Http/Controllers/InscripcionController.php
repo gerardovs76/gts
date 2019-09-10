@@ -334,7 +334,7 @@ class InscripcionController extends Controller
         return view('inscripcion.importarData');
     }
     public function import(Request $request)
-    {
+{
 
        Excel::import(new InscritosAntiguosImport, $request->import_file);
 
