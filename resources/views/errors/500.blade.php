@@ -51,7 +51,7 @@ body {
   <div class="jumbotron">
     <h1> 500 Internal Server Error</h1>
     <p class="lead">El servidor web esta retornando un error interno.</p>
-    <a href="{{ url('home') }}" class="btn btn-default btn-lg text-center"><span class="green">Ir al home</span></a>
+    <a href="{{ url('home') }}" class="btn btn-default btn-lg text-center"><span class="red">Volver</span></a>
   </div>
 </div>
 <div class="container">
