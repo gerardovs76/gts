@@ -4,3 +4,4 @@
 .env.example
 public
 resources/views/inscripcion
+resources/views/pdf/inscritos.blade.php

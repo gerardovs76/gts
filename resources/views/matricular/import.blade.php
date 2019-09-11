@@ -10,7 +10,7 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
+
 					{!! Form::open(['route' => 'matriculacion.import', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center"></div>
@@ -20,17 +20,17 @@
 									<strong>Archivo: <br></strong>
 									{!! Form::file('import_file', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Por favor que este en formato XLSX....']) !!}
 								</div>
-								<div class="form-group col-md-8">
-   									{!! Form::button('Enviar datos', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}							
+								<div class="form-group col-md-12">
+   									{!! Form::button('<i class="fa fa-paper-plane"></i> ENVIAR DATOS', ['class' => 'btn btn-primary col-sm-2', 'type' => 'submit']) !!}
 								</div>
-								
+
 							</div>
-							
+
 						</div>
-					</div>        
+					</div>
                    <table class="table table-hover table-striped" id="tableid" style="display: none;" align="center">
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 	</div>
