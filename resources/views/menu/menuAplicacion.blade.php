@@ -96,7 +96,7 @@
               <i class="fas fa-chalkboard-teacher"></i>
                 PROFESORES
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('profesor.create')
                 <a class="dropdown-item" href="{{ route('profesor.create') }}">Nuevo profesor</a>
                 @endcan
@@ -124,7 +124,7 @@
               <i class="fas fa-book-open"></i>
                 NOTAS
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('notas.index')
                 <a class="dropdown-item" href="{{ route('notas.index') }}">Ingresar notas</a>
                 @endcan
@@ -165,7 +165,7 @@
               <i class="fas fa-user-secret"></i>
                 INSPECCIÓN
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('inspeccion.index')
                 <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Asistencia</a>
                 @endcan
@@ -186,7 +186,7 @@
               <i class="fas fa-building"></i>
                 DECE
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('dece.create')
                 <a class="dropdown-item" href="{{ route('dece.create') }}">Ingresar</a>
                 @endcan
@@ -202,7 +202,7 @@
               <i class="fas fa-ambulance"></i>
                 RR.HH
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('recursos_humanos.index')
                 <a class="dropdown-item" href="{{ route('recursos_humanos.index') }}">Ingresar profesor</a>
                 @endcan
@@ -218,7 +218,7 @@
               <i class="fas fa-hospital-alt"></i>
                 MEDICO
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('medico.index')
                 <a class="dropdown-item" href="{{ route('medico.index') }}">Ficha medica</a>
                 @endcan
@@ -237,7 +237,7 @@
               <i class="fas fa-money-bill-wave"></i>
                 COBROS
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('cobros.index')
                 <a class="dropdown-item" href="{{ route('cobros.index') }}">Valores</a>
                 @endcan
@@ -263,7 +263,7 @@
                 TAREAS
                 <span id="badge" class="badge"></span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('tareas.index')
                 <a class="dropdown-item" href="{{ route('tareas.index') }}">Asignar</a>
                 @endcan
@@ -279,7 +279,7 @@
               <i class="fas fa-clock"></i>
                 HORARIOS
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
                 @can('horarios.asignar-horarios-estudiantes')
                 <a class="dropdown-item" href="{{route('horarios.asignar-horarios-estudiantes')}}">Asignar horarios estudiantes</a>
                 @endcan
@@ -298,7 +298,7 @@
               <i class="fas fa-calendar-plus"></i>
                 EVENTOS
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('events.index')
                 <a class="dropdown-item" href="{{ route('events.index') }}">Añadir evento</a>
                 @endcan
