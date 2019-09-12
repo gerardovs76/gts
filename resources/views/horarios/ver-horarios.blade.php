@@ -30,13 +30,23 @@
                                     {!!Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'paralelo'])!!}
                                     </div>
                                 </div>
+                                @if(Auth::user()->roles('profesor'))
                                 <div class="form-group col-md-4">
                                     <strong>Tipo: </strong><br>
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                                {!!Form::select('tipo',['profesor' => 'PROFESOR', 'estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                {!!Form::select('tipo',['profesor' => 'PROFESOR'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
                                 </div>
                             </div>
+                            @elseif(Auth::user()->roles('alumno'))
+                             <div class="form-group col-md-4">
+                                    <strong>Tipo: </strong><br>
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                {!!Form::select('tipo',['profesor' => 'PROFESOR'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                </div>
+                            </div>
+                            @endif
 								<div class="form-group col-md-12">
    									{!! Form::button('<i class="fas fa-search"></i> BUSCAR HORARIO', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'boton']) !!}
 								</div>
