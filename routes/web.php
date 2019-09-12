@@ -124,7 +124,7 @@ Route::get('asignar_nota/{curso}/{especialidad}/{paralelo}', 'TrabajosAcademicos
 
 Route::get('mostrar_notas/{curso}', 'NotasController@mostrardatosAlumnos');
 
-Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas');
+Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas')->middleware('has.permission:notas.editar-notas');
 
 Route::get('mostrar_porcentaje/{curso}', 'NotasController@mostrarPorcentajeAlumnos');
 
@@ -196,11 +196,11 @@ Route::post('notas/reportes/todo', 'NotasController@reportesExcel')->name('notas
 
 Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibretaColectiva')->name('notas.descargarLibretaColectiva')->middleware('has.permission:notas.descargarLibretaColectiva');
 
-Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos');
+Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos')->middleware('has.permission:notas.ver-notas-alumnos');
 
-Route::get('notas-recuperacion', 'NotasController@recuperacion')->name('notas.recuperacion');
+Route::get('notas-recuperacion', 'NotasController@recuperacion')->name('notas.recuperacion')->middleware('has.permission:notas.recuperacion');
 
-Route::get('notas-abanderados', 'NotasController@abanderados')->name('notas.abanderados');
+Route::get('notas-abanderados', 'NotasController@abanderados')->name('notas.abanderados')->middleware('has.permission:notas.abanderados');
 
 Route::get('api-abanderados/{curso}/{paralelo}', 'NotasController@apiAbanderados');
 
@@ -378,7 +378,7 @@ Route::get('tareas/download/{file}' , 'TareasController@downloadFile');
 
 Route::get('tareas_count', 'TareasController@countPush');
 //HORARIOS
-Route::get('asignar-horarios-estudiantes', 'HorariosController@horariosEstudiantes')->name('horarios.asignar-horarios-estudiantes')->middleware('has.permission:asignar-horarios-estudiantes');
+Route::get('asignar-horarios-estudiantes', 'HorariosController@horariosEstudiantes')->name('horarios.asignar-horarios-estudiantes')->middleware('has.permission:horarios.asignar-horarios-estudiantes');
 
 Route::get('asignar-horarios-profesores', 'HorariosController@horariosProfesores')->name('horarios.asignar-horarios-profesores')->middleware('has.permission:horarios.asignar-horarios-profesores');
 

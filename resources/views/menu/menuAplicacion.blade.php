@@ -135,9 +135,15 @@
                 @can('notas.verNotasEspeciales')
                 <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales profesores</a>
                 @endcan
+                @can('notas.ver-notas-alumnos')
                 <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
+                @endcan
+                @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Abanderados</a>
+                @endcan
+                @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
+                @endcan
                 @can('notas.supletorios')
                 <a class="dropdown-item" href="{{ route('notas.supletorios') }}">Supletorios</a>
                 @endcan
