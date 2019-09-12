@@ -35,15 +35,23 @@
                                     <strong>Tipo: </strong><br>
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                                {!!Form::select('tipo',['profesor' => 'PROFESOR'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                {!!Form::select('tipo',['profesor' => 'PROFESOR', 'estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
                                 </div>
                             </div>
                             @elseif(Auth::user()->roles('alumno'))
-                             <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
                                     <strong>Tipo: </strong><br>
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                                {!!Form::select('tipo',['profesor' => 'PROFESOR'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                {!!Form::select('tipo',['estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                </div>
+                            </div>
+                            @elseif(Auth::user()->roles('super-admin'))
+                            <div class="form-group col-md-4">
+                                    <strong>Tipo: </strong><br>
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                {!!Form::select('tipo',['profesor' => 'PROFESOR', 'estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
                                 </div>
                             </div>
                             @endif
