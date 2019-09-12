@@ -378,11 +378,11 @@ Route::get('tareas/download/{file}' , 'TareasController@downloadFile');
 
 Route::get('tareas_count', 'TareasController@countPush');
 //HORARIOS
-Route::get('asignar-horarios-estudiantes', 'HorariosController@horariosEstudiantes')->name('horarios.asignar-horarios-estudiantes');
+Route::get('asignar-horarios-estudiantes', 'HorariosController@horariosEstudiantes')->name('horarios.asignar-horarios-estudiantes')->middleware('has.permission:asignar-horarios-estudiantes');
 
-Route::get('asignar-horarios-profesores', 'HorariosController@horariosProfesores')->name('horarios.asignar-horarios-profesores');
+Route::get('asignar-horarios-profesores', 'HorariosController@horariosProfesores')->name('horarios.asignar-horarios-profesores')->middleware('has.permission:horarios.asignar-horarios-profesores');
 
-Route::get('ver-horarios', 'HorariosController@verHorarios')->name('horarios.ver-horarios');
+Route::get('ver-horarios', 'HorariosController@verHorarios')->name('horarios.ver-horarios')->middleware('has.permission:horarios.ver-horarios');
 
 Route::post('asignar-estudiantes-store', 'HorariosController@horariosEstudianteStore')->name('horarios.estudiantes-store');
 

@@ -280,9 +280,15 @@
                 HORARIOS
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                @can('horarios.asignar-horarios-estudiantes')
                 <a class="dropdown-item" href="{{route('horarios.asignar-horarios-estudiantes')}}">Asignar horarios estudiantes</a>
+                @endcan
+                @can('horarios.asignar-horarios-profesores')
                 <a class="dropdown-item" href="{{route('horarios.asignar-horarios-profesores')}}">Asignar horarios profesores</a>
+                @endcan
+                @can('horarios.ver-horarios')
                 <a class="dropdown-item" href="{{route('horarios.ver-horarios')}}">Ver horarios</a>
+                @endcan
               </div>
             </li>
             @endcan
