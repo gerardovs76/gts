@@ -25,6 +25,7 @@ use App\Exports\SegundoQuimestre;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Abanderados;
 use App\Exports\AbanderadosExport;
+use App\MateriasProfesor;
 
 class NotasController extends Controller
 {
@@ -40,7 +41,24 @@ class NotasController extends Controller
     }
     public function editarNotas()
     {
-        return view('notas.editar-notas');
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin'))
+        {
+            return view('notas.editar-notas');
+        }
+        elseif(Auth::user()->isRole('profesor')){
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->distinct()
+            ->pluck('materias.curso');
+            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->pluck('materias.paralelo');
+            return view('notas.editar-notas', compact('profesorCurso', 'profesorParalelo'));
+        }
+
     }
     public function store(Request $request)
     {
