@@ -275,7 +275,7 @@
               @can('tareas.index')
                 <a class="dropdown-item" href="{{ route('tareas.index') }}">Asignar</a>
                 @endcan
-                @can('tareas.verTareas')
+                @can('tareas.ver-tareas')
                 <a class="dropdown-item" href="{{ route('tareas.verTareas') }}">Ver tareas</a>
                 @endcan
               </div>
