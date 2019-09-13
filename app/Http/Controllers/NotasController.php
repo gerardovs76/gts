@@ -313,7 +313,22 @@ class NotasController extends Controller
     }
     public function verNotasEspeciales()
     {
-      return view('notas.vernotas-especiales');
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin')){
+            return view('notas.vernotas-especiales');
+        }elseif(Auth::user()->isRole('profesor')){
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->distinct()
+            ->pluck('materias.curso');
+            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->pluck('materias.paralelo');
+            return view('notas.vernotas-especiales', compact('profesorCurso', 'profesorParalelo', 'profesor'));
+        }
+
     }
     public function cargarNotasEspecialesAlumnos($curso, $paralelo, $quimestre, $parcial, $materia)
     {
