@@ -16,6 +16,7 @@
 						<div class="panel panel-heading text-center">Seleccione los datos y guarde el archivo...</div>
 						<div class="panel panel-body">
 							<div class="form-row">
+                                @if(Auth::user()->roles('super-admin'))
                                 <div class="form-group col-md-4">
                                         <strong>Curso: </strong><br>
                                     <div class="input-group-prepend">
@@ -30,7 +31,6 @@
                                     {!!Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'paralelo'])!!}
                                     </div>
                                 </div>
-                                @if(Auth::user()->roles('profesor'))
                                 <div class="form-group col-md-4">
                                     <strong>Tipo: </strong><br>
                                 <div class="input-group-prepend">
@@ -38,23 +38,50 @@
                                 {!!Form::select('tipo',['profesor' => 'PROFESOR', 'estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
                                 </div>
                             </div>
+                            @elseif(Auth::user()->roles('profesor'))
+                            <div class="form-group col-md-4">
+                                    <strong>Curso: </strong><br>
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                {!!Form::select('curso',['INICIAL 1' => 'INICIAL 1', 'INICIAL 2' => 'INICIAL 2', 'PRIMERO DE EGB' => 'PRIMERO DE EGB', 'SEGUNDO DE EGB' => 'SEGUNDO DE EGB', 'TERCERO DE EGB' => 'TERCERO DE EGB', 'CUARTO DE EGB' => 'CUARTO DE EGB', 'QUINTO DE EGB' => 'QUINTO DE EGB', 'SEXTO DE EGB' => 'SEXTO DE EGB', 'SEPTIMO DE EGB' => 'SEPTIMO DE EGB', 'OCTAVO DE EGB' => 'OCTAVO DE EGB', 'NOVENO DE EGB' => 'NOVENO DE EGB', 'DECIMO DE EGB' => 'DECIMO DE EGB', 'PRIMERO DE BACHILLERATO' => 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO' => 'SEGUNDO DE BACHILLERATO', 'TERCERO DE BACHILLERATO' => 'TERCERO DE BACHILLERATO'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'curso'])!!}
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                    <strong>Paralelo: </strong><br>
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                {!!Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'paralelo'])!!}
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <strong>Tipo: </strong><br>
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                            {!!Form::select('tipo',['profesor' => 'PROFESOR'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                            </div>
                             @elseif(Auth::user()->roles('alumno'))
                             <div class="form-group col-md-4">
-                                    <strong>Tipo: </strong><br>
+                                    <strong>Curso: </strong><br>
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                                {!!Form::select('tipo',['estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                {!!Form::select('curso',['INICIAL 1' => 'INICIAL 1', 'INICIAL 2' => 'INICIAL 2', 'PRIMERO DE EGB' => 'PRIMERO DE EGB', 'SEGUNDO DE EGB' => 'SEGUNDO DE EGB', 'TERCERO DE EGB' => 'TERCERO DE EGB', 'CUARTO DE EGB' => 'CUARTO DE EGB', 'QUINTO DE EGB' => 'QUINTO DE EGB', 'SEXTO DE EGB' => 'SEXTO DE EGB', 'SEPTIMO DE EGB' => 'SEPTIMO DE EGB', 'OCTAVO DE EGB' => 'OCTAVO DE EGB', 'NOVENO DE EGB' => 'NOVENO DE EGB', 'DECIMO DE EGB' => 'DECIMO DE EGB', 'PRIMERO DE BACHILLERATO' => 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO' => 'SEGUNDO DE BACHILLERATO', 'TERCERO DE BACHILLERATO' => 'TERCERO DE BACHILLERATO'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'curso'])!!}
                                 </div>
                             </div>
-                            @elseif(Auth::user()->roles('super-admin'))
                             <div class="form-group col-md-4">
-                                    <strong>Tipo: </strong><br>
+                                    <strong>Paralelo: </strong><br>
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                                {!!Form::select('tipo',['profesor' => 'PROFESOR', 'estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
+                                {!!Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el curso', 'id' => 'paralelo'])!!}
                                 </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <strong>Tipo: </strong><br>
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                            {!!Form::select('tipo',['estudiante' => 'ESTUDIANTE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo', 'id' => 'tipo'])!!}
                             </div>
                             @endif
+
 								<div class="form-group col-md-12">
    									{!! Form::button('<i class="fas fa-search"></i> BUSCAR HORARIO', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'boton']) !!}
 								</div>
