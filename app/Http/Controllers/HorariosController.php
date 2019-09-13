@@ -23,7 +23,6 @@ class HorariosController extends Controller
     $users = Auth::user()->cedula;
        if(Auth::user()->isRole('super-admin'))
        {
-
       return view('horarios.ver-horarios');
        }
        elseif(Auth::user()->isRole('profesor'))
@@ -34,8 +33,7 @@ class HorariosController extends Controller
         ->distinct()
         ->pluck('materias.curso');
 
-        $profesorParalelo = DB::table('materias_profesores')
-        ->join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+        $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
         ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
         ->where('profesors.cedula', $users)
         ->pluck('materias.paralelo');

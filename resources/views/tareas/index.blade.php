@@ -23,8 +23,7 @@
           {!! Form::text('profesor', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}
           </div>
           </div>
-
-
+          @if(Auth::user()->isRole('super-admin'))
           <div class="form-group col-md-4">
           <strong>Curso: <br></strong>
           <div class="input-group-prepend">
@@ -40,15 +39,37 @@
           {!! Form::select('especialidad', ['EDUCACION INICIAL' => 'EDUCACION INICIAL','EDUCACION GENERAL BASICA' => 'EDUCACION GENERAL BASICA','GENERAL UNIFICADO' => 'GENERAL UNIFICADO', 'TECNICO EN CONTABILIDAD' => 'TECNICO EN CONTABILIDAD', 'TECNICO EN INFORMATICA' => 'TECNICO EN INFORMATICA', 'TECNICO AUTOMOTRIZ' => 'TECNICO AUTOMOTRIZ', 'BACHILLERATO INTERNACIONAL' => 'BACHILLERATO INTERNACIONAL'], null, ['class' => 'form-control col-md-8 ', 'placeholder' => 'Ingrese la especialidad']) !!}
           </div>
           </div>
-
-
           <div class="form-group col-md-4">
           <strong>Paralelo: <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
           {!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'placeholder' => 'Ingrese el paralelo']) !!}
           </div>
-     </div>
+          </div>
+          @elseif(Auth::user()->isRole('profesor'))
+          <div class="form-group col-md-4">
+            <strong>Curso: <br></strong>
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+            {!! Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Coloque el curso']) !!}
+            </div>
+            </div>
+
+            <div class="form-group col-md-4">
+            <strong>Especialidad: <br></strong>
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+            {!! Form::select('especialidad', ['EDUCACION INICIAL' => 'EDUCACION INICIAL','EDUCACION GENERAL BASICA' => 'EDUCACION GENERAL BASICA','GENERAL UNIFICADO' => 'GENERAL UNIFICADO', 'TECNICO EN CONTABILIDAD' => 'TECNICO EN CONTABILIDAD', 'TECNICO EN INFORMATICA' => 'TECNICO EN INFORMATICA', 'TECNICO AUTOMOTRIZ' => 'TECNICO AUTOMOTRIZ', 'BACHILLERATO INTERNACIONAL' => 'BACHILLERATO INTERNACIONAL'], null, ['class' => 'form-control col-md-8 ', 'placeholder' => 'Ingrese la especialidad']) !!}
+            </div>
+            </div>
+            <div class="form-group col-md-4">
+            <strong>Paralelo: <br></strong>
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+            {!! Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-8', 'placeholder' => 'Ingrese el paralelo']) !!}
+            </div>
+            </div>
+                @endif
      </div>
 </div>
 </div>

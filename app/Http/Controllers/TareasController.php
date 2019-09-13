@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Notification;
 use DB;
 use App\User;
 use App\Http\Requests\TareasRequest;
+use App\MateriasProfesor;
 
 class TareasController extends Controller
 {
@@ -18,11 +19,26 @@ class TareasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         $profesor = Auth::user()->name;
-        return view('tareas.index', compact('profesor'));
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin')){
+            return view('tareas.index', compact('profesor'));
+        }elseif(Auth::user()->isRole('profesor')){
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->distinct()
+            ->pluck('materias.curso');
+            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->pluck('materias.paralelo');
+            return view('tareas.index', compact('profesorCurso', 'profesorParalelo', 'profesor'));
+        }
+
     }
 
     /**
@@ -53,23 +69,23 @@ class TareasController extends Controller
         $tareas->tipo_tarea = $request->tipo_tarea;
         $tareas->titulo = $request->titulo;
         $tareas->descripcion = $request->descripcion;
-        $tareas->archivo = $archivo->getClientOriginalName(); 
+        $tareas->archivo = $archivo->getClientOriginalName();
         $tareas->save();
 
-        
+
 
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
 
        \Storage::disk('local')->put($nombre,  \File::get($file));
         if(isset($tareas)){
-        Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
+        Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaciï¿½ï¿½n de tarea pendiente'], function ($message) {
 
             $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
                     foreach($emails as $email){
             $message->to($email->email)->subject('Notificacion de tarea!');
             $message->from('info@pauldirac.edu.ec', 'Paul Dirac');
-            
+
         }
         });
     }
@@ -142,7 +158,7 @@ class TareasController extends Controller
         return response()->json($matriculados);
     }
 
- 
+
 public function downloadFile($file){
       $pathtoFile = public_path().'\archivos/'.$file;
       return response()->download($pathtoFile);
@@ -163,6 +179,6 @@ public function downloadFile($file){
 
     return response()->json($long);
 }
-  
-    
+
+
 }
