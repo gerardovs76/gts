@@ -37,7 +37,24 @@ class NotasController extends Controller
 
    public function index()
     {
-         return view('notas.index');
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin'))
+        {
+            return view('notas.index');
+        }
+        elseif(Auth::user()->isRole('profesor')){
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->distinct()
+            ->pluck('materias.curso');
+            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->pluck('materias.paralelo');
+            return view('notas.index', compact('profesorCurso', 'profesorParalelo'));
+        }
+
     }
     public function editarNotas()
     {
