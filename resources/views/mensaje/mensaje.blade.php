@@ -33,86 +33,86 @@
 				                <div class="panel-body">
 				                 {!! Form::open(['route' => 'mensaje.store']) !!}
 				                 	<div class="form-group">
-				                 	<select name="recibio_id[]" class="form-control selectpicker" multiple title="Seleccione a uno o varios usuarios...">
+				                 	<select name="recibio_id[]" class="form-control selectpicker" data-actions-box="true" data-style="btn-info" data-live-search="true" multiple title="Seleccione a uno o varios usuarios...">
                                          <option value="#">Seleccione el usuario</option>
                                          <optgroup label="INICIAL 1">
 				                 		@foreach($usersInicial1 as $ini1)
-				                 		<option value="{{ $ini1->id }}">{{ $ini1->name }}</option>
+				                 		<option data-subtext="INICIAL 1" value="{{ $ini1->id }}">{{ $ini1->name }}</option>
                                          @endforeach
                                         </optgroup>
                                         <optgroup label="INICIAL 2">
                                         @foreach($usersInicial2 as $ini2)
-                                        <option value="{{ $ini2->id }}">{{ $ini2->name }}</option>
+                                        <option data-subtext="INICIAL 2" value="{{ $ini2->id }}">{{ $ini2->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="PRIMERO DE EGB">
                                         @foreach($users1eroB as $pb)
-                                        <option value="{{ $pb->id }}">{{ $pb->name }}</option>
+                                        <option data-subtext="PRIMERO DE EGB" value="{{ $pb->id }}">{{ $pb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="SEGUNDO DE EGB">
                                         @foreach($users2doB as $sb)
-                                        <option value="{{ $sb->id }}">{{ $sb->name }}</option>
+                                        <option data-subtext="SEGUNDO DE EGB" value="{{ $sb->id }}">{{ $sb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="TERCERO DE EGB">
                                         @foreach($users3roB as $tb)
-                                        <option value="{{ $tb->id }}">{{ $tb->name }}</option>
+                                        <option data-subtext="TERCERO DE EGB" value="{{ $tb->id }}">{{ $tb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="CUARTO DE EGB">
                                         @foreach($users4toB as $cb)
-                                        <option value="{{ $cb->id }}">{{ $cb->name }}</option>
+                                        <option data-subtext="CUARTO DE EGB" value="{{ $cb->id }}">{{ $cb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="QUINTO DE EGB">
                                         @foreach($users5toB as $qb)
-                                        <option value="{{ $qb->id }}">{{ $qb->name }}</option>
+                                        <option data-subtext="QUINTO DE EGB" value="{{ $qb->id }}">{{ $qb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="SEXTO DE EGB">
                                         @foreach($users6toB as $sexb)
-                                        <option value="{{ $sexb->id }}">{{ $sexb->name }}</option>
+                                        <option data-subtext="SEXTO DE EGB" value="{{ $sexb->id }}">{{ $sexb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="SEPTIMO DE EGB">
                                         @foreach($users7moB as $sepb)
-                                        <option value="{{ $sepb->id }}">{{ $sepb->name }}</option>
+                                        <option data-subtext="SEPTIMO DE EGB" value="{{ $sepb->id }}">{{ $sepb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="OCTAVO DE EGB">
                                         @foreach($users8voB as $ob)
-                                        <option value="{{ $ob->id }}">{{ $ob->name }}</option>
+                                        <option data-subtext="OCTAVO DE EGB" value="{{ $ob->id }}">{{ $ob->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="NOVENO DE EGB">
                                         @foreach($users9noB as $nb)
-                                        <option value="{{ $nb->id }}">{{ $nb->name }}</option>
+                                        <option data-subtext="NOVENO DE EGB" value="{{ $nb->id }}">{{ $nb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="DECIMO DE EGB">
                                         @foreach($users10moB as $deb)
-                                       <option value="{{ $deb->id }}">{{ $deb->name }}</option>
+                                       <option data-subtext="DECIMO DE EGB" value="{{ $deb->id }}">{{ $deb->name }}</option>
                                         @endforeach
                                         </optgroup>
                                         <optgroup label="PRIMERO DE BACHILLERATO">
                                         @foreach($users1bgu as $pbgu)
-                                        <option value="{{ $pbgu->id }}">{{ $pbgu->name }}</option>
+                                        <option data-subtext="PRIMERO DE BACHILLERATO" value="{{ $pbgu->id }}">{{ $pbgu->name }}</option>
                                        @endforeach
                                         </optgroup>
                                         <optgroup label="SEGUNDO DE BACHILLERATO">
                                                 @foreach($users2bgu as $sbgu)
-                                                <option value="{{ $sbgu->id }}">{{ $sbgu->name }}</option>
+                                                <option data-subtext="SEGUNDO DE BACHILLERATO" value="{{ $sbgu->id }}">{{ $sbgu->name }}</option>
                                                @endforeach
                                                 </optgroup>
                                                 <optgroup label="TERCERO DE BACHILLERATO">
                                                         @foreach($users3bgu as $tbgu)
-                                                        <option value="{{ $tbgu->id }}">{{ $tbgu->name }}</option>
+                                                        <option data-subtext="TERCERO DE BACHILLERATO" value="{{ $tbgu->id }}">{{ $tbgu->name }}</option>
                                                        @endforeach
                                                         </optgroup>
                                                         <optgroup label="AUTORIDADES">
                                                                 @foreach($autoridades as $aut)
-                                                                <option value="{{ $aut->id }}">{{ $aut->name }}</option>
+                                                                <option data-subtext="AUTORIDADES" value="{{ $aut->id }}">{{ $aut->name }}</option>
                                                                @endforeach
                                                                 </optgroup>
                                         </select>
