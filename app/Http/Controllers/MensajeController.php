@@ -8,6 +8,7 @@ use App\Mensaje;
 use App\Notifications\MensajeriaNotificacion;
 use Illuminate\Support\Facades\Notification;
 use DB;
+use App\Matriculacion;
 
 class MensajeController extends Controller
 {
@@ -89,27 +90,8 @@ class MensajeController extends Controller
         ->select('users.id', 'users.name')
         ->get();
 
-        $autoridades = User::join('matriculados', 'users.cedula', '=', 'matriculados.cedula')
-        ->join('profesors', 'users.cedula','=', 'profesors.cedula')
-        ->where('users.id', '!=', auth()->id())
-        ->where('matriculados.curso','!=', 'INICIAL 1')
-        ->where('matriculados.curso','!=', 'INICIAL 2')
-        ->where('matriculados.curso','!=', 'PRIMERO DE EGB')
-        ->where('matriculados.curso','!=', 'SEGUNDO DE EGB')
-        ->where('matriculados.curso','!=', 'TERCERO DE EGB')
-        ->where('matriculados.curso','!=', 'CUARTO DE EGB')
-        ->where('matriculados.curso','!=', 'QUINTO DE EGB')
-        ->where('matriculados.curso','!=', 'SEXTO DE EGB')
-        ->where('matriculados.curso','!=', 'SEPTIMO DE EGB')
-        ->where('matriculados.curso','!=', 'OCTAVO DE EGB')
-        ->where('matriculados.curso','!=', 'NOVENO DE EGB')
-        ->where('matriculados.curso','!=', 'DECIMO DE EGB')
-        ->where('matriculados.curso','!=', 'PRIMERO DE BACHILLERATO')
-        ->where('matriculados.curso','!=', 'SEGUNDO DE BACHILLERATO')
-        ->where('matriculados.curso','!=', 'TERCERO DE BACHILLERATO')
-        ->select('users.id', 'users.name')
-        ->get();
-
+        $matriculadosCedula = Matriculacion::select('cedula')->get()->toArray();
+        $autoridades = User::whereNotIn('cedula',$matriculadosCedula)->select('id', 'name')->get();
     	return view('mensaje.mensaje', compact('usersInicial1', 'usersInicial2', 'users1eroB', 'users2doB', 'users3roB', 'users4toB', 'users5toB', 'users6toB', 'users7moB', 'users8voB', 'users9noB', 'users10moB', 'users1bgu', 'users2bgu', 'users3bgu', 'autoridades'));
     }
 
