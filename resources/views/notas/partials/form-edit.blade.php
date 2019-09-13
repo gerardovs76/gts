@@ -96,11 +96,11 @@
                 </div>
                   <script>
                    $('#paralelo').on('change', function() {
-                   var curso = $('#curso').val();
-                   var especialidad = $('#especialidad').val();
-                   var paralelo = $('#paralelo').val();
+                    var curso = $( "#curso option:selected" ).text();
+                    var paralelo  = $( "#paralelo option:selected" ).text();
 
                      $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
+                         console.log(data);
                                $('#materia').empty();
                                $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
                      $.each(data, function(index, regenciesObj){

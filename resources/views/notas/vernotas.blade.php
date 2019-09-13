@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container col-xs-12 col-sm-8 col-lg-12">
+	<div class="container col-xs-12 col-sm-12 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
 		<h2 class="text-center" style="color: #fff;">
 			LISTA DE NOTAS
@@ -17,8 +17,9 @@
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
-							    <div class="form-group col-md-4">
-                                        @if(Auth::user()->roles('super-admin'))
+
+                                        @if(Auth::user()->isRole('super-admin'))
+                                        <div class="form-group col-md-4">
                                              <strong>Curso: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
@@ -32,19 +33,19 @@
                                              {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Seleccione el paralelo...']) }}
                                              </div>
                                              </div>
-                                             @elseif(Auth::user()->roles('profesor'))
+                                             @elseif(Auth::user()->isRole('profesor'))
                                              <div class="form-group col-md-4">
                                                     <strong>Curso: <br></strong>
                                                     <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                    {{ Form::select('curso',['Ingrese el curso' => 'Ingrese el curso'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
+                                                    {{ Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
                                                     </div>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                     <strong>Paralelo: <br></strong>
                                                     <div class="input-group-prepend">
                                                          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                    {{ Form::select('paralelo',['Ingrese el paralelo' => 'Ingrese el pararelo'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
+                                                    {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
                                                     </div>
                                                     </div>
                                             @endif
@@ -122,24 +123,12 @@
         {{ Form::close() }}
     </div>
 </div>
-<script>
-        $(document).ready(function(){
-         $.get('asignar-nota-profesor', function(response){
-           console.log(response);
-           $.each(response, function(index, obj){
-             console.log(obj);
-             $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
-             $('#especialidad').append('<option value="'+obj.especialidad+'">'+obj.especialidad+'</option>');
-             $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
 
-           });
-         });
-       });
-      </script>
 <script>
 	$('#paralelo').on('change', function(){
-		var curso = $('#curso').val();
-		var paralelo  = $('#paralelo').val();
+		var curso = $( "#curso option:selected" ).text();
+        var paralelo  = $( "#paralelo option:selected" ).text();
+
 
 		$.get('cargar_materia/'+curso+'/'+paralelo, function(response){
             console.log(response);
@@ -148,7 +137,7 @@
 
 			});
 		});
-	});
+    });
 
 	$('#verNotas').on('click', function(){
 		var curso = $('#curso').val();
