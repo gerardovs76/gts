@@ -124,7 +124,7 @@ Route::get('asignar_nota/{curso}/{especialidad}/{paralelo}', 'TrabajosAcademicos
 
 Route::get('mostrar_notas/{curso}', 'NotasController@mostrardatosAlumnos');
 
-Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas');
+Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas')->middleware('has.permission:notas.editar-notas');
 
 Route::get('mostrar_porcentaje/{curso}', 'NotasController@mostrarPorcentajeAlumnos');
 
