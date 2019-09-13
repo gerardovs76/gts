@@ -169,7 +169,7 @@ class NotasController extends Controller
         return back()->with('info', 'Las notas ha sido eliminada exitosamente');
     }
      public function buscarMateriaAlumno($cursos, $paralelo){
-         if(Auth::user()->roles('super-admin'))
+         if(Auth::user()->isRole('super-admin'))
          {
          $matriculado = DB::table('materias')
       ->select('materias.materia', 'materias.id')
@@ -180,7 +180,7 @@ class NotasController extends Controller
       return response()->json($matriculado);
 
          }
-         elseif(Auth::user()->roles('profesor'))
+         elseif(Auth::user()->isRole('profesor'))
          {
         $users = Auth::user()->cedula;
          $matriculado = DB::table('materias_profesores')
@@ -572,10 +572,10 @@ class NotasController extends Controller
     }
     public function asignarDatosProfesor()
     {
-        if(Auth::user()->roles('super-admin')){
+        if(Auth::user()->isRole('super-admin')){
 
         }
-        elseif(Auth::user()->roles('profesor'))
+        elseif(Auth::user()->isRole('profesor'))
         {
       $users = Auth::user()->cedula;
       $datos = DB::table('materias_profesores')
@@ -700,6 +700,7 @@ class NotasController extends Controller
         $user = Auth::user()->cedula;
         $matriculados = Matriculacion::where('cedula', $user)->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'cedula')->get();
         $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('matriculados.cedula', $user)->pluck('materias.materia', 'materias.id');
+
         return view('notas.ver-notas-alumnos', compact('matriculados', 'materias'));
     }
 

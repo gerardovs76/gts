@@ -21,26 +21,33 @@ class HorariosController extends Controller
    public function verHorarios()
    {
     $users = Auth::user()->cedula;
-       if(Auth::user()->roles('super-admin'))
+       if(Auth::user()->isRole('super-admin'))
        {
 
       return view('horarios.ver-horarios');
        }
-       elseif(Auth::user()->roles('profesor'))
+       elseif(Auth::user()->isRole('profesor'))
        {
-        $profesor = DB::table('materias_profesores')
+        $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+        ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+        ->where('profesors.cedula', $users)
+        ->distinct()
+        ->pluck('materias.curso');
+
+        $profesorParalelo = DB::table('materias_profesores')
         ->join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
         ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
         ->where('profesors.cedula', $users)
-        ->select('materias.curso as curso', 'materias.especialidad as especialidad', 'materias.paralelo as paralelo')
-        ->distinct()
-        ->get();
-        return view('horarios.ver-horarios', 'profesor');
+        ->pluck('materias.paralelo');
+
+
+        return view('horarios.ver-horarios', compact('profesorCurso', 'profesorParalelo'));
        }
-       elseif(Auth::user()->roles('alumno'))
+       elseif(Auth::user()->isRole('alumno'))
        {
-           $matriculados = Matriculacion::where('cedula', $users)->pluck('curso', 'paralelo');
-          return view('horarios.ver-horarios', 'matriculados');
+           $matriculadosCurso = Matriculacion::where('cedula', $users)->pluck('curso');
+           $matriculadosParalelo = Matriculacion::where('cedula', $users)->pluck('paralelo');
+          return view('horarios.ver-horarios', compact('matriculadosCurso', 'matriculadosParalelo'));
        }
    }
 
