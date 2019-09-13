@@ -105,15 +105,9 @@
 
        <script>
         $('#paralelo').on('change', function() {
-        var curso = $('#curso').val();
-        var especialidad = $('#especialidad').val();
-        var paralelo = $('#paralelo').val();
-        console.log(curso);
-        console.log(especialidad);
-        console.log(paralelo);
-
+            var curso = $( "#curso option:selected" ).text();
+            var paralelo  = $( "#paralelo option:selected" ).text();
           $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
-            console.log(data);
                     $('#materia').empty();
                     $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
           $.each(data, function(index, regenciesObj){
@@ -139,19 +133,10 @@
           var materia = $('#materia').val();
           var parcial = $('#parcial').val();
           var quimestre = $('#quimestre').val();
-          console.log(quimestre);
-        console.log(parcial);
-        console.log(tipoTarea);
-        console.log(curso);
-        console.log(especialidad);
-        console.log(paralelo);
-        console.log(materia);
 
           $.get('buscar_alumnos/'+curso+'/'+paralelo, function(dato){
-                console.log(dato);
                $('#tableid').empty();
           $.each(dato, function(inx, obj){
-               console.log(obj);
                $('#guardarNotas').css("display", "block");
                $('#tablaNotas').css("display", "block");
                $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input type="text" name='+tipoTarea+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');

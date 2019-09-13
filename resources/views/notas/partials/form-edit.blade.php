@@ -143,7 +143,6 @@
                         if($('#tipoTarea').val() == 'nota_ta')
                        {
                            $.each(response, function(index, obj){
-                               console.log(obj);
                                $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
                            });
                        }else if($('#tipoTarea').val() == 'nota_ti')
