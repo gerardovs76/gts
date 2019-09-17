@@ -165,7 +165,7 @@
            var cursoP = document.getElementById("cursoP");
            var newWin= window.open("");
            var is_chrome = Boolean(newWin.chrome);
-                newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:6px;} table{width : 100%; font-size : 10px;}</style><html><head><title></title>');
+                newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:6px;} table{width : 100%; font-size : 8px;}</style><html><head><title></title>');
                 newWin.document.write('</head><body><img src="images/lp.PNG" alt="" height="100" width="100" class="left"><img src="images/ib.png" alt="" height="100" width="220" style="float: right;"><h4 style="text-aling: center;">Año lectivo 2019-2020</h4><h2 align="center">'+cursoP.outerHTML+'</h2>');
                 newWin.document.write(table.outerHTML);
                 newWin.document.write('</body></html>');
