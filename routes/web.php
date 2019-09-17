@@ -274,7 +274,20 @@ Route::get('matricular/reportes/matriculados-gender-male-todos', 'MatriculacionC
 
 Route::get('matricular/reportes/matriculados-gender-female-todos', 'MatriculacionController@genderFemaleTodos');
 
+Route::get('matricular/reportes/matricular-reporte-nuevos', 'MatriculacionController@nuevosTotal');
+
+Route::get('matricular/reportes/matricular-reporte-antiguos', 'MatriculacionController@antiguosTotal');
+
+Route::get('matricular/reportes/matricular-reporte-nuevos/{curso}/{paralelo}', 'MatriculacionController@nuevoTotalCurso');
+
+Route::get('matricular/reportes/matricular-reporte-antiguos/{curso}/{paralelo}', 'MatriculacionController@antiguosTotalCurso');
+
+
 Route::get('matricular-lista-total', 'MatriculacionController@listaTotal')->name('matricular.lista-total');
+
+Route::get('matricular-perfil-total', 'MatriculacionController@perfilTotalMatriculado')->name('matricular.perfil-total');
+
+Route::post('matricular-perfil-total-store', 'MatriculacionController@perfilTotalStore')->name('matricular.perfil-total-store');
 
 
 //INSPECCIÓN

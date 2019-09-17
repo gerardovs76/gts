@@ -17,6 +17,7 @@ use App\Exports\ReporteCas;
 use App\Cargos;
 use App\Http\Requests\ImportMatriculados;
 use Illuminate\Support\Facades\Input;
+use App\Notas;
 
 class MatriculacionController extends Controller
 {
@@ -322,6 +323,53 @@ class MatriculacionController extends Controller
     ->get();
 
     return response()->json($female);
+ }
+ public function nuevosTotal()
+ {
+     $nuevos = DB::table('matriculados')
+     ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+     ->where('matriculados.tipo_estudiante', 'NUEVO')
+     ->select(DB::raw("count(matriculados.tipo_estudiante) as total_nuevos"))
+     ->get();
+
+     return response()->json($nuevos);
+ }
+ public function antiguosTotal()
+ {
+     $antiguos = DB::table('matriculados')
+     ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+     ->where('matriculados.tipo_estudiante', 'ANTIGUO')
+     ->select(DB::raw("count(matriculados.tipo_estudiante) as total_antiguos"))
+     ->get();
+
+     return response()->json($antiguos);
+ }
+
+ public function nuevoTotalCurso($curso, $paralelo)
+ {
+    $nuevos = DB::table('matriculados')
+    ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+    ->where('matriculados.tipo_estudiante', 'NUEVO')
+    ->where('matriculados.curso', $curso)
+    ->where('matriculados.paralelo', $paralelo)
+    ->select(DB::raw("count(matriculados.tipo_estudiante) as total_nuevos"))
+    ->get();
+
+    return response()->json($nuevos);
+
+ }
+ public function antiguosTotalCurso($curso, $paralelo)
+ {
+    $antiguos = DB::table('matriculados')
+    ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+    ->where('matriculados.tipo_estudiante', 'ANTIGUO')
+    ->where('matriculados.curso', $curso)
+    ->where('matriculados.paralelo', $paralelo)
+    ->select(DB::raw("count(matriculados.tipo_estudiante) as total_antiguos"))
+    ->get();
+
+    return response()->json($antiguos);
+
  }
  public function indexReporteMatriculados()
  {
@@ -1488,6 +1536,26 @@ class MatriculacionController extends Controller
 
         return $pdf->download('matriculados-total-lista.pdf');
 
+    }
+
+    public function perfilTotalMatriculado()
+    {
+        return view('matricular.perfil-total');
+    }
+
+    public function perfilTotalStore(Request $request)
+    {
+        $codigo = $request->codigo;
+
+        $matriculadosPerfil = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')
+        ->join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')
+        ->select('*')
+        ->where('matriculados.codigo', $codigo)
+        ->distinct()
+        ->get();
+
+
+        return view('matricular.perfil-total', compact('matriculadosPerfil'))->with('info', 'La busqueda se ha completado correctamente...');
     }
 
 

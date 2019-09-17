@@ -20,6 +20,7 @@
                                 <div class="panel panel-primary">
                                   <div class="panel-heading text-center"><i class="fas fa-home"></i> Bienvenido</div>
                                   <div class="panel-body">
+                                        <button class="btn peach-gradient">Peach</button>
                                  <h2 class="text-center">{{ $usuarios }}</h2><br>
                                  <hr>
                                   <h2 class="text-center"><i class="fas fa-clock"></i>{{ $fecha }}</h2>

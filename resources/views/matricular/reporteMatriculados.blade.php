@@ -49,6 +49,10 @@
     </div>
     <div class="form-group col-md-2" id="genderF">
     </div>
+    <div class="form-group col-md-offset-2 " id="nuevosTotal">
+        </div>
+        <div class="form-group col-md-offset-2" id="antiguosTotal">
+        </div>
 
 						<div class="form-group col-md-12">
    									{!! Form::button('<i class="fas fa-print"></i> IMPRIMIR REPORTE', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'imprimir']) !!}
@@ -105,6 +109,18 @@
                $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
            });
         });
+        $.get('matricular-reporte-nuevos/'+curso+'/'+paralelo, function(response){
+            console.log(response);
+            $.each(response, function(index, obj){
+                $('#nuevosTotal').append('<strong>Nro. Nuevos: '+obj.total_nuevos+' </strong>');
+            });
+        });
+        $.get('matricular-reporte-antiguos/'+curso+'/'+paralelo, function(response){
+            console.log(response);
+            $.each(response, function(index, obj){
+                $('#antiguosTotal').append('<strong>Nro. Antiguos: '+obj.total_antiguos+' </strong>');
+            });
+        });
     });
 </script>
 <script>
@@ -127,6 +143,18 @@
                $.each(response, function(index, obj){
                    $('#genderF').append('<strong>Nro. Femenino: '+obj.femenino+'</strong>');
                });
+            });
+            $.get('matricular-reporte-nuevos', function(response){
+                console.log(response);
+                $.each(response, function(index, obj){
+                    $('#nuevosTotal').append('<strong>Nro. Nuevos: '+obj.total_nuevos+' </strong>');
+                });
+            });
+            $.get('matricular-reporte-antiguos', function(response){
+                console.log(response);
+                $.each(response, function(index, obj){
+                    $('#antiguosTotal').append('<strong>Nro. Antiguos: '+obj.total_antiguos+' </strong>');
+                });
             });
         });
 </script>
