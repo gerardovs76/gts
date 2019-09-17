@@ -298,6 +298,10 @@ Route::get('mostrar/datos/inspeccion/{curso}/{paralelo}', 'InspeccionesControlle
 
 Route::get('inspeccion', 'InspeccionesController@index')->name('inspeccion.index')->middleware('has.permission:inspeccion.index');
 
+Route::get('inspeccion/{id}/edit', 'InspeccionesController@edit')->name('inspeccion.edit');
+
+Route::put('inspeccion/{id}', 'InspeccionesController@update')->name('inspeccion.update');
+
 Route::post('inspeccion', 'InspeccionesController@store')->name('inspeccion.store')->middleware('has.permission:inspeccion.store');
 
 Route::get('inspeccion/conducta', 'InspeccionesController@indexConducta')->name('inspeccion.index-conducta')->middleware('has.permission:inspeccion.index-conducta');
@@ -312,6 +316,9 @@ Route::get('index-inspecciones', 'InspeccionesController@indexInspeccion')->name
 
 Route::post('store-inspeccion', 'InspeccionesController@inspeccionStore')->name('inspeccion.store-inspeccion');
 
+Route::get('inspecciones-store/{curso}/{paralelo}/{parcial}/{quimestre}', 'InspeccionesController@buscarInspecciones');
+
+Route::get('inspecciones-promedios', 'InspeccionesController@promedios')->name('inspeccion.promedios');
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');

@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="col-xs-12 col-sm-8 col-lg-12">
-
+	<div class="container col-xs-12 col-sm-8 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
-		<h2 class="text-center" style="color: #fff; font-family: Roboto;">
-			LISTA DE INSPECCIONES
+		<h2 class="text-center" style="color: #fff;">
+            <i class="fa fa-paper-plane"></i>
+			PROMEDIO INSPECCIONES
 		</h2>
-        </div>
+		</div>
+		<marquee width="100%" scrolldelay="100" scrollamount="5" direction="left" loop="infinite"><strong>01.FALTA INJUSTIFICADA, 02. FALTA JUSTIFICADA, 03. MAL UNIFORMADO, 04. PRESENTACIÓN PERSONAL</strong>
+		</marquee>
 
-
-
-        <hr>
-        {!! Form::open(['route' => 'inspeccion.store-inspeccion']) !!}
-        <div class="form-row">
+		<hr>
+		@include('inspecciones.partials.info')
+		{{--@include('notas.partials.info')--}}
+	      {!! Form::open(['route' => 'inspeccion.store']) !!}
+          <div class="form-row">
                 <div class="form-group col-md-4">
                                    <strong>Curso: <br></strong>
                                    <div class="input-group-prepend">
@@ -51,48 +53,33 @@
                                            {!! Form::select('quimestre', ['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el quimestre', 'id' => 'quimestre']) !!}
                                            </div>
                                            </div>
-                                   <div class="form-group col-md-12">
-                                       {!!Form::button('<i class="fas fa-search"></i> RELIZAR BUSQUEDA', ['class' => 'btn btn-primary col-md-2', 'type' => 'button', 'id' => 'busqueda'])!!}
-                                   </div>
-
+                                        <div class="form-group col-md-12">
+                                            {!!Form::button('<i class="fas fa-search"></i> REALIZAR BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'button'])!!}
+                                        </div>
                                </div>
 
-                               <table class="table table-striped table-bordered" width="100%" id="table">
-                                   <thead>
-                                       <tr>
-                                           <th>NOMBRES</th>
-                                           <th>CURSO</th>
-                                           <th>PARALELO</th>
-                                           <th>FECHA</th>
-                                           <th>H1</th>
-                                           <th>H2</th>
-                                           <th>H3</th>
-                                           <th>H4</th>
-                                           <th>H5</th>
-                                           <th>H6</th>
-                                           <th>H7</th>
-                                           <th>H8</th>
-                                           <th>JUSTIFICACIÓN</th>
-                                       </tr>
-                                   </thead>
 
-                               </table>
-        {!!Form::close()!!}
+		<table class="table table-bordered table-striped" id="tablausuarios" >
 
+			<thead>
 
-        <script>
-            $('#busqueda').on('click', function(){
-                var curso = $('#curso').val();
-                var paralelo = $('#paralelo').val();
-                var parcial = $('#parcial').val();
-                var quimestre = $('#quimestre').val();
-                $.get('inspecciones-store/'+curso+'/'+paralelo+'/'+parcial+'/'+quimestre, function(response){
-                    $.each(response, function(index, obj){
-                        console.log(obj);
-                        $('#table').append('<tbody><tr><td>'+obj.apellidos+' '+obj.nombres+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td><strong>'+obj.fecha+'</strong></td><td>'+obj.h1+'</td><td>'+obj.h2+'</td><td>'+obj.h3+'</td><td>'+obj.h4+'</td><td>'+obj.h5+'</td><td>'+obj.h6+'</td><td>'+obj.h7+'</td><td>'+obj.h8+'</td><td><a href="inspeccion/'+obj.id+'/edit" class="btn btn-warning btn-sm"><i class="fa fa-paper-plane"></i> JUSTIFICACIÓN</a></td></tr></tbody>');
-                    });
+                    <tr>
+                    <th>ALUMNOS</th>
+                    <th>PROMEDIO ASIGNADO POR INSPECCIÓN</th>
+                    <th>PROMEDIO FINAL</th>
+                    </tr>
+                    </thead>
+					<tbody id="tableid" class="table table-striped table-hover">
+				<tr>
+				</tr>
+			</tbody>
+		</table>
+			{!! Form::button('<i class="fas fa-print"></i> GUARDAR', ['class' => 'btn btn-primary form-control d-none', 'type' => 'submit', 'id' => 'guardar']) !!}
+	</div>
+	{!! Form::close() !!}
 
-                });
-            });
-        </script>
+	<!--<div class="col-xs-12 col-sm-4">
+		@include('notas.partials.aside')
+	</div>-->
+
 @endsection

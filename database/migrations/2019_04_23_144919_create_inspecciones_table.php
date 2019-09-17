@@ -18,6 +18,14 @@ class CreateInspeccionesTable extends Migration
             $table->date('fecha');
             $table->string('parcial');
             $table->string('quimestre');
+            $table->string('justificacionh1')->nullable();
+            $table->string('justificacionh2')->nullable();
+            $table->string('justificacionh3')->nullable();
+            $table->string('justificacionh4')->nullable();
+            $table->string('justificacionh5')->nullable();
+            $table->string('justificacionh6')->nullable();
+            $table->string('justificacionh7')->nullable();
+            $table->string('justificacionh8')->nullable();
             $table->string('h1');
             $table->string('h2');
             $table->string('h3');

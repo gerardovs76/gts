@@ -97,6 +97,8 @@ class InspeccionesController extends Controller
      */
     public function edit(Request $Request, $id)
     {
+        $inspeccion = Inspecciones::find($id);
+        return view('inspecciones.edit', compact('inspeccion'));
 
     }
 
@@ -109,6 +111,47 @@ class InspeccionesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $fecha = $request->fecha;
+        $h1 = $request->h1;
+        $h2 = $request->h2;
+        $h3 = $request->h3;
+        $h4 = $request->h4;
+        $h5 = $request->h5;
+        $h6 = $request->h6;
+        $h7 = $request->h7;
+        $h8 = $request->h8;
+        $justificacionh1 = $request->justificacionh1;
+        $justificacionh2 = $request->justificacionh2;
+        $justificacionh3 = $request->justificacionh3;
+        $justificacionh4 = $request->justificacionh4;
+        $justificacionh5 = $request->justificacionh5;
+        $justificacionh6 = $request->justificacionh6;
+        $justificacionh7 = $request->justificacionh7;
+        $justificacionh8 = $request->justificacionh8;
+        $matriculados_id = $request->matriculados_id;
+        $parcial = $request->parcial;
+        $quimestre = $request->quimestre;
+
+        $inspeccion = Inspecciones::find($id);
+            $inspeccion->h1 = $h1;
+            $inspeccion->h2 = $h2;
+            $inspeccion->h3 = $h3;
+            $inspeccion->h4 = $h4;
+            $inspeccion->h5 = $h5;
+            $inspeccion->h6 = $h6;
+            $inspeccion->h7 = $h7;
+            $inspeccion->h8 = $h8;
+            $inspeccion->justificacionh1 = $justificacionh1;
+            $inspeccion->justificacionh2 = $justificacionh2;
+            $inspeccion->justificacionh3 = $justificacionh3;
+            $inspeccion->justificacionh4 = $justificacionh4;
+            $inspeccion->justificacionh5 = $justificacionh5;
+            $inspeccion->justificacionh6 = $justificacionh6;
+            $inspeccion->justificacionh7 = $justificacionh7;
+            $inspeccion->justificacionh8 = $justificacionh8;
+            $inspeccion->save();
+            return redirect()->route('inspeccion.index-inspeccion')->with('info', 'Se ha modificado correctamente el registro');
+
 
     }
 
@@ -176,15 +219,25 @@ class InspeccionesController extends Controller
 
     public function indexInspeccion()
     {
-        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->select('*')->get();
-        return view('inspecciones.indexInspeccion', compact('inspeccion'));
-    }
 
-    public function inspeccionStore(Request $request)
+        return view('inspecciones.indexInspeccion');
+
+    }
+    public function buscarInspecciones($curso, $paralelo, $parcial, $quimestre)
     {
-        $fecha = $request->fecha;
-        $inspeccion = Inspecciones::join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')->where('inspecciones.fecha', $fecha)->select('*')->get();
-        return view('inspecciones.indexInspeccion', compact('inspeccion'));
+        $inspecciones = DB::table('inspecciones')
+        ->join('matriculados', 'inspecciones.matriculados_id', '=', 'matriculados.id')
+        ->where('matriculados.curso', $curso)
+        ->where('matriculados.paralelo', $paralelo)
+        ->where('inspecciones.parcial', $parcial)
+        ->where('inspecciones.quimestre', $quimestre)
+        ->select('matriculados.nombres', 'matriculados.apellidos', 'matriculados.curso', 'matriculados.paralelo', 'inspecciones.id', 'inspecciones.fecha','inspecciones.h1', 'inspecciones.h2' , 'inspecciones.h3' , 'inspecciones.h4', 'inspecciones.h5' , 'inspecciones.h6' , 'inspecciones.h7' , 'inspecciones.h8')
+        ->get();
+        return response()->json($inspecciones);
+    }
+    public function promedios()
+    {
+        return view('inspecciones.promedios');
     }
 
 }

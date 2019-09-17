@@ -7,7 +7,7 @@
 			INSPECCIONES
 		</h2>
 		</div>
-		<marquee width="100%" scrolldelay="100" scrollamount="5" direction="left" loop="infinite"><strong>01.FALTA INJUSTIFICADA, 02. FALTA JUSTIFICADA, 03. ATRASO, 04. FUGA, 05. MAL UNIFORMADO, 06. PRESENTACIÓN PERSONAL, 07. LLAMADO ATENCIÓN, 08. INDISCIPLINA</strong>
+		<marquee width="100%" scrolldelay="100" scrollamount="5" direction="left" loop="infinite"><strong>01.FALTA INJUSTIFICADA, 02. FALTA JUSTIFICADA, 03. MAL UNIFORMADO, 04. PRESENTACIÓN PERSONAL</strong>
 		</marquee>
 
 		<hr>
