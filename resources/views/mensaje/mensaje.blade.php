@@ -2,6 +2,9 @@
 
 
 @section('content')
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-es_ES.min.js "> </script>
 	<div class="col-xs-12 col-sm-8 col-lg-12 col-md-12">
 <div style="background-color: #008cba; padding: 7px;">
     <h2 class="text-center" style="color: #fff;">
