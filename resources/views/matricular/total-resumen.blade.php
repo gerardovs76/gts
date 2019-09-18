@@ -14,6 +14,8 @@
         <div class="container" id="allData">
        <button class="btn btn-primary" id="boton"><i class="fas fa-print"></i>IMPRIMIR</button>
        <button class="btn btn-success" id="boton2"><i class="fas fa-print"></i>IMPRIMIR REPORTE TOTAL COBROS</button>
+       <div class="col-md-offset-6"><strong></strong></div>
+       <div  class="col-md-offset-8"><strong>Total nuevos: {{$nuevos}} &nbsp; Total antiguos: {{$antiguos}}</strong></div>
         <div class="card">
             <div class="card-header text-center">
               <strong>INICIAL 1</strong>

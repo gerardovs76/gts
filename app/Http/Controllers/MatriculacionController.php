@@ -697,7 +697,19 @@ class MatriculacionController extends Controller
        $tercDM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE BACHILLERATO')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
        $tercDF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE BACHILLERATO')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
 
-        return view('matricular.total-resumen', compact('inicial1A', 'inicial1AM', 'inicial1AF', 'inicial1B', 'inicial1BM', 'inicial1BF', 'inicial1C', 'inicial1CM', 'inicial1CF', 'inicial1D', 'inicial1DM', 'inicial1DF','inicial2A', 'inicial2AM', 'inicial2AF', 'inicial2B', 'inicial2BM', 'inicial2BF', 'inicial2C', 'inicial2CM', 'inicial2CF', 'inicial2D', 'inicial2DM', 'inicial2DF', 'pA', 'pAM', 'pAF', 'pB','pBM','pBF','pC','pCM','pCF','pD','pDM','pDF','sA','sAM','sAF','sB','sBM','sBF','sC','sCM','sCF','sD','sDM','sDF','tA','tAM','tAF','tB','tBM','tBF','tC','tCM','tCF','tD','tDM','tDF','cA','cAM','cAF','cB','cBM','cBF','cC','cCM','cCF','cD','cDM','cDF','qA','qAM' ,'qAF','qB','qBM','qBF','qC','qCM','qCF','qD','qDM','qDF','sexA','sexAM','sexAF','sexB','sexBM' ,'sexBF','sexC','sexCM','sexCF','sexD','sexDM','sexDF','sepA','sepAM','sepAF','sepB','sepBM','sepBF','sepC','sepCM' ,'sepCF','sepD','sepDM','sepDF','octA','octAM','octAF','octB','octBM','octBF','octC','octCM','octCF' ,'octD','octDM','octDF','noA','noAM','noAF','noB','noBM' ,'noBF','noC','noCM','noCF','noD','noDM','noDF' ,'deA','deAM','deAF','deB','deBM','deBF','deC','deCM','deCF','deD','deDM','deDF','priA','priAM' ,'priAF','priB','priBM','priBF','priC','priCM','priCF','priD','priDM','priDF','segA','segAM','segAF','segB','segBM','segBF','segC','segCM','segCF','segD','segDM','segDF','tercA','tercAM','tercAF','tercB','tercBM','tercBF','tercC' ,'tercCM','tercCF','tercD','tercDM','tercDF'));
+       $nuevos = DB::table('matriculados')
+       ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+       ->where('matriculados.tipo_estudiante', 'NUEVO')
+       ->select(DB::raw("count(matriculados.tipo_estudiante) as total_nuevos"))
+       ->count();
+
+       $antiguos = DB::table('matriculados')
+       ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
+       ->where('matriculados.tipo_estudiante', 'ANTIGUO')
+       ->select(DB::raw("count(matriculados.tipo_estudiante) as total_antiguos"))
+       ->count();
+
+        return view('matricular.total-resumen', compact('inicial1A', 'inicial1AM', 'inicial1AF', 'inicial1B', 'inicial1BM', 'inicial1BF', 'inicial1C', 'inicial1CM', 'inicial1CF', 'inicial1D', 'inicial1DM', 'inicial1DF','inicial2A', 'inicial2AM', 'inicial2AF', 'inicial2B', 'inicial2BM', 'inicial2BF', 'inicial2C', 'inicial2CM', 'inicial2CF', 'inicial2D', 'inicial2DM', 'inicial2DF', 'pA', 'pAM', 'pAF', 'pB','pBM','pBF','pC','pCM','pCF','pD','pDM','pDF','sA','sAM','sAF','sB','sBM','sBF','sC','sCM','sCF','sD','sDM','sDF','tA','tAM','tAF','tB','tBM','tBF','tC','tCM','tCF','tD','tDM','tDF','cA','cAM','cAF','cB','cBM','cBF','cC','cCM','cCF','cD','cDM','cDF','qA','qAM' ,'qAF','qB','qBM','qBF','qC','qCM','qCF','qD','qDM','qDF','sexA','sexAM','sexAF','sexB','sexBM' ,'sexBF','sexC','sexCM','sexCF','sexD','sexDM','sexDF','sepA','sepAM','sepAF','sepB','sepBM','sepBF','sepC','sepCM' ,'sepCF','sepD','sepDM','sepDF','octA','octAM','octAF','octB','octBM','octBF','octC','octCM','octCF' ,'octD','octDM','octDF','noA','noAM','noAF','noB','noBM' ,'noBF','noC','noCM','noCF','noD','noDM','noDF' ,'deA','deAM','deAF','deB','deBM','deBF','deC','deCM','deCF','deD','deDM','deDF','priA','priAM' ,'priAF','priB','priBM','priBF','priC','priCM','priCF','priD','priDM','priDF','segA','segAM','segAF','segB','segBM','segBF','segC','segCM','segCF','segD','segDM','segDF','tercA','tercAM','tercAF','tercB','tercBM','tercBF','tercC' ,'tercCM','tercCF','tercD','tercDM','tercDF', 'nuevos', 'antiguos'));
     }
     public function listaTotal()
     {
