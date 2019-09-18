@@ -195,6 +195,7 @@
 
             $('#boton').on('click',function(){
                 $('#boton').css("display", "none");
+                $('#boton2').css("display", "none");
             printData();
             })
 

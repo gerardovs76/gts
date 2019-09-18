@@ -27,7 +27,7 @@ class ReporteCas implements FromView, ShouldAutoSize, WithDrawings
     {
 
          return view('matricular.excel.reporteCas',[
-            'matriculados' =>  Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $this->curso)->where('matriculados.paralelo', $this->paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get()
+            'matriculados' =>  Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $this->curso)->where('matriculados.paralelo', $this->paralelo)->select('matriculados.nombres', 'inscripciones.convecional', 'inscripciones.movil', 'matriculados.apellidos', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get()
 
          ]);
     }

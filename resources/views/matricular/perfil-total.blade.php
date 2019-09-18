@@ -20,7 +20,7 @@
                                     <strong>Codigo: </strong><br>
                                     <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
-                                    {!!Form::text('codigo',null, ['class' => 'form-control col-md-6', 'placeholder' => 'Ingrese la cedula...'])!!}
+                                    {!!Form::text('codigo',null, ['class' => 'form-control col-md-6', 'placeholder' => 'Ingrese el codigo...'])!!}
                                     </div>
                                 </div>
                                     <div class="form-group col-md-12">
@@ -43,7 +43,7 @@
                    <thead>
                        @if(isset($matriculadosPerfil))
                        @foreach($matriculadosPerfil as $perfil)
-                       <img src="images/logo-pauld.png" alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
+                       <img src="images/lp.png" alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
                        <tr>
                            <th>
                                Datos del alumno: {{$perfil->cedula}} , {{$perfil->nombres}} {{$perfil->apellidos}}

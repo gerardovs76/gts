@@ -442,13 +442,14 @@ class MatriculacionController extends Controller
     {
         $curso = $request->curso;
         $paralelo = $request->paralelo;
-        $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get();
+        $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'inscripciones.convencional', 'inscripciones.movil', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get();
         switch($request->printButton){
             case 'excel':
             return Excel::download(new ReporteCas($curso, $paralelo), 'reporte-cas.xls');
             break;
             case 'pdf':
             $pdf = PDF::loadView('pdf.reporte-cas', compact('matriculados'));
+            $pdf->setPaper('A4', 'landscape');
             return $pdf->download('reporte-cas.pdf');
             break;
         }
@@ -460,98 +461,147 @@ class MatriculacionController extends Controller
         $inicial1A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'A')->count();
         $inicial1AM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $inicial1AF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevos1A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos1A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 1 B
         $inicial1B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'B')->count();
         $inicial1BM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $inicial1BF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevos1B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos1B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 1 C
         $inicial1C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'C')->count();
         $inicial1CM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $inicial1CF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevos1C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos1C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 1 D
         $inicial1D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'D')->count();
         $inicial1DM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $inicial1DF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevos1D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos1D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 1')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 2 A
         $inicial2A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'A')->count();
         $inicial2AM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $inicial2AF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevos2A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos2A = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 2 B
         $inicial2B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'B')->count();
         $inicial2BM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $inicial2BF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevos2B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos2B = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 2 C
         $inicial2C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'C')->count();
         $inicial2CM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $inicial2CF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevos2C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos2C = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //INI 2 D
         $inicial2D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'D')->count();
         $inicial2DM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $inicial2DF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevos2D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguos2D = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'INICIAL 2')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //PRIMERO DE EGB A
         $pA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'A')->count();
         $pAM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $pAF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevospA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguospA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //PRIMERO DE EGB B
         $pB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'B')->count();
         $pBM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $pBF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevospB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguospB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //PRIMERO DE EGB C
         $pC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'C')->count();
         $pCM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $pCF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevospC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguospC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //PRIMERO DE EGB D
         $pD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'D')->count();
         $pDM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $pDF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevospD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguospD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'PRIMERO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //SEGUNDO DE EGB A
         $sA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'A')->count();
         $sAM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $sAF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevossA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguossA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //SEGUNDO DE EGB B
         $sB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'B')->count();
         $sBM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $sBF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevossB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguossB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
+
         //SEGUNDO DE EGB C
         $sC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'C')->count();
         $sCM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $sCF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevossC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguossC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo','C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //SEGUNDO DE EGB D
         $sD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'D')->count();
         $sDM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $sDF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevossD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguossD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'SEGUNDO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //TERCERO DE EGB A
         $tA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'A')->count();
         $tAM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $tAF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevostA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguostA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //TERCERO DE EGB B
         $tB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'B')->count();
         $tBM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $tBF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevostB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguostB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //TERCERO DE EGB C
         $tC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'C')->count();
         $tCM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $tCF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevostC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguostC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //TERCERO DE EGB D
         $tD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'D')->count();
         $tDM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $tDF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevostD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguostD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'TERCERO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //CUARTO DE EGB A
         $cA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'A')->count();
         $cAM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();
         $cAF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'F')->count();
+        $nuevoscA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguoscA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'A')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //CUARTO DE EGB B
         $cB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'B')->count();
         $cBM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'M')->count();
         $cBF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'B')->where('inscripciones.sexo', 'F')->count();
+        $nuevoscB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguoscB = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'B')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //CUARTO DE EGB C
         $cC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'C')->count();
         $cCM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'M')->count();
         $cCF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'C')->where('inscripciones.sexo', 'F')->count();
+        $nuevoscC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguoscC = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'C')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //CUARTO DE EGB D
         $cD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'D')->count();
         $cDM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'M')->count();
         $cDF = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'D')->where('inscripciones.sexo', 'F')->count();
+        $nuevoscD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'NUEVO')->count();
+        $antiguoscD = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'CUARTO DE EGB')->where('matriculados.paralelo', 'D')->where('matriculados.tipo_estudiante', 'ANTIGUO')->count();
         //QUINTO DE EGB A
        $qA = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->count();
        $qAM = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', 'QUINTO DE EGB')->where('matriculados.paralelo', 'A')->where('inscripciones.sexo', 'M')->count();

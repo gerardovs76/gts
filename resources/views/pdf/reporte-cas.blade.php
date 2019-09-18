@@ -44,6 +44,8 @@ table#mitabla td {
                 <th><strong>Nombres Representante</strong></th>
                 <th><strong>Cedula Representante</strong></th>
                 <th><strong>Correo</strong></th>
+                <th><strong>Telefono convencional</strong></th>
+                <th><strong>Telefono movil</strong></th>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +60,8 @@ table#mitabla td {
                 <td><strong>{{$matri->nombres_representante}}</strong></td>
                 <td><strong>{{$matri->cedrepresentante}}</strong></td>
                 <td><strong>{{$matri->email}}</strong></td>
+                <td><strong>{{$matri->convencional}}</strong></td>
+                <td><strong>{{$matri->movil}}</strong></td>
             </tr>
             @endforeach
         </tbody>

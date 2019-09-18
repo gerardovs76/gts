@@ -22,6 +22,8 @@
             <th><strong>NOMBRES REPRESETANTE</strong></th>
             <th><strong>CEDULA REPRESENTANTE</strong></th>
             <th><strong>CORRREO</strong></th>
+            <th><strong>TELEFONO CONVENCIONAL</strong></th>
+            <th><strong>TELEFONO MOVIL</strong></th>
             <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
         </tr>
     </thead>
@@ -38,6 +40,8 @@
             <td><strong>{{$matri->nombres_representante}}</strong></td>
             <td><strong>{{$matri->cedrepresentante}}</strong></td>
             <td><strong>{{$matri->email}}</strong></td>
+            <td><strong>{{$matri->convencional}}</strong></td>
+            <td><strong>{{$matri->movil}}</strong></td>
         </tr>
         @endforeach
     </tbody>
