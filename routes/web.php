@@ -319,6 +319,8 @@ Route::post('store-inspeccion', 'InspeccionesController@inspeccionStore')->name(
 Route::get('inspecciones-store/{curso}/{paralelo}/{parcial}/{quimestre}', 'InspeccionesController@buscarInspecciones');
 
 Route::get('inspecciones-promedios', 'InspeccionesController@promedios')->name('inspeccion.promedios');
+
+Route::post('inspeccion-promedios', 'InspeccionesController@buscarPromedioEstudiantes')->name('inspeccion.promedio-store');
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');

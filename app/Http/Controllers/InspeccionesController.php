@@ -240,4 +240,18 @@ class InspeccionesController extends Controller
         return view('inspecciones.promedios');
     }
 
+    public function buscarPromedioEstudiantes(Request $request)
+    {   $curso = $request->curso;
+        $paralelo = $request->paralelo;
+        $parcial = $request->parcial;
+        $quimestre = $request->quimestre;
+        $ins = Matriculacion::with('inspecciones')->select('nombres', 'apellidos', 'id')->where('curso', $curso)->where('paralelo', $paralelo)->whereHas('inspecciones', function($query) use ($parcial, $quimestre){
+            $query->where('parcial', $parcial)->where('quimestre', $quimestre);
+
+
+        })->get();
+        return view('inspecciones.promedios', compact('ins'));
+
+    }
+
 }

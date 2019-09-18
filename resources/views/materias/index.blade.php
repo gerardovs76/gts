@@ -49,9 +49,6 @@
 		</table>
 	</div>
 	</div>
-	<!--<div class="col-xs-12 col-sm-4">
-		@include('materias.partials.aside')
-	</div>-->
 	<script>
 	    $(document).ready(function() {
     $('#table').DataTable({
@@ -62,5 +59,4 @@
     });
 } );
  </script>
-	</script>
 @endsection

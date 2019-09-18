@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Matriculacion extends Model
 {
-    
+
     protected $table = 'matriculados';
      protected $primaryKey = 'id';
     protected $fillable = [
@@ -25,12 +25,12 @@ class Matriculacion extends Model
         'tipo_estudiante',
         'fecha_creacion'
     ];
-   
 
 
 
-public function user()
+
+public function inspecciones()
 {
-  return $this->belongsTo('App\User');
+    return $this->hasMany('App\Inspecciones', 'matriculados_id');
 }
 }

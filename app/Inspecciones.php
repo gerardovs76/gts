@@ -22,4 +22,9 @@ class Inspecciones extends Model
         'parcial',
         'quimestre'
     ];
+
+    public function matriculado()
+    {
+        return $this->hasOne('App\Matriculacion', 'id');
+    }
 }

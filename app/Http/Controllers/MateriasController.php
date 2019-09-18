@@ -20,7 +20,7 @@ class MateriasController extends Controller
      */
      public function index()
     {
-        $materias = Materias::orderBy('id', 'DESC')->paginate();
+        $materias = Materias::all();
         return view('materias.index', compact('materias'));
     }
 
