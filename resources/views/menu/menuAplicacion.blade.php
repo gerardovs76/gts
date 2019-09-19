@@ -482,8 +482,11 @@
 <script>
   $(document).ready(function(){
     $.get('tareas_count', function(response){
-
-      $('#badge').append('<span>'+response+'</span>');
+        if(response > 0){
+            $('#badge').append('<span>'+response+'</span>');
+        }else{
+            $('#badge').append('<span>0</span>');
+        }
         });
     $.get('inspecciones-count-alertas', function(response){
         if(response > 0){
