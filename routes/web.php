@@ -31,6 +31,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //INSCRIPCION
 Route::middleware(['auth'])->group(function(){
 
+Route::get('home-asistencia', 'HomeController@asistencia');
+
 Route::get('inscripcion', 'InscripcionController@index')->name('inscripcion.index')->middleware('has.permission:inscripcion.index');
 Route::get('inscripcion/reportes/inscripcion', 'InscripcionController@exportarInscripciones')->name('inscripcion.reportesInscritos')->middleware('has.permission:inscripcion.reportesInscritos');
 
@@ -290,6 +292,7 @@ Route::get('matricular-perfil-total', 'MatriculacionController@perfilTotalMatric
 Route::post('matricular-perfil-total-store', 'MatriculacionController@perfilTotalStore')->name('matricular.perfil-total-store');
 
 
+
 //INSPECCIÓN
 
 Route::get('buscar/inspeccion/alumno/{id}', 'InspeccionesController@buscarInspeccionAlumno');
@@ -320,7 +323,12 @@ Route::get('inspecciones-store/{curso}/{paralelo}/{parcial}/{quimestre}', 'Inspe
 
 Route::get('inspecciones-promedios', 'InspeccionesController@promedios')->name('inspeccion.promedios');
 
-Route::post('inspeccion-promedios', 'InspeccionesController@buscarPromedioEstudiantes')->name('inspeccion.promedio-store');
+Route::post('inspeccion-promedios', 'InspeccionesController@buscarPromedioEstudiantes')->name('inspeccion.promedios-store');
+
+Route::get('inspeccion-alertas', 'InspeccionesController@alertas')->name('inspeccion.alertas');
+
+Route::get('inspecciones-count-alertas', 'InspeccionesController@countAlertas');
+
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');

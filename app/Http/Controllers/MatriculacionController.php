@@ -1677,9 +1677,8 @@ class MatriculacionController extends Controller
         return view('matricular.perfil-total');
     }
 
-    public function perfilTotalStore(Request $request)
+    public function perfilTotalStore(Request $request, $codigo)
     {
-        $codigo = $request->codigo;
 
         $matriculadosPerfil = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')
         ->join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')

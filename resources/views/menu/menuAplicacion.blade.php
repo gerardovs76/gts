@@ -173,6 +173,7 @@
               <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user-secret"></i>
                 INSPECCIÓN
+                <span id="badge2" class="badge-pill badge-danger"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('inspeccion.index')
@@ -186,7 +187,8 @@
               @endcan
               <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Lista de inspecciones</a>
               <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios</a>
-              <a class="dropdown-item" href="#">ALERTA!</a>
+              <span class="badge badge-danger"></span>
+              <a id="alertaMenu" class="dropdown-item" href="{{route('inspeccion.alertas')}}">ALERTA!</a>
               </div>
             </li>
             @endcan
@@ -271,7 +273,7 @@
               <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-thumbtack"></i>
                 TAREAS
-                <span id="badge" class="badge"></span>
+                <span id="badge" class="badge-pill badge-primary"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('tareas.index')
@@ -415,7 +417,7 @@
               <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-bell"></i>
                 NOTIFICACIONES
-                <span class="badge">{{count(Auth::user()->unreadNotifications)}}</span>
+                <span class="badge-pill badge-primary">{{count(Auth::user()->unreadNotifications)}}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions" id="notification" onclick="markPostAsRead({{count(auth()->user()->unreadNotifications)}}">
                 @foreach (Auth::user()->unreadNotifications as $notification)
@@ -483,6 +485,16 @@
 
       $('#badge').append('<span>'+response+'</span>');
         });
+    $.get('inspecciones-count-alertas', function(response){
+        if(response > 0){
+        $('#badge2').append('<span>'+response+'</span>');
+        $('#alertaMenu').css("background-color", "#ea2f10");
+        $('#alertaMenu').css("color", "white");
+        }else{
+            $('#badge2').append('<span>0</span>');
+        }
+    });
   });
+
 
 </script>

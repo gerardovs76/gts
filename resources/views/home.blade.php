@@ -20,7 +20,6 @@
                                 <div class="panel panel-primary">
                                   <div class="panel-heading text-center"><i class="fas fa-home"></i> Bienvenido</div>
                                   <div class="panel-body">
-                                        <button class="btn peach-gradient">Peach</button>
                                  <h2 class="text-center">{{ $usuarios }}</h2><br>
                                  <hr>
                                   <h2 class="text-center"><i class="fas fa-clock"></i>{{ $fecha }}</h2>
@@ -76,6 +75,7 @@
                           </div>
                       </div>
 
+
                       <div class="panel panel-primary">
                         <div class="panel panel-heading text-center"><i class="fas fa-calendar-alt"></i> Eventos</div>
                         <div class="panel panel-body">
@@ -89,8 +89,23 @@
 
                         </div>
                       </div>
+                      @if(Auth::user()->isRole('alumno') || Auth::user()->isRole('super-admin'))
+                      <div class="panel panel-primary">
+                            <div class="panel panel-heading text-center"><i class="fas fa-exclamation-triangle"></i> Resumen de faltas</div>
+                            <div class="panel panel-body">
+                                @foreach($inspe as $in)
+                                   <p style="font-size: 12px;"><em><strong>FALTAS INJUSTIFICADAS</strong></em>(01) : <strong>{{($in->h1_count_01) +($in->h2_count_01) +($in->h3_count_01) +($in->h4_count_01) +($in->h5_count_01) +($in->h6_count_01) +($in->h7_count_01) +($in->h8_count_01)}}</strong> </p>
+                                   <p style="font-size: 12px;"><em><strong>FALTAS JUSTIFICADAS</strong></em>(02) : <strong>{{($in->h1_count_02) +($in->h2_count_02) +($in->h3_count_02) +($in->h4_count_02) +($in->h5_count_02) +($in->h6_count_02) +($in->h7_count_02) +($in->h8_count_02)}}</strong></p>
+                                   <p style="font-size: 12px;"><em><strong>MAL UNIFORMADO</strong></em>(03) : <strong>{{($in->h1_count_03) +($in->h2_count_03) +($in->h3_count_03) +($in->h4_count_03) +($in->h5_count_03) +($in->h6_count_03) +($in->h7_count_03) +($in->h8_count_03)}}</strong></p>
+                                   <p style="font-size: 12px;"><em><strong>PRESENTACIÓN PERSONAL</strong></em>(04) : <strong>{{($in->h1_count_04) +($in->h2_count_04) +($in->h3_count_04) +($in->h4_count_04) +($in->h5_count_04) +($in->h6_count_04) +($in->h7_count_04) +($in->h8_count_04)}}</strong></p>
+                                   @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                          @endif
 
                      </div>
+
 
 
                     <script>
