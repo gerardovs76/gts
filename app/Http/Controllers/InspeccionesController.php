@@ -472,7 +472,14 @@ class InspeccionesController extends Controller
         }])
         ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
 
-        return view('inspecciones.promedios', compact('inspe'))->with('info', 'El promedio se ha proporcionado exitosamente');
+      if($inspe->count() > 0)
+      {
+        return view('inspecciones.promedios', compact('inspe'))->with(\Session::flash('success', 'Se ha realizado la busqueda correctamente'));
+
+      }else{
+        return redirect()->route('inspeccion.promedios')->with('errors', 'No se ha encontrado registros en la busqueda');
+      }
+
 
     }
 

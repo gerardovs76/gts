@@ -50,12 +50,4 @@
             </tbody>
 		</table>
     </div>
-    <script>
-        $(document).ready(function(){
-
-            var count = $('#count').val();
-            console.log(count);
-
-        });
-    </script>
 @endsection

@@ -9,7 +9,8 @@
 		</div>
 
 		<hr>
-		@include('inspecciones.partials.info')
+        @include('partials.errors')
+        @include('partials.success')
 	      {!! Form::open(['route' => 'inspeccion.promedios-store']) !!}
           <div class="form-row">
                 <div class="form-group col-md-4">
