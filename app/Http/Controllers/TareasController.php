@@ -169,6 +169,7 @@ public function downloadFile($file){
         $user  = Auth::user()->cedula;
         $curso = User::join('matriculados', 'users.cedula', '=', 'matriculados.cedula')->where('matriculados.cedula', $user)->select('matriculados.curso')->first();
         $paralelo = User::join('matriculados', 'users.cedula', '=', 'matriculados.cedula')->where('matriculados.cedula', $user)->select('matriculados.paralelo')->first();
+        if(!empty($curso->curso) && !empty($paralelo->paralelo)){
         $tareas = DB::table('tareas')
         ->where('curso', $curso->curso)
         ->where('paralelo', $paralelo->paralelo)
@@ -178,6 +179,9 @@ public function downloadFile($file){
     $long = count($tareas);
 
     return response()->json($long);
+            }else{
+                return response()->json(0);
+            }
 }
 
 
