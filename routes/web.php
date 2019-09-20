@@ -209,6 +209,10 @@ Route::get('api-abanderados/{curso}/{paralelo}', 'NotasController@apiAbanderados
 Route::post('abanderados-store', 'NotasController@abanderadoStore')->name('notas.abanderados-store');
 
 Route::post('abanderados-reportes', 'NotasController@abanderadosExcel')->name('notas.abanderados-reportes');
+
+Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta');
+
+Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividualLibretaStore')->name('notas.reporte-individual-libreta-store');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

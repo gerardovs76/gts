@@ -162,6 +162,7 @@
                 @can('notas.libretaColectiva')
                 <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas</a>
                 @endcan
+                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Reporte individual libreta</a>
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
                 @endcan
