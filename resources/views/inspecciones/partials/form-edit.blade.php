@@ -1,42 +1,40 @@
 <marquee><strong>AL MOMENTO DE CAMBIAR UNA 01(FALTA INJUSTIFICADA) DEBE CAMBIAR EN LA HORA DESEADA AL CODIGO 02(FALTA JUSTIFICADA) Y ASIGNAR LA JUSTIFICACIÓN.</strong></marquee>
-<div class="card-deck">
-                <div class="card border-primary" style="width: 100rem;">
-                    <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 1 </div>
-                        <div class="card-body">
+<div class="panel panel-primary">
+    <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 1 </div>
+      <div class="panel panel-body">
 
-                          @if($inspeccion->h1 == '01')
-                          <div class="form-row">
-      <div class="form-group col-md-4">
-          <strong>Hora 1: </strong><br>
-           <div class="input-group-prepend">
-                                           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!!Form::text('h1', null, ['class' => 'form-control col-md-4'])!!}
+        @if($inspeccion->h2 == '01')
+<div class="form-group col-md-4">
+<strong>Hora 2: </strong><br>
+<div class="input-group-prepend">
+                     <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+{!!Form::text('h1', null, ['class' => 'form-control col-md-4'])!!}
+</div>
+</div>
+<div class="form-group col-md-8">
+<strong>Justificacion hora 2 : </strong><br>
+<div class="input-group-prepend">
+                     <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+{!!Form::text('justificacionh1', null, ['class' => 'form-control col-md-10'])!!}
+</div>
+</div>
+@else
+<div class="form-group col-md-4">
+<strong>Hora 2: </strong><br>
+<div class="input-group-prepend">
+                       <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+{!!Form::text('h1', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+</div>
+</div>
+@endif
+
       </div>
     </div>
-      <div class="form-group col-md-8">
-          <strong>Justificacion hora 1 : </strong><br>
-           <div class="input-group-prepend">
-                                           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!!Form::text('justificacionh1', null, ['class' => 'form-control col-md-10'])!!}
-      </div>
-    </div>
-      @else
-      <div class="form-group col-md-4">
-            <strong>Hora 1: </strong><br>
-             <div class="input-group-prepend">
-                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h1', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
-        </div>
-      </div>
-      @endif
 
-    </div>
-                        </div>
-                      </div>
 
-                      <div class="card border-primary" style="width: 100rem;">
-                          <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 2 </div>
-                            <div class="card-body">
+                      <div class="panel panel-primary">
+                          <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 2 </div>
+                            <div class="panel panel-body">
 
                               @if($inspeccion->h2 == '01')
       <div class="form-group col-md-4">
@@ -65,15 +63,13 @@
 
                             </div>
                           </div>
-        </div>
-        <br>
-
-                    <div class="card-deck">
 
 
-                          <div class="card border-primary" style="width: 100rem;">
-                              <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 3 </div>
-                                <div class="card-body">
+
+
+                          <div class="panel panel-primary">
+                              <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 3 </div>
+                                <div class="panel panel-body">
 
                                   @if($inspeccion->h3 == '01')
       <div class="form-group col-md-4">
@@ -104,9 +100,9 @@
                               </div>
 
 
-                              <div class="card border-primary" style="width: 100rem;">
-                                  <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 4 </div>
-                                    <div class="card-body">
+                              <div class="panel panel-primary">
+                                  <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 4 </div>
+                                    <div class="panel panel-body">
 
                                       @if($inspeccion->h4 == '01')
       <div class="form-group col-md-4">
@@ -135,13 +131,11 @@
 
                                     </div>
                                   </div>
-                                </div><br>
 
-                                <div class="card-deck">
 
-                                  <div class="card border-primary" style="width: 100rem;">
-                                      <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 5 </div>
-                                        <div class="card-body">
+                                  <div class="panel panel-primary">
+                                      <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 5 </div>
+                                        <div class="panel panel-body">
 
                                           @if($inspeccion->h5 == '01')
       <div class="form-group col-md-4">
@@ -171,9 +165,9 @@
                                         </div>
                                       </div>
 
-                                      <div class="card border-primary" style="width: 100rem;">
-                                          <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 6 </div>
-                                            <div class="card-body">
+                                      <div class="panel panel-primary">
+                                          <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 6 </div>
+                                            <div class="panel panel-body">
 
                                               @if($inspeccion->h6 == '01')
       <div class="form-group col-md-4">
@@ -202,13 +196,11 @@
 
                                             </div>
                                           </div>
-                                        </div>
-                                        <br>
-                                        <div class="card-deck">
 
-                                          <div class="card border-primary" style="width: 100rem;">
-                                              <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 7 </div>
-                                                <div class="card-body">
+
+                                          <div class="panel panel-primary">
+                                              <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 7 </div>
+                                                <div class="panel panel-body">
 
 
                                                   @if($inspeccion->h7 == '01')
@@ -239,9 +231,9 @@
                                                 </div>
                                               </div>
 
-                                              <div class="card border-primary" style="width: 100rem;">
-                                                  <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 8 </div>
-                                                    <div class="card-body">
+                                              <div class="panel panel-primary">
+                                                  <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 8 </div>
+                                                    <div class="panel panel-body">
 
                                                       @if($inspeccion->h8 == '01')
                                                       <div class="form-group col-md-4">
@@ -272,13 +264,12 @@
                                                     </div>
                                                   </div>
 
-                                                </div><br>
-                                                <div class="card-deck">
-                                                    <div class="card border-primary" style="width: 100rem;">
-                                                      <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 9 </div>
-                                                        <div class="card-body">
 
-                                                          @if($inspeccion->h8 == '01')
+                                                    <div class="panel panel-primary">
+                                                      <div class="panel panel-heading text-center"><i class="fas fa-clock"></i> HORA: 9 </div>
+                                                        <div class="panel panel-body">
+
+                                                          @if($inspeccion->h9 == '01')
                                                           <div class="form-group col-md-4">
                                                               <strong>Hora 9: </strong><br>
                                                                <div class="input-group-prepend">
@@ -306,7 +297,6 @@
 
                                                         </div>
                                                       </div>
-                                                  </div>
 
 
 
