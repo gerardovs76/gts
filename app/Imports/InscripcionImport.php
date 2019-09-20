@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Inscripcion;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Carbon;
 
 class InscripcionImport implements ToModel
 {
@@ -14,6 +15,7 @@ class InscripcionImport implements ToModel
     */
     public function model(array $row)
     {
+        $date = Carbon::now();
         return new Inscripcion([
            'cedula' => $row[0],
            'nombres' => $row[1],
@@ -58,6 +60,7 @@ class InscripcionImport implements ToModel
            'tipo_estudiante' => $row[40],
            'fecha' => $row[41],
            'hora' => $row[42],
+           'fecha_creacion' => $date->format('Y-m-d'),
            'paralelo' => $row[43]
         ]);
     }
