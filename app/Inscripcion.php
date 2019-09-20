@@ -51,6 +51,7 @@ class Inscripcion extends Model
            'tipo_estudiante',
            'fecha',
            'hora',
+           'fecha_creacion',
            'paralelo'
     ];
 

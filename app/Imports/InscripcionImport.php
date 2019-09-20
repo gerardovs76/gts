@@ -60,8 +60,8 @@ class InscripcionImport implements ToModel
            'tipo_estudiante' => $row[40],
            'fecha' => $row[41],
            'hora' => $row[42],
-           'fecha_creacion' => $date->format('Y-m-d'),
-           'paralelo' => $row[43]
+           'paralelo' => $row[43],
+           'fecha_creacion' => $date->format('Y-m-d')
         ]);
     }
 }
