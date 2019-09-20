@@ -10,12 +10,9 @@
 		<hr>
 		@include('matricular.partials.error')
 		{!! Form::model($matricular, ['route' => ['matricular.update', $matricular->id], 'method' => 'PUT']) !!}
-			
+
 			@include('matricular.partials.form')
-			
+
 		{!! Form::close() !!}
 	</div>
-	<!--<div class="col-xs-12 col-sm-4">
-		@include('matricular.partials.aside')
-	</div>-->
 @endsection

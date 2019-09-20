@@ -1,10 +1,11 @@
 <marquee><strong>AL MOMENTO DE CAMBIAR UNA 01(FALTA INJUSTIFICADA) DEBE CAMBIAR EN LA HORA DESEADA AL CODIGO 02(FALTA JUSTIFICADA) Y ASIGNAR LA JUSTIFICACIÓN.</strong></marquee>
-        <div class="card-deck">
+<div class="card-deck">
                 <div class="card border-primary" style="width: 100rem;">
                     <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 1 </div>
                         <div class="card-body">
 
                           @if($inspeccion->h1 == '01')
+                          <div class="form-row">
       <div class="form-group col-md-4">
           <strong>Hora 1: </strong><br>
            <div class="input-group-prepend">
@@ -29,6 +30,7 @@
       </div>
       @endif
 
+    </div>
                         </div>
                       </div>
 
@@ -270,7 +272,41 @@
                                                     </div>
                                                   </div>
 
-                                                </div>
+                                                </div><br>
+                                                <div class="card-deck">
+                                                    <div class="card border-primary" style="width: 100rem;">
+                                                      <div class="card-header text-center" style="background-color: #008cba;color : white;"><i class="fas fa-clock"></i> HORA: 9 </div>
+                                                        <div class="card-body">
+
+                                                          @if($inspeccion->h8 == '01')
+                                                          <div class="form-group col-md-4">
+                                                              <strong>Hora 9: </strong><br>
+                                                               <div class="input-group-prepend">
+                                                                                               <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                              {!!Form::text('h9', null, ['class' => 'form-control col-md-4'])!!}
+                                                          </div>
+                                                        </div>
+                                                          <div class="form-group col-md-8">
+                                                              <strong>Justificacion hora 9 : </strong><br>
+                                                               <div class="input-group-prepend">
+                                                                                               <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                              {!!Form::text('justificacionh9', null, ['class' => 'form-control col-md-10'])!!}
+                                                          </div>
+                                                        </div>
+                                                          @else
+                                                          <div class="form-group col-md-4">
+                                                                <strong>Hora 9: </strong><br>
+                                                                 <div class="input-group-prepend">
+                                                                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                                {!!Form::text('h9', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
+                                                            </div>
+                                                          </div>
+                                                          @endif
+
+
+                                                        </div>
+                                                      </div>
+                                                  </div>
 
 
 

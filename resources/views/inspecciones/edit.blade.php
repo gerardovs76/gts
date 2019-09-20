@@ -15,7 +15,4 @@
 
 		{!! Form::close() !!}
 	</div>
-	<!--<div class="col-xs-12 col-sm-4">
-		@include('matricular.partials.aside')
-	</div>-->
 @endsection
