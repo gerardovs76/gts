@@ -65,10 +65,18 @@
                 @can('matricular.index-repo-matri')
                 <a class="dropdown-item" href="{{ route('matricular.index-repo-matri') }}">Reportes bloqueados</a>
                 @endcan
+                @can('matricular.total-alumnosCobros')
                 <a class="dropdown-item" href="{{ route('matricular.total-alumnosCobros')}}">Matriculados total cobros</a>
+                @endcan
+                @can('matricular.cas')
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
+                @endcan
+                @can('matricular.total-resumen')
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
+                @endcan
+                @can('matricular.perfil-total')
                 <a class="dropdown-item" href="{{route('matricular.perfil-total')}}">Perfil total</a>
+                @endcan
               </div>
             </li>
             @endcan
@@ -162,7 +170,9 @@
                 @can('notas.libretaColectiva')
                 <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas</a>
                 @endcan
+                @can('notas.reporte-individual-libreta')
                 <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Reporte individual libreta</a>
+                @endcan
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
                 @endcan
@@ -186,10 +196,16 @@
                @can('inspeccion.reporte-individual')
               <a class="dropdown-item" href="{{ route('inspeccion.reporte-individual') }}">Reporte</a>
               @endcan
+              @can('inspeccion.index-inspeccion')
               <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Lista de inspecciones</a>
+              @endcan
+              @can('inspeccion.promedios')
               <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios</a>
+              @endcan
+              @can('inspeccion.alertas')
               <span class="badge badge-danger"></span>
               <a id="alertaMenu" class="dropdown-item" href="{{route('inspeccion.alertas')}}">ALERTA!</a>
+              @endcan
               </div>
             </li>
             @endcan

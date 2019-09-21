@@ -23,6 +23,7 @@
                     <th>ACCIONES</th>
                 </tr>
             </thead>
+            @if(isset($inspe))
             <tbody id="tableid1">
                 <div class="d-none">
                     {{$i=1}}
@@ -48,6 +49,18 @@
                 @endforeach
 
             </tbody>
+            @else
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            @endif
 		</table>
     </div>
 @endsection

@@ -210,7 +210,7 @@ Route::post('abanderados-store', 'NotasController@abanderadoStore')->name('notas
 
 Route::post('abanderados-reportes', 'NotasController@abanderadosExcel')->name('notas.abanderados-reportes');
 
-Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta');
+Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta')->middleware('has.permission:notas.reporte-individual-libreta');
 
 Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividualLibretaStore')->name('notas.reporte-individual-libreta-store');
 //MATRICULACIÓN
@@ -249,13 +249,13 @@ Route::get('matricular-certificado-matricula', 'MatriculacionController@certific
 
 Route::get('certificado-store/{cedula}', 'MatriculacionController@certificadoStore')->name('matricular.certificadoStore');
 
-Route::get('matricular-cas', 'MatriculacionController@cas')->name('matricular.cas');
+Route::get('matricular-cas', 'MatriculacionController@cas')->name('matricular.cas')->middleware('has.permission:matricular.cas');
 
 Route::post('matricular-cas-store', 'MatriculacionController@storeCas')->name('matricular.storeCas');
 
 Route::get('/matricular/reportes/tabla-todos', 'MatriculacionController@reporteMatriculadosTablaTodos');
 
-Route::get('matricular-total-resumen', 'MatriculacionController@totalResumen')->name('matricular.total-resumen');
+Route::get('matricular-total-resumen', 'MatriculacionController@totalResumen')->name('matricular.total-resumen')->middleware('has.permission:matricular.total-resumen');
 
 
 Route::get('/matricular/reportes/matricular-reporte-tabla/{curso}/{paralelo}', 'MatriculacionController@reporteMatriculadosTabla');
@@ -268,7 +268,7 @@ Route::get('matricular-total', 'MatriculacionController@reporteTotal')->name('ma
 
 Route::get('matricular-reporte-total/{curso}/{paralelo}', 'MatriculacionController@reporteTotalStore');
 
-Route::get('total-matricular', 'MatriculacionController@totalAlumnosCobros')->name('matricular.total-alumnosCobros');
+Route::get('total-matricular', 'MatriculacionController@totalAlumnosCobros')->name('matricular.total-alumnosCobros')->middleware('has.permission:matricular.total-alumnosCobros');
 
 Route::post('total-alumnos-store', 'MatriculacionController@totalAlumnosStore')->name('matricular.total-alumnosStore');
 
@@ -291,7 +291,7 @@ Route::get('matricular/reportes/matricular-reporte-antiguos/{curso}/{paralelo}',
 
 Route::get('matricular-lista-total', 'MatriculacionController@listaTotal')->name('matricular.lista-total');
 
-Route::get('matricular-perfil-total', 'MatriculacionController@perfilTotalMatriculado')->name('matricular.perfil-total');
+Route::get('matricular-perfil-total', 'MatriculacionController@perfilTotalMatriculado')->name('matricular.perfil-total')->middleware('has.permission:matricular.perfil-total');
 
 Route::post('matricular-perfil-total-store', 'MatriculacionController@perfilTotalStore')->name('matricular.perfil-total-store');
 
@@ -319,17 +319,18 @@ Route::get('reporte-individual', 'InspeccionesController@reporteIndividual')->na
 Route::get('reporte-colectivo', 'InspeccionesController@reporteColectivo')->name('inspeccion.reporte-colectivo')->middleware('has.permission:inspeccion.reporte-colectivo');
 
 Route::post('repo', 'InspeccionesController@verReportes')->name('inspeccion.repo')->middleware('has.permission:inspeccion.repo');
-Route::get('index-inspecciones', 'InspeccionesController@indexInspeccion')->name('inspeccion.index-inspeccion');
+
+Route::get('index-inspecciones', 'InspeccionesController@indexInspeccion')->name('inspeccion.index-inspeccion')->middleware('has.permission:inspeccion.index-inspeccion');
 
 Route::post('store-inspeccion', 'InspeccionesController@inspeccionStore')->name('inspeccion.store-inspeccion');
 
 Route::get('inspecciones-store/{curso}/{paralelo}/{parcial}/{quimestre}', 'InspeccionesController@buscarInspecciones');
 
-Route::get('inspecciones-promedios', 'InspeccionesController@promedios')->name('inspeccion.promedios');
+Route::get('inspecciones-promedios', 'InspeccionesController@promedios')->name('inspeccion.promedios')->middleware('has.permission:inspeccion.promedios');
 
 Route::post('inspeccion-promedios', 'InspeccionesController@buscarPromedioEstudiantes')->name('inspeccion.promedios-store');
 
-Route::get('inspeccion-alertas', 'InspeccionesController@alertas')->name('inspeccion.alertas');
+Route::get('inspeccion-alertas', 'InspeccionesController@alertas')->name('inspeccion.alertas')->middleware('has.permission:inspeccion.alertas');
 
 Route::get('inspecciones-count-alertas', 'InspeccionesController@countAlertas');
 
@@ -461,7 +462,7 @@ Route::get('inscripciones_excel', 'InscripcionController@buscarReporteInscritosE
 
 Route::post('pdf/constantica-de-estudio', 'MatriculacionController@constanciaDeEstudio')->name('matricular.constancia-de-estudio');
 
-Route::post('pdf/conducta', 'InspeccionesController@conducta')->name('inspeccion.conducta')->middleware('has.permission:inspeccion.conducta');
+Route::post('pdf/conducta', 'InspeccionesController@conducta')->name('inspeccion.conducta');
 
  //PRUEBAS
 Route::get('a', 'AutocompleteController@a');

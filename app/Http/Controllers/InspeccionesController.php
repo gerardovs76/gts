@@ -204,8 +204,7 @@ class InspeccionesController extends Controller
          Carbon::setLocale('es');
     $data = Carbon::now();
         $matriculado = Matriculacion::where('cedula', $request->cedula)->get();
-    $cargos = Cargos::all();
-        $pdf = PDF::loadView('pdf.conducta', compact('matriculado', 'cargos', 'data'));
+        $pdf = PDF::loadView('pdf.conducta', compact('matriculado', 'data'));
 
         return $pdf->download('conducta.pdf');
     }

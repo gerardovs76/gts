@@ -25,7 +25,7 @@
 	</div><br><br>
 
 	<div>
-		<p style="text-align: justify;">QUIEN SUSCRIBE,@foreach($cargos as $cargo){{ $cargo->cargo }} {{ $cargo->nombres }}@endforeach, EN CARACTER DE DIRECTOR(E), DE PAUL DIRAC CON SEDE EN QUITO HACE CONSTAR POR MEDIO DE LA PRESENTE QUE EL ESTUDIANTE,@foreach($matriculado as $m) {{ $m->apellidos }} {{ $m->nombres }}, DOCUMENTO DE IDETIFICACION N° {{ $m->cedula }} CURSA EL: {{ $m->curso }} {{ $m->paralelo }}@endforeach CORRESPONDIENTE AL PERIODO LECTIVO: 2019-2020, DOCUMENTO DE CONSTANCIA QUE SE EXPIDE A SOLICITUD DE LA PARTE INTERESADA.</p><br><br><br><br><br>
+		<p style="text-align: justify;">QUIEN SUSCRIBE, EN CARACTER DE DIRECTOR(E), DE PAUL DIRAC CON SEDE EN QUITO HACE CONSTAR POR MEDIO DE LA PRESENTE QUE EL ESTUDIANTE,@foreach($matriculado as $m) {{ $m->apellidos }} {{ $m->nombres }}, DOCUMENTO DE IDETIFICACION N° {{ $m->cedula }} CURSA EL: {{ $m->curso }} {{ $m->paralelo }}@endforeach CORRESPONDIENTE AL PERIODO LECTIVO: 2019-2020, DOCUMENTO DE CONSTANCIA QUE SE EXPIDE A SOLICITUD DE LA PARTE INTERESADA.</p><br><br><br><br><br>
 
 
 

@@ -24,7 +24,7 @@ class TareasController extends Controller
     {
         $profesor = Auth::user()->name;
         $users = Auth::user()->cedula;
-        if(Auth::user()->isRole('super-admin')){
+        if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
             return view('tareas.index', compact('profesor'));
         }elseif(Auth::user()->isRole('profesor')){
             $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')

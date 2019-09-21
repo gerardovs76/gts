@@ -39,7 +39,7 @@ class NotasController extends Controller
    public function index()
     {
         $users = Auth::user()->cedula;
-        if(Auth::user()->isRole('super-admin'))
+        if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin'))
         {
             return view('notas.index');
         }
@@ -60,7 +60,7 @@ class NotasController extends Controller
     public function editarNotas()
     {
         $users = Auth::user()->cedula;
-        if(Auth::user()->isRole('super-admin'))
+        if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin'))
         {
             return view('notas.editar-notas');
         }
@@ -205,7 +205,7 @@ class NotasController extends Controller
         return back()->with('info', 'Las notas ha sido eliminada exitosamente');
     }
      public function buscarMateriaAlumno($cursos, $paralelo){
-         if(Auth::user()->isRole('super-admin'))
+         if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin'))
          {
          $matriculado = DB::table('materias')
       ->select('materias.materia', 'materias.id')
@@ -216,7 +216,7 @@ class NotasController extends Controller
       return response()->json($matriculado);
 
          }
-         elseif(Auth::user()->isRole('profesor'))
+         elseif(Auth::user()->isRole('profesor') )
          {
         $users = Auth::user()->cedula;
          $matriculado = DB::table('materias_profesores')
@@ -248,7 +248,7 @@ class NotasController extends Controller
     public function verNotasCargadas()
     {
         $users = Auth::user()->cedula;
-        if(Auth::user()->isRole('super-admin')){
+        if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
             return view('notas.vernotas');
         }elseif(Auth::user()->isRole('profesor')){
             $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
@@ -332,7 +332,7 @@ class NotasController extends Controller
     public function verNotasEspeciales()
     {
         $users = Auth::user()->cedula;
-        if(Auth::user()->isRole('super-admin')){
+        if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
             return view('notas.vernotas-especiales');
         }elseif(Auth::user()->isRole('profesor')){
             $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
@@ -638,7 +638,7 @@ class NotasController extends Controller
     }
     public function asignarDatosProfesor()
     {
-        if(Auth::user()->isRole('super-admin')){
+        if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
 
         }
         elseif(Auth::user()->isRole('profesor'))
