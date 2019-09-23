@@ -72,7 +72,6 @@ input[type=number] {
         var parcial = $('#parcial').val();
         var quimestre = $('#quimestre').val();
         $.get('mostrar/datos/inspeccion/'+ curso + '/' + paralelo , function(data) {
-            console.log(data);
             $('#tableid').empty();
         $.each(data, function(idx, opt) {
             $('#guardar').addClass("d-block");

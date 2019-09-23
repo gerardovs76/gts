@@ -34,6 +34,15 @@
                                   @elseif($rol->name == 'Profesor')
                                   <h2 class="text-center">{{ $rol->name }}</h2>
                                   <h2 class="text-center"><i class="fas fa-user-tie"></i></h2>
+                                  @elseif($rol->name == 'Inspector')
+                                  <h2 class="text-center">{{ $rol->name }}</h2>
+                                  <h2 class="text-center"><i class="fas fa-search"></i></h2>
+                                  @elseif($rol->name == 'Medico')
+                                  <h2 class="text-center">{{ $rol->name }}</h2>
+                                  <h2 class="text-center"><i class="fas fa-user-md"></i></h2>
+                                  @elseif($rol->name == 'Dece')
+                                  <h2 class="text-center">{{ $rol->name }}</h2>
+                                  <h2 class="text-center"><i class="fas fa-user-shield"></i></h2>
                                   @elseif($rol->name == 'Suspendido')
                                   <h2 class="text-center">{{ $rol->name }}</h2>
                                   <h2 class="text-center"><i class="fas fa-times"></i></h2>

@@ -429,7 +429,7 @@ class MatriculacionController extends Controller
         $date = Carbon::now();
         $date->format('Y-m-d');
 
-        $certificado = Matriculacion::where('cedula', $cedula)->select('apellidos', 'nombres', 'curso', 'paralelo', 'id')->groupBy('matriculados.id')->get();
+        $certificado = Matriculacion::where('cedula', $cedula)->select('apellidos', 'nombres', 'curso', 'paralelo', 'id')->orderBy('apellidos')->groupBy('matriculados.id')->get();
         $pdf = PDF::loadView('pdf.certificado-matricula', compact('certificado', 'date'));
 
         return $pdf->download('matriculados-bloqueados.pdf');
@@ -442,7 +442,7 @@ class MatriculacionController extends Controller
     {
         $curso = $request->curso;
         $paralelo = $request->paralelo;
-        $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'inscripciones.convencional', 'inscripciones.movil', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.fecha_nacimiento', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->groupBy('matriculados.id')->get();
+        $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'inscripciones.convencional', 'inscripciones.movil', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.fecha_nacimiento', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->orderBy('matriculados.apellidos')->groupBy('matriculados.id')->get();
         switch($request->printButton){
             case 'excel':
             return Excel::download(new ReporteCas($curso, $paralelo), 'reporte-cas.xls');

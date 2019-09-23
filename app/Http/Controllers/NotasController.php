@@ -241,6 +241,7 @@ class NotasController extends Controller
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"), 'matriculados.id as id')
         ->where('curso', 'LIKE', '%'.$cursos.'%')
         ->where('paralelo', 'LIKE', '%'.$paralelo.'%')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->get();
 
@@ -309,6 +310,7 @@ class NotasController extends Controller
         ->where('notas.quimestre', 'LIKE', '%'.$quimestre.'%')
         ->where('notas.parcial', 'LIKE', '%'.$parcial.'%')
         ->where('notas.materias_id', 'LIKE', '%'.$materia.'%')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -362,6 +364,7 @@ class NotasController extends Controller
         ->where('notas.quimestre', 'LIKE', '%'.$quimestre.'%')
         ->where('notas.parcial', 'LIKE', '%'.$parcial.'%')
         ->where('notas.materias_id', 'LIKE', '%'.$materia.'%')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -387,6 +390,7 @@ class NotasController extends Controller
         ->where('notas.parcial',$parcial)
         ->where('notas.materias_id',$materia)
         ->havingRaw('nota_final <= 7')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -455,6 +459,7 @@ class NotasController extends Controller
         ->where('supletorios.quimestre', 'LIKE', '%'.$quimestre.'%')
         ->where('supletorios.parcial', 'LIKE', '%'.$parcial.'%')
         ->where('supletorios.materias_id', 'LIKE', '%'.$materia.'%')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -495,6 +500,7 @@ class NotasController extends Controller
       ->join('matriculados', 'remediales.matriculados_id', '=', 'matriculados.id')
       ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),
        DB::raw("(remediales.nota_remedial + remediales.promedio_supletorio) / 2 as promedio_remedial"), 'remediales.promedio_supletorio as promedio_supletorio', 'remediales.nota_remedial as nota_remedial')
+       ->orderBy('matriculados.apellidos')
       ->distinct()
       ->groupBy('matriculados.id')
       ->get();
@@ -531,6 +537,7 @@ class NotasController extends Controller
         ->where('remediales.quimestre', 'LIKE', '%'.$quimestre.'%')
         ->where('remediales.parcial', 'LIKE', '%'.$parcial.'%')
         ->where('remediales.materias_id', 'LIKE', '%'.$materia.'%')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -568,6 +575,7 @@ class NotasController extends Controller
       ->join('matriculados', 'gracias.matriculados_id', '=', 'matriculados.id')
       ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),
       DB::raw("(gracias.nota_gracia + gracias.promedio_remedial) / 2 as promedio_gracia"), 'gracias.promedio_remedial as promedio_remedial', 'gracias.nota_gracia as nota_gracia', 'matriculados.id as id')
+      ->orderBy('matriculados.apellidos')
       ->distinct()
       ->groupBy('matriculados.id')
       ->get();
@@ -707,7 +715,7 @@ class NotasController extends Controller
     public function verNotasAlumnos()
     {
         $user = Auth::user()->cedula;
-        $matriculados = Matriculacion::where('cedula', $user)->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'cedula')->get();
+        $matriculados = Matriculacion::where('cedula', $user)->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'cedula')->orderBy('matriculados.apellidos')->get();
         $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('matriculados.cedula', $user)->pluck('materias.materia', 'materias.id');
 
         return view('notas.ver-notas-alumnos', compact('matriculados', 'materias'));
@@ -724,6 +732,7 @@ class NotasController extends Controller
         ->where('notas.quimestre',$quimestre)
         ->where('notas.parcial',$parcial)
         ->where('notas.materias_id',$materia)
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -750,6 +759,7 @@ class NotasController extends Controller
         ->where('notas.parcial',$parcial)
         ->where('notas.materias_id',$materia)
         ->havingRaw('nota_final <= 7')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->groupBy('matriculados.id')
         ->get();
@@ -791,6 +801,7 @@ class NotasController extends Controller
       ->where('recuperacion.materias_id', $materia)
       ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),
        DB::raw("(recuperacion.nota_recuperacion + recuperacion.promedio_notas) / 2 as promedio_recuperacion"), 'recuperacion.promedio_notas as promedio_notas', 'recuperacion.nota_recuperacion as nota_recuperacion')
+       ->orderBy('matriculados.apellidos')
       ->distinct()
       ->groupBy('matriculados.id')
       ->get();

@@ -197,7 +197,7 @@
               <a class="dropdown-item" href="{{ route('inspeccion.reporte-individual') }}">Leccionario</a>
               @endcan
               @can('inspeccion.index-inspeccion')
-              <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Lista de inspecciones</a>
+              <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Justificaciones</a>
               @endcan
               @can('inspeccion.promedios')
               <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios</a>

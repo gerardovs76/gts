@@ -191,6 +191,7 @@ class InspeccionesController extends Controller
         ->where('matriculados.curso', 'LIKE', '%'.$curso.'%')
         ->where('matriculados.paralelo', 'LIKE', '%'.$paralelo.'%')
         ->select(DB::raw('CONCAT(matriculados.apellidos," ", matriculados.nombres) as nombres'), 'matriculados.id as id')
+        ->orderBy('matriculados.apellidos')
         ->distinct()
         ->get();
         return response()->json($matriculado);
@@ -237,6 +238,7 @@ class InspeccionesController extends Controller
         ->where('inspecciones.parcial', $parcial)
         ->where('inspecciones.quimestre', $quimestre)
         ->select('matriculados.nombres', 'matriculados.apellidos', 'matriculados.curso', 'matriculados.paralelo', 'inspecciones.id', 'inspecciones.fecha','inspecciones.h1', 'inspecciones.h2' , 'inspecciones.h3' , 'inspecciones.h4', 'inspecciones.h5' , 'inspecciones.h6' , 'inspecciones.h7' , 'inspecciones.h8', 'inspecciones.h9')
+        ->orderBy('matriculados.apellidos')
         ->get();
         return response()->json($inspecciones);
     }
