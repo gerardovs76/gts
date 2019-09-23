@@ -190,7 +190,12 @@ table#mitabla3 td {
 <body>
 	<header>
 			<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
-			<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
+            <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
 		<table class="table table-sm" id="mitabla">
 				<tbody>
 			@foreach($matriculados as $matriculado)
