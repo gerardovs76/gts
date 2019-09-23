@@ -12,7 +12,7 @@
 </div>
 </div>
 <div class="form-group col-md-8">
-<strong>Justificacion hora 2 : </strong><br>
+<strong>Justificacion hora 1: </strong><br>
 <div class="input-group-prepend">
                      <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
 {!!Form::text('justificacionh1', null, ['class' => 'form-control col-md-10'])!!}
@@ -20,7 +20,7 @@
 </div>
 @else
 <div class="form-group col-md-4">
-<strong>Hora 2: </strong><br>
+<strong>Hora 1: </strong><br>
 <div class="input-group-prepend">
                        <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
 {!!Form::text('h1', null, ['class' => 'form-control col-md-4'])!!}
@@ -121,7 +121,7 @@
     </div>
       @else
       <div class="form-group col-md-4">
-            <strong>Hora 3: </strong><br>
+            <strong>Hora 4: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
             {!!Form::text('h4', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
@@ -255,7 +255,7 @@
                                                             <strong>Hora 8: </strong><br>
                                                              <div class="input-group-prepend">
                                                                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                            {!!Form::text('h8', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
+                                                            {!!Form::text('h8', null, ['class' => 'form-control col-md-4'])!!}
                                                         </div>
                                                       </div>
                                                       @endif
@@ -289,7 +289,7 @@
                                                                 <strong>Hora 9: </strong><br>
                                                                  <div class="input-group-prepend">
                                                                                                  <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                                {!!Form::text('h9', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
+                                                                {!!Form::text('h9', null, ['class' => 'form-control col-md-4'])!!}
                                                             </div>
                                                           </div>
                                                           @endif
