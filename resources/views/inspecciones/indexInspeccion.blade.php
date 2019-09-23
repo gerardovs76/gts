@@ -73,7 +73,7 @@
                                            <th>H7</th>
                                            <th>H8</th>
                                            <th>H9</th>
-                                           <th>JUSTIFICACIÓN</th>
+                                           <th>JUSTIFICACIÓN/EDICIÓN</th>
                                        </tr>
                                    </thead>
 

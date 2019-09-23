@@ -19,12 +19,13 @@
                 </div>
 
                 <div class="panel-body">
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover" id="table">
                         <thead>
                             <tr>
-                                <th width="10px">ID</th>
-                                <th>Nombre</th>
-                                <th colspan="3">&nbsp;</th>
+                                <th>ID</th>
+                                <th>NOMBRES</th>
+                                <th>EDITAR</th>
+                                <th>ELIMINAR</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,19 +33,14 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
-                                {{-- @can('users.show')
-   --}}
-                               {{--  @endcan
-             --}}                    {{-- @can('users.edit')
-   --}}                              <td width="10px">
+
+                       <td width="10px">
                                     <a href="{{ route('users.edit', $user->id) }}"
                                     class="btn btn-sm btn-primary">
                                     <i class="far fa-edit"></i>
                                         EDITAR
                                     </a>
                                 </td>
-                               {{--  @endcan
-             --}}                    {{-- @can('users.destroy') --}}
                                 <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id],
                                     'method' => 'DELETE']) !!}
@@ -54,8 +50,7 @@
                                         </button>
                                     {!! Form::close() !!}
                                 </td>
-                              {{--   @endcan
-            --}}                 </tr>
+                           </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -65,4 +60,14 @@
         </div>
     </div>
 </div>
+<script>
+        $(document).ready(function() {
+          $('#table').DataTable({
+               "language": {
+                      "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                  },
+                  "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, 1000] ]
+          });
+      } );
+       </script>
 @endsection
