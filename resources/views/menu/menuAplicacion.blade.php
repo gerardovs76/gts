@@ -200,7 +200,7 @@
               <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Justificaciones</a>
               @endcan
               @can('inspeccion.promedios')
-              <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios</a>
+              <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios resumen</a>
               @endcan
               @can('inspeccion.alertas')
               <span class="badge badge-danger"></span>
