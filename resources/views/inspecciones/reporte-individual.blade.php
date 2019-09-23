@@ -36,13 +36,21 @@
    									{!! Form::button('<i class="fas fa-print"></i> DESCARGAR', ['class' => 'btn btn-primary',  'id' => 'verNotas', 'type' => 'submit']) !!}
 								</div>
 
-							</div>
+                                {{ Form::close() }}
 
-						</div>
-					</div>
 
+                    {!!Form::open(['route' => 'inspeccion.leccionarioGeneral', 'method' => 'GET'])!!}
+                    <div class="form-group" style="float:right; font-weight: bold;">
+                        <strong><em>Imprimir leccionario general</em></strong><br>
+                        {!!Form::button('<i class="fas fa-print"></i> IMPRIMIR', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
+                    </div>
+                    {!!Form::close()!!}
+
+                </div>
+
+            </div>
+        </div>
 
 	</div>
 
-	  {{ Form::close() }}
 @endsection

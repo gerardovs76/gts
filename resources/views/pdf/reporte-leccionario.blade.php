@@ -25,7 +25,7 @@
   	}
   	#tablaGrande
   	{
-  		font-size: 12px;
+  		font-size: 10px;
   	}
   	#textoF{
   		font-size: 10px;
@@ -38,7 +38,7 @@
   	}
   #tableGrande{
   font-size: 8px;
-  
+
   }
   #conBordes{
   	border: 1px solid black;
@@ -46,14 +46,14 @@
   #sinBordes{
   	border: 0;
   }
-  	
+
   </style>
 </head>
 
 <body>
 	<div style="float: right;" id="tabla1">
 	<h5 id="tituloCodigo">CODIGO DISCIPLINARIOS</h5>
-	<table border="1" width="0">	
+	<table border="1" width="0">
 		<thead>
 			<tr>
 				<th>1</th>
@@ -86,7 +86,7 @@
 			<tr>
 				<th>8</th>
 				<th>INDISCIPLINA</th>
-			</tr>	
+			</tr>
 		</thead>
 		<tbody>
 		</tbody>
@@ -106,18 +106,17 @@
 
 	<div id="firma">
 		<p>-----------------------------------------------</p>
-		<p id="textoF">TUTOR DE CURSO </p>		
+		<p id="textoF">TUTOR DE CURSO </p>
 	</div><br><br>
 
 	<div id="firma">
 		<p>-----------------------------------------------</p>
-		<p id="textoFF">INSPECCIÓN GENERAL</p>		
+		<p id="textoFF">INSPECCIÓN GENERAL</p>
 	</div>
 
-	
+
 </div>
-    <div style="page-break-inside: avoid;" id="tableGrande">
-  <table border="1" width="830px" height="0">
+  <table border="1" width="75%" style="font-size: 7px; position: absolute;">
     <thead>
       <tr>
         <th>No.</th>
@@ -149,12 +148,12 @@
       	<th>Asis.</th>
       	<th>Cod.</th>
       	<th>Asis.</th>
-      	<th>Cod.</th><br>
-      	
+      	<th>Cod.</th>
+
       </tr>
     </thead>
     <tbody>
-    
+
 
     	@for($i= 1; $i<count($matriculados); $i++)
 
@@ -179,7 +178,7 @@
         <td>&nbsp;</td>
         </tr>
         @endfor
-       
+
     </tbody>
     <thead>
       <tr>
@@ -208,6 +207,5 @@
       </tr>
     </thead>
 </table>
-</div>
 </body>
 </html>

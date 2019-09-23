@@ -27,7 +27,7 @@ table#mitabla td {
 </head>
 <body>
 <header style="text-align: center;"><h2>REPORTE MATRICULADOS INSCRITOS A UN CURSO: <BR></h2></header>
-	<table id="mitabla">
+	<table >
 		<thead>
 			<tr>
 				<th>NOMBRES</th>

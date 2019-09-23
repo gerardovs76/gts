@@ -217,9 +217,9 @@ class InspeccionesController extends Controller
     {
         $curso = $request->curso;
         $matriculados = DB::table('matriculados')->where('curso', $curso)->select('*')->distinct()->get();
-       $pdf = PDF::loadView('pdf.reporte-individual', compact('matriculados', 'cargos', 'data'))->setPaper('a4', 'landscape');
+       $pdf = PDF::loadView('pdf.reporte-leccionario', compact('matriculados', 'cargos', 'data'))->setPaper('a4', 'landscape');
 
-        return $pdf->download('repo.pdf');
+        return $pdf->download('leccionario.pdf');
     }
 
     public function indexInspeccion()
@@ -900,6 +900,13 @@ class InspeccionesController extends Controller
 
     }
 
+    public function LeccionarioInspeccionGeneral()
+    {
+        $pdf = PDF::loadView('pdf.leccionario-inspeccionGeneral')->setPaper('a4', 'landscape');
+
+        return $pdf->download('leccionario-inspeccion-general.pdf');
+
+    }
 
 
 }

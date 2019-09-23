@@ -334,6 +334,8 @@ Route::get('inspeccion-alertas', 'InspeccionesController@alertas')->name('inspec
 
 Route::get('inspecciones-count-alertas', 'InspeccionesController@countAlertas');
 
+Route::get('leccionario-inspeccion-general', 'InspeccionesController@LeccionarioInspeccionGeneral')->name('inspeccion.leccionarioGeneral');
+
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');
