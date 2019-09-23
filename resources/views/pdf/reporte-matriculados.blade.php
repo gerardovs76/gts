@@ -29,7 +29,7 @@ table#mitabla td {
 		<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
 		<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 <header style="text-align: center;"><h2>REPORTE MATRICULADOS INSCRITOS A UN CURSO: <BR></h2></header>
-	<table >
+	<table id="mitabla">
 		<thead>
 			<tr>
 				<th>NOMBRES</th>
