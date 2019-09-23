@@ -11,15 +11,15 @@
         </h2>
         </div>
         <hr>
-        
+        @include('users.partials.info')
             <div class="panel panel-primary">
                 <div class="panel-heading text-center">ROLES</div>
 
-                <div class="panel-body">                    
+                <div class="panel-body">
                     {{ Form::open(['route' => 'roles.store']) }}
 
                         @include('roles.partials.form')
-                        
+
                     {{ Form::close() }}
                 </div>
             </div>

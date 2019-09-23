@@ -2,6 +2,14 @@
 	<strong>Nombre: <br></strong>
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
+<div class="form-group">
+    <strong>Cedula: <br></strong>
+    {{Form::text('cedula', null, ['class' => 'form-control', 'id' => 'cedula'])}}
+</div>
+<div class="form-group">
+    <strong>Correo Electronico: </strong>
+    {{Form::email('email', null, ['class' => 'form-control', 'id' => 'email'])}}
+</div>
 <hr>
 <h3><strong>Lista de roles:</strong></h3>
 <div class="form-group">
@@ -18,5 +26,5 @@
     </ul>
 </div>
 <div class="form-group">
-	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
+	{{ Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) }}
 </div>
