@@ -121,6 +121,30 @@
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                             </div>
                         </div>
+                        @elseif(!empty($notas->conducta))
+                    <div class="form-row">
+                            <div class="form-group col-sm-2">
+                                <strong>Conducta: </strong><br>
+                                {!!Form::text('conducta', null, ['class' => 'form-control col-md-3'])!!}
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <strong>Nro. parcial: </strong><br>
+                                {!!Form::text('parcial', null, ['class' => 'form-control col-md-2', 'readonly'])!!}
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <strong>Nro. quimestre: </strong><br>
+                                {!!Form::text('quimestre', null, ['class' => 'form-control col-md-2', 'readonly'])!!}
+                            </div>
+                            <div class="form-group col-md-2">
+                                <strong>Descripcion: </strong><br>
+                                {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
+                                {!!Form::hidden('matriculados_id')!!}
+                                {!!Form::hidden('materias_id')!!}
+                            </div>
+                            <div class="form-group col-md-12">
+                                {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+                            </div>
+                        </div>
         @endif
     </div>
 </div>

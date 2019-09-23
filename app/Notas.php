@@ -20,7 +20,8 @@ class Notas extends Model
         'parcial',
         'numero_tarea',
         'quimestre',
-        'conducta'
+        'conducta',
+        'autoridad_id'
     ];
 
 }

@@ -105,6 +105,7 @@ class NotasController extends Controller
                 $nota->parcial = $parcial[$key];
                 $nota->quimestre = $quimestre[$key];
                 $nota->conducta = $conducta[$key];
+                $nota->autoridad_id = auth()->user()->id;
                 if(!empty($nota_ta))
                 {
                     $nota->numero_tarea_ta = '1';
@@ -176,6 +177,7 @@ class NotasController extends Controller
         $materias_id = $request->materias_id;
         $parcial = $request->parcial;
         $quimestre = $request->quimestre;
+        $conducta = $request->conducta;
 
             $nota = Notas::find($id);
             $nota->nota_ta = $nota_ta;
@@ -188,6 +190,7 @@ class NotasController extends Controller
             $nota->materias_id = $materias_id;
             $nota->parcial = $parcial;
             $nota->quimestre = $quimestre;
+            $nota->conducta = $conducta;
             $nota->save();
 
         return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
@@ -572,66 +575,6 @@ class NotasController extends Controller
       return response()->json($gracia);
 
     }
-
-    public function notaEspeciales()
-    {
-      return view('notas.notaEspecial');
-    }
-
-    public function buscarMateriaEspecial(Request $request, $curso, $especialidad, $paralelo)
-    {
-      $curso = $request->curso;
-      $especialidad = $request->especialidad;
-      $paralelo = $request->paralelo;
-
-
-      $materias = DB::table('materias_especiales')
-      ->select('materia', 'id')
-      ->where('curso', 'LIKE', '%'.$curso.'%')
-      ->where('especialidad', 'LIKE', '%'.$especialidad.'%')
-      ->where('paralelo', 'LIKE', '%'.$paralelo)
-      ->distinct()
-      ->get();
-
-      return response()->json($materias);
-
-    }
-
-    public function materiaEspecialStore(Request $request)
-    {
-
-            $nota_ta = $request->nota_ta;
-            $nota_ti = $request->nota_ti;
-            $nota_tg = $request->nota_tg;
-            $nota_le = $request->nota_le;
-            $nota_ev = $request->nota_ev;
-            $descripcion = $request->descripcion;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-
-            foreach ($request->descripcion as $key => $value) {
-                $nota = new NotasEspeciales;
-                $nota->nota_ta = $nota_ta[$key];
-                $nota->nota_ti = $nota_ti[$key];
-                $nota->nota_tg = $nota_tg[$key];
-                $nota->nota_le = $nota_le[$key];
-                $nota->nota_ev = $nota_ev[$key];
-                $nota->descripcion = $descripcion[$key];
-                $nota->matriculados_id = $matriculados_id[$key];
-                $nota->materias_id = $materias_id[$key];
-                $nota->parcial = $parcial[$key];
-                $nota->quimestre = $quimestre[$key];
-                $nota->save();
-
-              }
-
-
-              return redirec()->route('notas.especiales')->wiht('info', 'La nota especial se ha agregado con exito');
-
-    }
-
     public function notasPorcentaje()
     {
       return view('notas.notas-porcentaje');
