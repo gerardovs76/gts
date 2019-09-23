@@ -124,7 +124,7 @@
             <strong>Hora 4: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h4', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
+            {!!Form::text('h4', null, ['class' => 'form-control col-md-4'])!!}
         </div>
       </div>
       @endif
@@ -157,7 +157,7 @@
             <strong>Hora 5: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h5', null, ['class' => 'form-control col-md-4', 'readonly'])!!}
+            {!!Form::text('h5', null, ['class' => 'form-control col-md-4'])!!}
         </div>
       </div>
       @endif
