@@ -91,7 +91,7 @@
                 $.get('inspecciones-store/'+curso+'/'+paralelo+'/'+parcial+'/'+quimestre, function(response){
                     $.each(response, function(index, obj){
                         console.log(obj);
-                        $('#table').append('<tbody><tr><td>'+obj.apellidos+' '+obj.nombres+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td><strong>'+obj.fecha+'</strong></td><td>'+obj.h1+'</td><td>'+obj.h2+'</td><td>'+obj.h3+'</td><td>'+obj.h4+'</td><td>'+obj.h5+'</td><td>'+obj.h6+'</td><td>'+obj.h7+'</td><td>'+obj.h8+'</td><td>'+obj.h9+'</td><td><a href="inspeccion/'+obj.id+'/edit" class="btn btn-warning btn-sm"><i class="fa fa-paper-plane"></i> JUSTIFICACIÓN</a></td></tr></tbody>');
+                        $('#table').append('<tbody><tr><td>'+obj.apellidos+' '+obj.nombres+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td><strong>'+obj.fecha+'</strong></td><td>'+obj.h1+'</td><td>'+obj.h2+'</td><td>'+obj.h3+'</td><td>'+obj.h4+'</td><td>'+obj.h5+'</td><td>'+obj.h6+'</td><td>'+obj.h7+'</td><td>'+obj.h8+'</td><td>'+obj.h9+'</td><td><a href="inspeccion/'+obj.id+'/edit" class="btn btn-warning btn-sm"><i class="fa fa-paper-plane"></i> JUSTIFICACIÓN/EDICIÓN</a></td></tr></tbody>');
                     });
 
                 });
