@@ -5,7 +5,7 @@
 
         @if($inspeccion->h2 == '01')
 <div class="form-group col-md-4">
-<strong>Hora 2: </strong><br>
+<strong>Hora 1: </strong><br>
 <div class="input-group-prepend">
                      <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
 {!!Form::text('h1', null, ['class' => 'form-control col-md-4'])!!}
