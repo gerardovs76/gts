@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $users = User::all();
         return view('users.index', compact('users'));
 
     }
@@ -33,7 +33,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
- 
+
 
     /**
      * Show the form for editing the specified resource.
@@ -100,8 +100,8 @@ class UserController extends Controller
         return view('users.importarData');
     }
       public function importUsers(Request $request)
-    {     
-        
+    {
+
        Excel::import(new InscritosUsuarios, $request->import_file);
 
        return back()->with('info', 'Se ha cargado la informacion correctamente');
@@ -130,11 +130,11 @@ class UserController extends Controller
             ->where('cedula', $cedula)
             ->select('*')
             ->get();
-            
-           
+
+
 
            return response()->json($usuarioA);
-      
+
         }
-       
+
 }
