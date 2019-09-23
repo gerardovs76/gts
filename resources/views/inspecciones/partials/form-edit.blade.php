@@ -23,7 +23,7 @@
 <strong>Hora 2: </strong><br>
 <div class="input-group-prepend">
                        <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-{!!Form::text('h1', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+{!!Form::text('h1', null, ['class' => 'form-control col-md-4'])!!}
 </div>
 </div>
 @endif
@@ -56,7 +56,7 @@
             <strong>Hora 2: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h2', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+            {!!Form::text('h2', null, ['class' => 'form-control col-md-4'])!!}
         </div>
       </div>
       @endif
@@ -91,7 +91,7 @@
             <strong>Hora 3: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h3', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+            {!!Form::text('h3', null, ['class' => 'form-control col-md-4'])!!}
         </div>
       </div>
       @endif
@@ -189,7 +189,7 @@
             <strong>Hora 6: </strong><br>
              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!!Form::text('h6', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+            {!!Form::text('h6', null, ['class' => 'form-control col-md-4'])!!}
         </div>
       </div>
       @endif
@@ -223,7 +223,7 @@
                                                         <strong>Hora 7: </strong><br>
                                                          <div class="input-group-prepend">
                                                                                          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                        {!!Form::text('h7', null, ['class' => 'form-control col-md-4', 'readonly' => 'true'])!!}
+                                                        {!!Form::text('h7', null, ['class' => 'form-control col-md-4'])!!}
                                                     </div>
                                                   </div>
                                                   @endif

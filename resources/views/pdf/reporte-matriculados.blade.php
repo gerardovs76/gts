@@ -9,17 +9,17 @@
     margin: 0 auto;
     font-size: 12px;
 }
- 
+
 table#mitabla th {
     font-weight: bold;
     background-color: #E1E1E1;
     padding:5px;
 }
- 
+
 table#mitabla tbody tr:hover td {
     background-color: #F3F3F3;
 }
- 
+
 table#mitabla td {
     padding: 5px 10px;
 }
@@ -51,7 +51,9 @@ table#mitabla td {
 			<td>{{ $matriculado->curso }}</td>
 			<td>{{ $matriculado->paralelo }}</td>
 			<td>{{ $matriculado->tipo_estudiante }}</td>
-			<td>{{ $matriculado->codigo }}</td>
+			<td>
+
+{{ $matriculado->codigo }}</td>
 		</tr>
 			@endforeach
 		</tbody>
@@ -59,3 +61,10 @@ table#mitabla td {
 
 </body>
 </html>
+
+
+
+
+
+
+

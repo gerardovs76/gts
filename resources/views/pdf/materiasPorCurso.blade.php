@@ -9,17 +9,17 @@
     margin: 0 auto;
     font-size: 12px;
 }
- 
+
 table#mitabla th {
     font-weight: bold;
     background-color: #E1E1E1;
     padding:5px;
 }
- 
+
 table#mitabla tbody tr:hover td {
     background-color: #F3F3F3;
 }
- 
+
 table#mitabla td {
     padding: 5px 10px;
 }
@@ -40,7 +40,7 @@ table#mitabla td {
 				<th>CURSO</th>
 				<th>NOMBRE</th>
 				<th>PARALELO</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -56,3 +56,5 @@ table#mitabla td {
 
 </body>
 </html>
+
+
