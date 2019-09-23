@@ -21,7 +21,8 @@ table#mitabla td {
 }
 	</style>
 <body>
-    <img src="images/lp.PNG" width="100" height="100" align="right">
+        <img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+        <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
     <h5 align="left"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h5>
     <p><strong style="font-size: 6;">Fecha de impresión: {{$date}}</strong></p>
     <h6><p><strong style="font-size: 8; margin-left: 20px">Listado Todos los cursos Todos los paralelos</strong><strong style="font-size: 8; margin-left: 600px;">Total estudiantes: {{$totM + $totF}}</strong></p></h6>

@@ -26,6 +26,8 @@ table#mitabla td {
 	</style>
 </head>
 <body>
+		<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+		<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 	<h2 style="text-align: center;">MALLA CURRICULAR</h2>
 	<table id="mitabla">
 		<thead>

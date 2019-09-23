@@ -26,6 +26,8 @@ table#mitabla td {
 	</style>
 </head>
 <body>
+		<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+		<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 
 	<table id="mitabla">
 		<thead>

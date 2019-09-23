@@ -189,7 +189,8 @@ table#mitabla3 td {
 </head>
 <body>
 	<header>
-		<img src="{{ asset('images/logo-pauld.png') }}" width="100px" height="100px"> 
+			<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+			<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 		<table class="table table-sm" id="mitabla">
 				<tbody>
 			@foreach($matriculados as $matriculado)

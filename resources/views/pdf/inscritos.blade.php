@@ -27,7 +27,8 @@ table#mitabla tbody tr:hover td {
 	</style>
 </head>
 <body>
-       <img src="images/lp.PNG" alt="" height="100" width="100" class="center">
+        <img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+        <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 
         <h2 align="center">Sistema de inscripcion Paul Dirac</h2>
         <br><br><br>
