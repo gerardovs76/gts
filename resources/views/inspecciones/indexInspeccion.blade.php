@@ -5,7 +5,7 @@
 
 		<div style="background-color: #008cba; padding: 7px;">
 		<h2 class="text-center" style="color: #fff; font-family: Roboto;">
-			LISTA DE INSPECCIONES
+			JUSTIFICACIÓN
 		</h2>
         </div>
 
