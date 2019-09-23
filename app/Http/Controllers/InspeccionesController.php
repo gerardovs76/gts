@@ -505,7 +505,7 @@ class InspeccionesController extends Controller
             ->where('h9', '04');
 
         }])
-        ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
+        ->where('curso', $curso)->where('paralelo', $paralelo)->orderBy('matriculados.apellidos')->groupBy('matriculados.id')->get();
 
       if($inspe->count() > 0)
       {
