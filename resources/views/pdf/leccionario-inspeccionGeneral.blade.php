@@ -10,7 +10,8 @@
         }
         table tr, td, th{
             border: 1px solid black;
-            padding : 10px;
+            padding : 7px;
+            height : 30px;
             font-weight: bold;
         }
         #firmas{
@@ -43,7 +44,7 @@
         </div>
         <br>
         <br>
-<table width="80%" id="tabla1" style="margin-top: 5px; font-size: 12px; border-width:1px; border-style:solid;" >
+<table width="80%" height="130%" id="tabla1" style="margin-top: 5px; font-size: 12px; border-width:1px; border-style:solid;" >
     <thead>
         <tr style="border-width:1px; border-style:solid;">
             <th>
