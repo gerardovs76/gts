@@ -18,6 +18,7 @@
             <th><strong>APELLIDOS</strong></th>
             <th><strong>CURSO</strong></th>
             <th><strong>PARALELO</strong></th>
+            <th><strong>FECHA NACIMIENTO</strong></th>
             <th><strong>REPRESENTANTE</strong></th>
             <th><strong>NOMBRES REPRESETANTE</strong></th>
             <th><strong>CEDULA REPRESENTANTE</strong></th>
@@ -36,6 +37,7 @@
             <td><strong>{{$matri->apellidos}}</strong></td>
             <td><strong>{{$matri->curso}}</strong></td>
             <td><strong>{{$matri->paralelo}}</strong></td>
+            <td><strong>{{$matri->fecha_nacimiento}}</strong></td>
             <td><strong>{{$matri->representante}}</strong></td>
             <td><strong>{{$matri->nombres_representante}}</strong></td>
             <td><strong>{{$matri->cedrepresentante}}</strong></td>

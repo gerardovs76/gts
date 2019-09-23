@@ -40,7 +40,7 @@ table#mitabla td {
                 <th><strong>Apellidos</strong></th>
                 <th><strong>Curso</strong></th>
                 <th><strong>Paralelo</strong></th>
-                <th><strong>Fecha nac</strong></th>
+                <th><strong>Fecha nacimiento</strong></th>
                 <th><strong>Representante</strong></th>
                 <th><strong>Nombres Representante</strong></th>
                 <th><strong>Cedula Representante</strong></th>
