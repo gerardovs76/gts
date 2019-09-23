@@ -65,27 +65,11 @@
 			</tr>
 			<tr>
 				<th>3</th>
-				<th>ATRASO</th>
-			</tr>
-			<tr>
-				<th>4</th>
-				<th>FUGA</th>
-			</tr>
-			<tr>
-				<th>5</th>
 				<th>MAL UNIFORMADO</th>
 			</tr>
 			<tr>
-				<th>6</th>
-				<th>PRESENTACIÓN PERSONAL</th>
-			</tr>
-			<tr>
-				<th>7</th>
-				<th>LLAMADO ATENCIÓN</th>
-			</tr>
-			<tr>
-				<th>8</th>
-				<th>INDISCIPLINA</th>
+				<th>4</th>
+				<th>PRESENTACION PERSONAL</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -116,19 +100,20 @@
 
 
 </div>
-  <table border="1" width="75%" style="font-size: 7px; position: absolute;">
+  <table border="1" width="80%" style="font-size: 7px; position: absolute;">
     <thead>
       <tr>
         <th>No.</th>
         <th>NOMINA ESTUDIANTES</th>
         <th colspan="2">1 era.</th>
-        <th colspan="2">2 era.</th>
+        <th colspan="2">2 da.</th>
         <th colspan="2">3 era.</th>
-        <th colspan="2">4 era.</th>
-        <th colspan="2">5 era.</th>
-        <th colspan="2">6 era.</th>
-        <th colspan="2">7 era.</th>
-        <th colspan="2">8 era.</th>
+        <th colspan="2">4 ta.</th>
+        <th colspan="2">5 ta.</th>
+        <th colspan="2">6 ta.</th>
+        <th colspan="2">7 ma.</th>
+        <th colspan="2">8 va.</th>
+        <th colspan="2">9 na.</th>
       </tr>
       <tr>
       	<th>&nbsp;</th>
@@ -148,6 +133,8 @@
       	<th>Asis.</th>
       	<th>Cod.</th>
       	<th>Asis.</th>
+        <th>Cod.</th>
+        <th>Asis.</th>
       	<th>Cod.</th>
 
       </tr>
@@ -160,6 +147,8 @@
       <tr>
         <td>{{ $i }}</td>
         <td>{{ $matriculados[$i]->apellidos }} {{ $matriculados[$i]->nombres }}</td><br>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -192,10 +181,12 @@
         <th colspan="2">&nbsp;</th>
         <th colspan="2">&nbsp;</th>
         <th colspan="2">&nbsp;</th>
+        <th colspan="2">&nbsp;</th>
       </tr>
         <tr>
         <th id="sinBordes">&nbsp;</th>
         <th id="sinBordes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FIRMA DOCENTE:</th>
+        <th colspan="2">&nbsp;</th>
         <th colspan="2">&nbsp;</th>
         <th colspan="2">&nbsp;</th>
         <th colspan="2">&nbsp;</th>
