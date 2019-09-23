@@ -40,6 +40,7 @@ table#mitabla td {
                 <th><strong>Apellidos</strong></th>
                 <th><strong>Curso</strong></th>
                 <th><strong>Paralelo</strong></th>
+                <th><strong>Fecha nac</strong></th>
                 <th><strong>Representante</strong></th>
                 <th><strong>Nombres Representante</strong></th>
                 <th><strong>Cedula Representante</strong></th>
@@ -56,6 +57,7 @@ table#mitabla td {
                 <td><strong>{{$matri->apellidos}}</strong></td>
                 <td><strong>{{$matri->curso}}</strong></td>
                 <td><strong>{{$matri->paralelo}}</strong></td>
+                <td><strong>{{$matri->fecha_nacimiento}}</strong></td>
                 <td><strong>{{$matri->representante}}</strong></td>
                 <td><strong>{{$matri->nombres_representante}}</strong></td>
                 <td><strong>{{$matri->cedrepresentante}}</strong></td>
