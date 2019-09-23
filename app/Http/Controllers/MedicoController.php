@@ -194,7 +194,7 @@ class MedicoController extends Controller
         $cedula = $request->cedula;
 
         $matriculado = DB::table('matriculados')
-        ->join('inscripciones', 'matriculados.inscripcion_id', '=', 'inscripciones.id')
+        ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"), 'matriculados.curso', 'matriculados.paralelo', 'inscripciones.sexo', 'inscripciones.edad', DB::raw("CONCAT(apellidos_madre, ' ', nombres_madre) as nombres_madre"), 'inscripciones.telefono_madre as telefono_madre', 'inscripciones.celular_madre as celular_madre', DB::raw("CONCAT(apellidos_padre, ' ',nombres_padre) as nombres_padre"), 'inscripciones.telefono_padre as telefono_padre', 'inscripciones.celular_padre as celular_padre')
         ->where('matriculados.cedula', 'LIKE', '%'.$cedula.'%')
         ->distinct()
