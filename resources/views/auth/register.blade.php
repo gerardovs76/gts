@@ -40,7 +40,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
-                background: url('images/registro.png')   no-repeat center center fixed;
+                background: url('images/registro.PNG')   no-repeat center center fixed;
 
                   -webkit-background-size: cover;
                   -moz-background-size: cover;
