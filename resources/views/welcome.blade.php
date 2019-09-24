@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-         <link rel="shortcut icon" sizes="114x114" href="{{ asset('images/gts-logo.jpeg') }}">
+         <link rel="shortcut icon" sizes="114x114" href="images/gts-logo.jpeg">
 
         <title>GTS</title>
 
