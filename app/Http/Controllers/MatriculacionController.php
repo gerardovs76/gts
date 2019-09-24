@@ -18,6 +18,7 @@ use App\Cargos;
 use App\Http\Requests\ImportMatriculados;
 use Illuminate\Support\Facades\Input;
 use App\Notas;
+use App\Exports\ReporteTotalCobrosAlumnos;
 
 class MatriculacionController extends Controller
 {
@@ -417,10 +418,22 @@ class MatriculacionController extends Controller
     {
         $curso = $request->curso;
         $paralelo = $request->paralelo;
+        switch($request->printBotton){
+            case 'busqueda':
+            $totalNomina =  $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select(DB::raw("SUM(facturacion.valor) as valor_final"))->orderBy('matriculados.apellidos')->distinct()->get();
+            $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->orderBy('matriculados.apellidos')->distinct()->get();
+            dd($sep);
+            return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo', 'totalNomina'));
+            break;
+            case 'excel':
+            return Excel::download(new ReporteTotalCobrosAlumnos($curso, $paralelo), 'reporte-total-cobros.xls');
+            break;
+        }
 
-        $totalNomina =  $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select(DB::raw("SUM(facturacion.valor) as valor_final"))->orderBy('matriculados.apellidos')->distinct()->get();
-        $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->orderBy('matriculados.apellidos')->distinct()->get();
-        return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo', 'totalNomina'));
+
+
+
+
     }
     public function certificadoMatricula()
     {
@@ -446,6 +459,7 @@ class MatriculacionController extends Controller
         $curso = $request->curso;
         $paralelo = $request->paralelo;
         $matriculados = Matriculacion::join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.nombres', 'matriculados.apellidos', 'inscripciones.convencional', 'inscripciones.movil', 'matriculados.cedula','matriculados.curso', 'matriculados.paralelo', 'inscripciones.representante', 'inscripciones.fecha_nacimiento', 'inscripciones.nombres_representante', 'inscripciones.email', 'inscripciones.cedrepresentante')->orderBy('matriculados.apellidos')->groupBy('matriculados.id')->get();
+        dd($request->printButton);
         switch($request->printButton){
             case 'excel':
             return Excel::download(new ReporteCas($curso, $paralelo), 'reporte-cas.xls');

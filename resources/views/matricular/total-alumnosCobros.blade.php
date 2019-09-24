@@ -31,10 +31,13 @@
 		</div>
         </div>
         <div class="form-group col-md-12" id="busqueda">
-                {!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'mostrarBusqueda']) !!}
+                {!! Form::button(' <i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'busqueda', 'name' => 'printBotton', 'value' => 'busqueda']) !!}
          </div>
          <div class="form-group col-md-12" id="imprimir">
                 {!!Form::button('<i class="fas fa-print"></i> IMPRIMIR', ['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'boton'])!!}
+         </div>
+         <div class="form-group col-md-12">
+             {!!Form::button('<i class="fas fa-print"></i> IMPRIMIR EN EXCEL', ['class' => 'btn btn-primary', 'type' => 'submit', 'id' => 'excel', 'name' => 'printBotton', 'value' => 'excel'])!!}
          </div>
 
         <div class="form-group col-md-10 offset-md-4">
