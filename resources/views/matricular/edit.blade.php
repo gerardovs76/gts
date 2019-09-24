@@ -9,7 +9,7 @@
 		</div>
 		<hr>
 		@include('matricular.partials.error')
-		{!! Form::model($matricular, ['route' => ['matricular.update', $matricular->id], 'method' => 'PUT']) !!}
+		{!! Form::model($matricular, ['route' => ['matricular.update', $matricular->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
 
 			@include('matricular.partials.form')
 

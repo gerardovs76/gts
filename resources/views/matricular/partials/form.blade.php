@@ -52,7 +52,11 @@
 					<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
 		{!! Form::select('tipo_estudiante',['NUEVO' => 'NUEVO', 'ANTIGUO' => 'ANTIGUO'], null, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Coloque el tipo de estudiante']) !!}
 		</div>
-	</div>
+    </div>
+    <div class="form-group col-md-4">
+        <strong>Foto carnet: <br></strong>
+        {!!Form::file('foto_carnet')!!}
+    </div>
 	<div class="form-group col-md-10">
 		<input type="hidden" id="inscripcion" name="inscripcion">
 		<button type="button" id="seleccionarFactura" class="btn btn-primary">AGREGAR FACTURA</button>

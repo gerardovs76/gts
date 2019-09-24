@@ -23,7 +23,8 @@ class Matriculacion extends Model
         'telefono_factura',
         'codigo',
         'tipo_estudiante',
-        'fecha_creacion'
+        'fecha_creacion',
+        'foto_carnet'
     ];
 
 

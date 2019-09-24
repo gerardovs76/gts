@@ -112,7 +112,8 @@ class MatriculacionController extends Controller
     public function update(Request $request, $id)
     {
 
-
+        $file = $request->file('foto_carnet');
+        $fillename = $request->codigo.'.'.'png';
         $matricular = Matriculacion::find($id);
         $matricular->inscripcion_id = $request->inscripcion_id;
         $matricular->cedula = $request->cedula;
@@ -126,7 +127,9 @@ class MatriculacionController extends Controller
         $matricular->direccion_factura = $request->direccion_factura;
         $matricular->telefono_factura = $request->telefono_factura;
         $matricular->codigo = $request->codigo;
+        $matricular->foto_carnet = $fillename;
         $matricular->save();
+        \Storage::disk('local')->put($fillename, \File::get($file));
         return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
 
 

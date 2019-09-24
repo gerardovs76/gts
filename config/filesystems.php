@@ -64,7 +64,7 @@ return [
             'url' => env('AWS_URL'),
         ],
 
-        
+
         'assets' => [
              'driver' => 'local',
              'root' => public_path(),

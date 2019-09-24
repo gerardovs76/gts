@@ -54,7 +54,7 @@ class HorariosController extends Controller
        $curso = $request->curso;
        $paralelo = $request->paralelo;
     $file = $request->file('archivo');
-    $extension = $file->getClientOriginalExtension();
+    //$extension = $file->getClientOriginalExtension();
     $fillename = $curso.'-e-'.$paralelo.'.'.'png';
     \Storage::disk('local')->put($fillename,  \File::get($file));
 
@@ -65,7 +65,7 @@ class HorariosController extends Controller
        $curso = $request->curso;
        $paralelo = $request->paralelo;
     $file = $request->file('archivo');
-    $extension = $file->getClientOriginalExtension();
+    //$extension = $file->getClientOriginalExtension();
     $fillename = $curso.'-p-'.$paralelo.'.'.'png';
     \Storage::disk('local')->put($fillename,  \File::get($file));
 

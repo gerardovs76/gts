@@ -43,7 +43,7 @@
                    <thead>
                        @if(isset($matriculadosPerfil))
                        @foreach($matriculadosPerfil as $perfil)
-                       <img src="images/lp.png" alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
+                       <img src={{asset("archivos/$perfil->foto_carnet")}} alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
                        <tr>
                            <th>
                                Datos del alumno: {{$perfil->cedula}} , {{$perfil->nombres}} {{$perfil->apellidos}}
