@@ -34,4 +34,9 @@ public function inspecciones()
 {
     return $this->hasMany('App\Inspecciones', 'matriculados_id');
 }
+
+public function facturaciones()
+{
+    return $this->hasMany('App\Facturacion', 'codigo', 'codigo');
+}
 }

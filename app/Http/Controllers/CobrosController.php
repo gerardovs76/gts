@@ -210,7 +210,7 @@ class CobrosController extends Controller
 
     }
 
-    public function facturacionIndividualStore(FacturacionRequest $request)
+    public function facturacionIndividualStore(Request $request)
     {
         $date = Carbon::now();
         $facturacion = new Facturacion;

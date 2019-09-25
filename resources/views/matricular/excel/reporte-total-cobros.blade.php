@@ -30,31 +30,60 @@
     @if(isset($sep))
     <tbody>
             @foreach($sep as $s)
-            @if($s->valor !== '306.7' && $s->valor !== '314' && $s->valor !== '326' && $s->valor !== '353.5' && $s->valor !== '371' && $s->valor !== '196.7' && $s->valor !== '199' && $s->valor !== '201' && $s->valor !== '228.5' && $s->valor !== '246')
+            @if($s->facturaciones->first()->valor !== '306.7' && $s->facturaciones->first()->valor !== '314' && $s->facturaciones->first()->valor !== '326' && $s->facturaciones->first()->valor !== '353.5' && $s->facturaciones->first()->valor !== '371' && $s->facturaciones->first()->valor !== '196.7' && $s->facturaciones->first()->valor !== '199' && $s->facturaciones->first()->valor !== '201' && $s->facturaciones->first()->valor !== '228.5' && $s->facturaciones->first()->valor !== '246')
             <tr>
                 <td><strong>{{$conteo++}}</strong></td>
                  <td><strong>{{$s->nombres}}</strong></td>
-                 <td><strong>{{$s->cedula}}</strong></td>
-                 <td><strong>{{$s->valor}}</strong></td>
+            <td><strong>{{$s->cedula}}</strong></td>
+                 <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
             </tr>
             @else
                <tr>
                <td><strong>{{$conteo++}}</strong></td>
                 <td><strong>{{$s->nombres}}</strong></td>
-                <td><strong>{{$s->cedula}}</strong></td>
-                <td><strong>{{$s->valor}}</strong></td>
+               <td><strong>{{$s->cedula}}</strong></td>
+               <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
                 <td>70</td>
-                @if(strpos($s->referencias, 'SEP') !== FALSE)
-                @if(strpos($s->referencias, 'INICIAL 1') !== FALSE || strpos($s->referencias, 'INICIAL 2') !== FALSE || strpos($s->referencias, 'INI') !== FALSE)
+                @foreach($s->facturaciones as $factura)
+                @if(strpos($factura->referencias, 'SEP') !== FALSE)
+                @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
                 <td>60</td>
-                @elseif(strpos($s->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($s->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($s->referencias, 'TERCERO DE EGB') !== FALSE || strpos($s->referencias, 'CUARTO DE EGB') !== FALSE || strpos($s->referencias, 'QUINTO DE EGB') !== FALSE || strpos($s->referencias, 'SEXTO DE EGB') !== FALSE || strpos($s->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($s->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($s->referencias, 'NOVENO DE EGB') !== FALSE || strpos($s->referencias, 'DECIMO DE EGB') !== FALSE || strpos($s->referencias, '1RO') !== FALSE || strpos($s->referencias, '8VO') !== FALSE)
+                @elseif(strpos($factura->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($factura->referencias, 'TERCERO DE EGB') !== FALSE || strpos($factura->referencias, 'CUARTO DE EGB') !== FALSE || strpos($factura->referencias, 'QUINTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEXTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($factura->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($factura->referencias, 'NOVENO DE EGB') !== FALSE || strpos($factura->referencias, 'DECIMO DE EGB') !== FALSE || strpos($factura->referencias, '1RO') !== FALSE || strpos($factura->referencias, '8VO') !== FALSE)
                 <td>65</td>
-                @elseif(strpos($s->referencias, 'PRIMERO DE BACHILLERATO') !== FALSE || strpos($s->referencias, 'SEGUNDO DE BACHILLERATO') !== FALSE)
+                @elseif(strpos($factura->referencias, 'PRIMERO DE BACHILLERATO') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE BACHILLERATO') !== FALSE)
                 <td>70</td>
-                @elseif(strpos($s->referencias, 'TERCERO DE BACHILLERATO') !== FALSE)
+                @elseif(strpos($factura->referencias, 'TERCERO DE BACHILLERATO') !== FALSE)
                 <td>95</td>
                 @endif
                 @endif
+                @if(strpos($factura->referencias, 'OCT') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'NOV') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'DIC') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'ENE') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'FEB') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'MAR') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'ABR') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'MAY') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @if(strpos($factura->referencias, 'JUN') !== FALSE)
+               <td>{{$factura->valor}}</td>
+                @endif
+                @endforeach
                 </tr>
                 @endif
                 @endforeach

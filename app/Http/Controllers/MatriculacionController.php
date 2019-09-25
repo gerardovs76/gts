@@ -421,7 +421,7 @@ class MatriculacionController extends Controller
         switch($request->printBotton){
             case 'busqueda':
             $totalNomina =  $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select(DB::raw("SUM(facturacion.valor) as valor_final"))->orderBy('matriculados.apellidos')->distinct()->get();
-            $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor', 'matriculados.curso', 'matriculados.paralelo')->orderBy('matriculados.apellidos')->distinct()->get();
+            $sep = Matriculacion::with('facturaciones')->where('curso', $curso)->where('paralelo', $paralelo)->orderBy('nombres')->get();
             return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo', 'totalNomina'));
             break;
             case 'excel':

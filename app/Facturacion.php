@@ -17,4 +17,9 @@ class Facturacion extends Model
         'fecha_creacion',
         'referencias'
     ];
+
+    public function matriculado()
+    {
+        return $this->hasOne('App\Matriculacion', 'codigo', 'codigo');
+    }
 }
