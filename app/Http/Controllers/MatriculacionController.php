@@ -130,8 +130,17 @@ class MatriculacionController extends Controller
         $matricular->codigo = $request->codigo;
         $matricular->foto_carnet = $fillename;
         $matricular->save();
-        \Storage::disk('local')->put($fillename, \File::get($file));
-        return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
+
+        if(is_null($file))
+        {
+            return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
+        }
+        else{
+            \Storage::disk('local')->put($fillename, \File::get($file));
+            return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
+        }
+
+
 
 
     }
