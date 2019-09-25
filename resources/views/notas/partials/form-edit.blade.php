@@ -115,7 +115,6 @@
                     $('#tipoTarea').on('change', function(){
                         var curso = $( "#curso option:selected" ).text();
                         var paralelo  = $( "#paralelo option:selected" ).text();
-                     var paralelo = $('#paralelo').val();
                      var tipoTarea = $('#tipoTarea').val();
                      var materia = $('#materia').val();
                      var parcial = $('#parcial').val();
