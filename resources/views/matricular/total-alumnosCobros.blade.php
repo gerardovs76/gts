@@ -86,11 +86,18 @@
                             <tbody>
                                 <td style="display: none;">{{$i=1}}</td>
                                     @foreach($sep as $s)
-                                    @if($s->facturaciones->first()->valor !== '306.7' && $s->facturaciones->first()->valor !== '314' && $s->facturaciones->first()->valor !== '326' && $s->facturaciones->first()->valor !== '353.5' && $s->facturaciones->first()->valor !== '371' && $s->facturaciones->first()->valor !== '196.7' && $s->facturaciones->first()->valor !== '199' && $s->facturaciones->first()->valor !== '201' && $s->facturaciones->first()->valor !== '228.5' && $s->facturaciones->first()->valor !== '246')
+                                    @if(!isset($s->facturaciones->first()->valor))
                                     <tr>
                                         <td><strong>{{$i++}}</strong></td>
                                          <td><strong>{{$s->nombres}}</strong></td>
-                                    <td><strong>{{$s->cedula}}</strong></td>
+                                         <td><strong>{{$s->cedula}}</strong></td>
+                                         <td><strong>0</strong></td>
+                                    </tr>
+                                    @elseif($s->facturaciones->first()->valor !== '306.7' && $s->facturaciones->first()->valor !== '314' && $s->facturaciones->first()->valor !== '326' && $s->facturaciones->first()->valor !== '353.5' && $s->facturaciones->first()->valor !== '371' && $s->facturaciones->first()->valor !== '196.7' && $s->facturaciones->first()->valor !== '199' && $s->facturaciones->first()->valor !== '201' && $s->facturaciones->first()->valor !== '228.5' && $s->facturaciones->first()->valor !== '246')
+                                    <tr>
+                                        <td><strong>{{$i++}}</strong></td>
+                                         <td><strong>{{$s->nombres}}</strong></td>
+                                         <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
                                     </tr>
                                     @else
@@ -98,7 +105,11 @@
                                        <td><strong>{{$i++}}</strong></td>
                                         <td><strong>{{$s->nombres}}</strong></td>
                                        <td><strong>{{$s->cedula}}</strong></td>
+                                       @if(isset($s->facturaciones->first()->valor))
                                        <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
+                                       @elseif($s->facturaciones->first()->valor == '')
+                                       <td><strong></strong></td>
+                                       @endif
                                         <td>70</td>
                                         @foreach($s->facturaciones as $factura)
                                         @if(strpos($factura->referencias, 'SEP') !== FALSE)

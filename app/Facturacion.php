@@ -20,6 +20,6 @@ class Facturacion extends Model
 
     public function matriculado()
     {
-        return $this->hasOne('App\Matriculacion', 'codigo', 'codigo');
+        return $this->hasOne('App\Matriculacion', 'codigo');
     }
 }

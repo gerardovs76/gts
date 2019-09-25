@@ -422,7 +422,7 @@ class MatriculacionController extends Controller
             case 'busqueda':
             $totalNomina =  $sep = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'LIKE', '%'.'SEP'.'%')->where('matriculados.curso', $curso)->where('matriculados.paralelo', $paralelo)->select(DB::raw("SUM(facturacion.valor) as valor_final"))->orderBy('matriculados.apellidos')->distinct()->get();
             $sep = Matriculacion::with('facturaciones')->where('curso', $curso)->where('paralelo', $paralelo)->orderBy('nombres')->get();
-            return view('matricular.total-alumnosCobros', compact('sep', 'curso', 'paralelo', 'totalNomina'));
+            return view('matricular.total-alumnosCobros', compact('sep', 'totalNomina', 'curso', 'paralelo'));
             break;
             case 'excel':
             return Excel::download(new ReporteTotalCobrosAlumnos($curso, $paralelo), 'reporte-total-cobros.xls');
