@@ -218,7 +218,7 @@ class InspeccionesController extends Controller
     {
         $curso = $request->curso;
         $paralelo = $request->paralelo;
-        $matriculados = DB::table('matriculados')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->distinct()->get();
+        $matriculados = DB::table('matriculados')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->orderBy('apellidos')->distinct()->get();
        $pdf = PDF::loadView('pdf.reporte-leccionario', compact('matriculados', 'cargos', 'data'))->setPaper('a4', 'landscape');
 
         return $pdf->download('leccionario.pdf');
