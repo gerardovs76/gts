@@ -113,8 +113,8 @@
             </script>
                 <script>
                     $('#tipoTarea').on('change', function(){
-                     var curso = $('#curso').val();
-                     var especialidad = $('#especialidad').val();
+                        var curso = $( "#curso option:selected" ).text();
+                        var paralelo  = $( "#paralelo option:selected" ).text();
                      var paralelo = $('#paralelo').val();
                      var tipoTarea = $('#tipoTarea').val();
                      var materia = $('#materia').val();

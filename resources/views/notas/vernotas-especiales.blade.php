@@ -133,8 +133,8 @@
 	});
 
 	$('#verNotas').on('click', function(){
-		var curso = $('#curso').val();
-		var paralelo = $('#paralelo').val();
+        var curso = $( "#curso option:selected" ).text();
+        var paralelo  = $( "#paralelo option:selected" ).text();
 		var parcial = $('#parcial').val();
 		var materia = $('#materia').val();
 		var quimestre = $('#quimestre').val();
