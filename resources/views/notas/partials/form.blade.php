@@ -126,9 +126,9 @@
           $('#agregarNotas').on('click', function(){
             $('#agregarNotas').css("display", "none");
             $('#guardar').addClass("d-block");
-          var curso = $('#curso').val();
+            var curso = $( "#curso option:selected" ).text();
+            var paralelo  = $( "#paralelo option:selected" ).text();
           var especialidad = $('#especialidad').val();
-          var paralelo = $('#paralelo').val();
           var tipoTarea = $('#tipoTarea').val();
           var materia = $('#materia').val();
           var parcial = $('#parcial').val();
