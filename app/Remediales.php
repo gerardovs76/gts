@@ -14,5 +14,10 @@ class Remediales extends Model
     	'promedio_supletorio',
     	'parcial',
     	'quimestre',
-    ];
+	];
+	
+	public function matriculado()
+	{
+		return $this->hasOne('App\Matriculacion', 'id');
+	}
 }

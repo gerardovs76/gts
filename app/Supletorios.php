@@ -14,5 +14,10 @@ class Supletorios extends Model
     	'quimestre',
     	'parcial',
     	'materias_id'
-    ];
+	];
+	
+	public function matriculado()
+	{
+		return $this->hasOne('App\Matriculacion', 'id');
+	}
 }

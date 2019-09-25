@@ -15,4 +15,9 @@ class Recuperacion extends Model
       'parcial',
       'materias_id'
     ];
+
+    public function matriculado()
+    {
+      return $this->hasOne('App\Matriculacion', 'id');
+    }
 }

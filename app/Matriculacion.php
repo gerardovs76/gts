@@ -39,4 +39,20 @@ public function facturaciones()
 {
     return $this->hasMany('App\Facturacion', 'codigo', 'codigo');
 }
+public function recuperaciones()
+{
+    return $this->hasMany('App\Recuperacion', 'matriculados_id');
+}
+public function notas()
+{
+    return $this->hasMany('App\Notas', 'matriculados_id');
+}
+public function remediales()
+{
+    return $this->hasMany('App\Remediales', 'matriculados_id');
+}
+public function supletorios()
+{
+    return $this->hasMany('App\Supletorio', 'matriculados_id');
+}
 }

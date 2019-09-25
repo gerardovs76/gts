@@ -22,6 +22,7 @@ class CreateNotasTable extends Migration
             $table->string('nota_tg')->nullable();
             $table->string('nota_le')->nullable();
             $table->string('nota_ev')->nullable();
+            $table->string('autoridad_id');
             $table->string('descripcion');
             $table->string('parcial');
             $table->string('numero_tarea_ta')->nullable();

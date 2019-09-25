@@ -24,4 +24,8 @@ class Notas extends Model
         'autoridad_id'
     ];
 
+    public function matriculado(){
+        return $this->hasOne('App\Matriculacion', 'id');
+    }
+
 }
