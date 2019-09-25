@@ -217,7 +217,8 @@ class InspeccionesController extends Controller
     public function verReportes(Request $request)
     {
         $curso = $request->curso;
-        $matriculados = DB::table('matriculados')->where('curso', $curso)->select('*')->distinct()->get();
+        $paralelo = $request->paralelo;
+        $matriculados = DB::table('matriculados')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->distinct()->get();
        $pdf = PDF::loadView('pdf.reporte-leccionario', compact('matriculados', 'cargos', 'data'))->setPaper('a4', 'landscape');
 
         return $pdf->download('leccionario.pdf');
