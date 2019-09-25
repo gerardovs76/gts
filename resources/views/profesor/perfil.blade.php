@@ -23,7 +23,7 @@
 						<strong>Cedula: <br></strong>
 						<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
-						{!! Form::text('cedula', null, ['class' => 'form-control col-md-8', 'placeholder' => 'Seleccione la cedula', 'id' => 'tipo_estudiante']) !!}
+						{!! Form::text('cedula', null, ['class' => 'form-control col-md-8', 'placeholder' => 'Seleccione la cedula', 'id' => 'cedula']) !!}
 						</div>
 					</div>
 								<div class="form-group col-md-12">
