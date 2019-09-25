@@ -43,7 +43,7 @@ class MatriculacionController extends Controller
      */
     public function create()
     {
-        return view('matricular.create', compact('cursos'));
+        return view('matricular.create');
 }
 
     /**
