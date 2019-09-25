@@ -140,11 +140,17 @@
     });
 
 	$('#verNotas').on('click', function(){
-		var curso = $('#curso').val();
-		var paralelo = $('#paralelo').val();
+        var curso = $( "#curso option:selected" ).text();
+        var paralelo  = $( "#paralelo option:selected" ).text();
 		var parcial = $('#parcial').val();
 		var materia = $('#materia').val();
-		var quimestre = $('#quimestre').val();
+        var quimestre = $('#quimestre').val();
+
+        console.log(curso);
+        console.log(paralelo);
+        console.log(parcial);
+        console.log(materia);
+        console.log(quimestre);
 
 
 		$.get('cargar_notas/'+curso+'/'+paralelo+'/'+quimestre+'/'+parcial+'/'+materia, function(response){
