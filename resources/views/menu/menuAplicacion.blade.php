@@ -294,7 +294,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('tareas.index')
-                <a class="dropdown-item" href="{{ route('tareas.index') }}">Asignar</a>
+                <a class="dropdown-item" href="{{ route('tareas.index') }}">Tareas/Comunicados</a>
                 @endcan
                 @can('tareas.ver-tareas')
                 <a class="dropdown-item" href="{{ route('tareas.verTareas') }}">Ver tareas</a>
