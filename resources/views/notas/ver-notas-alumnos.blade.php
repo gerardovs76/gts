@@ -12,27 +12,19 @@
 		@include('notas.partials.info')
 
 
-					{!! Form::open(['route' => 'notas.store']) !!}
+					{!! Form::open(['route' => 'notas.cargar-notas-alumnos']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
-                                    @foreach($matriculados as $matriculado)
+
 							<div class="form-group col-md-4">
                                              <strong>Cedula: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
-                                             {{ Form::text('cedula', $matriculado->cedula, ['class' => 'form-control col-md-6' , 'id' => 'cedula', 'readonly']) }}
+                                             {{ Form::text('cedula', Auth::user()->cedula, ['class' => 'form-control col-md-6' , 'id' => 'cedula', 'readonly']) }}
                                              </div>
                                              </div>
-                                             <div class="form-group col-md-4">
-                                             <strong>Nombres: <br></strong>
-                                             <div class="input-group-prepend">
-                                             <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
-                                             {{ Form::text('nombres',$matriculado->nombres, ['class' => 'form-control col-md-6' , 'id' => 'nombres','readonly']) }}
-                                             </div>
-                                             </div>
-                                             @endforeach
                                               <div class="form-group col-md-4">
                                              <strong>Quimestre: <br></strong>
                                              <div class="input-group-prepend">
@@ -51,14 +43,14 @@
                                              <strong>Materia: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
-                                             {{ Form::select('materia',$materias, null, ['class' => 'form-control col-md-6' , 'id' => 'materia', 'placeholder' => 'Seleccione la materia...']) }}
+                                             {{ Form::select('materia',[], null, ['class' => 'form-control col-md-6' , 'id' => 'materia', 'placeholder' => 'Seleccione la materia...']) }}
                                              </div>
                                              </div>
 
 
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary',  'id' => 'verNotas']) !!}
+   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary', 'type' => 'submit','id' => 'verNotas']) !!}
 								</div>
 
 							</div>
@@ -90,38 +82,61 @@
 					</th>
 					<th>
 						<p>EVALUACIONES</p>
-					</th>
+                    </th>
+                    <th>
+                        <p>CONDUCTA</p>
+                    </th>
 					<th>
 						<p>PROMEDIO</p>
 					</th>
                     </tr>
                     </thead>
 					<tbody id="tableid">
-				<tr>
-
-				</tr>
+                        @if(isset($notas))
+                        @foreach($notas as $nota)
+                        <tr>
+                            <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
+                        @foreach($nota->notas as $notaIndi)
+                        <td>{{$notaIndi->nota_ta}}</td>
+                        <td>{{$notaIndi->nota_ti}}</td>
+                        <td>{{$notaIndi->nota_tg}}</td>
+                        <td>{{$notaIndi->nota_le}}</td>
+                        <td>{{$notaIndi->nota_ev}}</td>
+                        <td>{{$notaIndi->nota_conducta == null ? 0 : $notaIndi->nota_conducta}}</td>
+                        @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
+                        @foreach($nota->recuperaciones as $recuperacion)
+                        @if($recuperacion->promedio_final < 7)
+                        <td style="color: red;">{{$recuperacion->promedio_final}}</td>
+                        @else
+                        <td style="color: green;">{{$recuperacion->promedio_final}}</td>
+                        @endif
+                        @endforeach
+                        @else
+                        @if($notaIndi->nota_final < 7)
+                        <td style="color: red;">{{$notaIndi->nota_final}}</td>
+                        @else
+                        <td style="color: green;">{{$notaIndi->nota_final}}</td>
+                        @endif
+                        @endif
+                        @endforeach
+                    </tr>
+                    @endforeach
+                @else
+                <tr>
+                    <td></td>
+                </tr>
+                @endif
 			</tbody>
-		</table>
+        </table>
+        {!!Form::close()!!}
     </div>
     <script>
-            $('#verNotas').on('click', function(){
+            $('#parcial').on('change', function(){
                 var cedula = $('#cedula').val();
-                var quimestre = $('#quimestre').val();
-                var parcial = $('#parcial').val();
-                var materia = $('#materia').val();
-
-                $.get('cargar-notas-alumnos/'+cedula+'/'+quimestre+'/'+parcial+'/'+materia, function(response){
-                    console.log(response);
-                    $.each(response, function(ind, opt){
-                        if(opt.nota_final < 7){
-                            $('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta)+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti )+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:red;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
-                        }else{
-                        $('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta )+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti)+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:green;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
-
-                            }
-
-
-                    });
+                $.get('cargar-materias-alumnos/'+cedula, function(response){
+                   $.each(response, function(index, obj){
+                    $('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
+                   });
                 });
             });
     </script>

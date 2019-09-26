@@ -2,7 +2,7 @@
     <div class="panel panel-heading text-center">INGRESE LOS DATOS PARA LA BUSQUEDA</div>
          <div class="panel panel-body">
                     <div class="form-row">
-                        @if(Auth::user()->isRole('super-admin'))
+                        @if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('dece') || Auth::user()->isRole('admin'))
                         <div class="form-group col-md-4">
                              <strong>Curso: <br></strong>
                              <div class="input-group-prepend">

@@ -12,7 +12,7 @@
 		@include('notas.partials.info')
 
 
-					{!! Form::open(['route' => 'notas.store']) !!}
+					{!! Form::open(['route' => 'notas.cargar-notas-store']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
@@ -38,14 +38,14 @@
                                                     <strong>Curso: <br></strong>
                                                     <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                    {{ Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
+                                                    {{ Form::select('curso',[], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
                                                     </div>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                     <strong>Paralelo: <br></strong>
                                                     <div class="input-group-prepend">
                                                          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                    {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
+                                                    {{ Form::select('paralelo',[], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
                                                     </div>
                                                     </div>
                                             @endif
@@ -73,7 +73,7 @@
 
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary',  'id' => 'verNotas']) !!}
+   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary','type' => 'submit', 'id' => 'verNotas']) !!}
 								</div>
 
 							</div>
@@ -115,15 +115,56 @@
                     </tr>
                     </thead>
 					<tbody id="tableid">
+                    @if(isset($notas))
+                    @foreach($notas as $nota)
 				<tr>
+                    <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
+                    @foreach($nota->notas as $notaIndi)
+                    <td>{{$notaIndi->nota_ta}}</td>
+                    <td>{{$notaIndi->nota_ti}}</td>
+                    <td>{{$notaIndi->nota_tg}}</td>
+                    <td>{{$notaIndi->nota_le}}</td>
+                    <td>{{$notaIndi->nota_ev}}</td>
+                    <td>{{$notaIndi->nota_conducta == null ? 0 : $notaIndi->nota_conducta}}</td>
+                    @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
+                    @foreach($nota->recuperaciones as $recuperacion)
+                    @if($recuperacion->promedio_final < 7)
+                    <td style="color: red;">{{$recuperacion->promedio_final}}</td>
+                    @else
+                    <td style="color: green;">{{$recuperacion->promedio_final}}</td>
+                    @endif
+                    @endforeach
+                    @else
+                    @if($notaIndi->nota_final < 7)
+                    <td style="color: red;">{{$notaIndi->nota_final}}</td>
+                    @else
+                    <td style="color: green;">{{$notaIndi->nota_final}}</td>
+                    @endif
+                    @endif
+                    @endforeach
+                </tr>
+                @endforeach
+                @else
+                <tr>
 
-				</tr>
+                </tr>
+                @endif
 			</tbody>
 		</table>
         {{ Form::close() }}
     </div>
 </div>
-
+<script>
+    $(document).ready(function(){
+        $.get('notas/cargar-notas-profesor', function(response){
+            $.each(response, function(index, obj){
+                console.log(obj);
+                $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+                $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+            });
+        });
+    });
+</script>
 <script>
 	$('#paralelo').on('change', function(){
 		var curso = $( "#curso option:selected" ).text();
@@ -138,8 +179,9 @@
 			});
 		});
     });
+</script>
 
-	$('#verNotas').on('click', function(){
+	{{--$('#verNotas').on('click', function(){
         var curso = $( "#curso option:selected" ).text();
         var paralelo  = $( "#paralelo option:selected" ).text();
 		var parcial = $('#parcial').val();
@@ -171,5 +213,5 @@
 
 
 </script>
-
+  --}}
 @endsection

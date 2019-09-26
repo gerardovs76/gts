@@ -132,15 +132,21 @@ Route::get('mostrar_porcentaje/{curso}', 'NotasController@mostrarPorcentajeAlumn
 
 Route::get('ver_notas_cargadas', 'NotasController@verNotasCargadas')->name('notas.cargadas')->middleware('has.permission:notas.cargadas');
 
+Route::get('notas/cargar-notas-profesor', 'NotasController@cargarMateriasProfesor');
+
 Route::get('cargar_materia/{curso}/{paralelo}', 'NotasController@cargarNotas');
+
+Route::get('cargar-materias-recuperacion/{curso}/{paralelo}', 'NotasController@cargarMateriasRecuperacion');
 
 Route::get('cargar_materia/especial/{curso}/{paralelo}', 'NotasController@cargarNotasEspeciales');
 
-Route::get('cargar_notas/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasAlumnos');
+Route::post('cargar_notas', 'NotasController@cargarNotasAlumnos')->name('notas.cargar-notas-store');
 
-Route::get('notas/cargar-notas-alumnos/{cedula}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasParaAlumnos');
+Route::post('notas/cargar-notas-alumnos', 'NotasController@cargarNotasParaAlumnos')->name('notas.cargar-notas-alumnos');
 
-Route::get('cargar_notas/especial/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}', 'NotasController@cargarNotasEspecialesAlumnos');
+Route::get('notas/cargar-materias-alumnos/{cedula}', 'NotasController@cargarMateriasAlumnos');
+
+Route::post('cargar_notas/especial', 'NotasController@cargarNotasEspecialesAlumnos')->name('notas.cargar-notas-especiales-store');
 
 Route::get('notas_supletorios', 'NotasController@supletoriosNotas')->name('notas.supletorios')->middleware('has.permission:notas.supletorios');
 
@@ -200,6 +206,8 @@ Route::post('notas/libreta-colectiva/descargar', 'NotasController@descargarLibre
 
 Route::get('notas/ver-notas-alumnos', 'NotasController@verNotasAlumnos')->name('notas.ver-notas-alumnos')->middleware('has.permission:notas.ver-notas-alumnos');
 
+Route::get('cargar-materias-alumnos/{cedula}', 'NotasController@cargarMateriasMatriculado');
+
 Route::get('notas-recuperacion', 'NotasController@recuperacion')->name('notas.recuperacion')->middleware('has.permission:notas.recuperacion');
 
 Route::get('notas-abanderados', 'NotasController@abanderados')->name('notas.abanderados')->middleware('has.permission:notas.abanderados');
@@ -213,6 +221,8 @@ Route::post('abanderados-reportes', 'NotasController@abanderadosExcel')->name('n
 Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta')->middleware('has.permission:notas.reporte-individual-libreta');
 
 Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividualLibretaStore')->name('notas.reporte-individual-libreta-store');
+
+Route::get('promedios-finales', 'NotasController@promediosFinales');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

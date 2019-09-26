@@ -119,12 +119,13 @@
 		var paralelo  = $('#paralelo').val();
 		var parcial = $('#parcial').val();
 
-		$.get('cargar_materia/'+curso+'/'+paralelo, function(response){
+		$.get('cargar-materias-recuperacion/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
 				$('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
 
 			});
-		});
+        });
+        $(this).off('click');
 	});
 
 </script>
@@ -148,7 +149,8 @@
 				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td style="color:red;">'+opt.nota_final+'</td><input type="hidden" id="promedio_notas" name="promedio_notas[]" value='+opt.nota_final+'><td><input type="text" id="nota_recuperacion" name="nota_recuperacion[]"></td><td id="porcentajeSupletorio"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+opt.matriculados_id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'></tr>');
 
 			});
-		});
+        });
+        $(this).off('click');
 	});
 </script>
 <script>
@@ -170,7 +172,8 @@
 			$('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td>'+obj.promedio_notas+'</td><td>'+obj.nota_recuperacion+'</td><td style="color:green;">'+obj.promedio_recuperacion+'</td></tr>');
 		}
 		});
-		});
+        });
+        $(this).off('click');
 	});
 </script>
 @endsection
