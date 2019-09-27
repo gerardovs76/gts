@@ -209,7 +209,7 @@ table#mitabla3 td {
                 <th>Quimestre: {{ $quimestre }}</th>
 			</tr>
 			<tr>
-				<th>Codigo: </th>
+				<th>Codigo: {{$nota->codigo}}</th>
 				<th>Año lectivo: 2019-2020</th>
 			</tr>
 			<tr>
