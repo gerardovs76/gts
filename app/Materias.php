@@ -15,18 +15,8 @@ class Materias extends Model
 		'paralelo',
 		'tipo_materia'
 	];
-
-
-
-	public function cursos(){
-
-		return $this->belongsToMany('App\Matriculacion', 'cursos_materias', 'matriculados_id', 'materias_id');
-
-	}
-
-
-	public function profesor(){
-
-		return $this->belongsToMany('App\Profesor', 'materias_profesor');
-	}
+        public function matriculado()
+        {
+            return $this->belongsTo('App\Matriculacion', 'curso', 'curso');
+        }
 }

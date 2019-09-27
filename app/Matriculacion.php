@@ -55,4 +55,12 @@ public function supletorios()
 {
     return $this->hasMany('App\Supletorio', 'matriculados_id');
 }
+public function inscripcion()
+{
+    return $this->hasOne('App\Inscripcion', 'cedula', 'cedula');
+}
+public function materias()
+{
+    return $this->hasMany('App\Materias', 'curso', 'curso');
+}
 }

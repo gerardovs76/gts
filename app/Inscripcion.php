@@ -54,13 +54,5 @@ class Inscripcion extends Model
            'fecha_creacion',
            'paralelo'
     ];
-
-    public function matriculados(){
-        return $this->belongsTo('App\Matriculacion');
-
-
-    }
-
-
 }
 

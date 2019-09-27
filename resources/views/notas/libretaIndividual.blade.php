@@ -25,6 +25,13 @@
                                             </div>
                                             </div>
                                             <div class="form-group col-md-4">
+                                                    <strong>Paralelo: <br></strong>
+                                                    <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
+                                                    {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el curso...']) }}
+                                                    </div>
+                                                    </div>
+                                            <div class="form-group col-md-4">
                                                     <strong>Quimestre: <br></strong>
                                                     <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
