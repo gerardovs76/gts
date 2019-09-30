@@ -279,6 +279,7 @@ class MatriculacionController extends Controller
     ->where('curso', $curso)
     ->where('paralelo', $paralelo)
     ->select('*')
+    ->orderBy('apellidos')
     ->get();
 
     return response()->json($matriculados);
@@ -287,6 +288,7 @@ class MatriculacionController extends Controller
  {
      $matriculados = DB::table('matriculados')
      ->select('*')
+     ->orderBy('apellidos')
      ->get();
 
      return response()->json($matriculados);
