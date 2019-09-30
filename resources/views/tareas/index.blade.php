@@ -11,7 +11,7 @@
 		{{--@include('notas.partials.info')--}}
 	      {!! Form::open(['route' => 'tareas.store', 'enctype' => 'multipart/form-data']) !!}
 			<div class="panel panel-primary">
-     <div class="panel-heading">TAREAS</div>
+     <div class="panel-heading">TAREAS O COMUNICADOS</div>
 
      <div class="panel-body">
 
@@ -74,7 +74,7 @@
 </div>
 </div>
 <div class="panel panel-primary">
-<div class="panel-heading">DATOS DE LA TAREA A ASIGNAR: </div>
+<div class="panel-heading">DATOS: </div>
 
      <div class="panel-body">
 
@@ -88,10 +88,10 @@
           </div>
 
           <div class="form-group col-md-4">
-          <strong>Tipo de tarea: <br></strong>
+          <strong>Tipo de tarea/Comunicado:  <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::select('tipo_tarea',['TAREAS' => 'TAREAS', 'T.INVIDIVUAL' => 'T.INDIVIDUAL', 'T.GRUPAL' => 'T.GRUPAL', 'LECCIÓN' => 'LECCIÓN', 'EVALUACIÓN' => 'EVALUACIÓN', 'EXAMEN QUIMESTRAL' => 'EXAMEN QUIMESTRA'], null, ['class' => 'form-control col-md-8', 'id' => 'tipo_tarea', 'placeholder' => 'Coloque el tipo de tarea']) !!}
+          {!! Form::select('tipo_tarea',['TAREAS' => 'TAREAS', 'T.INVIDIVUAL' => 'T.INDIVIDUAL', 'T.GRUPAL' => 'T.GRUPAL', 'LECCIÓN' => 'LECCIÓN', 'EVALUACIÓN' => 'EVALUACIÓN', 'EXAMEN QUIMESTRAL' => 'EXAMEN QUIMESTRA', 'COMUNICADO' => 'COMUNICADO'], null, ['class' => 'form-control col-md-8', 'id' => 'tipo_tarea', 'placeholder' => 'Coloque el tipo de tarea']) !!}
           </div>
           </div>
 

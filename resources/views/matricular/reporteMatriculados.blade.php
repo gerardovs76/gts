@@ -93,7 +93,7 @@
 		$.get('matricular-reporte-tabla/'+curso+'/'+paralelo, function(response){
 			$.each(response, function(index, obj){
 			 console.log(obj);
-				$('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.nombres+' '+obj.apellidos+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/certificado-store/'+obj.cedula+'" class="btn btn-success btn-sm"><i class="far fa-edit"></i>CERTIFICADO</a></td></tr>');
+				$('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.apellidos+' '+obj.nombres+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/certificado-store/'+obj.cedula+'" class="btn btn-success btn-sm"><i class="far fa-edit"></i>CERTIFICADO</a></td></tr>');
 				$('#mostrarBusqueda').css("display", "none");
 				$('#imprimir').addClass("d-block");
 
@@ -128,7 +128,7 @@
             $.get('tabla-todos', function(response){
                 $.each(response, function(index, obj){
                  console.log(obj);
-                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.nombres+' '+obj.apellidos+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/certificado-store/'+obj.cedula+'" class="btn btn-success btn-sm"><i class="far fa-edit"></i>CERTIFICADO</a></td></tr>');
+                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td><strong>'+obj.apellidos+' '+obj.nombres+'</strong></td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.tipo_estudiante+'</td><td><strong>'+obj.codigo+'</strong></td><td><a href="/matricular/'+obj.id+'/edit" class="btn btn-primary btn-sm"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/certificado-store/'+obj.cedula+'" class="btn btn-success btn-sm"><i class="far fa-edit"></i>CERTIFICADO</a></td></tr>');
                     $('#mostrarBusqueda').css("display", "none");
                     $('#imprimir').addClass("d-block");
 

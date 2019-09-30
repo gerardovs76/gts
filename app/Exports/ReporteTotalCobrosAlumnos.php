@@ -23,7 +23,9 @@ class ReporteTotalCobrosAlumnos implements FromView, ShouldAutoSize
          return view('matricular.excel.reporte-total-cobros',[
            'sep' => Matriculacion::with('facturaciones')->where('curso', $this->curso)->where('paralelo', $this->paralelo)->orderBy('nombres')->get(),
            'totalNomina' => Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('matriculados.curso', $this->curso)->where('matriculados.paralelo', $this->paralelo)->select(DB::raw("SUM(facturacion.valor) as valor_final"))->distinct()->get(),
-           'conteo' => '1'
+           'conteo' => '1',
+           'curso' => $this->curso,
+           'paralelo' => $this->paralelo
 
          ]);
     }

@@ -1,9 +1,7 @@
+&nbsp; <h2 style="text-align: center;">CURSO: {{$curso}} PARALELO: {{$paralelo}}</h2>
 <table>
-    <caption style="text-align: center;">TOTAL COBROS</caption>
     <thead>
             <tr>
-                </tr>
-                <tr>
 
                 </tr>
                 <tr>
