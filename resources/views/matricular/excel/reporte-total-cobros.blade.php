@@ -1,4 +1,4 @@
-&nbsp; <h2 style="text-align: center;">CURSO: {{$curso}} PARALELO: {{$paralelo}}</h2>
+<h2 style="text-align: center;">CURSO: {{$curso}} PARALELO: {{$paralelo}}</h2>
 <table>
     <thead>
             <tr>
