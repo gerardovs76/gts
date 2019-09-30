@@ -134,7 +134,7 @@ Route::get('ver_notas_cargadas', 'NotasController@verNotasCargadas')->name('nota
 
 Route::get('notas/cargar-notas-profesor', 'NotasController@cargarMateriasProfesor');
 
-Route::get('cargar_materia/{curso}/{paralelo}', 'NotasController@cargarMaterias');
+Route::get('cargar_materia/{curso}/{paralelo}', 'NotasController@cargarNotas');
 
 Route::get('cargar-materias-recuperacion/{curso}/{paralelo}', 'NotasController@cargarMateriasRecuperacion');
 

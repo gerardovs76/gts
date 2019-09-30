@@ -25,19 +25,19 @@
                                             </div>
                                             </div>
                                             <div class="form-group col-md-4">
+                                                    <strong>Paralelo: <br></strong>
+                                                    <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
+                                                    {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el curso...']) }}
+                                                    </div>
+                                                    </div>
+                                            <div class="form-group col-md-4">
                                                     <strong>Quimestre: <br></strong>
                                                     <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
                                                     {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6' , 'id' => 'quimestre', 'placeholder' => 'Seleccione el quimestre...']) }}
                                                     </div>
                                                     </div>
-                                                    <div class="form-group col-md-4">
-                                                            <strong>Parcial: <br></strong>
-                                                            <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
-                                                            {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6' , 'id' => 'parcial', 'placeholder' => 'Seleccione el parcial...']) }}
-                                                            </div>
-                                                            </div>
 								<div class="form-group col-md-10">
    									{!! Form::button('<i class="fas fa-print"></i> DESCARGAR LIBRETA', ['class' => 'btn btn-primary',  'id' => 'verNotas', 'type' => 'submit']) !!}
 								</div>
