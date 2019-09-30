@@ -21,7 +21,8 @@ class Notas extends Model
         'numero_tarea',
         'quimestre',
         'conducta',
-        'autoridad_id'
+        'autoridad_id',
+        'examen'
     ];
 
     public function matriculado(){

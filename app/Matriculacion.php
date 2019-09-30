@@ -47,6 +47,22 @@ public function notas()
 {
     return $this->hasMany('App\Notas', 'matriculados_id');
 }
+public function parcial2()
+{
+    return $this->notas();
+}
+public function parcial3()
+{
+    return $this->notas();
+}
+public function examen()
+{
+    return $this->notas();
+}
+public function promedioFinal()
+{
+    return $this->notas();
+}
 public function remediales()
 {
     return $this->hasMany('App\Remediales', 'matriculados_id');

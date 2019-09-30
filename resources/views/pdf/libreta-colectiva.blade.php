@@ -235,18 +235,15 @@ table#mitabla3 td {
 		<tbody>
 			<tr>
                 <th><strong>AREAS INSTITUCIONALES</strong></th>
+                <th style="display: none;"></th>
 			</tr>
             @foreach($nota->materias as $materiasIndi)
             @if($materiasIndi->tipo_materia === 'NO')
 			<tr>
+
                     <th><strong>{{$materiasIndi->materia}}</strong></th>
                     @foreach($nota->notas as $notaIndi)
                     @if($materiasIndi->id === $notaIndi->materias_id)
-                    <td>{{$notaIndi->nota_ta}}</td>
-                    <td>{{$notaIndi->nota_ti}}</td>
-                    <td>{{$notaIndi->nota_tg}}</td>
-                    <td>{{$notaIndi->nota_le}}</td>
-                    <td>{{$notaIndi->nota_ev}}</td>
                     @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
                     @foreach($nota->recuperaciones as $recuperacion)
                     @if($recuperacion->promedio_final < 7)
@@ -262,6 +259,56 @@ table#mitabla3 td {
                     <td style="color: green;">{{$notaIndi->nota_final}}</td>
                     @endif
                     @endif
+                    @endif
+                    @endforeach
+                    @foreach($nota->parcial2 as $notaIndi2)
+                    @if($materiasIndi->id === $notaIndi2->materias_id)
+                    @if($notaIndi2->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
+                    @foreach($nota->recuperaciones as $recuperacion)
+                    @if($recuperacion->promedio_final < 7)
+                    <td style="color: red;">{{$recuperacion->promedio_final}}</td>
+                    @else
+                    <td style="color: green;">{{$recuperacion->promedio_final}}</td>
+                    @endif
+                    @endforeach
+                    @else
+                    @if($notaIndi2->nota_final < 7)
+                    <td style="color: red;">{{$notaIndi2->nota_final}}</td>
+                    @else
+                    <td style="color: green;">{{$notaIndi2->nota_final}}</td>
+                    @endif
+                    @endif
+                    @endif
+                    @endforeach
+                    @foreach($nota->parcial3 as $notaIndi3)
+                    @if($materiasIndi->id === $notaIndi2->materias_id)
+                    @if($notaIndi3->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
+                    @foreach($nota->recuperaciones as $recuperacion)
+                    @if($recuperacion->promedio_final < 7)
+                    <td style="color: red;">{{$recuperacion->promedio_final}}</td>
+                    @else
+                    <td style="color: green;">{{$recuperacion->promedio_final}}</td>
+                    @endif
+                    @endforeach
+                    @else
+                    @if($notaIndi3->nota_final < 7)
+                    <td style="color: red;">{{$notaIndi3->nota_final}}</td>
+                    @else
+                    <td style="color: green;">{{$notaIndi3->nota_final}}</td>
+                    @endif
+                    @endif
+                    @endif
+                    @endforeach
+                    <td></td>
+                    <td></td>
+                    @foreach($nota->examen as $examen)
+                    @if($materiasIndi->id === $examen->materias_id)
+                    @if($examen->examen < 7)
+                    <td style="color : red;">{{$examen->examen}}</td>
+                    @else
+                    <td style="color : green;">{{$examen->examen}}</td>
+                    @endif
+                    <td>{{((((int)$examen->examen) * 20) / 100)}}</td>
                     @endif
                     @endforeach
             </tr>
