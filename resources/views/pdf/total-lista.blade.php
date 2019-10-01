@@ -21,7 +21,7 @@ table#mitabla td {
 }
 	</style>
 <body>
-        <img src="images/logo-institucion.PNG" alt="" height="80" width="80" style="float: left;">
+        <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
         <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
     <h5 align="left"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h5>
     <p><strong style="font-size: 6;">Fecha de impresión: {{$date}}</strong></p>

@@ -27,10 +27,10 @@ table#mitabla tbody tr:hover td {
 	</style>
 </head>
 <body>
-        <img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+        <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
         <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 
-        <h2 align="center">Sistema de inscripcion Paul Dirac</h2>
+        <h2 align="center">Sistema de inscripcion</h2>
         <br><br><br>
         <h3>Estimado .- {{$inscripcion->apellidos}} {{$inscripcion->nombres}}</h3>
         <h5>CURSO: {{$inscripcion->curso}} &nbsp;&nbsp; PARALELO: {{$inscripcion->paralelo}}</h5>
@@ -51,7 +51,5 @@ table#mitabla tbody tr:hover td {
         <br>
         <em><strong>Saludos.</strong></em>
         <br>
-        <br>
-        <p>Av. Pedro Vicente Maldonado y la Cocha 2691241 Ext 1 info@pauldirac.edu.ec www.pauldirac.edu.ec 0987129593</p>
 </body>
 </html>

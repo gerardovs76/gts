@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+    <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
     <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
     <div style="font-weight: bold; text-align: center;">
 <h2>LECCIONARIO 2019-2020</h2>

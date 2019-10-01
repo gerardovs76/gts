@@ -9,24 +9,24 @@
     margin: 0 auto;
     font-size: 12px;
 }
- 
+
 table#mitabla th {
     font-weight: bold;
     background-color: #E1E1E1;
     padding:5px;
 }
- 
+
 table#mitabla tbody tr:hover td {
     background-color: #F3F3F3;
 }
- 
+
 table#mitabla td {
     padding: 5px 10px;
 }
 	</style>
 </head>
 <body>
-		<img src="images/lp.PNG" alt="" height="80" width="80" style="float: left;">
+		<img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
 		<img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
 
 	<table id="mitabla">

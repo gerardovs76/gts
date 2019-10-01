@@ -26,7 +26,7 @@ table#mitabla td {
 	</style>
 </head>
 <body>
-    <img src="images/lp.PNG" alt="" width="100" height="100" class="pull-right">
+    <img src="images/logo-institucion.png" alt="" width="100" height="100" class="pull-right">
 	<table id="mitabla">
 		<thead>
 			<tr>
