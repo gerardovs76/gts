@@ -1039,8 +1039,6 @@ class NotasController extends Controller
      ->where('inscripciones.curso', $curso)
      ->get();
 
-     dd(json_encode($notas));
-
      $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($quimestre){
         $query
         ->where('quimestre', $quimestre)
