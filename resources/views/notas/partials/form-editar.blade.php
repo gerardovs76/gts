@@ -5,7 +5,7 @@
         <div class="form-row">
             <div class="form-group col-sm-2">
                 <strong>Trabajo academico: </strong><br>
-                {!!Form::text('nota_ta', null, ['class' => 'form-control col-md-3'])!!}
+                {!!Form::number('nota_ta', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
             </div>
             <div class="form-group col-sm-2">
                 <strong>Nro. parcial: </strong><br>
@@ -29,7 +29,7 @@
         <div class="form-row">
                 <div class="form-group col-sm-2">
                     <strong>Trabajo invividual: </strong><br>
-                    {!!Form::text('nota_ti', null, ['class' => 'form-control col-md-3'])!!}
+                    {!!Form::number('nota_ti', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
                 </div>
                 <div class="form-group col-sm-2">
                     <strong>Nro. parcial: </strong><br>
@@ -53,7 +53,7 @@
             <div class="form-row">
                     <div class="form-group col-sm-2">
                         <strong>Trabajo grupal: </strong><br>
-                        {!!Form::text('nota_tg', null, ['class' => 'form-control col-md-3'])!!}
+                        {!!Form::number('nota_tg', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
                     </div>
                     <div class="form-group col-sm-2">
                         <strong>Nro. parcial: </strong><br>
@@ -77,7 +77,7 @@
                 <div class="form-row">
                         <div class="form-group col-sm-2">
                             <strong>Leccion: </strong><br>
-                            {!!Form::text('nota_le', null, ['class' => 'form-control col-md-3'])!!}
+                            {!!Form::number('nota_le', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
                         </div>
                         <div class="form-group col-sm-2">
                             <strong>Nro. parcial: </strong><br>
@@ -101,7 +101,7 @@
                     <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Evaluacion: </strong><br>
-                                {!!Form::text('nota_ev', null, ['class' => 'form-control col-md-3'])!!}
+                                {!!Form::number('nota_ev', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
                             </div>
                             <div class="form-group col-sm-2">
                                 <strong>Nro. parcial: </strong><br>
@@ -125,7 +125,7 @@
                     <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Conducta: </strong><br>
-                                {!!Form::text('conducta', null, ['class' => 'form-control col-md-3'])!!}
+                                {!!Form::number('conducta', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
                             </div>
                             <div class="form-group col-sm-2">
                                 <strong>Nro. parcial: </strong><br>

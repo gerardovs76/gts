@@ -180,6 +180,8 @@ Route::get('gracia_promedio', 'NotasController@graciaPromedio');
 
 Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@notasEdit');
 
+Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@resumenNotaStore');
+
 Route::get('nota_especial', 'NotasController@notaEspeciales')->name('notas.especial')->middleware('has.permission:notas.especial');
 
 Route::get('materias_especiales/{curso}/{especialidad}/{paralelo}', 'NotasController@buscarMateriaEspecial');

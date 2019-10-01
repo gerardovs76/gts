@@ -146,7 +146,7 @@
 			$.each(response, function(ind, opt){
                 $('#verNotas').css("display", "none");
                 $('#guardar').addClass("d-block");
-				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td style="color:red;">'+opt.nota_final+'</td><input type="hidden" id="promedio_notas" name="promedio_notas[]" value='+opt.nota_final+'><td><input type="text" id="nota_recuperacion" name="nota_recuperacion[]"></td><td id="porcentajeSupletorio"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+opt.matriculados_id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'></tr>');
+				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td style="color:red;">'+opt.nota_final+'</td><input type="hidden" id="promedio_notas" name="promedio_notas[]" value='+opt.nota_final+'><td><input class="form-control col-md-4" type="number" min="1" max="10" id="nota_recuperacion" name="nota_recuperacion[]"></td><td id="porcentajeSupletorio"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+opt.matriculados_id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'></tr>');
 
 			});
         });

@@ -11,6 +11,7 @@ use DB;
 use App\User;
 use App\Http\Requests\TareasRequest;
 use App\MateriasProfesor;
+use Illuminate\Support\Facades\Mail;
 
 class TareasController extends Controller
 {

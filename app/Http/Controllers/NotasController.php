@@ -384,6 +384,24 @@ class NotasController extends Controller
 
         return response()->json($notas);
     }
+
+    public function resumenNotaStore($ttarea, $parcial, $quimestre, $materia)
+    {
+        $notas = DB::table('notas')
+        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+        ->join('materias', 'notas.materias_id', '=', 'materias.id')
+        ->select('notas.id', 'notas.descripcion', 'notas.created_at')
+        ->where('notas.'.$ttarea.'', '!=', 'null')
+        ->where('notas.parcial', '=', $parcial)
+        ->where('notas.quimestre', '=', $quimestre)
+        ->where('notas.materias_id', $materia)
+        ->groupBy('notas.descripcion')
+        ->distinct('notas.descripcion')
+        ->get();
+
+        return response()->json($notas);
+
+    }
     public function verNotasEspeciales()
     {
         $users = Auth::user()->cedula;

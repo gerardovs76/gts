@@ -150,63 +150,43 @@
      });
  </script>
      <script>
-         $('#tipoTarea').on('change', function(){
-             var curso = $( "#curso option:selected" ).text();
-             var paralelo  = $( "#paralelo option:selected" ).text();
-          var tipoTarea = $('#tipoTarea').val();
-          var materia = $('#materia').val();
-          var parcial = $('#parcial').val();
-          var quimestre = $('#quimestre').val();
-
-
-          $.get('buscar_alumnos/'+curso+'/'+paralelo, function(dato){
-                $('#estudiantes').empty();
-                $('#estudiantes').append('<option value="0" disable="true" selected="true">SELECCIONAR EL ESTUDIANTE</OPTION');
-          $.each(dato, function(inx, obj){
-             $('#estudiantes').append('<option value="'+obj.id+'">'+ obj.nombres +'</option>');
-
-          });
-     });
-     });
-     </script>
-     <script>
          $('#realizarBusqueda').on('click', function(){
-             var estudiante = $('#estudiantes').val();
              var tipoTarea = $('#tipoTarea').val();
              var parcial = $('#parcial').val();
              var quimestre = $('#quimestre').val();
              var materia = $('#materia').val();
-             $.get('notas-edit-tabla/'+estudiante+'/'+tipoTarea+'/'+parcial+'/'+quimestre+'/'+materia, function(response){
+             $.get('notas-resumen/'+tipoTarea+'/'+parcial+'/'+quimestre+'/'+materia, function(response){
+                 console.log(response);
              if($('#tipoTarea').val() == 'nota_ta')
             {
                 $.each(response, function(index, obj){
-                    $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
                 });
             }else if($('#tipoTarea').val() == 'nota_ti')
             {
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+obj.nota_ti+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
              });
             }else if($('#tipoTarea').val() == 'nota_tg')
             {
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+obj.nota_tg+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
              });
             }else if($('#tipoTarea').val() == 'nota_le')
             {
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+obj.nota_le+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
              });
             }else if($('#tipoTarea').val() == 'nota_ev')
             {
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+obj.nota_ev+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
              });
             }
             else if($('#tipoTarea').val() == 'conducta')
             {
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+obj.conducta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
              });
             }
             });
