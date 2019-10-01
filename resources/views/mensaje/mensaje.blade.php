@@ -37,7 +37,7 @@
 				                 {!! Form::open(['route' => 'mensaje.store']) !!}
 				                 	<div class="form-group">
 				                 	<select name="recibio_id[]" class="form-control selectpicker" data-actions-box="true" data-style="btn-info" data-live-search="true" multiple title="Seleccione a uno o varios usuarios...">
-                                         <option value="#">Seleccione el usuario</option>
+
                                          <optgroup label="INICIAL 1">
 				                 		@foreach($usersInicial1 as $ini1)
 				                 		<option data-subtext="INICIAL 1" value="{{ $ini1->id }}">{{ $ini1->name }}</option>

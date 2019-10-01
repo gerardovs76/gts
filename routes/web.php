@@ -223,6 +223,8 @@ Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibre
 Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividualLibretaStore')->name('notas.reporte-individual-libreta-store');
 
 Route::get('promedios-finales', 'NotasController@promediosFinales');
+
+Route::get('notas-resumen', 'NotasController@resumenNotas')->name('notas.nota-resumen');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');

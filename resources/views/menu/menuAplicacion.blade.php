@@ -140,6 +140,7 @@
                 @can('notas.editar-notas')
                 <a class="dropdown-item" href="{{ route('notas.editar-notas')}}">Editar notas</a>
                 @endcan
+                <a class="dropdown-item" href="{{route('notas.nota-resumen')}}">Resumen de notas</a>
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
                 @endcan

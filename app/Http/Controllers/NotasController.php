@@ -670,7 +670,10 @@ class NotasController extends Controller
         }
 
     }
-
+    public function resumenNotas()
+    {
+        return view('notas.nota-resumen');
+    }
     public function libretaIndividual()
     {
       return view('notas.libretaIndividual');
