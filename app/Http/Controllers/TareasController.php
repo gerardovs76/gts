@@ -155,8 +155,7 @@ class TareasController extends Controller
 
 
 public function downloadFile($file){
-      $pathtoFile = public_path().'\archivos/'.$file;
-      return response()->download($pathtoFile);
+      return response()->download(public_path("archivos/{$file}"));
     }
 
     public function countPush()
