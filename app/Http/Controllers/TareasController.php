@@ -13,6 +13,7 @@ use App\Http\Requests\TareasRequest;
 use App\MateriasProfesor;
 use Illuminate\Support\Facades\Mail;
 use App\Inscripcion;
+use Illuminate\Support\Facades\Input;
 
 class TareasController extends Controller
 {
