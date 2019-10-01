@@ -1018,15 +1018,6 @@ class NotasController extends Controller
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
      $query2->where('quimestre', $quimestre)
      ->groupBy('matriculados_id');
-
- }])->with(['promedioFinal' => function($query8) use($quimestre){
-            $query8->where('quimestre', $quimestre)
-            ->where('parcial', '1')
-            ->where('parcial', '2')
-            ->where('parcial', '3')
-            ->select('matriculados_id', 'materias_id',
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
-            ->groupBy('materias_id', 'matriculados_id');
  }])->with(['inscripcion' => function($query3){
     $query3->select('cedula', 'nombres_representante');
  }])->with(['materias' => function($query4) use($curso,$paralelo){
@@ -1038,7 +1029,6 @@ class NotasController extends Controller
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.curso', $curso)
      ->get();
-
      $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($quimestre){
         $query
         ->where('quimestre', $quimestre)
