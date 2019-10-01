@@ -41,14 +41,4 @@
 	<!--<div class="col-xs-12 col-sm-4">
 		@include('notas.partials.aside')
 	</div>-->
-	{{-- <script>
- // function mifuncion(elemento) {
-	// var parcial = ($(elemento).data('value'));
-	// var numeroParcial = (parcial);
-	// localStorage.setItem("parcial", JSON.stringify(numeroParcial));
-	// var materiaGlobal;
- //  }
-</script>
-	 --}}
-
 @endsection 

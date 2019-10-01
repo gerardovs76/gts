@@ -30,16 +30,7 @@ class TareasController extends Controller
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
             return view('tareas.index', compact('profesor'));
         }elseif(Auth::user()->isRole('profesor')){
-            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $users)
-            ->distinct()
-            ->pluck('materias.curso');
-            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $users)
-            ->pluck('materias.paralelo');
-            return view('tareas.index', compact('profesorCurso', 'profesorParalelo', 'profesor'));
+            return view('tareas.index', compact('profesor'));
         }
 
     }
@@ -60,8 +51,9 @@ class TareasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TareasRequest $request)
+    public function store(Request $request)
     {
+       
         $archivo = $request->archivo;
         $tareas = new Tareas;
         $tareas->profesor = $request->profesor;

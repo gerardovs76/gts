@@ -51,10 +51,9 @@
             <strong>Curso: <br></strong>
             <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!! Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Coloque el curso']) !!}
+            {!! Form::select('curso',[], null, ['class' => 'form-control col-md-8', 'id' => 'curso', 'placeholder' => 'Coloque el curso']) !!}
             </div>
             </div>
-
             <div class="form-group col-md-4">
             <strong>Especialidad: <br></strong>
             <div class="input-group-prepend">
@@ -66,7 +65,7 @@
             <strong>Paralelo: <br></strong>
             <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!! Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-8', 'placeholder' => 'Ingrese el paralelo']) !!}
+            {!! Form::select('paralelo',[], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo','placeholder' => 'Ingrese el paralelo']) !!}
             </div>
             </div>
                 @endif
@@ -130,9 +129,14 @@
 
 	</div>
 	{!! Form::close() !!}
-
-	<!--<div class="col-xs-12 col-sm-4">
-		@include('notas.partials.aside')
-	</div>-->
-
+    <script>
+        $(document).ready(function(){
+            $.get('notas/cargar-notas-profesor', function(response){
+                $.each(response, function(index, obj){
+                    $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+                    $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+                });
+            });
+        });
+    </script>
 @endsection
