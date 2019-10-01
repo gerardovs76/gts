@@ -195,7 +195,7 @@ table#mitabla3 td {
 <body>
         <div class="page-break">
 
-			<img src="images/logo-pauld.png" alt="" height="80" width="80" style="float: left;"><br>
+			<img src="images/logo-institucion.PNG" alt="" height="80" width="80" style="float: left;"><br>
 		<table class="table" id="mitabla">
 				<tbody>
 			<tr>
