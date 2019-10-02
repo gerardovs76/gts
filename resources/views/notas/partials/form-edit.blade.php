@@ -156,7 +156,7 @@
                         if($('#tipoTarea').val() == 'nota_ta')
                        {
                            $.each(response, function(index, obj){
-                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="far fa-destroy"></i>ELIMINAR</a></td></tr>');
+                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="/notas/'+obj.id+'/destroy" class="btn btn-danger">ELIMINAR</a></td></tr>');
                            });
                        }else if($('#tipoTarea').val() == 'nota_ti')
                        {
