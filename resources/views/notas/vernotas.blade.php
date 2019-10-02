@@ -110,12 +110,16 @@
                         <p>CONDUCTA</p>
                     </th>
                     <th>
+                        @if(isset($quimestre))
                         @if($quimestre == '1')
                         <p>EXAMEN 1ER QUIM.</p>
                         @elseif($quimestre == '2')
-                        <td>EXAMEN 2DO QUIM.</td>
+                        <p>EXAMEN 2DO QUIM.</p>
                         @else
-                        <td>EXAMEN</td>
+                        <p>EXAMEN</p>
+                        @endif
+                        @else
+                        <p>EXAMEN</p>
                         @endif
                     </th>
 					<th>

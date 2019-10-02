@@ -43,6 +43,14 @@ public function recuperaciones()
 {
     return $this->hasMany('App\Recuperacion', 'matriculados_id');
 }
+public function recuperaciones_p2()
+{
+    return $this->recuperaciones();
+}
+public function recuperaciones_p3()
+{
+    return $this->recuperaciones();
+}
 public function notas()
 {
     return $this->hasMany('App\Notas', 'matriculados_id');
