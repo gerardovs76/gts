@@ -82,7 +82,7 @@
 					</div>
 
 
-                    <table class="table table-striped table-hover" id="tableid">
+                    <table class="table table-bordered table-hover" id="tableid">
 			<thead>
 
                     <tr>
@@ -109,6 +109,15 @@
                     <th>
                         <p>CONDUCTA</p>
                     </th>
+                    <th>
+                        @if($quimestre == '1')
+                        <p>EXAMEN 1ER QUIM.</p>
+                        @elseif($quimestre == '2')
+                        <td>EXAMEN 2DO QUIM.</td>
+                        @else
+                        <td>EXAMEN</td>
+                        @endif
+                    </th>
 					<th>
 						<p>PROMEDIO</p>
 					</th>
@@ -126,6 +135,13 @@
                     <td>{{$notaIndi->nota_le}}</td>
                     <td>{{$notaIndi->nota_ev}}</td>
                     <td>{{$notaIndi->nota_conducta == null ? 0 : $notaIndi->nota_conducta}}</td>
+                    @foreach($nota->examen as $examen)
+                    @if(!empty($examen->nota_examen))
+                    <td>{{$examen->nota_examen}}</td>
+                    @else
+                    <td>0</td>
+                    @endif
+                    @endforeach
                     @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
                     @foreach($nota->recuperaciones as $recuperacion)
                     @if($recuperacion->promedio_final < 7)

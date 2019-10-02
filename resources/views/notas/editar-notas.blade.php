@@ -15,13 +15,14 @@
 					{!! Form::open(['route' => 'notas.store']) !!}
                    		@include('notas.partials.form-edit')
 
-                    <table class="table table-striped table-hover" id="tabla">
+                    <table class="table table-bordered table-hover" id="tabla">
 			<thead>
                 <tr>
                     <th><strong>NOTA</strong></th>
                     <th>DESCRIPCION</th>
                     <th>FECHA CREACION</th>
                     <th>EDITAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
             </thead>
 			<tbody id="tableid">

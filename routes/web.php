@@ -116,6 +116,8 @@ Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('
 
 Route::get('notas/{id}/edit', 'NotasController@edit')->name('notas.edit');
 
+Route::delete('notas/{id}/destroy', 'NotasController@destroy');
+
 Route::put('notas/{id}', 'NotasController@update')->name('notas.update');
 
 Route::get('buscar_notas/{curso}/{paralelo}', 'NotasController@buscarMateriaAlumno');

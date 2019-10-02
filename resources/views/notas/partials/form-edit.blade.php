@@ -31,7 +31,7 @@
                              <strong>Curso: <br></strong>
                              <div class="input-group-prepend">
                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                             {{ Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
+                             {{ Form::select('curso',[], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
                              </div>
                              </div>
 
@@ -47,7 +47,7 @@
                              <strong>Paralelo: <br></strong>
                              <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                             {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
+                             {{ Form::select('paralelo',[], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
                              </div>
                              </div>
                         @endif
@@ -77,7 +77,7 @@
                              <strong>Tipo de tarea: <br></strong>
                              <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                             {{ Form::select('quimestre',['nota_ta' => 'TRABAJOS ACADEMICOS', 'nota_ti' => 'TAREAS INDIVIDUALES', 'nota_tg' => 'TAREAS GRUPALES', 'nota_le' => 'LECCIONES', 'nota_ev' =>  'EVALUACION', 'conducta' => 'CONDUCTA'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
+                             {{ Form::select('quimestre',['nota_ta' => 'TRABAJOS ACADEMICOS', 'nota_ti' => 'TAREAS INDIVIDUALES', 'nota_tg' => 'TAREAS GRUPALES', 'nota_le' => 'LECCIONES', 'nota_ev' =>  'EVALUACION', 'conducta' => 'CONDUCTA', 'examen' => 'EXAMEN QUIMESTRAL'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
                              </div>
                              </div>
                              <div class="form-group col-md-4">
@@ -94,6 +94,20 @@
                    </div>
                  </div>
                 </div>
+                <script>
+                        $(document).ready(function(){
+                            $.get('notas/cargar-notas-profesor', function(response){
+                                $.each(response, function(index, obj){
+                                    $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+                                });
+                            });
+                            $.get('notas/cargar-notas-profesor-paralelo', function(response){
+                                $.each(response, function(index, obj){
+                                    $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+                                });
+                            });
+                        });
+                    </script>
                   <script>
                    $('#paralelo').on('change', function() {
                     var curso = $( "#curso option:selected" ).text();
@@ -142,7 +156,7 @@
                         if($('#tipoTarea').val() == 'nota_ta')
                        {
                            $.each(response, function(index, obj){
-                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="far fa-destroy"></i>ELIMINAR</a></td></tr>');
                            });
                        }else if($('#tipoTarea').val() == 'nota_ti')
                        {
@@ -169,6 +183,13 @@
                        {
                         $.each(response, function(index, obj){
                             $('#tableid').append('<tr><td><strong>'+obj.conducta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                        });
+                       }
+                       else if($('#tipoTarea').val() == 'examen')
+                       {
+                        $.each(response, function(index, obj){
+                            console.log(obj);
+                            $('#tableid').append('<tr><td><strong>'+obj.examen+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
                         });
                        }
                        });

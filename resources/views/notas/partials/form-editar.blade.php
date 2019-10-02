@@ -145,6 +145,25 @@
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                             </div>
                         </div>
+                        @elseif(!empty($notas->examen))
+                        <div class="form-row">
+                            <div class="form-group col-sm-2">
+                                <strong>Examen: </strong><br>
+                                {!!Form::number('examen', null, ['class' => 'form-control col-md-4', 'min' => '1', 'max' => '10'])!!}
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <strong>Nro. quimestre: </strong><br>
+                                {!!Form::text('quimestre', null, ['class' => 'form-control col-md-2', 'readonly'])!!}
+                            </div>
+                            <div class="form-group col-md-2">
+                                <strong>Descripcion: </strong><br>
+                                {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
+                                {!!Form::hidden('matriculados_id')!!}
+                            </div>
+                            <div class="form-group col-md-12">
+                                {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+                            </div>
+                        </div>
         @endif
     </div>
 </div>

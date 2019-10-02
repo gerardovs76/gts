@@ -1707,14 +1707,11 @@ class MatriculacionController extends Controller
     {
         $codigo = $request->codigo;
 
-        $matriculadosPerfil = Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')
-        ->join('inscripciones', 'matriculados.codigo', '=', 'inscripciones.codigo_nuevo')
-        ->select('*')
-        ->where('matriculados.codigo', $codigo)
-        ->distinct()
-        ->get();
-
-
+        $matriculadosPerfil = Matriculacion::with(['facturaciones' => function($query1){
+            $query1->select('*');
+        }])->with(['inscripcion' => function($query3){
+            $query3->select('cedula', 'nombres_representante','cedrepresentante','movil', 'convencional', 'tipo_persona', 'direccion_alumno');
+        }])->where('codigo', $codigo)->get();
         return view('matricular.perfil-total', compact('matriculadosPerfil'))->with('info', 'La busqueda se ha completado correctamente...');
     }
 

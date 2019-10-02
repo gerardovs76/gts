@@ -66,16 +66,7 @@ class NotasController extends Controller
             return view('notas.editar-notas');
         }
         elseif(Auth::user()->isRole('profesor')){
-            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $users)
-            ->distinct()
-            ->pluck('materias.curso');
-            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $users)
-            ->pluck('materias.paralelo');
-            return view('notas.editar-notas', compact('profesorCurso', 'profesorParalelo'));
+            return view('notas.editar-notas');
         }
 
     }
@@ -190,6 +181,7 @@ class NotasController extends Controller
         $parcial = $request->parcial;
         $quimestre = $request->quimestre;
         $conducta = $request->conducta;
+        $examen = $request->examen;
 
             $nota = Notas::find($id);
             $nota->nota_ta = $nota_ta;
@@ -203,6 +195,7 @@ class NotasController extends Controller
             $nota->parcial = $parcial;
             $nota->quimestre = $quimestre;
             $nota->conducta = $conducta;
+            $nota->examen = $examen;
             $nota->save();
 
         return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
@@ -376,6 +369,10 @@ class NotasController extends Controller
             DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
             ->groupBy('matriculados_id', 'materias_id');
 
+ }])->with(['examen' => function($query7) use($quimestre){
+    $query7->where('quimestre', $quimestre)
+    ->select('matriculados_id', DB::raw("sum(examen) as nota_examen"))
+    ->groupBy('matriculados_id');
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
      $query2->where('parcial', $parcial)
      ->where('quimestre', $quimestre)
@@ -385,24 +382,39 @@ class NotasController extends Controller
 
  }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
 
-
-        return view('notas.vernotas', compact('notas'))->with('info', 'Se ha cargado las notas correctamete');
+        return view('notas.vernotas', compact('notas', 'quimestre'))->with('info', 'Se ha cargado las notas correctamete');
 
     }
     public function notasEdit($idestudiante, $ttarea, $parcial, $quimestre, $materia)
     {
-        $notas = DB::table('notas')
+        if($ttarea == 'examen')
+        {
+            $notas = DB::table('notas')
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-        ->join('materias', 'notas.materias_id', '=', 'materias.id')
         ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
         ->where('notas.'.$ttarea.'', '!=', 'null')
         ->where('matriculados.id', '=', $idestudiante)
-        ->where('notas.parcial', '=', $parcial)
         ->where('notas.quimestre', '=', $quimestre)
-        ->where('notas.materias_id', $materia)
+        ->groupBy('notas.examen')
         ->get();
 
         return response()->json($notas);
+
+        }else{
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.'.$ttarea.'', '!=', 'null')
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
+
+            return response()->json($notas);
+        }
+
     }
 
     public function resumenNotaStore($ttarea, $parcial, $quimestre, $materia)
