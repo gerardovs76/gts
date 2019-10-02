@@ -1710,7 +1710,7 @@ class MatriculacionController extends Controller
         $matriculadosPerfil = Matriculacion::with(['facturaciones' => function($query1){
             $query1->select('*');
         }])->with(['inscripcion' => function($query3){
-            $query3->select('cedula', 'nombres_representante','cedrepresentante','movil', 'convencional', 'tipo_persona', 'direccion_alumno');
+            $query3->select('cedula', 'nombres_representante','cedrepresentante','movil', 'convencional', 'tipo_persona', 'direccion_alumno', 'edad', 'sexo');
         }])->where('codigo', $codigo)->get();
         return view('matricular.perfil-total', compact('matriculadosPerfil'))->with('info', 'La busqueda se ha completado correctamente...');
     }

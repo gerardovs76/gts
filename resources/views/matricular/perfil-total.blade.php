@@ -55,7 +55,7 @@
                         </tr>
                         <tr>
                                 <th>
-                                    Sexo y edad: {{$perfil->inscripcion->sexo}} {{$perfil->inscripcion->edad}} años
+                                    Sexo: {{$perfil->inscripcion->sexo}} - Edad: {{$perfil->inscripcion->edad}} años
                                 </th>
                             </tr>
                             <tr>
