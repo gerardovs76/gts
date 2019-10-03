@@ -1068,7 +1068,7 @@ class NotasController extends Controller
     }])->with(['examen' => function($query7) use($quimestre){
     $query7->where('quimestre', $quimestre)
     ->where('examen', '!=', '')
-    ->select('matriculados_id',DB::raw('SUM(notas.examen) as nota_examen'), 'materias_id', 'id')
+    ->select('matriculados_id', 'quimestre',DB::raw('SUM(notas.examen) as nota_examen'), 'materias_id', 'id')
     ->groupBy('matriculados_id');
 
 
@@ -1096,6 +1096,7 @@ class NotasController extends Controller
     $query3->select('cedula', 'nombres_representante');
 
     }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
+
      $representante = DB::table('inscripciones')
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.curso', $curso)

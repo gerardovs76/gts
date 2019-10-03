@@ -328,23 +328,22 @@ table#mitabla3 td {
 
                    <td></td>
                    <td></td>
-
+                   @if(isset($nota->examen))
                    @foreach($nota->examen as $examen)
-                   @if($nota->examen->first()->matriculados_id ==  $examen->matriculados_id)
+                   @if($examen->materias_id == $materiasIndi->id)
                    @if(!empty($examen->nota_examen))
                    <td>{{$examen->nota_examen}}</td>
                    @else
                    <td>0</td>
                    @endif
                    @if(!empty($examen->nota_examen))
-                   <td>{{((($examen->nota_examen)* 20) / 100)}}</td>
+                   <td>{{((($examen->nota_examen) * 20) / 100)}}</td>
                    @else
-                   <td></td>
+                   <td>0</td>
                    @endif
-                   @else
-                   <td></td>
                    @endif
                    @endforeach
+                   @endif
 
 
 
