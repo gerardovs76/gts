@@ -1067,44 +1067,45 @@ class NotasController extends Controller
 
     }])->with(['examen' => function($query7) use($quimestre){
     $query7->where('quimestre', $quimestre)
-    ->select('matriculados_id','examen', 'materias_id', 'id')
-    ->groupBy('examen');
+    ->where('examen', '!=', '')
+    ->select('matriculados_id',DB::raw('SUM(notas.examen) as nota_examen'), 'materias_id', 'id')
+    ->groupBy('matriculados_id');
 
 
     }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
      $query2->where('quimestre', $quimestre)
      ->where('parcial', '1')
-     ->select('matriculados_id', 'promedio_final')
+     ->select('matriculados_id', 'promedio_final', 'materias_id', 'promedio_notas')
      ->groupBy('matriculados_id');
 
 
     }])->with(['recuperaciones_p2' => function($que1) use($parcial, $quimestre){
     $que1->where('quimestre', $quimestre)
     ->where('parcial', '2')
-    ->select('matriculados_id', 'promedio_final')
+    ->select('matriculados_id', 'promedio_final', 'materias_id')
     ->groupBy('matriculados_id');
-
-
 
     }])->with(['recuperaciones_p3' => function($que2) use($parcial, $quimestre){
     $que2->where('quimestre', $quimestre)
     ->where('parcial', '3')
-    ->select('matriculados_id', 'promedio_final')
+    ->select('matriculados_id', 'promedio_final', 'materias_id')
     ->groupBy('matriculados_id');
 
 
     }])->with(['inscripcion' => function($query3){
     $query3->select('cedula', 'nombres_representante');
 
-    }])->with(['materias' => function($query4) use($curso,$paralelo){
-    $query4->select('curso', 'materia', 'tipo_materia','id')
-
-    ->where('curso', $curso)
-    ->where('paralelo', $paralelo);
     }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
      $representante = DB::table('inscripciones')
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.curso', $curso)
+     ->get();
+
+     $materias = DB::table('materias')
+     ->select('materia', 'id', 'tipo_materia')
+     ->where('curso', $curso)
+     ->where('paralelo', $paralelo)
+     ->distinct()
      ->get();
      $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($quimestre){
         $query
