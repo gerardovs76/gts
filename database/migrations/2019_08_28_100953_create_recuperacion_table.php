@@ -18,6 +18,7 @@ class CreateRecuperacionTable extends Migration
             $table->bigInteger('matriculados_id');
             $table->string('nota_recuperacion');
             $table->string('promedio_notas');
+            $table->string('promedio_final');
             $table->bigInteger('quimestre');
             $table->bigInteger('parcial');
             $table->bigInteger('materias_id');

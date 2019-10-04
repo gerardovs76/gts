@@ -26,6 +26,7 @@ class CreateInspeccionesTable extends Migration
             $table->string('justificacionh6')->nullable();
             $table->string('justificacionh7')->nullable();
             $table->string('justificacionh8')->nullable();
+            $table->string('justificacionh9')->nullable();
             $table->string('h1');
             $table->string('h2');
             $table->string('h3');
@@ -34,6 +35,7 @@ class CreateInspeccionesTable extends Migration
             $table->string('h6');
             $table->string('h7');
             $table->string('h8');
+            $table->string('h9');
             $table->bigInteger('matriculados_id')->unsigned()->nullable();
             $table->foreign('matriculados_id')->references('id')->on('matriculados')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

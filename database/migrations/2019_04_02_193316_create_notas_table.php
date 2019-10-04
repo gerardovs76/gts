@@ -33,6 +33,7 @@ class CreateNotasTable extends Migration
             $table->string('numero_conducta')->nullable();
             $table->string('conducta')->nullable();
             $table->string('quimestre');
+            $table->string('examen')->nullable();
             $table->timestamps();
         });
     }
