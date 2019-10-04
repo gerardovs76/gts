@@ -71,6 +71,10 @@ public function promedioFinal()
 {
     return $this->notas();
 }
+public function conducta()
+{
+    return $this->notas();
+}
 public function remediales()
 {
     return $this->hasMany('App\Remediales', 'matriculados_id');

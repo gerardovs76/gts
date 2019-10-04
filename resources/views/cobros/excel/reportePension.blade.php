@@ -19,11 +19,11 @@
     <tbody>
     @foreach($matriculados as $matriculado)
         <tr>
-     
+
             <td>{{ $matriculado->cedula }}</td>
             <td>{{ $matriculado->fecha_inicio }}</td>
             <td>PAGO</td>
-            <td>{{$matriculado->referencias}}</td>
+            <td>PENSIÓN: {{$matriculado->referencias}}</td>
             <td>{{ $matriculado->valor}}</td>
             <td></td>
             <td></td>
@@ -35,6 +35,6 @@
             <td>{{ $matriculado->num_referencia }}</td>
         </tr>
         @endforeach
-    
+
     </tbody>
 </table>

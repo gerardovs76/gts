@@ -18,7 +18,7 @@
 						<div class="panel panel-body">
 							<div class="form-row">
                                     <div class="form-group col-md-4">
-                                            <strong>Curso: <br></strong>
+                                            <strong>Codigo: <br></strong>
                                             <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
                                             {{ Form::text('codigo', null, ['class' => 'form-control col-md-6' , 'id' => 'codigo', 'placeholder' => 'Introduzca el codigo...']) }}

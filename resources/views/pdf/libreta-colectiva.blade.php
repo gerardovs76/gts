@@ -358,30 +358,116 @@ table#mitabla3 td {
             @if($materiasIndi->tipo_materia == 'SI')
             <tr>
                 <td><strong>{{$materiasIndi->materia}}</strong></td>
-                @foreach($nota->notas as $notaIndi)
-                    @if($materiasIndi->id === $notaIndi->materias_id)
-                    <td>{{$notaIndi->nota_ta}}</td>
-                    <td>{{$notaIndi->nota_ti}}</td>
-                    <td>{{$notaIndi->nota_tg}}</td>
-                    <td>{{$notaIndi->nota_le}}</td>
-                    <td>{{$notaIndi->nota_ev}}</td>
-                    @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
-                    @foreach($nota->recuperaciones as $recuperacion)
-                    @if($recuperacion->promedio_final < 7)
-                    <td style="color: red;">{{$recuperacion->promedio_final}}</td>
-                    @else
-                    <td style="color: green;">{{$recuperacion->promedio_final}}</td>
-                    @endif
-                    @endforeach
-                    @else
-                    @if($notaIndi->nota_final < 7)
-                    <td style="color: red;">{{$notaIndi->nota_final}}</td>
-                    @else
-                    <td style="color: green;">{{$notaIndi->nota_final}}</td>
-                    @endif
-                    @endif
-                    @endif
-                    @endforeach
+				@foreach($nota->notas as $parcial1)
+				@if(!$nota->recuperaciones->isEmpty())
+
+				@foreach($nota->recuperaciones as $recuperacionp1)
+
+				@if($parcial1->materias_id == $materiasIndi->id && $recuperacionp1->materias_id == $parcial1->materias_id)
+
+				<td>{{($recuperacionp1->promedio_final >= 9 && $recuperacionp1->promedio_final <= 10 ? 'A' : ($recuperacionp1->promedio_final >= 7 && $recuperacionp1->promedio_final <= 8.99 ? 'B' : ($recuperacionp1->promedio_final >= 4.01 && $recuperacionp1->promedio_final <= 6.99 ? 'C' : ($recuperacionp1->promedio_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@elseif($parcial1->materias_id == $materiasIndi->id)
+
+				<td>{{($parcial1->nota_final >= 9 && $parcial1->nota_final <=  10 ? 'A' : ($parcial1->nota_final >= 7 && $parcial1->nota_final <= 8.99 ? 'B' : ($parcial1->nota_final >= 4.01 && $parcial1->nota_final <= 6.99 ? 'C' : ($parcial1->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@endif
+
+				@endforeach
+
+				@elseif($nota->recuperaciones->isEmpty())
+				@if($parcial1->materias_id == $materiasIndi->id)
+				<td>{{($parcial1->nota_final >= 9 && $parcial1->nota_final <=  10 ? 'A' : ($parcial1->nota_final >= 7 && $parcial1->nota_final <= 8.99 ? 'B' : ($parcial1->nota_final >= 4.01 && $parcial1->nota_final <= 6.99 ? 'C' : ($parcial1->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+				@else
+
+				@endif
+
+				@endif
+
+				@endforeach
+
+				@foreach($nota->parcial2 as $parcial2)
+				@if(!$nota->recuperaciones_p2->isEmpty())
+
+				@foreach($nota->recuperaciones_p2 as $recuperacionp2)
+
+				@if($parcial2->materias_id == $materiasIndi->id && $recuperacionp2->materias_id == $parcial2->materias_id)
+
+				<td>{{($recuperacionp2->promedio_final >= 9 && $recuperacionp2->promedio_final <= 10 ? 'A' : ($recuperacionp2->promedio_final >= 7 && $recuperacionp2->promedio_final <= 8.99 ? 'B' : ($recuperacionp2->promedio_final >= 4.01 && $recuperacionp2->promedio_final <= 6.99 ? 'C' : ($recuperacionp2->promedio_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@elseif($parcial2->materias_id == $materiasIndi->id)
+
+				<td>{{($parcial2->nota_final >= 9 && $parcial2->nota_final <=  10 ? 'A' : ($parcial2->nota_final >= 7 && $parcial2->nota_final <= 8.99 ? 'B' : ($parcial2->nota_final >= 4.01 && $parcial2->nota_final <= 6.99 ? 'C' : ($parcial2->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@endif
+
+				@endforeach
+
+				@elseif($nota->recuperaciones_p2->isEmpty())
+				@if($parcial2->materias_id == $materiasIndi->id)
+				<td>{{($parcial2->nota_final >= 9 && $parcial2->nota_final <=  10 ? 'A' : ($parcial2->nota_final >= 7 && $parcial2->nota_final <= 8.99 ? 'B' : ($parcial2->nota_final >= 4.01 && $parcial2->nota_final <= 6.99 ? 'C' : ($parcial2->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+				@else
+
+				@endif
+
+				@endif
+
+				@endforeach
+
+				@foreach($nota->parcial3 as $parcial3)
+				@if(!$nota->recuperaciones_p3->isEmpty())
+
+				@foreach($nota->recuperaciones_p3 as $recuperacionp3)
+
+				@if($parcial3->materias_id == $materiasIndi->id && $recuperacionp3->materias_id == $parcial3->materias_id)
+
+				<td>{{($recuperacionp3->promedio_final >= 9 && $recuperacionp3->promedio_final <= 10 ? 'A' : ($recuperacionp3->promedio_final >= 7 && $recuperacionp3->promedio_final <= 8.99 ? 'B' : ($recuperacionp3->promedio_final >= 4.01 && $recuperacionp3->promedio_final <= 6.99 ? 'C' : ($recuperacionp3->promedio_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@elseif($parcial3->materias_id == $materiasIndi->id)
+
+				<td>{{($parcial3->nota_final >= 9 && $parcial3->nota_final <=  10 ? 'A' : ($parcial3->nota_final >= 7 && $parcial3->nota_final <= 8.99 ? 'B' : ($parcial3->nota_final >= 4.01 && $parcial3->nota_final <= 6.99 ? 'C' : ($parcial3->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+
+				@endif
+
+				@endforeach
+
+				@elseif($nota->recuperaciones_p3->isEmpty())
+				@if($parcial3->materias_id == $materiasIndi->id)
+				<td>{{($parcial3->nota_final >= 9 && $parcial3->nota_final <=  10 ? 'A' : ($parcial3->nota_final >= 7 && $parcial3->nota_final <= 8.99 ? 'B' : ($parcial3->nota_final >= 4.01 && $parcial3->nota_final <= 6.99 ? 'C' : ($parcial3->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+				@else
+
+				@endif
+
+				@endif
+
+				@endforeach
+
+				<td></td>
+				<td></td>
+				@if(isset($nota->examen))
+				@foreach($nota->examen as $examen)
+				@if($examen->materias_id == $materiasIndi->id)
+				@if(!empty($examen->nota_examen))
+				<td>{{($examen->nota_examen >= 9 && $examen->nota_examen <= 10 ? 'A' : ($examen->nota_examen >= 7 && $examen->nota_examen <= 8.99 ? 'B' : ($examen->nota_examen >= 4.01 && $examen->nota_examen <= 6.99 ? 'C' : ($examen->nota_examen <= 4 ? 'D' : 'Nota invalida'))))}}</td>
+				@else
+				<td>0</td>
+				@endif
+                @if(!empty($examen->nota_examen))
+                @if(($examen->nota_examen * 20 / 100) >= 9 && ($examen->nota_examen) <= 10)
+                <td>A</td>
+                @elseif(($examen->nota_examen * 20 / 100) >= 7 && ($examen->nota_examen) <= 8.99)
+                <td>B</td>
+                @elseif(($examen->nota_examen * 20 / 100) >= 4.01 && ($examen->nota_examen) <= 6.99)
+                <td>C</td>
+                @elseif(($examen->nota_examen * 20 / 100) <= 4)
+                <td>D</td>
+                @endif
+				@else
+				<td>0</td>
+				@endif
+				@endif
+				@endforeach
+				@endif
             </tr>
             @endif
             @endforeach
@@ -399,18 +485,31 @@ table#mitabla3 td {
 		</thead>
 		<tbody>
 			<tr>
-                @if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'||$nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
-				<td>0</td>
-                @else
-                @foreach($inspe as $in)
-                <td>{{(10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) }}</td>
-				<td>{{($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01+$in->h9_count_01)}}</td>
-				<td>{{($in->h1_count_02 +$in->h2_count_02 +$in->h3_count_02 +$in->h4_count_02 +$in->h5_count_02 +$in->h6_count_02 +$in->h7_count_02 +$in->h8_count_02+$in->h9_count_01)}}</td>
-                <td>{{($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03+$in->h9_count_01)}}</td>
-                <td>{{($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04+$in->h9_count_01)}}</td>
-                @endforeach
+                @if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'|| $nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
+                @foreach($nota->conducta as $conducta)
+                @if(!empty($conducta->nota_conducta))
+                <td>{{($conducta->nota_conducta >= 9 && $conducta->nota_conducta <= 10 ? 'A' : ($conducta->nota_conducta >= 7 && $conducta->nota_conducta <= 8.99 ? 'B' : ($conducta->nota_conducta >= 4.01 &&  $conducta->nota_conducta <= 6.99 ? 'C' : ($conducta->nota_conducta <= 4  ? 'D' : 'Nota invalida'))))}}</td>
                 @endif
-			</tr>
+                @endforeach
+                @elseif($nota->curso == 'OCTAVO DE EGB' || $nota->curso == 'NOVENO DE EGB' || $nota->curso == 'DECIMO DE EGB' || $nota->curso == 'PRIMERO DE BACHILLERATO' || $nota->curso == 'SEGUNDO DE BACHILLERATO' || $nota->curso == 'TERCERO DE BACHILLERATO')
+                @foreach($inspe as $in)
+                @if((10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) >= 9 && (10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) <= 10 )
+                <td>A</td>
+                @elseif((10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) >= 7 && (10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) <= 8.99)
+                <td>B</td>
+                @elseif((10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) >= 4.01 && (10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) <= 6.99)
+                <td>C</td>
+                @elseif((10 - ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_01) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25)) <= 4)
+                <td>D</td>
+                @endif
+                @endforeach
+                @else
+                <td>0</td>
+                @endif
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 		</tbody>
 	</table>
 	<br>
@@ -489,11 +588,11 @@ table#mitabla3 td {
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
 <p style="text-align: center;">LCDA. CARMEN RAMIREZ</p>
-<p style="text-align: center;">VICERRECTORA</p>
+<p style="text-align: center;">RECTOR</p>
 </div><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">XXXXXXXXXXX</p>
+<p style="text-align: center;"></p>
 <p style="text-align: center;">TUTOR</p>
 </div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">

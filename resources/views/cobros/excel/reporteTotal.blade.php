@@ -7,7 +7,7 @@
         <th><strong>DETALLE DE FACTURA 1</strong></th>
         <th><strong>VALOR RECURSO 1</strong></th>
         <th><strong>RECURSOS A FACTURAR 2</strong></th>
-          <th><strong>DETALLE DE LA FACTURA 2</strong></th>
+        <th><strong>DETALLE DE LA FACTURA 2</strong></th>
         <th><strong>VALOR DEL RECURSO 2</strong></th>
         <th><strong>RECURSOS A FACTURAR 3</strong></th>
         <th><strong>DETALLE DE LA FACTURA 3</strong></th>

@@ -367,7 +367,7 @@ class NotasController extends Controller
             DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
             DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
             DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('matriculados_id', 'materias_id');
 
  }])->with(['examen' => function($query7) use($quimestre){
@@ -471,7 +471,7 @@ class NotasController extends Controller
             DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
             DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
             DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('matriculados_id', 'materias_id');
 
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
@@ -497,7 +497,7 @@ class NotasController extends Controller
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),
-         DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
+         DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
         ->where('matriculados.curso',$curso)
         ->where('matriculados.paralelo',$paralelo)
         ->where('notas.quimestre',$quimestre)
@@ -748,7 +748,7 @@ class NotasController extends Controller
             DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
             DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
             DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) + SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('materias_id', 'matriculados_id');
 
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
@@ -756,6 +756,11 @@ class NotasController extends Controller
      ->where('quimestre', $quimestre)
      ->groupBy('matriculados_id');
 
+ }])->with(['conducta' => function($que1) use ($parcial, $quimestre){
+            $que1->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id', 'materias_id',DB::raw('sum(notas.conducta) / sum(notas.numero_conducta) as nota_conducta'))
+                ->groupBy('matriculados_id');
 
  }])->with(['inscripcion' => function($query3){
     $query3->select('cedula', 'nombres_representante');
@@ -768,6 +773,7 @@ class NotasController extends Controller
      ->select('inscripciones.nombres_representante')
      ->where('inscripciones.curso', $curso)
      ->get();
+
      $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
         $query
         ->where('parcial', $parcial)
@@ -1048,28 +1054,28 @@ class NotasController extends Controller
             ->where('parcial', '1')
             ->where('quimestre', $quimestre)
             ->select('matriculados_id', 'materias_id',
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('materias_id', 'matriculados_id');
 
     }])->with(['parcial2' => function($query5) use($quimestre){
     $query5->where('parcial', '2')
     ->where('quimestre', $quimestre)
     ->select('matriculados_id', 'materias_id',
-    DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+    DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
     ->groupBy('materias_id', 'matriculados_id');
 
     }])->with(['parcial3' => function($query6) use($quimestre){
     $query6->where('parcial', '3')
     ->where('quimestre', $quimestre)
     ->select('matriculados_id', 'materias_id',
-    DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+    DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
     ->groupBy('materias_id', 'matriculados_id');
 
     }])->with(['examen' => function($query7) use($quimestre){
     $query7->where('quimestre', $quimestre)
     ->where('examen', '!=', '')
     ->select('matriculados_id', 'quimestre',DB::raw('SUM(notas.examen) as nota_examen'), 'materias_id', 'id')
-    ->groupBy('matriculados_id');
+    ->groupBy('materias_id', 'matriculados_id');
 
 
     }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
@@ -1091,9 +1097,13 @@ class NotasController extends Controller
     ->select('matriculados_id', 'promedio_final', 'materias_id')
     ->groupBy('matriculados_id');
 
-
+    }])->with(['conducta' => function($que3) use ($quimestre){
+                $que3->where('quimestre', $quimestre)
+                ->select('matriculados_id', 'materias_id',DB::raw('sum(notas.conducta) / sum(notas.numero_conducta) as nota_conducta'))
+                ->groupBy('matriculados_id');
     }])->with(['inscripcion' => function($query3){
     $query3->select('cedula', 'nombres_representante');
+
 
     }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
 
@@ -1108,6 +1118,7 @@ class NotasController extends Controller
      ->where('paralelo', $paralelo)
      ->distinct()
      ->get();
+
      $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($quimestre){
         $query
         ->where('quimestre', $quimestre)
@@ -1387,7 +1398,7 @@ class NotasController extends Controller
             DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
             DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
             DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('matriculados_id');
 
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
@@ -1423,7 +1434,7 @@ class NotasController extends Controller
         ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
         ->join('materias', 'notas.materias_id', '=', 'materias.id')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ',matriculados.nombres) as nombres"),
-         DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
+         DB::raw("(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5  as nota_final"), 'notas.id as nota_id', 'matriculados.id as matriculados_id')
         ->where('matriculados.curso',$curso)
         ->where('matriculados.paralelo',$paralelo)
         ->where('notas.quimestre',$quimestre)
@@ -1560,7 +1571,7 @@ class NotasController extends Controller
              DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
              DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
              DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-             DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+             DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
              ->groupBy('materias_id', 'matriculados_id');
 
   }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
@@ -1568,6 +1579,11 @@ class NotasController extends Controller
       ->where('quimestre', $quimestre)
       ->groupBy('matriculados_id');
 
+    }])->with(['conducta' => function($que1) use ($parcial, $quimestre){
+        $que1->where('parcial', $parcial)
+        ->where('quimestre', $quimestre)
+        ->select('matriculados_id', 'materias_id',DB::raw('sum(notas.conducta) / sum(notas.numero_conducta) as nota_conducta'))
+            ->groupBy('matriculados_id');
 
   }])->with(['inscripcion' => function($query3){
      $query3->select('cedula', 'nombres_representante');
@@ -1855,7 +1871,7 @@ class NotasController extends Controller
             DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
             DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
             DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev)) / 5),3)  as nota_final"))
+            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
             ->groupBy('matriculados_id');
 
  }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
