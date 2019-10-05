@@ -102,49 +102,7 @@
                                    </div>
                                  </div>
                                 </div>
-
-       <script>
-        $('#paralelo').on('change', function() {
-            var curso = $( "#curso option:selected" ).text();
-            var paralelo  = $( "#paralelo option:selected" ).text();
-          $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
-                    $('#materia').empty();
-                    $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
-          $.each(data, function(index, regenciesObj){
-                    $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
-                    var materia = document.getElementById("materia").value;
-
-               });
-          });
-     });
-                               $('#agregarDescripcion').on('click', function(){
-                                $('#agregarDescripcion').css("display", "none");
-
-          $('#descripcion').css("display", "block");
-          $('#agregarNotas').css("display", "block");
-        });
-          $('#agregarNotas').on('click', function(){
-            $('#agregarNotas').css("display", "none");
-            $('#guardar').addClass("d-block");
-            var curso = $( "#curso option:selected" ).text();
-            var paralelo  = $( "#paralelo option:selected" ).text();
-          var especialidad = $('#especialidad').val();
-          var tipoTarea = $('#tipoTarea').val();
-          var materia = $('#materia').val();
-          var parcial = $('#parcial').val();
-          var quimestre = $('#quimestre').val();
-
-          $.get('buscar_alumnos/'+curso+'/'+paralelo, function(dato){
-               $('#tableid').empty();
-          $.each(dato, function(inx, obj){
-               $('#guardarNotas').css("display", "block");
-               $('#tablaNotas').css("display", "block");
-               $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name='+tipoTarea+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
-
-          });
-     });
-     });
-     </script>
+                                <script type="text/javascript" src="{{asset('js/notas-form.js')}}"></script>
 
 
 

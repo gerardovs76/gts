@@ -10,15 +10,15 @@
 
 		<hr>
 		@include('notas.partials.info')
-		
-					
+
+
 					{!! Form::open(['route' => 'notas.store']) !!}
                    		@include('notas.partials.form')
-                  
+
                     <table class="table table-striped table-hover" id="tabla">
 			<thead>
 
-                    <tr>	
+                    <tr>
                     <th>
                     	<p>
                     	<strong>ALUMNOS</strong>
@@ -27,18 +27,18 @@
 					<th>
 						<p>NOTA</p>
 					</th>
-                    </tr>	
+                    </tr>
                     </thead>
 					<tbody id="tableid">
 				<tr>
-				
+
 				</tr>
 			</tbody>
 		</table>
-				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}	
-		  {{ Form::close() }}	
+				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}
+		  {{ Form::close() }}
 	</div>
 	<!--<div class="col-xs-12 col-sm-4">
 		@include('notas.partials.aside')
-	</div>-->
-@endsection 
+    </div>-->
+@endsection

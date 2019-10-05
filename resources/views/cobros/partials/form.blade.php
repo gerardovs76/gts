@@ -121,47 +121,4 @@
 
 
      </div>
-<script>
-     $('#agregarValores').on('click', function(){
-
-          $('#formularioValores').css("display", "block");
-          $('#agregarValores').css("display", "none");
-          $('#guardar').css("display", "block");
-
-
-
-     });
-
-     $('#uniformes').on('change', function(){
-
-          var matricula = $('#matricula').val();
-          var pension = $('#pension').val();
-          var servicio_copiado = $('#servicio_copiado').val();
-          var colada_morada = $('#colada_morada').val();
-          var mantenimiento = $('#mantenimiento').val();
-          var agenda = $('#agenda').val();
-          var seguro_accidentes = $('#seguro_accidentes').val();
-          var piscina = $('#piscina').val();
-          var uniformes = $('#uniformes').val();
-
-          console.log(matricula);
-          console.log(pension);
-          console.log(servicio_copiado);
-          console.log(colada_morada);
-          console.log(mantenimiento);
-          console.log(agenda);
-          console.log(seguro_accidentes);
-          console.log(piscina);
-          console.log(uniformes);
-          var suma = ((parseInt(matricula) +parseInt(pension) + parseFloat(servicio_copiado) +parseFloat(colada_morada)+parseInt(mantenimiento)+parseInt(agenda)+parseInt(seguro_accidentes)+parseInt(piscina)+parseInt(uniformes)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-          console.log(suma);
-
-          $('#total').val(suma);
-
-
-
-
-});
-
-
-     </script>
+<script src="{{asset('js/cobros-suma.js')}}"></script>
