@@ -15,18 +15,18 @@
             {!! Form::text('codigo_antiguo', null, ['class' => 'form-control col-md-8', 'id' => 'codigo_antiguo']) !!}
             </div>
           </div>
-		
-	
-		
 
 
-			
+
+
+
+
 		</div>
 		<div id="formularioAntiguo">
 			<div class="panel panel-success">
 			<div class="panel panel-heading text-center">DATOS DEL ALUMNO</div>
 				<div class="panel panel-body" id="panelBody">
-					
+
 					<div class="form-group col-md-4">
 						<strong>Cedula: <br></strong>
 						<div class="input-group-prepend">
@@ -82,13 +82,13 @@
 								<span class="input-group-text"><i class="fas fa-address-card"></i></span>
 						{!! Form::text('codigo_nuevo', null, ['class' => 'form-control col-md-6', 'id' => 'codigo_nuevo', 'readonly']) !!}
 						</div>
-					</div>	
+					</div>
 					</div>
 				</div>
 
 						<button type="button" id="bottonAparecer" name="bottonAparecer" class="btn btn-success"><i class="fas fa-plus"> Agregar Representante</i></button>
 			</div>
-	
+
 	<div id="formularioR" class="form-row" style="display: none;">
 		<div class="panel panel-success">
 			<div class="panel panel-heading text-center">DATOS REPRESENTANTE</div>
@@ -187,10 +187,10 @@
 	<div class="form-group col-md-10">
 <button type="button" id="bottonAparecer3" name="bottonAparecer3" class="btn btn-success"><i class="fas fa-plus">AGREGAR PADRE</i></button>
 	     </div>
-       </div>	
+       </div>
    </div>
 </div>
-	
+
 		<div id="formularioPadre" class="form-row" style="display: none;">
 			<div class="panel panel-success">
 				<div class="panel panel-heading text-center">DATOS DEL PADRE</div>
@@ -360,69 +360,7 @@
 
 
 
-			
+
 		</div>
 			</div>
-			<script>
-<<<<<<< HEAD
-=======
-				$(document).ready(function(){
-					 var numal = Math.round(Math.random()*10000);
-					var ceros = '190';
-					var suma = ceros + numal;
-					$('#codigo_nuevo').val(suma);
-				});
-			</script>
-			<script>
->>>>>>> cf4994e7d996b40733e99ab10185314986566406
-  $('#codigo_antiguo').on('change', function(){
-    var codigo = $('#codigo_antiguo').val();
-    console.log(codigo);
-    $.get('busqueda-antiguos/'+ codigo, function(response){
-      $.each(response, function(index, obj){
-       $('#nombres').val(obj.nombres);
-       $('#apellidos').val(obj.apellidos);
-       $('#curso').val(obj.curso);
-       $('#nombres_representante').val(obj.nombres_representante);
-       $('#cedula_representante').val(obj.cedula_representante);
-       $('#email').val(obj.email_representante);
-
-      });
-    });
-  });
-
-</script>
-		{{-- <script>
-      $('#tipo_estudiante').on('change', function(){
-        if($('#tipo_estudiante').val() == 'NUEVO'){
-          $('#formularioNuevo').css("display", "block");
-        }
-        if($('#tipo_estudiante').val() == 'ANTIGUO'){
-          $('#formularioAntiguo').css("display", "block");
-        }
-        
-      });
-    </script> --}}
-	<script>
-
-		$('#bottonAparecer').on('click', function(){
-			$('#formularioR').css("display", "block");
-			$('#bottonAparecer').css("display", "none");
-		});
-
-		$('#bottonAparecer2').on('click', function(){
-			$('#formulario2').css("display", "block");
-			$('#bottonAparecer2').css("display", "none");
-
-		});
-		$('#bottonAparecer3').on('click', function(){
-			$('#formularioPadre').css("display", "block");
-			$('#bottonAparecer3').css("display", "none");
-
-		});
-		$('#bottonAparecer4').on('click', function(){
-			$('#formularioMadre').css("display", "block");
-			$('#bottonAparecer4').css("display", "none");
-
-		});
-	</script>
+			<script src="{{asset('js/inscripcion-form-edit.js')}}"></script>

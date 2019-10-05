@@ -153,67 +153,6 @@
         {{ Form::close() }}
 
     </div>
-    <script>
-            $(document).ready(function(){
-                $.get('notas/cargar-notas-profesor', function(response){
-                    $.each(response, function(index, obj){
-                        $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
-                    });
-                });
-                $.get('notas/cargar-notas-profesor-paralelo', function(response){
-                    $.each(response, function(index, obj){
-                        $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
-                    });
-                });
-            });
-        </script>
-<script>
-	$('#paralelo').on('change', function(){
-        var curso = $( "#curso option:selected" ).text();
-        var paralelo  = $( "#paralelo option:selected" ).text();
-		var parcial = $('#parcial').val();
-
-		$.get('cargar_materia/especial/'+curso+'/'+paralelo, function(response){
-			$.each(response, function(index, obj){
-				$('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
-
-			});
-		});
-	});
-</script>
-	{{--  $('#verNotas').on('click', function(){
-        var curso = $( "#curso option:selected" ).text();
-        var paralelo  = $( "#paralelo option:selected" ).text();
-		var parcial = $('#parcial').val();
-		var materia = $('#materia').val();
-		var quimestre = $('#quimestre').val();
-
-		console.log(materia);
-
-		$.get('cargar_notas/especial/'+curso+'/'+paralelo+'/'+quimestre+'/'+parcial+'/'+materia, function(response){
-			console.log(response);
-			$.each(response, function(ind, opt){
-                var nota_ta =  (opt.nota_ta) = (opt.nota_ta >= 9 && opt.nota_ta <= 10 ? 'A' : (opt.nota_ta >= 7 && opt.nota_ta <= 8.99 ? 'B' : (opt.nota_ta >= 4.01 && opt.nota_ta <= 6.99 ? 'C' : (opt.nota_ta <= 4 ? 'D' : 'Seleccione nota valida'))));
-                var nota_ti = (opt.nota_ti) = (opt.nota_ti >= 9 && opt.nota_ti <= 10 ? 'A' : (opt.nota_ti >= 7 && opt.nota_ti <= 8.99 ? 'B' : (opt.nota_ti >= 4.01 && opt.nota_ti <= 6.99 ? 'C' : (opt.nota_ti <= 4 ? 'D' : 'Seleccione nota valida'))));
-                var nota_tg =  (opt.nota_tg) = (opt.nota_tg >= 9 && opt.nota_tg <= 10 ? 'A' : (opt.nota_tg >= 7 && opt.nota_tg <= 8.99 ? 'B' : (opt.nota_tg >= 4.01 && opt.nota_tg <= 6.99 ? 'C' : (opt.nota_tg <= 4 ? 'D' : 'Seleccione nota valida'))));
-                var nota_ev =  (opt.nota_ev) = (opt.nota_ev >= 9 && opt.nota_ev <= 10 ? 'A' : (opt.nota_ev >= 7 && opt.nota_ev <= 8.99 ? 'B' : (opt.nota_ev >= 4.01 && opt.nota_ev <= 6.99 ? 'C' : (opt.nota_ev <= 4 ? 'D' : 'Seleccione nota valida'))));
-                var nota_le =  (opt.nota_le) = (opt.nota_le >= 9 && opt.nota_le <= 10 ? 'A' : (opt.nota_le >= 7 && opt.nota_le <= 8.99 ? 'B' : (opt.nota_le >= 4.01 && opt.nota_le <= 6.99 ? 'C' : (opt.nota_le <= 4 ? 'D' : 'Seleccione nota valida'))));
-                var nota_final = (opt.nota_final) = (opt.nota_final >= 9 && opt.nota_final <= 10 ? 'A' : (opt.nota_final >= 7 && opt.nota_final <= 8.99 ? 'B' : (opt.nota_final >= 4.01 && opt.nota_final <= 6.99 ? 'C' : (opt.nota_final <= 4 ? 'D' : 'Seleccione nota valida'))));
-
-				if(opt.nota_final < 7){
-					$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta)+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti )+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:red;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
-				}else{
-				$('#tableid').append('<tr><td><strong>'+opt.nombres+'</strong></td><td><strong>'+((opt.nota_ta) = (opt.nota_ta == null) ? 0 : opt.nota_ta )+'</strong></td><td><strong>'+((opt.nota_ti) = (opt.nota_ti == null) ? 0 : opt.nota_ti)+'</strong></td><td><strong>'+((opt.nota_tg) = (opt.nota_tg == null) ? 0 : opt.nota_tg)+'</strong></td><td><strong>'+((opt.nota_le) = (opt.nota_le == null) ? 0 : opt.nota_le)+'</strong></td><td><strong>'+((opt.nota_ev) = (opt.nota_ev == null) ? 0 : opt.nota_ev)+'</strong></td><td style="color:green;">'+((opt.nota_final) = (opt.nota_final == null) ? 0 : opt.nota_final)+'</td></tr>');
-
-					}
-
-
-			});
-		});
-	});
-
-
-
-</script>  --}}
+    <script src="{{asset('js/notas-ver-notas-especiales.js')}}"></script>
 
 @endsection

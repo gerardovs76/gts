@@ -111,32 +111,6 @@
 			</div>
        </div>
 
-<script>
-
-	$('#cedula').on('change', function(event) {
-		event.preventDefault();
-		var matriculado = event.target.value;
-		console.log(matriculado);
-
-		$.get('buscar_matriculado/'+ matriculado , function(data) {
-    	$.each(data, function(idx, opt) {
-   			$('#nombres').val(opt.nombres);
-               $('#apellidos').val(opt.apellidos);
-               $('#codigo').val(opt.codigo_nuevo);
-   			$('#inscripcion').append('<input type="hidden" class="col-md-1" name="inscripcion_id" id="inscripcion_id" value='+opt.id+'>');
-
-   	   });
-	}
-	,
-	'json');
-	});
-
-	$('#seleccionarFactura').on('click', function(){
-		$('#formulario').css("display", "block");
-		$('#seleccionarFactura').css("display", "none");
-
-	});
-
-</script>
+<script src="{{asset('js/matricular.js')}}"></script>
 
 

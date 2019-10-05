@@ -153,40 +153,6 @@
 												</div>
 											</div>
 										</div>
-
-
-
-<script>
-      $('#cedula').on('change', function(event){
-      	event.preventDefault();
-       var cedula = event.target.value;
-       console.log(cedula);
-
-       $.get('buscar_dece/'+cedula, function(data){
-       	console.log(data);
-       	$.each(data, function(index, objeto){
-       		$('#nombres').val(objeto.nombres);
-       		$('#apellidos').val(objeto.apellidos);
-       		$('#fecha_nacimiento').val(objeto.fecha_nacimiento);
-       		$('#curso').val(objeto.curso);
-       		$('#nombre_representante').val(objeto.nombres_representante);
-       		$('#cedula_representante').val(objeto.cedula_representante);
-       		$('#numero_telefono').val(objeto.numero_telefono);
-       		$('#numero_movil').val(objeto.numero_movil);
-       		$('#direccion').val(objeto.direccion);
-
-       	});
-       });
-   });
-
-      $('#agregarDetalle').on('click', function(){
-
-      	$('#formularioDetalle').css("display", "block");
-      	$('#agregarDetalle').css("display", "none");
-
-      });
-
-
-</script>
+                                    <script src="{{asset('js/dece.js')}}"></script>
 
 

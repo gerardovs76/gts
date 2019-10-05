@@ -70,17 +70,5 @@
 	</div>
 
 
-	  <script>
-	  	$('#busqueda').on('click', function(){
-	  		var cedula = $('#cedula').val();
-
-	  		$.get('dece/reporte/'+cedula, function(response){
-	  			console.log(response);
-	  			$.each(response, function(index, obj){
-	  				$('#tableid').append('<tr><td>'+obj.apellidos+' '+obj.nombres+'</td><td>'+obj.cedula+'</td><td>'+obj.fecha+'</td><td>'+obj.accion_realizada+'</td><td>'+obj.sugerencias_observaciones+'</td><td>'+obj.responsable+'</td></tr>');
-	  			});
-	  		});
-	  	});
-
-	  </script>
+	  <script src="{{asset('js/dece-reporte.js')}}"></script>
 @endsection
