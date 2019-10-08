@@ -8,14 +8,14 @@ use DB;
 use App\Http\Requests\ProfesorRequest;
 class ProfesorController extends Controller
 {
-    
+
     public function index()
     {
-        $profesor = Profesor::orderBy('id', 'DESC')->paginate();
+        $profesor = Profesor::all();
         return view('profesor.index', compact('profesor'));
     }
 
-    
+
     public function create()
     {
         return view('profesor.create');
