@@ -84,6 +84,8 @@ Route::get('verMaterias_profesor', 'ProfesorController@verProfesorMaterias')->na
 
 Route::get('ver_materias_profesor/{cedula}', 'ProfesorController@verMateriasProfesor');
 
+Route::delete('eliminar-materias/{id}', 'ProfesorController@deleteMateriasAsignadasProfesor');
+
 Route::get('control_profesor','ProfesorController@controlProfesor')->name('profesor.control')->middleware('has.permission:profesor.control');
 
 

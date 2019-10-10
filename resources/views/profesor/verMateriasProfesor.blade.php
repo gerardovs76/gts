@@ -24,7 +24,7 @@
 					</div>
 							<div class="form-group col-md-10">
 
-   									<button type="#" id="busqueda" class="btn btn-primary"><i class="fas fa-search"></i> BUSQUEDA</button>									
+   									<button type="#" id="busqueda" class="btn btn-primary"><i class="fas fa-search"></i> BUSQUEDA</button>
 								</div>
 						</div>
 					</div>
@@ -33,10 +33,11 @@
 							<tr><th>NOMBRES</th>
 							<th>MATERIA</th>
 							<th>CURSO</th>
-							<th>PARALELO</th></tr>
+                            <th>PARALELO</th>
+                            <th>ACCIONES</th></tr>
 						</thead>
 					    <tbody>
-					    
+
 					    </tbody>
 					</table>
 					<script>
@@ -46,8 +47,7 @@
 
 							$.get('ver_materias_profesor/'+cedula, function(response){
 								$.each(response, function(index, obj){
-									console.log(obj);
-									$('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><strong>'+obj.nombre_materia+'</strong></td><td><strong>'+obj.curso+'</strong></td><td><strong>'+obj.paralelo+'</strong></td></tr>');
+									$('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><strong>'+obj.nombre_materia+'</strong></td><td><strong>'+obj.curso+'</strong></td><td><strong>'+obj.paralelo+'</strong></td><td><a href="/eliminar-materias/'+obj.id+'" class="btn btn-danger"><i class="fa fa-edit"></i>ELIMINAR MATERIA</a></td></tr>');
 								});
 
 							});

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Profesor;
 use DB;
 use App\Http\Requests\ProfesorRequest;
+use App\MateriasProfesor;
 class ProfesorController extends Controller
 {
 
@@ -155,7 +156,7 @@ class ProfesorController extends Controller
     $profesor = DB::table('materias_profesores')
     ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
     ->join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-    ->select('profesors.nombres_apellidos as nombres', 'materias.materia as nombre_materia', 'materias.curso', 'materias.paralelo')
+    ->select('profesors.nombres_apellidos as nombres', 'materias.materia as nombre_materia', 'materias.curso', 'materias.paralelo', 'materias_profesores.id')
     ->where('profesors.cedula', 'LIKE', '%'.$cedula.'%')
     ->distinct()
     ->groupBy('materias.id')
@@ -169,6 +170,12 @@ class ProfesorController extends Controller
     {
 
         return view('profesor.controlProfesor');
+    }
+    public function deleteMateriasAsignadasProfesor($id)
+    {
+        $materiasProfesor = MateriasProfesor::find($id);
+        $materiasProfesor->delete();
+        return back()->with('info', 'Materia eliminada a el profesor correctamente');
     }
 
 
