@@ -185,6 +185,12 @@ class MateriasController extends Controller
         return back()->with('info', 'Se ha cargado la informacion correctamente');
 
     }
+    public function deleteMateriasAsignadasProfesor($id)
+    {
+        $materiasProfesor = MateriasProfesor::find($id);
+        $materiasProfesor->delete();
+        return back()->with('info', 'Materia eliminada a el profesor correctamente');
+    }
 
 
 

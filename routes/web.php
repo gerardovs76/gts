@@ -84,8 +84,6 @@ Route::get('verMaterias_profesor', 'ProfesorController@verProfesorMaterias')->na
 
 Route::get('ver_materias_profesor/{cedula}', 'ProfesorController@verMateriasProfesor');
 
-Route::delete('eliminar-materias/{id}', 'ProfesorController@deleteMateriasAsignadasProfesor');
-
 Route::get('control_profesor','ProfesorController@controlProfesor')->name('profesor.control')->middleware('has.permission:profesor.control');
 
 
@@ -101,6 +99,8 @@ Route::put('materias/{materias}', 'MateriasController@update')->name('materias.u
 Route::get('materias/{materias}', 'MateriasController@show')->name('materias.show')->middleware('has.permission:materias.show');
 
 Route::delete('materias/{materias}', 'MateriasController@destroy')->name('materias.destroy')->middleware('has.permission:materias.destroy');
+
+Route::get('eliminar-materias-profesor/{materias}', 'MateriasController@deleteMateriasAsignadasProfesor');
 
 Route::get('materias/{materias}/edit', 'MateriasController@edit')->name('materias.edit')->middleware('has.permission:materias.edit');
 

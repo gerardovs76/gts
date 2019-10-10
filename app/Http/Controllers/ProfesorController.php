@@ -171,13 +171,6 @@ class ProfesorController extends Controller
 
         return view('profesor.controlProfesor');
     }
-    public function deleteMateriasAsignadasProfesor($id)
-    {
-        $materiasProfesor = MateriasProfesor::find($id);
-        $materiasProfesor->delete();
-        return back()->with('info', 'Materia eliminada a el profesor correctamente');
-    }
-
 
     }
 
