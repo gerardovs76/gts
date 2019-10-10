@@ -132,6 +132,7 @@ class TareasController extends Controller
 
     public function verTareasMatriculados(Request $request)
     {
+        if(Auth::user()->isRole('alumno')){
         $user  = Auth::user()->cedula;
         $curso = User::join('matriculados', 'users.cedula', '=', 'matriculados.cedula')->where('matriculados.cedula', $user)->select('matriculados.curso')->first();
         $paralelo = User::join('matriculados', 'users.cedula', '=', 'matriculados.cedula')->where('matriculados.cedula', $user)->select('matriculados.paralelo')->first();
@@ -143,6 +144,28 @@ class TareasController extends Controller
 
 
         return response()->json($matriculados);
+
+        }elseif(Auth::user()->isRole('profesor'))
+        {
+        $user  = Auth::user()->cedula;
+        $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $user)
+            ->distinct()
+            ->pluck('materias.curso');
+            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $user)
+            ->distinct()
+            ->pluck('materias.paralelo');
+        $matriculados = DB::table('tareas')
+        ->where('curso', $profesorCurso)
+        ->where('paralelo', $profesorParalelo)
+        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
+        ->get();
+        return response()->json($matriculados);
+
+        }
     }
 
 
