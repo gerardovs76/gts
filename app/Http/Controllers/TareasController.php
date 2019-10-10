@@ -53,7 +53,7 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $archivo = $request->archivo;
         $tareas = new Tareas;
         $tareas->profesor = $request->profesor;
@@ -83,8 +83,11 @@ class TareasController extends Controller
 
         }
         });
-    }
+    }else{
         return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
+    }
+    return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
+
     }
 
     /**
