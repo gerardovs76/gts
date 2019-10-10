@@ -10,6 +10,7 @@
 		<hr>
 		@include('notas.partials.info')
 
+        <div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -27,7 +28,8 @@
 
 				</tr>
 			</tbody>
-		</table>
+        </table>
+    </div>
 
 
 	<!--<div class="col-xs-12 col-sm-4">

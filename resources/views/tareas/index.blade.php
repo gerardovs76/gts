@@ -128,11 +128,6 @@
        </div>
        {!! Form::close() !!}
 </div>
-
-
-
-
-
     <script>
         $(document).ready(function(){
             $.get('notas/cargar-notas-profesor', function(response){
