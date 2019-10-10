@@ -102,6 +102,10 @@ Route::delete('materias/{materias}', 'MateriasController@destroy')->name('materi
 
 Route::get('materias/{materias}/edit', 'MateriasController@edit')->name('materias.edit')->middleware('has.permission:materias.edit');
 
+Route::get('materias-import', 'MateriasController@importMaterias')->name('materias.import-materias');
+
+Route::post('materias-store-import', 'MateriasController@importMateriaStore')->name('materias.store-materias-import');
+
 Route::get('materiaEspeciales', 'MateriasController@materiaEspecial')->name('materias.especiales')->middleware('has.permission:materias.especiales');
 
 Route::post('materiasE', 'MateriasController@materiaEspecialStore')->name('materiaEspecial.store')->middleware('has.permission:materiaEspecial.store');

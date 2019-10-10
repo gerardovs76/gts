@@ -90,6 +90,7 @@
               @can('materias.create')
                 <a class="dropdown-item" href="{{ route('materias.create') }}">Nueva materia</a>
                 @endcan
+                <a class="dropdown-item" href="{{route('materias.import-materias')}}">Carga masiva materias</a>
                 @can('materias.index')
                 <a class="dropdown-item" href="{{ route('materias.index') }}">Lista de materias</a>
                 @endcan

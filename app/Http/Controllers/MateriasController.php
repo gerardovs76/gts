@@ -10,6 +10,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\MateriaEspeciales;
 use App\MateriasProfesor;
 use App\Http\Requests\MateriasRequest;
+use App\Imports\MateriasImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MateriasController extends Controller
 {
@@ -169,6 +171,19 @@ class MateriasController extends Controller
 
 
             return redirect()->route('profesor.añadirMaterias')->with('info', 'Se ha añadido la materia correctamente');
+    }
+    public function importMaterias()
+    {
+        return view('materias.import-materias');
+    }
+
+    public function importMateriaStore(Request $request)
+    {
+
+        Excel::import(new MateriasImport, $request->import_file);
+
+        return back()->with('info', 'Se ha cargado la informacion correctamente');
+
     }
 
 
