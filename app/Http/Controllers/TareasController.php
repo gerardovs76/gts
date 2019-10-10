@@ -51,7 +51,7 @@ class TareasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TareasRequest $request)
     {
 
         $archivo = $request->archivo;
@@ -64,10 +64,12 @@ class TareasController extends Controller
         $tareas->tipo_tarea = $request->tipo_tarea;
         $tareas->titulo = $request->titulo;
         $tareas->descripcion = $request->descripcion;
+        if(isset($request->archivo)){
         $tareas->archivo = $archivo->getClientOriginalName();
+        }else{
+        $tareas->archivo = 'no-existe';
+        }
         $tareas->save();
-
-
 
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();

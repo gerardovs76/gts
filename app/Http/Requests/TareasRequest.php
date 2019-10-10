@@ -30,10 +30,8 @@ class TareasRequest extends FormRequest
             'paralelo' => 'required',
             'fecha_entrega' => 'required',
             'tipo_tarea' => 'required',
-            'descripcion' => 'required',
             'titulo' => 'required',
             'descripcion' => 'required',
-            'archivo' => 'required',
         ];
     }
 }

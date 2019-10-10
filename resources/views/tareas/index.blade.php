@@ -8,7 +8,8 @@
           </h2>
           </div>
 		<hr>
-		@include('notas.partials.info')
+        @include('notas.partials.info')
+        @include('notas.partials.error')
 	      {!! Form::open(['route' => 'tareas.store', 'enctype' => 'multipart/form-data']) !!}
 			<div class="panel panel-primary">
      <div class="panel-heading">TAREAS O COMUNICADOS</div>
