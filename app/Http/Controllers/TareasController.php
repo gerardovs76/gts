@@ -58,6 +58,7 @@ class TareasController extends Controller
         $archivo = $request->archivo;
         $tareas = new Tareas;
         $tareas->profesor = $request->profesor;
+        $tareas->nombre_profesor = $request->profesorName;
         $tareas->curso = $request->curso;
         $tareas->especialidad = $request->especialidad;
         $tareas->paralelo = $request->paralelo;
@@ -145,7 +146,7 @@ class TareasController extends Controller
         $matriculados = DB::table('tareas')
         ->where('curso', $curso->curso)
         ->where('paralelo', $paralelo->paralelo)
-        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
+        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
         ->get();
 
         return response()->json($matriculados);
@@ -156,7 +157,7 @@ class TareasController extends Controller
 
         $matriculados = DB::table('tareas')
         ->where('profesor', $user)
-        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
+        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
         ->get();
         return response()->json($matriculados);
 
@@ -164,7 +165,7 @@ class TareasController extends Controller
         elseif(Auth::user()->isRole('super-admin'))
         {
             $matriculados = DB::table('tareas')
-            ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
+            ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
             ->get();
 
             return response()->json($matriculados);

@@ -38,7 +38,7 @@
                 console.log(response);
 				$.each(response, function(index, obj){
 					var url = 'tareas/download/'+obj.archivo;
-					$('#tbody').append('<tr><td>'+obj.profesor+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td></tr>');
+					$('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td></tr>');
 
 
 
