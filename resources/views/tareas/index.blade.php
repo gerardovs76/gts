@@ -1,6 +1,7 @@
  @extends('layouts.app')
 
 @section('content')
+
 	<div class="container col-xs-12 col-sm-12 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
           <h2 class="text-center" style="color: #fff;">
@@ -122,15 +123,16 @@
      </div>
 </div>
 </div>
+<div class="form-group col-md-12">
+    {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+       </div>
+       {!! Form::close() !!}
 </div>
 
-     <div class="form-group col-md-12">
-     {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
-        </div>
 
 
-	</div>
-	{!! Form::close() !!}
+
+
     <script>
         $(document).ready(function(){
             $.get('notas/cargar-notas-profesor', function(response){

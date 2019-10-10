@@ -65,7 +65,6 @@
     @elseif(Auth::user()->isRole('super-admin'))
     <script>
 		$(document).ready(function(){
-
 			$.get('tareas_matriculados', function(response){
                 console.log(response);
 				$.each(response, function(index, obj){
