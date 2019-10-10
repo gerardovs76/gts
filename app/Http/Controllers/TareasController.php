@@ -163,6 +163,7 @@ class TareasController extends Controller
         ->where('paralelo', $profesorParalelo)
         ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
         ->get();
+        dd($matriculados);
         return response()->json($matriculados);
 
         }
