@@ -375,9 +375,6 @@
               @can('users.index')
                 <a class="dropdown-item" href="{{ route('users.index') }}">Ver usuarios</a>
                 @endcan
-                @can('users.importarDatos')
-                <a class="dropdown-item" href="{{ route('users.importarDatos') }}">Carga masiva</a>
-                @endcan
                 @can('users.asignar-cargo')
                 <a class="dropdown-item" href="{{ route('users.asignar-cargo') }}">Asignar cargos</a>
                 @endcan
