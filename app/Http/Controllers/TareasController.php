@@ -73,13 +73,13 @@ class TareasController extends Controller
        $nombre = $file->getClientOriginalName();
 
        \Storage::disk('local')->put($nombre,  \File::get($file));
+
     return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
 
     }
 
     /**
 
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
