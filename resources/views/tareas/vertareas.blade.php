@@ -9,7 +9,7 @@
           </div>
 		<hr>
 		{{--@include('notas.partials.info')--}}
-	
+
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -23,11 +23,11 @@
 			</thead>
 			<tbody id="tbody">
 				<tr>
-					
+
 				</tr>
 			</tbody>
 		</table>
-                    
+
 
 	<!--<div class="col-xs-12 col-sm-4">
 	</div>-->
@@ -36,7 +36,7 @@
 
 			$.get('tareas_matriculados', function(response){
 				$.each(response, function(index, obj){
-
+                    console.log(obj);
 					var url = 'tareas/download/'+obj.archivo;
 					console.log(url);
 					$('#tbody').append('<tr><td>'+obj.profesor+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td></tr>');
@@ -52,4 +52,4 @@
 		});
 
 	</script>
-@endsection 
+@endsection

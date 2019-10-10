@@ -158,7 +158,6 @@ class TareasController extends Controller
             ->where('profesors.id', $user)
             ->select('materias.paralelo')
             ->first();
-            dd([$profesorCurso, $profesorParalelo]);
         $matriculados = DB::table('tareas')
         ->where('curso', $profesorCurso)
         ->where('paralelo', $profesorParalelo)
