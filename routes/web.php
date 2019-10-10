@@ -435,6 +435,8 @@ Route::get('tareas_ver', 'TareasController@verTareas')->name('tareas.verTareas')
 
 Route::get('tareas_matriculados', 'TareasController@verTareasMatriculados');
 
+Route::get('tareas/{tareas}', 'TareasController@destroy');
+
 Route::get('tareas/download/{file}' , 'TareasController@downloadFile');
 
 Route::get('tareas_count', 'TareasController@countPush');

@@ -136,6 +136,7 @@ class ProfesorController extends Controller
         $cedula = $request->cedula;
 
         $profesor = DB::table('profesors')
+        ->where('cedula', $cedula)
         ->select('nombres_apellidos', 'id')
         ->distinct()
         ->groupBy('id')
@@ -157,7 +158,7 @@ class ProfesorController extends Controller
     ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
     ->join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
     ->select('profesors.nombres_apellidos as nombres', 'materias.materia as nombre_materia', 'materias.curso', 'materias.paralelo', 'materias_profesores.id')
-    ->where('profesors.cedula', 'LIKE', '%'.$cedula.'%')
+    ->where('profesors.cedula', $cedula)
     ->distinct()
     ->groupBy('materias.id')
     ->get();

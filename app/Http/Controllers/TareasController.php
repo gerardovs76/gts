@@ -54,11 +54,6 @@ class TareasController extends Controller
      */
     public function store(TareasRequest $request)
     {
-
-        $archivo = $request->archivo;
-       $archivo2 = $archivo->getClientOriginalName();
-       $nombre2 = str_replace(' ', '', $archivo2);
-
         $tareas = new Tareas;
         $tareas->profesor = $request->profesor;
         $tareas->nombre_profesor = $request->profesorName;
@@ -70,6 +65,9 @@ class TareasController extends Controller
         $tareas->titulo = $request->titulo;
         $tareas->descripcion = $request->descripcion;
         if(isset($request->archivo)){
+        $archivo = $request->archivo;
+        $archivo2 = $archivo->getClientOriginalName();
+        $nombre2 = str_replace(' ', '', $archivo2);
         $tareas->archivo = $nombre2;
         }else{
         $tareas->archivo = 'no-existe';
@@ -134,7 +132,9 @@ class TareasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tareas = Tareas::find($id);
+        $tareas->delete();
+        return back()->with('info', 'Se ha eliminado la tarea exitosamente');
     }
     public function verTareas()
     {
@@ -150,7 +150,7 @@ class TareasController extends Controller
         $matriculados = DB::table('tareas')
         ->where('curso', $curso->curso)
         ->where('paralelo', $paralelo->paralelo)
-        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
+        ->select('id','profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
         ->get();
 
         return response()->json($matriculados);
@@ -161,7 +161,7 @@ class TareasController extends Controller
 
         $matriculados = DB::table('tareas')
         ->where('profesor', $user)
-        ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
+        ->select('id','profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
         ->get();
         return response()->json($matriculados);
 
@@ -169,7 +169,7 @@ class TareasController extends Controller
         elseif(Auth::user()->isRole('super-admin'))
         {
             $matriculados = DB::table('tareas')
-            ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
+            ->select('id','profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo', 'nombre_profesor')
             ->get();
 
             return response()->json($matriculados);

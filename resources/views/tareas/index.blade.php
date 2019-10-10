@@ -1,7 +1,7 @@
  @extends('layouts.app')
 
 @section('content')
-	<div class="container col-xs-12 col-sm-8 col-lg-12">
+	<div class="container col-xs-12 col-sm-12 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
           <h2 class="text-center" style="color: #fff;">
               TAREAS
@@ -21,8 +21,8 @@
                <strong>Profesor: <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::text('profesorName', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}
-          {{ Form::hidden('profesor', $profesorId) }}
+          {!! Form::text('profesorName', $profesor, ['class' => 'form-control col-md-8', 'id' => 'profesor', 'placeholder' => 'Profesor...']) !!}
+          {!! Form::hidden('profesor', $profesorId) !!}
           </div>
           </div>
           @if(Auth::user()->isRole('super-admin'))
