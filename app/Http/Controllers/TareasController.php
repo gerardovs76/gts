@@ -71,13 +71,18 @@ class TareasController extends Controller
         $tareas->archivo = 'no-existe';
         }
         $tareas->save();
-
+        if(!empty($request->file('archivo')))
+        {
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
 
        \Storage::disk('local')->put($nombre,  \File::get($file));
+       return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
+        }else{
+            return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
+        }
 
-    return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea correctamente');
+
 
     }
 
