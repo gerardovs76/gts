@@ -56,6 +56,9 @@ class TareasController extends Controller
     {
 
         $archivo = $request->archivo;
+       $archivo2 = $archivo->getClientOriginalName();
+       $nombre2 = str_replace(' ', '', $archivo2);
+
         $tareas = new Tareas;
         $tareas->profesor = $request->profesor;
         $tareas->nombre_profesor = $request->profesorName;
@@ -67,7 +70,7 @@ class TareasController extends Controller
         $tareas->titulo = $request->titulo;
         $tareas->descripcion = $request->descripcion;
         if(isset($request->archivo)){
-        $tareas->archivo = $archivo->getClientOriginalName();
+        $tareas->archivo = $nombre2;
         }else{
         $tareas->archivo = 'no-existe';
         }
@@ -76,8 +79,9 @@ class TareasController extends Controller
         {
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
+       $nombre2 = str_replace(' ', '', $nombre);
 
-       \Storage::disk('local')->put($nombre,  \File::get($file));
+       \Storage::disk('local')->put($nombre2,  \File::get($file));
        return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
         }else{
             return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
