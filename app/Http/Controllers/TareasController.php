@@ -147,17 +147,18 @@ class TareasController extends Controller
 
         }elseif(Auth::user()->isRole('profesor'))
         {
-        $user  = Auth::user()->cedula;
+        $user = Auth::user()->id;
         $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $user)
+            ->where('profesors.id', $user)
             ->select('materias.curso')
             ->first();
             $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.cedula', $user)
+            ->where('profesors.id', $user)
             ->select('materias.paralelo')
             ->first();
+            dd([$profesorCurso, $profesorParalelo]);
         $matriculados = DB::table('tareas')
         ->where('curso', $profesorCurso)
         ->where('paralelo', $profesorParalelo)
