@@ -21,7 +21,8 @@
                <strong>Profesor: <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::text('profesor', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}
+          {!! Form::text('profesorName', $profesor, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Profesor...']) !!}
+          {{ Form::hidden('profesor', $profesorId) }}
           </div>
           </div>
           @if(Auth::user()->isRole('super-admin'))

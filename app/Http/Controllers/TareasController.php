@@ -26,11 +26,12 @@ class TareasController extends Controller
     public function index()
     {
         $profesor = Auth::user()->name;
+        $profesorId = Auth::user()->id;
         $users = Auth::user()->cedula;
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('dece') || Auth::user()->isRole('admin')){
-            return view('tareas.index', compact('profesor'));
+            return view('tareas.index', compact('profesor', 'profesorId'));
         }elseif(Auth::user()->isRole('profesor')){
-            return view('tareas.index', compact('profesor'));
+            return view('tareas.index', compact('profesor', 'profesorId'));
         }
 
     }
@@ -142,29 +143,26 @@ class TareasController extends Controller
         ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
         ->get();
 
-
         return response()->json($matriculados);
-
-        }elseif(Auth::user()->isRole('profesor'))
+        }
+        elseif(Auth::user()->isRole('profesor'))
         {
         $user = Auth::user()->id;
-        $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.id', $user)
-            ->select('materias.curso')
-            ->first();
-            $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
-            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
-            ->where('profesors.id', $user)
-            ->select('materias.paralelo')
-            ->first();
+
         $matriculados = DB::table('tareas')
-        ->where('curso', $profesorCurso)
-        ->where('paralelo', $profesorParalelo)
+        ->where('profesor', $user)
         ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
         ->get();
         return response()->json($matriculados);
 
+        }
+        elseif(Auth::user()->isRole('super-admin'))
+        {
+            $matriculados = DB::table('tareas')
+            ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
+            ->get();
+
+            return response()->json($matriculados);
         }
     }
 
