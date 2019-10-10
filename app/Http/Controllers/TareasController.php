@@ -151,19 +151,18 @@ class TareasController extends Controller
         $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
             ->where('profesors.cedula', $user)
-            ->distinct()
-            ->pluck('materias.curso');
+            ->select('materias.curso')
+            ->first();
             $profesorParalelo = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
             ->where('profesors.cedula', $user)
-            ->distinct()
-            ->pluck('materias.paralelo');
+            ->select('materias.paralelo')
+            ->first();
         $matriculados = DB::table('tareas')
         ->where('curso', $profesorCurso)
         ->where('paralelo', $profesorParalelo)
         ->select('profesor', 'fecha_entrega', 'tipo_tarea', 'titulo', 'descripcion', 'archivo')
         ->get();
-        dd($matriculados);
         return response()->json($matriculados);
 
         }
