@@ -43,8 +43,17 @@
 			$.get('tareas_matriculados', function(response){
                 console.log(response);
 				$.each(response, function(index, obj){
-					var url = 'tareas/download/'+obj.archivo;
-					$('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td></tr>');
+                    if(obj.archivo == 'no exite')
+                    {
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td></tr>');
+
+                    }
+                    else
+                    {
+                        var url = 'tareas/download/'+obj.archivo;
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td></tr>');
+
+                    }
 
 				});
 
@@ -58,8 +67,16 @@
 			$.get('tareas_matriculados', function(response){
                 console.log(response);
 				$.each(response, function(index, obj){
-					var url = 'tareas/download/'+obj.archivo;
-					$('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+                    if(obj.archivo == 'no-existe')
+                    {
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+                    }
+                    else
+                    {
+                        var url = 'tareas/download/'+obj.archivo;
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+
+                    }
 
 				});
 
@@ -72,8 +89,16 @@
 			$.get('tareas_matriculados', function(response){
                 console.log(response);
 				$.each(response, function(index, obj){
-					var url = 'tareas/download/'+obj.archivo;
-					$('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+					if(obj.archivo == 'no-existe')
+                    {
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+                    }
+                    else
+                    {
+                        var url = 'tareas/download/'+obj.archivo;
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a  href='+url+'><i aling="center" class="fas fa-file-alt fa-2x"></i></a></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+
+                    }
 				});
 
 			});
