@@ -22,7 +22,9 @@
 					<th>TITULO</th>
 					<th>DESCRIPCIÓN</th>
                     <th>ARCHIVO</th>
+                    @if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('profesor'))
                     <th>ELIMINAR</th>
+                    @endif
 				</tr>
 			</thead>
 			<tbody id="tbody">
@@ -45,7 +47,7 @@
 				$.each(response, function(index, obj){
                     if(obj.archivo == 'no exite')
                     {
-                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td></tr>');
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td></td></tr>');
 
                     }
                     else
@@ -69,7 +71,7 @@
 				$.each(response, function(index, obj){
                     if(obj.archivo == 'no-existe')
                     {
-                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
                     }
                     else
                     {
@@ -91,7 +93,7 @@
 				$.each(response, function(index, obj){
 					if(obj.archivo == 'no-existe')
                     {
-                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
+                        $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td></td><td><a href="tareas/'+obj.id+'" class="btn btn-danger btn-sm">ELIMINAR</a></td></tr>');
                     }
                     else
                     {
