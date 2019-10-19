@@ -123,10 +123,10 @@
                                         <td>95</td>
                                         @endif
                                         @endif
-                                        @if(strpos($factura->referencias, 'OCT') !== FALSE)
+                                        @if(strpos($factura->referencias, ' OCT') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'NOV') !== FALSE)
+                                        @if(strpos($factura->referencias, ' NOV') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
                                         @if(strpos($factura->referencias, 'DIC') !== FALSE)
