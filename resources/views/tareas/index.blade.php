@@ -124,7 +124,7 @@
 </div>
 </div>
 <div class="form-group col-md-12">
-    {!!Form::button('<i class="far fa-save"></i> GUARDAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
+    {!!Form::button('<i class="far fa-save"></i> ENVIAR', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
        </div>
        {!! Form::close() !!}
 </div>

@@ -78,10 +78,24 @@ class TareasController extends Controller
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
        $nombre2 = str_replace(' ', '', $nombre);
+       }
 
        \Storage::disk('local')->put($nombre2,  \File::get($file));
+       if(isset($tareas)){
+        Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
+
+            $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
+                    foreach($emails as $email){
+            $message->to($email->email)->subject('Notificacion de la plataforma GTS.');
+            $message->from('info@pauldirac.edu.ec', 'GTS');
+
+        }
+        });
        return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
-        }else{
+
+        }
+
+        else{
             return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
         }
 

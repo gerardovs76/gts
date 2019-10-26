@@ -166,14 +166,14 @@
                 @can('notas.gracia')
                 <a class="dropdown-item" href="{{ route('notas.gracia') }}">Gracia</a>
                 @endcan
+                @can('notas.reporte-individual-libreta')
+                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
+                @endcan
                 @can('notas.libretaIndividual')
-                <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta individual</a>
+                <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta colectivas parcial</a>
                 @endcan
                 @can('notas.libretaColectiva')
-                <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas</a>
-                @endcan
-                @can('notas.reporte-individual-libreta')
-                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Reporte individual libreta</a>
+                <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas quimestres</a>
                 @endcan
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
@@ -269,6 +269,7 @@
                 COBROS
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
+                <a class="dropdown-item" href="#"
               @can('cobros.index')
                 <a class="dropdown-item" href="{{ route('cobros.index') }}">Valores</a>
                 @endcan

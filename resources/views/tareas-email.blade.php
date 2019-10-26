@@ -1,8 +1,8 @@
  <h1>Estimado .-</h1>
-<h3>Curso: {{ $curso }}</h3>
-<h3>Paralelo: {{ $paralelo }}</h3>
-
-<h2>{{ $mensaje }} del profesor: {{ $profesor }}</h2>
-<p><strong>Titulo de la tarea presente:</strong> {{ $titulo }}</p>
-<p><strong>Tipo de tarea:</strong> {{ $tipo_tarea }}</p>
-<p><strong>Fecha de entrega:</strong> {{ $fecha_entrega }}</p>
+<h3>Por favor ingresar a la plataforma ya que tiene novedades en la misma</h3>
+<h4>Para soporte visite www.gtsenlinea.com o llame al 022684848</h4>
+<h4>Este es un servicio de GTS.</h4>
+<br>
+<br>
+<br>
+<h3>Gracias.</h3>
