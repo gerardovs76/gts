@@ -186,8 +186,17 @@ class CobrosController extends Controller
 
     public function facturacionStore(Request $request)
     {
-        Excel::import(new FacturacionImport, $request->import_file);
-        return back()->with('info', 'Se ha cargado la informacion correctamente');
+        if(isset($request->import_file))
+        {
+            $file = $request->import_file;
+            $nombre = $file->getClientOriginalName();
+            $nombre2 = str_replace(' ', '', $nombre);
+            \Storage::disk('local/archivos-facturacion')->put($nombre2,  \File::get($file));
+            Excel::import(new FacturacionImport, $request->import_file);
+            return back()->with('info', 'Se ha cargado la informacion correctamente');
+        }
+
+
     }
 
     public function facturacionExports(Request $request)
