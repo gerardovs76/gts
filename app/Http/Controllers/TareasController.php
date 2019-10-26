@@ -86,7 +86,7 @@ class TareasController extends Controller
 
             $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
                     foreach($emails as $email){
-            $message->to($email->email)->subject('Novedades educativas de la plataforma GTS.');
+            $message->to($email->email)->subject('Novedades plataforma educativa GTS.');
             $message->from('gtstechnologyforyou@gmail.com', 'GTS');
 
         }

@@ -21,7 +21,7 @@
                                     <strong>Cedula: <br></strong>
                                     <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-									{!! Form::text('cedula', null, ['class' => 'form-control col-md-6', 'id' => 'cedula', 'placeholder' => 'Seleccione un curso']) !!}
+									{!! Form::text('cedula', null, ['class' => 'form-control col-md-6', 'id' => 'cedula', 'placeholder' => 'Ingrese la cedula...']) !!}
                                 </div>
 								</div>
 								<div class="form-group col-md-10">

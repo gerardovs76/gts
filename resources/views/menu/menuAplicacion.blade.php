@@ -269,7 +269,7 @@
                 COBROS
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
-                <a class="dropdown-item" href="#"
+
               @can('cobros.index')
                 <a class="dropdown-item" href="{{ route('cobros.index') }}">Valores</a>
                 @endcan
@@ -282,6 +282,7 @@
                 @can('reportes.clientes')
                 <a class="dropdown-item" href="{{ route('reportes.clientes') }}">Reporte de carga de clientes</a>
                 @endcan
+                <a class="dropdown-item" href="#">Lista de ingresos de facturación</a>
                 @can('cobros.facturacion-index')
                 <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Facturacion</a>
                 @endcan
