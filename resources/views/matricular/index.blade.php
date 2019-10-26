@@ -25,8 +25,8 @@
 					<th>CODIGO</th>
 					<th>FECHA CREACION</th>
                     <th>EDITAR</th>
-                    <th>PERFIL</th>
-					<th width="20px">BORRAR</th>
+                    <th>BORRAR</th>
+                    <th width="20px">PERFIL</th>
 
 
 				</tr>
