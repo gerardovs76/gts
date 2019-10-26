@@ -78,9 +78,9 @@ class TareasController extends Controller
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
        $nombre2 = str_replace(' ', '', $nombre);
+       \Storage::disk('local')->put($nombre2,  \File::get($file));
        }
 
-       \Storage::disk('local')->put($nombre2,  \File::get($file));
        if(isset($tareas)){
         Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
 
