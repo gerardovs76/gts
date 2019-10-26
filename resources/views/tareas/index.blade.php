@@ -93,7 +93,7 @@
           <strong>Tipo de tarea/Comunicado:  <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::select('tipo_tarea',['TAREAS' => 'TAREAS', 'T.INVIDIVUAL' => 'T.INDIVIDUAL', 'T.GRUPAL' => 'T.GRUPAL', 'LECCIÓN' => 'LECCIÓN', 'EVALUACIÓN' => 'EVALUACIÓN', 'EXAMEN QUIMESTRAL' => 'EXAMEN QUIMESTRA', 'COMUNICADO' => 'COMUNICADO'], null, ['class' => 'form-control col-md-8', 'id' => 'tipo_tarea', 'placeholder' => 'Coloque el tipo de tarea']) !!}
+          {!! Form::select('tipo_tarea',['TAREAS' => 'TAREAS ACADEMICAS', 'ACT. INDIVIDUAL' => 'ACT. INDIVIDUAL', 'ACT. GRUPAL' => 'ACT. GRUPAL', 'LECCIÓN' => 'LECCIÓN', 'EVALUACIÓN' => 'EVALUACIÓN', 'EXAMEN' => 'EXAMEN', 'COMUNICADOS' => 'COMUNICADOS'], null, ['class' => 'form-control col-md-8', 'id' => 'tipo_tarea', 'placeholder' => 'Coloque el tipo de tarea']) !!}
           </div>
           </div>
 
