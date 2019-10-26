@@ -1697,16 +1697,8 @@ class MatriculacionController extends Controller
         return $pdf->download('matriculados-total-lista.pdf');
 
     }
-
-    public function perfilTotalMatriculado()
+    public function perfilTotalStore($codigo)
     {
-        return view('matricular.perfil-total');
-    }
-
-    public function perfilTotalStore(Request $request)
-    {
-        $codigo = $request->codigo;
-
         $matriculadosPerfil = Matriculacion::with(['facturaciones' => function($query1){
             $query1->select('*');
         }])->with(['inscripcion' => function($query3){

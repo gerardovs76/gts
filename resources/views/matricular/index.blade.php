@@ -24,11 +24,11 @@
 					<th>PARALELO</th>
 					<th>CODIGO</th>
 					<th>FECHA CREACION</th>
-
-					<th>EDITAR</th>
+                    <th>EDITAR</th>
+                    <th>PERFIL</th>
 					<th width="20px">BORRAR</th>
 
-					
+
 				</tr>
 			</thead>
 			<tbody id="myTable">
@@ -55,9 +55,10 @@
 						{!! Form::open(['route' => ['matricular.destroy', $matricula->id], 'method' => 'DELETE']) !!}
 							<button class="btn btn-danger btn-sm float-right">
 								<i class="fa fa-trash" aria-hidden="true"></i> BORRAR
-							</button>							
+							</button>
 						{!! Form::close() !!}
-					</td>
+                    </td>
+                    <td><a class="btn btn-success btn-sm" href="{{url('matricular-perfil-total-store/'.$matricula->codigo)}}"><i class="fas fa-user"></i> PERFIL</a></td>
 				</tr>
 				@endforeach
 			</tbody>

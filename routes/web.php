@@ -317,7 +317,7 @@ Route::get('matricular-lista-total', 'MatriculacionController@listaTotal')->name
 
 Route::get('matricular-perfil-total', 'MatriculacionController@perfilTotalMatriculado')->name('matricular.perfil-total')->middleware('has.permission:matricular.perfil-total');
 
-Route::post('matricular-perfil-total-store', 'MatriculacionController@perfilTotalStore')->name('matricular.perfil-total-store');
+Route::get('matricular-perfil-total-store/{codigo}', 'MatriculacionController@perfilTotalStore')->name('matricular.perfil-total-store');
 
 
 
@@ -416,6 +416,8 @@ Route::get('index_cobros', 'CobrosController@indexCobros')->name('cobros.indexCo
 
 Route::get('cobros/matriculados', 'CobrosController@indexRepoMatriculados');
 
+Route::get('cobros/lista-facturaciones', 'CobrosController@facturacionList')->name('cobros.lista-facturaciones');
+
 Route::get('matriculados/cobros', 'CobrosController@descargarReporteCliente')->name('cobros.descargar-clientes');
 
 Route::get('facturacion-index', 'CobrosController@facturacion')->name('cobros.facturacion-index');
@@ -424,9 +426,12 @@ Route::post('facturacion-store', 'CobrosController@facturacionStore')->name('cob
 
 Route::post('facturacion-exports', 'CobrosController@facturacionExports')->name('cobros.facturacion-exports');
 
+Route::get('facturacion/download/{file}', 'CobrosController@facturacionDownload');
+
+Route::get('facturacion/delete/{file}', 'CobrosController@deleteFileFacturacion');
+
 Route::post('facturacion-individual-store', 'CobrosController@facturacionIndividualStore')->name('cobros.facturacion-in-store');
 //TAREAS
-
 Route::get('tareas', 'TareasController@index')->name('tareas.index')->middleware('has.permission:tareas.index');
 
 Route::post('tareas', 'TareasController@store')->name('tareas.store')->middleware('has.permission:tareas.store');

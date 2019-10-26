@@ -10,27 +10,6 @@
 		<hr>
 		@include('notas.partials.info')
 
-
-                    {!! Form::open(['route' => 'matricular.perfil-total-store']) !!}
-                    <div class="panel panel-primary">
-                        <div class="panel panel-heading">Ingrese sus datos..</div>
-                        <div class="panel panel-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <strong>Codigo: </strong><br>
-                                    <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
-                                    {!!Form::text('codigo',null, ['class' => 'form-control col-md-6', 'placeholder' => 'Ingrese el codigo...'])!!}
-                                    </div>
-                                </div>
-                                    <div class="form-group col-md-12">
-                                            <button type="submit" class="btn btn-primary col-md-2"><i class="fa fa-paper-plane"></i>VER PERFIL</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {!!Form::close()!!}
-
     </div>
     <div class="container">
             <div class="row">

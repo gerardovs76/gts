@@ -47,7 +47,10 @@ return [
             'driver' => 'local',
             'root' => public_path().'/archivos',
         ],
-
+        'archivo-facturacion' => [
+            'driver' => 'local',
+            'root' => public_path().'/archivos-facturacion',
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

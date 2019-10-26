@@ -74,9 +74,6 @@
                 @can('matricular.total-resumen')
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
                 @endcan
-                @can('matricular.perfil-total')
-                <a class="dropdown-item" href="{{route('matricular.perfil-total')}}">Perfil total</a>
-                @endcan
               </div>
             </li>
             @endcan
@@ -282,7 +279,7 @@
                 @can('reportes.clientes')
                 <a class="dropdown-item" href="{{ route('reportes.clientes') }}">Reporte de carga de clientes</a>
                 @endcan
-                <a class="dropdown-item" href="#">Lista de ingresos de facturación</a>
+                <a class="dropdown-item" href="{{route('cobros.lista-facturaciones')}}">Lista de ingresos de facturación</a>
                 @can('cobros.facturacion-index')
                 <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Facturacion</a>
                 @endcan

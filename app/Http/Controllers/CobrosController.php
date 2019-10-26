@@ -15,6 +15,7 @@ use App\Exports\FacturacionPensionExport;
 use App\Exports\FacturacionTotalExport;
 use App\Http\Requests\FacturacionRequest;
 use Storage;
+use App\FacturacionArchivos;
 use App\Facturacion;
 use Illuminate\Support\Carbon;
 
@@ -188,10 +189,17 @@ class CobrosController extends Controller
     {
         if(isset($request->import_file))
         {
+            $date = Carbon::now();
+
             $file = $request->import_file;
             $nombre = $file->getClientOriginalName();
-            $nombre2 = str_replace(' ', '', $nombre);
-            \Storage::disk('local/archivos-facturacion')->put($nombre2,  \File::get($file));
+            $nombre2 = str_replace(' ', '-', $nombre);
+            var_dump($nombre2);
+            $facturacionArchivos = new FacturacionArchivos;
+            $facturacionArchivos->archivos = $nombre2;
+            $facturacionArchivos->fecha_creacion =  $date->format('Y-m-d');
+            $facturacionArchivos->save();
+            \Storage::disk('archivo-facturacion')->put($nombre2,  \File::get($file));
             Excel::import(new FacturacionImport, $request->import_file);
             return back()->with('info', 'Se ha cargado la informacion correctamente');
         }
@@ -199,6 +207,23 @@ class CobrosController extends Controller
 
     }
 
+    public function facturacionList()
+    {
+        $facturacion = FacturacionArchivos::all();
+        return view('cobros.lista-facturaciones', compact('facturacion'));
+    }
+    public function facturacionDownload($file)
+    {
+        return response()->download(public_path("archivos-facturacion/{$file}"));
+    }
+    public function deleteFileFacturacion($file)
+    {
+        $query = DB::table('facturacion_archivos')->where('id',$file);
+        $files_to_delete = $query->pluck('archivos')->toArray();
+        $query->delete();
+        Storage::disk('archivo-facturacion')->delete($files_to_delete);
+        return view('cobros.lista-facturaciones')->with('info', 'Se ha eliminado el archivo correctamente');
+    }
     public function facturacionExports(Request $request)
     {
         $tipo_factura = $request->tipo_factura;
