@@ -189,6 +189,7 @@
               @can('inspeccion.index')
                 <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Asistencia</a>
                 @endcan
+                <a class="dropdown-item" href="{{route('inspeccion.observacion')}}">Observaciones</a>
                 @can('inspeccion.index-conducta')
                <a class="dropdown-item" href="{{ route('inspeccion.index-conducta') }}">Conducta</a>
                @endcan
@@ -279,7 +280,9 @@
                 @can('reportes.clientes')
                 <a class="dropdown-item" href="{{ route('reportes.clientes') }}">Reporte de carga de clientes</a>
                 @endcan
+                @if(Auth::user()->isRole('super-admin'))
                 <a class="dropdown-item" href="{{route('cobros.lista-facturaciones')}}">Lista de ingresos de facturación</a>
+                @endif
                 @can('cobros.facturacion-index')
                 <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Facturacion</a>
                 @endcan

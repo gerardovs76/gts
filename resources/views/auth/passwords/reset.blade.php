@@ -39,7 +39,7 @@
                  font-weight: 200;
                  height: 100vh;
                  margin: 0;
-                 background: url('images/login.PNG')   no-repeat center center fixed; background-size: contain;
+                 background: url('images/inicio.PNG')   no-repeat center center fixed; background-size: contain;
 
                    -webkit-background-size: cover;
                    -moz-background-size: cover;
@@ -51,7 +51,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Recuperar contraseña') }}</div>

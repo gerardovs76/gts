@@ -360,6 +360,11 @@ Route::get('inspecciones-count-alertas', 'InspeccionesController@countAlertas');
 
 Route::get('leccionario-inspeccion-general', 'InspeccionesController@LeccionarioInspeccionGeneral')->name('inspeccion.leccionarioGeneral');
 
+Route::get('inspecciones-observaciones', 'InspeccionesController@observaciones')->name('inspeccion.observacion');
+
+Route::get('inspecciones-observaciones/{curso}/{paralelo}', 'InspeccionesController@observacionAlumnos');
+
+Route::post('inspecciones-observaciones-store', 'InspeccionesController@observacionStore')->name('inspeccion.observacion-store');
 //RECURSOS HUMANOS
 
 Route::get('recursos_humanos', 'RecursosHumanosController@index')->name('recursos_humanos.index')->middleware('has.permission:recursos_humanos.index');

@@ -910,6 +910,37 @@ class InspeccionesController extends Controller
         return $pdf->download('leccionario-inspeccion-general.pdf');
 
     }
+    public function observaciones()
+    {
+        $inspeccionesObservacion = \App\InspeccionesObservacion::all();
+        return view('inspecciones.observaciones', compact('inspeccionesObservacion'));
+    }
+    public function observacionAlumnos($curso, $paralelo)
+    {
+        $matriculados = Matriculacion::where('curso', $curso)->where('paralelo', $paralelo)->select(DB::raw('concat(apellidos," ",nombres ) as nombres'), 'id')->get();
+
+        return response()->json($matriculados);
+    }
+
+    public function observacionStore(Request $request)
+    {
+        $date = Carbon::now();
+        $inspeccionesObservacion = new \App\InspeccionesObservacion;
+        $inspeccionesObservacion->nombres = $request->nombres;
+        $inspeccionesObservacion->curso = $request->curso;
+        $inspeccionesObservacion->paralelo = $request->paralelo;
+        $inspeccionesObservacion->especialidad = $request->especialidad;
+        $inspeccionesObservacion->parcial = $request->parcial;
+        $inspeccionesObservacion->quimestre = $request->quimestre;
+        $inspeccionesObservacion->fecha = $date->format('Y-m-d');
+        $inspeccionesObservacion->estudiante = $request->estudiante;
+        $inspeccionesObservacion->observacion = $request->observacion;
+        $inspeccionesObservacion->save();
+
+
+        return redirect()->route('inspeccion.observacion')->with('info', 'Se ha agregado la observacion correctamente');
+
+    }
 
 
 }

@@ -39,7 +39,7 @@
                  font-weight: 200;
                  height: 100vh;
                  margin: 0;
-                 background: url('images/login.PNG')   no-repeat center center fixed; background-size: contain;
+                 background: url('images/inicio.PNG')   no-repeat center center fixed; background-size: contain;
 
                    -webkit-background-size: cover;
                    -moz-background-size: cover;
