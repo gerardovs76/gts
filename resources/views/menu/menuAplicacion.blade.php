@@ -189,7 +189,9 @@
               @can('inspeccion.index')
                 <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Asistencia</a>
                 @endcan
+                @if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('inspector'))
                 <a class="dropdown-item" href="{{route('inspeccion.observacion')}}">Observaciones</a>
+                @endif
                 @can('inspeccion.index-conducta')
                <a class="dropdown-item" href="{{ route('inspeccion.index-conducta') }}">Conducta</a>
                @endcan
@@ -363,6 +365,7 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
               @can('mensaje.index')
                 <a class="dropdown-item" href="{{ route('mensaje.index') }}">Enviar mensaje</a>
+                <a class="dropdown-item" href="{{ route('mensaje.ver_mensajes')}}">Ver mensajes</a>
                 @endcan
               </div>
             </li>
@@ -439,7 +442,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions" id="notification" onclick="markPostAsRead({{count(auth()->user()->unreadNotifications)}}">
                 @foreach (Auth::user()->unreadNotifications as $notification)
-                <a class="dropdown-item" href="#"><i>{{ $notification->data["envio_id"]["name"] }}</i> te ha enviado un mensaje: <b>{{ $notification->data["body"]}}</b></a>
+                <a class="dropdown-item" href="{{route('mensaje.ver_mensajes')}}">Tienes una notificación de mensaje:</b></a>
                 @endforeach
               </div>
             </li>

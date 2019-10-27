@@ -525,6 +525,8 @@ Route::get('markasread', function(){
         auth()->user()->unreadNotifications->first()->markAsRead();
    })->name('markasread');
 
+   Route::get('ver_mensaje', 'MensajeController@verMensaje')->name('mensaje.ver_mensajes');
+
 
 //ROLES
 Route::post('roles/store', 'RoleController@store')->name('roles.store')->middleware('has.permission:roles.store');

@@ -124,4 +124,9 @@ class MensajeController extends Controller
 
         return response()->json($registroMensaje);
     }
+
+    public function verMensaje()
+    {
+        return view('mensaje.ver_mensaje');
+    }
 }

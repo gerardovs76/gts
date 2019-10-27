@@ -13,21 +13,7 @@
     </div>
     <hr>
 
-				    <div class="row">
-				    	<div class="col-md-6">
-				    		<div class="panel panel-primary">
-				    			<div class="panel panel-heading text-center">Registro de mensajes</div>
-				    			<div class="panel panel-body">
-				    				@foreach (Auth::user()->notifications as $notification)
-			               <i>{{ $notification->data["envio_id"]["name"] }}</i> te ha enviado un mensaje: <b>{{ $notification->data["body"]}}</b><br>
-			                @endforeach
-
-
-				    			</div>
-				    			</div>
-
-				    	</div>
-				        <div class="col-md-6">
+				        <div class="col-md-12">
 
 				        	@include('mensaje.partials.info')
 				            <div class="panel panel-primary">
