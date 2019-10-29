@@ -59,6 +59,7 @@
                                         </tr>
                                         <tr>
                                             <th>
+                                                @if(isset($perfil->facturaciones))
                                                     @if(!isset($perfil->facturaciones->first()->valor))
                                                      SEP VALOR : 0
                                                     @elseif($perfil->facturaciones->first()->valor !== '306.7' && $perfil->facturaciones->first()->valor !== '314' && $perfil->facturaciones->first()->valor !== '326' && $perfil->facturaciones->first()->valor !== '353.5' && $perfil->facturaciones->first()->valor !== '371' && $perfil->facturaciones->first()->valor !== '196.7' && $perfil->facturaciones->first()->valor !== '199' && $perfil->facturaciones->first()->valor !== '201' && $perfil->facturaciones->first()->valor !== '228.5' && $perfil->facturaciones->first()->valor !== '246')
@@ -87,8 +88,8 @@
                                                         @endif
                                                         @endforeach
                                                         @endif
-                                            </th>
-                                        </tr>
+                                                        </th>
+                                                    </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'OCT') !== FALSE)
                                                         <th>OCT PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
@@ -147,7 +148,10 @@
                                                         <th>JUN PENSIÓN: 0</th>
                                                         @endif
                                                     </tr>
+                                                    @else
+                                                    <tr>
 
+                                                    </tr>
                                         </tr>
                                         @endforeach
 
