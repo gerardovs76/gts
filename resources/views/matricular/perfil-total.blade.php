@@ -148,12 +148,13 @@
                                                         <th>JUN PENSIÓN: 0</th>
                                                         @endif
                                                     </tr>
-                                                    @else
-                                                    <tr>
-
-                                                    </tr>
+                                                   
                                         </tr>
                                         @endforeach
+                                        @else
+                                        <tr>
+
+                                        </tr>
 
                         @else
                         <img src="images/account-not-found.png" alt="" class="pull-right" style="border:1px solid #021a40;" width="100" height="100">
