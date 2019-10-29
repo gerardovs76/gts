@@ -100,6 +100,37 @@
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
                                     </tr>
+                                    @foreach($s->facturaciones as $factura)
+                                    @if(isset($factura))
+                                    @if(strpos($factura->referencias, ' OCT') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, ' NOV') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'DIC') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'ENE') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'FEB') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'MAR') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'ABR') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'MAY') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                     @if(strpos($factura->referencias, 'JUN') !== FALSE)
+                                    <td>{{$factura->valor}}</td>
+                                     @endif
+                                    @else
+                                    @endif
                                     @else
                                        <tr>
                                        <td><strong>{{$i++}}</strong></td>
