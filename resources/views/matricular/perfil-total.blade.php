@@ -97,22 +97,19 @@
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'NOV') !== FALSE)
                                                         <th>NOV PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>NOV PENSIÓN: 0</th>
+                                                       
                                                          @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'DIC') !== FALSE)
                                                         <th>DIC PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>DIC PENSIÓN: 0</th>
+                                                       
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'ENE') !== FALSE)
                                                         <th>ENE PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>ENE PENSIÓN: 0</th>
+                                                     
                                                         @endif
                                                    </tr>
                                                     <tr>
@@ -129,22 +126,19 @@
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'ABR') !== FALSE)
                                                         <th>ABR PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>ABR PENSIÓN: 0</th>
+                                                        
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'MAY') !== FALSE)
                                                         <th>MAY PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>MAY PENSIÓN: 0</th>
+                                                       
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'JUN') !== FALSE)
                                                         <th>JUN PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @else
-                                                        <th>JUN PENSIÓN: 0</th>
+                                                     
                                                         @endif
                                                     </tr>
 
