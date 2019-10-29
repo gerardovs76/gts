@@ -99,6 +99,7 @@
                                          <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
+                                         <td><strong>70</strong></td>
                                          @foreach($s->facturaciones as $factura)
                                          @if(isset($factura))
                                          @if(strpos($factura->referencias, ' OCT') !== FALSE)
