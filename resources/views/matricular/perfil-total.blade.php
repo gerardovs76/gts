@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                                 <th>
-                                    Sexo: {{$perfil->inscripcion->sexo}} - Edad: {{$perfil->inscripcion->edad}} años
+                                    Edad: {{$perfil->inscripcion->edad}} años
                                 </th>
                             </tr>
                             <tr>
@@ -97,7 +97,6 @@
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'NOV') !== FALSE)
                                                         <th>NOV PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                       
                                                          @endif
                                                     </tr>
                                                     <tr>
@@ -109,7 +108,6 @@
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'ENE') !== FALSE)
                                                         <th>ENE PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                     
                                                         @endif
                                                    </tr>
                                                     <tr>
