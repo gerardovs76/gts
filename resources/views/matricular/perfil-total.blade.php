@@ -71,7 +71,6 @@
                                                        @endif
                                                         MATRICULA: 70
                                                         @foreach($perfil->facturaciones as $factura)
-                                                        @if(isset($factura))
                                                         @if(strpos($factura->referencias, 'SEP') !== FALSE)
                                                         @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
                                                         PENSIÓN: 60
@@ -148,11 +147,6 @@
                                                         <th>JUN PENSIÓN: 0</th>
                                                         @endif
                                                     </tr>
-                                                    @else 
-                                                    <tr>
-
-                                                    </tr>
-                                                    @endif
 
                                         </tr>
                                         @endforeach
