@@ -208,7 +208,6 @@ class NotasController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         $notas = Notas::find($id);
         $notas->delete();
         return back()->with('info', 'Las notas ha sido eliminada exitosamente');

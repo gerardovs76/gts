@@ -15,7 +15,7 @@
 					{!! Form::open(['route' => 'notas.store']) !!}
                            @include('notas.partials.form')
                            @include('notas.modal.ingresarNotasModal')
-
+                    <div class="table-responsive">
                     <table class="table table-striped table-hover" id="tabla">
 			<thead>
 
@@ -55,7 +55,8 @@
 
 				</tr>
 			</tbody>
-		</table>
+        </table>
+    </div>
 				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}
 		  {{ Form::close() }}
 	</div>
