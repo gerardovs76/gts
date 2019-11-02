@@ -13,23 +13,44 @@
 
 
 					{!! Form::open(['route' => 'notas.store']) !!}
-                   		@include('notas.partials.form')
+                           @include('notas.partials.form')
+                           @include('notas.modal.ingresarNotasModal')
 
                     <table class="table table-striped table-hover" id="tabla">
 			<thead>
 
                     <tr>
                     <th>
-                    	<p>
-                    	<strong>ALUMNOS</strong>
-                    	</p>
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
                     </th>
-					<th>
-						<p>NOTA</p>
-					</th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="tareas_individuales"><i class="far fa-clipboard"></i> TAREAS INDIVIDUALES</button>
+                    </th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="tareas_grupales"><i class="far fa-clipboard"></i> TAREAS GRUPALES</button>
+                    </th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="lecciones"><i class="far fa-clipboard"></i> LECCIONES</button>
+                    </th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
+                    </th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="conducta"><i class="far fa-clipboard"></i> CONDUCTA</button>
+                    </th>
+                    <th>
+
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="examen"><i class="far fa-clipboard"></i> EXAMEN</button>
+                    </th>
+
                     </tr>
                     </thead>
-					<tbody id="tableid">
+					<tbody>
 				<tr>
 
 				</tr>

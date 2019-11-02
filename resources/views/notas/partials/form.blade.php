@@ -74,25 +74,7 @@
                                              {{ Form::select('quimestre',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
                                              </div>
                                              </div>
-                                             <div class="form-group col-md-4">
-                                             <strong>Tipo de tarea: <br></strong>
-                                             <div class="input-group-prepend">
-                                                  <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                             {{ Form::select('quimestre',['nota_ta[]' => 'TRABAJOS ACADEMICOS', 'nota_ti[]' => 'TAREAS INDIVIDUALES', 'nota_tg[]' => 'TAREAS GRUPALES', 'nota_le[]' => 'LECCIONES', 'nota_ev[]' =>  'EVALUACION', 'conducta[]' => 'CONDUCTA', 'examen[]' => 'EXAMEN'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
-                                             </div>
-                                             </div>
-                                             <div class="form-group col-md-6">
-                                               {!! Form::button('<i class="fas fa-plus"></i> AGREGAR DESCRIPCION', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarDescripcion']) !!}
-
-                                             </div>
-                                             <div id="descripcion" class="form-group col-md-12" style="display: none;">
-                                             <strong>Descripcion de la tarea: <br></strong>
-                                             <div class="input-group-prepend">
-                                                  <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                             {{ Form::text('descripcion', null, ['class' => 'form-control col-md-4', 'placeholder' => 'Descripcion de la tarea...', 'id' => 'descripcion']) }}
-                                             </div>
-                                             </div>
-                                               <div id ="agregarNotas" class="form-group col-md-4" style="display: none;">
+                                               <div id ="agregarNotas" class="form-group col-md-4">
                                                {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarNotas']) !!}
 
                                              </div>
@@ -102,7 +84,245 @@
                                    </div>
                                  </div>
                                 </div>
-                                <script type="text/javascript" src="{{asset('js/notas-form.js')}}"></script>
+                                <script>
+
+                                        $('#paralelo').on('change', function() {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                          $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
+                                                    $('#materia').empty();
+                                                    $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
+                                          $.each(data, function(index, regenciesObj){
+                                                    $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
+                                                    var materia = document.getElementById("materia").value;
+
+                                               });
+                                          });
+                                        });
+                                          $('#agregarNotas').on('click', function(){
+                                            $('#agregarNotas').css("display", "none");
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                          var especialidad = $('#especialidad').val();
+                                          var materia = $('#materia').val();
+                                          var parcial = $('#parcial').val();
+                                          var quimestre = $('#quimestre').val();
+
+                                          $('#trabajos_academicos').attr("disabled", false);
+                                          $('#tareas_individuales').attr("disabled", false);
+                                          $('#tareas_grupales').attr("disabled", false);
+                                          $('#lecciones').attr("disabled", false);
+                                          $('#evaluaciones').attr("disabled", false);
+
+                                          if(curso == 'INICIAL 1' || curso == 'INICIAL 2' || curso == 'PRIMERO DE EGB' || curso == 'SEGUNDO DE EGB' || curso == 'TERCERO DE EGB' || curso == 'CUARTO DE EGB' || curso == 'QUINTO DE EGB' || curso == 'SEXTO DE EGB' || curso == 'SEPTIMO DE EGB')
+                                          {
+                                            $('#conducta').attr("disabled", false);
+                                          }
+                                          else {
+                                              $('#conducta').attr("disabled", true);
+                                          }
+                                          $('#examen').attr("disabled", false);
+                                          $('#trabajos_academicos').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE TRABAJOS ACADEMICAS');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#tareas_individuales').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE TAREAS INDIVIDUALES');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="nota_ti[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#tareas_grupales').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE TAREAS GRUPALES');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="nota_tg[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#lecciones').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE LECCIONES');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="nota_le[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#evaluaciones').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE EVALUACIONES');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="nota_ev[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#conducta').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE CONDUCTAS');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="conducta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                        $('#examen').on('click', () => {
+                                            var curso = $( "#curso option:selected" ).text();
+                                            var paralelo  = $( "#paralelo option:selected" ).text();
+                                            var especialidad = $('#especialidad').val();
+                                            var materia = $('#materia').val();
+                                            var parcial = $('#parcial').val();
+                                            var quimestre = $('#quimestre').val();
+                                            var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                                            $('.modal-title').empty();
+                                            $('#tableid').empty();
+                                            $('.modal-title').append('INGRESE EXAMEN QUIMESTRAL');
+                                            console.log(url);
+                                            $.ajax({
+                                                url: url,
+                                                success: function(response){
+                                                    $.each(response, function(inx, obj){
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name="examen[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                                   });
+                                                },
+                                                error: function(error){
+
+                                                }
+                                            });
+                                        });
+                                    });
 
 
 
+
+
+
+                                </script>
+
+
+
+
+                                {{--
+
+                                     $.get('buscar_alumnos/'+curso+'/'+paralelo, function(dato){
+                                               $('#tableid').empty();
+                                          $.each(dato, function(inx, obj){
+                                               $('#guardarNotas').css("display", "block");
+                                               $('#tablaNotas').css("display", "block");
+                                               $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2" type="number" step="any" min="1" max="10" name='+tipoTarea+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+
+                                          });
+                                    <div class="form-group col-md-4">
+                                        <strong>Tipo de tarea: <br></strong>
+                                        <div class="input-group-prepend">
+                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                        {{ Form::select('quimestre',['nota_ta[]' => 'TRABAJOS ACADEMICOS', 'nota_ti[]' => 'TAREAS INDIVIDUALES', 'nota_tg[]' => 'TAREAS GRUPALES', 'nota_le[]' => 'LECCIONES', 'nota_ev[]' =>  'EVALUACION', 'conducta[]' => 'CONDUCTA', 'examen[]' => 'EXAMEN'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
+                                        </div>
+                                        </div>  --}}
