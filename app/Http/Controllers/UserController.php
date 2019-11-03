@@ -81,13 +81,10 @@ class UserController extends Controller
 
     public function buscarControl(Request $request, $cedula)
     {
-        $cedula = $request->cedula;
-
-
         $control = DB::table('users')
         ->join('control_profesor', 'control_profesor.user_id', '=', 'users.id')
         ->select('users.name', 'control_profesor.login', 'control_profesor.logout')
-        ->where('users.cedula', 'LIKE', '%'.$cedula.'%')
+        ->where('users.cedula',$cedula)
         ->orderBy('control_profesor.created_at','ASC')
         ->get();
 
