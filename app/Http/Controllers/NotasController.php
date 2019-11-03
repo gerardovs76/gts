@@ -215,7 +215,7 @@ class NotasController extends Controller
      public function buscarMateriaAlumno($cursos, $paralelo){
          if(Auth::user()->isRole('super-admin')  || Auth::user()->isRole('dece') || Auth::user()->isRole('admin'))
          {
-         $matriculado = DB::table('materias')
+       $matriculado = DB::table('materias')
       ->select('materias.materia', 'materias.id')
       ->where('materias.curso',$cursos)
       ->where('materias.paralelo',$paralelo)
