@@ -145,7 +145,6 @@ $(document).ready(function(){
             });
         });
     });
-});
 </script>
      <script>
         $('#paralelo').on('change', function() {
