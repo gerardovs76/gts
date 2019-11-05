@@ -95,7 +95,7 @@
                  </div>
                 </div>
                 <script>
-                        $(document).ready(function(){
+                 $(document).ready(function(){
                             $.get('notas/cargar-notas-profesor', function(response){
                                 $.each(response, function(index, obj){
                                     $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
@@ -107,6 +107,8 @@
                                 });
                             });
                         });
+                </script>
+                <script>
                    $('#paralelo').on('change', function() {
                     var curso = $( "#curso option:selected" ).text();
                     var paralelo  = $( "#paralelo option:selected" ).text();
