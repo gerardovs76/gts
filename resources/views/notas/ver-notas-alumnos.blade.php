@@ -130,6 +130,24 @@
         </table>
         {!!Form::close()!!}
     </div>
-    <script src="{{asset('js/notas-ver-notas-alumnos.js')}}"></script>
+    <script>
+      $('#parcial').on('change', function(){
+                var cedula = $('#cedula').val();
+                var url = 'cargar-materias-alumnos/'+cedula;
+                $.ajax({
+                    url: url,
+                    success: function(response)
+                    {
+                    $.each(response, function(index, obj){
+                    $('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
+                   });
+                    },
+                    error: function(error)
+                    {
+
+                    }
+                });
+            });
+    </script>
     @endsection
 
