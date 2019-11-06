@@ -10,9 +10,16 @@
 
 		<hr>
 		@include('notas.partials.info')
-
-
+		@if(Session::has('error'))
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert">
+			<span>&times;</span>
+		</button>
+		{{ Session::get('error') }}
+    </div>
+        @endif
 					{!! Form::open(['route' => 'notas.store']) !!}
+					@include('notas.partials.error')
                            @include('notas.partials.form')
                            @include('notas.modal.ingresarNotasModal')
                     <div class="table-responsive">
@@ -45,7 +52,7 @@
                     </th>
                     <th>
 
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="examen"><i class="far fa-clipboard"></i> EXAMEN</button>
+                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="examen"><i class="far fa-clipboard"></i> EXAMEN QUIMESTRAL</button>
                     </th>
 
                     </tr>

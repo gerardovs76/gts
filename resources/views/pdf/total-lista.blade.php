@@ -23,9 +23,9 @@ table#mitabla td {
 <body>
         <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
         <img src="images/ib.png" alt="" height="80" width="180" style="float: right;">
-    <h5 align="left"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h5>
-    <p><strong style="font-size: 6;">Fecha de impresión: {{$date}}</strong></p>
-    <h6><p><strong style="font-size: 8; margin-left: 20px">Listado Todos los cursos Todos los paralelos</strong><strong style="font-size: 8; margin-left: 600px;">Total estudiantes: {{$totM + $totF}}</strong></p></h6>
+    <h5 style="text-align: center;"><strong>UNIDAD EDUCATIVA PAUL DIRAC</strong></h5>
+    <p style="text-align: center;"><strong style="font-size: 6;">Fecha de impresión: {{$date}}</strong></p>
+    <h6 style="text-align: center;"><p><strong style="font-size: 8;">Listado Todos los cursos Todos los paralelos</strong><strong style="font-size: 8; margin-left: 600px;">Total estudiantes: {{$totM + $totF}}</strong></p></h6>
     <table id="mitabla" border="1">
         <thead>
             <tr>

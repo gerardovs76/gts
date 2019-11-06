@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Input;
 use App\Exports\InscritosBloqueados;
 use App\ValidarIdentificacion;
 
+
 class InscripcionController extends Controller
 {
     /**

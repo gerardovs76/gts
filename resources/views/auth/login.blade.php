@@ -39,7 +39,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
-                background: url('images/login.PNG')   no-repeat center center fixed; background-size: contain;
+                background: url('images/login.PNG')   no-repeat center center fixed;
 
                   -webkit-background-size: cover;
                   -moz-background-size: cover;
@@ -54,14 +54,14 @@
     <div class="container">
         @include('mensaje.partials.info')
                     <div class="row justify-content-center align-items-center" style="height: 100vh;">
-                        <div class="col-md-6 col-md-offset-7">
+                        <div class="col-lg-6 col-lg-offset-7">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="cedula" class="col-md-4 col-form-label text-md-right"><strong>{{ __('Cedula') }}</strong></label>
+                            <label for="cedula" class="col-lg-4 col-form-label text-lg-right"><strong>{{ __('Cedula') }}</strong></label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <input id="cedula" type="text" class="form-control{{ $errors->has('cedula') ? ' is-invalid' : '' }}" name="cedula" value="{{ old('cedula') }}" required autofocus>
 
                                 @if ($errors->has('cedula'))
@@ -73,9 +73,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"><strong>{{ __('Contraseña') }}</strong></label>
+                            <label for="password" class="col-lg-4 col-form-label text-lg-right"><strong>{{ __('Contraseña') }}</strong></label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-lg-6 offset-lg-4">
                                 <div class="form-check">
                                     <label class="form-check-label" for="remember">
                                         Recordar
@@ -100,7 +100,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-3">
+                            <div class="col-lg-8 offset-lg-3">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-paper-plane"></i> {{ __('Acceder') }}
                                 </button>

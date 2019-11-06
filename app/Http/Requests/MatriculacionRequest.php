@@ -24,7 +24,7 @@ class MatriculacionRequest extends FormRequest
     public function rules()
     {
         return [
-           'cedula' => 'required|unique:matriculados',
+            'cedula' => 'required|unique:matriculados',
             'nombres' => 'required',
             'apellidos' => 'required',
             'curso' => 'required',

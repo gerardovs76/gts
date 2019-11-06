@@ -112,18 +112,27 @@
                    $('#paralelo').on('change', function() {
                     var curso = $( "#curso option:selected" ).text();
                     var paralelo  = $( "#paralelo option:selected" ).text();
-
-                     $.get('buscar_notas/'+curso+'/'+paralelo, function(data){
-                         console.log(data);
+                    var url = 'buscar_notas/'+curso+'/'+paralelo;
+                    $.ajax({
+                        url: url,
+                        success: function(data)
+                        {
                                $('#materia').empty();
                                $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
-                     $.each(data, function(index, regenciesObj){
+                               $.each(data, function(index, regenciesObj){
                                $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
                                var materia = document.getElementById("materia").value;
 
                           });
+                        },
+                        error: function(error){
+
+                        }
+                         });
                      });
-                });
+
+                     </script>
+                     <script>
                     $('#tipoTarea').on('change', function(){
                         var curso = $( "#curso option:selected" ).text();
                         var paralelo  = $( "#paralelo option:selected" ).text();
@@ -131,33 +140,47 @@
                      var materia = $('#materia').val();
                      var parcial = $('#parcial').val();
                      var quimestre = $('#quimestre').val();
-
-
-                     $.get('buscar_alumnos/'+curso+'/'+paralelo, function(dato){
-                           $('#estudiantes').empty();
+                     var url = 'buscar_alumnos/'+curso+'/'+paralelo;
+                     $.ajax({
+                        url: url,
+                        success: function(dato)
+                        {
+                            $('#estudiantes').empty();
                            $('#estudiantes').append('<option value="0" disable="true" selected="true">SELECCIONAR EL ESTUDIANTE</OPTION');
                      $.each(dato, function(inx, obj){
                         $('#estudiantes').append('<option value="'+obj.id+'">'+ obj.nombres +'</option>');
 
                      });
+
+                        },
+                        error: function(error)
+                        {
+
+                        }
+                     });
                 });
-                });
+                </script>
+                <script>
                     $('#realizarBusqueda').on('click', function(){
                         var estudiante = $('#estudiantes').val();
                         var tipoTarea = $('#tipoTarea').val();
                         var parcial = $('#parcial').val();
                         var quimestre = $('#quimestre').val();
                         var materia = $('#materia').val();
-                        $.get('notas-edit-tabla/'+estudiante+'/'+tipoTarea+'/'+parcial+'/'+quimestre+'/'+materia, function(response){
-                        if($('#tipoTarea').val() == 'nota_ta')
+                        var url = 'notas-edit-tabla/'+estudiante+'/'+tipoTarea+'/'+parcial+'/'+quimestre+'/'+materia;
+                        $.ajax({
+                            url: url,
+                            success: function(response)
+                            {
+                                if($('#tipoTarea').val() == 'nota_ta')
                        {
                            $.each(response, function(index, obj){
-                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITASR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
+                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                            });
                        }else if($('#tipoTarea').val() == 'nota_ti')
                        {
                         $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_ti+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITARS</a></td><td><a href='+obj.id+' class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
+                            $('#tableid').append('<tr><td><strong>'+obj.nota_ti+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href='+obj.id+' class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                         });
                        }else if($('#tipoTarea').val() == 'nota_tg')
                        {
@@ -167,7 +190,7 @@
                        }else if($('#tipoTarea').val() == 'nota_le')
                        {
                         $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_le+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDSITAR</a></td><td><a href='+obj.id+' class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
+                            $('#tableid').append('<tr><td><strong>'+obj.nota_le+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href='+obj.id+' class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                         });
                        }else if($('#tipoTarea').val() == 'nota_ev')
                        {
@@ -185,10 +208,15 @@
                        {
                         $.each(response, function(index, obj){
                             console.log(obj);
-                            $('#tableid').append('<tr><td><strong>'+obj.examen+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td></tr>');
+                            $('#tableid').append('<tr><td><strong>'+obj.examen+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href='+obj.id+' class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                         });
                        }
-                       });
+                    },
+                            error: function(error)
+                            {
+
+                            }
+                        });
                     });
 
                 </script>

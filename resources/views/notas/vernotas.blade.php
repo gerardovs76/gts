@@ -174,5 +174,61 @@
         {{ Form::close() }}
     </div>
 </div>
-<script src="{{asset('js/notas-ver-notas.js')}}"></script>
+<script>
+$(document).ready(function(){
+    var url1 = 'notas/cargar-notas-profesor';
+    $.ajax({
+        url: url1,
+        success: function(response)
+        {
+            $.each(response, function(index, obj){
+            $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+        });
+        },
+        error: function(error)
+        {
+
+        }
+        });
+    });
+</script>
+<script>
+    $(document).ready(() => {
+        var url2 = 'notas/cargar-notas-profesor-paralelo';
+        $.ajax({
+            url: url2, 
+            success: function(response)
+            {
+                $.each(response, function(index, obj){
+                $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+                });
+            },
+            error: function(error)
+            {
+
+            }
+        });
+    });
+</script>
+<script>
+$('#paralelo').on('change', function(){
+    var curso = $( "#curso option:selected" ).text();
+    var paralelo  = $( "#paralelo option:selected" ).text();
+    var url3 = 'notas/cargar-materias/'+curso+'/'+paralelo;
+    $.ajax({
+        url: url3,
+        success: function(response)
+        {
+            console.log(response);
+            $.each(response, function(index, obj){
+            $('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
+            });
+        },
+        error: function(error)
+        {
+
+        }
+    });
+});
+</script>
 @endsection

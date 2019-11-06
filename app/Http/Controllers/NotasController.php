@@ -27,6 +27,8 @@ use App\Abanderados;
 use App\Exports\AbanderadosExport;
 use App\MateriasProfesor;
 use App\Inspecciones;
+use App\Http\Requests\NotasRequest;
+use Validator;
 
 class NotasController extends Controller
 {
@@ -70,8 +72,8 @@ class NotasController extends Controller
         }
 
     }
-    public function store(Request $request)
-    {
+    public function store(NotasRequest $request)
+    {  
             $nota_ta = $request->nota_ta;
             $nota_ti = $request->nota_ti;
             $nota_tg = $request->nota_tg;
@@ -84,7 +86,6 @@ class NotasController extends Controller
             $quimestre = $request->quimestre;
             $conducta = $request->conducta;
             $examen = $request->examen;
-
             foreach ($request->matriculados_id as $key => $value) {
                 if(!empty($examen))
                 {
@@ -302,6 +303,27 @@ class NotasController extends Controller
         return response()->json($profesorCurso);
         }
 
+
+    }
+    public function cargarMateriasProfesorView($curso, $paralelo)
+    {
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
+        {
+
+        }
+        elseif(Auth::user()->isRole('profesor'))
+        {
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->where('materias.curso', $curso)
+            ->where('materias.paralelo', $paralelo)
+            ->select('materias.materia', 'materias.id')
+            ->distinct()
+            ->get();
+        return response()->json($profesorCurso);
+        }
 
     }
 
