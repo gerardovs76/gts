@@ -427,7 +427,7 @@ class NotasController extends Controller
             ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
             ->join('materias', 'notas.materias_id', '=', 'materias.id')
             ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.'.$ttarea.'', '!=', 'null')
+            ->where('notas.'.$ttarea.'', '!=', '')
             ->where('matriculados.id', '=', $idestudiante)
             ->where('notas.parcial', '=', $parcial)
             ->where('notas.quimestre', '=', $quimestre)
