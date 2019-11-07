@@ -160,7 +160,6 @@ class ProfesorController extends Controller
     ->select('profesors.nombres_apellidos as nombres', 'materias.materia as nombre_materia', 'materias.curso', 'materias.paralelo', 'materias_profesores.id')
     ->where('profesors.cedula', $cedula)
     ->distinct()
-    ->groupBy('materias.id')
     ->get();
 
 
