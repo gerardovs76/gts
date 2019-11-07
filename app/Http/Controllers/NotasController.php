@@ -458,6 +458,12 @@ class NotasController extends Controller
         return response()->json($notas);
 
     }
+    public function deleteAllNotesResumen($descripcion, $created_at)
+    {
+        $notas = Notas::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+        dd($notas);
+        return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+    }
     public function verNotasEspeciales()
     {
         $users = Auth::user()->cedula;

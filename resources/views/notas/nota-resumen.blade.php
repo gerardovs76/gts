@@ -10,9 +10,6 @@
 
 		<hr>
 		@include('notas.partials.info')
-
-
-					{!! Form::open(['route' => 'notas.store']) !!}
                     <div class="panel panel-primary">
                         <div class="panel panel-heading text-center">INGRESE LOS DATOS PARA LA BUSQUEDA</div>
                              <div class="panel panel-body">
@@ -110,6 +107,7 @@
                     <th><strong>Nro</strong></th>
                     <th>DESCRIPCION</th>
                     <th>FECHA CREACION</th>
+                    <th>ACCIONES</th>
                 </tr>
             </thead>
 			<tbody id="tableid">
@@ -118,20 +116,8 @@
 				</tr>
 			</tbody>
 		</table>
-		  {{ Form::close() }}
-	</div>
-	<!--<div class="col-xs-12 col-sm-4">
-		@include('notas.partials.aside')
-	</div>-->
-	{{-- <script>
- // function mifuncion(elemento) {
-	// var parcial = ($(elemento).data('value'));
-	// var numeroParcial = (parcial);
-	// localStorage.setItem("parcial", JSON.stringify(numeroParcial));
-	// var materiaGlobal;
- //  }
-</script>
-     --}}
+    </div>
+@if(Auth::user()->isRole('profesor'))
 <script>
 $(document).ready(function(){
     var url1 = 'notas/cargar-notas-profesor';
@@ -168,6 +154,7 @@ $(document).ready(function(){
         });
     });
 </script>
+@endif
      <script>
         $('#paralelo').on('change', function() {
          var curso = $( "#curso option:selected" ).text();
@@ -208,7 +195,7 @@ $(document).ready(function(){
                 $('#tableid').empty();
                 $.each(response, function(index, obj){
                    
-                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
+                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'"><i class="fas fa-trash"></i> BORRAR TODAS LAS NOTAS</a></td></tr>');
                 });
             }else if($('#tipoTarea').val() == 'nota_ti')
             {

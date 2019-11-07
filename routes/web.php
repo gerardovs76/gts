@@ -194,6 +194,9 @@ Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{mate
 
 Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@resumenNotaStore');
 
+Route::get('notas-delete-all-resumen/{descripcion}/{created_at}', 'NotasController@deleteAllNotesResumen');
+
+
 Route::get('nota_especial', 'NotasController@notaEspeciales')->name('notas.especial')->middleware('has.permission:notas.especial');
 
 Route::get('materias_especiales/{curso}/{especialidad}/{paralelo}', 'NotasController@buscarMateriaEspecial');
