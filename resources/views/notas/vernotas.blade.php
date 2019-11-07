@@ -174,6 +174,7 @@
         {{ Form::close() }}
     </div>
 </div>
+@if(Auth::user()->isRole('profesor'))
 <script>
 $(document).ready(function(){
     var url1 = 'notas/cargar-notas-profesor';
@@ -210,6 +211,7 @@ $(document).ready(function(){
         });
     });
 </script>
+@endif
 <script>
 $('#paralelo').on('change', function(){
     var curso = $( "#curso option:selected" ).text();

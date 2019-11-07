@@ -310,7 +310,9 @@ class NotasController extends Controller
         $users = Auth::user()->cedula;
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
         {
-
+            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->select('materia', 'id')->distinct()
+            ->get();
+            return response()->json($materias);
         }
         elseif(Auth::user()->isRole('profesor'))
         {
