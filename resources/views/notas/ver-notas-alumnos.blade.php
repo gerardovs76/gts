@@ -59,7 +59,7 @@
 					</div>
 
 
-                    <table class="table table-striped table-hover" id="tableid">
+                    <table class="table table-striped table-bordered" id="tableid">
 			<thead>
 
                     <tr>
