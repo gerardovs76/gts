@@ -421,21 +421,97 @@ class NotasController extends Controller
         ->where('notas.quimestre', '=', $quimestre)
         ->groupBy('notas.examen')
         ->get();
-
         return response()->json($notas);
 
-        }else{
+        }else if($ttarea == 'nota_ta'){
             $notas = DB::table('notas')
             ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
             ->join('materias', 'notas.materias_id', '=', 'materias.id')
             ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.'.$ttarea.'', '!=', '')
+            ->where('notas.numero_tarea_ta', 1)
             ->where('matriculados.id', '=', $idestudiante)
             ->where('notas.parcial', '=', $parcial)
             ->where('notas.quimestre', '=', $quimestre)
             ->where('notas.materias_id', $materia)
             ->get();
 
+            return response()->json($notas);
+        }else if($ttarea == 'nota_ti')
+        {
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.numero_tarea_ti', 1)
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
+
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_tg')
+        {
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.numero_tarea_tg', 1)
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
+
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_le')
+        {
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.numero_tarea_le', 1)
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
+
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_ev')
+        {
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.numero_tarea_ev', 1)
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
+
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'conducta')
+        {
+            $notas = DB::table('notas')
+            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
+            ->join('materias', 'notas.materias_id', '=', 'materias.id')
+            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
+            ->where('notas.numero_conducta', 1)
+            ->where('matriculados.id', '=', $idestudiante)
+            ->where('notas.parcial', '=', $parcial)
+            ->where('notas.quimestre', '=', $quimestre)
+            ->where('notas.materias_id', $materia)
+            ->get();
             return response()->json($notas);
         }
 

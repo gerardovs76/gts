@@ -52,7 +52,7 @@
             <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
 		<div style="background-color: #43ac6a; border-color: #3c9a5f; padding: 7px;">
 		<h2 class="text-center" style="color: #fff;font-family: Roboto;">
-			SISTEMA DE INSCRIPCION PAUL DIRAC
+			SISTEMA DE INSCRIPCION 
 		</h2>
 		</div>
     <marquee><h2>EN CASO DE SER ESTUDIANTE ANTIGUO POR FAVOR INTRODUCIR EL CODIGO ANTIGUO PARA RELLENAR LOS DATOS CORRESPONDIENTES. GRACIAS</h2></marquee>

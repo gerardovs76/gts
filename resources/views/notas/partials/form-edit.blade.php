@@ -172,6 +172,7 @@
                             url: url,
                             success: function(response)
                             {
+                                console.log(response);
                         if($('#tipoTarea').val() == 'nota_ta')
                         {
                             $('#tableid').empty();

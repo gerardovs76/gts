@@ -16,12 +16,6 @@
             {!! Form::text('codigo_antiguo', null, ['class' => 'form-control col-md-8', 'id' => 'codigo_antiguo']) !!}
             </div>
           </div>
-
-
-
-
-
-
 		</div>
 		<div id="formularioAntiguo">
 			<div class="panel panel-success">

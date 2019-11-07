@@ -195,7 +195,7 @@ $(document).ready(function(){
                 $('#tableid').empty();
                 $.each(response, function(index, obj){
                    
-                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'"><i class="fas fa-trash"></i> BORRAR TODAS LAS NOTAS</a></td></tr>');
+                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td style="width: 20px;"><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'"><i class="fas fa-trash"></i> BORRAR TODAS ESTAS NOTAS PARA UN CURSO</a></td></tr>');
                 });
             }else if($('#tipoTarea').val() == 'nota_ti')
             {

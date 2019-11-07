@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
     <div class="panel panel-heading">INGRESE EDITE LOS DATOS CORRESPONDIENTES...</div>
     <div class="panel panel-body">
-        @if(!empty($notas->nota_ta))
+        @if(!empty($notas->nota_ta) || $notas->nota_ta == '')
         <div class="form-row">
             <div class="form-group col-sm-2">
                 <strong>Trabajo academico: </strong><br>
@@ -25,7 +25,7 @@
                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
             </div>
         </div>
-        @elseif(!empty($notas->nota_ti))
+        @elseif(!empty($notas->nota_ti) || $notas->nota_ti == '')
         <div class="form-row">
                 <div class="form-group col-sm-2">
                     <strong>Trabajo invividual: </strong><br>
@@ -49,7 +49,7 @@
                     {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                 </div>
             </div>
-            @elseif(!empty($notas->nota_tg))
+            @elseif(!empty($notas->nota_tg) || $notas->nota_tg == '')
             <div class="form-row">
                     <div class="form-group col-sm-2">
                         <strong>Trabajo grupal: </strong><br>
@@ -97,7 +97,7 @@
                             {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                         </div>
                     </div>
-                    @elseif(!empty($notas->nota_ev))
+                    @elseif(!empty($notas->nota_ev) || $notas->nota_ev == '')
                     <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Evaluacion: </strong><br>
@@ -121,7 +121,7 @@
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                             </div>
                         </div>
-                        @elseif(!empty($notas->conducta))
+                        @elseif(!empty($notas->conducta) || $notas->conducta == '')
                     <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Conducta: </strong><br>
@@ -145,7 +145,7 @@
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                             </div>
                         </div>
-                        @elseif(!empty($notas->examen))
+                        @elseif(!empty($notas->examen) || $notas->examen == '')
                         <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Examen: </strong><br>
