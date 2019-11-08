@@ -227,7 +227,6 @@ class CobrosController extends Controller
     public function facturacionExports(Request $request)
     {
         $tipo_factura = $request->tipo_factura;
-        dd($tipo_factura);
         try {
             if($tipo_factura == 'SEP'){
                 return Excel::download(new FacturacionTotalExport($tipo_factura), 'facturacion-total.xlsx');
