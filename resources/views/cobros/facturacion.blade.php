@@ -44,21 +44,7 @@
                     <strong>Tipo factura: <br></strong>
                     <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                    {!!Form::select('tipo_factura',['TOTAL' => 'TOTAL', 'PENSION' => 'PENSION'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
-                    </div>
-					</div>
-					<div class="form-group col-md-4">
-                    <strong>Fecha inicio: <br></strong>
-                    <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                    {!!Form::date('fecha_inicio', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
-                    </div>
-					</div>
-					<div class="form-group col-md-4">
-                    <strong>Fecha hasta: <br></strong>
-                    <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                    {!!Form::date('fecha_hasta', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de estudiante...'])!!}
+                    {!!Form::select('tipo_factura',['SEP' => 'TOTAL', 'OCT' => 'PENSION OCTUBRE', 'NOV' => 'PENSION NOVIEMBRE', 'DIC' => 'PENSION DICIEMBRE', 'ENE' => 'PENSION ENERO', 'FEB' => 'PENSION FEBRERO', 'MAR' => 'PENSION MARZO', 'ABR' => 'PENSION ABRIL', 'MAY' => 'PENSION MAYO', 'JUN' => 'PENSION JUNIO'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de pensión...'])!!}
                     </div>
 					</div>
                     <div class="form-group col-md-10">

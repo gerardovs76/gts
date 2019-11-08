@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
     <div class="panel panel-heading">INGRESE EDITE LOS DATOS CORRESPONDIENTES...</div>
     <div class="panel panel-body">
-        @if(!empty($notas->nota_ta) || $notas->nota_ta == '')
+        @if(!empty($notas->nota_ta))
         <div class="form-row">
             <div class="form-group col-sm-2">
                 <strong>Trabajo academico: </strong><br>
@@ -20,12 +20,13 @@
                 {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                 {!!Form::hidden('matriculados_id')!!}
                 {!!Form::hidden('materias_id')!!}
+                {!!Form::hidden('numero_tarea_ta')!!}
             </div>
             <div class="form-group col-md-12">
                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
             </div>
         </div>
-        @elseif(!empty($notas->nota_ti) || $notas->nota_ti == '')
+        @elseif(!empty($notas->nota_ti))
         <div class="form-row">
                 <div class="form-group col-sm-2">
                     <strong>Trabajo invividual: </strong><br>
@@ -44,12 +45,13 @@
                     {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                     {!!Form::hidden('matriculados_id')!!}
                     {!!Form::hidden('materias_id')!!}
+                    {!!Form::hidden('numero_tarea_ti')!!}
                 </div>
                 <div class="form-group col-md-12">
                     {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                 </div>
             </div>
-            @elseif(!empty($notas->nota_tg) || $notas->nota_tg == '')
+            @elseif(!empty($notas->nota_tg) || $notas->numero_tarea_tg == 1)
             <div class="form-row">
                     <div class="form-group col-sm-2">
                         <strong>Trabajo grupal: </strong><br>
@@ -68,6 +70,7 @@
                         {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                         {!!Form::hidden('matriculados_id')!!}
                         {!!Form::hidden('materias_id')!!}
+                        {!!Form::hidden('numero_tarea_tg')!!}
                     </div>
                     <div class="form-group col-md-12">
                         {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
@@ -92,6 +95,7 @@
                             {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                             {!!Form::hidden('matriculados_id')!!}
                             {!!Form::hidden('materias_id')!!}
+                            {!!Form::hidden('numero_tarea_le')!!}
                         </div>
                         <div class="form-group col-md-12">
                             {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
@@ -116,12 +120,13 @@
                                 {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                                 {!!Form::hidden('matriculados_id')!!}
                                 {!!Form::hidden('materias_id')!!}
+                                {!!Form::hidden('numero_tarea_ev')!!}
                             </div>
                             <div class="form-group col-md-12">
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}
                             </div>
                         </div>
-                        @elseif(!empty($notas->conducta) || $notas->conducta == '')
+                        @elseif(!empty($notas->conducta))
                     <div class="form-row">
                             <div class="form-group col-sm-2">
                                 <strong>Conducta: </strong><br>
@@ -140,6 +145,7 @@
                                 {!!Form::text('descripcion', null, ['class' => 'form-control col-md-6'])!!}
                                 {!!Form::hidden('matriculados_id')!!}
                                 {!!Form::hidden('materias_id')!!}
+                                {!!Form::hidden('numero_conducta')!!}
                             </div>
                             <div class="form-group col-md-12">
                                 {!!Form::button('<i class="far fa-save"></i> Guardar', ['class' => 'btn btn-primary form-control', 'type' => 'submit'])!!}

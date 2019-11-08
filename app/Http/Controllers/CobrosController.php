@@ -227,17 +227,15 @@ class CobrosController extends Controller
     public function facturacionExports(Request $request)
     {
         $tipo_factura = $request->tipo_factura;
-        $fecha_inicio = $request->fecha_inicio;
-        $fecha_hasta = $request->fecha_hasta;
+        dd($tipo_factura);
         try {
-            if($tipo_factura == 'TOTAL'){
-                return Excel::download(new FacturacionTotalExport($fecha_inicio, $fecha_hasta), 'facturacion-total.xlsx');
-            }elseif($tipo_factura == 'PENSION'){
-                return Excel::download(new FacturacionPensionExport($fecha_inicio, $fecha_hasta), 'facturacion-pension.xlsx');
+            if($tipo_factura == 'SEP'){
+                return Excel::download(new FacturacionTotalExport($tipo_factura), 'facturacion-total.xlsx');
+            }else{
+                return Excel::download(new FacturacionPensionExport($tipo_factura), 'facturacion-pension.xlsx');
         }
         } catch (Exception $e) {
             report($e);
-
             return false;
         }
 

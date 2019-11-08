@@ -13,16 +13,15 @@ class FacturacionTotalExport implements FromView, ShouldAutoSize
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function __construct($fecha_inicio, $fecha_hasta)
+    public function __construct($tipo_factura)
     {
-        $this->fecha_inicio = $fecha_inicio;
-        $this->fecha_hasta = $fecha_hasta;
+        $this->tipo_factura = $tipo_factura;
 
     }
      public function view(): View
     {
          return view('cobros.excel.reporteTotal',[
-            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->whereBetween('facturacion.fecha_creacion', array($this->fecha_inicio, $this->fecha_hasta))->select('matriculados.cedula_r', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->groupBy('matriculados.id')->get(),
+            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'like', '%'.$this->tipo_factura.'%')->select('matriculados.cedula_r', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->groupBy('matriculados.id')->get(),
             'fecha' => Carbon::now()
 
 
