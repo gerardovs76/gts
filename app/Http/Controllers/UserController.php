@@ -87,10 +87,7 @@ class UserController extends Controller
         ->where('users.cedula',$cedula)
         ->orderBy('control_profesor.created_at','ASC')
         ->get();
-
-
         return response()->json($control);
-
     }
     public function importarDataUsuarios()
     {
