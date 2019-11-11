@@ -500,7 +500,7 @@
         }
     });
 </script>
-<script>
+{{-- <script>
   $(document).ready(function(){
     $.get('tareas_count', function(response){
         if(response > 0){
@@ -521,4 +521,4 @@
   });
 
 
-</script>
+</script> --}}
