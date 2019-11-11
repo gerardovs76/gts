@@ -23,6 +23,14 @@ Route::get('inscripcion/busqueda-antiguos/{codigo}', 'InscripcionController@busq
 
 Route::get('users/{cedula}', 'UserController@asignarRol');
 
+Route::get('salvar-notas_ta', 'SaveControllerApp@salvarNotasTa');
+Route::get('salvar-notas_ti', 'SaveControllerApp@salvarNotasTi');
+Route::get('salvar-notas_tg', 'SaveControllerApp@salvarNotasTg');
+Route::get('salvar-notas_ev', 'SaveControllerApp@salvarNotasEv');
+Route::get('salvar-notas_le', 'SaveControllerApp@salvarNotasLe');
+Route::get('salvar-notas_conducta', 'SaveControllerApp@salvarNotasConducta');
+Route::get('salvar-notas_examen', 'SaveControllerApp@salvarNotasExamen');
+
 Auth::routes();
 
 
