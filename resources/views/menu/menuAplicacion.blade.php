@@ -71,9 +71,9 @@
                 @can('matricular.cas')
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
                 @endcan
-                @can('matricular.total-resumen')
+                {{-- @can('matricular.total-resumen')
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
-                @endcan
+                @endcan --}}
               </div>
             </li>
             @endcan
@@ -204,10 +204,10 @@
               @can('inspeccion.promedios')
               <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios resumen</a>
               @endcan
-              @can('inspeccion.alertas')
+              {{-- @can('inspeccion.alertas')
               <span class="badge badge-danger"></span>
               <a id="alertaMenu" class="dropdown-item" href="{{route('inspeccion.alertas')}}">ALERTA!</a>
-              @endcan
+              @endcan --}}
               </div>
             </li>
             @endcan
