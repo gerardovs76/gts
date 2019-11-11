@@ -26,6 +26,7 @@ class NotasRequest extends FormRequest
         $rules = [
             'parcial' => 'required',
             'quimestre' => 'required',
+            'materias_id' => 'required'
            ];
       foreach($this->request->get('parcial') as $key => $val) {
           $rules['parcial.*'] = 'required';

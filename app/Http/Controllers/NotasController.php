@@ -29,6 +29,15 @@ use App\MateriasProfesor;
 use App\Inspecciones;
 use App\Http\Requests\NotasRequest;
 use Validator;
+use App\Nota_ta;
+use App\Notas_ti;
+use App\Notas_tg;
+use App\Notas_le;
+use App\Notas_ev;
+use App\Notas_conducta;
+use App\Notas_examen;
+
+
 
 class NotasController extends Controller
 {
@@ -74,69 +83,178 @@ class NotasController extends Controller
     }
     public function store(NotasRequest $request)
     {  
-            $nota_ta = $request->nota_ta;
-            $nota_ti = $request->nota_ti;
-            $nota_tg = $request->nota_tg;
-            $nota_le = $request->nota_le;
-            $nota_ev = $request->nota_ev;
-            $descripcion = $request->descripcion;
+        if($request->tipo_tareas == 'nota_ta')
+        {
+           
+            $notas_ta = $request->nota_ta;
             $matriculados_id = $request->matriculados_id;
             $materias_id = $request->materias_id;
             $parcial = $request->parcial;
             $quimestre = $request->quimestre;
-            $conducta = $request->conducta;
-            $examen = $request->examen;
-            foreach ($request->matriculados_id as $key => $value) {
-                if(!empty($examen))
-                {
-                    $nota = new Notas;
-                    $nota->examen = $examen[$key];
-                    $nota->quimestre = $quimestre[$key];
-                    $nota->matriculados_id = $matriculados_id[$key];
-                    $nota->materias_id = $materias_id[$key];
-                    $nota->save();
-                }else{
-                $nota = new Notas;
-                $nota->nota_ta = $nota_ta[$key];
-                $nota->nota_ti = $nota_ti[$key];
-                $nota->nota_tg = $nota_tg[$key];
-                $nota->nota_le = $nota_le[$key];
-                $nota->nota_ev = $nota_ev[$key];
-                $nota->descripcion = $descripcion;
-                $nota->matriculados_id = $matriculados_id[$key];
-                $nota->materias_id = $materias_id[$key];
-                $nota->parcial = $parcial[$key];
-                $nota->quimestre = $quimestre[$key];
-                $nota->conducta = $conducta[$key];
-                $nota->autoridad_id = auth()->user()->id;
-                if(!empty($nota_ta))
-                {
-                    $nota->numero_tarea_ta = '1';
-                }
-                else if(!empty($nota_ti))
-                {
-                    $nota->numero_tarea_ti = '1';
-                }
-                else if(!empty($nota_tg))
-                {
-                    $nota->numero_tarea_tg = '1';
-                }
-                else if(!empty($nota_le))
-                {
-                    $nota->numero_tarea_le = '1';
-                }
-                else if(!empty($nota_ev))
-                {
-                    $nota->numero_tarea_ev = '1';
-                }
-                else if(!empty($conducta))
-                {
-                    $nota->numero_conducta = '1';
-                }
-                $nota->save();
+            $descripcion = $request->descripcion;
+
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_ta = new Nota_ta;
+                $nota_ta->nota_ta = $notas_ta[$key];
+                $nota_ta->descripcion = $descripcion;
+                $nota_ta->materias_id = $materias_id[$key];
+                $nota_ta->matriculado_id = $matriculados_id[$key];
+                $nota_ta->parcial = $parcial[$key];
+                $nota_ta->quimestre = $quimestre[$key];
+                $nota_ta->autoridad_id = auth()->user()->id;
+                $nota_ta->numero_tarea_ta = '1';
+                $nota_ta->save();
             }
-        }
             return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_ti')
+        {
+            $notas_ti = $request->nota_ti;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_ti = new Notas_ti;
+                $nota_ti->nota_ti = $notas_ti[$key];
+                $nota_ti->descripcion = $descripcion;
+                $nota_ti->materias_id = $materias_id[$key];
+                $nota_ti->matriculado_id = $matriculados_id[$key];
+                $nota_ti->parcial = $parcial[$key];
+                $nota_ti->quimestre = $quimestre[$key];
+                $nota_ti->autoridad_id = auth()->user()->id;
+                $nota_ti->numero_tarea_ti = '1';
+                $nota_ti->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_tg')
+        {
+            $notas_tg = $request->nota_tg;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_tg = new Notas_tg;
+                $nota_tg->nota_tg = $notas_tg[$key];
+                $nota_tg->descripcion = $descripcion;
+                $nota_tg->materias_id = $materias_id[$key];
+                $nota_tg->matriculado_id = $matriculados_id[$key];
+                $nota_tg->parcial = $parcial[$key];
+                $nota_tg->quimestre = $quimestre[$key];
+                $nota_tg->autoridad_id = auth()->user()->id;
+                $nota_tg->numero_tarea_tg = '1';
+                $nota_tg->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_le')
+        {
+            $notas_le = $request->nota_le;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_le = new Notas_le;
+                $nota_le->nota_le = $notas_le[$key];
+                $nota_le->descripcion = $descripcion;
+                $nota_le->materias_id = $materias_id[$key];
+                $nota_le->matriculado_id = $matriculados_id[$key];
+                $nota_le->parcial = $parcial[$key];
+                $nota_le->quimestre = $quimestre[$key];
+                $nota_le->autoridad_id = auth()->user()->id;
+                $nota_le->numero_tarea_le = '1';
+                $nota_le->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_ev')
+        {
+            $notas_ev = $request->nota_ev;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_ev = new Notas_ev;
+                $nota_ev->nota_ev = $notas_ev[$key];
+                $nota_ev->descripcion = $descripcion;
+                $nota_ev->materias_id = $materias_id[$key];
+                $nota_ev->matriculado_id = $matriculados_id[$key];
+                $nota_ev->parcial = $parcial[$key];
+                $nota_ev->quimestre = $quimestre[$key];
+                $nota_ev->autoridad_id = auth()->user()->id;
+                $nota_ev->numero_tarea_ev = '1';
+                $nota_ev->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_conducta')
+        {
+            $notas_conducta = $request->conducta;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_conducta = new Notas_conducta;
+                $nota_conducta->nota_conducta = $notas_conducta[$key];
+                $nota_conducta->descripcion = $descripcion;
+                $nota_conducta->materias_id = $materias_id[$key];
+                $nota_conducta->matriculado_id = $matriculados_id[$key];
+                $nota_conducta->parcial = $parcial[$key];
+                $nota_conducta->quimestre = $quimestre[$key];
+                $nota_conducta->autoridad_id = auth()->user()->id;
+                $nota_conducta->numero_tarea_conducta = '1';
+                $nota_conducta->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else if($request->tipo_tareas == 'nota_examen')
+        {
+            $notas_examen = $request->examen;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_examen = new Notas_examen;
+                $nota_examen->nota_exq = $notas_examen[$key];
+                $nota_examen->descripcion = $descripcion;
+                $nota_examen->materias_id = $materias_id[$key];
+                $nota_examen->matriculado_id = $matriculados_id[$key];
+                $nota_examen->quimestre = $quimestre[$key];
+                $nota_examen->autoridad_id = auth()->user()->id;
+                $nota_examen->numero_tarea_exq = '1';
+                $nota_examen->save();
+            }
+            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
+        else{
+            return redirect()->route('notas.index')->with('error', 'Hubo un error asignando el tipo de nota. Por favor intente de nuevo');
+        }
     }
 
     /**
@@ -157,10 +275,55 @@ class NotasController extends Controller
      * @param  \App\notass  $notass
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $tt)
     {
-        $notas = Notas::find($id);
-        return view('notas.edit', compact('notas'));
+        if($tt == 'nota_ta')
+        {
+            $notas = Nota_ta::find($id);
+            $tt = 'nota_ta';
+            return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'nota_ti')
+        {
+            $notas = Notas_ti::find($id);
+            $tt = 'nota_ti';
+                  return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'nota_tg')
+        {
+            $notas = Notas_tg::find($id);
+            $tt = 'nota_tg';
+                  return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'nota_le')
+        {
+            $notas = Notas_le::find($id);
+            $tt = 'nota_le';
+                  return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'nota_ev')
+        {
+            $notas = Notas_ev::find($id);
+            $tt = 'nota_ev';
+                  return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'conducta')
+        {
+            $notas = Notas_conducta::find($id);
+            $tt = 'conducta';
+                  return view('notas.edit', compact('notas', 'tt'));
+        }
+        else if($tt == 'examen')
+        {
+            $notas = Notas_examen::find($id);
+            $tt = 'examen';
+            return view('notas.edit', compact('notas', 'tt'));
+        }
+        else {
+            return redirect()-back()->with('error', 'Informacion mal suministrada');
+        }
+
+        
     }
     /**
      * Update the specified resource in storage.
@@ -169,44 +332,161 @@ class NotasController extends Controller
      * @param  \App\notass  $notass
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $tt)
     {
-        $nota_ta = $request->nota_ta;
-        $nota_ti = $request->nota_ti;
-        $nota_tg = $request->nota_tg;
-        $nota_le = $request->nota_le;
-        $nota_ev = $request->nota_ev;
-        $descripcion = $request->descripcion;
-        $matriculados_id = $request->matriculados_id;
-        $materias_id = $request->materias_id;
-        $parcial = $request->parcial;
-        $quimestre = $request->quimestre;
-        $conducta = $request->conducta;
-        $examen = $request->examen;
+        if($tt == 'nota_ta')
+        {
+            $notas_ta = $request->nota_ta;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
 
-            $nota = Notas::find($id);
-            $nota->nota_ta = $nota_ta;
-            $nota->nota_ti = $nota_ti;
-            $nota->nota_tg = $nota_tg;
-            $nota->nota_le = $nota_le;
-            $nota->nota_ev = $nota_ev;
-            $nota->descripcion = $descripcion;
-            $nota->matriculados_id = $matriculados_id;
-            $nota->materias_id = $materias_id;
-            $nota->parcial = $parcial;
-            $nota->quimestre = $quimestre;
-            $nota->conducta = $conducta;
-            $nota->examen = $examen;
-            $nota->save();
+            $nota_ta = Nota_ta::find($id);
+            $nota_ta->nota_ta = $notas_ta;
+            $nota_ta->descripcion = $descripcion;
+            $nota_ta->materias_id = $materias_id;
+            $nota_ta->matriculado_id = $matriculados_id;
+            $nota_ta->parcial = $parcial;
+            $nota_ta->quimestre = $quimestre;
+            $nota_ta->autoridad_id = auth()->user()->id;
+            $nota_ta->numero_tarea_ta = '1';
+            $nota_ta->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
 
-        return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
         }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\notass  $notass
-     * @return \Illuminate\Http\Response
-     */
+        else if($tt == 'nota_ti')
+        {
+            $notas_ti = $request->nota_ti;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $nota_ti = Notas_ti::find($id);
+            $nota_ti->nota_ti = $notas_ti;
+            $nota_ti->descripcion = $descripcion;
+            $nota_ti->materias_id = $materias_id;
+            $nota_ti->matriculado_id = $matriculados_id;
+            $nota_ti->parcial = $parcial;
+            $nota_ti->quimestre = $quimestre;
+            $nota_ti->autoridad_id = auth()->user()->id;
+            $nota_ti->numero_tarea_ti = '1';
+            $nota_ti->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+        else if($tt == 'nota_tg')
+        {
+            $notas_tg = $request->nota_tg;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $nota_tg = Notas_tg::find($id);
+            $nota_tg->nota_tg = $notas_tg;
+            $nota_tg->descripcion = $descripcion;
+            $nota_tg->materias_id = $materias_id;
+            $nota_tg->matriculado_id = $matriculados_id;
+            $nota_tg->parcial = $parcial;
+            $nota_tg->quimestre = $quimestre;
+            $nota_tg->autoridad_id = auth()->user()->id;
+            $nota_tg->numero_tarea_tg = '1';
+            $nota_tg->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+        else if($tt == 'nota_le')
+        {
+            $notas_le = $request->nota_le;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $nota_le = Notas_le::find($id);
+            $nota_le->nota_le = $notas_le;
+            $nota_le->descripcion = $descripcion;
+            $nota_le->materias_id = $materias_id;
+            $nota_le->matriculado_id = $matriculados_id;
+            $nota_le->parcial = $parcial;
+            $nota_le->quimestre = $quimestre;
+            $nota_le->autoridad_id = auth()->user()->id;
+            $nota_le->numero_tarea_le = '1';
+            $nota_le->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+        else if($tt == 'nota_ev')
+        {
+            $notas_ev = $request->nota_ev;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $nota_ev = Notas_ev::find($id);
+            $nota_ev->nota_ev = $notas_ev;
+            $nota_ev->descripcion = $descripcion;
+            $nota_ev->materias_id = $materias_id;
+            $nota_ev->matriculado_id = $matriculados_id;
+            $nota_ev->parcial = $parcial;
+            $nota_ev->quimestre = $quimestre;
+            $nota_ev->autoridad_id = auth()->user()->id;
+            $nota_ev->numero_tarea_ev = '1';
+            $nota_ev->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+        else if($tt == 'conducta')
+        {
+            $notas_conducta = $request->nota_conducta;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $conducta = Notas_conducta::find($id);
+            $conducta->nota_conducta = $notas_conducta;
+            $conducta->descripcion = $descripcion;
+            $conducta->materias_id = $materias_id;
+            $conducta->matriculado_id = $matriculados_id;
+            $conducta->parcial = $parcial;
+            $conducta->quimestre = $quimestre;
+            $conducta->autoridad_id = auth()->user()->id;
+            $conducta->numero_tarea_conducta = '1';
+            $conducta->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+        else if($tt == 'examen')
+        {
+            $examen = $request->nota_exq;
+            $matriculados_id = $request->matriculado_id;
+            $materias_id = $request->materias_id;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+
+            $nota_examen = Notas_examen::find($id);
+            $nota_examen->nota_exq = $examen;
+            $nota_examen->descripcion = $descripcion;
+            $nota_examen->materias_id = $materias_id;
+            $nota_examen->matriculado_id = $matriculados_id;
+            $nota_examen->quimestre = $quimestre;
+            $nota_examen->autoridad_id = auth()->user()->id;
+            $nota_examen->numero_tarea_exq = '1';
+            $nota_examen->save();
+            return redirect()->route('notas.editar-notas')->with('info', 'La nota se ha editado correctamente');
+
+        }
+    }
     public function destroy($id)
     {
         $notas = Notas::find($id);
@@ -413,105 +693,88 @@ class NotasController extends Controller
     {
         if($ttarea == 'examen')
         {
-            $notas = DB::table('notas')
-        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-        ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-        ->where('notas.'.$ttarea.'', '!=', 'null')
-        ->where('matriculados.id', '=', $idestudiante)
-        ->where('notas.quimestre', '=', $quimestre)
-        ->groupBy('notas.examen')
-        ->get();
-        return response()->json($notas);
+            $notas = Notas_examen::join('matriculados', 'notas_exq.matriculado_id', 'matriculados.id')
+            ->join('materias', 'notas_exq.materias_id', '=', 'materias.id')
+            ->select('notas_exq.nota_exq as nota', 'notas_exq.id', 'notas_exq.descripcion', 'notas_exq.created_at') 
+            ->where('matriculados.id', $idestudiante)
+            ->where('notas_exq.quimestre', $quimestre)
+            ->where('notas_exq.materias_id', $materia)
+            ->get();
+             return response()->json($notas);
 
         }else if($ttarea == 'nota_ta'){
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_tarea_ta', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
 
+           $notas = Nota_ta::join('matriculados', 'notas_ta.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ta.materias_id', '=', 'materias.id')
+           ->select('notas_ta.nota_ta as nota', 'notas_ta.id', 'notas_ta.descripcion', 'notas_ta.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_ta.parcial', $parcial)
+           ->where('notas_ta.quimestre', $quimestre)
+           ->where('notas_ta.materias_id', $materia)
+           ->get();
             return response()->json($notas);
         }else if($ttarea == 'nota_ti')
         {
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_tarea_ti', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
-
+            $notas = Notas_ti::join('matriculados', 'notas_ti.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ti.materias_id', '=', 'materias.id')
+           ->select('notas_ti.nota_ti as nota', 'notas_ti.id', 'notas_ti.descripcion', 'notas_ti.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_ti.parcial', $parcial)
+           ->where('notas_ti.quimestre', $quimestre)
+           ->where('notas_ti.materias_id', $materia)
+           ->get();
             return response()->json($notas);
 
         }
         else if($ttarea == 'nota_tg')
         {
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_tarea_tg', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
-
+            $notas = Notas_tg::join('matriculados', 'notas_tg.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_tg.materias_id', '=', 'materias.id')
+           ->select('notas_tg.nota_tg as nota', 'notas_tg.id', 'notas_tg.descripcion', 'notas_tg.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_tg.parcial', $parcial)
+           ->where('notas_tg.quimestre', $quimestre)
+           ->where('notas_tg.materias_id', $materia)
+           ->get();
             return response()->json($notas);
 
         }
         else if($ttarea == 'nota_le')
         {
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_tarea_le', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
-
+            $notas = Notas_le::join('matriculados', 'notas_le.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_le.materias_id', '=', 'materias.id')
+           ->select('notas_le.nota_le as nota', 'notas_le.id', 'notas_le.descripcion', 'notas_le.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_le.parcial', $parcial)
+           ->where('notas_le.quimestre', $quimestre)
+           ->where('notas_le.materias_id', $materia)
+           ->get();
             return response()->json($notas);
 
         }
         else if($ttarea == 'nota_ev')
         {
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_tarea_ev', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
-
+            $notas = Notas_ev::join('matriculados', 'notas_ev.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ev.materias_id', '=', 'materias.id')
+           ->select('notas_ev.nota_ev as nota', 'notas_ev.id', 'notas_ev.descripcion', 'notas_ev.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_ev.parcial', $parcial)
+           ->where('notas_ev.quimestre', $quimestre)
+           ->where('notas_ev.materias_id', $materia)
+           ->get();
             return response()->json($notas);
 
         }
         else if($ttarea == 'conducta')
         {
-            $notas = DB::table('notas')
-            ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-            ->join('materias', 'notas.materias_id', '=', 'materias.id')
-            ->select(DB::raw('notas.'.$ttarea.''), 'notas.id', 'notas.descripcion', 'notas.created_at')
-            ->where('notas.numero_conducta', 1)
-            ->where('matriculados.id', '=', $idestudiante)
-            ->where('notas.parcial', '=', $parcial)
-            ->where('notas.quimestre', '=', $quimestre)
-            ->where('notas.materias_id', $materia)
-            ->get();
+            $notas = Notas_conducta::join('matriculados', 'notas_conducta.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_conducta.materias_id', '=', 'materias.id')
+           ->select('notas_conducta.nota_conducta as nota', 'notas_conducta.id', 'notas_conducta.descripcion', 'notas_conducta.created_at') 
+           ->where('matriculados.id', $idestudiante)
+           ->where('notas_conducta.parcial', $parcial)
+           ->where('notas_conducta.quimestre', $quimestre)
+           ->where('notas_conducta.materias_id', $materia)
+           ->get();
             return response()->json($notas);
         }
 
@@ -519,19 +782,92 @@ class NotasController extends Controller
 
     public function resumenNotaStore($ttarea, $parcial, $quimestre, $materia)
     {
-        $notas = DB::table('notas')
-        ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-        ->join('materias', 'notas.materias_id', '=', 'materias.id')
-        ->select('notas.id', 'notas.descripcion', 'notas.created_at')
-        ->where('notas.'.$ttarea.'', '!=', 'null')
-        ->where('notas.parcial', '=', $parcial)
-        ->where('notas.quimestre', '=', $quimestre)
-        ->where('notas.materias_id', $materia)
-        ->groupBy('notas.descripcion')
-        ->distinct('notas.descripcion')
-        ->get();
+        if($ttarea == 'examen')
+        {
+            $notas = Notas_examen::join('matriculados', 'notas_exq.matriculado_id', 'matriculados.id')
+            ->join('materias', 'notas_exq.materias_id', '=', 'materias.id')
+            ->select('notas_exq.nota_exq as nota', 'notas_exq.id', 'notas_exq.descripcion', 'notas_exq.created_at') 
+            ->where('notas_exq.quimestre', $quimestre)
+            ->where('notas_exq.materias_id', $materia)
+            ->groupBy('notas_exq.descripcion')
+            ->get();
+             return response()->json($notas);
 
-        return response()->json($notas);
+        }else if($ttarea == 'nota_ta'){
+
+           $notas = Nota_ta::join('matriculados', 'notas_ta.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ta.materias_id', '=', 'materias.id')
+           ->select('notas_ta.nota_ta as nota', 'notas_ta.id', 'notas_ta.descripcion', 'notas_ta.created_at') 
+           ->where('notas_ta.parcial', $parcial)
+           ->where('notas_ta.quimestre', $quimestre)
+           ->where('notas_ta.materias_id', $materia)
+           ->groupBy('notas_ta.descripcion')
+           ->get();
+            return response()->json($notas);
+        }else if($ttarea == 'nota_ti')
+        {
+            $notas = Notas_ti::join('matriculados', 'notas_ti.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ti.materias_id', '=', 'materias.id')
+           ->select('notas_ti.nota_ti as nota', 'notas_ti.id', 'notas_ti.descripcion', 'notas_ti.created_at') 
+           ->where('notas_ti.parcial', $parcial)
+           ->where('notas_ti.quimestre', $quimestre)
+           ->where('notas_ti.materias_id', $materia)
+           ->groupBy('notas_ti.descripcion')
+           ->get();
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_tg')
+        {
+            $notas = Notas_tg::join('matriculados', 'notas_tg.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_tg.materias_id', '=', 'materias.id')
+           ->select('notas_tg.nota_tg as nota', 'notas_tg.id', 'notas_tg.descripcion', 'notas_tg.created_at') 
+           ->where('notas_tg.parcial', $parcial)
+           ->where('notas_tg.quimestre', $quimestre)
+           ->where('notas_tg.materias_id', $materia)
+           ->groupBy('notas_tg.descripcion')
+           ->get();
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_le')
+        {
+            $notas = Notas_le::join('matriculados', 'notas_le.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_le.materias_id', '=', 'materias.id')
+           ->select('notas_le.nota_le as nota', 'notas_le.id', 'notas_le.descripcion', 'notas_le.created_at') 
+           ->where('notas_le.parcial', $parcial)
+           ->where('notas_le.quimestre', $quimestre)
+           ->where('notas_le.materias_id', $materia)
+           ->groupBy('notas_le.descripcion')
+           ->get();
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'nota_ev')
+        {
+            $notas = Notas_ev::join('matriculados', 'notas_ev.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_ev.materias_id', '=', 'materias.id')
+           ->select('notas_ev.nota_ev as nota', 'notas_ev.id', 'notas_ev.descripcion', 'notas_ev.created_at') 
+           ->where('notas_ev.parcial', $parcial)
+           ->where('notas_ev.quimestre', $quimestre)
+           ->where('notas_ev.materias_id', $materia)
+           ->groupBy('notas_ev.descripcion')
+           ->get();
+            return response()->json($notas);
+
+        }
+        else if($ttarea == 'conducta')
+        {
+            $notas = Notas_conducta::join('matriculados', 'notas_conducta.matriculado_id', 'matriculados.id')
+           ->join('materias', 'notas_conducta.materias_id', '=', 'materias.id')
+           ->select('notas_conducta.nota_conducta as nota', 'notas_conducta.id', 'notas_conducta.descripcion', 'notas_conducta.created_at') 
+           ->where('notas_conducta.parcial', $parcial)
+           ->where('notas_conducta.quimestre', $quimestre)
+           ->where('notas_conducta.materias_id', $materia)
+           ->groupBy('notas_conducta.descripcion')
+           ->get();
+            return response()->json($notas);
+        }
 
     }
     public function deleteAllNotesResumen($descripcion, $created_at)

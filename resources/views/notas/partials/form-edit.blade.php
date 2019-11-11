@@ -173,54 +173,12 @@
                             success: function(response)
                             {
                                 console.log(response);
-                        if($('#tipoTarea').val() == 'nota_ta')
-                        {
                             $('#tableid').empty();
                            $.each(response, function(index, obj){
                                console.log(obj);
-                               $('#tableid').append('<tr><td><strong>'+obj.nota_ta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
+                               $('#tableid').append('<tr><td><strong>'+obj.nota+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/'+tipoTarea+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                            });
-                       }else if($('#tipoTarea').val() == 'nota_ti')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_ti+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }else if($('#tipoTarea').val() == 'nota_tg')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_tg+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }else if($('#tipoTarea').val() == 'nota_le')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_le+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }else if($('#tipoTarea').val() == 'nota_ev')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.nota_ev+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }
-                       else if($('#tipoTarea').val() == 'conducta')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            $('#tableid').append('<tr><td><strong>'+obj.conducta+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }
-                       else if($('#tipoTarea').val() == 'examen')
-                       {
-                        $('#tableid').empty();
-                        $.each(response, function(index, obj){
-                            console.log(obj);
-                            $('#tableid').append('<tr><td><strong>'+obj.examen+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
-                        });
-                       }
-                    },
+                            },
                             error: function(error)
                             {
 

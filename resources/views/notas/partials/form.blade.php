@@ -71,12 +71,12 @@
                                              <strong>Parcial: <br></strong>
                                              <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                             {{ Form::select('quimestre',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
+                                             {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
                                              </div>
                                              </div>
                                                <div id ="agregarNotas" class="form-group col-md-4">
                                                {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarNotas']) !!}
-
+                                                
                                              </div>
 
 
@@ -147,7 +147,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
 
                                                    });
                                                 },
@@ -172,7 +172,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ti[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ti[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ti"></tr>');
 
                                                    });
                                                 },
@@ -197,11 +197,10 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_tg[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_tg[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_tg"></tr>');
                                                    });
                                                 },
                                                 error: function(error){
-
                                                 }
                                             });
                                         });
@@ -221,7 +220,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_le[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_le[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_le"></tr>');
 
                                                    });
                                                 },
@@ -246,7 +245,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ev[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="nota_ev[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ev"></tr>');
 
                                                    });
                                                 },
@@ -271,7 +270,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="conducta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="conducta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_conducta"></tr>');
 
                                                    });
                                                 },
@@ -296,7 +295,7 @@
                                                 url: url,
                                                 success: function(response){
                                                     $.each(response, function(inx, obj){
-                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="examen[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'></tr>');
+                                                        $('#tableid').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-6" type="number" step="any" min="1" max="10" name="examen[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_examen"></tr>');
 
                                                    });
                                                 },

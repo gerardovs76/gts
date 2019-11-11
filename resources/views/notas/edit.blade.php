@@ -9,7 +9,7 @@
                     </div>
 		<hr>
 		@include('notas.partials.error')
-		{!! Form::model($notas, ['route' => ['notas.update', $notas->id], 'method' => 'PUT']) !!}
+		{!! Form::model($notas, ['route' => ['notas.update', $notas->id, $tt], 'method' => 'PUT']) !!}
 
 			@include('notas.partials.form-editar')
 

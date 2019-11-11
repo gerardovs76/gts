@@ -128,11 +128,11 @@ Route::get('notas', 'NotasController@index')->name('notas.index')->middleware('h
 
 Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('has.permission:notas.store');
 
-Route::get('notas/{id}/edit', 'NotasController@edit')->name('notas.edit');
+Route::get('notas/{id}/{tt}/edit', 'NotasController@edit')->name('notas.edit');
 
 Route::get('notas/{id}/destroy', 'NotasController@destroy');
 
-Route::put('notas/{id}', 'NotasController@update')->name('notas.update');
+Route::put('notas/{id}/{tt}', 'NotasController@update')->name('notas.update');
 
 Route::get('buscar_notas/{curso}/{paralelo}', 'NotasController@buscarMateriaAlumno');
 
