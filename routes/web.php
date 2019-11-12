@@ -130,7 +130,7 @@ Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('
 
 Route::get('notas/{id}/{tt}/edit', 'NotasController@edit')->name('notas.edit');
 
-Route::get('notas/{id}/destroy', 'NotasController@destroy');
+Route::get('notas/{id}/{tt}/destroy', 'NotasController@destroy');
 
 Route::put('notas/{id}/{tt}', 'NotasController@update')->name('notas.update');
 

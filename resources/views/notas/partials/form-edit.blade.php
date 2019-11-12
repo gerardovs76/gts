@@ -176,7 +176,7 @@
                             $('#tableid').empty();
                            $.each(response, function(index, obj){
                                console.log(obj);
-                               $('#tableid').append('<tr><td><strong>'+obj.nota+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/'+tipoTarea+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
+                               $('#tableid').append('<tr><td><strong>'+obj.nota+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td><a href="notas/'+obj.id+'/'+tipoTarea+'/edit" class="btn btn-primary"><i class="far fa-edit"></i>EDITAR</a></td><td><a href="notas/'+obj.id+'/'+tipoTarea+'/destroy" class="btn btn-danger"><i class="fas fa-trash-alt"></i> ELIMINAR</a></td></tr>');
                            });
                             },
                             error: function(error)

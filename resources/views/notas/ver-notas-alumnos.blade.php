@@ -172,6 +172,7 @@
                     url: url,
                     success: function(response)
                     {
+                        console.log(response);
                     $.each(response, function(index, obj){
                     $('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
                    });
