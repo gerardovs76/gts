@@ -56,7 +56,7 @@
                                              <strong>Materia: <br></strong>
                                              <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                             {{ Form::select('materia', ['materia' => 'MATERIA'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Materia', 'id' => 'materia']) }}
+                                             {{ Form::select('materia', [], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione la materia', 'id' => 'materia']) }}
                                              </div>
                                              </div>
 
@@ -94,7 +94,6 @@
                                                 success: function(data)
                                                 {
                                                             $('#materia').empty();
-                                                            $('#materia').append('<option value="0" disable="true" selected="true">SELECCIONAR MATERIA</OPTION');
                                                         $.each(data, function(index, regenciesObj){
                                                             $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
                                                             var materia = document.getElementById("materia").value;
