@@ -9,7 +9,7 @@ class Notas_tg extends Model
     protected $table = 'notas_tg';
     protected $fillable = [
         'id_antiguo',
-        'matriculados_id',
+        'matriculado_id',
         'materias_id',
         'nota_tg',
         'numero_tarea_tg',

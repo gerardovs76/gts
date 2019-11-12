@@ -9,7 +9,7 @@ class Notas_le extends Model
     protected $table = 'notas_le';
     protected $fillable = [
         'id_antiguo',
-        'matriculados_id',
+        'matriculado_id',
         'materias_id',
         'nota_le',
         'numero_tarea_le',
@@ -18,5 +18,9 @@ class Notas_le extends Model
         'autoridad_id',
         'descripcion'
     ];
+
+    public function matriculado(){
+        return $this->hasOne('App\Matriculacion', 'id');
+    }
 
 }

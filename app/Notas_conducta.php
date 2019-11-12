@@ -9,7 +9,7 @@ class Notas_conducta extends Model
     protected $table = 'notas_conducta';
     protected $fillable = [
         'id_antiguo',
-        'matriculados_id',
+        'matriculado_id',
         'materias_id',
         'nota_conducta',
         'numero_tarea_conducta',
@@ -18,5 +18,9 @@ class Notas_conducta extends Model
         'autoridad_id',
         'descripcion'
     ];
+
+    public function matriculado(){
+        return $this->hasOne('App\Matriculacion', 'id');
+    }
 
 }

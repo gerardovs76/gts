@@ -582,8 +582,6 @@ class NotasController extends Controller
             ->get();
         return response()->json($profesorCurso);
         }
-
-
     }
     public function cargarMateriasProfesorView($curso, $paralelo)
     {
@@ -650,9 +648,7 @@ class NotasController extends Controller
             return response()->json($materias);
         }
 
-
     }
-
     public function cargarNotasAlumnos(Request $request)
     {
         $curso = $request->curso;
@@ -660,32 +656,48 @@ class NotasController extends Controller
         $quimestre = $request->quimestre;
         $parcial = $request->parcial;
         $materia = $request->materia;
-        $notas = Matriculacion::with(['notas' => function($query1) use($parcial, $quimestre, $materia){
+        $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
             $query1->where('materias_id', $materia)
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id', DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),
-            DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),
-            DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),
-            DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
-            DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
-            DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
-            ->groupBy('matriculados_id', 'materias_id');
-
- }])->with(['examen' => function($query7) use($quimestre){
-    $query7->where('quimestre', $quimestre)
-    ->select('matriculados_id', DB::raw("sum(examen) as nota_examen"))
-    ->groupBy('matriculados_id');
- }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
-     $query2->where('parcial', $parcial)
-     ->where('quimestre', $quimestre)
-     ->where('materias_id', $materia)
-     ->groupBy('matriculados_id');
-
-
- }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-
+            ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ta.nota_ta) / SUM(notas_ta.numero_tarea_ta), 3) as nota_final_ta"))
+            ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
+                $query2->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ti.nota_ti) / SUM(notas_ti.numero_tarea_ti), 3) as nota_final_ti"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
+                $query3->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_tg.nota_tg) / SUM(notas_tg.numero_tarea_tg), 3) as nota_final_tg"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
+                $query4->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_le.nota_le) / SUM(notas_le.numero_tarea_le), 3) as nota_final_le"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
+                $query5->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ev.nota_ev) / SUM(notas_ev.numero_tarea_ev), 3) as nota_final_ev"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_conducta' => function($query6) use($parcial, $quimestre, $materia){
+                $query6->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_conducta.nota_conducta) / SUM(notas_conducta.numero_tarea_conducta), 3) as nota_final_conducta"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_examen' => function($query7) use($quimestre, $materia){
+                $query7->where('materias_id', $materia)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
         return view('notas.vernotas', compact('notas', 'quimestre'))->with('info', 'Se ha cargado las notas correctamete');
 
     }
@@ -1827,29 +1839,49 @@ class NotasController extends Controller
         $quimestre = $request->quimestre;
         $parcial = $request->parcial;
         $materia = $request->materia;
-
-        $notas = Matriculacion::with(['notas' => function($query1) use($parcial, $quimestre, $materia){
+        $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
             $query1->where('materias_id', $materia)
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id', DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),
-            DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),
-            DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),
-            DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
-            DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
-            DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
-            ->groupBy('matriculados_id');
-
- }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre, $materia){
-     $query2->where('parcial', $parcial)
-     ->where('quimestre', $quimestre)
-     ->where('materias_id', $materia)
-     ->groupBy('matriculados_id');
-
-
- }])->where('cedula', $cedula)->groupBy('id')->orderBy('apellidos')->get();
-
+            ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ta.nota_ta) / SUM(notas_ta.numero_tarea_ta), 3) as nota_final_ta"))
+            ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
+                $query2->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ti.nota_ti) / SUM(notas_ti.numero_tarea_ti), 3) as nota_final_ti"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
+                $query3->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_tg.nota_tg) / SUM(notas_tg.numero_tarea_tg), 3) as nota_final_tg"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
+                $query4->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_le.nota_le) / SUM(notas_le.numero_tarea_le), 3) as nota_final_le"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
+                $query5->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_ev.nota_ev) / SUM(notas_ev.numero_tarea_ev), 3) as nota_final_ev"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_conducta' => function($query6) use($parcial, $quimestre, $materia){
+                $query6->where('materias_id', $materia)
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_conducta.nota_conducta) / SUM(notas_conducta.numero_tarea_conducta), 3) as nota_final_conducta"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_examen' => function($query7) use($quimestre, $materia){
+                $query7->where('materias_id', $materia)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
+                ->groupBy('matriculado_id', 'materias_id');
+            }])->where('cedula', $cedula)->groupBy('id')->orderBy('apellidos')->get();
+            
         return view('notas.ver-notas-alumnos', compact('notas'))->with('info', 'Se ha cargado la nota correctamente');
     }
 

@@ -26,10 +26,6 @@ class Matriculacion extends Model
         'fecha_creacion',
         'foto_carnet'
     ];
-
-
-
-
 public function inspecciones()
 {
     return $this->hasMany('App\Inspecciones', 'matriculados_id');
@@ -43,45 +39,33 @@ public function recuperaciones()
 {
     return $this->hasMany('App\Recuperacion', 'matriculados_id');
 }
-public function recuperaciones_p2()
+public function notas_ta()
 {
-    return $this->recuperaciones();
+    return $this->hasMany('App\Nota_ta', 'matriculado_id');
 }
-public function recuperaciones_p3()
+public function notas_ti()
 {
-    return $this->recuperaciones();
+    return $this->hasMany('App\Notas_ti', 'matriculado_id');
 }
-public function notas()
+public function notas_tg()
 {
-    return $this->hasMany('App\Notas', 'matriculados_id');
+    return $this->hasMany('App\Notas_tg', 'matriculado_id');
 }
-public function parcial2()
+public function notas_le()
 {
-    return $this->notas();
+    return $this->hasMany('App\Notas_le', 'matriculado_id');
 }
-public function parcial3()
+public function notas_ev()
 {
-    return $this->notas();
+    return $this->hasMany('App\Notas_ev', 'matriculado_id');
 }
-public function examen()
+public function notas_conducta()
 {
-    return $this->notas();
+    return $this->hasMany('App\Notas_conducta', 'matriculado_id');
 }
-public function promedioFinal()
+public function notas_examen()
 {
-    return $this->notas();
-}
-public function conducta()
-{
-    return $this->notas();
-}
-public function remediales()
-{
-    return $this->hasMany('App\Remediales', 'matriculados_id');
-}
-public function supletorios()
-{
-    return $this->hasMany('App\Supletorio', 'matriculados_id');
+    return $this->hasMany('App\Notas_examen', 'matriculado_id');
 }
 public function inscripcion()
 {
