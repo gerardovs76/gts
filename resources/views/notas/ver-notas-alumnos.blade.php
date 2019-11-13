@@ -148,8 +148,8 @@
                             @else
                             <td>0</td>
                             @endif
-                            @if($nota->notas_ta->count() != 0 && $nota->notas_ti->count() != 0 && $nota->notas_tg->count() != 0 && $nota->notas_le->count() != 0 && $nota->notas_ev->count() != 0 && $nota->notas_conducta->count() != 0 && $nota->notas_examen->count() != 0)
-                             <td>{{round(((($nota->notas_ta->first()->nota_final_ta)  +  ($nota->notas_ti->first()->nota_final_ti)  +  ($nota->notas_tg->first()->nota_final_tg)  +  ($nota->notas_le->first()->nota_final_le)  +  ($nota->notas_ev->first()->nota_final_ev)  +  ($nota->notas_conducta->first()->nota_final_conducta)) / 6),3)}}</td>
+                            @if($nota->notas_ta->count() != 0 && $nota->notas_ti->count() != 0 && $nota->notas_tg->count() != 0 && $nota->notas_le->count() != 0 && $nota->notas_ev->count() != 0)
+                             <td>{{round(((($nota->notas_ta->first()->nota_final_ta)  +  ($nota->notas_ti->first()->nota_final_ti)  +  ($nota->notas_tg->first()->nota_final_tg)  +  ($nota->notas_le->first()->nota_final_le)  +  ($nota->notas_ev->first()->nota_final_ev)) / 6),3)}}</td>
                             @else
                             <td>0</td>
                             @endif
