@@ -89,7 +89,7 @@
                                                  <strong>Tipo de tarea: <br></strong>
                                                  <div class="input-group-prepend">
                                                       <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                 {{ Form::select('quimestre',['nota_ta' => 'TRABAJOS ACADEMICOS', 'nota_ti' => 'TAREAS INDIVIDUALES', 'nota_tg' => 'TAREAS GRUPALES', 'nota_le' => 'LECCIONES', 'nota_ev' =>  'EVALUACION', 'conducta' => 'CONDUCTA'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
+                                                 {{ Form::select('quimestre',['nota_ta' => 'TRABAJOS ACADEMICOS', 'nota_ti' => 'TAREAS INDIVIDUALES', 'nota_tg' => 'TAREAS GRUPALES', 'nota_le' => 'LECCIONES', 'nota_ev' =>  'EVALUACION', 'nota_conducta' => 'CONDUCTA', 'nota_examen' => 'EXAMEN QUIMESTRAL'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el tipo de tarea...', 'id' => 'tipoTarea']) }}
                                                  </div>
                                                  </div>
                                                    <div class="form-group col-md-12">
@@ -189,47 +189,11 @@ $(document).ready(function(){
              $.ajax({
                 url: url4,
                 success: function(response)
-                {
-            if($('#tipoTarea').val() == 'nota_ta')
-            {   
-                $('#tableid').empty();
-                $.each(response, function(index, obj){
-                   
-                    $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td style="width: 20px;"><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'"><i class="fas fa-trash"></i> BORRAR TODAS ESTAS NOTAS PARA UN CURSO</a></td></tr>');
-                });
-            }else if($('#tipoTarea').val() == 'nota_ti')
-            {
+                {  
                 $('#tableid').empty();
              $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
+                $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td style="width: 20px;"><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'/'+tipoTarea+'"><i class="fas fa-trash"></i> BORRAR TODAS ESTAS NOTAS PARA UN CURSO</a></td></tr>');
              });
-            }else if($('#tipoTarea').val() == 'nota_tg')
-            {
-                $('#tableid').empty();
-             $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
-             });
-            }else if($('#tipoTarea').val() == 'nota_le')
-            {
-                $('#tableid').empty();
-             $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
-             });
-            }else if($('#tipoTarea').val() == 'nota_ev')
-            {
-                $('#tableid').empty();
-             $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
-             });
-            }
-            else if($('#tipoTarea').val() == 'conducta')
-            {
-                $('#tableid').empty();
-             $.each(response, function(index, obj){
-                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td></tr>');
-             });
-            }
-
                 },
                 error: function(error)
                 {

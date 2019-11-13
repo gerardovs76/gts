@@ -96,7 +96,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_ta = new Nota_ta;
-                $nota_ta->nota_ta = $notas_ta[$key];
+                if($notas_ta[$key] == null)
+                {
+                    $nota_ta->nota_ta = 0;
+                }else{
+                    $nota_ta->nota_ta = $notas_ta[$key];
+                }
                 $nota_ta->descripcion = $descripcion;
                 $nota_ta->materias_id = $materias_id[$key];
                 $nota_ta->matriculado_id = $matriculados_id[$key];
@@ -120,7 +125,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_ti = new Notas_ti;
-                $nota_ti->nota_ti = $notas_ti[$key];
+                if($notas_ti[$key] == null)
+                {
+                    $nota_ti->nota_ti = 0;
+                }else{
+                    $nota_ti->nota_ti = $notas_ti[$key];
+                }
                 $nota_ti->descripcion = $descripcion;
                 $nota_ti->materias_id = $materias_id[$key];
                 $nota_ti->matriculado_id = $matriculados_id[$key];
@@ -144,7 +154,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_tg = new Notas_tg;
-                $nota_tg->nota_tg = $notas_tg[$key];
+                if($notas_tg[$key] == null)
+                {
+                    $nota_tg->nota_tg = 0;
+                }else{
+                    $nota_tg->nota_tg = $notas_tg[$key];
+                }
                 $nota_tg->descripcion = $descripcion;
                 $nota_tg->materias_id = $materias_id[$key];
                 $nota_tg->matriculado_id = $matriculados_id[$key];
@@ -168,7 +183,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_le = new Notas_le;
-                $nota_le->nota_le = $notas_le[$key];
+                if($notas_le[$key] == null)
+                {
+                    $nota_le->nota_le = 0;
+                }else{
+                    $nota_le->nota_le = $notas_le[$key];
+                }
                 $nota_le->descripcion = $descripcion;
                 $nota_le->materias_id = $materias_id[$key];
                 $nota_le->matriculado_id = $matriculados_id[$key];
@@ -192,7 +212,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_ev = new Notas_ev;
-                $nota_ev->nota_ev = $notas_ev[$key];
+                if($notas_ev[$key] == null)
+                {
+                    $nota_ev->nota_ev = 0;
+                }else{
+                    $nota_ev->nota_ev = $notas_ev[$key];
+                }
                 $nota_ev->descripcion = $descripcion;
                 $nota_ev->materias_id = $materias_id[$key];
                 $nota_ev->matriculado_id = $matriculados_id[$key];
@@ -216,7 +241,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_conducta = new Notas_conducta;
-                $nota_conducta->nota_conducta = $notas_conducta[$key];
+                if($notas_conducta[$key] == null)
+                {
+                    $nota_conducta->nota_conducta = 0;
+                }else{
+                    $nota_conducta->nota_conducta = $notas_conducta[$key];
+                }
                 $nota_conducta->descripcion = $descripcion;
                 $nota_conducta->materias_id = $materias_id[$key];
                 $nota_conducta->matriculado_id = $matriculados_id[$key];
@@ -240,7 +270,12 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value)
             {
                 $nota_examen = new Notas_examen;
-                $nota_examen->nota_exq = $notas_examen[$key];
+                if($notas_examen[$key] == null)
+                {
+                    $nota_examen->nota_exq = 0;
+                }else{
+                    $nota_examen->nota_exq = $notas_examen[$key];
+                }
                 $nota_examen->descripcion = $descripcion;
                 $nota_examen->materias_id = $materias_id[$key];
                 $nota_examen->matriculado_id = $matriculados_id[$key];
@@ -632,7 +667,7 @@ class NotasController extends Controller
         $users = Auth::user()->cedula;
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
         {
-            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->select('materia', 'id')->distinct()
+            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->where('tipo_materia', '!=', 'SI')->select('materia', 'id')->distinct()
             ->get();
             return response()->json($materias);
         }
@@ -641,16 +676,39 @@ class NotasController extends Controller
             $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
             ->where('profesors.cedula', $users)
+            ->where('materias.tipo_materia', '<>', 'SI')
             ->where('materias.curso', $curso)
             ->where('materias.paralelo', $paralelo)
             ->select('materias.materia', 'materias.id')
-            ->distinct()
+            ->groupBy('materias.id')
             ->get();
         return response()->json($profesorCurso);
         }
 
     }
-
+    public function cargarMateriasEspecialesProfesorView($curso, $paralelo)
+    {
+        $users = Auth::user()->cedula;
+        if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
+        {
+            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->where('tipo_materia', '!=', 'NO')->select('materia', 'id')->distinct()
+            ->get();
+            return response()->json($materias);
+        }
+        elseif(Auth::user()->isRole('profesor'))
+        {
+            $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
+            ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
+            ->where('profesors.cedula', $users)
+            ->where('materias.tipo_materia', '!=', 'NO')
+            ->where('materias.curso', $curso)
+            ->where('materias.paralelo', $paralelo)
+            ->select('materias.materia', 'materias.id')
+            ->groupBy('materias.id')
+            ->get();
+        return response()->json($profesorCurso);
+        }
+    }
     public function cargarNotas($curso, $paralelo)
     {
     $materias = Materias::where('tipo_materia', '!=', 'SI')->where('curso', $curso)->where('paralelo', $paralelo)->select('*')->get();
@@ -742,6 +800,7 @@ class NotasController extends Controller
                 ->select('matriculado_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
                 ->groupBy('matriculado_id', 'materias_id');
             }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
+            //dd(json_encode($notas));
         return view('notas.vernotas', compact('notas', 'quimestre'))->with('info', 'Se ha cargado las notas correctamete');
 
     }
@@ -838,7 +897,7 @@ class NotasController extends Controller
 
     public function resumenNotaStore($ttarea, $parcial, $quimestre, $materia)
     {
-        if($ttarea == 'examen')
+        if($ttarea == 'nota_examen')
         {
             $notas = Notas_examen::join('matriculados', 'notas_exq.matriculado_id', 'matriculados.id')
             ->join('materias', 'notas_exq.materias_id', '=', 'materias.id')
@@ -912,7 +971,7 @@ class NotasController extends Controller
             return response()->json($notas);
 
         }
-        else if($ttarea == 'conducta')
+        else if($ttarea == 'nota_conducta')
         {
             $notas = Notas_conducta::join('matriculados', 'notas_conducta.matriculado_id', 'matriculados.id')
            ->join('materias', 'notas_conducta.materias_id', '=', 'materias.id')
@@ -926,10 +985,47 @@ class NotasController extends Controller
         }
 
     }
-    public function deleteAllNotesResumen($descripcion, $created_at)
+    public function deleteAllNotesResumen($descripcion, $created_at, $tt)
     {
-        $notas = Notas::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-        return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        if($tt = 'nota_ta')
+        {
+            $notas = Nota_ta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else if($tt = 'nota_ti')
+        {
+            $notas = Notas_ti::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }        
+        else if($tt = 'nota_tg')
+        {
+            $notas = Notas_tg::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else if($tt = 'nota_le')
+        {
+            $notas = Notas_le::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else if($tt = 'nota-ev')
+        {
+            $notas = Notas_ev::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else if($tt = 'nota_conducta')
+        {
+            $notas = Notas_conducta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else if($tt = 'nota_examen')
+        {
+            $notas = Notas_examen::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+        }
+        else {
+            return redirect()->back()->with('error', 'Hubo un error! Comuniquese con el soporte tecnico');
+        }
+        
     }
     public function verNotasEspeciales()
     {

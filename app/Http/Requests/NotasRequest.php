@@ -26,7 +26,7 @@ class NotasRequest extends FormRequest
         $rules = [
             'parcial' => 'required',
             'quimestre' => 'required',
-            'materias_id' => 'required'
+            'materias_id' => 'required',
            ];
       foreach($this->request->get('parcial') as $key => $val) {
           $rules['parcial.*'] = 'required';
@@ -35,6 +35,11 @@ class NotasRequest extends FormRequest
       {
           $rules['quimestre.*'] = 'required';
       }
+      foreach($this->request->get('materias_id') as $key => $val)
+      {
+          $rules['materias_id.*'] = 'required';
+      }
+
       return $rules;
     }
 

@@ -95,72 +95,72 @@
                     </tr>
                     </thead>
 					<tbody id="tableid">
-                        @if(isset($notas))
-                        @foreach($notas as $nota)
-                    <tr>
-                        <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
-                        @foreach($nota->notas_ta as $notas_ta)
-                        @if($notas_ta->nota_final_ta != null)
-                        <td>{{$notas_ta->nota_final_ta}}</td>
+                            @if(isset($notas))
+                            @foreach($notas as $nota)
+                        <tr>
+                            <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
+                            @if($nota->notas_ta->count() != 0)
+                            @foreach($nota->notas_ta as $notas_ta)
+                            <td>{{$notas_ta->nota_final_ta}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_ti->count() != 0)
+                            @foreach($nota->notas_ti as $notas_ti)
+                            <td>{{$notas_ti->nota_final_ti}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_tg->count() != 0)
+                            @foreach($nota->notas_tg as $notas_tg)
+                            <td>{{$notas_tg->nota_final_tg}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_le->count() != 0)
+                            @foreach($nota->notas_le as $notas_le)
+                            <td>{{$notas_le->nota_final_le}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_ev->count() != 0)
+                            @foreach($nota->notas_ev as $notas_ev)
+                            <td>{{$notas_ev->nota_final_ev}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_conducta->count() != 0)
+                            @foreach($nota->notas_conducta as $notas_conducta)
+                            <td>{{$notas_conducta->nota_final_conducta}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_examen->count() != 0)
+                            @foreach($nota->notas_examen as $notas_examen)
+                            <td>{{$notas_examen->nota_final_examen}}</td>
+                            @endforeach
+                            @else
+                            <td>0</td>
+                            @endif
+                            @if($nota->notas_ta->count() != 0 && $nota->notas_ti->count() != 0 && $nota->notas_tg->count() != 0 && $nota->notas_le->count() != 0 && $nota->notas_ev->count() != 0 && $nota->notas_conducta->count() != 0 && $nota->notas_examen->count() != 0)
+                             <td>{{round(((($nota->notas_ta->first()->nota_final_ta)  +  ($nota->notas_ti->first()->nota_final_ti)  +  ($nota->notas_tg->first()->nota_final_tg)  +  ($nota->notas_le->first()->nota_final_le)  +  ($nota->notas_ev->first()->nota_final_ev)  +  ($nota->notas_conducta->first()->nota_final_conducta)) / 6),3)}}</td>
+                            @else
+                            <td>0</td>
+                            @endif
+                        </tr>
+                        @endforeach
                         @else
-                        <td>0</td>
+                        <tr>
+        
+                        </tr>
                         @endif
-                        @endforeach
-                        @foreach($nota->notas_ti as $notas_ti)
-                        @if($notas_ti->nota_final_ti != null)
-                        <td>{{$notas_ti->nota_final_ti}}</td>
-                        @else 
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                        @foreach($nota->notas_tg as $notas_tg)
-                        @if($notas_tg->nota_final_tg != null)
-                        <td>{{$notas_tg->nota_final_tg}}</td>
-                        @else 
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                        @foreach($nota->notas_le as $notas_le)
-                        @if($notas_le->nota_final_le != null)
-                        <td>{{$notas_le->nota_final_le}}</td>
-                        @else
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                        @foreach($nota->notas_ev as $notas_ev)
-                        @if($notas_ev->nota_final_ev != null)
-                        <td>{{$notas_ev->nota_final_ev}}</td>
-                        @else 
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                        @foreach($nota->notas_conducta as $notas_conducta)
-                        @if($notas_conducta->nota_final_conducta != null)
-                        <td>{{$notas_conducta->nota_final_conducta}}</td>
-                        @else
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                        @foreach($nota->notas_examen as $notas_examen)
-                        @if($notas_examen->nota_final_examen != null)
-                        <td>{{$notas_examen->nota_final_examen}}</td>
-                        @else
-                        <td>0</td>
-                        @endif
-                        @if(isset($nota->notas_ta->first()->nota_final_ta) && isset($nota->notas_ti->first()->nota_final_ti) && isset($nota->notas_tg->first()->nota_final_tg) && isset($nota->notas_le->first()->nota_final_le) && isset($nota->notas_ev->first()->nota_final_ev) && isset($nota->notas_conducta->first()->nota_final_conducta))
-                        <td>{{round(((($nota->notas_ta->first()->nota_final_ta)  +  ($nota->notas_ti->first()->nota_final_ti)  +  ($nota->notas_tg->first()->nota_final_tg)  +  ($nota->notas_le->first()->nota_final_le)  +  ($nota->notas_ev->first()->nota_final_ev)  +  ($nota->notas_conducta->first()->nota_final_conducta)) / 6),3)}}</td>
-                        @else
-                        <td>0</td>
-                        @endif
-                        @endforeach
-                    </tr>
-                    @endforeach
-                    @else
-                    <tr>
-    
-                    </tr>
-                    @endif
-                </tbody>
+                    </tbody>
         </table>
         {!!Form::close()!!}
     </div>

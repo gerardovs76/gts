@@ -158,7 +158,7 @@ Route::get('cargar_materia/{curso}/{paralelo}', 'NotasController@cargarNotas');
 
 Route::get('cargar-materias-recuperacion/{curso}/{paralelo}', 'NotasController@cargarMateriasRecuperacion');
 
-Route::get('cargar_materia/especial/{curso}/{paralelo}', 'NotasController@cargarMateriasEspeciales');
+Route::get('cargar_materia/especial/{curso}/{paralelo}', 'NotasController@cargarMateriasEspecialesProfesorView');
 
 Route::post('cargar_notas', 'NotasController@cargarNotasAlumnos')->name('notas.cargar-notas-store');
 
@@ -202,7 +202,7 @@ Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{mate
 
 Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@resumenNotaStore');
 
-Route::get('notas-delete-all-resumen/{descripcion}/{created_at}', 'NotasController@deleteAllNotesResumen');
+Route::get('notas-delete-all-resumen/{descripcion}/{created_at}/{tt}', 'NotasController@deleteAllNotesResumen');
 
 
 Route::get('nota_especial', 'NotasController@notaEspeciales')->name('notas.especial')->middleware('has.permission:notas.especial');
