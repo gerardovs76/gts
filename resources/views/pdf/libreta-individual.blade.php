@@ -354,19 +354,6 @@ table#mitabla3 td {
 			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
 			@endif
 			@endforeach
-			@foreach($nota->notas_ta as $notas_ta)
-			@foreach($nota->notas_ti as $notas_ti)
-			@foreach($nota->notas_tg as $notas_tg)
-			@foreach($nota->notas_le as $notas_le)
-			@foreach($nota->notas_ev as $notas_ev)
-			@if($materia->id == $notas_ta->materias_id && $materia->id == $notas_ti->materias_id && $materia->id == $notas_tg->materias_id && $materia->id == $notas_le->materias_id && $materia->id == $notas_ev->materias_id)
-			<td>{{round(((($notas_ta->nota_final_ta)  +  ($notas_ti->nota_final_ti)  +  ($notas_tg->nota_final_tg)  +  ($notas_le->nota_final_le)  +  ($notas_ev->nota_final_ev)) / 5),3)}}</td>
-			@endif
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach
 			</tr>
 			@endif
 			@endforeach
