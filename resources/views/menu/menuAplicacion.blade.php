@@ -14,7 +14,6 @@
                 INSCRIPCIÓN
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
-
                 <a class="dropdown-item" href="{{ route('inscripcion.create') }}">Nueva inscripción</a>
                 @can('inscripcion.perfil')
                 <a class="dropdown-item " href="{{ route('inscripcion.perfil') }}">Perfil</a>
@@ -34,8 +33,6 @@
                 @can('inscripcion.reportesInscritos')
                  <a class="dropdown-item" href="{{ route('inscripcion.reportesInscritos') }}">Exportar carga masiva para matriculados</a>
                  @endcan
-
-
               </div>
             </li>
             @endcan

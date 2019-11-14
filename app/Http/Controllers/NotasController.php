@@ -1349,302 +1349,311 @@ class NotasController extends Controller
       $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
-      $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('materias.curso', $curso)->select('materias.materia')->distinct()->get();
 
-     $notas = Matriculacion::with(['notas' => function($query1) use($parcial, $quimestre){
-            $query1
+      $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('materias.curso', $curso)->where('materias.paralelo', $paralelo)->select('materias.materia', 'materias.id', 'materias.tipo_materia')->distinct()->get();
+      $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre){
+        $query1
+        ->where('parcial', $parcial)
+        ->where('quimestre', $quimestre)
+        ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_ta.nota_ta) / SUM(notas_ta.numero_tarea_ta), 3) as nota_final_ta"))
+        ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ti' => function($query2) use($parcial, $quimestre){
+            $query2
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id', 'materias_id', DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),
-            DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),
-            DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),
-            DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),
-            DB::raw("ROUND(SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev), 3) as nota_ev"),
-            DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
-            DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) + SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
-            ->groupBy('materias_id', 'matriculados_id');
-
- }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
-     $query2->where('parcial', $parcial)
-     ->where('quimestre', $quimestre)
-     ->groupBy('matriculados_id');
-
- }])->with(['conducta' => function($que1) use ($parcial, $quimestre){
-            $que1->where('parcial', $parcial)
+            ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_ti.nota_ti) / SUM(notas_ti.numero_tarea_ti), 3) as nota_final_ti"))
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg' => function($query3) use($parcial, $quimestre){
+            $query3
+            ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id', 'materias_id',DB::raw('sum(notas.conducta) / sum(notas.numero_conducta) as nota_conducta'))
-                ->groupBy('matriculados_id');
+            ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_tg.nota_tg) / SUM(notas_tg.numero_tarea_tg), 3) as nota_final_tg"))
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le' => function($query4) use($parcial, $quimestre){
+            $query4
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id','materias_id', DB::raw("ROUND(SUM(notas_le.nota_le) / SUM(notas_le.numero_tarea_le), 3) as nota_final_le"))
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev' => function($query5) use($parcial, $quimestre){
+            $query5
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id','materias_id', DB::raw("ROUND(SUM(notas_ev.nota_ev) / SUM(notas_ev.numero_tarea_ev), 3) as nota_final_ev"))
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_conducta' => function($query6) use($parcial, $quimestre){
+            $query6
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_conducta.nota_conducta) / SUM(notas_conducta.numero_tarea_conducta), 3) as nota_final_conducta"))
+            ->groupBy('matriculado_id');
+        }])->with(['notas_examen' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['inscripcion' => function($query8){
+            $query8->select('cedula', 'nombres_representante');
+        }])->with(['materias' => function($query4) use($curso,$paralelo){
+            $query4->select('curso', 'materia', 'tipo_materia','id')
+            ->where('curso', $curso)
+            ->where('paralelo', $paralelo);
+        }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
 
- }])->with(['inscripcion' => function($query3){
-    $query3->select('cedula', 'nombres_representante');
- }])->with(['materias' => function($query4) use($curso,$paralelo){
-    $query4->select('curso', 'materia', 'tipo_materia','id')
-    ->where('curso', $curso)
-    ->where('paralelo', $paralelo);
- }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-     $representante = DB::table('inscripciones')
-     ->select('inscripciones.nombres_representante')
-     ->where('inscripciones.curso', $curso)
-     ->get();
-
-     $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h1', '01');
-
-    }])->withCount(['inspecciones as h2_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h2', '01');
-
-    }])
-    ->withCount(['inspecciones as h3_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h3', '01');
-
-    }])
-    ->withCount(['inspecciones as h4_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h4', '01');
-
-    }])
-    ->withCount(['inspecciones as h5_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h5', '01');
-
-    }])
-    ->withCount(['inspecciones as h6_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h6', '01');
-
-    }])
-    ->withCount(['inspecciones as h7_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h7', '01');
-
-    }])
-    ->withCount(['inspecciones as h8_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h8', '01');
-
-    }])
-    ->withCount(['inspecciones as h9_count_01' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h9', '01');
-
-    }])
-    ->withCount(['inspecciones as h1_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h1', '02');
-
-    }])
-    ->withCount(['inspecciones as h2_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h2', '02');
-
-    }])
-    ->withCount(['inspecciones as h3_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h3', '02');
-
-    }])
-    ->withCount(['inspecciones as h4_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h4', '02');
-
-    }])
-    ->withCount(['inspecciones as h5_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h5', '02');
-
-    }])
-    ->withCount(['inspecciones as h6_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h6', '02');
-
-    }])
-    ->withCount(['inspecciones as h7_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h7', '02');
-
-    }])
-    ->withCount(['inspecciones as h8_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h8', '02');
-
-    }])
-    ->withCount(['inspecciones as h9_count_02' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h9', '02');
-
-    }])
-    ->withCount(['inspecciones as h1_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h1', '03');
-
-    }])
-    ->withCount(['inspecciones as h2_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h2', '03');
-
-    }])
-    ->withCount(['inspecciones as h3_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h3', '03');
-
-    }])
-    ->withCount(['inspecciones as h4_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h4', '03');
-
-    }])
-    ->withCount(['inspecciones as h5_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h5', '03');
-
-    }])
-    ->withCount(['inspecciones as h6_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h6', '03');
-
-    }])
-    ->withCount(['inspecciones as h7_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h7', '03');
-
-    }])
-    ->withCount(['inspecciones as h8_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h8', '03');
-
-    }])
-    ->withCount(['inspecciones as h9_count_03' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h9', '03');
-
-    }])
-    ->withCount(['inspecciones as h1_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h1', '04');
-
-    }])
-    ->withCount(['inspecciones as h2_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h2', '04');
-
-    }])
-    ->withCount(['inspecciones as h3_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h3', '04');
-
-    }])
-    ->withCount(['inspecciones as h4_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h4', '04');
-
-    }])
-    ->withCount(['inspecciones as h5_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h5', '04');
-
-    }])
-    ->withCount(['inspecciones as h6_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h6', '04');
-
-    }])
-    ->withCount(['inspecciones as h7_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h7', '04');
-
-    }])
-    ->withCount(['inspecciones as h8_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h8', '04');
-
-    }])
-    ->withCount(['inspecciones as h9_count_04' => function($query) use($parcial, $quimestre){
-        $query
-        ->where('parcial', $parcial)
-        ->where('quimestre', $quimestre)
-        ->where('h9', '04');
-
-    }])
-    ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
-
-
-
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas', 'materias', 'inspe', 'parcial', 'quimestre','representante'));
-
-
+        $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h1', '01');
+    
+        }])->withCount(['inspecciones as h2_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h2', '01');
+    
+        }])
+        ->withCount(['inspecciones as h3_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h3', '01');
+    
+        }])
+        ->withCount(['inspecciones as h4_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h4', '01');
+    
+        }])
+        ->withCount(['inspecciones as h5_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h5', '01');
+    
+        }])
+        ->withCount(['inspecciones as h6_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h6', '01');
+    
+        }])
+        ->withCount(['inspecciones as h7_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h7', '01');
+    
+        }])
+        ->withCount(['inspecciones as h8_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h8', '01');
+    
+        }])
+        ->withCount(['inspecciones as h9_count_01' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h9', '01');
+    
+        }])
+        ->withCount(['inspecciones as h1_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h1', '02');
+    
+        }])
+        ->withCount(['inspecciones as h2_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h2', '02');
+    
+        }])
+        ->withCount(['inspecciones as h3_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h3', '02');
+    
+        }])
+        ->withCount(['inspecciones as h4_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h4', '02');
+    
+        }])
+        ->withCount(['inspecciones as h5_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h5', '02');
+    
+        }])
+        ->withCount(['inspecciones as h6_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h6', '02');
+    
+        }])
+        ->withCount(['inspecciones as h7_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h7', '02');
+    
+        }])
+        ->withCount(['inspecciones as h8_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h8', '02');
+    
+        }])
+        ->withCount(['inspecciones as h9_count_02' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h9', '02');
+    
+        }])
+        ->withCount(['inspecciones as h1_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h1', '03');
+    
+        }])
+        ->withCount(['inspecciones as h2_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h2', '03');
+    
+        }])
+        ->withCount(['inspecciones as h3_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h3', '03');
+    
+        }])
+        ->withCount(['inspecciones as h4_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h4', '03');
+    
+        }])
+        ->withCount(['inspecciones as h5_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h5', '03');
+    
+        }])
+        ->withCount(['inspecciones as h6_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h6', '03');
+    
+        }])
+        ->withCount(['inspecciones as h7_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h7', '03');
+    
+        }])
+        ->withCount(['inspecciones as h8_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h8', '03');
+    
+        }])
+        ->withCount(['inspecciones as h9_count_03' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h9', '03');
+    
+        }])
+        ->withCount(['inspecciones as h1_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h1', '04');
+    
+        }])
+        ->withCount(['inspecciones as h2_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h2', '04');
+    
+        }])
+        ->withCount(['inspecciones as h3_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h3', '04');
+    
+        }])
+        ->withCount(['inspecciones as h4_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h4', '04');
+    
+        }])
+        ->withCount(['inspecciones as h5_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h5', '04');
+    
+        }])
+        ->withCount(['inspecciones as h6_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h6', '04');
+    
+        }])
+        ->withCount(['inspecciones as h7_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h7', '04');
+    
+        }])
+        ->withCount(['inspecciones as h8_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h8', '04');
+    
+        }])
+        ->withCount(['inspecciones as h9_count_04' => function($query) use($parcial, $quimestre){
+            $query
+            ->where('parcial', $parcial)
+            ->where('quimestre', $quimestre)
+            ->where('h9', '04');
+    
+        }])
+        ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
+    
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'parcial', 'quimestre','representante'));
        return $pdf->download('libreta-individual.pdf');
 
     }

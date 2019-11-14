@@ -57,6 +57,7 @@ table#mitabla2 th {
 table#mitabla2 tbody tr:hover td {
     background-color: #F3F3F3;
      border-collapse: separate;
+	 page-break-inside: avoid;
 }
 
 table#mitabla2 td {
@@ -235,7 +236,39 @@ table#mitabla3 td {
 			<tr>
                 <th><strong>AREAS INSTITUCIONALES</strong></th>
 			</tr>
-            @foreach($nota->materias as $materiasIndi)
+			@foreach($materias as $materia)
+			@if($materia->tipo_materia == 'NO')
+			<tr>
+			<td><strong>{{$materia->materia}}</strong></td>
+			@foreach($nota->notas_ta as $notas_ta)
+			@if($notas_ta->materias_id == $materia->id)
+			<td>{{$notas_ta->nota_final_ta}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_ti as $notas_ti)
+			@if($notas_ti->materias_id == $materia->id)
+			<td>{{$notas_ti->nota_final_ti}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_tg as $notas_tg)
+			@if($notas_tg->materias_id == $materia->id)
+			<td>{{$notas_tg->nota_final_tg}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_le as $notas_le)
+			@if($notas_le->materias_id == $materia->id)
+			<td>{{$notas_le->nota_final_le}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_ev as $notas_ev)
+			@if($notas_ev->materias_id == $materia->id)
+			<td>{{$notas_ev->nota_final_ev}}</td>
+			@endif
+			@endforeach
+			</tr>
+			@endif
+			@endforeach
+          {{--   @foreach($nota->materias as $materiasIndi)
             @if($materiasIndi->tipo_materia === 'NO')
 			<tr>
                     <th><strong>{{$materiasIndi->materia}}</strong></th>
@@ -275,45 +308,46 @@ table#mitabla3 td {
                    @endforeach
             </tr>
             @endif
-            @endforeach
+            @endforeach --}}
 			<tr>
 				<th>CLUBES</th>
-            </tr>
-            @foreach($nota->materias as $materiasIndi)
-            @if($materiasIndi->tipo_materia == 'SI')
-            <tr>
-                <td><strong>{{$materiasIndi->materia}}</strong></td>
-                @foreach($nota->notas as $notaIndi)
-                @if($materiasIndi->id === $notaIndi->materias_id)
-                <td>{{($notaIndi->nota_ta >= 9 && $notaIndi->nota_ta <= 10 ? 'A' : ($notaIndi->nota_ta >= 7 && $notaIndi->nota_ta <= 8.99 ? 'B' : ($notaIndi->nota_ta >= 4.01 && $notaIndi->nota_ta <= 6.99 ? 'C' : ($notaIndi->nota_ta <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                <td>{{($notaIndi->nota_ti >= 9 && $notaIndi->nota_ti <= 10 ? 'A' : ($notaIndi->nota_ti >= 7 && $notaIndi->nota_ti <= 8.99 ? 'B' : ($notaIndi->nota_ti >= 4.01 && $notaIndi->nota_ti <= 6.99 ? 'C' : ($notaIndi->nota_ti <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                <td>{{($notaIndi->nota_tg >= 9 && $notaIndi->nota_tg <= 10 ? 'A' : ($notaIndi->nota_tg >= 7 && $notaIndi->nota_tg <= 8.99 ? 'B' : ($notaIndi->nota_tg >= 4.01 && $notaIndi->nota_tg <= 6.99 ? 'C' : ($notaIndi->nota_tg <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                <td>{{($notaIndi->nota_le >= 9 && $notaIndi->nota_le <= 10 ? 'A' : ($notaIndi->nota_le >= 7 && $notaIndi->nota_le <= 8.99 ? 'B' : ($notaIndi->nota_le >= 4.01 && $notaIndi->nota_le <= 6.99 ? 'C' : ($notaIndi->nota_le <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                <td>{{($notaIndi->nota_ev >= 9 && $notaIndi->nota_ev <= 10 ? 'A' : ($notaIndi->nota_ev >= 7 && $notaIndi->nota_ev <= 8.99 ? 'B' : ($notaIndi->nota_ev >= 4.01 && $notaIndi->nota_ev <= 6.99 ? 'C' : ($notaIndi->nota_ev <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                @if($notaIndi->nota_final < 7 && isset($nota->recuperaciones->first()->nota_recuperacion))
-                @foreach($nota->recuperaciones as $recuperacion)
-                @if(($recuperacion->promedio_final) >= 9 && ($recuperacion->promedio_final) <= 10)
-                <td>A</td>
-                @elseif(($recuperacion->promedio_final) >= 7 && ($recuperacion->promedio_final) <= 8.99)
-                <td>B</td>
-                @elseif(($recuperacion->promedio_final) >= 4.01 && ($recuperacion->promedio_final) <= 6.99)
-                <td>C</td>
-                @elseif(($recuperacion->promedio_final) <= 4)
-                <td>D</td>
-                @endif
-                @endforeach
-                @else
-                <td>{{($notaIndi->nota_final >= 9 && $notaIndi->nota_final <= 10 ? 'A' : ($notaIndi->nota_final >= 7 && $notaIndi->nota_final <= 8.99 ? 'B' : ($notaIndi->nota_final >= 4.01 && $notaIndi->nota_final <= 6.99 ? 'C' : ($notaIndi->nota_final <= 4 ? 'D' : 'Nota invalida'))))}}</td>
-                @endif
-                @endif
-                @endforeach
-            </tr>
-            @endif
-            @endforeach
+			</tr>
+			@foreach($materias as $materia)
+			@if($materia->tipo_materia == 'SI')
+			<tr>
+			<td><strong>{{$materia->materia}}</strong></td>
+			@foreach($nota->notas_ta as $notas_ta)
+			@if($notas_ta->materias_id == $materia->id)
+			<td>{{$notas_ta->nota_final_ta = ($notas_ta->nota_final_ta >= 9 && $notas_ta->nota_final_ta <= 10 ? 'A' : ($notas_ta->nota_final_ta >= 7 && $notas_ta->nota_final_ta <= 8.99 ? 'B' : ($notas_ta->nota_final_ta >= 4.01 && $notas_ta->nota_final_ta <= 6.99 ? 'C' : ($notas_ta->nota_final_ta <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_ti as $notas_ti)
+			@if($notas_ti->materias_id == $materia->id)
+			<td>{{$notas_ti->nota_final_ti = ($notas_ti->nota_final_ti >= 9 && $notas_ti->nota_final_ti <= 10 ? 'A' : ($notas_ti->nota_final_ti >= 7 && $notas_ti->nota_final_ti <= 8.99 ? 'B' : ($notas_ti->nota_final_ti >= 4.01 && $notas_ti->nota_final_ti <= 6.99 ? 'C' : ($notas_ti->nota_final_ti <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_tg as $notas_tg)
+			@if($notas_tg->materias_id == $materia->id)
+			<td>{{$notas_tg->nota_final_tg = ($notas_tg->nota_final_tg >= 9 && $notas_tg->nota_final_tg <= 10 ? 'A' : ($notas_tg->nota_final_tg >= 7 && $notas_tg->nota_final_tg <= 8.99 ? 'B' : ($notas_tg->nota_final_tg >= 4.01 && $notas_tg->nota_final_tg <= 6.99 ? 'C' : ($notas_tg->nota_final_tg <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_le as $notas_le)
+			@if($notas_le->materias_id == $materia->id)
+			<td>{{$notas_le->nota_final_le = ($notas_le->nota_final_le >= 9 && $notas_le->nota_final_le <= 10 ? 'A' : ($notas_le->nota_final_le >= 7 && $notas_le->nota_final_le <= 8.99 ? 'B' : ($notas_le->nota_final_le >= 4.01 && $notas_le->nota_final_le <= 6.99 ? 'C' : ($notas_le->nota_final_le <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@endif
+			@endforeach
+			@foreach($nota->notas_ev as $notas_ev)
+			@if($notas_ev->materias_id == $materia->id)
+			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@endif
+			@endforeach
+			</tr>
+			@endif
+			@endforeach
 		</tbody>
 	</table>
 	<br>
-	<table id="mitabla3" align="left">
+	 <table id="mitabla3" align="left">
 		<thead>
 			<tr>
 				<th>Comportamiento</th>
@@ -325,9 +359,9 @@ table#mitabla3 td {
 		<tbody>
 			<tr>
                     @if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'|| $nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
-                    @foreach($nota->conducta as $conducta)
-                    @if(!empty($conducta->nota_conducta))
-                    <td>{{($conducta->nota_conducta >= 9 && $conducta->nota_conducta <= 10 ? 'A' : ($conducta->nota_conducta >= 7 && $conducta->nota_conducta <= 8.99 ? 'B' : ($conducta->nota_conducta >= 4.01 &&  $conducta->nota_conducta <= 6.99 ? 'C' : ($conducta->nota_conducta <= 4  ? 'D' : 'Nota invalida'))))}}</td>
+                    @foreach($nota->notas_conducta as $conducta)
+                    @if(!empty($conducta->nota_final_conducta))
+                    <td>{{($conducta->nota_final_conducta >= 9 && $conducta->nota_final_conducta <= 10 ? 'A' : ($conducta->nota_final_conducta >= 7 && $conducta->nota_final_conducta <= 8.99 ? 'B' : ($conducta->nota_final_conducta >= 4.01 &&  $conducta->nota_final_conducta <= 6.99 ? 'C' : ($conducta->nota_final_conducta <= 4  ? 'D' : 'Nota invalida'))))}}</td>
                     @endif
                     @endforeach
                     @elseif($nota->curso == 'OCTAVO DE EGB' || $nota->curso == 'NOVENO DE EGB' || $nota->curso == 'DECIMO DE EGB' || $nota->curso == 'PRIMERO DE BACHILLERATO' || $nota->curso == 'SEGUNDO DE BACHILLERATO' || $nota->curso == 'TERCERO DE BACHILLERATO')
