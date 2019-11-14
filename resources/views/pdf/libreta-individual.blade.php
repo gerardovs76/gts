@@ -360,7 +360,7 @@ table#mitabla3 td {
 			@foreach($nota->notas_le as $notas_le)
 			@foreach($nota->notas_ev as $notas_ev)
 			@if($materia->id == $notas_ta->materias_id && $materia->id == $notas_ti->materias_id && $materia->id == $notas_tg->materias_id && $materia->id == $notas_le->materias_id && $materia->id == $notas_ev->materias_id)
-			<td>{{round(((($notas_ta->nota_final_ta)  +  ($notas_ti->nota_final_ti)  +  ($notas_tg->nota_final_tg)  +  ($notas_le->nota_final_le)  +  ($notas_ev->nota_final_ev)) / 5),3))}}</td>
+			<td>{{round(((($notas_ta->nota_final_ta)  +  ($notas_ti->nota_final_ti)  +  ($notas_tg->nota_final_tg)  +  ($notas_le->nota_final_le)  +  ($notas_ev->nota_final_ev)) / 5),3)}}</td>
 			@endif
 			@endforeach
 			@endforeach
