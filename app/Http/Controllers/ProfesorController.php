@@ -7,6 +7,14 @@ use App\Profesor;
 use DB;
 use App\Http\Requests\ProfesorRequest;
 use App\MateriasProfesor;
+use App\Nota_ta;
+use App\Notas_ti;
+use App\Notas_tg;
+use App\Notas_le;
+use App\Notas_ev;
+use App\Notas_conducta;
+use App\Notas_examen;
+use App\User;
 class ProfesorController extends Controller
 {
 
@@ -170,6 +178,15 @@ class ProfesorController extends Controller
     {
 
         return view('profesor.controlProfesor');
+    }
+    public function controlNotasProfesor()
+    {
+        $profesorUser = User::join('profesors', 'users.cedula', '=', 'profesors.cedula')->pluck('users.id');
+        foreach($profesorUser as $user)
+        {
+            $notas_ta = Nota_ta::where('autoridad_id', $user)->first();
+            dd($notas_ta);
+        }
     }
 
     }

@@ -48,6 +48,7 @@ table#mitabla td {
                 <th><strong>Correo</strong></th>
                 <th><strong>Telefono convencional</strong></th>
                 <th><strong>Telefono movil</strong></th>
+                <th><strong>Tipo estudiante</strong></th>
             </tr>
         </thead>
         <tbody>
@@ -65,6 +66,7 @@ table#mitabla td {
                 <td><strong>{{$matri->email}}</strong></td>
                 <td><strong>{{$matri->convencional}}</strong></td>
                 <td><strong>{{$matri->movil}}</strong></td>
+                <td><strong>{{$matri->tipo_estudiante}}</strong></td>
             </tr>
             @endforeach
         </tbody>

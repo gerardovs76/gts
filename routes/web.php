@@ -94,6 +94,8 @@ Route::get('ver_materias_profesor/{cedula}', 'ProfesorController@verMateriasProf
 
 Route::get('control_profesor','ProfesorController@controlProfesor')->name('profesor.control')->middleware('has.permission:profesor.control');
 
+Route::get('control_profesor_notas', 'ProfesorController@controlNotasProfesor');
+
 
 //MATERIAS
 Route::get('materias', 'MateriasController@index')->name('materias.index')->middleware('has.permission:materias.index');

@@ -26,7 +26,6 @@ class CreateProfesorTable extends Migration
             $table->string('ultimo_trabajo', 100);
             $table->string('tipo_contrato', 50);
             $table->string('cargo', 50);
-            $table->foreign('cedula')->references('cedula')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
 
         });

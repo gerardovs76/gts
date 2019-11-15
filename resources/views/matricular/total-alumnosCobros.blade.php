@@ -47,7 +47,6 @@
             <h4>Curso: - Paralelo:</h4>
             @endif
         </div>
-
                                 <div class="form-group col-md-10 offset-md-10" >
                                         <strong><em>Total de alumnos: </em></strong>
                                         @if(isset($sep))
@@ -56,10 +55,7 @@
                                         <p></p>
                                         @endif
                                     </div>
-
-
 							</div>
-
 						</div>
 					</div>
                    <table class="table table-hover table-striped" id="tableid" border="1">
@@ -68,6 +64,7 @@
                                     <th>N.</th>
                                     <th>NOMBRES</th>
                                     <th>CEDULA</th>
+                                    <th>CODIGO</th>
                                     <th>TOTAL</th>
                                     <th>MAT</th>
                                     <th>PEN SEP</th>
@@ -90,6 +87,7 @@
                                     <tr>
                                         <td><strong>{{$i++}}</strong></td>
                                          <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
+                                         <td>{{$s->codigo}}</td>
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>0</strong></td>
                                     </tr>
@@ -97,6 +95,7 @@
                                     <tr>
                                         <td><strong>{{$i++}}</strong></td>
                                          <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
+                                         <td>{{$s->codigo}}</td>
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
                                          <td><strong>70</strong></td>
@@ -137,6 +136,7 @@
                                        <tr>
                                        <td><strong>{{$i++}}</strong></td>
                                         <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
+                                       <td>{{$s->codigo}}</td>
                                        <td><strong>{{$s->cedula}}</strong></td>
                                        @if(isset($s->facturaciones->first()->valor))
                                        <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>

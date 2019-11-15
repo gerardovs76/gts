@@ -190,10 +190,17 @@ $(document).ready(function(){
                 url: url4,
                 success: function(response)
                 {  
-                $('#tableid').empty();
+                if(response.length == 0)
+                {
+                    alert("No existe ninguna nota del estudiante para las especificaciones asignadas");
+                }
+                else{
+                    $('#tableid').empty();
              $.each(response, function(index, obj){
                 $('#tableid').append('<tr><td><strong>'+(index + 1)+'</strong></td><td>'+obj.descripcion+'</td><td>'+obj.created_at+'</td><td style="width: 20px;"><a class="btn btn-danger" href="notas-delete-all-resumen/'+obj.descripcion+'/'+obj.created_at+'/'+tipoTarea+'"><i class="fas fa-trash"></i> BORRAR TODAS ESTAS NOTAS PARA UN CURSO</a></td></tr>');
              });
+                }
+                
                 },
                 error: function(error)
                 {

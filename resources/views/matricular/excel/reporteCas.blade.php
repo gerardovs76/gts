@@ -25,6 +25,7 @@
             <th><strong>CORRREO</strong></th>
             <th><strong>TELEFONO CONVENCIONAL</strong></th>
             <th><strong>TELEFONO MOVIL</strong></th>
+            <th><strong>TIPO ESTUDIANTE</strong></th>
             <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
         </tr>
     </thead>
@@ -44,6 +45,7 @@
             <td><strong>{{$matri->email}}</strong></td>
             <td><strong>{{$matri->convencional}}</strong></td>
             <td><strong>{{$matri->movil}}</strong></td>
+            <td><strong>{{$matri->tipo_estudiante}}</strong></td>
         </tr>
         @endforeach
     </tbody>
