@@ -265,7 +265,7 @@ table#mitabla3 td {
 			<td>{{$notas_ev->nota_final_ev}}</td>
 			@endif
 			@endforeach
-			@foreach($nota->notas_ta as $notas_ta)
+		{{-- 	@foreach($nota->notas_ta as $notas_ta)
 			@foreach($nota->notas_ti as $notas_ti)
 			@foreach($nota->notas_tg as $notas_tg)
 			@foreach($nota->notas_le as $notas_le)
@@ -277,7 +277,7 @@ table#mitabla3 td {
 			@endforeach
 			@endforeach
 			@endforeach
-			@endforeach
+			@endforeach --}}
 			</tr>
 			@endif
 			@endforeach
@@ -371,7 +371,7 @@ table#mitabla3 td {
 		</thead>
 		<tbody>
 			<tr>
-                    @if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'|| $nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
+                     @if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'|| $nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
                     @foreach($nota->notas_conducta as $conducta)
                     @if(!empty($conducta->nota_final_conducta))
                     <td>{{($conducta->nota_final_conducta >= 9 && $conducta->nota_final_conducta <= 10 ? 'A' : ($conducta->nota_final_conducta >= 7 && $conducta->nota_final_conducta <= 8.99 ? 'B' : ($conducta->nota_final_conducta >= 4.01 &&  $conducta->nota_final_conducta <= 6.99 ? 'C' : ($conducta->nota_final_conducta <= 4  ? 'D' : 'Nota invalida'))))}}</td>
@@ -392,13 +392,13 @@ table#mitabla3 td {
 					<td>D</td>
 					@break
                     @endif
-                    @endforeach
+                    @endforeach 
                     @else
                     <td>0</td>
                     @endif
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td></td> --}}
 			</tr>
 		</tbody>
 	</table>

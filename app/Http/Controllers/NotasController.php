@@ -943,7 +943,6 @@ class NotasController extends Controller
            ->groupBy('notas_tg.descripcion')
            ->get();
             return response()->json($notas);
-
         }
         else if($ttarea == 'nota_le')
         {
@@ -969,7 +968,6 @@ class NotasController extends Controller
            ->groupBy('notas_ev.descripcion')
            ->get();
             return response()->json($notas);
-
         }
         else if($ttarea == 'nota_conducta')
         {
@@ -983,7 +981,6 @@ class NotasController extends Controller
            ->get();
             return response()->json($notas);
         }
-
     }
     public function deleteAllNotesResumen($descripcion, $created_at, $tt)
     {
@@ -1377,7 +1374,6 @@ class NotasController extends Controller
       $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
-
       $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('materias.curso', $curso)->where('materias.paralelo', $paralelo)->select('materias.materia', 'materias.id', 'materias.tipo_materia')->distinct()->get();
       $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre){
         $query1
@@ -1679,8 +1675,7 @@ class NotasController extends Controller
             ->where('h9', '04');
     
         }])
-        ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
-    
+        ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get(); 
        $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'parcial', 'quimestre','representante'));
        return $pdf->download('libreta-individual.pdf');
 
