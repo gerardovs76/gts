@@ -1422,8 +1422,9 @@ class NotasController extends Controller
             $query4->select('curso', 'materia', 'tipo_materia','id')
             ->where('curso', $curso)
             ->where('paralelo', $paralelo);
+            
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-
+        
         $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
             $query
             ->where('parcial', $parcial)
