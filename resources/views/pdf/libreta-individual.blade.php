@@ -265,7 +265,7 @@ table#mitabla3 td {
 			<td>{{$notas_ev->nota_final_ev}}</td>
 			@endif
 			@endforeach
-		{{-- 	@foreach($nota->notas_ta as $notas_ta)
+		 	@foreach($nota->notas_ta as $notas_ta)
 			@foreach($nota->notas_ti as $notas_ti)
 			@foreach($nota->notas_tg as $notas_tg)
 			@foreach($nota->notas_le as $notas_le)

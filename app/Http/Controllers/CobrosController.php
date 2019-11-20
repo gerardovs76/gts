@@ -27,10 +27,6 @@ class CobrosController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-
-
     public function index()
     {
 
@@ -258,6 +254,39 @@ class CobrosController extends Controller
         return redirect()->route('cobros.facturacion-index')->with('info', 'Se ha agregado la factura correctamente');
 
 
+    }
+    public function indexFacturacion()
+    {
+        $facturacion = Facturacion::all();
+        return view('cobros.index-facturacion', compact('facturacion'));
+    }
+    public function editFacturacion($id)
+    {
+        $facturacion = Facturacion::find($id);
+        return view('cobros.edit-facturacion', compact('facturacion'));
+    }
+    public function updateFacturacion(Request $request, $id)
+    {
+        $facturacion = Facturacion::find($id);
+        $facturacion->fecha_inicio = $request->fecha_inicio;
+        $facturacion->fecha_fin = $request->fecha_fin;
+        $facturacion->codigo = $request->codigo;
+        $facturacion->nombres = $request->nombres;
+        $facturacion->valor = $request->valor;
+        $facturacion->referencias = $request->referencias;
+        $facturacion->num_referencia = $request->num_referencia;
+        $facturacion->fecha_creacion = $request->fecha_creacion;
+        $facturacion->save();
+
+        return redirect()->route('cobros.facturacion-index-lista')->with('info', 'Se han actualizado con exito las facturas');
+    }
+
+    public function deleteFactura($id)
+    {
+        $facturacion = Facturacion::find($id);
+        $facturacion->delete();
+
+        return redirect()->route('cobros.facturacion-index-lista')->with('info', 'Se ha eliminado la factura');
     }
 
 }

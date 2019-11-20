@@ -283,6 +283,7 @@
                 <a class="dropdown-item" href="{{route('cobros.lista-facturaciones')}}">Lista de ingresos de facturación</a>
                 @endif
                 @can('cobros.facturacion-index')
+              <a class="dropdown-item" href="{{route('cobros.facturacion-index-lista')}}">Lista total de facturaciones</a>
                 <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Facturacion</a>
                 @endcan
               </div>

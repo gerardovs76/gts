@@ -451,6 +451,14 @@ Route::get('facturacion/download/{file}', 'CobrosController@facturacionDownload'
 Route::get('facturacion/delete/{file}', 'CobrosController@deleteFileFacturacion');
 
 Route::post('facturacion-individual-store', 'CobrosController@facturacionIndividualStore')->name('cobros.facturacion-in-store');
+
+Route::get('facturacion-index-lista', 'CobrosController@indexFacturacion')->name('cobros.facturacion-index-lista');
+
+Route::get('facturacion/{id}/edit', 'CobrosController@editFacturacion')->name('cobros.facturacion-edit');
+
+Route::put('facturacion/{id}', 'CobrosController@updateFacturacion')->name('cobros.facturacion-update');
+
+Route::delete('facturacion/{id}', 'CobrosController@deleteFactura')->name('cobros.facturacion-delete');
 //TAREAS
 Route::get('tareas', 'TareasController@index')->name('tareas.index')->middleware('has.permission:tareas.index');
 

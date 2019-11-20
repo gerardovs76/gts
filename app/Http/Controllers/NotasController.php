@@ -1422,7 +1422,6 @@ class NotasController extends Controller
             $query4->select('curso', 'materia', 'tipo_materia','id')
             ->where('curso', $curso)
             ->where('paralelo', $paralelo);
-            
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
         
         $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
@@ -2238,7 +2237,6 @@ class NotasController extends Controller
              DB::raw("ROUND(SUM(notas.conducta) / SUM(notas.numero_conducta), 3) as nota_conducta"),
              DB::raw("ROUND(((SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev) / SUM(notas.numero_tarea_ev)) / 5),3)  as nota_final"))
              ->groupBy('materias_id', 'matriculados_id');
-
   }])->with(['recuperaciones' => function($query2) use($parcial, $quimestre){
       $query2->where('parcial', $parcial)
       ->where('quimestre', $quimestre)
