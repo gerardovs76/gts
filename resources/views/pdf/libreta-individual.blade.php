@@ -277,51 +277,10 @@ table#mitabla3 td {
 			@endforeach
 			@endforeach
 			@endforeach
-			@endforeach --}}
+			@endforeach 
 			</tr>
 			@endif
 			@endforeach
-          {{--   @foreach($nota->materias as $materiasIndi)
-            @if($materiasIndi->tipo_materia === 'NO')
-			<tr>
-                    <th><strong>{{$materiasIndi->materia}}</strong></th>
-                    @foreach($nota->notas as $notaIndi)
-                    @if($materiasIndi->id === $notaIndi->materias_id)
-                    <td>{{$notaIndi->nota_ta}}</td>
-                    <td>{{$notaIndi->nota_ti}}</td>
-                    <td>{{$notaIndi->nota_tg}}</td>
-                    <td>{{$notaIndi->nota_le}}</td>
-                    <td>{{$notaIndi->nota_ev}}</td>
-                    @endif
-                   @if(!$nota->recuperaciones->isEmpty())
-
-                   @foreach($nota->recuperaciones as $recuperacionp1)
-
-                   @if($notaIndi->materias_id == $materiasIndi->id && $recuperacionp1->materias_id == $notaIndi->materias_id)
-
-                   <td>{{round(($recuperacionp1->promedio_final), 3)}}</td>
-
-                   @elseif($notaIndi->materias_id == $materiasIndi->id)
-
-                   <td>{{$notaIndi->nota_final}}</td>
-
-                   @endif
-
-                   @endforeach
-
-                   @elseif($nota->recuperaciones->isEmpty())
-                   @if($notaIndi->materias_id == $materiasIndi->id)
-                   <td>{{$notaIndi->nota_final}}</td>
-                   @else
-
-                   @endif
-
-                   @endif
-
-                   @endforeach
-            </tr>
-            @endif
-            @endforeach --}}
 			<tr>
 				<th>CLUBES</th>
 			</tr>
