@@ -985,76 +985,75 @@ class NotasController extends Controller
             return response()->json($notas);
         }
     }
-    public function deleteAllNotesResumen($descripcion, $created_at, $tt)
-    {
-        if($tt = 'nota_ta')
+        public function deleteAllNotesResumen($descripcion, $created_at, $tt)
         {
-            $notas = Nota_ta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-            if($notas == 0)
+    
+            if($tt == 'nota_ta')
             {
-                $notas = Nota_ta::where('created_at', $created_at)->delete();
+                $notas = Nota_ta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+                if($notas == 0)
+                {
+                    $notas = Nota_ta::where('created_at', $created_at)->delete();
+                }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
             }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }
-        else if($tt = 'nota_ti')
-        {
-            $notas = Notas_ti::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-            if($notas == 0)
+            if($tt == 'nota_ti')
             {
-                $notas = Notas_ti::where('created_at', $created_at)->delete();
-            }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }        
-        else if($tt = 'nota_tg')
-        {
-            $notas = Notas_tg::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-            if($notas == 0)
+                $notas = Notas_ti::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+                if($notas == 0)
+                {
+                    $notas = Notas_ti::where('created_at', $created_at)->delete();
+                }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+            }        
+            if($tt == 'nota_tg')
             {
-                $notas = Notas_tg::where('created_at', $created_at)->delete();
+            
+                $notas = Notas_tg::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+                if($notas == 0)
+                {
+                    $notas = Notas_tg::where('created_at', $created_at)->delete();
+                }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
             }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }
-        else if($tt = 'nota_le')
-        {
-            $notas = Notas_le::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-           if($notas == 0)
-           {
-               $notas = Notas_le::where('created_at', $created_at)->delete();
-           }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }
-        else if($tt = 'nota-ev')
-        {
-            $notas = Notas_ev::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-            if($notas == 0)
+            if($tt == 'nota_le')
             {
-                $notas = Notas_ev::where('created_at', $created_at)->delete();
+                $notas = Notas_le::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+               if($notas == 0)
+               {
+                   $notas = Notas_le::where('created_at', $created_at)->delete();
+               }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
             }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }
-        else if($tt = 'nota_conducta')
-        {
-            $notas = Notas_conducta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-           if($notas == 0)
-           {
-               $notas = Notas_conducta::where('created_at', $created_at)->delete();
-           }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
-        }
-        else if($tt = 'nota_examen')
-        {
-            $notas = Notas_examen::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
-            if($notas == 0)
+            if($tt == 'nota_ev')
             {
-                $notas = Notas_examen::where('created_at', $created_at)->delete();
+                $notas = Notas_ev::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+                if($notas == 0)
+                {
+                    $notas = Notas_ev::where('created_at', $created_at)->delete();
+                }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
             }
-            return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+            if($tt == 'nota_conducta')
+            {
+                $notas = Notas_conducta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+               if($notas == 0)
+               {
+                   $notas = Notas_conducta::where('created_at', $created_at)->delete();
+               }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+            }
+            if($tt == 'nota_examen')
+            {
+                $notas = Notas_examen::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
+                if($notas == 0)
+                {
+                    $notas = Notas_examen::where('created_at', $created_at)->delete();
+                }
+                return redirect()->back()->with('info', 'Todas las notas se han eliminado con existo!');
+            }
+            
         }
-        else {
-            return redirect()->back()->with('error', 'Hubo un error! Comuniquese con el soporte tecnico');
-        }
-        
-    }
     public function verNotasEspeciales()
     {
         $users = Auth::user()->cedula;
