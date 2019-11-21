@@ -67,6 +67,10 @@ public function notas_examen()
 {
     return $this->hasMany('App\Notas_examen', 'matriculado_id');
 }
+public function notas_ta_final()
+{
+    return $this->hasMany('App\Nota_ta', 'matriculado_id')->groupBy('matriculado_id', 'materias_id');
+}
 public function inscripcion()
 {
     return $this->hasOne('App\Inscripcion', 'cedula', 'cedula');

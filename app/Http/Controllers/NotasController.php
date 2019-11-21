@@ -1384,7 +1384,7 @@ class NotasController extends Controller
         ->where('quimestre', $quimestre)
         ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_ta.nota_ta) / SUM(notas_ta.numero_tarea_ta), 3) as nota_final_ta"))
         ->groupBy('matriculado_id', 'materias_id');
-        }])->with(['notas_ti' => function($query2) use($parcial, $quimestre){
+         }])->with(['notas_ti' => function($query2) use($parcial, $quimestre){
             $query2
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
@@ -1420,13 +1420,68 @@ class NotasController extends Controller
             ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
             ->groupBy('matriculado_id', 'materias_id');
         }])->with(['inscripcion' => function($query8){
-            $query8->select('cedula', 'nombres_representante');
-        }])->with(['materias' => function($query4) use($curso,$paralelo){
-            $query4->select('curso', 'materia', 'tipo_materia','id')
-            ->where('curso', $curso)
-            ->where('paralelo', $paralelo);
+            $query8->select('cedula', 'nombres_representante'); 
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-        
+        $notasPromedioFinalTa = [];
+        $notasPromedioFinalTi = [];
+        $notasPromedioFinalTg = [];
+        $notasPromedioFinalLe = [];
+        $notasPromedioFinalEv = [];
+        foreach($notas as $nota)
+        {
+            foreach($nota->notas_ta as $notas_ta)
+            {
+                $notasPromedioFinalTa[] = [
+                    'matriculado_id' => $notas_ta->matriculado_id,
+                    'nota_final' => $notas_ta->nota_final_ta,
+                    'materias_id' => $notas_ta->materias_id
+                ];
+            }
+        }
+        foreach($notas as $nota)
+        {
+            foreach($nota->notas_ti as $notas_ti)
+            {
+                $notasPromedioFinalTi[] = [
+                    'matriculado_id' => $notas_ti->matriculado_id,
+                    'nota_final' => $notas_ti->nota_final_ti,
+                    'materias_id' => $notas_ti->materias_id
+                ];
+            }
+        }
+        foreach($notas as $nota)
+        {
+            foreach($nota->notas_tg as $notas_tg)
+            {
+                $notasPromedioFinalTg[] = [
+                    'matriculado_id' => $notas_tg->matriculado_id,
+                    'nota_final' => $notas_tg->nota_final_tg,
+                    'materias_id' => $notas_tg->materias_id
+                ];
+            }
+        }
+        foreach($notas as $nota)
+        {
+            foreach($nota->notas_le as $notas_le)
+            {
+                $notasPromedioFinalLe[] = [
+                    'matriculado_id' => $notas_le->matriculado_id,
+                    'nota_final' => $notas_le->nota_final_le,
+                    'materias_id' => $notas_le->materias_id
+                ];
+            }
+        }
+        foreach($notas as $nota)
+        {
+            foreach($nota->notas_ev as $notas_ev)
+            {
+                $notasPromedioFinalEv[] = [
+                    'matriculado_id' => $notas_ev->matriculado_id,
+                    'nota_final' => $notas_ev->nota_final_ev,
+                    'materias_id' => $notas_ev->materias_id
+                ];
+            }
+        }
         $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
             $query
             ->where('parcial', $parcial)
@@ -1679,7 +1734,7 @@ class NotasController extends Controller
     
         }])
         ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get(); 
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'parcial', 'quimestre','representante'));
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'));
        return $pdf->download('libreta-individual.pdf');
 
     }
