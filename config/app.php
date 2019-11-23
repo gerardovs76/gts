@@ -169,7 +169,7 @@ return [
         Illuminate\Auth\AuthServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
 
-   
+
 
         /*
          * Package Service Providers...

@@ -3,13 +3,6 @@
 @section('content')
 
 	<div class="container col-xs-12 col-sm-8 col-lg-12">
-		<div style="background-color: #008cba; padding: 7px;">
-		<h2 class="text-center" style="color: #fff;">
-			NOTAS
-		</h2>
-		</div>
-
-		<hr>
 		@include('notas.partials.info')
 		@if(Session::has('error'))
 	<div class="alert alert-danger">
