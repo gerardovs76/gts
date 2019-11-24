@@ -271,8 +271,7 @@ class NotasController extends Controller
             $nota_ev->numero_tarea_ev5 = '1';
             $nota_ev->save();
         }
-        echo("Si");
-        die();
+        return redirect()->route('notas.store')->with('info', 'La nota se ha cargado correctamente');
     }
 
 
