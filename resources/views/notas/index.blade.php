@@ -20,12 +20,11 @@
                     <div class="table-responsive">
                     <table class="table table-striped table-hover d-none" id="tabla">
 			<thead>
-                    <button id="agregarDescripciones" type="button"  type="button" data-toggle="modal" style="background-color: #18EEDB;" data-target="#modalIngresarDescripciones" class="btn btn-primary d-none center-block"><i class="fas fa-clipboard"></i> AGREGAR DESCRIPCIONES</button><br><br>
-
+                    <button id="agregarDescripciones" type="button"  type="button" data-toggle="modal" style="background-color: #722f37;" data-target="#modalIngresarDescripciones" class="btn btn-primary d-none center-block"><i class="fas fa-clipboard"></i> AGREGAR DESCRIPCIONES</button><br><br>
                     <tr>
-                            <th>
-                                    <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>
-                            </th>
+                    <th>
+                            <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>
+                    </th>
                     <th>
                     	<button type="button"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
                     </th>
@@ -46,11 +45,10 @@
                     	<button type="button" class="btn btn-success" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
                     </th>
                     <th>
-
                     	<button disabled type="button" class="btn btn-dark" id="examen"><i class="far fa-clipboard"></i> EXAMEN QUIMESTRAL</button>
                     </th>
                     <th>
-                        <strong class="btn btn-primary" style="background-color: #D718EE;">PROMEDIOS</strong>
+                        <strong class="btn btn-primary" style="background-color: #D718EE;"><i class="far fa-clipboard"></i> PROMEDIOS</strong>
                     </th>
 
                     </tr>

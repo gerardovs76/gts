@@ -86,214 +86,195 @@ class NotasController extends Controller
     }
     public function store(NotasRequest $request)
     {  
-        if($request->tipo_tareas == 'nota_ta')
-        {
-           
-            $notas_ta = $request->nota_ta;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
+        $nota_ta1 = $request->nota_ta1;
+        $nota_ta2 = $request->nota_ta2; 
+        $nota_ta3 = $request->nota_ta3; 
+        $nota_ta4 = $request->nota_ta4; 
+        $nota_ta5 = $request->nota_ta5;
+        $nota_ti1 = $request->nota_ti1;
+        $nota_ti2 = $request->nota_ti2;
+        $nota_ti3 = $request->nota_ti3;
+        $nota_ti4 = $request->nota_ti4;
+        $nota_ti5 = $request->nota_ti5;
+        $nota_tg1 = $request->nota_tg1;
+        $nota_tg2 = $request->nota_tg2;
+        $nota_tg3 = $request->nota_tg3;
+        $nota_tg4 = $request->nota_tg4;
+        $nota_tg5 = $request->nota_tg5;
+        $nota_le1 = $request->nota_le1;
+        $nota_le2 = $request->nota_le2;
+        $nota_le3 = $request->nota_le3;
+        $nota_le4 = $request->nota_le4;
+        $nota_le5 = $request->nota_le5;
+        $nota_ev1 = $request->nota_ev1;
+        $nota_ev2 = $request->nota_ev2;
+        $nota_ev3 = $request->nota_ev3;
+        $nota_ev4 = $request->nota_ev4;
+        $nota_ev5 = $request->nota_ev5; 
+        $descripcion_ta1 = $request->descripcion_ta1;
+        $descripcion_ta2 = $request->descripcion_ta2;
+        $descripcion_ta3 = $request->descripcion_ta3;
+        $descripcion_ta4 = $request->descripcion_ta4;
+        $descripcion_ta5 = $request->descripcion_ta5;
+        $descripcion_ti1 = $request->descripcion_ti1;
+        $descripcion_ti2 = $request->descripcion_ti2;
+        $descripcion_ti3 = $request->descripcion_ti3;
+        $descripcion_ti4 = $request->descripcion_ti4;
+        $descripcion_ti5 = $request->descripcion_ti5;
+        $descripcion_tg1 = $request->descripcion_tg1;
+        $descripcion_tg2 = $request->descripcion_tg2;
+        $descripcion_tg3 = $request->descripcion_tg3;
+        $descripcion_tg4 = $request->descripcion_tg4;
+        $descripcion_tg5 = $request->descripcion_tg5;
+        $descripcion_le1 = $request->descripcion_le1;
+        $descripcion_le2 = $request->descripcion_le2;
+        $descripcion_le3 = $request->descripcion_le3;
+        $descripcion_le4 = $request->descripcion_le4;
+        $descripcion_le5 = $request->descripcion_le5;
+        $descripcion_ev1 = $request->descripcion_ev1;
+        $descripcion_ev2 = $request->descripcion_ev2;
+        $descripcion_ev3 = $request->descripcion_ev3;
+        $descripcion_ev4 = $request->descripcion_ev4;
+        $descripcion_ev5 = $request->descripcion_ev5;
+        $parcial = $request->parcial;
+        $quimestre = $request->quimestre;
+        $matriculados_id = $request->matriculados_id;
+        $materias_id = $request->materias_id;
 
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_ta = new Nota_ta;
-                if($notas_ta[$key] == null)
-                {
-                    $nota_ta->nota_ta = 0;
-                }else{
-                    $nota_ta->nota_ta = $notas_ta[$key];
-                }
-                $nota_ta->descripcion = $descripcion;
-                $nota_ta->materias_id = $materias_id[$key];
-                $nota_ta->matriculado_id = $matriculados_id[$key];
-                $nota_ta->parcial = $parcial[$key];
-                $nota_ta->quimestre = $quimestre[$key];
-                $nota_ta->autoridad_id = auth()->user()->id;
-                $nota_ta->numero_tarea_ta = '1';
-                $nota_ta->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
-        }
-        else if($request->tipo_tareas == 'nota_ti')
+        foreach($matriculados_id as $key => $value)
         {
-            $notas_ti = $request->nota_ti;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_ti = new Notas_ti;
-                if($notas_ti[$key] == null)
-                {
-                    $nota_ti->nota_ti = 0;
-                }else{
-                    $nota_ti->nota_ti = $notas_ti[$key];
-                }
-                $nota_ti->descripcion = $descripcion;
-                $nota_ti->materias_id = $materias_id[$key];
-                $nota_ti->matriculado_id = $matriculados_id[$key];
-                $nota_ti->parcial = $parcial[$key];
-                $nota_ti->quimestre = $quimestre[$key];
-                $nota_ti->autoridad_id = auth()->user()->id;
-                $nota_ti->numero_tarea_ti = '1';
-                $nota_ti->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
+            $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $nota_ta = new Nota_ta;
+            $nota_ta->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
+            $nota_ta->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
+            $nota_ta->nota_ta3 = ($nota_ta3[$key] == '' ? 0 : $nota_ta3[$key]);
+            $nota_ta->nota_ta4 = ($nota_ta4[$key] == '' ? 0 : $nota_ta4[$key]);
+            $nota_ta->nota_ta5 = ($nota_ta5[$key] == '' ? 0 : $nota_ta5[$key]);
+            $nota_ta->descripcion_ta1 = $descripcion_ta1;
+            $nota_ta->descripcion_ta2 = $descripcion_ta2;
+            $nota_ta->descripcion_ta3 = $descripcion_ta3;
+            $nota_ta->descripcion_ta4 = $descripcion_ta4;
+            $nota_ta->descripcion_ta5 = $descripcion_ta5;
+            $nota_ta->materias_id = $materias_id[$key];
+            $nota_ta->matriculado_id = $matriculados_id[$key];
+            $nota_ta->parcial = $parcial[$key];
+            $nota_ta->quimestre = $quimestre[$key];
+            $nota_ta->autoridad_id = auth()->user()->id;
+            $nota_ta->numero_tarea_ta1 = '1';
+            $nota_ta->numero_tarea_ta2 = '1';
+            $nota_ta->numero_tarea_ta3 = '1';
+            $nota_ta->numero_tarea_ta4 = '1';
+            $nota_ta->numero_tarea_ta5 = '1';
+            $nota_ta->save();
         }
-        else if($request->tipo_tareas == 'nota_tg')
+        foreach($matriculados_id as $key => $value)
         {
-            $notas_tg = $request->nota_tg;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_tg = new Notas_tg;
-                if($notas_tg[$key] == null)
-                {
-                    $nota_tg->nota_tg = 0;
-                }else{
-                    $nota_tg->nota_tg = $notas_tg[$key];
-                }
-                $nota_tg->descripcion = $descripcion;
-                $nota_tg->materias_id = $materias_id[$key];
-                $nota_tg->matriculado_id = $matriculados_id[$key];
-                $nota_tg->parcial = $parcial[$key];
-                $nota_tg->quimestre = $quimestre[$key];
-                $nota_tg->autoridad_id = auth()->user()->id;
-                $nota_tg->numero_tarea_tg = '1';
-                $nota_tg->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
+            $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $nota_ti = new Notas_ti;
+            $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
+            $nota_ti->nota_ti2 = ($nota_ti2[$key] == '' ? 0 : $nota_ti2[$key]);
+            $nota_ti->nota_ti3 = ($nota_ti3[$key] == '' ? 0 : $nota_ti3[$key]);
+            $nota_ti->nota_ti4 = ($nota_ti4[$key] == '' ? 0 : $nota_ti4[$key]);
+            $nota_ti->nota_ti5 = ($nota_ti5[$key] == '' ? 0 : $nota_ti5[$key]);
+            $nota_ti->descripcion_ti1 = $descripcion_ti1;
+            $nota_ti->descripcion_ti2 = $descripcion_ti2;
+            $nota_ti->descripcion_ti3 = $descripcion_ti3;
+            $nota_ti->descripcion_ti4 = $descripcion_ti4;
+            $nota_ti->descripcion_ti5 = $descripcion_ti5;
+            $nota_ti->materias_id = $materias_id[$key];
+            $nota_ti->matriculado_id = $matriculados_id[$key];
+            $nota_ti->parcial = $parcial[$key];
+            $nota_ti->quimestre = $quimestre[$key];
+            $nota_ti->autoridad_id = auth()->user()->id;
+            $nota_ti->numero_tarea_ti1 = '1';
+            $nota_ti->numero_tarea_ti2 = '1';
+            $nota_ti->numero_tarea_ti3 = '1';
+            $nota_ti->numero_tarea_ti4 = '1';
+            $nota_ti->numero_tarea_ti5 = '1';
+            $nota_ti->save();
         }
-        else if($request->tipo_tareas == 'nota_le')
+        foreach($matriculados_id as $key => $value)
         {
-            $notas_le = $request->nota_le;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_le = new Notas_le;
-                if($notas_le[$key] == null)
-                {
-                    $nota_le->nota_le = 0;
-                }else{
-                    $nota_le->nota_le = $notas_le[$key];
-                }
-                $nota_le->descripcion = $descripcion;
-                $nota_le->materias_id = $materias_id[$key];
-                $nota_le->matriculado_id = $matriculados_id[$key];
-                $nota_le->parcial = $parcial[$key];
-                $nota_le->quimestre = $quimestre[$key];
-                $nota_le->autoridad_id = auth()->user()->id;
-                $nota_le->numero_tarea_le = '1';
-                $nota_le->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
+            $notas_antiguas = Notas_tg::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $nota_tg = new Notas_tg;
+            $nota_tg->nota_tg1 = ($nota_tg1[$key] == '' ? 0 : $nota_tg1[$key]);
+            $nota_tg->nota_tg2 = ($nota_tg2[$key] == '' ? 0 : $nota_tg2[$key]);
+            $nota_tg->nota_tg3 = ($nota_tg3[$key] == '' ? 0 : $nota_tg3[$key]);
+            $nota_tg->nota_tg4 = ($nota_tg4[$key] == '' ? 0 : $nota_tg4[$key]);
+            $nota_tg->nota_tg5 = ($nota_tg5[$key] == '' ? 0 : $nota_tg5[$key]);
+            $nota_tg->descripcion_tg1 = $descripcion_tg1;
+            $nota_tg->descripcion_tg2 = $descripcion_tg2;
+            $nota_tg->descripcion_tg3 = $descripcion_tg3;
+            $nota_tg->descripcion_tg4 = $descripcion_tg4;
+            $nota_tg->descripcion_tg5 = $descripcion_tg5;
+            $nota_tg->materias_id = $materias_id[$key];
+            $nota_tg->matriculado_id = $matriculados_id[$key];
+            $nota_tg->parcial = $parcial[$key];
+            $nota_tg->quimestre = $quimestre[$key];
+            $nota_tg->autoridad_id = auth()->user()->id;
+            $nota_tg->numero_tarea_tg1 = '1';
+            $nota_tg->numero_tarea_tg2 = '1';
+            $nota_tg->numero_tarea_tg3 = '1';
+            $nota_tg->numero_tarea_tg4 = '1';
+            $nota_tg->numero_tarea_tg5 = '1';
+            $nota_tg->save();
         }
-        else if($request->tipo_tareas == 'nota_ev')
+        foreach($matriculados_id as $key => $value)
         {
-            $notas_ev = $request->nota_ev;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_ev = new Notas_ev;
-                if($notas_ev[$key] == null)
-                {
-                    $nota_ev->nota_ev = 0;
-                }else{
-                    $nota_ev->nota_ev = $notas_ev[$key];
-                }
-                $nota_ev->descripcion = $descripcion;
-                $nota_ev->materias_id = $materias_id[$key];
-                $nota_ev->matriculado_id = $matriculados_id[$key];
-                $nota_ev->parcial = $parcial[$key];
-                $nota_ev->quimestre = $quimestre[$key];
-                $nota_ev->autoridad_id = auth()->user()->id;
-                $nota_ev->numero_tarea_ev = '1';
-                $nota_ev->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
+            $notas_antiguas = Notas_le::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $nota_le = new Notas_le;
+            $nota_le->nota_le1 = ($nota_le1[$key] == '' ? 0 : $nota_le1[$key]);
+            $nota_le->nota_le2 = ($nota_le2[$key] == '' ? 0 : $nota_le2[$key]);
+            $nota_le->nota_le3 = ($nota_le3[$key] == '' ? 0 : $nota_le3[$key]);
+            $nota_le->nota_le4 = ($nota_le4[$key] == '' ? 0 : $nota_le4[$key]);
+            $nota_le->nota_le5 = ($nota_le5[$key] == '' ? 0 : $nota_le5[$key]);
+            $nota_le->descripcion_le1 = $descripcion_le1;
+            $nota_le->descripcion_le2 = $descripcion_le2;
+            $nota_le->descripcion_le3 = $descripcion_le3;
+            $nota_le->descripcion_le4 = $descripcion_le4;
+            $nota_le->descripcion_le5 = $descripcion_le5;
+            $nota_le->materias_id = $materias_id[$key];
+            $nota_le->matriculado_id = $matriculados_id[$key];
+            $nota_le->parcial = $parcial[$key];
+            $nota_le->quimestre = $quimestre[$key];
+            $nota_le->autoridad_id = auth()->user()->id;
+            $nota_le->numero_tarea_le1 = '1';
+            $nota_le->numero_tarea_le2 = '1';
+            $nota_le->numero_tarea_le3 = '1';
+            $nota_le->numero_tarea_le4 = '1';
+            $nota_le->numero_tarea_le5 = '1';
+            $nota_le->save();
         }
-        else if($request->tipo_tareas == 'nota_conducta')
+        foreach($matriculados_id as $key => $value)
         {
-            $notas_conducta = $request->conducta;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_conducta = new Notas_conducta;
-                if($notas_conducta[$key] == null)
-                {
-                    $nota_conducta->nota_conducta = 0;
-                }else{
-                    $nota_conducta->nota_conducta = $notas_conducta[$key];
-                }
-                $nota_conducta->descripcion = $descripcion;
-                $nota_conducta->materias_id = $materias_id[$key];
-                $nota_conducta->matriculado_id = $matriculados_id[$key];
-                $nota_conducta->parcial = $parcial[$key];
-                $nota_conducta->quimestre = $quimestre[$key];
-                $nota_conducta->autoridad_id = auth()->user()->id;
-                $nota_conducta->numero_tarea_conducta = '1';
-                $nota_conducta->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
+            $notas_antiguas = Notas_ev::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $nota_ev = new Notas_ev;
+            $nota_ev->nota_ev1 = ($nota_ev1[$key] == '' ? 0 : $nota_ev1[$key]);
+            $nota_ev->nota_ev2 = ($nota_ev2[$key] == '' ? 0 : $nota_ev2[$key]);
+            $nota_ev->nota_ev3 = ($nota_ev3[$key] == '' ? 0 : $nota_ev3[$key]);
+            $nota_ev->nota_ev4 = ($nota_ev4[$key] == '' ? 0 : $nota_ev4[$key]);
+            $nota_ev->nota_ev5 = ($nota_ev5[$key] == '' ? 0 : $nota_ev5[$key]);
+            $nota_ev->descripcion_ev1 = $descripcion_ev1;
+            $nota_ev->descripcion_ev2 = $descripcion_ev2;
+            $nota_ev->descripcion_ev3 = $descripcion_ev3;
+            $nota_ev->descripcion_ev4 = $descripcion_ev4;
+            $nota_ev->descripcion_ev5 = $descripcion_ev5;
+            $nota_ev->materias_id = $materias_id[$key];
+            $nota_ev->matriculado_id = $matriculados_id[$key];
+            $nota_ev->parcial = $parcial[$key];
+            $nota_ev->quimestre = $quimestre[$key];
+            $nota_ev->autoridad_id = auth()->user()->id;
+            $nota_ev->numero_tarea_ev1 = '1';
+            $nota_ev->numero_tarea_ev2 = '1';
+            $nota_ev->numero_tarea_ev3 = '1';
+            $nota_ev->numero_tarea_ev4 = '1';
+            $nota_ev->numero_tarea_ev5 = '1';
+            $nota_ev->save();
         }
-        else if($request->tipo_tareas == 'nota_examen')
-        {
-            $notas_examen = $request->examen;
-            $matriculados_id = $request->matriculados_id;
-            $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
-            $quimestre = $request->quimestre;
-            $descripcion = $request->descripcion;
-            foreach($matriculados_id as $key => $value)
-            {
-                $nota_examen = new Notas_examen;
-                if($notas_examen[$key] == null)
-                {
-                    $nota_examen->nota_exq = 0;
-                }else{
-                    $nota_examen->nota_exq = $notas_examen[$key];
-                }
-                $nota_examen->descripcion = $descripcion;
-                $nota_examen->materias_id = $materias_id[$key];
-                $nota_examen->matriculado_id = $matriculados_id[$key];
-                $nota_examen->quimestre = $quimestre[$key];
-                $nota_examen->autoridad_id = auth()->user()->id;
-                $nota_examen->numero_tarea_exq = '1';
-                $nota_examen->save();
-            }
-            return redirect()->route('notas.index')->with('info', 'La nota se ha agregado correctamente');
-            
-        }
-        else{
-            return redirect()->route('notas.index')->with('error', 'Hubo un error asignando el tipo de nota. Por favor intente de nuevo');
-        }
+        echo("Si");
+        die();
     }
+
 
     /**
      * Display the specified resource.
@@ -603,19 +584,41 @@ class NotasController extends Controller
 }
 
     }
-    public function buscarAlumnoNotas($cursos, $paralelo)
+    public function buscarAlumnoNotas($cursos, $paralelo, $materia)
     {
+  
         $matriculados = DB::table('matriculados')
+       ->join('materias as m1', 'matriculados.curso', 'm1.curso')
+       ->join('materias as m2', 'matriculados.paralelo', 'm2.paralelo')
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"), 'matriculados.id as id')
-        ->where('curso', 'LIKE', '%'.$cursos.'%')
-        ->where('paralelo', 'LIKE', '%'.$paralelo.'%')
+        ->where('matriculados.curso', $cursos)
+        ->where('matriculados.paralelo', $paralelo)
         ->orderBy('matriculados.apellidos')
         ->distinct()
         ->get();
 
-
-        return response()->json($matriculados);
-
+        $all_notas = DB::table('matriculados')
+        ->join('notas_ta', 'matriculados.id', '=', 'notas_ta.matriculado_id')
+        ->join('notas_ti', 'matriculados.id', '=', 'notas_ti.matriculado_id')
+        ->join('notas_tg', 'matriculados.id', '=', 'notas_tg.matriculado_id')
+        ->join('notas_le', 'matriculados.id', '=', 'notas_le.matriculado_id')
+        ->join('notas_ev', 'matriculados.id', '=', 'notas_ev.matriculado_id')
+        ->where('matriculados.curso', $cursos)
+        ->where('matriculados.paralelo', $paralelo)
+        ->where('notas_ta.materias_id', $materia)
+        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"), 'matriculados.id as id','notas_ta.nota_ta1','notas_ta.nota_ta2','notas_ta.nota_ta3','notas_ta.nota_ta4','notas_ta.nota_ta5', 'notas_ta.descripcion_ta1','notas_ta.descripcion_ta2','notas_ta.descripcion_ta3','notas_ta.descripcion_ta4','notas_ta.descripcion_ta5'
+        ,'notas_ti.nota_ti1','notas_ti.nota_ti2','notas_ti.nota_ti3','notas_ti.nota_ti4','notas_ti.nota_ti5', 'notas_ti.descripcion_ti1','notas_ti.descripcion_ti2','notas_ti.descripcion_ti3','notas_ti.descripcion_ti4','notas_ti.descripcion_ti5'
+        ,'notas_tg.nota_tg1','notas_tg.nota_tg2','notas_tg.nota_tg3','notas_tg.nota_tg4','notas_tg.nota_tg5', 'notas_tg.descripcion_tg1','notas_tg.descripcion_tg2','notas_tg.descripcion_tg3','notas_tg.descripcion_tg4','notas_tg.descripcion_tg5'
+        ,'notas_le.nota_le1','notas_le.nota_le2','notas_le.nota_le3','notas_le.nota_le4','notas_le.nota_le5', 'notas_le.descripcion_le1','notas_le.descripcion_le2','notas_le.descripcion_le3','notas_le.descripcion_le4','notas_le.descripcion_le5'
+        ,'notas_ev.nota_ev1','notas_ev.nota_ev2','notas_ev.nota_ev3','notas_ev.nota_ev4','notas_ev.nota_ev5', 'notas_ev.descripcion_ev1','notas_ev.descripcion_ev2','notas_ev.descripcion_ev3','notas_ev.descripcion_ev4','notas_ev.descripcion_ev5'
+        )
+        ->orderBy('matriculados.apellidos')
+        ->groupBy('matriculados.id')
+        ->distinct()
+        ->get();
+        $data['matriculados'] = $matriculados;
+        $data['all_notas'] = $all_notas; 
+        return response()->json($data);
     }
     public function verNotasCargadas()
     {

@@ -138,7 +138,7 @@ Route::put('notas/{id}/{tt}', 'NotasController@update')->name('notas.update');
 
 Route::get('buscar_notas/{curso}/{paralelo}', 'NotasController@buscarMateriaAlumno');
 
-Route::get('buscar_alumnos/{cursos}/{paralelo}', 'NotasController@buscarAlumnoNotas');
+Route::get('buscar_alumnos/{cursos}/{paralelo}/{materia}', 'NotasController@buscarAlumnoNotas');
 
 Route::get('asignar_nota/{curso}/{especialidad}/{paralelo}', 'TrabajosAcademicosController@asignarNota');
 

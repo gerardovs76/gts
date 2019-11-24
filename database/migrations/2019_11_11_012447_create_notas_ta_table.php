@@ -15,16 +15,26 @@ class CreateNotasTaTable extends Migration
     {
         Schema::create('notas_ta', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_antiguo');
-            $table->string('nota_ta');
-            $table->string('numero_tarea_ta');
-            $table->string('descripcion')->nullable();
+            $table->string('nota_ta1');
+            $table->string('nota_ta2');
+            $table->string('nota_ta3');
+            $table->string('nota_ta4');
+            $table->string('nota_ta5');
+            $table->string('numero_tarea_ta1');
+            $table->string('numero_tarea_ta2');
+            $table->string('numero_tarea_ta3');
+            $table->string('numero_tarea_ta4');
+            $table->string('numero_tarea_ta5');
+            $table->string('descripcion_ta1')->nullable();
+            $table->string('descripcion_ta2')->nullable();
+            $table->string('descripcion_ta3')->nullable();
+            $table->string('descripcion_ta4')->nullable();
+            $table->string('descripcion_ta5')->nullable();
             $table->string('matriculado_id');
             $table->string('materias_id');
             $table->string('parcial');
             $table->string('quimestre');
             $table->string('autoridad_id');
-
             $table->timestamps();
         });
     }

@@ -1,3 +1,13 @@
+<style>
+          input[type=number]::-webkit-inner-spin-button, 
+          input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+          }
+          
+          input[type=number] {
+            -moz-appearance: textfield;
+          }
+          </style>
 <div class="panel panel-primary" id="panel1">
                     <div class="panel panel-heading text-center" style="padding: 1px;"><h3>INGRESE LOS DATOS PARA LA BUSQUEDA SIGUIENDO EL ORDEN NUMERICO...</h3></div>
                          <div class="panel panel-body">
@@ -28,7 +38,7 @@
                                              </div>
                                         @elseif(Auth::user()->isRole('profesor'))
                                         <div class="form-group col-md-4">
-                                             <strong>Curso: <br></strong>
+                                             <strong>1.- Curso: <br></strong>
                                              <div class="input-group-prepend">
                                              <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                              {{ Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
@@ -36,7 +46,7 @@
                                              </div>
 
                                              <div class="form-group col-md-4">
-                                             <strong>Especialidad: <br></strong>
+                                             <strong>2.- Especialidad: <br></strong>
 
                                                   <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
@@ -45,7 +55,7 @@
                                              </div>
 
                                              <div class="form-group col-md-4">
-                                             <strong>Paralelo: <br></strong>
+                                             <strong>3.- Paralelo: <br></strong>
                                              <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                              {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
@@ -75,8 +85,9 @@
                                              {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
                                              </div>
                                              </div>
-                                               <div id ="agregarNotas" class="form-group col-md-4">
-                                               {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary col-md-4', 'id' => 'agregarNotas']) !!}
+                                               <div id ="agregarNotas" class="form-group col-md-12">
+                                               {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary', 'id' => 'agregarNotas']) !!}
+                                               <button id="saveNotas"  class="btn btn-primary pull-right d-none" type="submit"><i class="fas fa-clipboard"></i> GUARDAR NOTAS</button>
                                              </div>
                                    </div>
                                  </div>
@@ -106,23 +117,58 @@
                                         </script>
                                         <script>
                                           $('#agregarNotas').on('click', function(){
-                                          $('#agregarNotas').css("display", "none");
                                           var curso = $( "#curso option:selected" ).text();
                                           var paralelo  = $( "#paralelo option:selected" ).text();
                                           var especialidad = $('#especialidad').val();
                                           var materia = $('#materia').val();
                                           var parcial = $('#parcial').val();
                                           var quimestre = $('#quimestre').val();
-                                          var url = 'buscar_alumnos/'+curso+'/'+paralelo;
                                           $('#agregarDescripciones').addClass("d-block");
+                                          var url = 'buscar_alumnos/'+curso+'/'+paralelo+'/'+materia;
+                                          $('#saveNotas').addClass("d-block");
                                           $('#tabla').addClass("d-block");
                                             $.ajax({
                                                 url: url,
                                                 success: function(response){
-                                                    $.each(response, function(inx, obj){
-                                                        $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><td><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><td><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><td><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><td><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"><input class="form-control col-md-1" type="number" step="any" min="1" max="10" name="nota_ta[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
-
+                                                     console.log(response);
+                                                     if(response.all_notas.length != 0)
+                                                     {
+                                                       $.each(response.all_notas, function(inx, obj){
+                                                            console.log(obj);
+                                                        $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ta1[]" value='+obj.nota_ta1+'><input class="form-control  col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ta2[]" value='+obj.nota_ta2+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ta3[]" value='+obj.nota_ta3+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ta4[]" value='+obj.nota_ta4+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ta5[]" value='+obj.nota_ta5+'></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ti1[]" value='+obj.nota_ti1+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ti2[]" value='+obj.nota_ti2+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ti3[]" value='+obj.nota_ti3+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ti4[]" value='+obj.nota_ti4+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ti5[]" value='+obj.nota_ti5+'></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_tg1[]" value='+obj.nota_tg1+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_tg2[]" value='+obj.nota_tg2+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_tg3[]" value='+obj.nota_tg3+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_tg4[]" value='+obj.nota_tg4+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_tg5[]" value='+obj.nota_tg5+'></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_le1[]" value='+obj.nota_le1+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_le2[]" value='+obj.nota_le2+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_le3[]" value='+obj.nota_le3+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_le4[]" value='+obj.nota_le4+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_le5[]" value='+obj.nota_le5+'></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ev1[]" value='+obj.nota_ev1+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ev2[]" value='+obj.nota_ev2+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ev3[]" value='+obj.nota_ev3+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ev4[]" value='+obj.nota_ev4+'><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ev5[]" value='+obj.nota_ev5+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
+                                                        $('#descripcion_ta1').val(obj.descripcion_ta1);
+                                                        $('#descripcion_ta2').val(obj.descripcion_ta2);
+                                                        $('#descripcion_ta3').val(obj.descripcion_ta3);
+                                                        $('#descripcion_ta4').val(obj.descripcion_ta4);
+                                                        $('#descripcion_ta5').val(obj.descripcion_ta5);
+                                                        $('#descripcion_ti1').val(obj.descripcion_ti1);
+                                                        $('#descripcion_ti2').val(obj.descripcion_ti2);
+                                                        $('#descripcion_ti3').val(obj.descripcion_ti3);
+                                                        $('#descripcion_ti4').val(obj.descripcion_ti4);
+                                                        $('#descripcion_ti5').val(obj.descripcion_ti5);
+                                                        $('#descripcion_tg1').val(obj.descripcion_tg1);
+                                                        $('#descripcion_tg2').val(obj.descripcion_tg2);
+                                                        $('#descripcion_tg3').val(obj.descripcion_tg3);
+                                                        $('#descripcion_tg4').val(obj.descripcion_tg4);
+                                                        $('#descripcion_tg5').val(obj.descripcion_tg5);
+                                                        $('#descripcion_le1').val(obj.descripcion_le1);
+                                                        $('#descripcion_le2').val(obj.descripcion_le2);
+                                                        $('#descripcion_le3').val(obj.descripcion_le3);
+                                                        $('#descripcion_le4').val(obj.descripcion_le4);
+                                                        $('#descripcion_le5').val(obj.descripcion_le5);
+                                                        $('#descripcion_ev1').val(obj.descripcion_ev1);
+                                                        $('#descripcion_ev2').val(obj.descripcion_ev2);
+                                                        $('#descripcion_ev3').val(obj.descripcion_ev3);
+                                                        $('#descripcion_ev4').val(obj.descripcion_ev4);
+                                                        $('#descripcion_ev5').val(obj.descripcion_ev5);
                                                    });
+                                                     }
+                                                     else {
+                                                       $.each(response.matriculados, function(inx, obj){
+                                                              $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ta1[]"><input class="form-control  col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ta2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ta3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ta4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ta5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ti1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ti2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ti3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ti4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ti5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_tg1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_tg2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_tg3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_tg4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_tg5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_le1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_le2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_le3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_le4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_le5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#1" name="nota_ev1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#2" name="nota_ev2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#3" name="nota_ev3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#4" name="nota_ev4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="1" max="10" placeholder="#5" name="nota_ev5[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
+                                                            });
+                                                     }
+                                                   
                                                 },
                                                 error: function(error){
 
@@ -130,3 +176,7 @@
                                             });
                                         });
                                 </script>
+
+
+
+
