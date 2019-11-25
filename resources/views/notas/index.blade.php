@@ -21,6 +21,7 @@
                     <table class="table table-striped table-hover d-none" id="tabla">
 			<thead>
                     <button id="agregarDescripciones" type="button"  type="button" data-toggle="modal" style="background-color: #722f37;" data-target="#modalIngresarDescripciones" class="btn btn-primary d-none center-block"><i class="fas fa-clipboard"></i> AGREGAR DESCRIPCIONES</button><br><br>
+                    
                     <tr>
                     <th>
                             <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>

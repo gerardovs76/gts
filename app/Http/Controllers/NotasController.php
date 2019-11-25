@@ -143,7 +143,7 @@ class NotasController extends Controller
 
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $notas_antiguas = Nota_ta::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ta = new Nota_ta;
             $nota_ta->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
             $nota_ta->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
@@ -169,7 +169,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $notas_antiguas = Notas_ti::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ti = new Notas_ti;
             $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
             $nota_ti->nota_ti2 = ($nota_ti2[$key] == '' ? 0 : $nota_ti2[$key]);
@@ -195,7 +195,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_tg::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $notas_antiguas = Notas_tg::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_tg = new Notas_tg;
             $nota_tg->nota_tg1 = ($nota_tg1[$key] == '' ? 0 : $nota_tg1[$key]);
             $nota_tg->nota_tg2 = ($nota_tg2[$key] == '' ? 0 : $nota_tg2[$key]);
@@ -221,7 +221,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_le::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $notas_antiguas = Notas_le::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_le = new Notas_le;
             $nota_le->nota_le1 = ($nota_le1[$key] == '' ? 0 : $nota_le1[$key]);
             $nota_le->nota_le2 = ($nota_le2[$key] == '' ? 0 : $nota_le2[$key]);
@@ -247,7 +247,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_ev::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id)->delete();
+            $notas_antiguas = Notas_ev::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ev = new Notas_ev;
             $nota_ev->nota_ev1 = ($nota_ev1[$key] == '' ? 0 : $nota_ev1[$key]);
             $nota_ev->nota_ev2 = ($nota_ev2[$key] == '' ? 0 : $nota_ev2[$key]);
