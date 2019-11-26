@@ -144,7 +144,7 @@ class NotasController extends Controller
 
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Nota_ta::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
+            $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ta = new Nota_ta;
             $nota_ta->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
             $nota_ta->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
@@ -156,7 +156,7 @@ class NotasController extends Controller
             $nota_ta->descripcion_ta3 = $descripcion_ta3;
             $nota_ta->descripcion_ta4 = $descripcion_ta4;
             $nota_ta->descripcion_ta5 = $descripcion_ta5;
-            $nota_ta->materias_id = $materias_id[$key];
+            $nota_ta->materias_id = $materias_id;
             $nota_ta->matriculado_id = $matriculados_id[$key];
             $nota_ta->parcial = $parcial[$key];
             $nota_ta->quimestre = $quimestre[$key];
@@ -170,7 +170,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_ti::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
+            $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ti = new Notas_ti;
             $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
             $nota_ti->nota_ti2 = ($nota_ti2[$key] == '' ? 0 : $nota_ti2[$key]);
@@ -182,7 +182,7 @@ class NotasController extends Controller
             $nota_ti->descripcion_ti3 = $descripcion_ti3;
             $nota_ti->descripcion_ti4 = $descripcion_ti4;
             $nota_ti->descripcion_ti5 = $descripcion_ti5;
-            $nota_ti->materias_id = $materias_id[$key];
+            $nota_ti->materias_id = $materias_id;
             $nota_ti->matriculado_id = $matriculados_id[$key];
             $nota_ti->parcial = $parcial[$key];
             $nota_ti->quimestre = $quimestre[$key];
@@ -196,7 +196,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_tg::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
+            $notas_antiguas = Notas_tg::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_tg = new Notas_tg;
             $nota_tg->nota_tg1 = ($nota_tg1[$key] == '' ? 0 : $nota_tg1[$key]);
             $nota_tg->nota_tg2 = ($nota_tg2[$key] == '' ? 0 : $nota_tg2[$key]);
@@ -208,7 +208,7 @@ class NotasController extends Controller
             $nota_tg->descripcion_tg3 = $descripcion_tg3;
             $nota_tg->descripcion_tg4 = $descripcion_tg4;
             $nota_tg->descripcion_tg5 = $descripcion_tg5;
-            $nota_tg->materias_id = $materias_id[$key];
+            $nota_tg->materias_id = $materias_id;
             $nota_tg->matriculado_id = $matriculados_id[$key];
             $nota_tg->parcial = $parcial[$key];
             $nota_tg->quimestre = $quimestre[$key];
@@ -222,7 +222,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_le::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
+            $notas_antiguas = Notas_le::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_le = new Notas_le;
             $nota_le->nota_le1 = ($nota_le1[$key] == '' ? 0 : $nota_le1[$key]);
             $nota_le->nota_le2 = ($nota_le2[$key] == '' ? 0 : $nota_le2[$key]);
@@ -234,7 +234,7 @@ class NotasController extends Controller
             $nota_le->descripcion_le3 = $descripcion_le3;
             $nota_le->descripcion_le4 = $descripcion_le4;
             $nota_le->descripcion_le5 = $descripcion_le5;
-            $nota_le->materias_id = $materias_id[$key];
+            $nota_le->materias_id = $materias_id;
             $nota_le->matriculado_id = $matriculados_id[$key];
             $nota_le->parcial = $parcial[$key];
             $nota_le->quimestre = $quimestre[$key];
@@ -248,7 +248,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value)
         {
-            $notas_antiguas = Notas_ev::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
+            $notas_antiguas = Notas_ev::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ev = new Notas_ev;
             $nota_ev->nota_ev1 = ($nota_ev1[$key] == '' ? 0 : $nota_ev1[$key]);
             $nota_ev->nota_ev2 = ($nota_ev2[$key] == '' ? 0 : $nota_ev2[$key]);
@@ -260,7 +260,7 @@ class NotasController extends Controller
             $nota_ev->descripcion_ev3 = $descripcion_ev3;
             $nota_ev->descripcion_ev4 = $descripcion_ev4;
             $nota_ev->descripcion_ev5 = $descripcion_ev5;
-            $nota_ev->materias_id = $materias_id[$key];
+            $nota_ev->materias_id = $materias_id;
             $nota_ev->matriculado_id = $matriculados_id[$key];
             $nota_ev->parcial = $parcial[$key];
             $nota_ev->quimestre = $quimestre[$key];
