@@ -136,7 +136,7 @@
                                                      {
                                                        $.each(response.all_notas, function(inx, obj){
                                                             console.log(obj);
-                                                        $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ta1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ta1[]" value='+obj.nota_ta1+'><input class="form-control  col-md-2 col-xs-2" id="nota_ta2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ta2[]" value='+obj.nota_ta2+'><input class="form-control col-md-2 col-xs-2" id="nota_ta3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ta3[]" value='+obj.nota_ta3+'><input class="form-control col-md-2 col-xs-2" id="nota_ta4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ta4[]" value='+obj.nota_ta4+'><input class="form-control col-md-2 col-xs-2" id="nota_ta5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ta5[]" value='+obj.nota_ta5+'><p id="promedio'+obj.id+'"></p></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ti1'+obj.id+'"  style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ti1[]" value='+obj.nota_ti1+'><input class="form-control col-md-2 col-xs-2" id="nota_ti2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ti2[]" value='+obj.nota_ti2+'><input class="form-control col-md-2 col-xs-2" id="nota_ti3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ti3[]" value='+obj.nota_ti3+'><input class="form-control col-md-2 col-xs-2" id="nota_ti4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ti4[]" value='+obj.nota_ti4+'><input class="form-control col-md-2 col-xs-2" id="nota_ti5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ti5[]" value='+obj.nota_ti5+'></td><td><input class="form-control col-md-2 col-xs-2" id="nota_tg1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_tg1[]" value='+obj.nota_tg1+'><input class="form-control col-md-2 col-xs-2" id="nota_tg2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_tg2[]" value='+obj.nota_tg2+'><input class="form-control col-md-2 col-xs-2" id="nota_tg3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_tg3[]" value='+obj.nota_tg3+'><input class="form-control col-md-2 col-xs-2" id="nota_tg4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_tg4[]" value='+obj.nota_tg4+'><input class="form-control col-md-2 col-xs-2" id="nota_tg5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_tg5[]" value='+obj.nota_tg5+'></td><td><input class="form-control col-md-2 col-xs-2" id="nota_le1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_le1[]" value='+obj.nota_le1+'><input class="form-control col-md-2 col-xs-2" id="nota_le2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_le2[]" value='+obj.nota_le2+'><input class="form-control col-md-2 col-xs-2" id="nota_le3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_le3[]" value='+obj.nota_le3+'><input class="form-control col-md-2 col-xs-2" id="nota_le4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_le4[]" value='+obj.nota_le4+'><input class="form-control col-md-2 col-xs-2" id="nota_le5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_le5[]" value='+obj.nota_le5+'></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ev1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ev1[]" value='+obj.nota_ev1+'><input class="form-control col-md-2 col-xs-2" id="nota_ev2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ev2[]" value='+obj.nota_ev2+'><input class="form-control col-md-2 col-xs-2" id="nota_ev3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ev3[]" value='+obj.nota_ev3+'><input class="form-control col-md-2 col-xs-2" id="nota_ev4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ev4[]" value='+obj.nota_ev4+'><input class="form-control col-md-2 col-xs-2" id="nota_ev5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ev5[]" value='+obj.nota_ev5+'></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
+                                                        $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ta1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ta1[]" value='+obj.nota_ta1+'><input class="form-control  col-md-2 col-xs-2" id="nota_ta2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ta2[]" value='+obj.nota_ta2+'><input class="form-control col-md-2 col-xs-2" id="nota_ta3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ta3[]" value='+obj.nota_ta3+'><input class="form-control col-md-2 col-xs-2" id="nota_ta4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ta4[]" value='+obj.nota_ta4+'><input class="form-control col-md-2 col-xs-2" id="nota_ta5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ta5[]" value='+obj.nota_ta5+'><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #008cba; color: white;" style="width: 300px; height: 40px;" id="promediota'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ti1'+obj.id+'"  style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ti1[]" value='+obj.nota_ti1+'><input class="form-control col-md-2 col-xs-2" id="nota_ti2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ti2[]" value='+obj.nota_ti2+'><input class="form-control col-md-2 col-xs-2" id="nota_ti3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ti3[]" value='+obj.nota_ti3+'><input class="form-control col-md-2 col-xs-2" id="nota_ti4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ti4[]" value='+obj.nota_ti4+'><input class="form-control col-md-2 col-xs-2" id="nota_ti5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ti5[]" value='+obj.nota_ti5+'><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #e99002; color: white;" style="width: 300px; height: 40px;" id="promedioti'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_tg1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_tg1[]" value='+obj.nota_tg1+'><input class="form-control col-md-2 col-xs-2" id="nota_tg2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_tg2[]" value='+obj.nota_tg2+'><input class="form-control col-md-2 col-xs-2" id="nota_tg3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_tg3[]" value='+obj.nota_tg3+'><input class="form-control col-md-2 col-xs-2" id="nota_tg4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_tg4[]" value='+obj.nota_tg4+'><input class="form-control col-md-2 col-xs-2" id="nota_tg5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_tg5[]" value='+obj.nota_tg5+'><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #f04124; color: white;" style="width: 300px; height: 40px;" id="promediotg'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_le1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_le1[]" value='+obj.nota_le1+'><input class="form-control col-md-2 col-xs-2" id="nota_le2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_le2[]" value='+obj.nota_le2+'><input class="form-control col-md-2 col-xs-2" id="nota_le3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_le3[]" value='+obj.nota_le3+'><input class="form-control col-md-2 col-xs-2" id="nota_le4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_le4[]" value='+obj.nota_le4+'><input class="form-control col-md-2 col-xs-2" id="nota_le5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_le5[]" value='+obj.nota_le5+'><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #5bc0de; color: white;" style="width: 300px; height: 40px;" id="promediole'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ev1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ev1[]" value='+obj.nota_ev1+'><input class="form-control col-md-2 col-xs-2" id="nota_ev2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ev2[]" value='+obj.nota_ev2+'><input class="form-control col-md-2 col-xs-2" id="nota_ev3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ev3[]" value='+obj.nota_ev3+'><input class="form-control col-md-2 col-xs-2" id="nota_ev4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ev4[]" value='+obj.nota_ev4+'><input class="form-control col-md-2 col-xs-2" id="nota_ev5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ev5[]" value='+obj.nota_ev5+'><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #43ac6a; color: white;" style="width: 300px; height: 40px;" id="promedioev'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="text" id="promediofinal'+obj.id+'"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
                                                         $('#descripcion_ta1').val(obj.descripcion_ta1);
                                                         $('#descripcion_ta2').val(obj.descripcion_ta2);
                                                         $('#descripcion_ta3').val(obj.descripcion_ta3);
@@ -162,42 +162,259 @@
                                                         $('#descripcion_ev3').val(obj.descripcion_ev3);
                                                         $('#descripcion_ev4').val(obj.descripcion_ev4);
                                                         $('#descripcion_ev5').val(obj.descripcion_ev5);
-                                                       /*     setTimeout(() => {
+                                                            setInterval(() => {
                                                        var nota_ta1 = $('#nota_ta1'+obj.id+'').val();
                                                        var nota_ta2 = $('#nota_ta2'+obj.id+'').val();
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
+                                                       var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
+                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
+                                                       var sumaTaTotal = (sumaTa / sumaTa2);
+                                                       $('#promedioTa').on('click', () => {
+                                                            $('#promediota'+obj.id+'').empty();
+                                                             $('#promediota'+obj.id+'').val(sumaTaTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
                                                        var nota_ti1 = $('#nota_ti1'+obj.id+'').val();
                                                        var nota_ti2 = $('#nota_ti2'+obj.id+'').val();
                                                        var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
                                                        var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
+                                                       var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
+                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
+                                                       var sumaTiTotal = (sumaTi / sumaTi2);
+                                                       $('#promedioTi').on('click', () => {
+                                                            $('#promedioti'+obj.id+'').empty();
+                                                            $('#promedioti'+obj.id+'').val(sumaTiTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
                                                        var nota_tg1 = $('#nota_tg1'+obj.id+'').val();
                                                        var nota_tg2 = $('#nota_tg2'+obj.id+'').val();
                                                        var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
                                                        var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
+                                                       var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
+                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
+                                                       var sumaTgTotal = (sumaTg / sumaTg2);
+                                                       $('#promedioTg').on('click', () => {
+                                                            $('#promediotg'+obj.id+'').empty();
+                                                            $('#promediotg'+obj.id+'').val(sumaTgTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
                                                        var nota_le1 = $('#nota_le1'+obj.id+'').val();
                                                        var nota_le2 = $('#nota_le2'+obj.id+'').val();
                                                        var nota_le3 = $('#nota_le3'+obj.id+'').val();
                                                        var nota_le4 = $('#nota_le4'+obj.id+'').val();
+                                                       var nota_le5 = $('#nota_le5'+obj.id+'').val();
+                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
+                                                       var sumaLeTotal = (sumaLe / sumaLe2);
+                                                       $('#promedioLe').on('click', () => {
+                                                            $('#promediole'+obj.id+'').empty();
+                                                            $('#promediole'+obj.id+'').val(sumaLeTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
                                                        var nota_ev1 = $('#nota_ev1'+obj.id+'').val();
                                                        var nota_ev2 = $('#nota_ev2'+obj.id+'').val();
                                                        var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
                                                        var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
-                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) / 4);
-                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) / 4);
-                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) / 4);
-                                                       var sumeLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) / 4);
-                                                       var sumeEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) / 4);
-                                                       $('#promedio'+obj.id+'').append('P: '+sumaTa+'');
-                                                  }, 2000); */
+                                                       var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
+                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
+                                                       var sumaEvTotal = (sumaEv / sumaEv2);
+                                                       $('#promedioEv').on('click', () => {
+                                                            $('#promedioev'+obj.id+'').empty();
+                                                            $('#promedioev'+obj.id+'').val(sumaEvTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_ta1 = $('#nota_ta1'+obj.id+'').val();
+                                                       var nota_ta2 = $('#nota_ta2'+obj.id+'').val();
+                                                       var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
+                                                       var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
+                                                       var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
+                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
+                                                       var sumaTaTotal = (sumaTa / sumaTa2);
+
+                                                       var nota_ti1 = $('#nota_ti1'+obj.id+'').val();
+                                                       var nota_ti2 = $('#nota_ti2'+obj.id+'').val();
+                                                       var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
+                                                       var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
+                                                       var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
+                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
+                                                       var sumaTiTotal = (sumaTi / sumaTi2);
+
+                                                       var nota_tg1 = $('#nota_tg1'+obj.id+'').val();
+                                                       var nota_tg2 = $('#nota_tg2'+obj.id+'').val();
+                                                       var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
+                                                       var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
+                                                       var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
+                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
+                                                       var sumaTgTotal = (sumaTg / sumaTg2);
+
+                                                       var nota_le1 = $('#nota_le1'+obj.id+'').val();
+                                                       var nota_le2 = $('#nota_le2'+obj.id+'').val();
+                                                       var nota_le3 = $('#nota_le3'+obj.id+'').val();
+                                                       var nota_le4 = $('#nota_le4'+obj.id+'').val();
+                                                       var nota_le5 = $('#nota_le5'+obj.id+'').val();
+                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
+                                                       var sumaLeTotal = (sumaLe / sumaLe2);
+
+                                                       var nota_ev1 = $('#nota_ev1'+obj.id+'').val();
+                                                       var nota_ev2 = $('#nota_ev2'+obj.id+'').val();
+                                                       var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
+                                                       var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
+                                                       var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
+                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
+                                                       var sumaEvTotal = (sumaEv / sumaEv2);
+
+
+                                                       var sumaTotalTodo = (((sumaTaTotal) + (sumaTiTotal) + (sumaTgTotal) + (sumaLeTotal) + (sumaEvTotal)) / 5);
+                                                       $('#promedioFinal').on('click', () => {
+                                                            $('#promediofinal'+obj.id+'').empty();
+                                                            $('#promediofinal'+obj.id+'').val(sumaTotalTodo.toFixed(2));
+                                                       });
+                                                  }, 500);
                                                    });
                                                      }
                                                      else {
                                                        $.each(response.matriculados, function(inx, obj){
-                                                              $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input  class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ta1[]"><input class="form-control  col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ta2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ta3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ta4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ta5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ti1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ti2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ti3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ti4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ti5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_tg1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_tg2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_tg3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_tg4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_tg5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_le1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_le2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_le3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_le4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_le5[]"></td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ev1[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ev2[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ev3[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ev4[]"><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ev5[]"></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
+                                                             $('#tabla').append('<tr><td><strong>'+obj.nombres+'</strong></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ta1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ta1[]"><input class="form-control  col-md-2 col-xs-2" id="nota_ta2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ta2[]"><input class="form-control col-md-2 col-xs-2" id="nota_ta3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ta3[]"><input class="form-control col-md-2 col-xs-2" id="nota_ta4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ta4[]"><input class="form-control col-md-2 col-xs-2" id="nota_ta5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ta5[]"><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #008cba; color: white;" style="width: 300px; height: 40px;" id="promediota'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ti1'+obj.id+'"  style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ti1[]"><input class="form-control col-md-2 col-xs-2" id="nota_ti2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ti2[]"><input class="form-control col-md-2 col-xs-2" id="nota_ti3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ti3[]"><input class="form-control col-md-2 col-xs-2" id="nota_ti4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ti4[]"><input class="form-control col-md-2 col-xs-2" id="nota_ti5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ti5[]"><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #e99002; color: white;" style="width: 300px; height: 40px;" id="promedioti'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_tg1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_tg1[]"><input class="form-control col-md-2 col-xs-2" id="nota_tg2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_tg2[]"><input class="form-control col-md-2 col-xs-2" id="nota_tg3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_tg3[]"><input class="form-control col-md-2 col-xs-2" id="nota_tg4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_tg4[]"><input class="form-control col-md-2 col-xs-2" id="nota_tg5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_tg5[]"><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #f04124; color: white;" style="width: 300px; height: 40px;" id="promediotg'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_le1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_le1[]"><input class="form-control col-md-2 col-xs-2" id="nota_le2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_le2[]"><input class="form-control col-md-2 col-xs-2" id="nota_le3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_le3[]"><input class="form-control col-md-2 col-xs-2" id="nota_le4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_le4[]"><input class="form-control col-md-2 col-xs-2" id="nota_le5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_le5[]"><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #5bc0de; color: white;" style="width: 300px; height: 40px;" id="promediole'+obj.id+'"></td><td><input class="form-control col-md-2 col-xs-2" id="nota_ev1'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#1" name="nota_ev1[]"><input class="form-control col-md-2 col-xs-2" id="nota_ev2'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#2" name="nota_ev2[]"><input class="form-control col-md-2 col-xs-2" id="nota_ev3'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#3" name="nota_ev3[]"><input class="form-control col-md-2 col-xs-2" id="nota_ev4'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#4" name="nota_ev4[]"><input class="form-control col-md-2 col-xs-2" id="nota_ev5'+obj.id+'" style="width: 300px; height: 40px;" type="number" step="any" min="0" max="10" placeholder="#5" name="nota_ev5[]"><input type="text" class="form-control col-md-2 col-xs-2" style="background-color: #43ac6a; color: white;" style="width: 300px; height: 40px;" id="promedioev'+obj.id+'"></td><td><td><input class="form-control col-md-2 col-xs-2" style="width: 300px; height: 40px;" type="text" id="promediofinal'+obj.id+'"></td></td><input type="hidden" id="matriculados_id" name="matriculados_id[]" value='+obj.id+'><input type="hidden" id="materias_id" name="materias_id[]" value='+materia+'><input type="hidden" id="parcial" name="parcial[]" value='+parcial+'><input type="hidden" id="quimestre" name="quimestre[]" value='+quimestre+'><input type="hidden" name="tipo_tareas" value="nota_ta"></tr>');
+                                                             setInterval(() => {
+                                                       var nota_ta1 = $('#nota_ta1'+obj.id+'').val();
+                                                       var nota_ta2 = $('#nota_ta2'+obj.id+'').val();
+                                                       var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
+                                                       var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
+                                                       var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
+                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
+                                                       var sumaTaTotal = (sumaTa / sumaTa2);
+                                                       $('#promedioTa').on('click', () => {
+                                                            $('#promediota'+obj.id+'').empty();
+                                                             $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_ti1 = $('#nota_ti1'+obj.id+'').val();
+                                                       var nota_ti2 = $('#nota_ti2'+obj.id+'').val();
+                                                       var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
+                                                       var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
+                                                       var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
+                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
+                                                       var sumaTiTotal = (sumaTi / sumaTi2);
+                                                       $('#promedioTi').on('click', () => {
+                                                            $('#promedioti'+obj.id+'').empty();
+                                                            $('#promedioti'+obj.id+'').val(sumaTiTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_tg1 = $('#nota_tg1'+obj.id+'').val();
+                                                       var nota_tg2 = $('#nota_tg2'+obj.id+'').val();
+                                                       var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
+                                                       var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
+                                                       var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
+                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
+                                                       var sumaTgTotal = (sumaTg / sumaTg2);
+                                                       $('#promedioTg').on('click', () => {
+                                                            $('#promediotg'+obj.id+'').empty();
+                                                            $('#promediotg'+obj.id+'').val(sumaTgTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_le1 = $('#nota_le1'+obj.id+'').val();
+                                                       var nota_le2 = $('#nota_le2'+obj.id+'').val();
+                                                       var nota_le3 = $('#nota_le3'+obj.id+'').val();
+                                                       var nota_le4 = $('#nota_le4'+obj.id+'').val();
+                                                       var nota_le5 = $('#nota_le5'+obj.id+'').val();
+                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
+                                                       var sumaLeTotal = (sumaLe / sumaLe2);
+                                                       $('#promedioLe').on('click', () => {
+                                                            $('#promediole'+obj.id+'').empty();
+                                                            $('#promediole'+obj.id+'').val(sumaLeTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_ev1 = $('#nota_ev1'+obj.id+'').val();
+                                                       var nota_ev2 = $('#nota_ev2'+obj.id+'').val();
+                                                       var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
+                                                       var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
+                                                       var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
+                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
+                                                       var sumaEvTotal = (sumaEv / sumaEv2);
+                                                       $('#promedioEv').on('click', () => {
+                                                            $('#promedioev'+obj.id+'').empty();
+                                                            $('#promedioev'+obj.id+'').val(sumaEvTotal);
+                                                       });
+                                                  }, 500);
+                                                  setInterval(() => {
+                                                       var nota_ta1 = $('#nota_ta1'+obj.id+'').val();
+                                                       var nota_ta2 = $('#nota_ta2'+obj.id+'').val();
+                                                       var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
+                                                       var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
+                                                       var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
+                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
+                                                       var sumaTaTotal = (sumaTa / sumaTa2);
+
+                                                       var nota_ti1 = $('#nota_ti1'+obj.id+'').val();
+                                                       var nota_ti2 = $('#nota_ti2'+obj.id+'').val();
+                                                       var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
+                                                       var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
+                                                       var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
+                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
+                                                       var sumaTiTotal = (sumaTi / sumaTi2);
+
+                                                       var nota_tg1 = $('#nota_tg1'+obj.id+'').val();
+                                                       var nota_tg2 = $('#nota_tg2'+obj.id+'').val();
+                                                       var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
+                                                       var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
+                                                       var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
+                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
+                                                       var sumaTgTotal = (sumaTg / sumaTg2);
+
+                                                       var nota_le1 = $('#nota_le1'+obj.id+'').val();
+                                                       var nota_le2 = $('#nota_le2'+obj.id+'').val();
+                                                       var nota_le3 = $('#nota_le3'+obj.id+'').val();
+                                                       var nota_le4 = $('#nota_le4'+obj.id+'').val();
+                                                       var nota_le5 = $('#nota_le5'+obj.id+'').val();
+                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
+                                                       var sumaLeTotal = (sumaLe / sumaLe2);
+
+                                                       var nota_ev1 = $('#nota_ev1'+obj.id+'').val();
+                                                       var nota_ev2 = $('#nota_ev2'+obj.id+'').val();
+                                                       var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
+                                                       var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
+                                                       var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
+                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
+                                                       var sumaEvTotal = (sumaEv / sumaEv2);
+
+
+                                                       var sumaTotalTodo = (((sumaTaTotal) + (sumaTiTotal) + (sumaTgTotal) + (sumaLeTotal) + (sumaEvTotal)) / 5);
+                                                       $('#promedioFinal').on('click', () => {
+                                                            $('#promediofinal'+obj.id+'').empty();
+                                                            $('#promediofinal'+obj.id+'').val(sumaTotalTodo.toFixed(2));
+                                                       });
+                                                  }, 500);
+                                                        });
                                                      }
-                                                   
                                                 },
                                                 error: function(error){
 

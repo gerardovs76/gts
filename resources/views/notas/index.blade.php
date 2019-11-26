@@ -27,29 +27,31 @@
                             <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>
                     </th>
                     <th>
-                    	<button type="button"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
+                      <button type="button"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
+                      <button class="btn btn-primary" id="promedioTa" type="button"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button type="button" class="btn btn-warning" id="tareas_individuales"><i class="far fa-clipboard"></i> TAREAS INDIVIDUALES</button>
+                      <button type="button" class="btn btn-warning" id="tareas_individuales"><i class="far fa-clipboard"></i> TAREAS INDIVIDUALES</button>
+                      <button class="btn btn-warning" type="button" id="promedioTi"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button type="button" class="btn btn-danger" id="tareas_grupales"><i class="far fa-clipboard"></i> TAREAS GRUPALES</button>
+                      <button type="button" class="btn btn-danger" id="tareas_grupales"><i class="far fa-clipboard"></i> TAREAS GRUPALES</button>
+                      <button class="btn btn-danger" type="button" id="promedioTg"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button type="button" class="btn btn-info" id="lecciones"><i class="far fa-clipboard"></i> LECCIONES</button>
+                      <button type="button" class="btn btn-info" id="lecciones"><i class="far fa-clipboard"></i> LECCIONES</button>
+                      <button class="btn btn-info" type="button" id="promedioLe"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button type="button" class="btn btn-success" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
+                      <button type="button" class="btn btn-success" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
+                      <button class="btn btn-success" type="button" id="promedioEv"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
-                    	<button disabled type="button" class="btn btn-dark" id="examen"><i class="far fa-clipboard"></i> EXAMEN QUIMESTRAL</button>
-                    </th>
-                    <th>
-                        <strong class="btn btn-primary" style="background-color: #D718EE;"><i class="far fa-clipboard"></i> PROMEDIOS</strong>
+                        <button class="btn btn-primary" type="button" id="promedioFinal" style="background-color: #D718EE;"><i class="far fa-clipboard"></i> PROMEDIOS</button>
                     </th>
 
                     </tr>
