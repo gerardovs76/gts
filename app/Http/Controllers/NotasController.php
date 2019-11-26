@@ -167,8 +167,10 @@ class NotasController extends Controller
             $nota_ta->numero_tarea_ta5 = '1';
             $nota_ta->save();
         }
+        $i = 0;
         foreach($matriculados_id as $key => $value)
         {
+            dd($i++);
             $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ti = new Notas_ti;
             $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
@@ -271,8 +273,7 @@ class NotasController extends Controller
             $nota_ev->numero_tarea_ev5 = '1';
             $nota_ev->save();
         }
-        echo "Si";
-        exit();
+        return redirect()->route('notas.store')->with('info', 'La nota se ha cargado correctamente');
     }
 
 
