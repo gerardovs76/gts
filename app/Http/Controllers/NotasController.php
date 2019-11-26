@@ -170,7 +170,6 @@ class NotasController extends Controller
         foreach($matriculados_id as $key => $value)
         {
             $notas_antiguas = Notas_ti::where('materias_id', $materias_id[$key])->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
-            dd($notas_antiguas);
             $nota_ti = new Notas_ti;
             $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
             $nota_ti->nota_ti2 = ($nota_ti2[$key] == '' ? 0 : $nota_ti2[$key]);
