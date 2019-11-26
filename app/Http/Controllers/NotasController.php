@@ -166,11 +166,9 @@ class NotasController extends Controller
             $nota_ta->numero_tarea_ta4 = '1';
             $nota_ta->numero_tarea_ta5 = '1';
             $nota_ta->save();
-        }
-        foreach($matriculados_id as $key => $value)
-        {
+        
+      
             $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
-            dump($notas_antiguas);
             $nota_ti = new Notas_ti;
             $nota_ti->nota_ti1 = ($nota_ti1[$key] == '' ? 0 : $nota_ti1[$key]);
             $nota_ti->nota_ti2 = ($nota_ti2[$key] == '' ? 0 : $nota_ti2[$key]);
@@ -193,9 +191,8 @@ class NotasController extends Controller
             $nota_ti->numero_tarea_ti4 = '1';
             $nota_ti->numero_tarea_ti5 = '1';
             $nota_ti->save();
-        }
-        foreach($matriculados_id as $key => $value)
-        {
+     
+    
             $notas_antiguas = Notas_tg::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_tg = new Notas_tg;
             $nota_tg->nota_tg1 = ($nota_tg1[$key] == '' ? 0 : $nota_tg1[$key]);
@@ -219,9 +216,8 @@ class NotasController extends Controller
             $nota_tg->numero_tarea_tg4 = '1';
             $nota_tg->numero_tarea_tg5 = '1';
             $nota_tg->save();
-        }
-        foreach($matriculados_id as $key => $value)
-        {
+        
+      
             $notas_antiguas = Notas_le::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_le = new Notas_le;
             $nota_le->nota_le1 = ($nota_le1[$key] == '' ? 0 : $nota_le1[$key]);
@@ -245,9 +241,7 @@ class NotasController extends Controller
             $nota_le->numero_tarea_le4 = '1';
             $nota_le->numero_tarea_le5 = '1';
             $nota_le->save();
-        }
-        foreach($matriculados_id as $key => $value)
-        {
+       
             $notas_antiguas = Notas_ev::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ev = new Notas_ev;
             $nota_ev->nota_ev1 = ($nota_ev1[$key] == '' ? 0 : $nota_ev1[$key]);
