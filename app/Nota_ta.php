@@ -8,15 +8,25 @@ class Nota_ta extends Model
 {
     protected $table = 'notas_ta';
     protected $fillable = [
-        'id_antiguo',
+        'nota_ta1',
+        'nota_ta2',
+        'nota_ta3',
+        'nota_ta4',
+        'nota_ta5',
         'matriculado_id',
-        'materias_id',
-        'nota_ta',
-        'numero_tarea_ta',
         'parcial',
-        'quimestre',
         'autoridad_id',
-        'descripcion'
+        'quimestre',
+        'descripcion_t1',
+        'descripcion_t2',
+        'descripcion_t3',
+        'descripcion_t4',
+        'descripcion_t5',
+        'numero_tarea_ta1',
+        'numero_tarea_ta2',
+        'numero_tarea_ta3',
+        'numero_tarea_ta4',
+        'numero_tarea_ta5',
     ];
 
     public function matriculado(){

@@ -8,15 +8,25 @@ class Notas_ev extends Model
 {
     protected $table = 'notas_ev';
     protected $fillable = [
-        'id_antiguo',
+        'nota_ev1',
+        'nota_ev2',
+        'nota_ev3',
+        'nota_ev4',
+        'nota_ev5',
         'matriculado_id',
-        'materias_id',
-        'nota_ev',
-        'numero_tarea_Ev',
         'parcial',
-        'quimestre',
         'autoridad_id',
-        'descripcion'
+        'quimestre',
+        'descripcion_t1',
+        'descripcion_t2',
+        'descripcion_t3',
+        'descripcion_t4',
+        'descripcion_t5',
+        'numero_tarea_ev1',
+        'numero_tarea_ev2',
+        'numero_tarea_ev3',
+        'numero_tarea_ev4',
+        'numero_tarea_ev5',
     ];
 
     public function matriculado(){

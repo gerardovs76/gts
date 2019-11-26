@@ -8,15 +8,25 @@ class Notas_tg extends Model
 {
     protected $table = 'notas_tg';
     protected $fillable = [
-        'id_antiguo',
+        'nota_tg1',
+        'nota_tg2',
+        'nota_tg3',
+        'nota_tg4',
+        'nota_tg5',
         'matriculado_id',
-        'materias_id',
-        'nota_tg',
-        'numero_tarea_tg',
         'parcial',
-        'quimestre',
         'autoridad_id',
-        'descripcion'
+        'quimestre',
+        'descripcion_t1',
+        'descripcion_t2',
+        'descripcion_t3',
+        'descripcion_t4',
+        'descripcion_t5',
+        'numero_tarea_tg1',
+        'numero_tarea_tg2',
+        'numero_tarea_tg3',
+        'numero_tarea_tg4',
+        'numero_tarea_tg5',
     ];
 
 }

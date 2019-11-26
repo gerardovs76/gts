@@ -8,15 +8,25 @@ class Notas_le extends Model
 {
     protected $table = 'notas_le';
     protected $fillable = [
-        'id_antiguo',
+        'nota_le1',
+        'nota_le2',
+        'nota_le3',
+        'nota_le4',
+        'nota_le5',
         'matriculado_id',
-        'materias_id',
-        'nota_le',
-        'numero_tarea_le',
         'parcial',
-        'quimestre',
         'autoridad_id',
-        'descripcion'
+        'quimestre',
+        'descripcion_t1',
+        'descripcion_t2',
+        'descripcion_t3',
+        'descripcion_t4',
+        'descripcion_t5',
+        'numero_tarea_le1',
+        'numero_tarea_le2',
+        'numero_tarea_le3',
+        'numero_tarea_le4',
+        'numero_tarea_le5',
     ];
 
     public function matriculado(){
