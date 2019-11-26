@@ -140,6 +140,7 @@ class NotasController extends Controller
         $quimestre = $request->quimestre;
         $matriculados_id = $request->matriculados_id;
         $materias_id = $request->materias_id;
+        dd($request->all());
 
         foreach($matriculados_id as $key => $value)
         {
