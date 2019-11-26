@@ -35,11 +35,6 @@ class NotasRequest extends FormRequest
       {
           $rules['quimestre.*'] = 'required';
       }
-      foreach($this->request->get('materias_id') as $key => $val)
-      {
-          $rules['materias_id.*'] = 'required';
-      }
-
       return $rules;
     }
 
