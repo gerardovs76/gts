@@ -141,7 +141,7 @@ class NotasController extends Controller
         $matriculados_id = $request->matriculados_id;
         $materias_id = $request->materias_id;
 
-        /* foreach($matriculados_id as $key => $value)
+        foreach($matriculados_id as $key => $value)
         {
             $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ta = new Nota_ta;
@@ -167,7 +167,6 @@ class NotasController extends Controller
             $nota_ta->numero_tarea_ta5 = '1';
             $nota_ta->save();
         }
-        $i = 0; */
         foreach($matriculados_id as $key => $value)
         {
             $notas_antiguas = Notas_ti::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
