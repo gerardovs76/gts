@@ -139,6 +139,7 @@ class NotasController extends Controller
         $parcial = $request->parcial;
         $quimestre = $request->quimestre;
         $matriculados_id = $request->matriculados_id;
+        dd($matriculados_id);
         $materias_id = $request->materias_id;
 
         foreach($matriculados_id as $key => $value)
