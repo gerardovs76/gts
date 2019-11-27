@@ -156,8 +156,8 @@ class NotasController extends Controller
             $nota_ta->descripcion_ta5 = $descripcion_ta5;
             $nota_ta->materias_id = $materias_id;
             $nota_ta->matriculado_id = $matriculados_id[$key];
-            $nota_ta->parcial = $parcial[$key];
-            $nota_ta->quimestre = $quimestre[$key];
+            $nota_ta->parcial = $parcial;
+            $nota_ta->quimestre = $quimestre;
             $nota_ta->autoridad_id = auth()->user()->id;
             $nota_ta->numero_tarea_ta1 = '1';
             $nota_ta->numero_tarea_ta2 = '1';
@@ -182,8 +182,8 @@ class NotasController extends Controller
             $nota_ti->descripcion_ti5 = $descripcion_ti5;
             $nota_ti->materias_id = $materias_id;
             $nota_ti->matriculado_id = $matriculados_id[$key];
-            $nota_ti->parcial = $parcial[$key];
-            $nota_ti->quimestre = $quimestre[$key];
+            $nota_ti->parcial = $parcial;
+            $nota_ti->quimestre = $quimestre;
             $nota_ti->autoridad_id = auth()->user()->id;
             $nota_ti->numero_tarea_ti1 = '1';
             $nota_ti->numero_tarea_ti2 = '1';
@@ -208,8 +208,8 @@ class NotasController extends Controller
             $nota_tg->descripcion_tg5 = $descripcion_tg5;
             $nota_tg->materias_id = $materias_id;
             $nota_tg->matriculado_id = $matriculados_id[$key];
-            $nota_tg->parcial = $parcial[$key];
-            $nota_tg->quimestre = $quimestre[$key];
+            $nota_tg->parcial = $parcial;
+            $nota_tg->quimestre = $quimestre;
             $nota_tg->autoridad_id = auth()->user()->id;
             $nota_tg->numero_tarea_tg1 = '1';
             $nota_tg->numero_tarea_tg2 = '1';
@@ -234,8 +234,8 @@ class NotasController extends Controller
             $nota_le->descripcion_le5 = $descripcion_le5;
             $nota_le->materias_id = $materias_id;
             $nota_le->matriculado_id = $matriculados_id[$key];
-            $nota_le->parcial = $parcial[$key];
-            $nota_le->quimestre = $quimestre[$key];
+            $nota_le->parcial = $parcial;
+            $nota_le->quimestre = $quimestre;
             $nota_le->autoridad_id = auth()->user()->id;
             $nota_le->numero_tarea_le1 = '1';
             $nota_le->numero_tarea_le2 = '1';
@@ -260,8 +260,8 @@ class NotasController extends Controller
             $nota_ev->descripcion_ev5 = $descripcion_ev5;
             $nota_ev->materias_id = $materias_id;
             $nota_ev->matriculado_id = $matriculados_id[$key];
-            $nota_ev->parcial = $parcial[$key];
-            $nota_ev->quimestre = $quimestre[$key];
+            $nota_ev->parcial = $parcial;
+            $nota_ev->quimestre = $quimestre;
             $nota_ev->autoridad_id = auth()->user()->id;
             $nota_ev->numero_tarea_ev1 = '1';
             $nota_ev->numero_tarea_ev2 = '1';
