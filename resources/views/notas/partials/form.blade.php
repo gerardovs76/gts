@@ -93,6 +93,16 @@
                                  </div>
                                 </div>
                                 <script>
+                                   $(document).ready(function() {
+                                        $(window).keydown(function(event){
+                                        if(event.keyCode == 13) {
+                                             event.preventDefault();
+                                             return false;
+                                        }
+                                        });
+                                        });
+                                      </script>
+                                <script>
                                         $('#paralelo').on('change', function() {
                                             var curso = $( "#curso option:selected" ).text();
                                             var paralelo  = $( "#paralelo option:selected" ).text();

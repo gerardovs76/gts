@@ -12,7 +12,7 @@
 		{{ Session::get('error') }}
     </div>
         @endif
-					{!! Form::open(['route' => 'notas.store']) !!}
+					{!! Form::open(['route' => 'notas.store', 'id' => 'form-id']) !!}
 					@include('notas.partials.error')
                            @include('notas.partials.form')
                            @include('notas.modal.ingresarNotasModal')

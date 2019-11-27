@@ -990,7 +990,6 @@ class NotasController extends Controller
     }
         public function deleteAllNotesResumen($descripcion, $created_at, $tt)
         {
-    
             if($tt == 'nota_ta')
             {
                 $notas = Nota_ta::where('descripcion', $descripcion)->where('created_at', $created_at)->delete();
