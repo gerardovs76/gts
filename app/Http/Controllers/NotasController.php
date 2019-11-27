@@ -139,8 +139,8 @@ class NotasController extends Controller
         $parcial = $request->parcial;
         $quimestre = $request->quimestre;
         $matriculados_id = $request->matriculados_id;
-
         $materias_id = $request->materias_id;
+        dd($request->all());
         foreach($matriculados_id as $key => $value)
         {
             $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
