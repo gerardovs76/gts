@@ -141,12 +141,10 @@ class NotasController extends Controller
         $matriculados_id = $request->matriculados_id;
 
         $materias_id = $request->materias_id;
-        dd($materias_id);
         foreach($matriculados_id as $key => $value)
         {
             $notas_antiguas = Nota_ta::where('materias_id', $materias_id)->where('matriculado_id', $matriculados_id[$key])->where('parcial', $parcial)->where('quimestre', $quimestre)->delete();
             $nota_ta = new Nota_ta;
-            dd($nota_ta1[$key]);
             $nota_ta->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
             $nota_ta->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
             $nota_ta->nota_ta3 = ($nota_ta3[$key] == '' ? 0 : $nota_ta3[$key]);
