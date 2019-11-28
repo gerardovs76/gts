@@ -197,7 +197,7 @@ table#mitabla3 td {
         <div class="page-break">
 
             <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
-            <img src="images/ib.PNG" alt="" height="80" width="80" style="float: right;"><br>
+     <br>
 		<table class="table" id="mitabla">
 				<tbody>
 			<tr>
@@ -426,22 +426,22 @@ table#mitabla3 td {
 	<br><br><br><br><br><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">Sra. MONSERRATH RAMIREZ</p>
+<p style="text-align: center;">Lic. Ana Panchi</p>
 <p style="text-align: center;">SECRETARIA</p>
 </div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">LCDA. CARMEN RAMIREZ</p>
+<p style="text-align: center;">Arq. Edgar Palma </p>
 <p style="text-align: center;">RECTOR</p>
 </div><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">Sra. MONSERRATH RAMIREZ</p>
+<p style="text-align: center;">Lic. Ana Panchi</p>
 <p style="text-align: center;">SECRETARIA</p>
 </div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">LCDA. CARMEN RAMIREZ</p>
+<p style="text-align: center;">Arq. Edgar Palma </p>
 <p style="text-align: center;">RECTOR</p>
 </div><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">

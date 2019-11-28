@@ -1413,11 +1413,6 @@ class NotasController extends Controller
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_conducta.nota_conducta) / SUM(notas_conducta.numero_tarea_conducta), 3) as nota_final_conducta"))
             ->groupBy('matriculado_id');
-        }])->with(['notas_examen' => function($query7) use($quimestre){
-            $query7
-            ->where('quimestre', $quimestre)
-            ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(notas_exq.nota_exq) / SUM(notas_exq.numero_tarea_exq), 3) as nota_final_examen"))
-            ->groupBy('matriculado_id', 'materias_id');
         }])->with(['inscripcion' => function($query8){
             $query8->select('cedula', 'nombres_representante'); 
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();

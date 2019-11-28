@@ -46,7 +46,21 @@
                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                     {!!Form::select('tipo_factura',['SEP' => 'TOTAL', 'OCT' => 'PENSION OCTUBRE', 'NOV' => 'PENSION NOVIEMBRE', 'DIC' => 'PENSION DICIEMBRE', 'ENE' => 'PENSION ENERO', 'FEB' => 'PENSION FEBRERO', 'MAR' => 'PENSION MARZO', 'ABR' => 'PENSION ABRIL', 'MAY' => 'PENSION MAYO', 'JUN' => 'PENSION JUNIO'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de pensión...'])!!}
                     </div>
-					</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <strong>Fecha inicio: <br></strong>
+                        <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                        {!!Form::date('fecha_inicio', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de pensión...'])!!}
+                        </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <strong>Fecha fin: <br></strong>
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                            {!!Form::date('fecha_fin', null, ['class' => 'form-control col-md-6', 'placeholder' => 'Tipo de pensión...'])!!}
+                            </div>
+                            </div>
                     <div class="form-group col-md-10">
                     {!!Form::button('<i class="fas fa-search"></i> BUSQUEDA', ['class' => 'btn btn-primary', 'type' => 'submit'])!!}
                     </div>
