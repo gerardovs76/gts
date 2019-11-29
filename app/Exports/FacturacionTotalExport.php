@@ -23,7 +23,7 @@ class FacturacionTotalExport implements FromView, ShouldAutoSize
      public function view(): View
     {
          return view('cobros.excel.reporteTotal',[
-            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'like', '%'.' '.$this->tipo_factura.'%')->whereIn('facturacion.fecha_creacion',[$this->fecha_inicio, $this->fecha_fin])->select('matriculados.cedula_r', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->groupBy('matriculados.id')->get(),
+            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'like', '%'.' '.$this->tipo_factura.'%')->whereBetween('facturacion.fecha_creacion',[$this->fecha_inicio, $this->fecha_fin])->select('matriculados.cedula_r', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->groupBy('matriculados.id')->get(),
             'fecha' => Carbon::now()
 
 
