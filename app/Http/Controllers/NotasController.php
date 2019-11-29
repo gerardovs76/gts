@@ -1373,6 +1373,7 @@ class NotasController extends Controller
     public function descargarLibreta(Request $request)
     {
       $curso = $request->curso;
+      dd($curso);
       $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
