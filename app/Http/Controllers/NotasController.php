@@ -1416,7 +1416,6 @@ class NotasController extends Controller
         }])->with(['inscripcion' => function($query8){
             $query8->select('cedula', 'nombres_representante'); 
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-        dd($notas);
         $notasPromedioFinalTa = [];
         $notasPromedioFinalTi = [];
         $notasPromedioFinalTg = [];
