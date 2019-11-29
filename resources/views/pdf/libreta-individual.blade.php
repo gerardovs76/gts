@@ -418,23 +418,23 @@ table#mitabla3 td {
 	<br><br><br><br><br><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">Sra. MONSERRATH RAMIREZ</p>
+<p style="text-align: center;">Sra. Pamela Baquero</p>
 <p style="text-align: center;">SECRETARIA</p>
 </div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">LCDA. CARMEN RAMIREZ</p>
-<p style="text-align: center;">RECTOR</p>
+<p style="text-align: center;">Magíster. Cristina Noguera</p>
+<p style="text-align: center;">RECTORA</p>
 </div><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">Sra. MONSERRATH RAMIREZ</p>
+<p style="text-align: center;">Sra. Pamela Baquero</p>
 <p style="text-align: center;">SECRETARIA</p>
 </div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
-<p style="text-align: center;">LCDA. CARMEN RAMIREZ</p>
-<p style="text-align: center;">RECTOR</p>
+<p style="text-align: center;">Magíster. Cristina Noguera</p>
+<p style="text-align: center;">RECTORA</p>
 </div><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
