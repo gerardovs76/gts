@@ -223,7 +223,7 @@ class CobrosController extends Controller
     public function facturacionExports(Request $request)
     {
         $tipo_factura = $request->tipo_factura;
-        $fecha_inicio = $request->fecha_inicio;
+        $fecha_inicio = $request->fecha_inicio; 
         $fecha_fin = $request->fecha_fin;
         try {
             if($tipo_factura == 'SEP'){

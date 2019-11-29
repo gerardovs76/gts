@@ -20,7 +20,7 @@
     @foreach($matriculados as $matriculado)
         <tr>
 
-            <td>{{ $matriculado->cedula_r }}</td>
+            <td>{{ $matriculado->cedula_r  }}</td>
             <td>{{ $matriculado->fecha_inicio }}</td>
             <td>PAGO</td>
             <td>PENSIÓN: {{$matriculado->referencias}}</td>
