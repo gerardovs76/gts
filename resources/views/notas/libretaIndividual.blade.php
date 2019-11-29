@@ -4,7 +4,7 @@
 	<div class="container col-xs-12 col-sm-8 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
 		<h2 class="text-center" style="color: #fff;">
-			LIBRETA INDIVIDUAL
+			LIBRETA COLECTIVA
 		</h2>
 		</div>
 
