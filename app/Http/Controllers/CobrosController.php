@@ -225,6 +225,7 @@ class CobrosController extends Controller
         $tipo_factura = $request->tipo_factura;
         $fecha_inicio = $request->fecha_inicio; 
         $fecha_fin = $request->fecha_fin;
+        dd([$fecha_inicio, $fecha_fin]);
         try {
             if($tipo_factura == 'SEP'){
                 return Excel::download(new FacturacionTotalExport($tipo_factura, $fecha_inicio, $fecha_fin), 'facturacion-total.xlsx');
