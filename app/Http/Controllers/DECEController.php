@@ -115,7 +115,7 @@ class DECEController extends Controller
 
         $alumno = DB::table('matriculados')
         ->join('inscripciones', 'matriculados.cedula', '=', 'inscripciones.cedula')
-        ->where('matriculados.cedula', $cedula);
+        ->where('matriculados.cedula', $cedula)
         ->select('inscripciones.cedula as cedula', 'inscripciones.nombres as nombres', 'inscripciones.apellidos as apellidos', 'inscripciones.fecha_nacimiento as fecha_nacimiento', 'inscripciones.direccion_representante as direccion', 'matriculados.curso', 'inscripciones.nombres_representante as nombres_representante', 'inscripciones.cedrepresentante as cedula_representante', 'inscripciones.movil as numero_telefono', 'inscripciones.convencional as numero_movil')
         ->distinct()
         ->get();
