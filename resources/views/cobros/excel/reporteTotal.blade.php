@@ -22,7 +22,7 @@
             <td>{{ str_replace('-', '',$matriculado->cedula_r) }}</td>
             <td>{{ $matriculado->fecha_inicio }}</td>
             <td>PENSIONES</td>
-            <td>PENSIONES {{$matriculado->referencias}}</td>
+            <td>MENSUAL {{$matriculado->referencias}}</td>
             @if(strpos($matriculado->referencias, 'INICIAL 1') !== FALSE|| strpos($matriculado->referencias, 'INICIAL 2') !== FALSE || strpos($matriculado->referencias, 'INI') !== FALSE)
             <td>60</td>
             <td>MATRICULA</td>
