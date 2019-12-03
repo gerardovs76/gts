@@ -7,25 +7,6 @@
           input[type=number] {
             -moz-appearance: textfield;
           }
-          #promediota{
-               font-size: 8px;
-          }
-          #promedioti{
-               font-size: 8px;
-          }
-          #promediotg{
-               font-size: 8px;
-          }
-          #promediole{
-               font-size: 8px;
-          }
-          #promedioev{
-               font-size: 8px;
-          }
-          #promediofinal{
-               font-size: 8px;
-          }
-          
           </style>
 <div class="panel panel-primary" id="panel1">
                     <div class="panel panel-heading text-center" style="padding: 1px;"><h3>INGRESE LOS DATOS PARA LA BUSQUEDA SIGUIENDO EL ORDEN NUMERICO...</h3></div>
@@ -202,6 +183,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
+                                                            $('#promediota'+obj.id+'').css("font-size", "8px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
@@ -330,6 +312,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
+                                                            $('#promediota'+obj.id+'').css("font-size", "8px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
