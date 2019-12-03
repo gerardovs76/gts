@@ -6,7 +6,24 @@
           
           input[type=number] {
             -moz-appearance: textfield;
-            font-size: 8px;
+          }
+          #promediota{
+               font-size: 10px;
+          }
+          #promedioti{
+               font-size: 10px;
+          }
+          #promediotg{
+               font-size: 10px;
+          }
+          #promediole{
+               font-size: 10px;
+          }
+          #promedioev{
+               font-size: 10px;
+          }
+          #promediofinal{
+               font-size: 10px;
           }
           
           </style>
