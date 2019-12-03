@@ -56,7 +56,7 @@
 
                     </tr>
                     </thead>
-					<tbody style="font-size: 8px;">
+					<tbody>
 				<tr>
 
 				</tr>
