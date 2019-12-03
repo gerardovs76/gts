@@ -6,7 +6,9 @@
           
           input[type=number] {
             -moz-appearance: textfield;
+            font-size: 8px;
           }
+          
           </style>
 <div class="panel panel-primary" id="panel1">
                     <div class="panel panel-heading text-center" style="padding: 1px;"><h3>INGRESE LOS DATOS PARA LA BUSQUEDA SIGUIENDO EL ORDEN NUMERICO...</h3></div>
