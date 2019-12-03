@@ -183,7 +183,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
-                                                            $('#promediota'+obj.id+'').css("font-size", "8px");
+                                                            $('#promediota'+obj.id+'').css("font-size", "12px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
@@ -312,7 +312,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
-                                                            $('#promediota'+obj.id+'').css("font-size", "8px");
+                                                            $('#promediota'+obj.id+'').css("font-size", "12px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
