@@ -130,7 +130,7 @@
 					<tbody id="tableid">
                     @if(isset($notas))
                     @foreach($notas as $nota)
-				<tr>
+				    <tr>
                     <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
                     @if($nota->notas_ta->count() != 0)
                     @foreach($nota->notas_ta as $notas_ta)
