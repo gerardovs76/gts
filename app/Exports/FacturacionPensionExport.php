@@ -24,7 +24,7 @@ class FacturacionPensionExport implements FromView, ShouldAutoSize
      public function view(): View 
     {
          return view('cobros.excel.reportePension',[
-            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'like', '%'.' '.$this->tipo_factura.'%')->whereIn('facturacion.fecha_creacion', [$this->fecha_inicio, $this->fecha_fin])->select('matriculados.cedula', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->get(),
+            'matriculados' =>  Matriculacion::join('facturacion', 'matriculados.codigo', '=', 'facturacion.codigo')->where('facturacion.referencias', 'NOT LIKE', '%SEP%')->whereBetween('facturacion.fecha_creacion', [$this->fecha_inicio, $this->fecha_fin])->select('matriculados.cedula_r', 'facturacion.codigo', 'facturacion.fecha_inicio', 'facturacion.num_referencia', 'facturacion.referencias', 'facturacion.nombres', 'facturacion.valor')->get(),
             'fecha' => Carbon::now()
             
 

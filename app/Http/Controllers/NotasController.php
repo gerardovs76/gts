@@ -1376,8 +1376,8 @@ class NotasController extends Controller
       $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
-      $materias = Materias::join('matriculados', 'materias.curso', '=', 'matriculados.curso')->where('materias.curso', $curso)->where('materias.paralelo', $paralelo)->select('materias.materia', 'materias.id', 'materias.tipo_materia')->distinct()->get();
-      $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre){
+       $materias = Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.curso', $curso)->where('m2.paralelo', $paralelo)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get();
+       $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre){
         $query1
         ->where('parcial', $parcial)
         ->where('quimestre', $quimestre)
