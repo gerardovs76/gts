@@ -134,35 +134,35 @@
                     <td><strong>{{$nota->apellidos}} {{$nota->nombres}}</strong></td>
                     @if($nota->notas_ta->count() != 0)
                     @foreach($nota->notas_ta as $notas_ta)
-                    <td>{{$notas_ta->nota_final_ta}}</td>
+                    <td>{{round((($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5) / (($notas_ta->nota_ta1 != 0 ? 1 : 0) + ($notas_ta->nota_ta2 != 0 ? 1 : 0) + ($notas_ta->nota_ta3 != 0 ? 1 : 0) + ($notas_ta->nota_ta4 != 0 ? 1 : 0) + ($notas_ta->nota_ta5 != 0 ? 1 : 0))), 2)}}</td>
                     @endforeach
                     @else
                     <td>0</td>
                     @endif
-                    @if($nota->notas_ti->count() != 0)
+                     @if($nota->notas_ti->count() != 0)
                     @foreach($nota->notas_ti as $notas_ti)
-                    <td>{{$notas_ti->nota_final_ti}}</td>
+                     <td>{{round((($notas_ti->nota_ti1 + $notas_ti->nota_ti2 + $notas_ti->nota_ti3 + $notas_ti->nota_ti4 + $notas_ti->nota_ti5) / (($notas_ti->nota_ti1 != 0 ? 1 : 0) + ($notas_ti->nota_ti2 != 0 ? 1 : 0) + ($notas_ti->nota_ti3 != 0 ? 1 : 0) + ($notas_ti->nota_ti4 != 0 ? 1 : 0) + ($notas_ti->nota_ti5 != 0 ? 1 : 0))), 2)}}</td>
                     @endforeach
                     @else
                     <td>0</td>
                     @endif
                     @if($nota->notas_tg->count() != 0)
                     @foreach($nota->notas_tg as $notas_tg)
-                    <td>{{$notas_tg->nota_final_tg}}</td>
+                    <td>{{round((($notas_tg->nota_tg1 + $notas_tg->nota_tg2 + $notas_tg->nota_tg3 + $notas_tg->nota_tg4 + $notas_tg->nota_tg5) / (($notas_tg->nota_tg1 != 0 ? 1 : 0) + ($notas_tg->nota_tg2 != 0 ? 1 : 0) + ($notas_tg->nota_tg3 != 0 ? 1 : 0) + ($notas_tg->nota_tg4 != 0 ? 1 : 0) + ($notas_tg->nota_tg5 != 0 ? 1 : 0))), 2)}}</td>
                     @endforeach
                     @else
                     <td>0</td>
                     @endif
                     @if($nota->notas_le->count() != 0)
                     @foreach($nota->notas_le as $notas_le)
-                    <td>{{$notas_le->nota_final_le}}</td>
+                    <td>{{round((($notas_le->nota_le1 + $notas_le->nota_le2 + $notas_le->nota_le3 + $notas_le->nota_le4 + $notas_le->nota_le5) / (($notas_le->nota_le1 != 0 ? 1 : 0) + ($notas_le->nota_le2 != 0 ? 1 : 0) + ($notas_le->nota_le3 != 0 ? 1 : 0) + ($notas_le->nota_le4 != 0 ? 1 : 0) + ($notas_le->nota_le5 != 0 ? 1 : 0))), 2)}}</td>
                     @endforeach
                     @else
                     <td>0</td>
                     @endif
                     @if($nota->notas_ev->count() != 0)
                     @foreach($nota->notas_ev as $notas_ev)
-                    <td>{{$notas_ev->nota_final_ev}}</td>
+                    <td>{{round((($notas_ev->nota_ev1 + $notas_ev->nota_ev2 + $notas_ev->nota_ev3 + $notas_ev->nota_ev4 + $notas_ev->nota_ev5) / (($notas_ev->nota_ev1 != 0 ? 1 : 0) + ($notas_ev->nota_ev2 != 0 ? 1 : 0) + ($notas_ev->nota_ev3 != 0 ? 1 : 0) + ($notas_ev->nota_ev4 != 0 ? 1 : 0) + ($notas_ev->nota_ev5 != 0 ? 1 : 0))), 2)}}</td>
                     @endforeach
                     @else
                     <td>0</td>
@@ -185,7 +185,7 @@
                      <td>{{round(((($nota->notas_ta->first()->nota_final_ta)  +  ($nota->notas_ti->first()->nota_final_ti)  +  ($nota->notas_tg->first()->nota_final_tg)  +  ($nota->notas_le->first()->nota_final_le)  +  ($nota->notas_ev->first()->nota_final_ev)) / 5),3)}}</td>
                     @else
                     <td>0</td>
-                    @endif
+                    @endif 
                 </tr>
                 @endforeach
                 @else
