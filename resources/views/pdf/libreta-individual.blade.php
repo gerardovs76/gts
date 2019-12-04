@@ -243,33 +243,44 @@ table#mitabla3 td {
 			@foreach($nota->notas_ta as $notas_ta)
 			@if($notas_ta->materias_id == $materia->id)
 			<td>{{$notas_ta->nota_final_ta}}</td>
+			@php 
+			$nota->promedio_ta = $notas_ta->nota_final_ta;
+			@endphp 
 			@endif
 			@endforeach
 			@foreach($nota->notas_ti as $notas_ti)
 			@if($notas_ti->materias_id == $materia->id)
 			<td>{{$notas_ti->nota_final_ti}}</td>
+			@php
+			$nota->promedio_ti = $notas_ti->nota_final_ti;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_tg as $notas_tg)
 			@if($notas_tg->materias_id == $materia->id)
 			<td>{{$notas_tg->nota_final_tg}}</td>
+			@php 
+			$nota->promedio_tg = $notas_tg->nota_final_tg;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_le as $notas_le)
 			@if($notas_le->materias_id == $materia->id)
 			<td>{{$notas_le->nota_final_le}}</td>
+			@php 
+			$nota->promedio_le = $notas_le->nota_final_le;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_ev as $notas_ev)
 			@if($notas_ev->materias_id == $materia->id)
 			<td>{{$notas_ev->nota_final_ev}}</td>
+			@php 
+			$nota->promedio_ev = $notas_ev->nota_final_ev;
+			@endphp
 			@endif
 			@endforeach
-			@foreach($nota->notas_ta as $c => $value)
-			@if($materia->id == $nota->notas_ta[$c]->materias_id && $materia->id == $nota->notas_ti[$c]->materias_id && $materia->id == $nota->notas_tg[$c]->materias_id && $materia->id == $nota->notas_le[$c]->materias_id && $materia->id == $nota->notas_ev[$c]->materias_id)
-			<td>{{round(((($nota->notas_ta[$c]->nota_final_ta)  +  ($nota->notas_ti[$c]->nota_final_ti)  +  ($nota->notas_tg[$c]->nota_final_tg)  +  ($nota->notas_le[$c]->nota_final_le)  + ($nota->notas_ev[$c]->nota_final_ev)) / 5),3)}}</td>
-			@endif
-			@endforeach 
+			<td>{{round((($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev)/ 5), 2)}}</td>
 			</tr>
 			@endif
 			@endforeach

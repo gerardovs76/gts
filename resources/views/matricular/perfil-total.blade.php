@@ -91,12 +91,12 @@
                                         </tr>
                                                     @foreach($perfil->facturaciones as $factura)
                                                     <tr>
-                                                        @if(strpos($factura->referencias, 'OCT') !== FALSE)
+                                                        @if(strpos($factura->referencias, ' OCT') !== FALSE)
                                                         <th>OCT PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         @endif
                                                     </tr>
                                                     <tr>
-                                                        @if(strpos($factura->referencias, 'NOV') !== FALSE)
+                                                        @if(strpos($factura->referencias, ' NOV') !== FALSE)
                                                         <th>NOV PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                          @endif
                                                     </tr>
