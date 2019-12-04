@@ -19,4 +19,8 @@ class Notas_tg extends Model
         'descripcion'
     ];
 
+    public function matriculado(){
+        return $this->belongsTo('App\Matriculacion', 'id');
+    }
+
 }

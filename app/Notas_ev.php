@@ -20,7 +20,7 @@ class Notas_ev extends Model
     ];
 
     public function matriculado(){
-        return $this->hasOne('App\Matriculacion', 'id');
+        return $this->belongsTo('App\Matriculacion', 'id');
     }
 
 }

@@ -243,41 +243,44 @@ table#mitabla3 td {
 			@foreach($nota->notas_ta as $notas_ta)
 			@if($notas_ta->materias_id == $materia->id)
 			<td>{{$notas_ta->nota_final_ta}}</td>
+			@php 
+			$nota->promedio_ta = ($notas_ta->nota_final_ta == '' ? 0 : $notas_ta->nota_final_ta);
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_ti as $notas_ti)
 			@if($notas_ti->materias_id == $materia->id)
 			<td>{{$notas_ti->nota_final_ti}}</td>
+			@php 
+			$nota->promedio_ti = ($notas_ti->nota_final_ti == '' ? 0 : $notas_ti->nota_final_ti);
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_tg as $notas_tg)
 			@if($notas_tg->materias_id == $materia->id)
 			<td>{{$notas_tg->nota_final_tg}}</td>
+			@php 
+			$nota->promedio_tg = ($notas_tg->nota_final_tg == '' ? 0 : $notas_tg->nota_final_tg);
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_le as $notas_le)
 			@if($notas_le->materias_id == $materia->id)
 			<td>{{$notas_le->nota_final_le}}</td>
+			@php 
+			$nota->promedio_le = ($notas_le->nota_final_le == '' ? 0 : $notas_le->nota_final_le);
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_ev as $notas_ev)
 			@if($notas_ev->materias_id == $materia->id)
 			<td>{{$notas_ev->nota_final_ev}}</td>
+			@php 
+			$nota->promedio_ev = ($notas_ev->nota_final_ev == '' ? 0 : $notas_ev->nota_final_ev);
+			@endphp
 			@endif
 			@endforeach
-			@foreach($nota->notas_ta as $notas_ta)
-			@foreach($nota->notas_ti as $notas_ti)
-			@foreach($nota->notas_tg as $notas_tg)
-			@foreach($nota->notas_le as $notas_le)
-			@foreach($nota->notas_ev as $notas_ev)
-			@if($materia->id == $notas_ta->materias_id && $materia->id == $notas_ti->materias_id && $materia->id == $notas_tg->materias_id && $materia->id == $notas_le->materias_id && $materia->id == $notas_ev->materias_id)
-			<td>{{round(((($notas_ta->nota_final_ta)  +  ($notas_ti->nota_final_ti)  +  ($notas_tg->nota_final_tg)  +  ($notas_le->nota_final_le)  +  ($notas_ev->nota_final_ev)) / 5),3)}}</td>
-			@endif
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach 
+			<td>{{round((($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev) / 5), 2)}}</td>
 			</tr>
 			@endif
 			@endforeach

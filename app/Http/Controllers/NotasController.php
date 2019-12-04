@@ -1416,66 +1416,54 @@ class NotasController extends Controller
         }])->with(['inscripcion' => function($query8){
             $query8->select('cedula', 'nombres_representante'); 
         }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
-        $notasPromedioFinalTa = [];
-        $notasPromedioFinalTi = [];
-        $notasPromedioFinalTg = [];
-        $notasPromedioFinalLe = [];
-        $notasPromedioFinalEv = [];
-        foreach($notas as $nota)
+      /*  foreach($notas as $nota)
         {
-            foreach($nota->notas_ta as $notas_ta)
+            foreach($materias as $materia)
             {
-                $notasPromedioFinalTa[] = [
-                    'matriculado_id' => $notas_ta->matriculado_id,
-                    'nota_final' => $notas_ta->nota_final_ta,
-                    'materias_id' => $notas_ta->materias_id
-                ];
+                foreach($nota->notas_ta as $notas_ta)
+                {
+                    if($notas_ta->materias_id == $materia->id)
+                    {
+                        $nota->nota_promedio_ta = $notas_ta->nota_final_ta;
+
+                    }
+                }
+                foreach($nota->notas_ti as $notas_ti)
+                {
+                    if($notas_ti->materias_id == $materia->id)
+                    {
+                         $nota->nota_promedio_ti = $notas_ti->nota_final_ti;
+                        
+                    }
+                }
+                foreach($nota->notas_tg as $notas_tg)
+                {
+                    if($notas_tg->materias_id == $materia->id)
+                    {
+                         $nota->nota_promedio_tg = $notas_tg->nota_final_tg;
+                        
+                    }
+                }
+                foreach($nota->notas_le as $notas_le)
+                {
+                    if($notas_le->materias_id == $materia->id)
+                    {
+                         $nota->nota_promedio_le = $notas_le->nota_final_le;
+                        
+                    }
+                }
+                foreach($nota->notas_ev as $notas_ev)
+                {
+                    if($notas_ev->materias_id == $materia->id)
+                    {
+                         $nota->nota_promedio_ev = $notas_ev->nota_final_ev;
+                        
+                    }
+                }
+                dump($nota->nota_promedio_ta + $nota->nota_promedio_ti + $nota->nota_promedio_tg + $nota->nota_promedio_le + $nota->nota_promedio_ev);
             }
-        }
-        foreach($notas as $nota)
-        {
-            foreach($nota->notas_ti as $notas_ti)
-            {
-                $notasPromedioFinalTi[] = [
-                    'matriculado_id' => $notas_ti->matriculado_id,
-                    'nota_final' => $notas_ti->nota_final_ti,
-                    'materias_id' => $notas_ti->materias_id
-                ];
-            }
-        }
-        foreach($notas as $nota)
-        {
-            foreach($nota->notas_tg as $notas_tg)
-            {
-                $notasPromedioFinalTg[] = [
-                    'matriculado_id' => $notas_tg->matriculado_id,
-                    'nota_final' => $notas_tg->nota_final_tg,
-                    'materias_id' => $notas_tg->materias_id
-                ];
-            }
-        }
-        foreach($notas as $nota)
-        {
-            foreach($nota->notas_le as $notas_le)
-            {
-                $notasPromedioFinalLe[] = [
-                    'matriculado_id' => $notas_le->matriculado_id,
-                    'nota_final' => $notas_le->nota_final_le,
-                    'materias_id' => $notas_le->materias_id
-                ];
-            }
-        }
-        foreach($notas as $nota)
-        {
-            foreach($nota->notas_ev as $notas_ev)
-            {
-                $notasPromedioFinalEv[] = [
-                    'matriculado_id' => $notas_ev->matriculado_id,
-                    'nota_final' => $notas_ev->nota_final_ev,
-                    'materias_id' => $notas_ev->materias_id
-                ];
-            }
-        }
+           
+        }  */
         $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query) use($parcial, $quimestre){
             $query
             ->where('parcial', $parcial)

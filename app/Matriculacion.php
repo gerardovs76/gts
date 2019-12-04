@@ -79,4 +79,8 @@ public function materias()
 {
     return $this->hasMany('App\Materias', 'curso', 'curso');
 }
+public function notas_promedio()
+{
+    return $this->hasManyThrough('App\Nota_ta','App\Notas_ti','App\Notas_tg','App\Notas_le','App\Notas_ev', 'matriculado_id');
+}
 }
