@@ -178,7 +178,7 @@
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
                                                        var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
-                                                       var sumaTa = ((nota_ta1 + nota_ta2 + nota_ta3 + nota_ta4 + nota_ta5).toFixed(2));
+                                                       var sumaTa = ((nota_ta1 + nota_ta2 + nota_ta3 + nota_ta4 + nota_ta5));
                                                        var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
