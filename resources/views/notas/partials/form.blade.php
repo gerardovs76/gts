@@ -183,6 +183,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
+                                                            $('#promediota'+obj.id+'').css("font-size", "12px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
@@ -197,6 +198,7 @@
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
                                                        $('#promedioTi').on('click', () => {
                                                             $('#promedioti'+obj.id+'').empty();
+                                                            $('#promedioti'+obj.id+'').css("font-size", "12px");
                                                             $('#promedioti'+obj.id+'').val(sumaTiTotal);
                                                        });
                                                   }, 500);
@@ -211,6 +213,7 @@
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
                                                        $('#promedioTg').on('click', () => {
                                                             $('#promediotg'+obj.id+'').empty();
+                                                            $('#promediotg'+obj.id+'').css("font-size", "12px");
                                                             $('#promediotg'+obj.id+'').val(sumaTgTotal);
                                                        });
                                                   }, 500);
@@ -225,6 +228,7 @@
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
                                                        $('#promedioLe').on('click', () => {
                                                             $('#promediole'+obj.id+'').empty();
+                                                            $('#promediole'+obj.id+'').css("font-size", "12px");
                                                             $('#promediole'+obj.id+'').val(sumaLeTotal);
                                                        });
                                                   }, 500);
@@ -239,6 +243,7 @@
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
                                                        $('#promedioEv').on('click', () => {
                                                             $('#promedioev'+obj.id+'').empty();
+                                                            $('#promedioev'+obj.id+'').css("font-size", "12px");
                                                             $('#promedioev'+obj.id+'').val(sumaEvTotal);
                                                        });
                                                   }, 500);
@@ -292,6 +297,7 @@
                                                        var sumaTotalTodo = (((sumaTaTotal) + (sumaTiTotal) + (sumaTgTotal) + (sumaLeTotal) + (sumaEvTotal)) / 5);
                                                        $('#promedioFinal').on('click', () => {
                                                             $('#promediofinal'+obj.id+'').empty();
+                                                            $('#promediofinal'+obj.id+'').css("font-size", "12px");
                                                             $('#promediofinal'+obj.id+'').val(sumaTotalTodo.toFixed(2));
                                                        });
                                                   }, 500);
@@ -311,6 +317,7 @@
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
+                                                            $('#promediota'+obj.id+'').css("font-size", "12px");
                                                              $('#promediota'+obj.id+'').val(sumaTaTotal);
                                                        });
                                                   }, 500);
@@ -325,6 +332,7 @@
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
                                                        $('#promedioTi').on('click', () => {
                                                             $('#promedioti'+obj.id+'').empty();
+                                                            $('#promedioti'+obj.id+'').css("font-size", "12px");
                                                             $('#promedioti'+obj.id+'').val(sumaTiTotal);
                                                        });
                                                   }, 500);
@@ -339,6 +347,7 @@
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
                                                        $('#promedioTg').on('click', () => {
                                                             $('#promediotg'+obj.id+'').empty();
+                                                            $('#promediotg'+obj.id+'').css("font-size", "12px");
                                                             $('#promediotg'+obj.id+'').val(sumaTgTotal);
                                                        });
                                                   }, 500);
@@ -353,6 +362,7 @@
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
                                                        $('#promedioLe').on('click', () => {
                                                             $('#promediole'+obj.id+'').empty();
+                                                            $('#promediole'+obj.id+'').css("font-size", "12px");
                                                             $('#promediole'+obj.id+'').val(sumaLeTotal);
                                                        });
                                                   }, 500);
@@ -367,6 +377,7 @@
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
                                                        $('#promedioEv').on('click', () => {
                                                             $('#promedioev'+obj.id+'').empty();
+                                                            $('#promedioev'+obj.id+'').css("font-size", "12px");
                                                             $('#promedioev'+obj.id+'').val(sumaEvTotal);
                                                        });
                                                   }, 500);
@@ -420,6 +431,7 @@
                                                        var sumaTotalTodo = (((sumaTaTotal) + (sumaTiTotal) + (sumaTgTotal) + (sumaLeTotal) + (sumaEvTotal)) / 5);
                                                        $('#promedioFinal').on('click', () => {
                                                             $('#promediofinal'+obj.id+'').empty();
+                                                            $('#promediofinal'+obj.id+'').css("font-size", "12px");
                                                             $('#promediofinal'+obj.id+'').val(sumaTotalTodo.toFixed(2));
                                                        });
                                                   }, 500);

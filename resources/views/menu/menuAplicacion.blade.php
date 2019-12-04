@@ -135,9 +135,9 @@
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
                 @endcan
-                @can('notas.verNotasEspeciales')
+          {{--       @can('notas.verNotasEspeciales')
                 <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales profesores</a>
-                @endcan
+                @endcan --}}
                 @can('notas.ver-notas-alumnos')
                 <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
                 @endcan
