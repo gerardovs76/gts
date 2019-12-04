@@ -193,7 +193,7 @@
                                                        var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
                                                        var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
                                                        var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
-                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi = ((parseFloat(nota_ti1) + parseFloat(nota_ti2) + parseFloat(nota_ti3) + parseFloat(nota_ti4)) + parseFloat(nota_ti5));
                                                        var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
                                                        $('#promedioTi').on('click', () => {
@@ -208,7 +208,7 @@
                                                        var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
                                                        var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
                                                        var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
-                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg = ((parseFloat(nota_tg1) + parseFloat(nota_tg2) + parseFloat(nota_tg3) + parseFloat(nota_tg4)) + parseFloat(nota_tg5));
                                                        var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
                                                        $('#promedioTg').on('click', () => {
@@ -223,7 +223,7 @@
                                                        var nota_le3 = $('#nota_le3'+obj.id+'').val();
                                                        var nota_le4 = $('#nota_le4'+obj.id+'').val();
                                                        var nota_le5 = $('#nota_le5'+obj.id+'').val();
-                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe = ((parseFloat(nota_le1) + parseFloat(nota_le2) + parseFloat(nota_le3) + parseFloat(nota_le4)) + parseFloat(nota_le5));
                                                        var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
                                                        $('#promedioLe').on('click', () => {
@@ -238,7 +238,7 @@
                                                        var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
                                                        var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
                                                        var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
-                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv = ((parseFloat(nota_ev1) + parseFloat(nota_ev2) + parseFloat(nota_ev3) + parseFloat(nota_ev4)) + parseFloat(nota_ev5));
                                                        var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
                                                        $('#promedioEv').on('click', () => {
@@ -253,7 +253,7 @@
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
                                                        var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
-                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa = ((parseFloat(nota_ta1) + parseFloat(nota_ta2) + parseFloat(nota_ta3) + parseFloat(nota_ta4)) + parseFloat(nota_ta5));
                                                        var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
 
@@ -262,7 +262,7 @@
                                                        var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
                                                        var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
                                                        var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
-                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi = ((parseFloat(nota_ti1) + parseFloat(nota_ti2) + parseFloat(nota_ti3) + parseFloat(nota_ti4)) + parseFloat(nota_ti5));
                                                        var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
 
@@ -271,7 +271,7 @@
                                                        var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
                                                        var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
                                                        var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
-                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg = ((parseFloat(nota_tg1) + parseFloat(nota_tg2) + parseFloat(nota_tg3) + parseFloat(nota_tg4)) + parseFloat(nota_tg5));
                                                        var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
 
@@ -280,7 +280,7 @@
                                                        var nota_le3 = $('#nota_le3'+obj.id+'').val();
                                                        var nota_le4 = $('#nota_le4'+obj.id+'').val();
                                                        var nota_le5 = $('#nota_le5'+obj.id+'').val();
-                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe = ((parseFloat(nota_le1) + parseFloat(nota_le2) + parseFloat(nota_le3) + parseFloat(nota_le4)) + parseFloat(nota_le5));
                                                        var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
 
@@ -289,7 +289,7 @@
                                                        var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
                                                        var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
                                                        var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
-                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv = ((parseFloat(nota_ev1) + parseFloat(nota_ev2) + parseFloat(nota_ev3) + parseFloat(nota_ev4)) + parseFloat(nota_ev5));
                                                        var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
 
@@ -312,7 +312,7 @@
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
                                                        var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
-                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa = ((parseFloat(nota_ta1) + parseFloat(nota_ta2) + parseFloat(nota_ta3) + parseFloat(nota_ta4)) + parseFloat(nota_ta5));
                                                        var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
                                                        $('#promedioTa').on('click', () => {
@@ -327,7 +327,7 @@
                                                        var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
                                                        var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
                                                        var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
-                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi = ((parseFloat(nota_ti1) + parseFloat(nota_ti2) + parseFloat(nota_ti3) + parseFloat(nota_ti4)) + parseFloat(nota_ti5));
                                                        var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
                                                        $('#promedioTi').on('click', () => {
@@ -342,7 +342,7 @@
                                                        var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
                                                        var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
                                                        var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
-                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg = ((parseFloat(nota_tg1) + parseFloat(nota_tg2) + parseFloat(nota_tg3) + parseFloat(nota_tg4)) + parseFloat(nota_tg5));
                                                        var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
                                                        $('#promedioTg').on('click', () => {
@@ -357,7 +357,7 @@
                                                        var nota_le3 = $('#nota_le3'+obj.id+'').val();
                                                        var nota_le4 = $('#nota_le4'+obj.id+'').val();
                                                        var nota_le5 = $('#nota_le5'+obj.id+'').val();
-                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe = ((parseFloat(nota_le1) + parseFloat(nota_le2) + parseFloat(nota_le3) + parseFloat(nota_le4)) + parseFloat(nota_le5));
                                                        var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
                                                        $('#promedioLe').on('click', () => {
@@ -372,7 +372,7 @@
                                                        var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
                                                        var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
                                                        var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
-                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv = ((parseFloat(nota_ev1) + parseFloat(nota_ev2) + parseFloat(nota_ev3) + parseFloat(nota_ev4)) + parseFloat(nota_ev5));
                                                        var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
                                                        $('#promedioEv').on('click', () => {
@@ -387,7 +387,7 @@
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
                                                        var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
-                                                       var sumaTa = ((parseInt(nota_ta1) + parseInt(nota_ta2) + parseInt(nota_ta3) + parseInt(nota_ta4)) + parseInt(nota_ta5));
+                                                       var sumaTa = ((parseFloat(nota_ta1) + parseFloat(nota_ta2) + parseFloat(nota_ta3) + parseFloat(nota_ta4)) + parseFloat(nota_ta5));
                                                        var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
 
@@ -396,7 +396,7 @@
                                                        var nota_ti3 = $('#nota_ti3'+obj.id+'').val();
                                                        var nota_ti4 = $('#nota_ti4'+obj.id+'').val();
                                                        var nota_ti5 = $('#nota_ti5'+obj.id+'').val();
-                                                       var sumaTi = ((parseInt(nota_ti1) + parseInt(nota_ti2) + parseInt(nota_ti3) + parseInt(nota_ti4)) + parseInt(nota_ti5));
+                                                       var sumaTi = ((parseFloat(nota_ti1) + parseFloat(nota_ti2) + parseFloat(nota_ti3) + parseFloat(nota_ti4)) + parseFloat(nota_ti5));
                                                        var sumaTi2 = ((nota_ti1 == 0 ? 0 : 1) +(nota_ti2 == 0 ? 0 : 1) +(nota_ti3 == 0 ? 0 : 1) +(nota_ti4 == 0 ? 0 : 1) +(nota_ti5 == 0 ? 0 : 1));
                                                        var sumaTiTotal = (sumaTi / sumaTi2);
 
@@ -405,7 +405,7 @@
                                                        var nota_tg3 = $('#nota_tg3'+obj.id+'').val();
                                                        var nota_tg4 = $('#nota_tg4'+obj.id+'').val();
                                                        var nota_tg5 = $('#nota_tg5'+obj.id+'').val();
-                                                       var sumaTg = ((parseInt(nota_tg1) + parseInt(nota_tg2) + parseInt(nota_tg3) + parseInt(nota_tg4)) + parseInt(nota_tg5));
+                                                       var sumaTg = ((parseFloat(nota_tg1) + parseFloat(nota_tg2) + parseFloat(nota_tg3) + parseFloat(nota_tg4)) + parseFloat(nota_tg5));
                                                        var sumaTg2 = ((nota_tg1 == 0 ? 0 : 1) +(nota_tg2 == 0 ? 0 : 1) +(nota_tg3 == 0 ? 0 : 1) +(nota_tg4 == 0 ? 0 : 1) +(nota_tg5 == 0 ? 0 : 1));
                                                        var sumaTgTotal = (sumaTg / sumaTg2);
 
@@ -414,7 +414,7 @@
                                                        var nota_le3 = $('#nota_le3'+obj.id+'').val();
                                                        var nota_le4 = $('#nota_le4'+obj.id+'').val();
                                                        var nota_le5 = $('#nota_le5'+obj.id+'').val();
-                                                       var sumaLe = ((parseInt(nota_le1) + parseInt(nota_le2) + parseInt(nota_le3) + parseInt(nota_le4)) + parseInt(nota_le5));
+                                                       var sumaLe = ((parseFloat(nota_le1) + parseFloat(nota_le2) + parseFloat(nota_le3) + parseFloat(nota_le4)) + parseFloat(nota_le5));
                                                        var sumaLe2 = ((nota_le1 == 0 ? 0 : 1) +(nota_le2 == 0 ? 0 : 1) +(nota_le3 == 0 ? 0 : 1) +(nota_le4 == 0 ? 0 : 1) +(nota_le5 == 0 ? 0 : 1));
                                                        var sumaLeTotal = (sumaLe / sumaLe2);
 
@@ -423,7 +423,7 @@
                                                        var nota_ev3 = $('#nota_ev3'+obj.id+'').val();
                                                        var nota_ev4 = $('#nota_ev4'+obj.id+'').val();
                                                        var nota_ev5 = $('#nota_ev5'+obj.id+'').val();
-                                                       var sumaEv = ((parseInt(nota_ev1) + parseInt(nota_ev2) + parseInt(nota_ev3) + parseInt(nota_ev4)) + parseInt(nota_ev5));
+                                                       var sumaEv = ((parseFloat(nota_ev1) + parseFloat(nota_ev2) + parseFloat(nota_ev3) + parseFloat(nota_ev4)) + parseFloat(nota_ev5));
                                                        var sumaEv2 = ((nota_ev1 == 0 ? 0 : 1) +(nota_ev2 == 0 ? 0 : 1) +(nota_ev3 == 0 ? 0 : 1) +(nota_ev4 == 0 ? 0 : 1) +(nota_ev5 == 0 ? 0 : 1));
                                                        var sumaEvTotal = (sumaEv / sumaEv2);
 
