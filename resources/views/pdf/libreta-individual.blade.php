@@ -320,7 +320,10 @@ table#mitabla3 td {
 			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
 			@endif
 			@endforeach
-			<td>{{($nota->promedio_ta +  $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev)}}</td>
+			@php 
+			$nota_final_promedio = (($nota->promedio_ta +  $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev) / 5);
+			@endphp 
+			<td>{{$nota_final_promedio = ($nota_final_promedio >= 9 && $nota_final_promedio <= 10 = 'A' : 'B')}}</td>
 			</tr>
 			@endif
 			@endforeach
