@@ -184,7 +184,7 @@
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
                                                             $('#promediota'+obj.id+'').css("font-size", "12px");
-                                                             $('#promediota'+obj.id+'').val(sumaTaTotal);
+                                                             $('#promediota'+obj.id+'').val(sumaTaTotal.toFixed(2));
                                                        });
                                                   }, 500);
                                                   setInterval(() => {
