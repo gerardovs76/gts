@@ -319,7 +319,7 @@ table#mitabla3 td {
 			$nota->promedio_ev = $notas_ev->nota_final_ev;
 			@endphp
 			@php
-			$nota_final_promedio = ($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev);
+			$nota_final_promedio = (($nota->promedio_ta == '' ? 0 : $nota->promedio_ta) + ($nota->promedio_ti == '' ? 0 : $nota->promedio_ti) + ($nota->promedio_tg == '' ? 0 : $nota->promedio_tg) + ($nota->promedio_le == '' ? 0 : $nota->promedio_le) + ($nota->promedio_ev == '' ? 0 : $nota->promedio_ev));
 			@endphp
 			<td>{{($nota_final_promedio = ($nota_final_promedio >= 9 && $nota_final_promedio <= 10 ? 'A' : 'B'))}}</td>
 			@endif
