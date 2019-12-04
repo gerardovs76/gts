@@ -308,11 +308,11 @@ table#mitabla3 td {
 			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
 			@endif
 			@endforeach
-		{{-- 	@foreach($notasPromedioFinalTa as $c => $value)
-
-			<td>{{$notasPromedioFinalTa[$c]['nota_final'] + $notasPromedioFinalTi[$c]['nota_final'] + $notasPromedioFinalTg[$c]['nota_final'] + $notasPromedioFinalLe[$c]['nota_final'] + $notasPromedioFinalEv[$c]['nota_final']}}</td>
-		
-			@endforeach --}}
+			@foreach($nota->notas_ta as $c => $value)
+			@if($materia->id == $nota->notas_ta[$c]->materias_id && $materia->id == $nota->notas_ti[$c]->materias_id && $materia->id == $nota->notas_tg[$c]->materias_id && $materia->id == $nota->notas_le[$c]->materias_id && $materia->id == $nota->notas_ev[$c]->materias_id)
+			<td>{{round(((($nota->notas_ta[$c]->nota_final_ta)  +  ($nota->notas_ti[$c]->nota_final_ti)  +  ($nota->notas_tg[$c]->nota_final_tg)  +  ($nota->notas_le[$c]->nota_final_le)  + ($nota->notas_ev[$c]->nota_final_ev)) / 5),3)}}</td>
+			@endif
+			@endforeach 
 			</tr>
 			@endif
 			@endforeach
