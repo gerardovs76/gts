@@ -178,10 +178,9 @@
                                                        var nota_ta3 = $('#nota_ta3'+obj.id+'').val();
                                                        var nota_ta4 = $('#nota_ta4'+obj.id+'').val();
                                                        var nota_ta5 = $('#nota_ta5'+obj.id+'').val();
-                                                       var sumaTa = ((nota_ta1 + nota_ta2 + nota_ta3 + nota_ta4 + nota_ta5));
+                                                       var sumaTa = ((parseFloat(nota_ta1) + parseFloat(nota_ta2) + parseFloat(nota_ta3) + parseFloat(nota_ta4)) + parseFloat(nota_ta5));
                                                        var sumaTa2 = ((nota_ta1 == 0 ? 0 : 1) +(nota_ta2 == 0 ? 0 : 1) +(nota_ta3 == 0 ? 0 : 1) +(nota_ta4 == 0 ? 0 : 1) +(nota_ta5 == 0 ? 0 : 1));
                                                        var sumaTaTotal = (sumaTa / sumaTa2);
-                                                       sumaTaTotal.toFixed(2);
                                                        $('#promedioTa').on('click', () => {
                                                             $('#promediota'+obj.id+'').empty();
                                                             $('#promediota'+obj.id+'').css("font-size", "12px");
