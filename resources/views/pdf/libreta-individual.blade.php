@@ -323,7 +323,7 @@ table#mitabla3 td {
 			@php 
 			$nota_final_promedio = (($nota->promedio_ta +  $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev) / 5);
 			@endphp 
-			<td>{{$nota_final_promedio => 9 && $nota_final_promedio <= 10 'A' : 'B'}}</td>
+			<td>{{$nota_final_promedio >= 9 && $nota_final_promedio <= 10 'A' : 'B'}}</td>
 			</tr>
 			@endif
 			@endforeach
