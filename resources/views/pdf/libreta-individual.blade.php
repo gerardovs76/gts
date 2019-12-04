@@ -283,26 +283,45 @@ table#mitabla3 td {
 			@foreach($nota->notas_ta as $notas_ta)
 			@if($notas_ta->materias_id == $materia->id)
 			<td>{{$notas_ta->nota_final_ta = ($notas_ta->nota_final_ta >= 9 && $notas_ta->nota_final_ta <= 10 ? 'A' : ($notas_ta->nota_final_ta >= 7 && $notas_ta->nota_final_ta <= 8.99 ? 'B' : ($notas_ta->nota_final_ta >= 4.01 && $notas_ta->nota_final_ta <= 6.99 ? 'C' : ($notas_ta->nota_final_ta <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@php
+			$nota->promedio_ta = $notas_ta->nota_final_ta;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_ti as $notas_ti)
 			@if($notas_ti->materias_id == $materia->id)
 			<td>{{$notas_ti->nota_final_ti = ($notas_ti->nota_final_ti >= 9 && $notas_ti->nota_final_ti <= 10 ? 'A' : ($notas_ti->nota_final_ti >= 7 && $notas_ti->nota_final_ti <= 8.99 ? 'B' : ($notas_ti->nota_final_ti >= 4.01 && $notas_ti->nota_final_ti <= 6.99 ? 'C' : ($notas_ti->nota_final_ti <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@php
+			$nota->promedio_ti = $notas_ti->nota_final_ti;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_tg as $notas_tg)
 			@if($notas_tg->materias_id == $materia->id)
 			<td>{{$notas_tg->nota_final_tg = ($notas_tg->nota_final_tg >= 9 && $notas_tg->nota_final_tg <= 10 ? 'A' : ($notas_tg->nota_final_tg >= 7 && $notas_tg->nota_final_tg <= 8.99 ? 'B' : ($notas_tg->nota_final_tg >= 4.01 && $notas_tg->nota_final_tg <= 6.99 ? 'C' : ($notas_tg->nota_final_tg <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@php
+			$nota->promedio_tg = $notas_tg->nota_final_tg;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_le as $notas_le)
 			@if($notas_le->materias_id == $materia->id)
 			<td>{{$notas_le->nota_final_le = ($notas_le->nota_final_le >= 9 && $notas_le->nota_final_le <= 10 ? 'A' : ($notas_le->nota_final_le >= 7 && $notas_le->nota_final_le <= 8.99 ? 'B' : ($notas_le->nota_final_le >= 4.01 && $notas_le->nota_final_le <= 6.99 ? 'C' : ($notas_le->nota_final_le <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@php
+			$nota->promedio_le = $notas_le->nota_final_le;
+			@endphp
 			@endif
 			@endforeach
 			@foreach($nota->notas_ev as $notas_ev)
 			@if($notas_ev->materias_id == $materia->id)
 			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+			@php
+			$nota->promedio_ev = $notas_ev->nota_final_ev;
+			@endphp
+			@php
+			$nota_final_promedio = ($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev);
+			@endphp
+			<td>{{($nota_final_promedio = ($nota_final_promedio >= 9 && $nota_final_promedio <= 10 ? 'A' : 'B'))}}</td>
 			@endif
 			@endforeach
 		{{-- 	@foreach($notasPromedioFinalTa as $c => $value)
