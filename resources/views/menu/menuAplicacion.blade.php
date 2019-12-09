@@ -68,9 +68,9 @@
                 @can('matricular.cas')
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
                 @endcan
-                {{-- @can('matricular.total-resumen')
+                 @can('matricular.total-resumen')
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
-                @endcan --}}
+                @endcan 
               </div>
             </li>
             @endcan
