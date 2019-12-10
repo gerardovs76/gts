@@ -132,6 +132,9 @@
               @can('notas.index')
                 <a class="dropdown-item" href="{{ route('notas.index') }}">Ingresar notas</a>
                 @endcan
+                @can('notas.examen')
+                <a class="dropdown-item" href="{{route('notas.examen')}}">Examen quimestral</a>
+                @endcan
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
                 @endcan

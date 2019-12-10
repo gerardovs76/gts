@@ -427,6 +427,34 @@ class NotasController extends Controller
      * @param  \App\notass  $notass
      * @return \Illuminate\Http\Response
      */
+    public function examenQuimestralStore(NotasRequest $request)
+    {
+            $notas_examen = $request->examen;
+            $matriculados_id = $request->matriculados_id;
+            $materias_id = $request->materias_id;
+            $parcial = $request->parcial;
+            $quimestre = $request->quimestre;
+            $descripcion = $request->descripcion;
+            foreach($matriculados_id as $key => $value)
+            {
+                $nota_examen = new Notas_examen;
+                if($notas_examen[$key] == null)
+                {
+                    $nota_examen->nota_exq = 0;
+                }else{
+                    $nota_examen->nota_exq = $notas_examen[$key];
+                }
+                $nota_examen->descripcion = $descripcion;
+                $nota_examen->materias_id = $materias_id[$key];
+                $nota_examen->matriculado_id = $matriculados_id[$key];
+                $nota_examen->quimestre = $quimestre[$key];
+                $nota_examen->autoridad_id = auth()->user()->id;
+                $nota_examen->numero_tarea_exq = '1';
+                $nota_examen->save();
+            }
+            return redirect()->route('notas.examen')->with('info', 'La nota se ha agregado correctamente');
+            
+        }
     public function show($id)
     {
         $notas = Notas::find($id);
@@ -765,6 +793,20 @@ class NotasController extends Controller
         $data['all_notas'] = $all_notas; 
         return response()->json($data);
     }
+    public function buscarAlumnoNotas2($cursos, $paralelo)
+    {
+        $matriculados = DB::table('matriculados')
+        ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"), 'matriculados.id as id')
+        ->where('curso', 'LIKE', '%'.$cursos.'%')
+        ->where('paralelo', 'LIKE', '%'.$paralelo.'%')
+        ->orderBy('matriculados.apellidos')
+        ->distinct()
+        ->get();
+
+
+        return response()->json($matriculados);
+
+    }
     public function verNotasCargadas()
     {
         $users = Auth::user()->cedula;
@@ -943,6 +985,12 @@ class NotasController extends Controller
                 ->where('materias_id', $materia)
                 ->where('quimestre', $quimestre)
                 ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+               ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_examen' => function($query6) use($quimestre, $materia){
+                $query6
+                ->where('materias_id', $materia)
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
                ->groupBy('matriculado_id', 'materias_id');
             }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
           
@@ -2222,11 +2270,7 @@ class NotasController extends Controller
         $quimestre = $request->quimestre;
         $parcial = $request->parcial;
         $materia = $request->materia;
-        $curso = $request->curso;
-        $paralelo = $request->paralelo;
-        $quimestre = $request->quimestre;
-        $parcial = $request->parcial;
-        $materia = $request->materia;
+
         $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
             $query1
             ->where('parcial', $parcial)
@@ -2274,8 +2318,8 @@ class NotasController extends Controller
        ->where('m1.cedula', $cedula)
        ->where('m2.cedula', $cedula)
        ->select('materias.materia', 'materias.id')
+       ->distinct()
        ->get();
-
        return response()->json($materiasMatriculados);
     }
 
@@ -2800,6 +2844,9 @@ class NotasController extends Controller
  dd(json_encode($notas));
 
     }
-
+    public function examenQuimestral()
+    {
+        return view('notas.examen');
+    }
 
 }
