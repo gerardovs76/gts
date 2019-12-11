@@ -11,13 +11,6 @@
 
         <div class="modal-body" id="modal-body">
             <div class="form-row">
-                    <div class="form-group col-md-12">
-                            <strong>Descripción: <br></strong>
-                            <div class="input-group-prepend">
-                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                {!!Form::text('descripcion', null, ['class' => 'form-control col-md-4', 'placeholder' => 'Ingrese la descripción de la tarea'])!!}
-                </div>
-                    </div>
                 <table class="table table-striped table-bordered" >
                     <thead>
                         <tr>

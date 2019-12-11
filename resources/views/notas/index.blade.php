@@ -12,41 +12,46 @@
 		{{ Session::get('error') }}
     </div>
         @endif
-					{!! Form::open(['route' => 'notas.store']) !!}
+					{!! Form::open(['route' => 'notas.store', 'id' => 'form-id']) !!}
 					@include('notas.partials.error')
                            @include('notas.partials.form')
                            @include('notas.modal.ingresarNotasModal')
+                           @include('notas.modal.descripcionesModal')
                     <div class="table-responsive">
-                    <table class="table table-striped table-hover" id="tabla">
+                    <table class="table table-striped table-hover d-none" id="tabla">
 			<thead>
-
+                    <button id="agregarDescripciones" type="button"  type="button" data-toggle="modal" style="background-color: #722f37;" data-target="#modalIngresarDescripciones" class="btn btn-primary d-none center-block"><i class="fas fa-clipboard"></i> AGREGAR DESCRIPCIONES</button><br><br>
+                    
                     <tr>
                     <th>
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
+                            <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>
+                    </th>
+                    <th>
+                      <button type="button"  class="btn btn-primary" id="trabajos_academicos"><i class="far fa-clipboard"></i> TRABAJOS ACADEMICOS</button>
+                      <button class="btn btn-primary" id="promedioTa" type="button"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="tareas_individuales"><i class="far fa-clipboard"></i> TAREAS INDIVIDUALES</button>
+                      <button type="button" class="btn btn-warning" id="tareas_individuales"><i class="far fa-clipboard"></i> TAREAS INDIVIDUALES</button>
+                      <button class="btn btn-warning" type="button" id="promedioTi"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="tareas_grupales"><i class="far fa-clipboard"></i> TAREAS GRUPALES</button>
+                      <button type="button" class="btn btn-danger" id="tareas_grupales"><i class="far fa-clipboard"></i> TAREAS GRUPALES</button>
+                      <button class="btn btn-danger" type="button" id="promedioTg"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="lecciones"><i class="far fa-clipboard"></i> LECCIONES</button>
+                      <button type="button" class="btn btn-info" id="lecciones"><i class="far fa-clipboard"></i> LECCIONES</button>
+                      <button class="btn btn-info" type="button" id="promedioLe"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
 
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
+                      <button type="button" class="btn btn-success" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
+                      <button class="btn btn-success" type="button" id="promedioEv"><i class="fas fa-plus"></i> P</button>
                     </th>
                     <th>
-
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="conducta"><i class="far fa-clipboard"></i> CONDUCTA</button>
-                    </th>
-                    <th>
-
-                    	<button disabled="disabled" type="button" data-toggle="modal" data-target="#modalIngresarNotas" class="btn btn-primary" id="examen"><i class="far fa-clipboard"></i> EXAMEN QUIMESTRAL</button>
+                        <button class="btn btn-primary" type="button" id="promedioFinal" style="background-color: #D718EE;"><i class="far fa-clipboard"></i> PROMEDIOS</button>
                     </th>
 
                     </tr>
@@ -57,7 +62,6 @@
 				</tr>
 			</tbody>
         </table>
-    </div>
 				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}
 		  {{ Form::close() }}
 	</div>

@@ -16,9 +16,21 @@ class CreateNotasLeTable extends Migration
         Schema::create('notas_le', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('id_antiguo');
-            $table->string('nota_le');
-            $table->string('numero_tarea_le');
-            $table->string('descripcion')->nullable();
+            $table->string('nota_le1');
+            $table->string('nota_le2');
+            $table->string('nota_le3');
+            $table->string('nota_le4');
+            $table->string('nota_le5');
+            $table->string('numero_tarea_le1');
+            $table->string('numero_tarea_le2');
+            $table->string('numero_tarea_le3');
+            $table->string('numero_tarea_le4');
+            $table->string('numero_tarea_le5');
+            $table->string('descripcion_le1')->nullable();
+            $table->string('descripcion_le2')->nullable();
+            $table->string('descripcion_le3')->nullable();
+            $table->string('descripcion_le4')->nullable();
+            $table->string('descripcion_le5')->nullable();
             $table->string('matriculado_id');
             $table->string('materias_id');
             $table->string('parcial');

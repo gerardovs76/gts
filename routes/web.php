@@ -138,11 +138,15 @@ Route::put('notas/{id}/{tt}', 'NotasController@update')->name('notas.update');
 
 Route::get('buscar_notas/{curso}/{paralelo}', 'NotasController@buscarMateriaAlumno');
 
-Route::get('buscar_alumnos/{cursos}/{paralelo}', 'NotasController@buscarAlumnoNotas');
+Route::get('buscar_alumnos/{cursos}/{paralelo}/{materia}', 'NotasController@buscarAlumnoNotas');
+
+Route::get('buscar_alumnos2/{cursos}/{paralelo}', 'NotasController@buscarAlumnoNotas2');
 
 Route::get('asignar_nota/{curso}/{especialidad}/{paralelo}', 'TrabajosAcademicosController@asignarNota');
 
 Route::get('mostrar_notas/{curso}', 'NotasController@mostrardatosAlumnos');
+
+Route::post('notas/store/examen', 'NotasController@examenQuimestralStore')->name('notas.store-examen');
 
 Route::get('notas-editar', 'NotasController@editarNotas')->name('notas.editar-notas')->middleware('has.permission:notas.editar-notas');
 
@@ -252,6 +256,8 @@ Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividu
 Route::get('promedios-finales', 'NotasController@promediosFinales');
 
 Route::get('notas-resumen', 'NotasController@resumenNotas')->name('notas.nota-resumen');
+
+Route::get('notas-examen', 'NotasController@examenQuimestral')->name('notas.examen');
 //MATRICULACIÓN
 
 Route::get('matricular', 'MatriculacionController@index')->name('matricular.index')->middleware('has.permission:matricular.index');
