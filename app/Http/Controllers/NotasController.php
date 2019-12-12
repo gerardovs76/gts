@@ -1570,44 +1570,38 @@ class NotasController extends Controller
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
       $materias = Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.curso', $curso)->where('m2.paralelo', $paralelo)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get();
-      $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
+      $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre){
         $query1
         ->where('parcial', $parcial)
-        ->where('materias_id', $materia)
         ->where('quimestre', $quimestre)
         ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
         ->groupBy('matriculado_id', 'materias_id');
-         }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
+         }])->with(['notas_ti' => function($query2) use($parcial, $quimestre){
             $query2
             ->where('parcial', $parcial)
-            ->where('materias_id', $materia)
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
             ->groupBy('matriculado_id', 'materias_id');
-        }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
+        }])->with(['notas_tg' => function($query3) use($parcial, $quimestre){
             $query3
             ->where('parcial', $parcial)
-            ->where('materias_id', $materia)
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
             ->groupBy('matriculado_id', 'materias_id');
-        }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
+        }])->with(['notas_le' => function($query4) use($parcial, $quimestre){
             $query4
             ->where('parcial', $parcial)
-            ->where('materias_id', $materia)
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
             ->groupBy('matriculado_id', 'materias_id');
-        }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
+        }])->with(['notas_ev' => function($query5) use($parcial, $quimestre){
             $query5
             ->where('parcial', $parcial)
-            ->where('materias_id', $materia)
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
            ->groupBy('matriculado_id', 'materias_id');
-        }])->with(['notas_examen' => function($query6) use($quimestre, $materia){
+        }])->with(['notas_examen' => function($query6) use($quimestre){
             $query6
-            ->where('materias_id', $materia)
             ->where('quimestre', $quimestre)
             ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
            ->groupBy('matriculado_id', 'materias_id');
