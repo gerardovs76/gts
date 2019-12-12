@@ -348,16 +348,11 @@ table#mitabla3 td {
 				@endphp
 				<td>{{$promedio_final}}</td>
 			</tr>
-			@else
-			<tr>
-
-			</tr>
-			@elseif($materia->tipo_materia == "SI")
+			@endif
+			@endforeach
 			<tr>
 				<th>CLUBES</th>
 			</tr>
-			@endif
-			@endforeach
 			
 		</tbody>
 	</table>
