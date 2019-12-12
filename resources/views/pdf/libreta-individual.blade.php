@@ -370,7 +370,7 @@ table#mitabla3 td {
 					$nota_promedio_ta = round(($nota_final_ta) / ($numero_nota_final_ta), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ta  = ($nota_promedio_ta >= 9 && $nota_promedio_ta <= 10 ? 'A' : ($nota_promedio_ta >= 7 && $nota_promedio_ta <= 8.99 ? 'B' : ($nota_promedio_ta >= 4.01 && $nota_promedio_ta <= 6.99 ? 'C' : ($nota_promedio_ta <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				<td>{{$nota_promedio_ta}}</td>
 				@endif
 				@endforeach
 				@else
@@ -389,7 +389,7 @@ table#mitabla3 td {
 					$nota_promedio_ti = round(($nota_final_ti) / ($numero_nota_final_ti), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ti  = ($nota_promedio_ti >= 9 && $nota_promedio_ti <= 10 ? 'A' : ($nota_promedio_ti >= 7 && $nota_promedio_ti <= 8.99 ? 'B' : ($nota_promedio_ti >= 4.01 && $nota_promedio_ti <= 6.99 ? 'C' : ($nota_promedio_ti <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				<td>{{$nota_promedio_ti}}</td>
 				@endif
 				@endforeach
 				@else
@@ -408,7 +408,7 @@ table#mitabla3 td {
 					$nota_promedio_tg = round(($nota_final_tg) / ($numero_nota_final_tg), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_tg  = ($nota_promedio_tg >= 9 && $nota_promedio_tg <= 10 ? 'A' : ($nota_promedio_tg >= 7 && $nota_promedio_tg <= 8.99 ? 'B' : ($nota_promedio_tg >= 4.01 && $nota_promedio_tg <= 6.99 ? 'C' : ($nota_promedio_tg <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				<td>{{$nota_promedio_tg}}</td>
 				@endif
 				@endforeach
 				@else
@@ -427,7 +427,7 @@ table#mitabla3 td {
 					$nota_promedio_le = round(($nota_final_le) / ($numero_nota_final_le), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_le  = ($nota_promedio_le >= 9 && $nota_promedio_le <= 10 ? 'A' : ($nota_promedio_le >= 7 && $nota_promedio_le <= 8.99 ? 'B' : ($nota_promedio_le >= 4.01 && $nota_promedio_le <= 6.99 ? 'C' : ($nota_promedio_le <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				<td>{{$nota_promedio_le}}</td>
 				@endif
 				@endforeach
 				@else
@@ -446,7 +446,7 @@ table#mitabla3 td {
 					$nota_promedio_ev = round(($nota_final_ev) / ($numero_nota_final_ev), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ev  = ($nota_promedio_ev >= 9 && $nota_promedio_ev <= 10 ? 'A' : ($nota_promedio_ev >= 7 && $nota_promedio_ev <= 8.99 ? 'B' : ($nota_promedio_ev >= 4.01 && $nota_promedio_ev <= 6.99 ? 'C' : ($nota_promedio_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				<td>{{$nota_promedio_ev}}</td>
 				@endif
 				@endforeach
 				@else
@@ -463,7 +463,7 @@ table#mitabla3 td {
 					$promedio_final = round(($nota_promedio_final) / ($numero_promedio_final), 2);
 				}
 				@endphp
-				<td>{{$promedio_final}}</td>
+				<td>{{$promedio_final  = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 && $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
 			</tr>
 			@endif
 			@endforeach
