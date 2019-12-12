@@ -335,24 +335,6 @@ table#mitabla3 td {
 				@else
 				<td>0</td>
 				@endif
-				@if($nota->notas_conducta->count() != 0)
-				@foreach($nota->notas_conducta as $notas_conducta)
-				@if($notas_conducta->materias_id == $materia->id)
-				<td>{{$notas_conducta->nota_final_conducta}}</td>
-				@endif
-				@endforeach
-				@else
-				<td>0</td>
-				@endif
-				@if($nota->notas_examen->count() != 0)
-				@foreach($nota->notas_examen as $notas_examen)
-				@if($notas_examen->materias_id == $materia->id)
-				<td>{{$notas_examen->nota_final_examen}}</td>
-				@endif
-				@endforeach
-				@else
-				<td>0</td>
-				@endif
 				@php
 				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
 				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
