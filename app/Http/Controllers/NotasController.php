@@ -790,7 +790,7 @@ class NotasController extends Controller
         ,'n_ev.nota_ev1','n_ev.nota_ev2','n_ev.nota_ev3','n_ev.nota_ev4','n_ev.nota_ev5', 'n_ev.descripcion_ev1','n_ev.descripcion_ev2','n_ev.descripcion_ev3','n_ev.descripcion_ev4','n_ev.descripcion_ev5'
         )
         ->orderBy('matriculados.apellidos')
-        ->groupBy('matriculados.id',' n_ta.materias_id', 'n_ti.materias_id', 'n_tg.materias_id', 'n_le.materias_id','n_ev.materias_id')
+        ->groupBy('matriculados.id','n_ta.materias_id', 'n_ti.materias_id', 'n_tg.materias_id', 'n_le.materias_id','n_ev.materias_id')
         ->distinct()
         ->get();
         $data['matriculados'] = $matriculados;
