@@ -367,12 +367,12 @@ table#mitabla3 td {
 				<td>{{$promedio_final}}</td>
 				
 			</tr>
-			@endforeach
 			@else
 			<tr>
 
 			</tr>
 			@endif
+			@endforeach
 		</tbody>
 	</table>
 	<br>
