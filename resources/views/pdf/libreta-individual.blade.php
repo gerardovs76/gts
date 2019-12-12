@@ -352,11 +352,13 @@ table#mitabla3 td {
 			<tr>
 
 			</tr>
-			@endif
-			@endforeach
+			@elseif($materia->tipo_materia == "SI")
 			<tr>
 				<th>CLUBES</th>
 			</tr>
+			@endif
+			@endforeach
+			
 		</tbody>
 	</table>
 	<br>
