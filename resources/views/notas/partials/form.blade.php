@@ -135,7 +135,7 @@
                                           var parcial = $('#parcial').val();
                                           var quimestre = $('#quimestre').val();
                                           $('#agregarDescripciones').addClass("d-block");
-                                          var url = 'buscar_alumnos/'+curso+'/'+paralelo+'/'+materia;
+                                          var url = 'buscar_alumnos/'+curso+'/'+paralelo+'/'+materia+'/'+parcial+'/'+quimestre;
                                           $('#saveNotas').addClass("d-block");
                                           $('#tabla').addClass("d-block");
                                             $.ajax({

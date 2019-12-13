@@ -757,7 +757,7 @@ class NotasController extends Controller
 }
 
     }
-    public function buscarAlumnoNotas($cursos, $paralelo, $materia)
+    public function buscarAlumnoNotas($cursos, $paralelo, $materia, $parcial, $quimestre)
     {
   
         $matriculados = DB::table('matriculados')
@@ -783,6 +783,16 @@ class NotasController extends Controller
         ->where('n_tg.materias_id', $materia)
         ->where('n_le.materias_id', $materia)
         ->where('n_ev.materias_id', $materia)
+        ->where('n_ta.parcial', $parcial)
+        ->where('n_ti.parcial', $parcial)
+        ->where('n_tg.parcial', $parcial)
+        ->where('n_le.parcial', $parcial)
+        ->where('n_ev.parcial', $parcial)
+        ->where('n_ta.quimestre', $quimestre)
+        ->where('n_ti.quimestre', $quimestre)
+        ->where('n_tg.quimestre', $quimestre)
+        ->where('n_le.quimestre', $quimestre)
+        ->where('n_ev.quimestre', $quimestre)
         ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),'n_ta.id as id_nota_ta','n_ti.id as id_nota_ti','n_tg.id as id_nota_tg','n_le.id as id_nota_le','n_ev.id as id_nota_ev', 'matriculados.id as id','n_ta.nota_ta1','n_ta.nota_ta2','n_ta.nota_ta3','n_ta.nota_ta4','n_ta.nota_ta5', 'n_ta.descripcion_ta1','n_ta.descripcion_ta2','n_ta.descripcion_ta3','n_ta.descripcion_ta4','n_ta.descripcion_ta5'
         ,'n_ti.nota_ti1','n_ti.nota_ti2','n_ti.nota_ti3','n_ti.nota_ti4','n_ti.nota_ti5', 'n_ti.descripcion_ti1','n_ti.descripcion_ti2','n_ti.descripcion_ti3','n_ti.descripcion_ti4','n_ti.descripcion_ti5'
         ,'n_tg.nota_tg1','n_tg.nota_tg2','n_tg.nota_tg3','n_tg.nota_tg4','n_tg.nota_tg5', 'n_tg.descripcion_tg1','n_tg.descripcion_tg2','n_tg.descripcion_tg3','n_tg.descripcion_tg4','n_tg.descripcion_tg5'
