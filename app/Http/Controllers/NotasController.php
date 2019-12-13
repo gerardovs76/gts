@@ -1004,7 +1004,7 @@ class NotasController extends Controller
                 $query6
                 ->where('materias_id', $materia)
                 ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
+                ->select('matriculado_id', 'materias_id', DB::raw("ROUND(SUM(nota_exq) / SUM(numero_tarea_exq), 2) as nota_final_examen"))
                ->groupBy('matriculado_id', 'materias_id');
             }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
           
