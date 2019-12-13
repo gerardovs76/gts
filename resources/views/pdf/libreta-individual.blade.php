@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>PDF</title>
 	<style>
         .page-breaj{
@@ -197,11 +197,8 @@ table#mitabla3 td {
         <div class="page-break">
 
             <img src="images/logo-institucion.png" alt="" height="80" width="80" style="float: left;">
-<<<<<<< HEAD
-     <br>
-=======
+
            	<br>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 		<table class="table" id="mitabla">
 				<tbody>
 			<tr>
@@ -248,25 +245,15 @@ table#mitabla3 td {
 			@if($notas_ta->materias_id == $materia->id)
 			<td>{{$notas_ta->nota_final_ta}}</td>
 			@php 
-<<<<<<< HEAD
 			$nota->promedio_ta = ($notas_ta->nota_final_ta == '' ? 0 : $notas_ta->nota_final_ta);
 			@endphp
-=======
-			$nota->promedio_ta = $notas_ta->nota_final_ta;
-			@endphp 
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 			@endif
 			@endforeach
 			@foreach($nota->notas_ti as $notas_ti)
 			@if($notas_ti->materias_id == $materia->id)
 			<td>{{$notas_ti->nota_final_ti}}</td>
-<<<<<<< HEAD
 			@php 
 			$nota->promedio_ti = ($notas_ti->nota_final_ti == '' ? 0 : $notas_ti->nota_final_ti);
-=======
-			@php
-			$nota->promedio_ti = $notas_ti->nota_final_ti;
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 			@endphp
 			@endif
 			@endforeach
@@ -274,11 +261,7 @@ table#mitabla3 td {
 			@if($notas_tg->materias_id == $materia->id)
 			<td>{{$notas_tg->nota_final_tg}}</td>
 			@php 
-<<<<<<< HEAD
 			$nota->promedio_tg = ($notas_tg->nota_final_tg == '' ? 0 : $notas_tg->nota_final_tg);
-=======
-			$nota->promedio_tg = $notas_tg->nota_final_tg;
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 			@endphp
 			@endif
 			@endforeach
@@ -286,11 +269,7 @@ table#mitabla3 td {
 			@if($notas_le->materias_id == $materia->id)
 			<td>{{$notas_le->nota_final_le}}</td>
 			@php 
-<<<<<<< HEAD
 			$nota->promedio_le = ($notas_le->nota_final_le == '' ? 0 : $notas_le->nota_final_le);
-=======
-			$nota->promedio_le = $notas_le->nota_final_le;
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 			@endphp
 			@endif
 			@endforeach
@@ -298,19 +277,11 @@ table#mitabla3 td {
 			@if($notas_ev->materias_id == $materia->id)
 			<td>{{$notas_ev->nota_final_ev}}</td>
 			@php 
-<<<<<<< HEAD
 			$nota->promedio_ev = ($notas_ev->nota_final_ev == '' ? 0 : $notas_ev->nota_final_ev);
 			@endphp
 			@endif
 			@endforeach
-			<td>{{round((($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev) / 5), 2)}}</td>
-=======
-			$nota->promedio_ev = $notas_ev->nota_final_ev;
-			@endphp
-			@endif
-			@endforeach
 			<td>{{round((($nota->promedio_ta + $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev)/ 5), 2)}}</td>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 			</tr>
 			@endif
 			@endforeach
@@ -472,48 +443,30 @@ table#mitabla3 td {
 	</table>
 	<br><br><br><br><br><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<<<<<<< HEAD
-<p style="text-align: center;">Lic. Ana Panchi</p>
-=======
-<p style="text-align: center;">Sra. Pamela Baquero</p>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
-<p style="text-align: center;">SECRETARIA</p>
-</div>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<<<<<<< HEAD
-<p style="text-align: center;">Arq. Edgar Palma </p>
-<p style="text-align: center;">RECTOR</p>
-</div><br><br><br>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Lic. Ana Panchi</p>
-=======
-<p style="text-align: center;">Magíster. Cristina Noguera</p>
-<p style="text-align: center;">RECTORA</p>
-</div><br><br><br>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Sra. Pamela Baquero</p>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
-<p style="text-align: center;">SECRETARIA</p>
-</div>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<<<<<<< HEAD
-<p style="text-align: center;">Arq. Edgar Palma </p>
-<p style="text-align: center;">RECTOR</p>
-=======
-<p style="text-align: center;">Magíster. Cristina Noguera</p>
-<p style="text-align: center;">RECTORA</p>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
-</div><br><br><br><br><br>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;"></p>
-<p style="text-align: center;">TUTOR</p>
-</div>
+	<div align="center">_______________________________</div>
+	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
+	<p style="text-align: center;">SECRETARIA</p>
+	</div>
+	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
+	<div align="center">_______________________________</div>
+	<p style="text-align: center;">Lic. Carmen Ramírez</p>
+	<p style="text-align: center;">RECTORA</p>
+	</div><br><br><br>
+	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
+	<div align="center">_______________________________</div>
+	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
+	<p style="text-align: center;">SECRETARIA</p>
+	</div>
+	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
+	<div align="center">_______________________________</div>
+	<p style="text-align: center;">Lic. Carmen Ramírez</p>
+	<p style="text-align: center;">RECTORA</p>
+	</div><br><br><br><br><br>
+	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
+	<div align="center">_______________________________</div>
+	<p style="text-align: center;"></p>
+	<p style="text-align: center;">TUTOR</p>
+	</div>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>PDF</title>
 	<style>
         .page-breaj{
@@ -443,49 +443,23 @@ table#mitabla3 td {
 	</table>
 	<br><br><br><br><br><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<<<<<<< HEAD
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Lic. Ana Panchi</p>
-<p style="text-align: center;">SECRETARIA</p>
-</div>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Arq. Edgar Palma </p>
-<p style="text-align: center;">RECTOR</p>
-</div><br><br><br>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Lic. Ana Panchi</p>
-<p style="text-align: center;">SECRETARIA</p>
-</div>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;">Arq. Edgar Palma </p>
-<p style="text-align: center;">RECTOR</p>
-</div><br><br><br><br><br>
-<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
-<div align="center">_______________________________</div>
-<p style="text-align: center;"></p>
-<p style="text-align: center;">TUTOR</p>
-</div>
-=======
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Sra. Pamela Baquero</p>
+	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
 	<p style="text-align: center;">SECRETARIA</p>
 	</div>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Magíster. Cristina Noguera</p>
+	<p style="text-align: center;">Lic. Carmen Ramírez</p>
 	<p style="text-align: center;">RECTORA</p>
 	</div><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Sra. Pamela Baquero</p>
+	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
 	<p style="text-align: center;">SECRETARIA</p>
 	</div>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Magíster. Cristina Noguera</p>
+	<p style="text-align: center;">Lic. Carmen Ramírez</p>
 	<p style="text-align: center;">RECTORA</p>
 	</div><br><br><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
@@ -493,7 +467,6 @@ table#mitabla3 td {
 	<p style="text-align: center;"></p>
 	<p style="text-align: center;">TUTOR</p>
 	</div>
->>>>>>> 991c957502a69d7c328cc8db8e0966c24e09a090
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 <div align="center">_______________________________</div>
 
