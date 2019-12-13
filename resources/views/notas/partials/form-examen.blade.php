@@ -41,7 +41,7 @@
                                        <strong>1.- Curso: <br></strong>
                                        <div class="input-group-prepend">
                                        <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                       {{ Form::select('curso',$profesorCurso, null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
+                                       {{ Form::select('curso',[], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Ingrese curso']) }}
                                        </div>
                                        </div>
 
@@ -58,7 +58,7 @@
                                        <strong>3.- Paralelo: <br></strong>
                                        <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                       {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
+                                       {{ Form::select('paralelo',[], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
                                        </div>
                                        </div>
                                   @endif
@@ -85,6 +85,7 @@
                              </div>
                            </div>
                           </div>
+    
                           <script>
                              $(document).ready(function() {
                                   $(window).keydown(function(event){
@@ -95,6 +96,44 @@
                                   });
                                   });
                                 </script>
+                                                      @if(Auth::user()->isRole('profesor'))
+                                                      <script>
+                                                      $(document).ready(function(){
+                                                          var url1 = 'notas/cargar-notas-profesor';
+                                                          $.ajax({
+                                                              url: url1,
+                                                              success: function(response)
+                                                              {
+                                                                  $.each(response, function(index, obj){
+                                                                  $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+                                                              });
+                                                              },
+                                                              error: function(error)
+                                                              {
+                                                      
+                                                              }
+                                                              });
+                                                          });
+                                                      </script>
+                                                      <script>
+                                                          $(document).ready(() => {
+                                                              var url2 = 'notas/cargar-notas-profesor-paralelo';
+                                                              $.ajax({
+                                                                  url: url2, 
+                                                                  success: function(response)
+                                                                  {
+                                                                      $.each(response, function(index, obj){
+                                                                      $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+                                                                      });
+                                                                  },
+                                                                  error: function(error)
+                                                                  {
+                                                      
+                                                                  }
+                                                              });
+                                                          });
+                                                      </script>
+                                                      @endif
                           <script>
                                   $('#paralelo').on('change', function() {
                                       var curso = $( "#curso option:selected" ).text();
