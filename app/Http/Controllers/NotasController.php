@@ -28,6 +28,7 @@ use App\Exports\AbanderadosExport;
 use App\MateriasProfesor;
 use App\Inspecciones;
 use App\Http\Requests\NotasRequest;
+use App\Http\Requests\NotasExamenRequest;
 use Validator;
 use App\Nota_ta;
 use App\Notas_ti;
@@ -427,12 +428,11 @@ class NotasController extends Controller
      * @param  \App\notass  $notass
      * @return \Illuminate\Http\Response
      */
-    public function examenQuimestralStore(NotasRequest $request)
+    public function examenQuimestralStore(NotasExamenRequest $request)
     {
             $notas_examen = $request->examen;
             $matriculados_id = $request->matriculados_id;
             $materias_id = $request->materias_id;
-            $parcial = $request->parcial;
             $quimestre = $request->quimestre;
             $descripcion = $request->descripcion;
             foreach($matriculados_id as $key => $value)
@@ -1008,7 +1008,7 @@ class NotasController extends Controller
                ->groupBy('matriculado_id', 'materias_id');
             }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
           
-        return view('notas.vernotas', compact('notas', 'quimestre'))->with('info', 'Se ha cargado las notas correctamete');
+        return view('notas.vernotas', compact('notas', 'quimestre', 'curso', 'paralelo'))->with('info', 'Se ha cargado las notas correctamete');
 
     }
     public function notasEdit($idestudiante, $ttarea, $parcial, $quimestre, $materia)

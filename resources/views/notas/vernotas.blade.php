@@ -73,7 +73,12 @@
 
 								<div class="form-group col-md-10">
 
-   									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary','type' => 'submit', 'id' => 'verNotas']) !!}
+                                       {!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary','type' => 'submit', 'id' => 'verNotas']) !!}
+                                        @if(isset($curso) && isset($paralelo))
+                                       <p class="pull-right"><em>Curso: {{$curso}} - Paralelo: {{$paralelo}}</em></p>
+                                       @else 
+                                       <p class="pull-right"><em>Curso: - Paralelo: </em></p>
+                                       @endif
 								</div>
 
 							</div>
