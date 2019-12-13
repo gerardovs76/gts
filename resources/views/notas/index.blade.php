@@ -56,10 +56,7 @@
 
                     </tr>
                     </thead>
-					<tbody>
-				<tr>
-
-				</tr>
+					<tbody id="tbody">
 			</tbody>
         </table>
 				{!! Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary form-control d-none', 'id' => 'guardar', 'type' => 'submit']) !!}
