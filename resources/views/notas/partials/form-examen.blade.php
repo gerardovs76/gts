@@ -78,13 +78,6 @@
                                        {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el quimestre', 'id' => 'quimestre']) }}
                                        </div>
                                        </div>
-                                       <div class="form-group col-md-4">
-                                       <strong>6.- Parcial: <br></strong>
-                                       <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                       {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
-                                       </div>
-                                       </div>
                                          <div  class="form-group col-md-12">
                                          {!! Form::button('<i class="fas fa-clipboard"></i> AGREGAR NOTAS', ['class' => 'btn btn-primary', 'id' => 'agregarNotas']) !!}
                                          <button id="saveNotas"  class="btn btn-primary pull-right d-none" type="submit"><i class="fas fa-clipboard"></i> GUARDAR NOTAS</button>
