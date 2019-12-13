@@ -6,5 +6,10 @@ public
 resources/views/inscripcion
 resources/views/pdf/inscritos.blade.php
 resources/views/welcome.blade.php
+<<<<<<< HEAD
 resources/views/libreta-individual.blade.php
 resources/views/libreta-individual-reporte.blade.php
+=======
+resources/views/pdf/libreta-individual.blade.php
+resources/views/pdf/libreta-individual-reporte.blade.php
+>>>>>>> 276b76d6e35df150a19b587d26d4a10df72d1cbc

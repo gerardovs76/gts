@@ -244,44 +244,113 @@ table#mitabla3 td {
 			@if($materia->tipo_materia == 'NO')
 			<tr>
 			<td><strong>{{$materia->materia}}</strong></td>
-			@foreach($nota->notas_ta as $notas_ta)
-			@if($notas_ta->materias_id == $materia->id)
-			<td>{{$notas_ta->nota_final_ta}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_ti as $notas_ti)
-			@if($notas_ti->materias_id == $materia->id)
-			<td>{{$notas_ti->nota_final_ti}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_tg as $notas_tg)
-			@if($notas_tg->materias_id == $materia->id)
-			<td>{{$notas_tg->nota_final_tg}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_le as $notas_le)
-			@if($notas_le->materias_id == $materia->id)
-			<td>{{$notas_le->nota_final_le}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_ev as $notas_ev)
-			@if($notas_ev->materias_id == $materia->id)
-			<td>{{$notas_ev->nota_final_ev}}</td>
-			@endif
-			@endforeach
-		 	@foreach($nota->notas_ta as $notas_ta)
-			@foreach($nota->notas_ti as $notas_ti)
-			@foreach($nota->notas_tg as $notas_tg)
-			@foreach($nota->notas_le as $notas_le)
-			@foreach($nota->notas_ev as $notas_ev)
-			@if($materia->id == $notas_ta->materias_id && $materia->id == $notas_ti->materias_id && $materia->id == $notas_tg->materias_id && $materia->id == $notas_le->materias_id && $materia->id == $notas_ev->materias_id)
-			<td>{{round(((($notas_ta->nota_final_ta)  +  ($notas_ti->nota_final_ti)  +  ($notas_tg->nota_final_tg)  +  ($notas_le->nota_final_le)  +  ($notas_ev->nota_final_ev)) / 5),3)}}</td>
-			@endif
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach
-			@endforeach 
+				@if($nota->notas_ta->count() != 0)
+				@foreach($nota->notas_ta as $notas_ta)
+				@if($notas_ta->materias_id == $materia->id)
+				@php 
+				$nota_final_ta = ($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5);
+				$numero_nota_final_ta = (($notas_ta->nota_ta1 == 0 ? 0 : 1) + ($notas_ta->nota_ta2 == 0 ? 0 : 1) + ($notas_ta->nota_ta3 == 0 ? 0 : 1) + ($notas_ta->nota_ta4 == 0 ? 0 : 1) + ($notas_ta->nota_ta5 == 0 ? 0 : 1));
+				if($nota_final_ta == 0 && $numero_nota_final_ta == 0){
+				   $nota_promedio_ta = 0;
+				}
+				else{
+					$nota_promedio_ta = round(($nota_final_ta) / ($numero_nota_final_ta), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ta}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_ti->count() != 0)
+				@foreach($nota->notas_ti as $notas_ti)
+				@if($notas_ti->materias_id == $materia->id)
+				@php 
+				$nota_final_ti = ($notas_ti->nota_ti1 + $notas_ti->nota_ti2 + $notas_ti->nota_ti3 + $notas_ti->nota_ti4 + $notas_ti->nota_ti5);
+				$numero_nota_final_ti = (($notas_ti->nota_ti1 == 0 ? 0 : 1) + ($notas_ti->nota_ti2 == 0 ? 0 : 1) + ($notas_ti->nota_ti3 == 0 ? 0 : 1) + ($notas_ti->nota_ti4 == 0 ? 0 : 1) + ($notas_ti->nota_ti5 == 0 ? 0 : 1));
+				if($nota_final_ti == 0 && $numero_nota_final_ti == 0){
+				   $nota_promedio_ti = 0;
+				}
+				else{
+					$nota_promedio_ti = round(($nota_final_ti) / ($numero_nota_final_ti), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ti}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_tg->count() != 0)
+				@foreach($nota->notas_tg as $notas_tg)
+				@if($notas_tg->materias_id == $materia->id)
+				@php 
+				$nota_final_tg = ($notas_tg->nota_tg1 + $notas_tg->nota_tg2 + $notas_tg->nota_tg3 + $notas_tg->nota_tg4 + $notas_tg->nota_tg5);
+				$numero_nota_final_tg = (($notas_tg->nota_tg1 == 0 ? 0 : 1) + ($notas_tg->nota_tg2 == 0 ? 0 : 1) + ($notas_tg->nota_tg3 == 0 ? 0 : 1) + ($notas_tg->nota_tg4 == 0 ? 0 : 1) + ($notas_tg->nota_tg5 == 0 ? 0 : 1));
+				if($nota_final_tg == 0 && $numero_nota_final_tg == 0){
+				   $nota_promedio_tg = 0;
+				}
+				else{
+					$nota_promedio_tg = round(($nota_final_tg) / ($numero_nota_final_tg), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_tg}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_le->count() != 0)
+				@foreach($nota->notas_le as $notas_le)
+				@if($notas_le->materias_id == $materia->id)
+				@php 
+				$nota_final_le = ($notas_le->nota_le1 + $notas_le->nota_le2 + $notas_le->nota_le3 + $notas_le->nota_le4 + $notas_le->nota_le5);
+				$numero_nota_final_le = (($notas_le->nota_le1 == 0 ? 0 : 1) + ($notas_le->nota_le2 == 0 ? 0 : 1) + ($notas_le->nota_le3 == 0 ? 0 : 1) + ($notas_le->nota_le4 == 0 ? 0 : 1) + ($notas_le->nota_le5 == 0 ? 0 : 1));
+				if($nota_final_le == 0 && $numero_nota_final_le == 0){
+				   $nota_promedio_le = 0;
+				}
+				else{
+					$nota_promedio_le = round(($nota_final_le) / ($numero_nota_final_le), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_le}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_ev->count() != 0)
+				@foreach($nota->notas_ev as $notas_ev)
+				@if($notas_ev->materias_id == $materia->id)
+				@php 
+				$nota_final_ev = ($notas_ev->nota_ev1 + $notas_ev->nota_ev2 + $notas_ev->nota_ev3 + $notas_ev->nota_ev4 + $notas_ev->nota_ev5);
+				$numero_nota_final_ev = (($notas_ev->nota_ev1 == 0 ? 0 : 1) + ($notas_ev->nota_ev2 == 0 ? 0 : 1) + ($notas_ev->nota_ev3 == 0 ? 0 : 1) + ($notas_ev->nota_ev4 == 0 ? 0 : 1) + ($notas_ev->nota_ev5 == 0 ? 0 : 1));
+				if($nota_final_ev == 0 && $numero_nota_final_ev == 0){
+				   $nota_promedio_ev = 0;
+				}
+				else{
+					$nota_promedio_ev = round(($nota_final_ev) / ($numero_nota_final_ev), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ev}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@php
+				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
+				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
+				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
+				{
+					$promedio_final = 0;
+				}
+				else{
+					$promedio_final = round(($nota_promedio_final) / ($numero_promedio_final), 2);
+				}
+				@endphp
+				<td>{{$promedio_final}}</td>
 			</tr>
 			@endif
 			@endforeach
@@ -292,53 +361,117 @@ table#mitabla3 td {
 			@if($materia->tipo_materia == 'SI')
 			<tr>
 			<td><strong>{{$materia->materia}}</strong></td>
-			@foreach($nota->notas_ta as $notas_ta)
-			@if($notas_ta->materias_id == $materia->id)
-			@php
-			$nota->promedio_ta = $notas_ta->nota_final_ta;
-			@endphp 
-			<td>{{$notas_ta->nota_final_ta = ($notas_ta->nota_final_ta >= 9 && $notas_ta->nota_final_ta <= 10 ? 'A' : ($notas_ta->nota_final_ta >= 7 && $notas_ta->nota_final_ta <= 8.99 ? 'B' : ($notas_ta->nota_final_ta >= 4.01 && $notas_ta->nota_final_ta <= 6.99 ? 'C' : ($notas_ta->nota_final_ta <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_ti as $notas_ti)
-			@if($notas_ti->materias_id == $materia->id)
-			@php 
-			$nota->promedio_ti = $notas_ti->nota_final_ti;
-			@endphp
-			<td>{{$notas_ti->nota_final_ti = ($notas_ti->nota_final_ti >= 9 && $notas_ti->nota_final_ti <= 10 ? 'A' : ($notas_ti->nota_final_ti >= 7 && $notas_ti->nota_final_ti <= 8.99 ? 'B' : ($notas_ti->nota_final_ti >= 4.01 && $notas_ti->nota_final_ti <= 6.99 ? 'C' : ($notas_ti->nota_final_ti <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_tg as $notas_tg)
-			@if($notas_tg->materias_id == $materia->id)
-			@php
-			$nota->promedio_tg = $notas_tg->nota_final_tg;
-			@endphp
-			<td>{{$notas_tg->nota_final_tg = ($notas_tg->nota_final_tg >= 9 && $notas_tg->nota_final_tg <= 10 ? 'A' : ($notas_tg->nota_final_tg >= 7 && $notas_tg->nota_final_tg <= 8.99 ? 'B' : ($notas_tg->nota_final_tg >= 4.01 && $notas_tg->nota_final_tg <= 6.99 ? 'C' : ($notas_tg->nota_final_tg <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_le as $notas_le)
-			@if($notas_le->materias_id == $materia->id)
-			@php 
-			$nota->promedio_le = $notas_le->nota_final_le;
-			@endphp
-			<td>{{$notas_le->nota_final_le = ($notas_le->nota_final_le >= 9 && $notas_le->nota_final_le <= 10 ? 'A' : ($notas_le->nota_final_le >= 7 && $notas_le->nota_final_le <= 8.99 ? 'B' : ($notas_le->nota_final_le >= 4.01 && $notas_le->nota_final_le <= 6.99 ? 'C' : ($notas_le->nota_final_le <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
-			@endif
-			@endforeach
-			@foreach($nota->notas_ev as $notas_ev)
-			@if($notas_ev->materias_id == $materia->id)
-			@php 
-			$nota->promedio_ev = $notas_ev->nota_final_ev;
-			@endphp
-			<td>{{$notas_ev->nota_final_ev = ($notas_ev->nota_final_ev >= 9 && $notas_ev->nota_final_ev <= 10 ? 'A' : ($notas_ev->nota_final_ev >= 7 && $notas_ev->nota_final_ev <= 8.99 ? 'B' : ($notas_ev->nota_final_ev >= 4.01 && $notas_ev->nota_final_ev <= 6.99 ? 'C' : ($notas_ev->nota_final_ev <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
-			@endif
-			@endforeach
-			@php 
-			$nota_final_promedio = (($nota->promedio_ta +  $nota->promedio_ti + $nota->promedio_tg + $nota->promedio_le + $nota->promedio_ev) / 5);
-			@endphp 
-			<td>{{$nota_final_promedio >= 9 && $nota_final_promedio <= 10 ? 'A' : ($nota_final_promedio >= 7 && $nota_final_promedio <= 8.99 ? 'B' : ($nota_final_promedio >= 4.01 && $nota_final_promedio <= 6.99 ? 'C' : ($nota_final_promedio <= 4 ? 'D' : 'Nota invalida')))}}</td>
+				@if($nota->notas_ta->count() != 0)
+				@foreach($nota->notas_ta as $notas_ta)
+				@if($notas_ta->materias_id == $materia->id)
+				@php 
+				$nota_final_ta = ($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5);
+				$numero_nota_final_ta = (($notas_ta->nota_ta1 == 0 ? 0 : 1) + ($notas_ta->nota_ta2 == 0 ? 0 : 1) + ($notas_ta->nota_ta3 == 0 ? 0 : 1) + ($notas_ta->nota_ta4 == 0 ? 0 : 1) + ($notas_ta->nota_ta5 == 0 ? 0 : 1));
+				if($nota_final_ta == 0 && $numero_nota_final_ta == 0){
+				   $nota_promedio_ta = 0;
+				}
+				else{
+					$nota_promedio_ta = round(($nota_final_ta) / ($numero_nota_final_ta), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ta}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_ti->count() != 0)
+				@foreach($nota->notas_ti as $notas_ti)
+				@if($notas_ti->materias_id == $materia->id)
+				@php 
+				$nota_final_ti = ($notas_ti->nota_ti1 + $notas_ti->nota_ti2 + $notas_ti->nota_ti3 + $notas_ti->nota_ti4 + $notas_ti->nota_ti5);
+				$numero_nota_final_ti = (($notas_ti->nota_ti1 == 0 ? 0 : 1) + ($notas_ti->nota_ti2 == 0 ? 0 : 1) + ($notas_ti->nota_ti3 == 0 ? 0 : 1) + ($notas_ti->nota_ti4 == 0 ? 0 : 1) + ($notas_ti->nota_ti5 == 0 ? 0 : 1));
+				if($nota_final_ti == 0 && $numero_nota_final_ti == 0){
+				   $nota_promedio_ti = 0;
+				}
+				else{
+					$nota_promedio_ti = round(($nota_final_ti) / ($numero_nota_final_ti), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ti}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_tg->count() != 0)
+				@foreach($nota->notas_tg as $notas_tg)
+				@if($notas_tg->materias_id == $materia->id)
+				@php 
+				$nota_final_tg = ($notas_tg->nota_tg1 + $notas_tg->nota_tg2 + $notas_tg->nota_tg3 + $notas_tg->nota_tg4 + $notas_tg->nota_tg5);
+				$numero_nota_final_tg = (($notas_tg->nota_tg1 == 0 ? 0 : 1) + ($notas_tg->nota_tg2 == 0 ? 0 : 1) + ($notas_tg->nota_tg3 == 0 ? 0 : 1) + ($notas_tg->nota_tg4 == 0 ? 0 : 1) + ($notas_tg->nota_tg5 == 0 ? 0 : 1));
+				if($nota_final_tg == 0 && $numero_nota_final_tg == 0){
+				   $nota_promedio_tg = 0;
+				}
+				else{
+					$nota_promedio_tg = round(($nota_final_tg) / ($numero_nota_final_tg), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_tg}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_le->count() != 0)
+				@foreach($nota->notas_le as $notas_le)
+				@if($notas_le->materias_id == $materia->id)
+				@php 
+				$nota_final_le = ($notas_le->nota_le1 + $notas_le->nota_le2 + $notas_le->nota_le3 + $notas_le->nota_le4 + $notas_le->nota_le5);
+				$numero_nota_final_le = (($notas_le->nota_le1 == 0 ? 0 : 1) + ($notas_le->nota_le2 == 0 ? 0 : 1) + ($notas_le->nota_le3 == 0 ? 0 : 1) + ($notas_le->nota_le4 == 0 ? 0 : 1) + ($notas_le->nota_le5 == 0 ? 0 : 1));
+				if($nota_final_le == 0 && $numero_nota_final_le == 0){
+				   $nota_promedio_le = 0;
+				}
+				else{
+					$nota_promedio_le = round(($nota_final_le) / ($numero_nota_final_le), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_le}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@if($nota->notas_ev->count() != 0)
+				@foreach($nota->notas_ev as $notas_ev)
+				@if($notas_ev->materias_id == $materia->id)
+				@php 
+				$nota_final_ev = ($notas_ev->nota_ev1 + $notas_ev->nota_ev2 + $notas_ev->nota_ev3 + $notas_ev->nota_ev4 + $notas_ev->nota_ev5);
+				$numero_nota_final_ev = (($notas_ev->nota_ev1 == 0 ? 0 : 1) + ($notas_ev->nota_ev2 == 0 ? 0 : 1) + ($notas_ev->nota_ev3 == 0 ? 0 : 1) + ($notas_ev->nota_ev4 == 0 ? 0 : 1) + ($notas_ev->nota_ev5 == 0 ? 0 : 1));
+				if($nota_final_ev == 0 && $numero_nota_final_ev == 0){
+				   $nota_promedio_ev = 0;
+				}
+				else{
+					$nota_promedio_ev = round(($nota_final_ev) / ($numero_nota_final_ev), 2);
+				}
+				@endphp
+				<td>{{$nota_promedio_ev}}</td>
+				@endif
+				@endforeach
+				@else
+				<td>0</td>
+				@endif
+				@php
+				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
+				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
+				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
+				{
+					$promedio_final = 0;
+				}
+				else{
+					$promedio_final = round(($nota_promedio_final) / ($numero_promedio_final), 2);
+				}
+				@endphp
+				<td>{{$promedio_final  = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 && $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
 			</tr>
 			@endif
 			@endforeach
+			
 		</tbody>
 	</table>
 	<br>
