@@ -812,6 +812,7 @@ class NotasController extends Controller
              ->where('n_tg.materias_id', $materia)
              ->where('n_le.materias_id', $materia)
              ->where('n_ev.materias_id', $materia)
+             ->where('n_examen.materias_id', $materia)
              ->where('n_ta.parcial', $parcial)
              ->where('n_ti.parcial', $parcial)
              ->where('n_tg.parcial', $parcial)
