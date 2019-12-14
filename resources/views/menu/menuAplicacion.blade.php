@@ -131,7 +131,7 @@
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('notas.index')
                 <a class="dropdown-item" href="{{ route('notas.index') }}">Ingresar notas</a>
-                <a class="dropdown-item" href="{{route('notas.examen')}}">Examen quimestral</a>
+               {{-- <a class="dropdown-item" href="{{route('notas.examen')}}">Examen quimestral</a> --}}
                 @endcan
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
@@ -164,7 +164,7 @@
                 <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta colectivas parcial</a>
                 @endcan
                 @can('notas.libretaColectiva')
-                <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas quimestres</a>
+                {{-- <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas quimestres</a> --}}
                 @endcan
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
