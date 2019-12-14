@@ -16,7 +16,6 @@ class Notas_examen extends Model
         'parcial',
         'quimestre',
         'autoridad_id',
-        'descripcion'
     ];
 
     public function matriculado(){
