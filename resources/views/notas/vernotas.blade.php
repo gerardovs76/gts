@@ -75,7 +75,7 @@
 
                                        {!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary','type' => 'submit', 'id' => 'verNotas']) !!}
                                         @if(isset($curso) && isset($paralelo))
-                                       <p class="pull-right"><em>Curso: {{$curso}} - Paralelo: {{$paralelo}} - Parcial: {{$parcial}} - Quimestre: {{$quimestre}}</em></p>
+                                       <p class="pull-right" style="font-size: 12px;"><strong><em>Curso: {{$curso}} - Paralelo: {{$paralelo}} - Parcial: {{$parcial}} - Quimestre: {{$quimestre}}</em></strong></p>
                                        @else
                                        <p class="pull-right"><em>Curso: - Paralelo: - Parcial: - Quimestre:  </em></p>
                                        @endif
