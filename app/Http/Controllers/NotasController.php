@@ -957,7 +957,7 @@ class NotasController extends Controller
         $users = Auth::user()->cedula;
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
         {
-            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->where('tipo_materia', '!=', 'SI')->select('materia', 'id')->distinct()
+            $materias = Materias::where('curso', $curso)->where('paralelo', $paralelo)->select('materia', 'id')->distinct()
             ->get();
             return response()->json($materias);
         }
@@ -966,7 +966,6 @@ class NotasController extends Controller
             $profesorCurso = MateriasProfesor::join('materias', 'materias_profesores.materias_id', '=', 'materias.id')
             ->join('profesors', 'materias_profesores.profesores_id', '=', 'profesors.id')
             ->where('profesors.cedula', $users)
-            ->where('materias.tipo_materia', '<>', 'SI')
             ->where('materias.curso', $curso)
             ->where('materias.paralelo', $paralelo)
             ->select('materias.materia', 'materias.id')
