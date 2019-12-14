@@ -299,6 +299,43 @@ $(document).ready(function(){
     });
 </script>
 @endif
+{{-- <script>
+    setInterval(() => {
+        function bloquearTodo()
+    {
+        var curso = $('#curso option:selected').text();
+        var paralelo = $('#paralelo option:selected').text();
+        var parcial = $('#parcial').val();
+        var quimestre = $('#quimestre').val();
+        var materia = $('#materia').val();
+
+        setInterval(() => {
+            if(curso == '' || paralelo == '' || parcial == '' || quimestre == '' || materia == '')
+            {
+                console.log(curso);
+                console.log(paralelo);
+                console.log(parcial);
+                console.log(materia);
+                console.log(quimestre);
+                $('#verNotas').attr("disabled", true);
+            }
+            else {
+                console.log(curso);
+                console.log(paralelo);
+                console.log(parcial);
+                console.log(materia);
+                console.log(quimestre);
+                $('#verNotas').attr("disabled", false);
+            }
+        }, 5);
+    }
+    bloquearTodo();
+    }, 500);
+
+
+
+
+</script> --}}
 <script>
 $('#paralelo').on('change', function(){
     var curso = $( "#curso option:selected" ).text();
@@ -308,7 +345,6 @@ $('#paralelo').on('change', function(){
         url: url3,
         success: function(response)
         {
-            console.log(response);
             $.each(response, function(index, obj){
             $('#materia').append('<option value='+obj.id+'>'+obj.materia+'</option>');
             });
