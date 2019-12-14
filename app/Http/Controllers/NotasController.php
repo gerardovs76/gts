@@ -1090,7 +1090,7 @@ class NotasController extends Controller
                ->groupBy('matriculado_id', 'materias_id');
             }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
 
-        return view('notas.vernotas', compact('notas', 'quimestre', 'curso', 'paralelo'))->with('info', 'Se ha cargado las notas correctamete');
+        return view('notas.vernotas', compact('notas', 'quimestre', 'parcial','curso', 'paralelo'))->with('info', 'Se ha cargado las notas correctamete');
 
     }
     public function notasEdit($idestudiante, $ttarea, $parcial, $quimestre, $materia)
