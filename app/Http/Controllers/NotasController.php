@@ -147,10 +147,12 @@ class NotasController extends Controller
         $parcial = $request->parcial;
         $quimestre = $request->quimestre;
         $matriculados_id = $request->matriculados_id;
-        $materias_id = $request->materias_id;
+        $materias_id = $request->materias_id;    
         if($request->id_nota_ta)
         {
             foreach($matriculados_id as $key => $value){
+            
+           
                 $new_notas = Nota_ta::find($id_nota_ta[$key]);
                 $new_notas->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
                 $new_notas->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
@@ -173,7 +175,6 @@ class NotasController extends Controller
                 $new_notas->numero_tarea_ta4 = '1';
                 $new_notas->numero_tarea_ta5 = '1';
                 $new_notas->save();
-
             }
         }
     if($request->id_nota_ti)
@@ -432,7 +433,7 @@ class NotasController extends Controller
         }
         foreach($matriculados_id as $key => $value){
             $new_notas = new Notas_examen;
-            $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
+            $new_notas->nota_exq = ($nota_examen[$key] === null ? 0 : $nota_examen[$key]);
             $new_notas->materias_id = $materias_id;
             $new_notas->matriculado_id = $matriculados_id[$key];
             $new_notas->quimestre = $quimestre;
@@ -803,7 +804,7 @@ class NotasController extends Controller
              ->join('notas_tg as n_tg', 'matriculados.id', '=', 'n_tg.matriculado_id')
              ->join('notas_le as n_le', 'matriculados.id', '=', 'n_le.matriculado_id')
              ->join('notas_ev as n_ev', 'matriculados.id', '=', 'n_ev.matriculado_id')
-             ->join('notas_exq', 'matriculados.id', '=', 'notas_exq.matriculado_id')
+             ->join('notas_exq as n_examen', 'matriculados.id', '=', 'n_examen.matriculado_id')
              ->where('matriculados.curso', $cursos)
              ->where('matriculados.paralelo', $paralelo)
              ->where('n_ta.materias_id', $materia)
@@ -821,16 +822,16 @@ class NotasController extends Controller
              ->where('n_tg.quimestre', $quimestre)
              ->where('n_le.quimestre', $quimestre)
              ->where('n_ev.quimestre', $quimestre)
-             ->where('notas_exq.quimestre', $quimestre)
+             ->where('n_examen.quimestre', $quimestre)
              ->select(DB::raw("CONCAT(matriculados.apellidos, ' ', matriculados.nombres) as nombres"),'n_ta.id as id_nota_ta','n_ti.id as id_nota_ti','n_tg.id as id_nota_tg','n_le.id as id_nota_le','n_ev.id as id_nota_ev', 'matriculados.id as id','n_ta.nota_ta1','n_ta.nota_ta2','n_ta.nota_ta3','n_ta.nota_ta4','n_ta.nota_ta5', 'n_ta.descripcion_ta1','n_ta.descripcion_ta2','n_ta.descripcion_ta3','n_ta.descripcion_ta4','n_ta.descripcion_ta5'
              ,'n_ti.nota_ti1','n_ti.nota_ti2','n_ti.nota_ti3','n_ti.nota_ti4','n_ti.nota_ti5', 'n_ti.descripcion_ti1','n_ti.descripcion_ti2','n_ti.descripcion_ti3','n_ti.descripcion_ti4','n_ti.descripcion_ti5'
              ,'n_tg.nota_tg1','n_tg.nota_tg2','n_tg.nota_tg3','n_tg.nota_tg4','n_tg.nota_tg5', 'n_tg.descripcion_tg1','n_tg.descripcion_tg2','n_tg.descripcion_tg3','n_tg.descripcion_tg4','n_tg.descripcion_tg5'
              ,'n_le.nota_le1','n_le.nota_le2','n_le.nota_le3','n_le.nota_le4','n_le.nota_le5', 'n_le.descripcion_le1','n_le.descripcion_le2','n_le.descripcion_le3','n_le.descripcion_le4','n_le.descripcion_le5'
              ,'n_ev.nota_ev1','n_ev.nota_ev2','n_ev.nota_ev3','n_ev.nota_ev4','n_ev.nota_ev5', 'n_ev.descripcion_ev1','n_ev.descripcion_ev2','n_ev.descripcion_ev3','n_ev.descripcion_ev4','n_ev.descripcion_ev5'
-            ,'notas_exq.id as id_nota_examen', 'notas_exq.nota_exq'
+            ,'n_examen.id as id_nota_examen', 'n_examen.nota_exq'
              )
              ->orderBy('matriculados.apellidos')
-             ->groupBy('matriculados.id','n_ta.materias_id', 'n_ti.materias_id', 'n_tg.materias_id', 'n_le.materias_id','n_ev.materias_id')
+             ->groupBy('matriculados.id','n_ta.materias_id', 'n_examen.materias_id','n_ti.materias_id', 'n_tg.materias_id', 'n_le.materias_id','n_ev.materias_id')
              ->distinct()
              ->get();
              $data['matriculados'] = $matriculados;
