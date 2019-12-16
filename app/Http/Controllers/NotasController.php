@@ -29,6 +29,7 @@ use App\MateriasProfesor;
 use App\Inspecciones;
 use App\Http\Requests\NotasRequest;
 use App\Http\Requests\NotasExamenRequest;
+use App\Http\Requests\VerNotasRequest;
 use Validator;
 use App\Nota_ta;
 use App\Notas_ti;
