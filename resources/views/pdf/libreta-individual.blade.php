@@ -347,11 +347,6 @@ table#mitabla3 td {
 				}
 				@endphp
                 <td>{{$promedio_final}}</td>
-                <tfoot>
-                    <tr>
-                        <td>{{$promedio_final += $promedio_final}}</td>
-                    </tr>
-                </tfoot>
 			</tr>
 			@endif
 			@endforeach
