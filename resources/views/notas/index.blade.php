@@ -21,7 +21,7 @@
                     <table class="table table-striped table-hover d-none" id="tabla">
 			<thead>
                     <button id="agregarDescripciones" type="button"  type="button" data-toggle="modal" style="background-color: #722f37;" data-target="#modalIngresarDescripciones" class="btn btn-primary d-none center-block"><i class="fas fa-clipboard"></i> AGREGAR DESCRIPCIONES</button><br><br>
-                    
+
                     <tr>
                     <th>
                             <button type="button"  class="btn btn-default" id="trabajos_academicos"><i class="far fa-clipboard"></i> ESTUDIANTES</button>
@@ -50,6 +50,10 @@
                       <button type="button" class="btn btn-success" id="evaluaciones"><i class="far fa-clipboard"></i> EVALUACIONES</button>
                       <button class="btn btn-success" type="button" id="promedioEv"><i class="fas fa-plus"></i> P</button>
                     </th>
+                    <th id="thexamen" style="display:none;">
+
+                        <button type="button" class="btn btn-success" id="examen" style="background-color: #7A607D;"><i class="far fa-clipboard"></i> EXAMEN</button>
+                      </th>
                     <th>
                         <button class="btn btn-primary" type="button" id="promedioFinal" style="background-color: #D718EE;"><i class="far fa-clipboard"></i> PROMEDIOS</button>
                     </th>
