@@ -8,7 +8,8 @@
 		</h2>
 		</div>
 
-		<hr>
+                <hr>
+                @include('notas.partials.error')
 		@include('notas.partials.info')
 
 

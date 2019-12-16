@@ -30,6 +30,7 @@ use App\Inspecciones;
 use App\Http\Requests\NotasRequest;
 use App\Http\Requests\NotasExamenRequest;
 use App\Http\Requests\VerNotasRequest;
+use App\Http\Requests\LibretaColectivaParcial;
 use Validator;
 use App\Nota_ta;
 use App\Notas_ti;
@@ -1043,7 +1044,7 @@ class NotasController extends Controller
         }
 
     }
-    public function cargarNotasAlumnos(Request $request)
+    public function cargarNotasAlumnos(VerNotasRequest $request)
     {
         $curso = $request->curso;
         $paralelo = $request->paralelo;
@@ -1658,7 +1659,7 @@ class NotasController extends Controller
       return view('notas.libretaIndividual');
     }
 
-    public function descargarLibreta(Request $request)
+    public function descargarLibreta(LibretaColectivaParcial $request)
     {
       $curso = $request->curso;
       $quimestre = $request->quimestre;

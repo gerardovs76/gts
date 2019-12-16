@@ -257,7 +257,11 @@ table#mitabla3 td {
 					$nota_promedio_ta = round(($nota_final_ta) / ($numero_nota_final_ta), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ta}}</td>
+				@if($nota_promedio_ta >= 7)
+				<td style="color: green;">{{$nota_promedio_ta}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ta}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -276,7 +280,11 @@ table#mitabla3 td {
 					$nota_promedio_ti = round(($nota_final_ti) / ($numero_nota_final_ti), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ti}}</td>
+				@if($nota_promedio_ti >= 7)
+				<td style="color: green;">{{$nota_promedio_ti}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ti}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -295,7 +303,11 @@ table#mitabla3 td {
 					$nota_promedio_tg = round(($nota_final_tg) / ($numero_nota_final_tg), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_tg}}</td>
+				@if($nota_promedio_tg >= 7)
+				<td style="color: green;">{{$nota_promedio_tg}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_tg}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -314,7 +326,11 @@ table#mitabla3 td {
 					$nota_promedio_le = round(($nota_final_le) / ($numero_nota_final_le), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_le}}</td>
+				@if($nota_promedio_le >= 7)
+				<td style="color: green;">{{$nota_promedio_le}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_le}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -333,7 +349,11 @@ table#mitabla3 td {
 					$nota_promedio_ev = round(($nota_final_ev) / ($numero_nota_final_ev), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ev}}</td>
+				@if($nota_promedio_ev >= 7)
+				<td style="color: green;">{{$nota_promedio_ev}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ev}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -350,7 +370,11 @@ table#mitabla3 td {
 					$promedio_final = round(($nota_promedio_final) / ($numero_promedio_final), 2);
 				}
 				@endphp
-				<td>{{$promedio_final}}</td>
+				@if($promedio_final >= 7)
+				<td style="color: green;">{{$promedio_final}}</td>
+				@else
+			<td style="color: red">{{$promedio_final}}</td>
+			@endif
 			</tr>
 			@endif
 			@endforeach
@@ -374,7 +398,11 @@ table#mitabla3 td {
 					$nota_promedio_ta = round(($nota_final_ta) / ($numero_nota_final_ta), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ta}}</td>
+				@if($nota_promedio_ta >= 7)
+				<td style="color: green;">{{$nota_promedio_ta}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ta}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -393,7 +421,11 @@ table#mitabla3 td {
 					$nota_promedio_ti = round(($nota_final_ti) / ($numero_nota_final_ti), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ti}}</td>
+				@if($nota_promedio_ti >= 7)
+				<td style="color: green;">{{$nota_promedio_ti}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ti}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -412,7 +444,11 @@ table#mitabla3 td {
 					$nota_promedio_tg = round(($nota_final_tg) / ($numero_nota_final_tg), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_tg}}</td>
+				@if($nota_promedio_tg >= 7)
+				<td style="color: green;">{{$nota_promedio_tg}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_tg}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -431,7 +467,11 @@ table#mitabla3 td {
 					$nota_promedio_le = round(($nota_final_le) / ($numero_nota_final_le), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_le}}</td>
+				@if($nota_promedio_le >= 7)
+				<td style="color: green;">{{$nota_promedio_le}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_le}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -450,7 +490,11 @@ table#mitabla3 td {
 					$nota_promedio_ev = round(($nota_final_ev) / ($numero_nota_final_ev), 2);
 				}
 				@endphp
-				<td>{{$nota_promedio_ev}}</td>
+				@if($nota_promedio_ev >= 7)
+				<td style="color: green;">{{$nota_promedio_ev}}</td>
+				@else
+			<td style="color: red">{{$nota_promedio_ev}}</td>
+			@endif
 				@endif
 				@endforeach
 				@else
@@ -466,8 +510,13 @@ table#mitabla3 td {
 				else{
 					$promedio_final = round(($nota_promedio_final) / ($numero_promedio_final), 2);
 				}
+				$promedio_final  = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 && $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4 ? 'D' : 'Seleccione nota valida'))));
 				@endphp
-				<td>{{$promedio_final  = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 && $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4 ? 'D' : 'Seleccione nota valida'))))}}</td>
+				@if($promedio_final == 'A' || $promedio_final == 'B')
+				<td style="color: green;">{{$promedio_final}}</td>
+				@else 
+			<td style="color: red;">{{$promedio_final}}</td>
+			@endif
 			</tr>
 			@endif
 			@endforeach
