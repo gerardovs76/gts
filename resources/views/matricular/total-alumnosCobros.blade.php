@@ -101,31 +101,31 @@
                                          <td><strong>70</strong></td>
                                          @foreach($s->facturaciones as $factura)
                                          @if(isset($factura))
-                                         @if(strpos($factura->referencias, ' OCT') !== FALSE)
+                                         @if(strpos($factura->referencias, ' OCT PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' NOV') !== FALSE)
+                                          @if(strpos($factura->referencias, ' NOV PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' DIC') !== FALSE)
+                                          @if(strpos($factura->referencias, ' DIC PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' ENE') !== FALSE)
+                                          @if(strpos($factura->referencias, ' ENE PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' FEB') !== FALSE)
+                                          @if(strpos($factura->referencias, ' FEB PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' MAR') !== FALSE)
+                                          @if(strpos($factura->referencias, ' MAR PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' ABR') !== FALSE)
+                                          @if(strpos($factura->referencias, ' ABR PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' MAY') !== FALSE)
+                                          @if(strpos($factura->referencias, ' MAY PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, ' JUN') !== FALSE)
+                                          @if(strpos($factura->referencias, ' JUN PENSION') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
                                          @else
@@ -156,31 +156,31 @@
                                         <td>95</td>
                                         @endif
                                         @endif
-                                        @if(strpos($factura->referencias, ' OCT') !== FALSE)
+                                        @if(strpos($factura->referencias, ' OCT PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' NOV') !== FALSE)
+                                        @if(strpos($factura->referencias, ' NOV PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' DIC') !== FALSE)
+                                        @if(strpos($factura->referencias, ' DIC PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' ENE') !== FALSE)
+                                        @if(strpos($factura->referencias, ' ENE PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' FEB') !== FALSE)
+                                        @if(strpos($factura->referencias, ' FEB PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' MAR') !== FALSE)
+                                        @if(strpos($factura->referencias, ' MAR PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' ABR') !== FALSE)
+                                        @if(strpos($factura->referencias, ' ABR PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' MAY') !== FALSE)
+                                        @if(strpos($factura->referencias, ' MAY PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, ' JUN') !== FALSE)
+                                        @if(strpos($factura->referencias, ' JUN PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
                                         @endforeach
