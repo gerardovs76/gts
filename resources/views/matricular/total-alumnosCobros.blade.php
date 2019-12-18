@@ -107,25 +107,25 @@
                                           @if(strpos($factura->referencias, ' NOV') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'DIC') !== FALSE)
+                                          @if(strpos($factura->referencias, ' DIC') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'ENE') !== FALSE)
+                                          @if(strpos($factura->referencias, ' ENE') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'FEB') !== FALSE)
+                                          @if(strpos($factura->referencias, ' FEB') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'MAR') !== FALSE)
+                                          @if(strpos($factura->referencias, ' MAR') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'ABR') !== FALSE)
+                                          @if(strpos($factura->referencias, ' ABR') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'MAY') !== FALSE)
+                                          @if(strpos($factura->referencias, ' MAY') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
-                                          @if(strpos($factura->referencias, 'JUN') !== FALSE)
+                                          @if(strpos($factura->referencias, ' JUN') !== FALSE)
                                          <td>{{$factura->valor}}</td>
                                           @endif
                                          @else
@@ -162,25 +162,25 @@
                                         @if(strpos($factura->referencias, ' NOV') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'DIC') !== FALSE)
+                                        @if(strpos($factura->referencias, ' DIC') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'ENE') !== FALSE)
+                                        @if(strpos($factura->referencias, ' ENE') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'FEB') !== FALSE)
+                                        @if(strpos($factura->referencias, ' FEB') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'MAR') !== FALSE)
+                                        @if(strpos($factura->referencias, ' MAR') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'ABR') !== FALSE)
+                                        @if(strpos($factura->referencias, ' ABR') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'MAY') !== FALSE)
+                                        @if(strpos($factura->referencias, ' MAY') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias, 'JUN') !== FALSE)
+                                        @if(strpos($factura->referencias, ' JUN') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
                                         @endforeach
