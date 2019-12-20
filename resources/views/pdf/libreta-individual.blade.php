@@ -247,7 +247,7 @@ table#mitabla3 td {
 				@php
 				$nota_final_ta = ($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5);
 				$numero_nota_final_ta = (($notas_ta->nota_ta1 == 0 ? 0 : 1) + ($notas_ta->nota_ta2 == 0 ? 0 : 1) + ($notas_ta->nota_ta3 == 0 ? 0 : 1) + ($notas_ta->nota_ta4 == 0 ? 0 : 1) + ($notas_ta->nota_ta5 == 0 ? 0 : 1));
-				if($nota_final_ta == 0 && $numero_nota_final_ta == 0){
+				if($nota_final_ta == 0 && $numero_nota_final_ta == 0 || $notas_ta == []){
 				   $nota_promedio_ta = 0;
 				}
 				else{
