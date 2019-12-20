@@ -3298,7 +3298,7 @@ class NotasController extends Controller
            $data = $pdf->output();
            if($email != '')
            {
-            Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'pdf' => $pdf], function($message) use ($email, $parcial, $pdf) {
+            Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'data' => $data], function($message) use ($email, $parcial, $data) {
                 $message->to($email)
                 ->subject('PARCIAL'.$parcial)
                 ->attachData($data, "Receipt.pdf",
