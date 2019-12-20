@@ -3300,9 +3300,7 @@ class NotasController extends Controller
             Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'pdf' => $pdf], function($message) use ($email, $parcial, $pdf) {
                 $message->to($email)
                 ->subject('PARCIAL'.$parcial)
-                ->attachData($pdf->output(), "parcial.pdf", [
-                    'mime' => 'application/pdf',
-                ]);
+                ->attachData($pdf, "parcial.pdf");
                 });
            }
            else{
