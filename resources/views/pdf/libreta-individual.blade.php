@@ -357,7 +357,7 @@ table#mitabla3 td {
 				<td>0</td>
 				@endif
 				@php
-				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
+				$nota_promedio_final = ((!isset($nota_promedio_ta) ? 0 : $nota_promedio_ta) + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
 				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
 				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
 				{
