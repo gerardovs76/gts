@@ -3272,7 +3272,7 @@ class NotasController extends Controller
             Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'data' => $data], function($message) use ($email, $parcial, $data) {
                 $message->to($email)
                 ->subject('PARCIAL'.$parcial)
-                ->attach($data, "Receipt.pdf", [
+                ->attachData($data, "Receipt.pdf", [
                     'as' => 'filename.pdf',
                     'mime' => 'text/pdf',
                 ]);
