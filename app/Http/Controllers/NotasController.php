@@ -2914,8 +2914,9 @@ class NotasController extends Controller
 
         }])
         ->where('codigo', $codigo)->groupBy('matriculados.id')->get();
+        dd(json_encode($notas));
+        
        $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'));
-       dd($pdf);
        return $pdf->download('libreta-individual.pdf');
     }
     public function promediosFinales()
