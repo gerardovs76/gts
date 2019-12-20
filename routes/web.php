@@ -254,7 +254,7 @@ Route::post('abanderados-store', 'NotasController@abanderadoStore')->name('notas
 
 Route::post('abanderados-reportes', 'NotasController@abanderadosExcel')->name('notas.abanderados-reportes');
 
-Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta')->middleware('has.permission:notas.reporte-individual-libreta');
+Route::get('reporte-individual-libreta', 'NotasController@reporteIndividualLibreta')->name('notas.reporte-individual-libreta');
 
 Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividualLibretaStore')->name('notas.reporte-individual-libreta-store');
 
