@@ -3265,6 +3265,7 @@ class NotasController extends Controller
             }])
             ->where('cedula', $cedula)->groupBy('matriculados.id')->get();
            $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'));
+           $pdf->setPaper('a4');
            $data = $pdf->output();
            if($email != '')
            {
