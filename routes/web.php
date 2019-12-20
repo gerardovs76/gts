@@ -210,6 +210,11 @@ Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasContr
 
 Route::get('notas-delete-all-resumen/{descripcion}/{created_at}/{tt}', 'NotasController@deleteAllNotesResumen');
 
+Route::get('enviar-libreta-individuales', 'NotasController@enviarLibretasIndividuales')->name('notas.enviar-libreta-individuales');
+
+Route::get('buscar_alumnos_libretas/{curso}/{paralelo}/{parcial}/{quimestre}', 'NotasController@storeLibretaIndividualEnviar');
+
+Route::get('enviar-libreta-individual-email/{cedula}/{email}/{paralelo}/{quimestre}', 'NotasController@enviarLibretaIndividualDefinitiva');
 
 Route::get('nota_especial', 'NotasController@notaEspeciales')->name('notas.especial')->middleware('has.permission:notas.especial');
 
