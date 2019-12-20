@@ -142,6 +142,7 @@
                 @endcan --}}
                 @can('notas.ver-notas-alumnos')
                 <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
+                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
                 @endcan
                 @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Abanderados</a>
