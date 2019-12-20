@@ -3265,13 +3265,12 @@ class NotasController extends Controller
             }])
             ->where('cedula', $cedula)->groupBy('matriculados.id')->get();
            $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'))->stream();
-           $data = $pdf->output();
            if($email != '')
            {
-            Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'data' => $data], function($message) use ($email, $parcial, $data) {
+            Mail::send('email-libreta',['email' => $email, 'parcial' => $parcial,'pdf' => $pdf], function($message) use ($email, $parcial, $pdf) {
                 $message->to($email)
                 ->subject('PARCIAL'.$parcial)
-                ->attachData($data, 'libreta.pdf');
+                ->attachData($pdf, 'libreta.pdf');
                 });
 
             
