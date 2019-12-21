@@ -243,7 +243,7 @@ table#mitabla3 td {
 				@if($nota->notas_ta->count() != 0)
 				@foreach($nota->notas_ta as $notas_ta)
 				@if($notas_ta->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ta = ($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5);
 				$numero_nota_final_ta = (($notas_ta->nota_ta1 == 0 ? 0 : 1) + ($notas_ta->nota_ta2 == 0 ? 0 : 1) + ($notas_ta->nota_ta3 == 0 ? 0 : 1) + ($notas_ta->nota_ta4 == 0 ? 0 : 1) + ($notas_ta->nota_ta5 == 0 ? 0 : 1));
 				if($nota_final_ta == 0 && $numero_nota_final_ta == 0){
@@ -266,7 +266,7 @@ table#mitabla3 td {
 				@if($nota->notas_ti->count() != 0)
 				@foreach($nota->notas_ti as $notas_ti)
 				@if($notas_ti->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ti = ($notas_ti->nota_ti1 + $notas_ti->nota_ti2 + $notas_ti->nota_ti3 + $notas_ti->nota_ti4 + $notas_ti->nota_ti5);
 				$numero_nota_final_ti = (($notas_ti->nota_ti1 == 0 ? 0 : 1) + ($notas_ti->nota_ti2 == 0 ? 0 : 1) + ($notas_ti->nota_ti3 == 0 ? 0 : 1) + ($notas_ti->nota_ti4 == 0 ? 0 : 1) + ($notas_ti->nota_ti5 == 0 ? 0 : 1));
 				if($nota_final_ti == 0 && $numero_nota_final_ti == 0){
@@ -289,7 +289,7 @@ table#mitabla3 td {
 				@if($nota->notas_tg->count() != 0)
 				@foreach($nota->notas_tg as $notas_tg)
 				@if($notas_tg->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_tg = ($notas_tg->nota_tg1 + $notas_tg->nota_tg2 + $notas_tg->nota_tg3 + $notas_tg->nota_tg4 + $notas_tg->nota_tg5);
 				$numero_nota_final_tg = (($notas_tg->nota_tg1 == 0 ? 0 : 1) + ($notas_tg->nota_tg2 == 0 ? 0 : 1) + ($notas_tg->nota_tg3 == 0 ? 0 : 1) + ($notas_tg->nota_tg4 == 0 ? 0 : 1) + ($notas_tg->nota_tg5 == 0 ? 0 : 1));
 				if($nota_final_tg == 0 && $numero_nota_final_tg == 0){
@@ -312,7 +312,7 @@ table#mitabla3 td {
 				@if($nota->notas_le->count() != 0)
 				@foreach($nota->notas_le as $notas_le)
 				@if($notas_le->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_le = ($notas_le->nota_le1 + $notas_le->nota_le2 + $notas_le->nota_le3 + $notas_le->nota_le4 + $notas_le->nota_le5);
 				$numero_nota_final_le = (($notas_le->nota_le1 == 0 ? 0 : 1) + ($notas_le->nota_le2 == 0 ? 0 : 1) + ($notas_le->nota_le3 == 0 ? 0 : 1) + ($notas_le->nota_le4 == 0 ? 0 : 1) + ($notas_le->nota_le5 == 0 ? 0 : 1));
 				if($nota_final_le == 0 && $numero_nota_final_le == 0){
@@ -335,7 +335,7 @@ table#mitabla3 td {
 				@if($nota->notas_ev->count() != 0)
 				@foreach($nota->notas_ev as $notas_ev)
 				@if($notas_ev->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ev = ($notas_ev->nota_ev1 + $notas_ev->nota_ev2 + $notas_ev->nota_ev3 + $notas_ev->nota_ev4 + $notas_ev->nota_ev5);
 				$numero_nota_final_ev = (($notas_ev->nota_ev1 == 0 ? 0 : 1) + ($notas_ev->nota_ev2 == 0 ? 0 : 1) + ($notas_ev->nota_ev3 == 0 ? 0 : 1) + ($notas_ev->nota_ev4 == 0 ? 0 : 1) + ($notas_ev->nota_ev5 == 0 ? 0 : 1));
 				if($nota_final_ev == 0 && $numero_nota_final_ev == 0){
@@ -356,8 +356,8 @@ table#mitabla3 td {
 				<td>0</td>
 				@endif
 				@php
-				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
-				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
+				$nota_promedio_final = ((!isset($nota_promedio_ta) ? 0 : $nota_promedio_ta) + (!isset($nota_promedio_ti) ? 0 : $nota_promedio_ti) + (!isset($nota_promedio_tg) ? 0 : $nota_promedio_tg) + (!isset($nota_promedio_le) ? 0 : $nota_promedio_le) + (!isset($nota_promedio_ev) ? 0 : $nota_promedio_ev));
+				$numero_promedio_final = ((!isset($nota_promedio_ta) ? 0 : 1) + (!isset($nota_promedio_ti) ? 0 : 1) + (!isset($nota_promedio_tg) ? 0 : 1) + (!isset($nota_promedio_le) ? 0 : 1) + (!isset($nota_promedio_ev) ? 0 : 1));
 				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
 				{
 					$promedio_final = 0;
@@ -384,7 +384,7 @@ table#mitabla3 td {
 				@if($nota->notas_ta->count() != 0)
 				@foreach($nota->notas_ta as $notas_ta)
 				@if($notas_ta->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ta = ($notas_ta->nota_ta1 + $notas_ta->nota_ta2 + $notas_ta->nota_ta3 + $notas_ta->nota_ta4 + $notas_ta->nota_ta5);
 				$numero_nota_final_ta = (($notas_ta->nota_ta1 == 0 ? 0 : 1) + ($notas_ta->nota_ta2 == 0 ? 0 : 1) + ($notas_ta->nota_ta3 == 0 ? 0 : 1) + ($notas_ta->nota_ta4 == 0 ? 0 : 1) + ($notas_ta->nota_ta5 == 0 ? 0 : 1));
 				if($nota_final_ta == 0 && $numero_nota_final_ta == 0){
@@ -407,7 +407,7 @@ table#mitabla3 td {
 				@if($nota->notas_ti->count() != 0)
 				@foreach($nota->notas_ti as $notas_ti)
 				@if($notas_ti->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ti = ($notas_ti->nota_ti1 + $notas_ti->nota_ti2 + $notas_ti->nota_ti3 + $notas_ti->nota_ti4 + $notas_ti->nota_ti5);
 				$numero_nota_final_ti = (($notas_ti->nota_ti1 == 0 ? 0 : 1) + ($notas_ti->nota_ti2 == 0 ? 0 : 1) + ($notas_ti->nota_ti3 == 0 ? 0 : 1) + ($notas_ti->nota_ti4 == 0 ? 0 : 1) + ($notas_ti->nota_ti5 == 0 ? 0 : 1));
 				if($nota_final_ti == 0 && $numero_nota_final_ti == 0){
@@ -430,7 +430,7 @@ table#mitabla3 td {
 				@if($nota->notas_tg->count() != 0)
 				@foreach($nota->notas_tg as $notas_tg)
 				@if($notas_tg->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_tg = ($notas_tg->nota_tg1 + $notas_tg->nota_tg2 + $notas_tg->nota_tg3 + $notas_tg->nota_tg4 + $notas_tg->nota_tg5);
 				$numero_nota_final_tg = (($notas_tg->nota_tg1 == 0 ? 0 : 1) + ($notas_tg->nota_tg2 == 0 ? 0 : 1) + ($notas_tg->nota_tg3 == 0 ? 0 : 1) + ($notas_tg->nota_tg4 == 0 ? 0 : 1) + ($notas_tg->nota_tg5 == 0 ? 0 : 1));
 				if($nota_final_tg == 0 && $numero_nota_final_tg == 0){
@@ -453,7 +453,7 @@ table#mitabla3 td {
 				@if($nota->notas_le->count() != 0)
 				@foreach($nota->notas_le as $notas_le)
 				@if($notas_le->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_le = ($notas_le->nota_le1 + $notas_le->nota_le2 + $notas_le->nota_le3 + $notas_le->nota_le4 + $notas_le->nota_le5);
 				$numero_nota_final_le = (($notas_le->nota_le1 == 0 ? 0 : 1) + ($notas_le->nota_le2 == 0 ? 0 : 1) + ($notas_le->nota_le3 == 0 ? 0 : 1) + ($notas_le->nota_le4 == 0 ? 0 : 1) + ($notas_le->nota_le5 == 0 ? 0 : 1));
 				if($nota_final_le == 0 && $numero_nota_final_le == 0){
@@ -476,7 +476,7 @@ table#mitabla3 td {
 				@if($nota->notas_ev->count() != 0)
 				@foreach($nota->notas_ev as $notas_ev)
 				@if($notas_ev->materias_id == $materia->id)
-				@php 
+				@php
 				$nota_final_ev = ($notas_ev->nota_ev1 + $notas_ev->nota_ev2 + $notas_ev->nota_ev3 + $notas_ev->nota_ev4 + $notas_ev->nota_ev5);
 				$numero_nota_final_ev = (($notas_ev->nota_ev1 == 0 ? 0 : 1) + ($notas_ev->nota_ev2 == 0 ? 0 : 1) + ($notas_ev->nota_ev3 == 0 ? 0 : 1) + ($notas_ev->nota_ev4 == 0 ? 0 : 1) + ($notas_ev->nota_ev5 == 0 ? 0 : 1));
 				if($nota_final_ev == 0 && $numero_nota_final_ev == 0){
@@ -497,8 +497,8 @@ table#mitabla3 td {
 				<td>0</td>
 				@endif
 				@php
-				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
-				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
+				$nota_promedio_final = ((!isset($nota_promedio_ta) ? 0 : $nota_promedio_ta) + (!isset($nota_promedio_ti) ? 0 : $nota_promedio_ti) + (!isset($nota_promedio_tg) ? 0 : $nota_promedio_tg) + (!isset($nota_promedio_le) ? 0 : $nota_promedio_le) + (!isset($nota_promedio_ev) ? 0 : $nota_promedio_ev));
+				$numero_promedio_final = ((!isset($nota_promedio_ta) ? 0 : 1) + (!isset($nota_promedio_ti) ? 0 : 1) + (!isset($nota_promedio_tg) ? 0 : 1) + (!isset($nota_promedio_le) ? 0 : 1) + (!isset($nota_promedio_ev) ? 0 : 1));
 				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
 				{
 					$promedio_final = 0;
@@ -510,13 +510,13 @@ table#mitabla3 td {
 				@endphp
 				@if($promedio_final == 'A' || $promedio_final == 'B')
 				<td style="color: green;">{{$promedio_final}}</td>
-				@else 
+				@else
 			<td style="color: red;">{{$promedio_final}}</td>
 			@endif
 			</tr>
 			@endif
 			@endforeach
-			
+
 		</tbody>
 	</table>
 	<br>
@@ -552,7 +552,7 @@ table#mitabla3 td {
 					<td>D</td>
 					@break
                     @endif
-                    @endforeach 
+                    @endforeach
                     @else
                     <td>0</td>
                     @endif
