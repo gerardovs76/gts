@@ -397,7 +397,7 @@ table#mitabla3 td {
 				@endphp
 				@if($nota_promedio_ta >= 7)
 				<td style="color: green;">{{$nota_promedio_ta}}</td>
-				@else 
+				@else
 			<td style="color: red;">{{$nota_promedio_ta}}</td>
 				@endif
 				@endif
@@ -420,7 +420,7 @@ table#mitabla3 td {
 				@endphp
 					@if($nota_promedio_ti >= 7)
 					<td style="color: green;">{{$nota_promedio_ti}}</td>
-					@else 
+					@else
 				<td style="color: red;">{{$nota_promedio_ti}}</td>
 					@endif
 				@endif
@@ -443,7 +443,7 @@ table#mitabla3 td {
 				@endphp
 					@if($nota_promedio_tg >= 7)
 					<td style="color: green;">{{$nota_promedio_tg}}</td>
-					@else 
+					@else
 				<td style="color: red;">{{$nota_promedio_tg}}</td>
 					@endif
 				@endif
@@ -466,7 +466,7 @@ table#mitabla3 td {
 				@endphp
 					@if($nota_promedio_le >= 7)
 					<td style="color: green;">{{$nota_promedio_le}}</td>
-					@else 
+					@else
 				<td style="color: red;">{{$nota_promedio_le}}</td>
 					@endif
 				@endif
@@ -489,7 +489,7 @@ table#mitabla3 td {
 				@endphp
 					@if($nota_promedio_ev >= 7)
 					<td style="color: green;">{{$nota_promedio_ev}}</td>
-					@else 
+					@else
 				<td style="color: red;">{{$nota_promedio_ev}}</td>
 					@endif
 				@endif
@@ -498,8 +498,8 @@ table#mitabla3 td {
 				<td>0</td>
 				@endif
 				@php
-				$nota_promedio_final = ($nota_promedio_ta + $nota_promedio_ti + $nota_promedio_tg + $nota_promedio_le + $nota_promedio_ev);
-				$numero_promedio_final = ($nota_promedio_ta == 0 ? 0 : 1) + ($nota_promedio_ti == 0 ? 0 : 1) + ($nota_promedio_tg == 0 ? 0 : 1) + ($nota_promedio_le == 0 ? 0 : 1) + ($nota_promedio_ev == 0 ? 0 : 1);
+				$nota_promedio_final = ((!isset($nota_promedio_ta) ? 0 : $nota_promedio_ta) + (!isset($nota_promedio_ti) ? 0 : $nota_promedio_ti) + (!isset($nota_promedio_tg) ? 0 : $nota_promedio_tg) + (!isset($nota_promedio_le) ? 0 : $nota_promedio_le) + (!isset($nota_promedio_ev) ? 0 : $nota_promedio_ev));
+				$numero_promedio_final = ((!isset($nota_promedio_ta) ? 0 : 1) + (!isset($nota_promedio_ti) ? 0 : 1) + (!isset($nota_promedio_tg) ? 0 : 1) + (!isset($nota_promedio_le) ? 0 : 1) + (!isset($nota_promedio_ev) ? 0 : 1));
 				if($nota_promedio_final == 0 && $numero_promedio_final == 0)
 				{
 					$promedio_final = 0;
@@ -511,7 +511,7 @@ table#mitabla3 td {
 				@endphp
 				@if($promedio_final == 'A' || $promedio_final == 'B')
 				<td style="color: green;">{{$promedio_final}}</td>
-				@else 
+				@else
 			<td style="color: red;">{{$promedio_final}}</td>
 			@endif
 			</tr>
