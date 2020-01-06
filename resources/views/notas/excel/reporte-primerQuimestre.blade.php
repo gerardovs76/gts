@@ -17,7 +17,7 @@
 		<tr>
 
 		</tr>
-		<tr>
+	{{-- 	<tr>
 
          <td><strong>NIVEL: </strong></td>
          @foreach($matriculados as $matriculado)
@@ -27,7 +27,7 @@
          @foreach($matriculados as $matriculado)
          <td>{{ $matriculado->paralelo }}</td>
          @endforeach
-		</tr>
+		</tr> --}}
 		<tr>
 			<td><strong>JORNADA: </strong></td>
 		</tr>
