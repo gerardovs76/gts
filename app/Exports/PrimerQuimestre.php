@@ -65,7 +65,7 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
     return [
         AfterSheet::class    => function(AfterSheet $event) {
             $event->sheet->styleCells(
-                'A1:L64:',
+                'A1:M64:',
                 [
                     'borders' => [
                         'outline' => [
