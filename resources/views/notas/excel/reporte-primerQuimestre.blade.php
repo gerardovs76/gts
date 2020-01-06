@@ -52,10 +52,10 @@
 			@php
 			$i = 0;
 			@endphp
-			@foreach($matriculados as $matriculado)
+		{{-- 	@foreach($matriculados as $matriculado)
 			<td>{{$i++}}</td>
 			<td>{{ $matriculado->apellidos }} {{ $matriculado->nombres }}</td>
-			@endforeach
+			@endforeach --}}
 			{{-- @foreach($notas as $nota)
 			<td>{{ $nota->nota_final }}</td>
 			@endforeach
