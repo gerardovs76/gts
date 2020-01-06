@@ -42,8 +42,8 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
             ->select('materia', 'id')
             ->where('paralelo', $this->paralelo)
             ->get(),
-			'matriculados' => Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos', 'curso', 'paralelo')->where('curso', $this->curso)->where('paralelo', $this->paralelo)->groupBy('matriculados.id')->get()
-
+		/* 	'matriculados' => Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos', 'curso', 'paralelo')->where('curso', $this->curso)->where('paralelo', $this->paralelo)->groupBy('matriculados.id')->get()
+ */
          ]);
     }
 
