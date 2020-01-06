@@ -164,6 +164,7 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
              $event->sheet->getColumnDimension('G')->setWidth(5)->setAutoSize(false);
              $event->sheet->getColumnDimension('K')->setWidth(5)->setAutoSize(false);
              $event->sheet->getColumnDimension('L')->setWidth(5)->setAutoSize(false);
+             $event->sheet->getColumnDimension('M')->setWidth(5)->setAutoSize(false);
 
              $event->sheet->styleCells(
                 'B65:B66',
