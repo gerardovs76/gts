@@ -56,7 +56,6 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
         $drawing->setHeight(50);
         $drawing->setWidth(80);
         $drawing->setCoordinates('A1');
-
         return $drawing;
     }
 
@@ -106,7 +105,7 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
             );
 
              $event->sheet->styleCells(
-                'A9:L9:',
+                'A9:M9:',
                 [
                     'borders' => [
                         'allBorders' => [
