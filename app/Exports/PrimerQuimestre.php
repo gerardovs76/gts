@@ -125,7 +125,7 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
             );
 
              $event->sheet->styleCells(
-                'A10:L64:',
+                'A10:M64:',
                 [
                     'borders' => [
                         'allBorders' => [
