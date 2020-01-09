@@ -204,6 +204,8 @@ Route::post('gracias', 'NotasController@graciaStore')->name('gracia.store')->mid
 
 Route::get('gracia_promedio', 'NotasController@graciaPromedio');
 
+
+
 Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@notasEdit');
 
 Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@resumenNotaStore');
@@ -281,6 +283,14 @@ Route::get('matricular/{matricular}/edit', 'MatriculacionController@edit')->name
 
 Route::get('relacion', 'MatriculacionController@relacion');
 
+Route::get('ver-carnets', 'MatriculacionController@showCarnets')->name('matricular.showCarnets');
+
+Route::get('download-carnet/{curso}/{paralelo}', 'MatriculacionController@downloadCarnet');
+
+Route::get('carnet', 'MatriculacionController@carnets')->name('matricular.carnet');
+
+Route::get('matricular/carnet/{curso}/{paralelo}', 'MatriculacionController@verAlumnosCarnet');
+
 Route::get('matricular/importar/alumnos', 'MatriculacionController@import');
 
 Route::post('matricular/import', 'MatriculacionController@importMatriculacion')->name('matriculacion.import')->middleware('has.permission:matriculacion.import');
@@ -321,6 +331,8 @@ Route::get('matricular-reporte-total/{curso}/{paralelo}', 'MatriculacionControll
 Route::get('total-matricular', 'MatriculacionController@totalAlumnosCobros')->name('matricular.total-alumnosCobros')->middleware('has.permission:matricular.total-alumnosCobros');
 
 Route::post('total-alumnos-store', 'MatriculacionController@totalAlumnosStore')->name('matricular.total-alumnosStore');
+
+Route::post('store-carnets', 'MatriculacionController@storeCarnets')->name('matricular.storeCarnets');
 
 Route::get('matricular/reportes/matriculados-gender-male/{curso}/{paralelo}', 'MatriculacionController@genderMale');
 
