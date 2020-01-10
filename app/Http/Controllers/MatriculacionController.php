@@ -1709,7 +1709,7 @@ class MatriculacionController extends Controller
     public function verAlumnosCarnet($curso, $paralelo)
     {
         $matriculadosCarnet = MatriculadosCarnet::all();
-        if(!$matriculadosCarnet->isEmpty())
+    /*     if(!$matriculadosCarnet->isEmpty())
         {
             dd("si");
         foreach($matriculadosCarnet as $carnet)
@@ -1723,7 +1723,7 @@ class MatriculacionController extends Controller
             ->get();
             return response()->json($matriculados);
         }
-    } else {
+    } else { */
         $matriculados = Matriculacion::where('curso', $curso)
         ->where('paralelo', $paralelo)
         ->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'id', 'curso', 'paralelo')
@@ -1731,7 +1731,7 @@ class MatriculacionController extends Controller
         ->orderBy('apellidos')
         ->get();
         return response()->json($matriculados);
-    }
+   /*  } */
     }
     public function storeCarnets(Request $request)
     {
