@@ -44,14 +44,9 @@
                 <tbody>
                 </tbody>
             </table>
-       
             {!!Form::close()!!}
-         
-            <div id="carnet" style="border: 1px solid black; height: 6cm; width: 8.5cm; background-color: red;">
-                <h5 class="pull-right" style="margin-top: 20px;margin-right: 50px; font-weight: bold;">UNIDAD EDUCATIVA <br> <p style="margin-top: 5px;margin-left: 25px;">PAUL DIRAC</p></h5><br>
-                <ul style="margin-top: 80px;margin-right: 15px; font-weight: bold;"></ul>
-             </div>
     </div>
+    
     <script>
     $('#realizarBusqueda').click(() => {
        var curso = $('#curso').val();
@@ -63,11 +58,12 @@
         {
             $('#table tbody').empty();
             $.each(response, function(index, objeto){
-                console.log(objeto);
                 if(objeto.carnet)
                 {
-                    $('#carnet ul').append('<li>Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li>Curso: '+objeto.curso+'</li><li>Paralelo: '+objeto.paralelo+'</li><li>Codigo: '+objeto.codigo+'</li><li>Año lectivo: 2020</li>');
-                    $('#table').append('<tr><td>'+objeto.nombres+'</td><td><button class="btn btn-success" id="boton" type="button"><i class="fas fa-print"></i> IMPRIMIR CARNET</button></td></tr>');
+                 //   $('#carnet').append('<img style="margin-bottom: 20px;" src="archivos/'+objeto.carnet+'" width="100px" height="100px" />')
+                   // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
+                   // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
+                    $('#table').append('<tr><td>'+objeto.nombres+'</td><td><button id='+objeto.id+' class="btn btn-success botonBusqueda" type="button"><i class="fas fa-print"></i> IMPRIMIR CARNET</button></td></tr>');
                 }
                 else {
                      $('#table').append('<tr><td>'+objeto.nombres+'</td><td><em>No tiene asignada una foto de carnet!</em></td></tr>');
@@ -78,7 +74,47 @@
     });
     </script>
     <script>
-        function printData()
+        $(document).on('click', '#table .botonBusqueda', function(){
+            var idMatriculado = this.id;
+            var url = 'download-singular-carnet/'+idMatriculado;
+            $.ajax({
+                url: url,
+                success: function(response)
+                {
+                   $.each(response, function(index, objeto){
+                   // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
+                   // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
+                   // var carnet =document.getElementById("screenPrincipal");
+                    var li = '<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>';
+                    var newWin= window.open("");
+                    var is_chrome = Boolean(newWin.chrome);
+                    newWin.document.write('<style>@page{size:landscape; font-family:Verdana;font-size:4px;}#screenPrincipal{display:flex;justify-content:center;align-items:center;height:100%; width:100%}html, body{height:100%;width:100%;}</style><html><head><title></title>');
+                    newWin.document.write('<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />');
+                    newWin.document.write('</head><body>');
+                    newWin.document.write('<div class="col-xs-12" id="screenPrincipal"><div id="carnet" class="center-block" style="border: 1px solid black; height: 6.5cm; width: 9.5cm;"><h6 style="position:relative;left:160px; top:30px;font-weight: bold;">UNIDAD EDUCATIVA <br> <p style="margin-top: 5px;margin-left: 25px;">PAUL DIRAC</p></h6><br><img id="imagen-carnet" src="archivos/'+objeto.carnet+'" alt="" width="100px" height="100px" style="position: relative;left: 230px;top:40px;border: 1px solid black;"><ul style="position:relative;right:15px;bottom:100px;font-size: 12px; font-weight: bold;list-style-type: none;">'+li+'</ul></div></div>');
+                  //  newWin.document.write(carnet.outerHTML);
+                    newWin.document.write('</body></html>');
+                        if (is_chrome) {
+                            
+                            setTimeout(function() {
+                                newWin.document.close();
+                                newWin.focus();
+                                newWin.print();
+                                newWin.close();
+                            }, 250);
+                                        } else {
+                                            
+                                            newWin.document.close();
+                                            newWin.focus();
+                                            newWin.print();
+                                            newWin.close();
+                                        }
+                   });
+                  
+                    }
+            })
+        });
+        /* function printData()
         {
            var table=document.getElementById("carnet");
            var newWin= window.open("");
@@ -104,7 +140,7 @@
                 $('#boton').on('click', function(){
                     alert("Hola mundo");
                 printData();
-                });
+                }); */
     </script>
 </div>
     

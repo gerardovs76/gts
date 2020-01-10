@@ -1708,21 +1708,35 @@ class MatriculacionController extends Controller
     }
     public function verAlumnosCarnet($curso, $paralelo)
     {
+        $matriculadosCarnet = MatriculadosCarnet::all();
+        if(!$matriculadosCarnet->isEmpty())
+        {
+            dd("si");
+        foreach($matriculadosCarnet as $carnet)
+        {
+            $matriculados = Matriculacion::where('curso', $curso)
+            ->where('paralelo', $paralelo)
+            ->where('id', '!=', $carnet->matriculado_id)
+            ->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'id', 'curso', 'paralelo')
+            ->distinct()
+            ->orderBy('apellidos')
+            ->get();
+            return response()->json($matriculados);
+        }
+    } else {
         $matriculados = Matriculacion::where('curso', $curso)
         ->where('paralelo', $paralelo)
         ->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'id', 'curso', 'paralelo')
         ->distinct()
         ->orderBy('apellidos')
         ->get();
-
         return response()->json($matriculados);
-
+    }
     }
     public function storeCarnets(Request $request)
     {
         $matriculados_id = $request->matriculados_id;
         $fotoCarnet = $request->file('foto');
-
         foreach($matriculados_id as $key => $value)
         {
             $fillename = $matriculados_id[$key].'.png';
@@ -1731,7 +1745,7 @@ class MatriculacionController extends Controller
            $matriculadosCarnet->matriculado_id = $matriculados_id[$key];
            $matriculadosCarnet->save();
 
-            $saveFotoCarnet = \Storage::disk('local')->put($fillename, \File::get($fotoCarnet[$key]));
+            $saveFotoCarnet = \Storage::disk('carnets')->put($fillename, \File::get($fotoCarnet[$key]));
         }   
         return redirect()->route('matricular.carnet')->with('info', 'Las foto de los carnet se han agregado correctamente');
            // return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
@@ -1745,6 +1759,30 @@ class MatriculacionController extends Controller
     {
         $matriculados = Matriculacion::where('curso', $curso)
         ->where('paralelo', $paralelo)
+        ->select('id', DB::raw("CONCAT(apellidos,' ',nombres) as nombres"),'nombres', 'apellidos','curso', 'paralelo', 'codigo')
+        ->distinct()
+        ->orderBy('apellidos')
+        ->get();
+        foreach($matriculados as $matriculado)
+        {
+            $matriculadosCarnet = MatriculadosCarnet::where('matriculado_id', $matriculado->id)->get();
+            if($matriculadosCarnet != '')
+            {
+                foreach($matriculadosCarnet as $carnet)
+                {
+                    $matriculado->carnet = $carnet->imagen;
+                }
+            }
+            else{
+                
+                $matriculado->carnet = 'no-asignado';
+            } 
+        }
+        return response()->json($matriculados);
+    }
+    public function dowloadSingularCarnet($id)
+    {
+        $matriculados = Matriculacion::where('id', $id)
         ->select('id', DB::raw("CONCAT(apellidos,' ',nombres) as nombres"),'nombres', 'apellidos','curso', 'paralelo', 'codigo')
         ->distinct()
         ->orderBy('apellidos')

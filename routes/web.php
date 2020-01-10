@@ -283,6 +283,8 @@ Route::get('matricular/{matricular}/edit', 'MatriculacionController@edit')->name
 
 Route::get('relacion', 'MatriculacionController@relacion');
 
+Route::get('download-singular-carnet/{id}', 'MatriculacionController@dowloadSingularCarnet');
+
 Route::get('ver-carnets', 'MatriculacionController@showCarnets')->name('matricular.showCarnets');
 
 Route::get('download-carnet/{curso}/{paralelo}', 'MatriculacionController@downloadCarnet');
