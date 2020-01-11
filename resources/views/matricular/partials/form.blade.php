@@ -103,6 +103,7 @@
 			<span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
 			{!! Form::text('codigo', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
 			</div>
+			</div>
 			<div class="form-group col-md-4">
 			<strong>Correo: <br></strong>
 			<div class="input-group-prepend">
