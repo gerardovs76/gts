@@ -63,7 +63,7 @@
                                 <tr>
                                     <th>N.</th>
                                     <th>NOMBRES</th>
-                                    <th>LIBRETAS</th>
+                                    <th>PERFIL</th>
                                     <th>CODIGO</th>
                                     <th>CEDULA</th>
                                     <th>TOTAL</th>
@@ -88,6 +88,7 @@
                                     <tr>
                                         <td><strong>{{$i++}}</strong></td>
                                          <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
+                                         <td><a class="btn btn-primary sm" href="{{url('matricular-perfil-total-store/'.$s->codigo)}}"><i class="fas fa-plus"></i>PERFIL</a></td>
                                          <td>{{$s->codigo}}</td>
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>0</strong></td>
@@ -97,6 +98,7 @@
                                        <tr>
                                        <td><strong>{{$i++}}</strong></td>
                                         <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
+                                        <td><a class="btn btn-primary sm" href="{{url('matricular-perfil-total-store/'.$s->codigo)}}"><i class="fas fa-plus"></i>PERFIL</a></td>
                                        <td>{{$s->codigo}}</td>
                                        <td><strong>{{$s->cedula}}</strong></td>
                                        @if(isset($s->facturaciones->first()->valor))
