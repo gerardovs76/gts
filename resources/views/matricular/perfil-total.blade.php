@@ -62,10 +62,10 @@
                                                     @if(!isset($perfil->facturaciones->first()->valor))
                                                      SEP VALOR : 0
                                                     @elseif($perfil->facturaciones->first()->valor !== '306.7' && $perfil->facturaciones->first()->valor !== '314' && $perfil->facturaciones->first()->valor !== '326' && $perfil->facturaciones->first()->valor !== '353.5' && $perfil->facturaciones->first()->valor !== '371' && $perfil->facturaciones->first()->valor !== '196.7' && $perfil->facturaciones->first()->valor !== '199' && $perfil->facturaciones->first()->valor !== '201' && $perfil->facturaciones->first()->valor !== '228.5' && $perfil->facturaciones->first()->valor !== '246')
-                                                       SEP VALOR : {{$perfil->facturaciones->first()->valor}}
+                                                       SEP VALOR : {{$perfil->facturaciones->first()->valor}}   - FECHA DE COBRO: {{$perfil->facturaciones->first()->fecha_inicio}}    - NUMERO DE REFERENCIA: {{$perfil->facturaciones->first()->num_referencia}}
                                                     @else
                                                        @if(isset($perfil->facturaciones->first()->valor))
-                                                      SEP VALOR : {{$perfil->facturaciones->first()->valor}}
+                                                      SEP VALOR : {{$perfil->facturaciones->first()->valor}}  - FECHA DE COBRO: {{$perfil->facturaciones->first()->fecha_inicio}}    - NUMERO DE REFERENCIA: {{$perfil->facturaciones->first()->num_referencia}}
                                                        @elseif($perfil->facturaciones->first()->valor == '')
                                                       SEP VALOR : 0
                                                        @endif
@@ -90,11 +90,7 @@
                                             </th>
                                         </tr>
                                                     @foreach($perfil->facturaciones as $factura)
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, ' SEP') !== FALSE)
-                                                        <th>SEP PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @endif
-                                                    </tr>
+                                                    
                                                     <tr>
                                                         @if(strpos($factura->referencias, ' OCT') !== FALSE)
                                                         <th>OCT PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
