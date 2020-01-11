@@ -82,7 +82,7 @@
                                                         PENSIÓN: 95
                                                         @endif
                                                         @if($factura->fecha_inicio !== null && $factura->num_referencia !== null)
-                                                        - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}
+                                                        - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}
                                                         @endif
                                                         @endif
                                                         @endforeach
@@ -92,51 +92,51 @@
                                                     @foreach($perfil->facturaciones as $factura)
                                                     <tr>
                                                         @if(strpos($factura->referencias, ' OCT') !== FALSE)
-                                                        <th>OCT PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>OCT PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, ' NOV') !== FALSE)
-                                                        <th>NOV PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>NOV PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                          @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'DIC') !== FALSE)
-                                                        <th>DIC PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>DIC PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                        
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'ENE') !== FALSE)
-                                                        <th>ENE PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>ENE PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         @endif
                                                    </tr>
                                                     <tr>
 
                                                         @if(strpos($factura->referencias, 'FEB') !== FALSE)
-                                                        <th>FEB PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>FEB PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'MAR') !== FALSE)
-                                                        <th>MAR PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>MAR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'ABR') !== FALSE)
-                                                        <th>ABR PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>ABR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                         
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'MAY') !== FALSE)
-                                                        <th>MAY PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>MAY PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                        
                                                         @endif
                                                     </tr>
                                                     <tr>
                                                         @if(strpos($factura->referencias, 'JUN') !== FALSE)
-                                                        <th>JUN PENSIÓN: {{$factura->valor}} - FECHA INICIO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        <th>JUN PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
                                                      
                                                         @endif
                                                     </tr>
