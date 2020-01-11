@@ -107,14 +107,14 @@
 			<strong>Correo: <br></strong>
 			<div class="input-group-prepend">
 			<span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
-			{!! Form::email('email', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
+			{!! Form::text('email', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
 			</div>
 			</div>
 			<div class="form-group col-md-4">
 			<strong>Teleono asociado: <br></strong>
 			<div class="input-group-prepend">
 			<span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
-			{!! Form::number('telefono_asociado', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
+			{!! Form::text('telefono_asociado', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
 			</div>
 			</div>
 			<div class="form-group col-md-10">
