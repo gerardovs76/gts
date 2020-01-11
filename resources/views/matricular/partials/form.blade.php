@@ -104,7 +104,7 @@
 			{!! Form::text('codigo', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
 			</div>
 			</div>
-			<div class="form-group col-md-4">
+			{{-- <div class="form-group col-md-4">
 			<strong>Correo: <br></strong>
 			<div class="input-group-prepend">
 			<span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
@@ -117,7 +117,7 @@
 			<span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
 			{!! Form::text('telefono_asociado', null, ['class' => 'form-control', 'id' => 'codigo']) !!}
 			</div>
-			</div>
+			</div> --}}
 			<div class="form-group col-md-10">
 			{!! Form::button('GUARDAR <i class="fas fa-save"></i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  !!}
 			      </div>

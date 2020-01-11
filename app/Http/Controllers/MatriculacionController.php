@@ -101,6 +101,14 @@ class MatriculacionController extends Controller
     public function edit($id)
     {
         $matricular = Matriculacion::find($id);
+     
+        $email = Inscripcion::where('cedula', $matricular->cedula)->select('email', 'convencional')->get();
+        foreach($email as $em)
+        {
+            $matricular->email = $em->email;
+            $matricular->convencional = $em->convencional;
+        }
+        dd($matricular);
         return view('matricular.edit', compact('matricular'));
     }
 
