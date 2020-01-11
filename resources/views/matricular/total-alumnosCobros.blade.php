@@ -105,7 +105,7 @@
                                        @endif
                                         <td>70</td>
                                         @foreach($s->facturaciones as $factura)
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' SEP') !== FALSE)
+                                        @if(strpos($factura->referencias,' SEP') !== FALSE)
                                         @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
                                         <td>60</td>
                                         @elseif(strpos($factura->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($factura->referencias, 'TERCERO DE EGB') !== FALSE || strpos($factura->referencias, 'CUARTO DE EGB') !== FALSE || strpos($factura->referencias, 'QUINTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEXTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($factura->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($factura->referencias, 'NOVENO DE EGB') !== FALSE || strpos($factura->referencias, 'DECIMO DE EGB') !== FALSE || strpos($factura->referencias, '1RO') !== FALSE || strpos($factura->referencias, '8VO') !== FALSE)
@@ -116,31 +116,31 @@
                                         <td>95</td>
                                         @endif
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' OCT PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' OCT PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' NOV PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' NOV PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' DIC PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' DIC PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' ENE PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' ENE PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' FEB PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' FEB PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' MAR PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' MAR PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' ABR PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' ABR PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' MAY PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' MAY PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
-                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' JUN PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,' JUN PENSION') !== FALSE)
                                        <td>{{$factura->valor}}</td>
                                         @endif
                                         @endforeach

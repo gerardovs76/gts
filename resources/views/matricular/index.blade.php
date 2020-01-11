@@ -74,7 +74,11 @@
     	 "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
-            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, 1000] ]
+            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, 1000] ],
+			"pageLength": 10,
+			"searching": false,
+			"lengthChange": false,
+
     });
 } );
  </script>
