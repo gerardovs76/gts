@@ -303,6 +303,7 @@ Route::get('matricular/reportes/todos', 'MatriculacionController@reporteMatricul
 
 Route::post('matricular/reportes/fecha', 'MatriculacionController@matriculadosReporteStore')->name('matricular.reporteStore')->middleware('has.permission:matricular.reporteStore');
 
+
 Route::get('matricular/index/constancia', 'MatriculacionController@indexConstancia')->name('matricular.index-constancia')->middleware('has.permission:matricular.index-constancia');
 
 Route::get('matricular-bloqueados', 'MatriculacionController@reportesBloqueados')->name('matricular.reporte-bloqueados')->middleware('has.permission:matricular.reporte-bloqueados');
