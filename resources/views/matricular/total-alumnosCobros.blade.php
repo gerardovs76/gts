@@ -63,8 +63,8 @@
                                 <tr>
                                     <th>N.</th>
                                     <th>NOMBRES</th>
-                                    <th>CEDULA</th>
                                     <th>CODIGO</th>
+                                    <th>CEDULA</th>
                                     <th>TOTAL</th>
                                     <th>MAT</th>
                                     <th>PEN SEP</th>

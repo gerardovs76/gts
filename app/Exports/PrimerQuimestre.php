@@ -28,22 +28,10 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
      public function view(): View 
     {
          return view('notas.excel.reporte-primerQuimestre',[
-         /*    'notas' =>  DB::table('notas')
-										      ->join('matriculados', 'notas.matriculados_id', '=', 'matriculados.id')
-										        ->select('materias.materia',DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta), 3) as nota_ta"),DB::raw("ROUND(SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti), 3) as nota_ti"),DB::raw("ROUND(SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg), 3) as nota_tg"),DB::raw("ROUND(SUM(notas.nota_le) / SUM(notas.numero_tarea_le), 3) as nota_le"),DB::raw("ROUND(SUM(notas.nota_ev), 3) as nota_ev"), DB::raw("ROUND(SUM(notas.nota_ta) / SUM(notas.numero_tarea_ta) + SUM(notas.nota_ti) / SUM(notas.numero_tarea_ti) + SUM(notas.nota_tg) / SUM(notas.numero_tarea_tg) + SUM(notas.nota_le) / SUM(notas.numero_tarea_le) + SUM(notas.nota_ev), 3) / 5  as nota_final"))
-										        ->where('matriculados.curso', $this->curso)
-										        ->where('materias.curso', $this->curso)
-										        ->where('matriculados.paralelo', $this->paralelo)
-										        ->where('materias.paralelo', $this->paralelo)
-										        ->where('notas.quimestre', '1')
-										        ->groupBy('materias.id')
-                                                ->get(), */
             'materias' => Materias::where('curso', $this->curso)
             ->select('materia', 'id')
             ->where('paralelo', $this->paralelo)
-            ->get(),
-		/* 	'matriculados' => Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos', 'curso', 'paralelo')->where('curso', $this->curso)->where('paralelo', $this->paralelo)->groupBy('matriculados.id')->get()
- */
+            ->get()
          ]);
     }
 

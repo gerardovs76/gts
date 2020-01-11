@@ -68,7 +68,13 @@
                 @can('matricular.cas')
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
                 @endcan
+<<<<<<< HEAD
                  @can('matricular.total-resumen')
+=======
+                <a class="dropdown-item" href="{{ route('matricular.carnet')}}">Carnets</a>
+                <a class="dropdown-item" href="{{route('matricular.showCarnets')}}">Ver carnets</a>
+                {{-- @can('matricular.total-resumen')
+>>>>>>> 44b0a2ff525569aab5ec0d274a1d45ef00d5ef37
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
                 @endcan 
               </div>
