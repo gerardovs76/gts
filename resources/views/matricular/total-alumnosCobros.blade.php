@@ -91,47 +91,7 @@
                                          <td><strong>{{$s->cedula}}</strong></td>
                                          <td><strong>0</strong></td>
                                     </tr>
-                                    @elseif($s->facturaciones->first()->valor !== '306.7' && $s->facturaciones->first()->valor !== '314' && $s->facturaciones->first()->valor !== '326' && $s->facturaciones->first()->valor !== '353.5' && $s->facturaciones->first()->valor !== '371' && $s->facturaciones->first()->valor !== '196.7' && $s->facturaciones->first()->valor !== '199' && $s->facturaciones->first()->valor !== '201' && $s->facturaciones->first()->valor !== '228.5' && $s->facturaciones->first()->valor !== '246')
-                                    <tr>
-                                        <td><strong>{{$i++}}</strong></td>
-                                         <td><strong>{{$s->apellidos}} {{$s->nombres}}</strong></td>
-                                         <td>{{$s->codigo}}</td>
-                                         <td><strong>{{$s->cedula}}</strong></td>
-                                         <td><strong>{{$s->facturaciones->first()->valor}}</strong></td>
-                                         <td><strong>70</strong></td>
-                                         @foreach($s->facturaciones as $factura)
-                                         @if(isset($factura))
-                                         @if(strpos($factura->referencias, ' OCT PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' NOV PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' DIC PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' ENE PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' FEB PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' MAR PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' ABR PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' MAY PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                          @if(strpos($factura->referencias, ' JUN PENSION') !== FALSE)
-                                         <td>{{$factura->valor}}</td>
-                                          @endif
-                                         @else
-                                         @endif
-                                         @endforeach
-                                    </tr>
+
                                     @else
                                        <tr>
                                        <td><strong>{{$i++}}</strong></td>
@@ -145,7 +105,7 @@
                                        @endif
                                         <td>70</td>
                                         @foreach($s->facturaciones as $factura)
-                                        @if(strpos($factura->referencias, ' SEP PENSION') !== FALSE)
+                                        @if(strpos($factura->referencias,$s->curso.'-'.$s->paralelo.' SEP') !== FALSE)
                                         @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
                                         <td>60</td>
                                         @elseif(strpos($factura->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($factura->referencias, 'TERCERO DE EGB') !== FALSE || strpos($factura->referencias, 'CUARTO DE EGB') !== FALSE || strpos($factura->referencias, 'QUINTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEXTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($factura->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($factura->referencias, 'NOVENO DE EGB') !== FALSE || strpos($factura->referencias, 'DECIMO DE EGB') !== FALSE || strpos($factura->referencias, '1RO') !== FALSE || strpos($factura->referencias, '8VO') !== FALSE)
