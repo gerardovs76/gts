@@ -11,6 +11,7 @@
 
 		<hr>
 		@include('notas.partials.info')
+		@include('matricular.modal.modalLibretasIndividuales')
 		<div class="table-responsive">
 		<table class="table table-striped table-bordered" id="table">
 			<thead>
@@ -26,7 +27,7 @@
 					<th>FECHA CREACION</th>
                     <th>EDITAR</th>
                     <th>BORRAR</th>
-                    <th width="20px">PERFIL</th>
+                    <th width="20px">LIBRETAS</th>
 
 
 				</tr>
@@ -58,7 +59,7 @@
 							</button>
 						{!! Form::close() !!}
                     </td>
-                    <td><a class="btn btn-success btn-sm" href="{{url('matricular-perfil-total-store/'.$matricula->codigo)}}"><i class="fas fa-user"></i> PERFIL</a></td>
+				<td><button id="modalLibreta" type="button" data-codigo="{{$matricula->codigo}}" data-toggle="modal" data-target="#modalLibreta" class="btn btn-success"><i class="fas fa-clipboard"></i> LIBRETAS</button></td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -74,12 +75,10 @@
     	 "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
-            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, 1000] ],
-			"pageLength": 10,
-			"searching": false,
-			"lengthChange": false,
+            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, 1000] ]
 
     });
 } );
  </script>
+ 
 @endsection
