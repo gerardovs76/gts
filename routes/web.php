@@ -262,6 +262,8 @@ Route::post('reporte-individual-libreta-store', 'NotasController@reporteIndividu
 
 Route::get('promedios-finales', 'NotasController@promediosFinales');
 
+Route::get('notas-condutas-iniciales', 'NotasController@conductasIniciales')->name('notas.conductasIniciales');
+
 Route::get('notas-resumen', 'NotasController@resumenNotas')->name('notas.nota-resumen');
 
 Route::get('notas-examen', 'NotasController@examenQuimestral')->name('notas.examen');

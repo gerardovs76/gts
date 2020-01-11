@@ -3310,5 +3310,9 @@ class NotasController extends Controller
                return redirect()->back()->with('info', 'No se encontro un email valido!');
            }
     }
+    public function conductasIniciales()
+    {
+        return view('notas.conductasIniciales');
+    }
 
 }

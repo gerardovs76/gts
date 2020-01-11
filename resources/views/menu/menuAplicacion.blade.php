@@ -149,7 +149,8 @@
                 @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Abanderados</a>
                 @endcan
-                @can('notas.recuperacion')
+                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Conductas iniciales</a>
+                {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @endcan
                 @can('notas.supletorios')
@@ -160,7 +161,7 @@
                 @endcan
                 @can('notas.gracia')
                 <a class="dropdown-item" href="{{ route('notas.gracia') }}">Gracia</a>
-                @endcan
+                @endcan --}}
                 @can('notas.reporte-individual-libreta')
                 <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
                 @endcan
