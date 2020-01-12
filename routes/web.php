@@ -130,6 +130,10 @@ Route::get('notas', 'NotasController@index')->name('notas.index')->middleware('h
 
 Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('has.permission:notas.store');
 
+Route::get('agree-alumnos/{curso}/{paralelo}', 'NotasController@agreeAlumnos');
+
+Route::post('store-conductas', 'NotasController@storeConductasIniciales')->name('notas.store-conductas');
+
 Route::get('notas/{id}/{tt}/edit', 'NotasController@edit')->name('notas.edit');
 
 Route::get('notas/{id}/{tt}/destroy', 'NotasController@destroy');

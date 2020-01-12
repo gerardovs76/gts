@@ -8,15 +8,10 @@ class Notas_conducta extends Model
 {
     protected $table = 'notas_conducta';
     protected $fillable = [
-        'id_antiguo',
         'matriculado_id',
-        'materias_id',
-        'nota_conducta',
-        'numero_tarea_conducta',
-        'parcial',
-        'quimestre',
-        'autoridad_id',
-        'descripcion'
+        'faltas_i',
+        'faltas_j',
+        'conductas'
     ];
 
     public function matriculado(){

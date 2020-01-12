@@ -3314,5 +3314,36 @@ class NotasController extends Controller
     {
         return view('notas.conductasIniciales');
     }
+    public function agreeAlumnos($curso, $paralelo)
+    {
+        $matriculados = Matriculacion::where('curso', $curso)
+        ->where('paralelo', $paralelo)
+        ->select('id', DB::raw("CONCAT(apellidos,' ',nombres) as nombres"))
+        ->distinct()
+        ->orderBy('apellidos')
+        ->get();
+
+        return response()->json($matriculados);
+    }
+    public function storeConductasIniciales(Request $request)
+    {
+        $faltas_j = $request->faltas_j;
+        $faltas_i = $request->faltas_i;
+        $conductas = $request->conducta;
+       
+        $matriculados_id = $request->matriculados_id;
+        
+        foreach($matriculados_id as $key => $value){
+            $conducta = new Notas_conducta;
+           // dd($conducta->conductas = $conducta[$key]);
+            $conducta->faltas_j = $faltas_j[$key];
+            $conducta->faltas_i = $faltas_i[$key];
+            $conducta->conductas = $conductas[$key];
+            $conducta->matriculados_id = $matriculados_id[$key];
+            $conducta->save();
+        }
+        return redirect()->back()->with('info', 'Se ha agregado la conducta correctamente');
+        
+    }
 
 }

@@ -149,7 +149,7 @@
                 @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Abanderados</a>
                 @endcan
-                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Conductas iniciales</a>
+                {{-- <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Conductas iniciales</a> --}
                 {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @endcan

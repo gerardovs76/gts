@@ -19,7 +19,9 @@
 		</h2>
 		</div>
 
-		<hr>
+          <hr>
+          @include('notas.partials.info')
+          {!!Form::open(['route' => 'notas.store-conductas', 'method' => 'post'])!!}
 <div class="panel panel-primary" id="panel1">
               <div class="panel panel-heading text-center" style="padding: 1px;"><h3>INGRESE LOS DATOS PARA LA BUSQUEDA SIGUIENDO EL ORDEN NUMERICO...</h3></div>
                    <div class="panel panel-body">
@@ -33,7 +35,7 @@
                                        </div>
                                        </div>
                                        <div class="form-group col-md-4">
-                                       <strong>3.- Paralelo: <br></strong>
+                                       <strong>2.- Paralelo: <br></strong>
                                        <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                        {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
@@ -48,7 +50,7 @@
                                        </div>
                                        </div>
                                        <div class="form-group col-md-4">
-                                       <strong>3.- Paralelo: <br></strong>
+                                       <strong>2.- Paralelo: <br></strong>
                                        <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                        {{ Form::select('paralelo',$profesorParalelo, null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Ingrese paralelo']) }}
@@ -56,14 +58,14 @@
                                        </div>
                                   @endif
                                        <div class="form-group col-md-4">
-                                       <strong>5.- Quimestre: <br></strong>
+                                       <strong>3.- Quimestre: <br></strong>
                                        <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                        {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el quimestre', 'id' => 'quimestre']) }}
                                        </div>
                                        </div>
                                        <div class="form-group col-md-4">
-                                       <strong>6.- Parcial: <br></strong>
+                                       <strong>4.- Parcial: <br></strong>
                                        <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                        {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
@@ -76,5 +78,57 @@
                              </div>
                            </div>
                           </div>
+                        
+                          <table class="table table-striped table-bordered" id="table">
+                              <thead>
+                               <tr>
+                                    <th>NOMBRES</th>
+                                    <th>FALTAS JUSTIFICADAS</th>
+                                    <th>FALTAS INJUSTIFICADAS</th>
+                                    <th>CONDUCTA</th>
+                               </tr>
+                              </thead>
+                              <tbody>
+ 
+                              </tbody>
+                         </table>
+                         <div class="form-group col-md-12">
+                              {!!Form::button('<i class="fas fa-save"></i> GUARDAR NOTAS', ['class' => 'btn btn-primary d-none', 'id' => 'guardarNotas', 'type' => 'submit'])!!}
+                         </div>
+                         {!!Form::close()!!}
                         </div>
+                        
+                        <script>
+                         $(document).ready(function() {
+                              $(window).keydown(function(event){
+                              if(event.keyCode == 13) {
+                                   event.preventDefault();
+                                   return false;
+                              }
+                              });
+                              });
+                            </script>
+                      <script>
+                              $('#agregarNotas').on('click', function() {
+                                  var curso = $( "#curso option:selected" ).text();
+                                  var paralelo  = $( "#paralelo option:selected" ).text();
+                                  var url = 'agree-alumnos/'+curso+'/'+paralelo;
+                                  $.ajax({
+                                      url: url,
+                                      success: function(data)
+                                      {
+                                           $('#guardarNotas').addClass('d-block');
+                                           $('#table tbody').empty();
+                                           $.each(data, function(index, obj){
+                                             $('#table').append('<tr><td>'+obj.nombres+'</td><td><input type="number" step="any" min="0" max="10" class="form-control col-sm-2" name="faltas_j[]"></td><td><input type="number" step="any" min="0" max="10" class="form-control col-sm-2" name="faltas_i[]"></td><td><input type="number" step="any" min="0" max="10" class="form-control col-sm-2" name="conducta[]"><input type="hidden" name="matriculados_id[]" value='+obj.id+'></td></tr>');
+                                           });
+                                          
+                                      },
+                                      error: function(error)
+                                      {
+
+                                      }
+                                  });
+                              });
+                              </script>
                         @endsection
