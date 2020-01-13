@@ -61,7 +61,7 @@ public function notas_ev()
 }
 public function notas_conducta()
 {
-    return $this->hasMany('App\Notas_conducta', 'matriculado_id');
+    return $this->hasMany('App\Notas_conducta', 'matriculados_id');
 }
 public function notas_examen()
 {

@@ -130,7 +130,7 @@ Route::get('notas', 'NotasController@index')->name('notas.index')->middleware('h
 
 Route::post('notas', 'NotasController@store')->name('notas.store')->middleware('has.permission:notas.store');
 
-Route::get('agree-alumnos/{curso}/{paralelo}', 'NotasController@agreeAlumnos');
+Route::get('agree-alumnos/{curso}/{paralelo}/{parcial}/{quimestre}', 'NotasController@agreeAlumnos');
 
 Route::post('store-conductas', 'NotasController@storeConductasIniciales')->name('notas.store-conductas');
 
@@ -207,8 +207,6 @@ Route::get('gracia_remedial/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}',
 Route::post('gracias', 'NotasController@graciaStore')->name('gracia.store')->middleware('has.permission:gracia.store');
 
 Route::get('gracia_promedio', 'NotasController@graciaPromedio');
-
-
 
 Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@notasEdit');
 

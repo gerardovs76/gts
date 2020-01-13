@@ -11,7 +11,9 @@ class Notas_conducta extends Model
         'matriculado_id',
         'faltas_i',
         'faltas_j',
-        'conductas'
+        'conductas',
+        'quimestre',
+        'parcial'
     ];
 
     public function matriculado(){
