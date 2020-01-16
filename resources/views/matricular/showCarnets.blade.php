@@ -85,7 +85,7 @@
                    // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
                    // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
                    // var carnet =document.getElementById("screenPrincipal");
-                    var li = '<li style="padding: 3px;">'+objeto.nombres+' '+objeto.apellidos+'</li><li>'+objeto.curso+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'</li><li>2019-2020</li>';
+                    var li = '<li style="padding: 3px;">'+objeto.nombres+' '+objeto.apellidos+'</li><li>'+objeto.curso+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019-2020</li>';
                     var newWin= window.open("");
                     var is_chrome = Boolean(newWin.chrome);
                     newWin.document.write('<style>@page{size:landscape; font-family: Roboto, sans-serif;font-size:4px;}#screenPrincipal{display:flex;justify-content:center;align-items:center;height:100%; width:100%}html, body{height:100%;width:100%;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}</style><html><head><title></title>');
