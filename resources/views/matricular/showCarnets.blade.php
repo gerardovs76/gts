@@ -91,7 +91,7 @@
                     newWin.document.write('<style>@page{size:landscape; font-family:Roboto;font-size:4px;}#screenPrincipal{display:flex;justify-content:center;align-items:center;height:100%; width:100%}html, body{height:100%;width:100%;-webkit-print-color-adjust: exact;}</style><html><head><title></title>');
                     newWin.document.write('<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />');
                     newWin.document.write('</head><body>');
-                    newWin.document.write('<div class="col-xs-12" id="screenPrincipal"><div id="carnet" class="center-block" style="border: 1px solid black; height: 9.5cm; width: 6.5cm; background: url("images/imagen-carnet.jpg")"><img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="100px" height="100px" style="position: relative;left: 230px;top:40px;border: 1px solid black; border-radius: 50%;"><ul style="position:relative;right:15px;bottom:100px;font-size: 12px; font-weight: bold;list-style-type: none;">'+li+'</ul></div></div>');
+                    newWin.document.write('<div class="col-xs-12" id="screenPrincipal"><div id="carnet" class="center-block" style="border: 1px solid black; height: 9.5cm; width: 6.5cm; background: #000"><img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="100px" height="100px" style="position: relative;left: 230px;top:40px;border: 1px solid black; border-radius: 50%;"><ul style="position:relative;right:15px;bottom:100px;font-size: 12px; font-weight: bold;list-style-type: none;">'+li+'</ul></div></div>');
                   //  newWin.document.write(carnet.outerHTML);
                     newWin.document.write('</body></html>');
                         if (is_chrome) {
