@@ -72,7 +72,7 @@
                 <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
                 @endcan
               <a class="dropdown-item" href="{{ route('matricular.carnet') }}">Carnets</a>
-              @if(Auth::user()->isRole('admin'))
+              @if(Auth::user()->isRole('super-admin'))
               <a class="dropdown-item" href="{{ route('matricular.showCarnets') }}">Ver carnets </a> 
               @endif
               </div>
