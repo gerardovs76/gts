@@ -85,13 +85,13 @@
                    // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
                    // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
                    // var carnet =document.getElementById("screenPrincipal");
-                    var li = '<li style="padding: 3px;">'+objeto.nombres+'<br>'+objeto.apellidos+'&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.curso+'</li>';
+                    var li = '<li style="padding: 3px;">'+objeto.nombres+' '+objeto.apellidos+'</li><li>'+objeto.curso+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'</li><li>2019-2020</li>';
                     var newWin= window.open("");
                     var is_chrome = Boolean(newWin.chrome);
-                    newWin.document.write('<style>@page{size:landscape; font-family:Roboto;font-size:4px;}#screenPrincipal{display:flex;justify-content:center;align-items:center;height:100%; width:100%}html, body{height:100%;width:100%;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}</style><html><head><title></title>');
-                    newWin.document.write('<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />');
+                    newWin.document.write('<style>@page{size:landscape; font-family: Roboto, sans-serif;font-size:4px;}#screenPrincipal{display:flex;justify-content:center;align-items:center;height:100%; width:100%}html, body{height:100%;width:100%;-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}</style><html><head><title></title>');
+                    newWin.document.write('<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /> <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">');
                     newWin.document.write('</head><body>');
-                    newWin.document.write('<div class="col-xs-12" id="screenPrincipal"><div id="carnet" class="center-block" style="height: 9.5cm; width: 6.5cm; background: url(images/imagen-carnet.jpg);"><img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="156px" height="156px" style="position: relative;left: 50px;top:107px; border-radius: 50%;"><ul style="position:relative;right:5px;top: 110px;font-size: 12px; font-weight: bold;list-style-type: none;">'+li+'</ul></div></div>');
+                    newWin.document.write('<div class="col-xs-12" id="screenPrincipal"><div id="carnet" class="center-block" style="height: 9.5cm; width: 6.5cm; background: url(images/imagen-carnet.jpg);"><img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="156px" height="156px" style="position: relative;left: 50px;top:107px; border-radius: 50%;"><ul style="position:relative;right:5px;top: 110px;font-size: 10px; font-weight: bold;list-style-type: none;">'+li+'</ul></div></div>');
                   //  newWin.document.write(carnet.outerHTML);
                     newWin.document.write('</body></html>');
                         if (is_chrome) {
