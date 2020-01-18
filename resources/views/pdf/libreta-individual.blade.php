@@ -535,8 +535,8 @@ table#mitabla3 td {
 					@if($nota->curso == 'INICIAL 1'|| $nota->curso == 'INICIAL 2' || $nota->curso == 'PRIMERO DE EGB'|| $nota->curso == 'SEGUNDO DE EGB'||$nota->curso == 'TERCERO DE EGB'||$nota->curso == 'CUARTO DE EGB'||$nota->curso == 'QUINTO DE EGB'||$nota->curso == 'SEXTO DE EGB'||$nota->curso == 'SEPTIMO DE EGB')
 					@foreach($nota->notas_conducta as $conducta)
 						<td>{{($conducta->conductas >= 9 && $conducta->conductas <= 10 ? 'A' : ($conducta->conductas >= 7 && $conducta->conductas <= 8.99 ? 'B' : ($conducta->conductas >= 4.01 &&  $conducta->conductas <= 6.99 ? 'C' : ($conducta->conductas <= 4  ? 'D' : 'Nota invalida'))))}}</td>
-						<td>{{($conducta->faltas_j >= 9 && $conducta->faltas_j <= 10 ? 'A' : ($conducta->faltas_j >= 7 && $conducta->faltas_j <= 8.99 ? 'B' : ($conducta->faltas_j >= 4.01 &&  $conducta->faltas_j <= 6.99 ? 'C' : ($conducta->faltas_j <= 4  ? 'D' : 'Nota invalida'))))}}</td>
-						<td>{{($conducta->faltas_i >= 9 && $conducta->faltas_i <= 10 ? 'A' : ($conducta->faltas_i >= 7 && $conducta->faltas_i <= 8.99 ? 'B' : ($conducta->faltas_i >= 4.01 &&  $conducta->faltas_i <= 6.99 ? 'C' : ($conducta->faltas_i <= 4  ? 'D' : 'Nota invalida'))))}}</td>
+						<td>{{$conducta->faltas_j}}</td>
+						<td>{{$conducta->faltas_i}}</td>
 					@endforeach
                      @else
 						@foreach($inspe as $in)

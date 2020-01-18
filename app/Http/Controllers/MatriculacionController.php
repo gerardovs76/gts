@@ -108,7 +108,6 @@ class MatriculacionController extends Controller
             $matricular->email = $em->email;
             $matricular->convencional = $em->convencional;
         }
-        dd($matricular);
         return view('matricular.edit', compact('matricular'));
     }
 
