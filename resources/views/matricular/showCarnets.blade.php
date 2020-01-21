@@ -91,7 +91,7 @@
                     newWin.document.write('<style>@page{size:landscape; font-family:Roboto;font-size:4px; width: 297mm; height:470mm; max-height:98%; max-width:100%;}html, body{height:98%;width:100%; -webkit-print-color-adjust: exact; background-image: url(images/imagen-carnet3.jpg);background-repeat:no-repeat;no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style><html><head><title></title>');
                     newWin.document.write('<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />');
                     newWin.document.write('</head><body>');
-                    newWin.document.write('<img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="700px" height="700px" style="position: relative;left: 230px;top:475px;border: 1px solid black; border-radius: 50%;"><ul style="position:relative;left:30px;top: 600px;font-size: 40px; font-weight: bold;list-style-type: none;">'+li+'</ul>');
+                    newWin.document.write('<img id="imagen-carnet" src="carnets/'+objeto.carnet+'" alt="" width="710px" height="710px" style="position: relative;left: 225px;top:475px;border: 1px solid black; border-radius: 50%;"><ul style="position:relative;left:30px;top: 600px;font-size: 40px; font-weight: bold;list-style-type: none;">'+li+'</ul>');
                   //  newWin.document.write(carnet.outerHTML);
                     newWin.document.write('</body></html>');
                         if (is_chrome) {
