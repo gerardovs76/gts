@@ -14,7 +14,7 @@ use DB;
 use App\Matriculacion;
 use App\Materias;
 
-class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
+class PrimerQuimestre implements  FromView, WithEvents, WithDrawings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection

@@ -993,21 +993,21 @@ table#mitabla3 td {
 
 										@if($promedio_final_quimestre != '' && $nota_promedio_examen_final2)
 												@php 
-													$promedio_final = round((($promedio_final_quimestre + $nota_promedio_examen_final2) / 2), 2);
+													$promedio_final = round(($promedio_final_quimestre + $nota_promedio_examen_final2), 2);
 												@endphp
 												@if($promedio_final >= 7)
-													<td style="color: green;">{{$promedio_final}}</td>
+													<td style="color: green;">{{$promedio_final = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 &&  $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4  ? 'D' : 'Nota invalida'))))}}</td>
 												@else 
-													<td style="color: red;">{{$promedio_final}}</td>
+													<td style="color: red;">{{$promedio_final = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 &&  $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4  ? 'D' : 'Nota invalida'))))}}</td>
 												@endif
 										@else 
 												@php 
 													$promedio_final = round(($promedio_final_quimestre + $nota_promedio_examen_final2), 2);
 												@endphp
 												@if($promedio_final >= 7)
-													<td style="color: green;">{{$promedio_final}}</td>
+													<td style="color: green;">{{$promedio_final = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 &&  $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4  ? 'D' : 'Nota invalida'))))}}</td>
 												@else 
-													<td style="color: red;">{{$promedio_final}}</td>
+													<td style="color: red;">{{$promedio_final = ($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 &&  $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4  ? 'D' : 'Nota invalida'))))}}</td>
 												@endif
 										@endif
 												
@@ -1046,15 +1046,14 @@ table#mitabla3 td {
 					@endforeach --}}
 					
 					@php 
-					$nota_conducta_final1;
-					$nota_conducta_final2;
-					$nota_conducta_final3;
+					$nota_conducta_final1 = !isset($nota_conducta_final1) ? 0 : $nota_conducta_final1;
+					$nota_conducta_final2 = !isset($nota_conducta_final2) ? 0 : $nota_conducta_final2;
+					$nota_conducta_final3 = !isset($nota_conducta_final3) ? 0 : $nota_conducta_final3;
 					foreach($nota->notas_conducta1 as $conducta1)
 					{
 						$nota_conducta_final1 = $conducta1->conductas;
 						
 					}
-				
 					foreach($nota->notas_conducta2 as $conducta2)
 					{
 						$nota_conducta_final2 = $conducta2->conductas;
@@ -1063,7 +1062,6 @@ table#mitabla3 td {
 					{
 						$nota_conducta_final3 = $conducta3->conductas;
 					}
-				
 					$nota_conducta_final = round((($nota_conducta_final1 + $nota_conducta_final2 + $nota_conducta_final3) / 3), 2);
 					$nota_conducta_final = ($nota_conducta_final >= 9 && $nota_conducta_final <= 10 ? 'A' : ($nota_conducta_final >= 7 && $nota_conducta_final <= 8.99 ? 'B' : ($nota_conducta_final >= 4.01 &&  $nota_conducta_final <= 6.99 ? 'C' : ($nota_conducta_final <= 4  ? 'D' : 'Nota invalida'))));
 					@endphp

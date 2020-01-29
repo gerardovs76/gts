@@ -14,18 +14,18 @@
                 INSCRIPCIÓN
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
-                <a class="dropdown-item" href="{{ route('inscripcion.create') }}">Nueva inscripción</a>
-                @can('inscripcion.perfil')
+                <a class="dropdown-item" href="{{ route('inscripcion.create') }}">Nueva inscripción alumno</a>
+               {{--  @can('inscripcion.perfil')
                 <a class="dropdown-item " href="{{ route('inscripcion.perfil') }}">Perfil</a>
-                @endcan
+                @endcan --}}
                 @can('inscripcion.index')
                 <a class="dropdown-item" href="{{ route('inscripcion.index') }}">Lista de alumnos inscritos</a>
                 @endcan
                 @can('inscritos.excel')
-                <a class="dropdown-item" href="{{ route('inscritos.excel') }}">Reporte grupal EXCEL</a>
+                <a class="dropdown-item" href="{{ route('inscritos.excel') }}">Reporte grupal EXCEL inscritos</a>
                 @endcan
                 @can('inscripcion.importar')
-                <a class="dropdown-item" href="{{ route('inscripcion.importar') }}">Carga Masiva</a>
+                <a class="dropdown-item" href="{{ route('inscripcion.importar') }}">Carga masiva inscritos</a>
                 @endcan
                 @can('exportar.usuarios')
                 <a class="dropdown-item" href="{{ route('exportar.usuarios') }}">Exportar carga masiva para usuarios</a>
@@ -45,16 +45,16 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
               @can('matricular.create')
-                <a class="dropdown-item" href="{{ route('matricular.create') }}">Nuevo</a>
+                <a class="dropdown-item" href="{{ route('matricular.create') }}">Nuevo alumno</a>
                 @endcan
                 @can('matricular.index')
-                <a class="dropdown-item " href="{{ route('matricular.index') }}">Lista</a>
+                <a class="dropdown-item " href="{{ route('matricular.index') }}">Lista matriculados</a>
                 @endcan
                 @can('matricular.importarDatos')
-                <a class="dropdown-item" href="{{ url('matricular/importar/alumnos') }}">Importar datos</a>
+                <a class="dropdown-item" href="{{ url('matricular/importar/alumnos') }}">Importar datos inscritos</a>
                 @endcan
                 @can('matricular.reporteTodos')
-                <a class="dropdown-item" href="{{ route('matricular.reportesTodos') }}">Reporte matriculados</a>
+                <a class="dropdown-item" href="{{ route('matricular.reportesTodos') }}">Reporte y Certificado Matriculados</a>
                 @endcan
                 @can('matricular.index-constancia')
                 <a class="dropdown-item" href="{{ route('matricular.index-constancia') }}">Constancia de estudio</a>
@@ -69,9 +69,9 @@
                 <a class="dropdown-item" href="{{ route('matricular.cas')}}">CAS</a>
                 @endcan
                  @can('matricular.total-resumen')
-                <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total resumen</a>
+                <a class="dropdown-item" href="{{ route('matricular.total-resumen')}}">Total Alumnos</a>
                 @endcan
-              <a class="dropdown-item" href="{{ route('matricular.carnet') }}">Carnets</a>
+              <a class="dropdown-item" href="{{ route('matricular.carnet') }}">Ingrese Foto Carnets</a>
               @if(Auth::user()->isRole('super-admin'))
               <a class="dropdown-item" href="{{ route('matricular.showCarnets') }}">Ver carnets </a> 
               @endif
@@ -106,22 +106,22 @@
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('profesor.create')
-                <a class="dropdown-item" href="{{ route('profesor.create') }}">Nuevo profesor</a>
+                <a class="dropdown-item" href="{{ route('profesor.create') }}"></a>
                 @endcan
-                @can('profesor.perfil')
+                {{-- @can('profesor.perfil')
                 <a class="dropdown-item " href="{{ route('profesor.perfil') }}">Perfil profesor</a>
-                @endcan
+                @endcan --}}
                 @can('profesor.index')
                 <a class="dropdown-item" href="{{ route('profesor.index') }}">Lista profesores</a>
                 @endcan
                 @can('profesor.añadirMaterias')
-                <a class="dropdown-item" href="{{ route('profesor.añadirMaterias') }}">Añadir materia</a>
+                <a class="dropdown-item" href="{{ route('profesor.añadirMaterias') }}">Añadir materia profesor</a>
                 @endcan
                 @can('profesor.verMaterias')
-                <a class="dropdown-item" href="{{ route('profesor.verMaterias') }}">Ver materias asignadas</a>
+                <a class="dropdown-item" href="{{ route('profesor.verMaterias') }}">Ver materias asignadas profesor</a>
                 @endcan
                 @can('profesor.control')
-                <a class="dropdown-item" href="{{ route('profesor.control') }}">Control de profesor</a>
+                <a class="dropdown-item" href="{{ route('profesor.control') }}">Ingreso al sistema profesores</a>
                 @endcan
               </div>
             </li>
@@ -149,9 +149,9 @@
                 <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
                 @endcan
                 @can('notas.abanderados')
-                <a class="dropdown-item" href="{{route('notas.abanderados')}}">Abanderados</a>
+                <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
                 @endcan
-                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Conductas iniciales</a>
+                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Ingreso conducta sección básica</a>
                 {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @endcan
@@ -174,7 +174,7 @@
                 @endcan
               
                 @can('notas.reportesExcel')
-                <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
+                <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel Notas</a>
                 @endcan
               </div>
             </li>
@@ -188,22 +188,22 @@
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('inspeccion.index')
-                <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Asistencia</a>
+                <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Ingrese asistencia</a>
                 @endcan
                 @if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('inspector'))
-                <a class="dropdown-item" href="{{route('inspeccion.observacion')}}">Observaciones</a>
+                <a class="dropdown-item" href="{{route('inspeccion.observacion')}}">Ingrese observaciones</a>
                 @endif
                 @can('inspeccion.index-conducta')
-               <a class="dropdown-item" href="{{ route('inspeccion.index-conducta') }}">Conducta</a>
+               <a class="dropdown-item" href="{{ route('inspeccion.index-conducta') }}">Certificado de conducta</a>
                @endcan
                @can('inspeccion.reporte-individual')
-              <a class="dropdown-item" href="{{ route('inspeccion.reporte-individual') }}">Leccionario</a>
+              <a class="dropdown-item" href="{{ route('inspeccion.reporte-individual') }}">Imprimir leccionario</a>
               @endcan
               @can('inspeccion.index-inspeccion')
-              <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Justificaciones</a>
+              <a class="dropdown-item" href="{{route('inspeccion.index-inspeccion')}}">Justificación faltas</a>
               @endcan
               @can('inspeccion.promedios')
-              <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Promedios resumen</a>
+              <a class="dropdown-item" href="{{route('inspeccion.promedios')}}">Ver promedios inspección</a>
               @endcan
               {{-- @can('inspeccion.alertas')
               <span class="badge badge-danger"></span>
@@ -220,10 +220,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('dece.create')
-                <a class="dropdown-item" href="{{ route('dece.create') }}">Ingresar</a>
+                <a class="dropdown-item" href="{{ route('dece.create') }}">Ingrese ficha alumno</a>
                 @endcan
                 @can('dece.reporte')
-                <a class="dropdown-item" href="{{ route('dece.reporte') }}">Reporte</a>
+                <a class="dropdown-item" href="{{ route('dece.reporte') }}">Reporte alumnos</a>
                 @endcan
               </div>
             </li>
@@ -236,10 +236,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
               @can('recursos_humanos.index')
-                <a class="dropdown-item" href="{{ route('recursos_humanos.index') }}">Ingresar profesor</a>
+                <a class="dropdown-item" href="{{ route('recursos_humanos.index') }}">Ingrese datos profesor</a>
                 @endcan
                 @can('recursos_humanos.perfil')
-                <a class="dropdown-item " href="{{ route('recursos_humanos.perfil') }}">Perfil</a>
+                <a class="dropdown-item " href="{{ route('recursos_humanos.perfil') }}">Ver Perfil Profesor</a>
                 @endcan
               </div>
             </li>
@@ -272,23 +272,23 @@
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
 
               @can('cobros.index')
-                <a class="dropdown-item" href="{{ route('cobros.index') }}">Valores</a>
+                <a class="dropdown-item" href="{{ route('cobros.index') }}">Ingres valores a cobrar</a>
                 @endcan
                 @can('cobros.indexCobros')
-                     <a class="dropdown-item" href="{{ route('cobros.indexCobros') }}">Lista de valores</a>
+                     <a class="dropdown-item" href="{{ route('cobros.indexCobros') }}">Reporte valores generados</a>
                      @endcan
                      @can('cobros.reportes')
-                <a class="dropdown-item " href="{{ route('cobros.reportes') }}">Reportes de valores</a>
+                <a class="dropdown-item " href="{{ route('cobros.reportes') }}">Reporte clientes a facturar</a>
                 @endcan
                 @can('reportes.clientes')
                 <a class="dropdown-item" href="{{ route('reportes.clientes') }}">Reporte de carga de clientes</a>
                 @endcan
                 @if(Auth::user()->isRole('super-admin'))
-                <a class="dropdown-item" href="{{route('cobros.lista-facturaciones')}}">Lista de ingresos de facturación</a>
+                <a class="dropdown-item" href="{{route('cobros.lista-facturaciones')}}">Lista de Ingresos Banco</a>
                 @endif
                 @can('cobros.facturacion-index')
-              <a class="dropdown-item" href="{{route('cobros.facturacion-index-lista')}}">Lista total de facturaciones</a>
-                <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Facturacion</a>
+              <a class="dropdown-item" href="{{route('cobros.facturacion-index-lista')}}">Lista alumnos pagados banco</a>
+                <a class="dropdown-item" href="{{ route('cobros.facturacion-index')}}">Ingreso facturación/ tarjetas </a>
                 @endcan
               </div>
             </li>

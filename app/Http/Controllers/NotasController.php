@@ -2296,8 +2296,6 @@ class NotasController extends Controller
       else if($request->tipo_documento == 'PRIMERQUIMESTRE')
       {
          return Excel::download(new PrimerQuimestre($curso, $paralelo), 'primer-quimestre.xls');
-
-           // $matriculados = Matriculacion::join('notas', 'matriculados.id', '=', 'notas.matriculados_id')->select('nombres', 'apellidos')->where('curso', $curso)->groupBy('matriculados.id')->get();
       }
       else if($request->tipo_documento == 'SEGUNDOQUIMESTRE')
       {
