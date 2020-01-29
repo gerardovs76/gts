@@ -8,7 +8,7 @@ class Notas_conducta extends Model
 {
     protected $table = 'notas_conducta';
     protected $fillable = [
-        'matriculado_id',
+        'matriculados_id',
         'faltas_i',
         'faltas_j',
         'conductas',

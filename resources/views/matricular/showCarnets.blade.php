@@ -60,13 +60,14 @@
             $.each(response, function(index, objeto){
                 if(objeto.carnet)
                 {
+                    var name = objeto.nombres.toUpperCase();
                  //   $('#carnet').append('<img style="margin-bottom: 20px;" src="archivos/'+objeto.carnet+'" width="100px" height="100px" />')
                    // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
                    // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
-                    $('#table').append('<tr><td>'+objeto.nombres+'</td><td><button id='+objeto.id+' class="btn btn-success botonBusqueda" type="button"><i class="fas fa-print"></i> IMPRIMIR CARNET</button></td></tr>');
+                    $('#table').append('<tr><td>'+name+'</td><td><button id='+objeto.id+' class="btn btn-success botonBusqueda" type="button"><i class="fas fa-print"></i> IMPRIMIR CARNET</button></td></tr>');
                 }
                 else {
-                     $('#table').append('<tr><td>'+objeto.nombres+'</td><td><em>No tiene asignada una foto de carnet!</em></td></tr>');
+                     $('#table').append('<tr><td>'+name+'</td><td><em>No tiene asignada una foto de carnet!</em></td></tr>');
                     }
             });
         } 
@@ -85,7 +86,11 @@
                    // $('#imagen-carnet').attr("src", "archivos/"+objeto.carnet);
                    // $('#carnet ul').append('<li style="padding: 3px;">Nombres: '+objeto.nombres+'<br>'+objeto.apellidos+'</li><li style="padding: 3px;">Curso: '+objeto.curso+'</li><li style="padding: 3px;">Paralelo: '+objeto.paralelo+'</li><li style="padding: 3px;">Codigo: '+objeto.codigo+'</li><li style="padding: 3px;">Año lectivo: 2020</li>');
                    // var carnet =document.getElementById("screenPrincipal");
-                    var li = '<li style="padding: 3px; color: #434B4D;">'+objeto.nombres+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.curso+'&nbsp;&nbsp;&nbsp;'+objeto.paralelo+'<br>'+objeto.apellidos+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019 - 2020</li>';
+                    var name = objeto.nombres.toUpperCase();
+                    var grade = objeto.curso.toUpperCase();
+                    var paralelo = objeto.paralelo.toUpperCase();
+                    var lastname = objeto.apellidos.toUpperCase();
+                    var li = '<li style="padding: 3px; color: #434B4D;">'+name+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+grade+'&nbsp;&nbsp;&nbsp;'+paralelo+'<br>'+lastname+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019 - 2020</li>';
                     var newWin= window.open("");
                     var is_chrome = Boolean(newWin.chrome);
                     newWin.document.write('<style>@page{size:landscape; font-family:Roboto;font-size:4px; width: 297mm; height:470mm; max-height:98%; max-width:100%;}html, body{height:98%;width:100%; -webkit-print-color-adjust: exact; background-image: url(images/imagen-carnet3.jpg);background-repeat:no-repeat;no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}</style><html><head><title></title>');

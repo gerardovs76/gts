@@ -83,4 +83,81 @@ public function notas_promedio()
 {
     return $this->hasManyThrough('App\Nota_ta','App\Notas_ti','App\Notas_tg','App\Notas_le','App\Notas_ev', 'matriculado_id');
 }
+//POR PARCIAL
+//PARCIAL1 
+public function notas_ta1()
+{
+    return $this->hasMany('App\Nota_ta', 'matriculado_id')->where('parcial', '1');
+}
+public function notas_ti1()
+{
+    return $this->hasMany('App\Notas_ti', 'matriculado_id')->where('parcial', '1');
+}
+public function notas_tg1()
+{
+    return $this->hasMany('App\Notas_tg', 'matriculado_id')->where('parcial', '1');
+}
+public function notas_le1()
+{
+    return $this->hasMany('App\Notas_le', 'matriculado_id')->where('parcial', '1');
+}
+public function notas_ev1()
+{
+    return $this->hasMany('App\Notas_ev', 'matriculado_id')->where('parcial', '1');
+}
+public function notas_conducta1()
+{
+    return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '1');
+}
+//PARCIAL2
+public function notas_ta2()
+{
+    return $this->hasMany('App\Nota_ta', 'matriculado_id')->where('parcial', '2');
+}
+public function notas_ti2()
+{
+    return $this->hasMany('App\Notas_ti', 'matriculado_id')->where('parcial', '2');
+}
+public function notas_tg2()
+{
+    return $this->hasMany('App\Notas_tg', 'matriculado_id')->where('parcial', '2');
+}
+public function notas_le2()
+{
+    return $this->hasMany('App\Notas_le', 'matriculado_id')->where('parcial', '2');
+}
+public function notas_ev2()
+{
+    return $this->hasMany('App\Notas_ev', 'matriculado_id')->where('parcial', '2');
+}
+public function notas_conducta2()
+{
+    return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '2');
+}
+//PARCIAL 3
+public function notas_ta3()
+{
+    return $this->hasMany('App\Nota_ta', 'matriculado_id')->where('parcial', '3');
+}
+public function notas_ti3()
+{
+    return $this->hasMany('App\Notas_ti', 'matriculado_id')->where('parcial', '3');
+}
+public function notas_tg3()
+{
+    return $this->hasMany('App\Notas_tg', 'matriculado_id')->where('parcial', '3');
+}
+public function notas_le3()
+{
+    return $this->hasMany('App\Notas_le', 'matriculado_id')->where('parcial', '3');
+}
+public function notas_ev3()
+{
+    return $this->hasMany('App\Notas_ev', 'matriculado_id')->where('parcial', '3');
+}
+public function notas_conducta3()
+{
+    return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '3');
+}
+
 }

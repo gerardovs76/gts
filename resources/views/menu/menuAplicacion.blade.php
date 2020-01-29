@@ -166,13 +166,13 @@
                 @endcan --}}
                 @can('notas.reporte-individual-libreta')
                 <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
+                <a class="dropdown-item" href="{{ route('notas.libreta-individual-quimestre') }}">Libretas individual quimestres</a>
                 @endcan
                 @can('notas.libretaIndividual')
                 <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta colectivas parcial</a>
+                <a class="dropdown-item" href="{{ route('notas.libreta-colectiva-quimestre') }}">Libretas colectivas quimestres</a>
                 @endcan
-                @can('notas.libretaColectiva')
-                {{-- <a class="dropdown-item" href="{{ route('notas.libretaColectiva') }}">Libretas colectivas quimestres</a> --}}
-                @endcan
+              
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel </a>
                 @endcan

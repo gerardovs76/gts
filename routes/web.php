@@ -136,6 +136,10 @@ Route::post('store-conductas', 'NotasController@storeConductasIniciales')->name(
 
 Route::get('notas/{id}/{tt}/edit', 'NotasController@edit')->name('notas.edit');
 
+Route::get('libreta-colectiva-quimestre', 'NotasController@libretaColectivaQuimestre')->name('notas.libreta-colectiva-quimestre');
+
+Route::post('libreta-colectiva-quimestre-store', 'NotasController@libretaColectivaQuimestreStore')->name('notas.libreta-colectiva-quimestre-store');
+
 Route::get('notas/{id}/{tt}/destroy', 'NotasController@destroy');
 
 Route::put('notas/{id}/{tt}', 'NotasController@update')->name('notas.update');
@@ -207,6 +211,10 @@ Route::get('gracia_remedial/{curso}/{paralelo}/{quimestre}/{parcial}/{materia}',
 Route::post('gracias', 'NotasController@graciaStore')->name('gracia.store')->middleware('has.permission:gracia.store');
 
 Route::get('gracia_promedio', 'NotasController@graciaPromedio');
+
+Route::get('libreta-individual-quimestre', 'NotasController@libretaIndividualQuimestre')->name('notas.libreta-individual-quimestre');
+
+Route::post('libreta-individual-quimestre-store', 'NotasController@libretaIndividualQuimestreStore')->name('notas.reporte-individual-libreta-quimestre-store');
 
 Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@notasEdit');
 

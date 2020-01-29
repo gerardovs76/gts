@@ -435,8 +435,11 @@ class NotasController extends Controller
 
         }
         foreach($matriculados_id as $key => $value){
+        
             $new_notas = new Notas_examen;
-            $new_notas->nota_exq = ($nota_examen[$key] === null ? 0 : $nota_examen[$key]);
+          
+            $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
+        
             $new_notas->materias_id = $materias_id;
             $new_notas->matriculado_id = $matriculados_id[$key];
             $new_notas->quimestre = $quimestre;
@@ -3243,6 +3246,235 @@ class NotasController extends Controller
        
         return redirect()->back()->with('info', 'Se ha agregado la conducta correctamente');
         
+    }
+    public function libretaIndividualQuimestre()
+    {
+        return view('notas.libreta-individual-quimestre');
+    }
+    public function libretaIndividualQuimestreStore(Request $request)
+    {
+        
+        $codigo = $request->get('codigo');
+        $quimestre = $request->get('quimestre');
+        $materias = Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.codigo', $codigo)->where('m2.codigo', $codigo)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get();
+        $notas = Matriculacion::with(['notas_ta1' => function($query) use($quimestre){
+        $query
+        ->where('quimestre', $quimestre)
+        ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+        ->groupBy('matriculado_id', 'materias_id');
+         }])->with(['notas_ta2' => function($query2) use($quimestre){
+            $query2
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+            ->groupBy('matriculado_id', 'materias_id');
+             }])->with(['notas_ta3' => function($query3) use($quimestre){
+                $query3
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+                ->groupBy('matriculado_id', 'materias_id');
+                 }])->with(['notas_ti1' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ti2' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ti3' => function($query6) use($quimestre){
+            $query6
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg1' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg2' => function($query3) use($quimestre){
+            $query3
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg3' => function($query3) use($quimestre){
+            $query3
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le1' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le2' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le3' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev1' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev2' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev3' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_examen' => function($query6) use($quimestre){
+            $query6
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_conducta1' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['notas_conducta2' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['notas_conducta3' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['inscripcion' => function($query8){
+            $query8->select('cedula', 'nombres_representante');
+        }])->where('codigo', $codigo)->groupBy('id')->orderBy('apellidos')->get();
+
+       
+       $pdf = PDF::loadView('pdf.libreta-individual-quimestre', compact('notas','materias','quimestre'));
+                
+       return $pdf->download('libreta-individual-quimestre.pdf');
+    }
+    public function libretaColectivaQuimestre()
+    {
+        return view('notas.libreta-colectiva-quimestre');
+    }
+    public function libretaColectivaQuimestreStore(Request $request)
+    {
+        
+        $curso = $request->get('curso');
+        $paralelo = $request->paralelo;
+        $quimestre = $request->get('quimestre');
+        $materias = Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.curso', $curso)->where('m2.paralelo', $paralelo)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get();
+        $notas = Matriculacion::with(['notas_ta1' => function($query) use($quimestre){
+        $query
+        ->where('quimestre', $quimestre)
+        ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+        ->groupBy('matriculado_id', 'materias_id');
+         }])->with(['notas_ta2' => function($query2) use($quimestre){
+            $query2
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+            ->groupBy('matriculado_id', 'materias_id');
+             }])->with(['notas_ta3' => function($query3) use($quimestre){
+                $query3
+                ->where('quimestre', $quimestre)
+                ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+                ->groupBy('matriculado_id', 'materias_id');
+                 }])->with(['notas_ti1' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ti2' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ti3' => function($query6) use($quimestre){
+            $query6
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg1' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg2' => function($query3) use($quimestre){
+            $query3
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_tg3' => function($query3) use($quimestre){
+            $query3
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le1' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le2' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_le3' => function($query4) use($quimestre){
+            $query4
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+            ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev1' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev2' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_ev3' => function($query5) use($quimestre){
+            $query5
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_examen' => function($query6) use($quimestre){
+            $query6
+            ->where('quimestre', $quimestre)
+            ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
+           ->groupBy('matriculado_id', 'materias_id');
+        }])->with(['notas_conducta1' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['notas_conducta2' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['notas_conducta3' => function($query7) use($quimestre){
+            $query7
+            ->where('quimestre', $quimestre)
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+           ->groupBy('matriculados_id');
+        }])->with(['inscripcion' => function($query8){
+            $query8->select('cedula', 'nombres_representante');
+        }])->where('curso', $curso)->where('paralelo',$paralelo)->groupBy('id')->orderBy('apellidos')->get();
+
+       
+       $pdf = PDF::loadView('pdf.libreta-individual-quimestre', compact('notas','materias','quimestre'));
+                
+       return $pdf->download('libreta-individual-quimestre.pdf');
     }
 
 }
