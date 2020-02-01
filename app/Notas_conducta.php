@@ -11,6 +11,7 @@ class Notas_conducta extends Model
         'matriculados_id',
         'faltas_i',
         'faltas_j',
+        'atrasos',
         'conductas',
         'quimestre',
         'parcial'

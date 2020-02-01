@@ -187,12 +187,16 @@
                 <span id="badge2" class="badge-pill badge-danger"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
+                @can('inscripcion.index')
+                <a class="dropdown-item" href="{{ route('inscripcion.index') }}">Lista de alumnos inscritos</a>
+                @endcan
               @can('inspeccion.index')
                 <a class="dropdown-item" href="{{ route('inspeccion.index') }}">Ingrese asistencia</a>
                 @endcan
                 @if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('inspector'))
                 <a class="dropdown-item" href="{{route('inspeccion.observacion')}}">Ingrese observaciones</a>
                 @endif
+              
                 @can('inspeccion.index-conducta')
                <a class="dropdown-item" href="{{ route('inspeccion.index-conducta') }}">Certificado de conducta</a>
                @endcan
@@ -463,7 +467,6 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarCollapse">
-                                  <a class="dropdown-item" href="{{ route('logo.asignar') }}">Añadir logo</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

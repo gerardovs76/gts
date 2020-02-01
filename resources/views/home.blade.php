@@ -12,10 +12,7 @@
     </h2>
     </div>
     <hr>
-
-
                      <div class="row">
-
                               <div class="col-lg-2">
                                 <div class="panel panel-primary">
                                   <div class="panel-heading text-center"><i class="fas fa-home"></i> Bienvenido</div>
@@ -98,7 +95,7 @@
 
                         </div>
                       </div>
-                      @if(Auth::user()->isRole('alumno') || Auth::user()->isRole('super-admin'))
+                      @if(Auth::user()->isRole('alumno'))
                       <div class="panel panel-primary">
                             <div class="panel panel-heading text-center"><i class="fas fa-exclamation-triangle"></i> Resumen de faltas</div>
                             <div class="panel panel-body">

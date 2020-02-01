@@ -1709,7 +1709,7 @@ class NotasController extends Controller
             $query7
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas', 'atrasos')
            ->groupBy('matriculados_id');
         }])->with(['inscripcion' => function($query8){
             $query8->select('cedula', 'nombres_representante');
@@ -1967,7 +1967,7 @@ class NotasController extends Controller
 
         }])
         ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'));
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias','parcial', 'quimestre'));
        return $pdf->download('libreta-individual.pdf');
 
     }
@@ -2310,7 +2310,7 @@ class NotasController extends Controller
     {
         $user = Auth::user()->cedula;
         $matriculados = Matriculacion::where('cedula', $user)->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'cedula')->orderBy('matriculados.apellidos')->get();
-        return view('notas.ver-notas-alumnos', compact('matriculados', 'materias'));
+        return view('notas.ver-notas-alumnos', compact('matriculados'));
     }
     public function cargarNotasParaAlumnos(Request $request)
     {
@@ -2359,7 +2359,15 @@ class NotasController extends Controller
                 ->where('quimestre', $quimestre)
                 ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_conducta' => function($query7) use($quimestre, $parcial){
+                $query7
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas','atrasos')
+               ->groupBy('matriculados_id');
             }])->where('cedula', $cedula)->groupBy('id')->orderBy('apellidos')->get();
+
+            dd(json_encode($notas));
 
         return view('notas.ver-notas-alumnos', compact('notas'))->with('info', 'Se ha cargado la nota correctamente');
     }
@@ -2376,7 +2384,7 @@ class NotasController extends Controller
        return response()->json($materiasMatriculados);
     }
 
-    public function recuperacion()
+   /*  public function recuperacion()
     {
         return view('notas.recuperacion');
     }
@@ -2445,7 +2453,7 @@ class NotasController extends Controller
 
       return response()->json($recuperacion);
     }
-
+ */
     public function abanderados()
     {
         return view('notas.abanderados');
@@ -2551,7 +2559,7 @@ class NotasController extends Controller
             $query7
             ->where('parcial', $parcial)
             ->where('quimestre', $quimestre)
-            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas')
+            ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas','atrasos')
            ->groupBy('matriculados_id');
         }])->with(['inscripcion' => function($query8){
             $query8->select('cedula', 'nombres_representante');
@@ -2810,10 +2818,10 @@ class NotasController extends Controller
         }])
         ->where('codigo', $codigo)->groupBy('matriculados.id')->get();
 
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias', 'notasPromedioFinalTa', 'notasPromedioFinalTi', 'notasPromedioFinalTg', 'notasPromedioFinalLe', 'notasPromedioFinalEv', 'parcial', 'quimestre','representante'));
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias','parcial', 'quimestre'));
        return $pdf->download('libreta-individual.pdf');
     }
-    public function promediosFinales()
+    /* public function promediosFinales()
     {
         $curso = 'INICIAL 1';
         $paralelo = 'A';
@@ -2843,7 +2851,7 @@ class NotasController extends Controller
  }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
  dd(json_encode($notas));
 
-    }
+    } */
     public function examenQuimestral()
     {
         return view('notas.examen');
@@ -2901,9 +2909,16 @@ class NotasController extends Controller
                ->groupBy('matriculado_id', 'materias_id');
             }])->with(['notas_examen' => function($query6) use($quimestre){
                 $query6
+                
                 ->where('quimestre', $quimestre)
                 ->select('matriculado_id', 'materias_id', DB::raw("nota_exq / numero_tarea_exq as nota_final_examen"))
                ->groupBy('matriculado_id', 'materias_id');
+            }])->with(['notas_conducta' => function($query7) use($quimestre, $parcial){
+                $query7
+                ->where('parcial', $parcial)
+                ->where('quimestre', $quimestre)
+                ->select('matriculados_id','faltas_j', 'faltas_i', 'conductas','atrasos')
+               ->groupBy('matriculados_id');
             }])->with(['inscripcion' => function($query8){
                 $query8->select('cedula', 'nombres_representante');
             }])->where('cedula', $cedula)->groupBy('id')->orderBy('apellidos')->get();
@@ -3193,7 +3208,7 @@ class NotasController extends Controller
         ->where('paralelo', $paralelo)
         ->where('parcial', $parcial)
         ->where('quimestre', $quimestre)
-        ->select('matriculados.id as matriculados_id', DB::raw("CONCAT(matriculados.apellidos,' ',matriculados.nombres) as nombres"), 'notas_conducta.faltas_j', 'notas_conducta.faltas_i', 'notas_conducta.conductas', 'notas_conducta.id as nota_id')
+        ->select('matriculados.id as matriculados_id', DB::raw("CONCAT(matriculados.apellidos,' ',matriculados.nombres) as nombres"), 'notas_conducta.faltas_j', 'notas_conducta.faltas_i','notas_conducta.atrasos','notas_conducta.conductas', 'notas_conducta.id as nota_id')
         ->groupBy('matriculados.id')
         ->orderBy('matriculados.apellidos')
         ->get();
@@ -3208,6 +3223,7 @@ class NotasController extends Controller
         $faltas_j = $request->faltas_j;
         $faltas_i = $request->faltas_i;
         $conductas = $request->conducta;
+        $atrasos = $request->atrasos;
         $matriculados_id = $request->matriculados_id;
         $id_notas_conducta = $request->id_notas_conducta;
         $quimestre = $request->quimestre;
@@ -3218,10 +3234,9 @@ class NotasController extends Controller
             foreach($matriculados_id as $key => $value){
                 
                 $conducta = Notas_conducta::find($id_notas_conducta[$key]);
-              
                 $conducta->faltas_j = $faltas_j[$key];
-              
                 $conducta->faltas_i = $faltas_i[$key];
+                $conducta->atrasos = $atrasos[$key];
                 $conducta->conductas = $conductas[$key];
                 $conducta->matriculados_id = $matriculados_id[$key];
                 $conducta->quimestre = $quimestre;
@@ -3234,6 +3249,7 @@ class NotasController extends Controller
                 $conducta = new Notas_conducta;
                 $conducta->faltas_j = $faltas_j[$key];
                 $conducta->faltas_i = $faltas_i[$key];
+                $conducta->atrasos = $atrasos[$key];
                 $conducta->conductas = $conductas[$key];
                 $conducta->matriculados_id = $matriculados_id[$key];
                 $conducta->quimestre = $quimestre;

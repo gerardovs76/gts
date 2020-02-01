@@ -10,14 +10,11 @@
 
 		<hr>
 		@include('notas.partials.info')
-
-
 					{!! Form::open(['route' => 'notas.cargar-notas-alumnos']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
 							<div class="form-row">
-
 							<div class="form-group col-md-4">
                                              <strong>Cedula: <br></strong>
                                              <div class="input-group-prepend">
@@ -46,8 +43,6 @@
                                              {{ Form::select('materia',[], null, ['class' => 'form-control col-md-6' , 'id' => 'materia', 'placeholder' => 'Seleccione la materia...']) }}
                                              </div>
                                              </div>
-
-
 								<div class="form-group col-md-10">
 
    									{!! Form::button('<i class="fas fa-clipboard"></i> VER NOTAS', ['class' => 'btn btn-primary', 'type' => 'submit','id' => 'verNotas']) !!}
@@ -186,7 +181,7 @@
                         @endif
                         @if($nota->notas_conducta->count() != 0)
                         @foreach($nota->notas_conducta as $notas_conducta)
-                        <td>{{$notas_conducta->nota_final_conducta}}</td>
+                        <td>{{$notas_conducta->conductas}}</td>
                         @endforeach
                         @else
                         <td>0</td>

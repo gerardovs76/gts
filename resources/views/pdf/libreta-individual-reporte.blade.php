@@ -540,6 +540,7 @@ table#mitabla3 td {
 					<td>{{($conducta->conductas >= 9 && $conducta->conductas <= 10 ? 'A' : ($conducta->conductas >= 7 && $conducta->conductas <= 8.99 ? 'B' : ($conducta->conductas >= 4.01 &&  $conducta->conductas <= 6.99 ? 'C' : ($conducta->conductas <= 4  ? 'D' : 'Nota invalida'))))}}</td>
 					<td>{{$conducta->faltas_j}}</td>
 					<td>{{$conducta->faltas_i}}</td>
+					<td>{{$conducta->atrasos}}</td>
 				@endforeach
 				 @else
 					@foreach($inspe as $in)
