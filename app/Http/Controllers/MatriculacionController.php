@@ -1747,13 +1747,30 @@ class MatriculacionController extends Controller
         foreach($matriculados_id as $key => $value)
         {
             $fillename = $matriculados_id[$key].'.png';
-           $matriculadosCarnet = new MatriculadosCarnet;
-           $matriculadosCarnet->imagen = $fillename;
-           $matriculadosCarnet->matriculado_id = $matriculados_id[$key];
-           $matriculadosCarnet->save();
-
-            $saveFotoCarnet = \Storage::disk('carnets')->put($fillename, \File::get($fotoCarnet[$key]));
-        }   
+            $matriculado_carnet_id = MatriculadosCarnet::where('matriculado_id', $matriculados_id[$key])->get();
+            if(!$matriculado_carnet_id->isEmpty())
+            {
+                foreach($matriculado_carnet_id as $carnet_m)
+                {
+                    $delete_carnet = MatriculadosCarnet::find($carnet_m->id);
+                    \Storage::disk('carnets')->delete($delete_carnet->imagen);
+                    $delete_carnet->delete(); 
+                }
+                $matriculadosCarnet = new MatriculadosCarnet;
+                $matriculadosCarnet->imagen = $fillename;
+                $matriculadosCarnet->matriculado_id = $matriculados_id[$key];
+                $matriculadosCarnet->save();
+                $saveFotoCarnet = \Storage::disk('carnets')->put($fillename, \File::get($fotoCarnet[$key])); 
+            }
+            else{
+                $fillename = $matriculados_id[$key].'.png';
+                $matriculadosCarnet = new MatriculadosCarnet;
+                $matriculadosCarnet->imagen = $fillename;
+                $matriculadosCarnet->matriculado_id = $matriculados_id[$key];
+                $matriculadosCarnet->save();
+                $saveFotoCarnet = \Storage::disk('carnets')->put($fillename, \File::get($fotoCarnet[$key])); 
+            }
+        }
         return redirect()->route('matricular.carnet')->with('info', 'Las foto de los carnet se han agregado correctamente');
            // return redirect()->route('matricular.index')->with('info', 'Se ha editado correctamente');
     }

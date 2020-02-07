@@ -58,6 +58,7 @@
         {
             $('#table tbody').empty();
             $.each(response, function(index, objeto){
+                console.log(objeto);
                 if(objeto.carnet)
                 {
                     var name = objeto.nombres.toUpperCase();
