@@ -68,6 +68,7 @@
                     $('#table').append('<tr><td>'+name+'</td><td><button id='+objeto.id+' class="btn btn-success botonBusqueda" type="button"><i class="fas fa-print"></i> IMPRIMIR CARNET</button></td></tr>');
                 }
                 else {
+                    var name = objeto.nombres.toUpperCase();
                      $('#table').append('<tr><td>'+name+'</td><td><em>No tiene asignada una foto de carnet!</em></td></tr>');
                     }
             });
