@@ -1,7 +1,9 @@
  @extends('layouts.app')
 
 @section('content')
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-es_ES.min.js "> </script>
 	<div class="container col-xs-12 col-sm-12 col-lg-12">
 		<div style="background-color: #008cba; padding: 7px;">
           <h2 class="text-center" style="color: #fff;">
@@ -31,7 +33,23 @@
           <strong>Curso: <br></strong>
           <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::select('curso',['INICIAL 1' => 'INICIAL 1', 'INICIAL 2' => 'INICIAL 2', 'PRIMERO DE EGB' => 'PRIMERO DE EGB', 'SEGUNDO DE EGB' => 'SEGUNDO DE EGB', 'TERCERO DE EGB' => 'TERCERO DE EGB', 'CUARTI DE EGB' => 'CUARTO DE EGB', 'QUINTO DE EGB' => 'QUINTO DE EGB', 'SEXTO DE EGB' => 'SEXTO DE EGB', 'SEPTIMO DE EGB' => 'SEPTIMO DE EGB', 'OCTAVO DE EGB' => 'OCTAVO DE EGB', 'NOVENO DE EGB' => 'NOVENO DE EGB', 'DECIMO DE EGB' => 'DECIMO DE EGB', 'PRIMERO DE BACHILLERATO' => 'PRIMERO DE BACHILLERATO', 'SEGUNDO DE BACHILLERATO' => 'SEGUNDO DE BACHILLERATO', 'TERCERO DE BACHILLERATO' => 'TERCERO DE BACHILLERATO'], null, ['class' => 'form-control col-md-8', 'id' => 'cursos', 'placeholder' => 'Coloque el curso']) !!}
+          <select name="curso" id="curso" class="form-control col-md-8">
+              <option value="INICIAL 1">INICIAL 1</option>
+              <option value="INICIAL 2">INICIAL 2</option>
+              <option value="PRIMERO DE EGB">PRIMERO DE EGB</option>
+              <option value="SEGUNDO DE EGB">SEGUNDO DE EGB</option>
+              <option value="TERCERO DE EGB">TERCERO DE EGB</option>
+              <option value="CUARTO DE EGB">CUARTO DE EGB</option>
+              <option value="QUINTO DE EGB">QUINTO DE EGB</option>
+              <option value="SEXTO DE EGB">SEXTO DE EGB</option>
+              <option value="SEPTIMO DE EGB">SEPTIMO DE EGB</option>
+              <option value="OCTAVO DE EGB">OCTAVO DE EGB</option>
+              <option value="NOVENO DE EGB">NOVENO DE EGB</option>
+              <option value="DECIMO DE EGB">DECIMO DE EGB</option>
+              <option value="PRIMERO DE BACHILLERATO">PRIMERO DE BACHILLERATO</option>
+              <option value="SEGUNDO DE BACHILLERATO">SEGUNDO DE BACHILLERATO</option>
+              <option value="TERCERO DE BACHILLERATO">TERCERO DE BACHILLERATO</option>
+          </select>
           </div>
           </div>
 

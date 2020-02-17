@@ -64,24 +64,26 @@ class TareasController extends Controller
         $tareas->tipo_tarea = $request->tipo_tarea;
         $tareas->titulo = $request->titulo;
         $tareas->descripcion = $request->descripcion;
+        
         if(isset($request->archivo)){
         $archivo = $request->archivo;
         $archivo2 = $archivo->getClientOriginalName();
         $nombre2 = str_replace(' ', '', $archivo2);
         $tareas->archivo = $nombre2;
-        }else{
+            
+            }else{
         $tareas->archivo = 'no-existe';
-        }
+            }
         $tareas->save();
         if(!empty($request->file('archivo')))
-        {
+            {
         $file = $request->file('archivo');
        $nombre = $file->getClientOriginalName();
        $nombre2 = str_replace(' ', '', $nombre);
        \Storage::disk('local')->put($nombre2,  \File::get($file));
-       }
-
-       if(isset($tareas)){
+            }
+     
+        if(isset($tareas)){
         Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
 
             $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
@@ -89,7 +91,7 @@ class TareasController extends Controller
             $message->to($email->email)->subject('Novedades plataforma educativa GTS.');
             $message->from('gtstechnologyforyou@gmail.com', 'GTS');
 
-        }
+                                            }
         });
        return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
 

@@ -1740,10 +1740,19 @@ class MatriculacionController extends Controller
         return response()->json($matriculados);
    /*  } */
     }
+    public function ShowIndividualAlumnoCarnet($id)
+    {
+        $matriculado = Matriculacion::where('id', $id)
+        ->select(DB::raw("CONCAT(apellidos, ' ',nombres) as nombres"), 'id')
+        ->distinct()
+        ->get();
+        return response()->json($matriculado);
+    }
     public function storeCarnets(Request $request)
     {
         $matriculados_id = $request->matriculados_id;
         $fotoCarnet = $request->file('foto');
+     
         foreach($matriculados_id as $key => $value)
         {
             $fillename = $matriculados_id[$key].'.png';

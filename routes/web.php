@@ -305,6 +305,8 @@ Route::get('carnet', 'MatriculacionController@carnets')->name('matricular.carnet
 
 Route::get('matricular/carnet/{curso}/{paralelo}', 'MatriculacionController@verAlumnosCarnet');
 
+Route::get('matricular/buscar_alumnos_individuales_carnet/{id}', 'MatriculacionController@ShowIndividualAlumnoCarnet');
+
 Route::get('matricular/importar/alumnos', 'MatriculacionController@import');
 
 Route::post('matricular/import', 'MatriculacionController@importMatriculacion')->name('matriculacion.import')->middleware('has.permission:matriculacion.import');

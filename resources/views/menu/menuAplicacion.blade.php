@@ -139,6 +139,7 @@
                 @endcan
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
+                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Ingreso conducta sección básica</a>
                 @endcan
                {{-- <a class="dropdown-item" href="{{ route('notas.enviar-libreta-individuales') }}">Enviar libretas individuales</a>-}}
           {{--       @can('notas.verNotasEspeciales')
@@ -151,7 +152,7 @@
                 @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
                 @endcan
-                <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Ingreso conducta sección básica</a>
+               
                 {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @endcan

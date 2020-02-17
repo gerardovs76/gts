@@ -23,15 +23,34 @@
             </div>
             </div>
             <div class="form-group col-md-4">
-                    <strong>Paralelo: <br></strong>
-                    <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
-                    {!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo', 'placeholder' => 'Ingrese el paralelo']) !!}<br>
-                    </div>
-                    </div>
-            <div class="form-group col-md-12">
-                {!!Form::button('<i class="fas fa-paper-plane"></i> REALIZAR BUSQUEDA',['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'realizarBusqueda'])!!}
+            <strong>Paralelo: <br></strong>
+                <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                {!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo', 'placeholder' => 'Ingrese el paralelo']) !!}<br>
+                </div>
             </div>
+            <div class="form-group col-md-6 d-none" id="selectEstudianteIndividual">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                <select name="estudiantes" id="estudiantes" class="form-control" placeholder="Seleccione los estudiantes...">
+              
+                </select>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
+                {!!Form::button('<i class="fa fa-save"></i> BUSQUEDA INDIVIDUAL', ['class' => 'btn btn-primary col-md-4 d-none', 'id' => 'buttonIndividual', 'type' => 'button'])!!}
+                </div>
+                <div class="form-group col-md-6">
+                    {!!Form::button('<i class="fa fa-save"></i> BUSQUEDA GRUPAL', ['class' => 'btn btn-primary col-md-4 pull-right d-none', 'id' => 'buttonGrupal', 'type' => 'button'])!!}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                {!!Form::button('<i class="fas fa-paper-plane"></i> REALIZAR BUSQUEDA',['class' => 'btn btn-primary d-none', 'type' => 'button', 'id' => 'realizarBusquedaIndividual'])!!}
+            </div>
+           {{--  <div class="form-group col-md-12">
+                {!!Form::button('<i class="fas fa-paper-plane"></i> REALIZAR BUSQUEDA',['class' => 'btn btn-primary', 'type' => 'button', 'id' => 'realizarBusqueda'])!!}
+            </div> --}}
                     </div>
                 </div>
             </div>
@@ -44,16 +63,87 @@
 
                 </tbody>
             </table>
-            <div class="form-group col-md-12">
+
+             <div class="form-group col-md-12">
                 {!!Form::button('<i class="fa fa-save"></i> GUARDAR',['class' => 'btn btn-primary col-md-2 d-none', 'id' => 'botonGuardar', 'type' => 'submit'])!!}
-            </div>
+            </div> 
             {!!Form::close()!!}
            
 
 
 
-        
-    <script>
+        <script>
+            $('#paralelo').change(() => {
+                $('#buttonIndividual').addClass("d-block");
+                $('#buttonGrupal').addClass("d-block");
+                async function pasoIndivudual1()
+                {
+                $('#buttonIndividual').click(() => {
+
+                    $('#buttonGrupal').removeClass("d-block");
+                    
+                    var curso = $('#curso').val();
+                    var paralelo = $('#paralelo').val();
+                    var url = 'matricular/carnet/'+curso+'/'+paralelo;
+                    $.ajax({
+                        url: url,
+                        success: function(response){
+                            $.each(response, function(index,obj){
+                                $('#selectEstudianteIndividual select').append('<option value='+obj.id+'>'+obj.nombres+'</option>');
+                            });
+                            $('#selectEstudianteIndividual').addClass("d-block");
+                            $('#buttonIndividual').removeClass("d-block");
+                            $('#realizarBusquedaIndividual').addClass("d-block");
+                        }
+                    });
+                });
+                                   
+            }
+            async function pasoIndividual2()
+            {
+                await pasoIndivudual1();
+                $('#realizarBusquedaIndividual').click(() => {
+                    var estudiantes = $('#estudiantes').val();
+                    var url = 'matricular/buscar_alumnos_individuales_carnet/'+estudiantes;
+                    $.ajax({
+                    url: url,
+                    success: function(response)
+                    {
+                        $('#table tbody').empty();
+                            $.each(response, function(index, objeto){
+                                $('#table').append('<tr><td>'+objeto.nombres+'</td><td><input type="hidden" name="matriculados_id[]" value='+objeto.id+'><input type="file" name="foto[]" value="null" /></td></tr>');
+                                $('#botonGuardar').addClass("d-block");
+                            });
+                    } 
+                    });
+                });
+            }
+            async function pasoFinalIndividual()
+            {
+                await pasoIndividual2();
+            }
+            pasoFinalIndividual();
+                $('#buttonGrupal').click(() => {
+                    $('#buttonIndividual').removeClass("d-block");
+                    var curso = $('#curso').val();
+                    var paralelo = $('#paralelo').val();
+                    var url = 'matricular/carnet/'+curso+'/'+paralelo;
+                    $.ajax({
+                        url: url,
+                        success: function(response)
+                        {
+                            $('#table tbody').empty();
+                            $.each(response, function(index, objeto){
+                                $('#table').append('<tr><td>'+objeto.nombres+'</td><td><input type="hidden" name="matriculados_id[]" value='+objeto.id+'><input type="file" name="foto[]" value="null" /></td></tr>');
+                                $('#botonGuardar').addClass("d-block");
+                            });
+                        
+                        } 
+                    });
+                });
+            });
+        </script>
+    {{-- <script>
     $('#realizarBusqueda').click(() => {
        var curso = $('#curso').val();
        var paralelo = $('#paralelo').val();
@@ -64,14 +154,14 @@
         {
             $('#table tbody').empty();
             $.each(response, function(index, objeto){
-                $('#table').append('<tr><td>'+objeto.nombres+'</td><td><input type="hidden" name="matriculados_id[]" value='+objeto.id+'><input type="file" name="foto[]" required /></td></tr>');
+                $('#table').append('<tr><td>'+objeto.nombres+'</td><td><input type="hidden" name="matriculados_id[]" value='+objeto.id+'><input type="file" name="foto[]" value="null" /></td></tr>');
                 $('#botonGuardar').addClass("d-block");
             });
           
         } 
        });
     });
-    </script>
+    </script> --}}
 </div>
     
 @endsection

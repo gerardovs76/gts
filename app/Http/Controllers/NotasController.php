@@ -2367,8 +2367,6 @@ class NotasController extends Controller
                ->groupBy('matriculados_id');
             }])->where('cedula', $cedula)->groupBy('id')->orderBy('apellidos')->get();
 
-            dd(json_encode($notas));
-
         return view('notas.ver-notas-alumnos', compact('notas'))->with('info', 'Se ha cargado la nota correctamente');
     }
 
