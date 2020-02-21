@@ -142,4 +142,42 @@
                                   });
                               });
                               </script>
+                              @if(Auth::user()->isRole('profesor'))
+                              <script>
+                              $(document).ready(function(){
+                                  var url1 = 'notas/cargar-notas-profesor';
+                                  $.ajax({
+                                      url: url1,
+                                      success: function(response)
+                                      {
+                                          $.each(response, function(index, obj){
+                                          $('#curso').append('<option value="'+obj.curso+'">'+obj.curso+'</option>');
+                                      });
+                                      },
+                                      error: function(error)
+                                      {
+                              
+                                      }
+                                      });
+                                  });
+                              </script>
+                              <script>
+                                  $(document).ready(() => {
+                                      var url2 = 'notas/cargar-notas-profesor-paralelo';
+                                      $.ajax({
+                                          url: url2,
+                                          success: function(response)
+                                          {
+                                              $.each(response, function(index, obj){
+                                              $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
+                                              });
+                                          },
+                                          error: function(error)
+                                          {
+                              
+                                          }
+                                      });
+                                  });
+                              </script>
+                              @endif
                         @endsection

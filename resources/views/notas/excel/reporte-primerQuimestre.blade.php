@@ -17,17 +17,12 @@
 		<tr>
 
 		</tr>
-	{{-- 	<tr>
+		<tr>
+		 	<td><strong>NIVEL: {{ $curso }}</strong></td>
+		 	<td></td>
+			<td><strong>PARALELO:  {{ $paralelo }}</strong></td>
+		</tr>
 
-         <td><strong>NIVEL: </strong></td>
-         @foreach($matriculados as $matriculado)
-         <td>{{ $matriculado->curso }}</td>
-         @endforeach
-         <td><strong>PARALELO: </strong></td>
-         @foreach($matriculados as $matriculado)
-         <td>{{ $matriculado->paralelo }}</td>
-         @endforeach
-		</tr> --}}
 		<tr>
 			<td><strong>JORNADA: </strong></td>
 		</tr>

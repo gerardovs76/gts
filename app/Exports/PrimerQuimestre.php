@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
+use Illuminate\Support\Carbon;
 use DB;
 use App\Matriculacion;
 use App\Materias;
@@ -29,6 +30,9 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
     {
          return view('notas.excel.reporte-primerQuimestre',[
             'materias' => Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.curso', $this->curso)->where('m2.paralelo', $this->paralelo)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get(),
+            'curso' => $this->curso,
+            'paralelo' => $this->paralelo,
+            'fecha_hoy' => Carbon::now()->format('Y'),
             'notas' => Matriculacion::with(['notas_ta1' => function($query){
             $query
             ->where('quimestre', '1')
