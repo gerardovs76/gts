@@ -13,6 +13,7 @@ use App\Frases;
 use App\Noticias;
 use App\Inspecciones;
 use App\Matriculacion;
+use App\MatriculadosCarnet;
 
 class HomeController extends Controller
 {
@@ -57,13 +58,26 @@ class HomeController extends Controller
         $fecha = $fecha->toTimeString();
 
         $roles = auth()->user()->roles;
-
+        $foto_perfil = "";
+        foreach($roles as $rol)
+        {
+            if($rol->name == "Alumno")
+            {
+                $cedula = auth()->user()->cedula;
+                $matriculadosFoto = Matriculacion::where('cedula', $cedula)->get();
+                foreach($matriculadosFoto as $foto)
+                {
+                    $foto_perfil = MatriculadosCarnet::where('matriculado_id', $foto->id)->get();
+                    foreach($foto_perfil as $perfil)
+                    {
+                        $foto_perfil = $perfil->imagen;
+                    }
+                }
+            }
+        }
         $eventos = Eventos::all();
-
         $frases = Frases::all();
-
         $noticias = Noticias::all();
-
         $inspe = Matriculacion::withCount(['inspecciones as h1_count_01' => function($query){
             $query
             ->where('h1', '01');
@@ -225,7 +239,7 @@ class HomeController extends Controller
         }])
         ->where('cedula', auth()->user()->cedula)->groupBy('matriculados.id')->get();
 
-        return view('home', compact('calendar_details', 'usuarios', 'fecha', 'roles', 'eventos', 'frases', 'noticias', 'inspe'));
+        return view('home', compact('calendar_details', 'usuarios', 'foto_perfil','fecha', 'roles', 'eventos', 'frases', 'noticias', 'inspe'));
 
     }
 

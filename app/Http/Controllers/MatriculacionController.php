@@ -1707,6 +1707,10 @@ class MatriculacionController extends Controller
         }])->with(['inscripcion' => function($query3){
             $query3->select('cedula', 'nombres_representante','cedrepresentante','movil', 'convencional', 'tipo_persona', 'direccion_alumno', 'edad', 'sexo');
         }])->where('codigo', $codigo)->get();
+        foreach($matriculadosPerfil as $perfil)
+        {
+            $perfil->foto_perfil = MatriculadosCarnet::where('matriculado_id', $perfil->id)->get();
+        }
         return view('matricular.perfil-total', compact('matriculadosPerfil'))->with('info', 'La busqueda se ha completado correctamente...');
     }
     public function carnets()

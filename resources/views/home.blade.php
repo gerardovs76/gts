@@ -27,7 +27,7 @@
                                   <h2 class="text-center"><i class="fas fa-user-cog"></i></h2>
                                   @elseif($rol->name == 'Alumno')
                                   <h2 class="text-center">{{ $rol->name }}</h2>
-                                  <h2 class="text-center"><i class="fas fa-user-graduate"></i></h2>
+                                  <h2 class="text-center"><img src="carnets/{{$foto_perfil}}" style="padding-left:20px;width:110px;height:110px;" alt=""></i></h2>
                                   @elseif($rol->name == 'Profesor')
                                   <h2 class="text-center">{{ $rol->name }}</h2>
                                   <h2 class="text-center"><i class="fas fa-user-tie"></i></h2>

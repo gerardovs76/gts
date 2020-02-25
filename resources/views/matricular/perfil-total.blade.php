@@ -22,127 +22,127 @@
                    <thead>
                        @if(isset($matriculadosPerfil))
                        @foreach($matriculadosPerfil as $perfil)
-                       <img src={{asset("archivos/$perfil->foto_carnet")}} alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
-                       <tr>
-                           <th>
-                               Datos del alumno: {{$perfil->cedula}} , {{$perfil->nombres}} {{$perfil->apellidos}}
-                           </th>
-                       </tr><tr>
-                            <th>
-                              Curso y paralelo: {{$perfil->curso}} {{$perfil->paralelo}}
-                            </th>
-                        </tr>
-                        <tr>
-                                <th>
-                                    Edad: {{$perfil->inscripcion->edad}} años
-                                </th>
-                            </tr>
-                            <tr>
-                                    <th>
-                                        Dirección: {{$perfil->inscripcion->direccion_alumno}}
-                                    </th>
-                                </tr>
-                                <tr>
+                                    @foreach($perfil->foto_perfil as $foto_perfil)
+                                        <img src={{asset("carnets/$foto_perfil->imagen")}} alt="" class="pull-right"  style="border:1px solid #021a40;" width="100" height="100">
+                                    @endforeach 
+                                    <tr>
+                                        <th>
+                                            Datos del alumno: {{$perfil->cedula}} , {{$perfil->nombres}} {{$perfil->apellidos}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                        Curso y paralelo: {{$perfil->curso}} {{$perfil->paralelo}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Edad: {{$perfil->inscripcion->edad}} años
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Dirección: {{$perfil->inscripcion->direccion_alumno}}
+                                        </th>
+                                    </tr>
+                                    <tr>
                                         <th>
                                             Datos del representante: {{$perfil->inscripcion->cedrepresentante}},{{$perfil->inscripcion->nombres_representante}}, {{$perfil->inscripcion->tipo_persona}}
                                         </th>
                                     </tr>
                                     <tr>
-                                            <th>
-                                                Telefonos: {{$perfil->inscripcion->convencional}},{{$perfil->inscripcion->movil}}
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center" style="background-color: #008cba; color: white;">
-                                                PAGOS
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                    @if(!isset($perfil->facturaciones->first()->valor))
-                                                     SEP VALOR : 0
-                                                    @elseif($perfil->facturaciones->first()->valor !== '306.7' && $perfil->facturaciones->first()->valor !== '314' && $perfil->facturaciones->first()->valor !== '326' && $perfil->facturaciones->first()->valor !== '353.5' && $perfil->facturaciones->first()->valor !== '371' && $perfil->facturaciones->first()->valor !== '196.7' && $perfil->facturaciones->first()->valor !== '199' && $perfil->facturaciones->first()->valor !== '201' && $perfil->facturaciones->first()->valor !== '228.5' && $perfil->facturaciones->first()->valor !== '246')
-                                                       SEP VALOR : {{$perfil->facturaciones->first()->valor}}
-                                                    @else
-                                                       @if(isset($perfil->facturaciones->first()->valor))
-                                                      SEP VALOR : {{$perfil->facturaciones->first()->valor}}
-                                                       @elseif($perfil->facturaciones->first()->valor == '')
-                                                      SEP VALOR : 0
-                                                       @endif
-                                                        MATRICULA: 70
-                                                        @foreach($perfil->facturaciones as $factura)
-                                                        @if(strpos($factura->referencias, 'SEP') !== FALSE)
-                                                        @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
-                                                        PENSIÓN: 60
-                                                        @elseif(strpos($factura->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($factura->referencias, 'TERCERO DE EGB') !== FALSE || strpos($factura->referencias, 'CUARTO DE EGB') !== FALSE || strpos($factura->referencias, 'QUINTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEXTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($factura->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($factura->referencias, 'NOVENO DE EGB') !== FALSE || strpos($factura->referencias, 'DECIMO DE EGB') !== FALSE || strpos($factura->referencias, '1RO') !== FALSE || strpos($factura->referencias, '8VO') !== FALSE)
-                                                        PENSIÓN: 65
-                                                        @elseif(strpos($factura->referencias, 'PRIMERO DE BACHILLERATO') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE BACHILLERATO') !== FALSE)
-                                                        PENSIÓN: 70
-                                                        @elseif(strpos($factura->referencias, 'TERCERO DE BACHILLERATO') !== FALSE)
-                                                        PENSIÓN: 95
-                                                        @endif
-                                                        @if($factura->fecha_inicio !== null && $factura->num_referencia !== null)
-                                                        - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}
-                                                        @endif
-                                                        @endif
-                                                        @endforeach
-                                                        @endif
-                                            </th>
-                                        </tr>
+                                        <th>
+                                            Telefonos: {{$perfil->inscripcion->convencional}},{{$perfil->inscripcion->movil}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center" style="background-color: #008cba; color: white;">
+                                            PAGOS
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @if(!isset($perfil->facturaciones->first()->valor))
+                                                SEP VALOR : 0
+                                            @elseif($perfil->facturaciones->first()->valor !== '306.7' && $perfil->facturaciones->first()->valor !== '314' && $perfil->facturaciones->first()->valor !== '326' && $perfil->facturaciones->first()->valor !== '353.5' && $perfil->facturaciones->first()->valor !== '371' && $perfil->facturaciones->first()->valor !== '196.7' && $perfil->facturaciones->first()->valor !== '199' && $perfil->facturaciones->first()->valor !== '201' && $perfil->facturaciones->first()->valor !== '228.5' && $perfil->facturaciones->first()->valor !== '246')
+                                                SEP VALOR : {{$perfil->facturaciones->first()->valor}}
+                                            @else
+                                            @if(isset($perfil->facturaciones->first()->valor))
+                                                SEP VALOR : {{$perfil->facturaciones->first()->valor}}
+                                            @elseif($perfil->facturaciones->first()->valor == '')
+                                                SEP VALOR : 0
+                                            @endif
+                                                MATRICULA: 70
                                                     @foreach($perfil->facturaciones as $factura)
-                                                    
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, ' OCT') !== FALSE)
-                                                        <th>OCT PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                        @if(strpos($factura->referencias, 'SEP') !== FALSE)
+                                                            @if(strpos($factura->referencias, 'INICIAL 1') !== FALSE || strpos($factura->referencias, 'INICIAL 2') !== FALSE || strpos($factura->referencias, 'INI') !== FALSE)
+                                                                PENSIÓN: 60
+                                                            @elseif(strpos($factura->referencias, 'PRIMERO DE EGB') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE EGB') !== FALSE || strpos($factura->referencias, 'TERCERO DE EGB') !== FALSE || strpos($factura->referencias, 'CUARTO DE EGB') !== FALSE || strpos($factura->referencias, 'QUINTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEXTO DE EGB') !== FALSE || strpos($factura->referencias, 'SEPTIMO DE EGB') !== FALSE || strpos($factura->referencias, 'OCTAVO DE EGB') !== FALSE || strpos($factura->referencias, 'NOVENO DE EGB') !== FALSE || strpos($factura->referencias, 'DECIMO DE EGB') !== FALSE || strpos($factura->referencias, '1RO') !== FALSE || strpos($factura->referencias, '8VO') !== FALSE)
+                                                                PENSIÓN: 65
+                                                            @elseif(strpos($factura->referencias, 'PRIMERO DE BACHILLERATO') !== FALSE || strpos($factura->referencias, 'SEGUNDO DE BACHILLERATO') !== FALSE)
+                                                                PENSIÓN: 70
+                                                            @elseif(strpos($factura->referencias, 'TERCERO DE BACHILLERATO') !== FALSE)
+                                                                PENSIÓN: 95
+                                                            @endif
+                                                            @if($factura->fecha_inicio !== null && $factura->num_referencia !== null)
+                                                                - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}
+                                                            @endif
                                                         @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, ' NOV') !== FALSE)
-                                                        <th>NOV PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                         @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'DIC') !== FALSE)
-                                                        <th>DIC PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                       
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'ENE') !== FALSE)
-                                                        <th>ENE PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @endif
-                                                   </tr>
-                                                    <tr>
-
-                                                        @if(strpos($factura->referencias, 'FEB') !== FALSE)
-                                                        <th>FEB PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'MAR') !== FALSE)
-                                                        <th>MAR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'ABR') !== FALSE)
-                                                        <th>ABR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                        
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'MAY') !== FALSE)
-                                                        <th>MAY PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                       
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if(strpos($factura->referencias, 'JUN') !== FALSE)
-                                                        <th>JUN PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
-                                                     
-                                                        @endif
-                                                    </tr>
                                                     @endforeach
-
+                                                @endif
+                                        </th>
+                                        </tr>
+                                            @foreach($perfil->facturaciones as $factura)
+                                                <tr>
+                                                    @if(strpos($factura->referencias, ' OCT') !== FALSE)
+                                                    <th>OCT PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, ' NOV') !== FALSE)
+                                                    <th>NOV PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'DIC') !== FALSE)
+                                                    <th>DIC PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'ENE') !== FALSE)
+                                                    <th>ENE PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'FEB') !== FALSE)
+                                                    <th>FEB PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'MAR') !== FALSE)
+                                                    <th>MAR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'ABR') !== FALSE)
+                                                    <th>ABR PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                    
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'MAY') !== FALSE)
+                                                    <th>MAY PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    @if(strpos($factura->referencias, 'JUN') !== FALSE)
+                                                    <th>JUN PENSIÓN: {{$factura->valor}} - FECHA DE COBRO : {{$factura->fecha_inicio}}   -    NUMERO DE REFERENCIA : {{$factura->num_referencia}}</th>
+                                                
+                                                    @endif
+                                                </tr>
+                                            @endforeach
                                         </tr>
                                         @endforeach
 
