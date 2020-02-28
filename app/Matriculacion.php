@@ -109,6 +109,10 @@ public function notas_conducta1()
 {
     return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '1');
 }
+public function inspecciones1()
+{
+    return $this->hasMany('App\Inspecciones', 'matriculados_id')->where('parcial', '1');
+}
 //PARCIAL2
 public function notas_ta2()
 {
@@ -134,6 +138,10 @@ public function notas_conducta2()
 {
     return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '2');
 }
+public function inspecciones2()
+{
+    return $this->hasMany('App\Inspecciones', 'matriculados_id')->where('parcial', '2');
+}
 //PARCIAL 3
 public function notas_ta3()
 {
@@ -158,6 +166,10 @@ public function notas_ev3()
 public function notas_conducta3()
 {
     return $this->hasMany('App\Notas_conducta', 'matriculados_id')->where('parcial', '3');
+}
+public function inspecciones3()
+{
+    return $this->hasMany('App\Inspecciones', 'matriculados_id')->where('parcial', '3');
 }
 
 }

@@ -18,13 +18,11 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel panel-heading text-center">Registro de mensajes</div>
-                    <div class="panel panel-body">
-                        @foreach (Auth::user()->notifications as $notification)
-                            <i>{{ $notification->data["envio_id"]["name"] }}</i> te ha enviado un mensaje: <b>{{ $notification->data["body"]}}</b><br><br><br><br><br>
-                        @endforeach
-
-
-                    </div>
+                        <div class="panel panel-body">
+                            @foreach (Auth::user()->notifications as $notification)
+                                <i>{{ $notification->data["envio_id"]["name"] }}</i> te ha enviado un mensaje: <b>{{ $notification->data["body"]}}</b><br><br><hr>
+                            @endforeach
+                        </div>
                     </div>
             </div>
     </div>
