@@ -9,6 +9,7 @@ use App\Notifications\MensajeriaNotificacion;
 use Illuminate\Support\Facades\Notification;
 use DB;
 use App\Matriculacion;
+use Illuminate\Support\Facades\Mail;
 
 class MensajeController extends Controller
 {
@@ -101,13 +102,29 @@ class MensajeController extends Controller
         $recibio_id = $request->recibio_id;
         foreach($recibio_id as $key => $value)
         {
-    	$mensaje = new Mensaje;
+            $users = User::where('id', $value)->get();
+            foreach($users as $user)
+            {
+                $matriculados = Matriculacion::with(['inscripcion' => function($query) {
+                        $query->select('cedula', 'nombres_representante', 'email');
+                    }])->where('cedula', $user->cedula)->get();
+            
+                foreach($matriculados as $matriculado)
+                {
+                    $email_matriculado = $matriculado->inscripcion->email;
+                    Mail::send('tareas-email', ['mensaje' => 'Notificaci¨®n de tarea pendiente', 'body' => $request->body], function ($message) use($email_matriculado) {
+                        $message->to($email_matriculado)->subject('Novedades plataforma educativa GTS.');
+                        $message->from('gtstechnologyforyou@gmail.com', 'GTS');
+                    });
+                }
+            }
+    	 $mensaje = new Mensaje;
     	$mensaje->envio_id = auth()->id();
     	$mensaje->recibio_id = $recibio_id[$key];
     	$mensaje->body = $request->body;
     	$mensaje->save();
         $paraUsuario = User::find($recibio_id[$key]);
-    	$paraUsuario->notify(new MensajeriaNotificacion($mensaje));
+    	$paraUsuario->notify(new MensajeriaNotificacion($mensaje)); 
         }
         return redirect()->route('mensaje.index')->with('info', 'El mensaje se ha enviado con exito');
     }
