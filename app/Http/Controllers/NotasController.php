@@ -154,8 +154,6 @@ class NotasController extends Controller
         if($request->id_nota_ta)
         {
             foreach($matriculados_id as $key => $value){
-            
-           
                 $new_notas = Nota_ta::find($id_nota_ta[$key]);
                 $new_notas->nota_ta1 = ($nota_ta1[$key] == '' ? 0 : $nota_ta1[$key]);
                 $new_notas->nota_ta2 = ($nota_ta2[$key] == '' ? 0 : $nota_ta2[$key]);
