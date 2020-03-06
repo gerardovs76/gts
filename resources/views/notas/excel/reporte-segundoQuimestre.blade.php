@@ -24,10 +24,6 @@
 
 		</tr>
 		<tr>
-
-		</tr>
-		
-		<tr>
 		 	<td><strong>NIVEL: {{ $curso }}</strong></td>
 		 	<td></td>
 			<td><strong>PARALELO:  {{ $paralelo }}</strong></td>
