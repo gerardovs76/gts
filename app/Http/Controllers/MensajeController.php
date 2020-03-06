@@ -102,7 +102,7 @@ class MensajeController extends Controller
         $recibio_id = $request->recibio_id;
         foreach($recibio_id as $key => $value)
         {
-            $users = User::where('id', $value)->get();
+          /*   $users = User::where('id', $value)->get();
             foreach($users as $user)
             {
                 $matriculados = Matriculacion::with(['inscripcion' => function($query) {
@@ -117,8 +117,8 @@ class MensajeController extends Controller
                         $message->from('gtstechnologyforyou@gmail.com', 'GTS');
                     });
                 }
-            }
-    	 $mensaje = new Mensaje;
+            } */
+    	$mensaje = new Mensaje;
     	$mensaje->envio_id = auth()->id();
     	$mensaje->recibio_id = $recibio_id[$key];
     	$mensaje->body = $request->body;
