@@ -60,10 +60,10 @@
 		@php
 		$i = 1;
 		@endphp
+		@foreach($notas as $nota)
 		@php
 		$promedio_final_todo = 0;
 		@endphp
-		@foreach($notas as $nota)
 		<tr>
 			<td>{{$i++}}</td> 
 			<td>{{mb_strtoupper($nota->apellidos)}} {{mb_strtoupper($nota->nombres)}}</td>
