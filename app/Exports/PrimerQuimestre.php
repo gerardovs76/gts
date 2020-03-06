@@ -1029,7 +1029,7 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
             $countMaterias = count($materias);
             $countMaterias = ($countMaterias - 1) + 3;
             $countMatriculados = count($matriculados);
-            $countMatriculados = $countMatriculados + 8;
+            $countMatriculados = $countMatriculados + 9;
             foreach($materias as $key => $value)
             {
                 $event->sheet->getColumnDimension(''.$indicesMaterias[$key].'')->setWidth(5)->setAutoSize(false);
@@ -1112,9 +1112,8 @@ class PrimerQuimestre implements  FromView, WithEvents, WithDrawings
                     )
                 ]
             ); 
-
               $event->sheet->styleCells(
-                'A10:'.$indicesMaterias[$countMaterias].'10:',
+                'A10:'.$indicesMaterias[$countMaterias].''.$countMatriculados.':',
                 [
                     'borders' => [
                         'allBorders' => [
