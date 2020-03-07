@@ -3692,7 +3692,7 @@ class NotasController extends Controller
 
         }])
         ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get(); 
-        
+        dd($inspe);
        
        $pdf = PDF::loadView('pdf.libreta-individual-quimestre', compact('notas','materias','quimestre', 'inspe'));
                 
