@@ -156,7 +156,7 @@
                 <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Libretas quimestrales para profesor</a>
                 @endif
                 @if(Auth::user()->isRole('super-admin'))
-                <a class="droprown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}"></a>
+                <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Asignar notas a alumnos nuevos</a>
                 @endif
                
                 {{-- @can('notas.recuperacion')
