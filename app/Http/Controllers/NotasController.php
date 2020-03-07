@@ -3733,7 +3733,6 @@ class NotasController extends Controller
                
             }
         }
-        dump($materias);
             $notas = Matriculacion::with(['notas_ta1' => function($query) use($quimestre){
                 $query
                 ->where('quimestre', $quimestre)
