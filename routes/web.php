@@ -134,6 +134,8 @@ Route::get('agree-alumnos/{curso}/{paralelo}/{parcial}/{quimestre}', 'NotasContr
 
 Route::get('asignar-notas-alumnos-nuevos', 'NotasController@asignarNotasAlumnosNuevos')->name('notas.asignarNotasAlumnosNuevos');
 
+Route::post('asignar-notas-alumnos-nuevos-store', 'NotasController@asignarNotasAlunosNuevoStore')->name('notas.asignar-notas-alumnos-nuevos-store');
+
 Route::post('descargar-libreta-quimestrar-para-profesores', 'NotasController@descargarLibretaColectivaParaProfesores')->name('notas.descargarLibretaColectivaParaProfesores');
 
 Route::post('store-conductas', 'NotasController@storeConductasIniciales')->name('notas.store-conductas');

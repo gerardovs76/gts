@@ -11,7 +11,7 @@
                 <hr>
                 @include('notas.partials.error')
 		@include('notas.partials.info')
-					{!! Form::open(['route' => 'notas.libreta-colectiva-quimestre-store']) !!}
+					{!! Form::open(['route' => 'notas.asignar-notas-alumnos-nuevos-store']) !!}
 					<div class="panel panel-primary">
 						<div class="panel panel-heading text-center">POR FAVOR INTRODUZCA LOS DATOS PARA LA BUSQUEDA</div>
 						<div class="panel panel-body">
@@ -27,32 +27,39 @@
                                         <strong>2.- Paralelo: <br></strong>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-sort-alpha-up"></i></span>
-                                            {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'curso', 'placeholder' => 'Seleccione el curso...']) }}
+                                            {{ Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6' , 'id' => 'paralelo', 'placeholder' => 'Seleccione el paralelo']) }}
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <strong>3.- Materia: <br></strong>
+                                        <strong>3.- Alumnos: <br></strong>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                                                {{ Form::select('alumnos', [], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione los alumnos', 'id' => 'alumnos']) }}
+                                            </div>
+                                        </div>
+                                    <div class="form-group col-md-4">
+                                        <strong>4.- Materia: <br></strong>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                                 {{ Form::select('materia', [], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione la materia', 'id' => 'materia']) }}
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <strong>4.- Quimestre: <br></strong>
+                                            <strong>5.- Quimestre: <br></strong>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                                 {{ Form::select('quimestre',['1' => 'PRIMER QUIMESTRE', '2' => 'SEGUNDO QUIMESTRE'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el quimestre', 'id' => 'quimestre']) }}
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <strong>5.- Parcial: <br></strong>
+                                            <strong>6.- Parcial: <br></strong>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
                                                 {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
                                             </div>
                                         </div>
 								<div class="form-group col-md-10">
-   									{!! Form::button('<i class="fas fa-print"></i> DESCARGAR LIBRETA', ['class' => 'btn btn-primary',  'id' => 'verNotas', 'type' => 'submit']) !!}
+   									{!! Form::button('<i class="fas fa-print"></i> ENVIAR', ['class' => 'btn btn-primary',  'id' => 'verNotas', 'type' => 'submit']) !!}
 								</div>
 
 							</div>
@@ -77,9 +84,10 @@
              $('#paralelo').on('change', function() {
                  var curso = $( "#curso option:selected" ).text();
                  var paralelo  = $( "#paralelo option:selected" ).text();
-                 var url = 'buscar_notas/'+curso+'/'+paralelo;
+                 var urlMaterias = 'buscar_notas/'+curso+'/'+paralelo;
+                 var urlAlumnos = 'buscar_alumnos2/'+curso+'/'+paralelo;
                  $.ajax({
-                     url: url,
+                     url: urlMaterias,
                      success: function(data)
                      {
                                  $('#materia').empty();
@@ -88,12 +96,18 @@
                                  var materia = document.getElementById("materia").value;
 
                               });
-                     },
-                     error: function(error)
-                     {
-
                      }
                  });
+                $.ajax({
+                    url:urlAlumnos,
+                    success: function(data)
+                    {
+                        $('#alumnos').empty();
+                            $.each(data, function(index,obj){
+                                $('#alumnos').append('<option value='+obj.id+'>'+obj.nombres+'</option>');
+                            });
+                    }
+                })
              });
              </script>
 @endsection
