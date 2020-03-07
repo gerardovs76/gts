@@ -105,8 +105,8 @@
                 PROFESORES
               </a>
               <div class="dropdown-menu dropdown-menu-center" aria-labelledby="bd-versions">
-              @can('profesor.create')
-                <a class="dropdown-item" href="{{ route('profesor.create') }}"></a>
+                @can('profesor.create')
+                <a class="dropdown-item" href="{{ route('profesor.create') }}">Registrar profesor</a>
                 @endcan
                 {{-- @can('profesor.perfil')
                 <a class="dropdown-item " href="{{ route('profesor.perfil') }}">Perfil profesor</a>
@@ -152,6 +152,12 @@
                 @can('notas.abanderados')
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
                 @endcan
+                @if(Auth::user()->isRole('profesor'))
+                <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Libretas quimestrales para profesor</a>
+                @endif
+                @if(Auth::user()->isRole('super-admin'))
+                <a class="droprown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}"></a>
+                @endif
                
                 {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>

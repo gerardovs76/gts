@@ -52,7 +52,7 @@
                                     <strong>Seleccione el paralelo de la materia: <br></strong>
                                     <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
-							{!! Form::select('curso_materia',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F'], null, ['class' => 'form-control col-md-6', 'id' => 'paralelo', 'placeholder' => 'Seleccione el curso...']) !!}
+							{!! Form::select('curso_materia',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H'], null, ['class' => 'form-control col-md-6', 'id' => 'paralelo', 'placeholder' => 'Seleccione el curso...']) !!}
                                 </div>
 								</div>
 								<div class="form-group col-md-4">
@@ -98,6 +98,7 @@
 			$.get('añadir_materias_curso/'+ curso + '/'+paralelo, function(response){
 				console.log(response);
 				$.each(response, function(index, obj){
+					$('#materia_curso').empty();
 					$('#materia_curso').append('<option value='+obj.id+'>'+obj.materia+'</option>');
 				});
 			});
