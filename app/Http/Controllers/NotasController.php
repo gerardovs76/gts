@@ -3725,12 +3725,15 @@ class NotasController extends Controller
         }
         foreach($materias_id as $materia)
         {
-            $materias = Materias::join('matriculados as m1', 'materias.curso', '=', 'm1.curso')->join('matriculados as m2', 'materias.paralelo', '=', 'm2.paralelo')->where('m1.curso', $curso)->where('m2.paralelo', $paralelo)->where('materias.id', $materia)->select('materias.materia','materias.id', 'materias.tipo_materia')->distinct()->get();
-            foreach($materias as $m)
+            $materias2 = Materias::where('id', $materia)->select('materia','id', 'tipo_materia')->distinct()->get();
+            foreach($materias2 as $m)
             {
-                $all_materias[] = $m;
+              
+                $materias[] = $m;
+               
             }
         }
+        dump($materias);
             $notas = Matriculacion::with(['notas_ta1' => function($query) use($quimestre){
                 $query
                 ->where('quimestre', $quimestre)
