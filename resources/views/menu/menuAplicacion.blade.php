@@ -153,7 +153,7 @@
                 <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
                 @endcan
                 @if(Auth::user()->isRole('profesor'))
-                <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Libretas quimestrales para profesor</a>
+                <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Ver promedio individual alumnos</a>
                 @endif
                 @if(Auth::user()->isRole('super-admin'))
                 <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Asignar notas a alumnos nuevos</a>

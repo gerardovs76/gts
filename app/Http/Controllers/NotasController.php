@@ -4067,11 +4067,10 @@ class NotasController extends Controller
             $quimestre  = $request->quimestre;
             $parcial    = $request->parcial;
             $materia    = $request->materia;
-            $alumnoS     = $request->alumno;
-
+            $alumnos     = $request->alumnos;
             if($paralelo == 3)
             {
-                $notas_ta = new Notas_ta;
+                $notas_ta = new Nota_ta;
                 $notas_ta->nota_ta1 = 0;
                 $notas_ta->nota_ta2 = 0;
                 $notas_ta->nota_ta3 = 0;
@@ -4095,11 +4094,11 @@ class NotasController extends Controller
                 $notas_ti->nota_ti3 = 0;
                 $notas_ti->nota_ti4 = 0;
                 $notas_ti->nota_ti5 = 0;
-                $notas_ti->numero_tirea_ti1 = 1;
-                $notas_ti->numero_tirea_ti2 = 1;
-                $notas_ti->numero_tirea_ti3 = 1;
-                $notas_ti->numero_tirea_ti4 = 1;
-                $notas_ti->numero_tirea_ti5 = 1;
+                $notas_ti->numero_tarea_ti1 = 1;
+                $notas_ti->numero_tarea_ti2 = 1;
+                $notas_ti->numero_tarea_ti3 = 1;
+                $notas_ti->numero_tarea_ti4 = 1;
+                $notas_ti->numero_tarea_ti5 = 1;
                 $notas_ti->matriculado_id   = $alumnos;
                 $notas_ti->materias_id      = $materia;
                 $notas_ti->parcial = $parcial;
@@ -4113,13 +4112,15 @@ class NotasController extends Controller
                 $notas_tg->nota_tg3 = 0;
                 $notas_tg->nota_tg4 = 0;
                 $notas_tg->nota_tg5 = 0;
-                $notas_tg->numero_tgrea_tg1 = 1;
-                $notas_tg->numero_tgrea_tg2 = 1;
-                $notas_tg->numero_tgrea_tg3 = 1;
-                $notas_tg->numero_tgrea_tg4 = 1;
-                $notas_tg->numero_tgrea_tg5 = 1;
+                $notas_tg->numero_tarea_tg1 = 1;
+                $notas_tg->numero_tarea_tg2 = 1;
+                $notas_tg->numero_tarea_tg3 = 1;
+                $notas_tg->numero_tarea_tg4 = 1;
+                $notas_tg->numero_tarea_tg5 = 1;
                 $notas_tg->matriculado_id   = $alumnos;
                 $notas_tg->materias_id      = $materia;
+                $notas_tg->parcial = $parcial;
+                $notas_tg->quimestre = $quimestre;
                 $notas_tg->save();
     
                 
@@ -4129,13 +4130,15 @@ class NotasController extends Controller
                 $notas_le->nota_le3 = 0;
                 $notas_le->nota_le4 = 0;
                 $notas_le->nota_le5 = 0;
-                $notas_le->numero_lerea_le1 = 1;
-                $notas_le->numero_lerea_le2 = 1;
-                $notas_le->numero_lerea_le3 = 1;
-                $notas_le->numero_lerea_le4 = 1;
-                $notas_le->numero_lerea_le5 = 1;
+                $notas_le->numero_tarea_le1 = 1;
+                $notas_le->numero_tarea_le2 = 1;
+                $notas_le->numero_tarea_le3 = 1;
+                $notas_le->numero_tarea_le4 = 1;
+                $notas_le->numero_tarea_le5 = 1;
                 $notas_le->matriculado_id   = $alumnos;
                 $notas_le->materias_id      = $materia;
+                $notas_le->parcial = $parcial;
+                $notas_le->quimestre = $quimestre;
                 $notas_le->save();
     
                 
@@ -4145,32 +4148,18 @@ class NotasController extends Controller
                 $notas_ev->nota_ev3 = 0;
                 $notas_ev->nota_ev4 = 0;
                 $notas_ev->nota_ev5 = 0;
-                $notas_ev->numero_evrea_ev1 = 1;
-                $notas_ev->numero_evrea_ev2 = 1;
-                $notas_ev->numero_evrea_ev3 = 1;
-                $notas_ev->numero_evrea_ev4 = 1;
-                $notas_ev->numero_evrea_ev5 = 1;
+                $notas_ev->numero_tarea_ev1 = 1;
+                $notas_ev->numero_tarea_ev2 = 1;
+                $notas_ev->numero_tarea_ev3 = 1;
+                $notas_ev->numero_tarea_ev4 = 1;
+                $notas_ev->numero_tarea_ev5 = 1;
                 $notas_ev->matriculado_id   = $alumnos;
                 $notas_ev->materias_id      = $materia;
+                $notas_ev->parcial = $parcial;
+                $notas_ev->quimestre = $quimestre;
                 $notas_ev->save();
 
-                
-                $notas_ev = new Notas_ev;
-                $notas_ev->nota_ev1 = 0;
-                $notas_ev->nota_ev2 = 0;
-                $notas_ev->nota_ev3 = 0;
-                $notas_ev->nota_ev4 = 0;
-                $notas_ev->nota_ev5 = 0;
-                $notas_ev->numero_evrea_ev1 = 1;
-                $notas_ev->numero_evrea_ev2 = 1;
-                $notas_ev->numero_evrea_ev3 = 1;
-                $notas_ev->numero_evrea_ev4 = 1;
-                $notas_ev->numero_evrea_ev5 = 1;
-                $notas_ev->matriculado_id   = $alumnos;
-                $notas_ev->materias_id      = $materia;
-                $notas_ev->save();
-
-                
+ 
                 $new_notas = new Notas_examen;
                 $new_notas->nota_exq = 0;
                 $new_notas->materias_id = $materia;
@@ -4183,7 +4172,7 @@ class NotasController extends Controller
 
             }else {
 
-                $notas_ta = new Notas_ta;
+            $notas_ta = new Nota_ta;
             $notas_ta->nota_ta1 = 0;
             $notas_ta->nota_ta2 = 0;
             $notas_ta->nota_ta3 = 0;
@@ -4196,6 +4185,8 @@ class NotasController extends Controller
             $notas_ta->numero_tarea_ta5 = 1;
             $notas_ta->matriculado_id   = $alumnos;
             $notas_ta->materias_id      = $materia;
+            $notas_ta->parcial = $parcial;
+            $notas_ta->quimestre = $quimestre;
             $notas_ta->save();
 
             
@@ -4205,13 +4196,15 @@ class NotasController extends Controller
             $notas_ti->nota_ti3 = 0;
             $notas_ti->nota_ti4 = 0;
             $notas_ti->nota_ti5 = 0;
-            $notas_ti->numero_tirea_ti1 = 1;
-            $notas_ti->numero_tirea_ti2 = 1;
-            $notas_ti->numero_tirea_ti3 = 1;
-            $notas_ti->numero_tirea_ti4 = 1;
-            $notas_ti->numero_tirea_ti5 = 1;
+            $notas_ti->numero_tarea_ti1 = 1;
+            $notas_ti->numero_tarea_ti2 = 1;
+            $notas_ti->numero_tarea_ti3 = 1;
+            $notas_ti->numero_tarea_ti4 = 1;
+            $notas_ti->numero_tarea_ti5 = 1;
             $notas_ti->matriculado_id   = $alumnos;
             $notas_ti->materias_id      = $materia;
+            $notas_ti->parcial = $parcial;
+            $notas_ti->quimestre = $quimestre;
             $notas_ti->save();
 
             
@@ -4221,13 +4214,15 @@ class NotasController extends Controller
             $notas_tg->nota_tg3 = 0;
             $notas_tg->nota_tg4 = 0;
             $notas_tg->nota_tg5 = 0;
-            $notas_tg->numero_tgrea_tg1 = 1;
-            $notas_tg->numero_tgrea_tg2 = 1;
-            $notas_tg->numero_tgrea_tg3 = 1;
-            $notas_tg->numero_tgrea_tg4 = 1;
-            $notas_tg->numero_tgrea_tg5 = 1;
+            $notas_tg->numero_tarea_tg1 = 1;
+            $notas_tg->numero_tarea_tg2 = 1;
+            $notas_tg->numero_tarea_tg3 = 1;
+            $notas_tg->numero_tarea_tg4 = 1;
+            $notas_tg->numero_tarea_tg5 = 1;
             $notas_tg->matriculado_id   = $alumnos;
             $notas_tg->materias_id      = $materia;
+            $notas_tg->parcial = $parcial;
+            $notas_tg->quimestre = $quimestre;
             $notas_tg->save();
 
             
@@ -4237,13 +4232,15 @@ class NotasController extends Controller
             $notas_le->nota_le3 = 0;
             $notas_le->nota_le4 = 0;
             $notas_le->nota_le5 = 0;
-            $notas_le->numero_lerea_le1 = 1;
-            $notas_le->numero_lerea_le2 = 1;
-            $notas_le->numero_lerea_le3 = 1;
-            $notas_le->numero_lerea_le4 = 1;
-            $notas_le->numero_lerea_le5 = 1;
+            $notas_le->numero_tarea_le1 = 1;
+            $notas_le->numero_tarea_le2 = 1;
+            $notas_le->numero_tarea_le3 = 1;
+            $notas_le->numero_tarea_le4 = 1;
+            $notas_le->numero_tarea_le5 = 1;
             $notas_le->matriculado_id   = $alumnos;
             $notas_le->materias_id      = $materia;
+            $notas_le->parcial = $parcial;
+            $notas_le->quimestre = $quimestre;
             $notas_le->save();
 
             
@@ -4253,16 +4250,19 @@ class NotasController extends Controller
             $notas_ev->nota_ev3 = 0;
             $notas_ev->nota_ev4 = 0;
             $notas_ev->nota_ev5 = 0;
-            $notas_ev->numero_evrea_ev1 = 1;
-            $notas_ev->numero_evrea_ev2 = 1;
-            $notas_ev->numero_evrea_ev3 = 1;
-            $notas_ev->numero_evrea_ev4 = 1;
-            $notas_ev->numero_evrea_ev5 = 1;
+            $notas_ev->numero_tarea_ev1 = 1;
+            $notas_ev->numero_tarea_ev2 = 1;
+            $notas_ev->numero_tarea_ev3 = 1;
+            $notas_ev->numero_tarea_ev4 = 1;
+            $notas_ev->numero_tarea_ev5 = 1;
             $notas_ev->matriculado_id   = $alumnos;
             $notas_ev->materias_id      = $materia;
+            $notas_ev->parcial = $parcial;
+            $notas_ev->quimestre = $quimestre;
             $notas_ev->save();
             }
 
+            return redirect()->route('notas.asignarNotasAlumnosNuevos')->with('info', 'La nota se ha editado correctamente');
             
 
 
