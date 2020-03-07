@@ -444,11 +444,8 @@ class NotasController extends Controller
             $new_notas->save();
         }
     }
-
         return redirect()->route('notas.store')->with('info', 'La nota se ha cargado correctamente');
     }
-
-
     /**
      * Display the specified resource.
      *
@@ -856,7 +853,7 @@ class NotasController extends Controller
              ->join('notas_tg as n_tg', 'matriculados.id', '=', 'n_tg.matriculado_id')
              ->join('notas_le as n_le', 'matriculados.id', '=', 'n_le.matriculado_id')
              ->join('notas_ev as n_ev', 'matriculados.id', '=', 'n_ev.matriculado_id')
-             ->join('notas_exq as n_examen', 'matriculados.id', '=', 'n_examen.matriculado_id')
+            // ->join('notas_exq as n_examen', 'matriculados.id', '=', 'n_examen.matriculado_id')
              ->where('matriculados.curso', $cursos)
              ->where('matriculados.paralelo', $paralelo)
              ->where('n_ta.materias_id', $materia)
