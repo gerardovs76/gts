@@ -156,7 +156,7 @@
                 <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Ver promedio individual alumnos</a>
                 @endif
                 @if(Auth::user()->isRole('super-admin'))
-                <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Asignar notas a alumnos nuevos</a>
+                <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Insertar alumnos nuevos</a>
                 @endif
                
                 {{-- @can('notas.recuperacion')
