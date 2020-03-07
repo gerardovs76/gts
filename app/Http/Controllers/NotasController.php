@@ -3725,7 +3725,7 @@ class NotasController extends Controller
         }
         foreach($materias_id as $materia)
         {
-            $materias2 = Materias::where('id', $materia)->select('materia','id', 'tipo_materia')->distinct()->get();
+            $materias2 = Materias::where('curso',$curso)->where('paralelo', $paralelo)->where('id', $materia)->select('materia','id', 'tipo_materia')->distinct()->get();
             foreach($materias2 as $m)
             {
               
