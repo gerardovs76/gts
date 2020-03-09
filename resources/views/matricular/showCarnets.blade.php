@@ -98,6 +98,13 @@
                     {
                         grade = '1RO DE BACHILLERATO';
                     }
+                    else if(grade == 'SEGUNDO DE BACHILLERATO')
+                    {
+                        grade = '2DO DE BACHILLERATO';
+                    }else if(grade = 'TERCERO DE BACHILLERATO')
+                    {
+                        grade = '3RO DE BACHILLERATO';
+                    }
                     console.log(grade);
                     var paralelo = objeto.paralelo.toUpperCase();
                     var lastname = objeto.apellidos.toUpperCase();
