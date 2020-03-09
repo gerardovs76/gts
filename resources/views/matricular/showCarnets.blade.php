@@ -90,7 +90,10 @@
                    // var carnet =document.getElementById("screenPrincipal");
                     var name = objeto.nombres.toUpperCase();
                     var grade = objeto.curso.toUpperCase();
-                    grade = (grade == 'PRIMERO DE EGB' ? '1RO DE EGB' : grade);
+                    if(grade == 'PRIMERO DE EGB')
+                    {
+                        grade = '1RO DE EGB';
+                    }
                     var paralelo = objeto.paralelo.toUpperCase();
                     var lastname = objeto.apellidos.toUpperCase();
                     var li = '<li style="padding: 3px; color: #434B4D;">'+name+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+grade+'&nbsp;&nbsp;&nbsp;'+paralelo+'<br>'+lastname+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+objeto.codigo+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019 - 2020</li>';
