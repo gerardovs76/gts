@@ -94,6 +94,10 @@
                     {
                         grade = '1RO DE EGB';
                     }
+                    else if(grade== 'PRIMERO DE BACHILLERATO')
+                    {
+                        grade = '1RO DE BACHILLERATO';
+                    }
                     console.log(grade);
                     var paralelo = objeto.paralelo.toUpperCase();
                     var lastname = objeto.apellidos.toUpperCase();
