@@ -1085,6 +1085,102 @@ table#mitabla3 td {
 					@endphp
 					{{($promedio_conducta_final / 3)}}
 			</td>
+				<td>
+					@php 
+						$promedio_faltas_j = 0;
+						if($curso == 'INICIAL 1' || $curso == 'INICIAL 2' || $curso == 'PRIMERO DE EGB' || $curso == 'SEGUNDO DE EGB' || $curso == 'TERCERO DE EGB' || $curso == 'CUARTO DE EGB' || $curso == 'QUINTO DE EGB' || $curso == 'SEXTO DE EGB' || $curso == 'SEPTIMO DE EGB')
+						{
+							foreach($nota->notas_conducta1 as $notas_conducta1)
+							{
+								$promedio_faltas_j += $notas_conducta1->faltas_j;
+							}
+							foreach($nota->notas_conducta2 as $notas_conducta2)
+							{
+								$promedio_faltas_j += $notas_conducta2->faltas_j;
+							}
+							foreach($nota->notas_conducta3 as $notas_conducta3)
+							{
+								$promedio_faltas_j += $notas_conducta3->faltas_j;
+							}
+						}else{
+							foreach($inspe as $in)
+							{
+								if($nota->id == $in->id)
+								{
+									$promedio_final = $faltas_j = ($in->h1_count_02 +$in->h2_count_02 +$in->h3_count_02 +$in->h4_count_02 +$in->h5_count_02 +$in->h6_count_02 +$in->h7_count_02 +$in->h8_count_02 + $in->h9_count_02);
+									$promedio_faltas_j += $promedio_final;
+								
+								}
+							}
+							foreach($inspe2 as $in2)
+							{
+								if($nota->id == $in2->id)
+								{
+									$promedio_final2 = $faltas_j = ($in2->h1_count_02 +$in2->h2_count_02 +$in2->h3_count_02 +$in2->h4_count_02 +$in2->h5_count_02 +$in2->h6_count_02 +$in2->h7_count_02 +$in2->h8_count_02 + $in2->h9_count_02);
+									$promedio_faltas_j += $promedio_final2;
+								}
+							}
+							foreach($inspe3 as $in3)
+							{
+								if($nota->id == $in3->id)
+								{
+									$promedio_final3 = $faltas_j = ($in3->h1_count_02 +$in3->h2_count_02 +$in3->h3_count_02 +$in3->h4_count_02 +$in3->h5_count_02 +$in3->h6_count_02 +$in3->h7_count_02 +$in3->h8_count_02 + $in3->h9_count_02);
+									$promedio_faltas_j += $promedio_final3;
+								}
+							}
+						}
+					@endphp
+					{{($promedio_faltas_j)}}
+			</td>
+
+			<td>
+				@php 
+					$promedio_faltas_i = 0;
+					if($curso == 'INICIAL 1' || $curso == 'INICIAL 2' || $curso == 'PRIMERO DE EGB' || $curso == 'SEGUNDO DE EGB' || $curso == 'TERCERO DE EGB' || $curso == 'CUARTO DE EGB' || $curso == 'QUINTO DE EGB' || $curso == 'SEXTO DE EGB' || $curso == 'SEPTIMO DE EGB')
+					{
+						foreach($nota->notas_conducta1 as $notas_conducta1)
+						{
+							$promedio_faltas_i += $notas_conducta1->faltas_i;
+						}
+						foreach($nota->notas_conducta2 as $notas_conducta2)
+						{
+							$promedio_faltas_i += $notas_conducta2->faltas_i;
+						}
+						foreach($nota->notas_conducta3 as $notas_conducta3)
+						{
+							$promedio_faltas_i += $notas_conducta3->faltas_i;
+						}
+					}else{
+						foreach($inspe as $in)
+						{
+							if($nota->id == $in->id)
+							{
+								$promedio_final = ($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01);
+								$promedio_faltas_i += $promedio_final;
+							
+							}
+						}
+						foreach($inspe2 as $in2)
+						{
+							if($nota->id == $in2->id)
+							{
+								$promedio_final2 = ($in2->h1_count_01 +$in2->h2_count_01 +$in2->h3_count_01 +$in2->h4_count_01 +$in2->h5_count_01 +$in2->h6_count_01 +$in2->h7_count_01 +$in2->h8_count_01 + $in2->h9_count_01);
+								$promedio_faltas_i += $promedio_final2;
+							}
+						}
+						foreach($inspe3 as $in3)
+						{
+							if($nota->id == $in3->id)
+							{
+								$promedio_final3 = ($in3->h1_count_01 +$in3->h2_count_01 +$in3->h3_count_01 +$in3->h4_count_01 +$in3->h5_count_01 +$in3->h6_count_01 +$in3->h7_count_01 +$in3->h8_count_01 + $in3->h9_count_01);
+								$promedio_faltas_i += $promedio_final3;
+							}
+						}
+					}
+				@endphp
+				{{($promedio_faltas_i)}}
+		</td>
+			
 		</tr>
 		</tbody>
 	</table>
