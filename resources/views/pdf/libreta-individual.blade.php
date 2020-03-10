@@ -624,7 +624,7 @@ table#mitabla3 td {
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
 	<p style="text-align: center;">{{$autoridad_rector}}</p>
-	<p style="text-align: center;">RECTORA</p>
+	<p style="text-align: center;">RECTOR(A)</p>
 	</div><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
@@ -634,7 +634,7 @@ table#mitabla3 td {
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
 	<p style="text-align: center;">{{$autoridad_rector}}</p>
-	<p style="text-align: center;">RECTORA</p>
+	<p style="text-align: center;">RECTOR(A)</p>
 	</div><br><br><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
