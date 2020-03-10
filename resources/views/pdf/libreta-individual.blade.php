@@ -539,29 +539,21 @@ table#mitabla3 td {
 						<td>{{$conducta->faltas_i}}</td>
 						<td>{{$conducta->atrasos}}</td>
 					@endforeach
-					 @else
-						
-						 @foreach($inspe as $in)
-							@php 
+					@else
+						@php
+						 foreach($inspe as $in)
+						 {
 								$falta_i = ($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01);
 								$faltas_j = ($in->h1_count_02 +$in->h2_count_02 +$in->h3_count_02 +$in->h4_count_02 +$in->h5_count_02 +$in->h6_count_02 +$in->h7_count_02 +$in->h8_count_02 + $in->h9_count_02);
 								$mal_uniformado = ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04);
 								$promedio_final = ((($in->h1_count_01 +$in->h2_count_01 +$in->h3_count_01 +$in->h4_count_01 +$in->h5_count_01 +$in->h6_count_01 +$in->h7_count_01 +$in->h8_count_01 + $in->h9_count_01) + ($in->h1_count_03 +$in->h2_count_03 +$in->h3_count_03 +$in->h4_count_03 +$in->h5_count_03 +$in->h6_count_03 +$in->h7_count_03 +$in->h8_count_03 + $in->h9_count_03) + ($in->h1_count_04 +$in->h2_count_04 +$in->h3_count_04 +$in->h4_count_04 +$in->h5_count_04 +$in->h6_count_04 +$in->h7_count_04 +$in->h8_count_04 + $in->h9_count_04)) * 0.25);
 								$promedio_final = (10 - $promedio_final);
-							@endphp
-							@if($promedio_final >= 9 && $promedio_final <= 10)
-								<td>A</td>
-							@elseif($promedio_final >= 7 && $promedio_final <= 8.99)
-								<td>B</td>
-							@elseif($promedio_final >= 4.01 && $promedio_final <= 6.99)
-								<td>C</td>
-							@elseif($promedio <= 4)
-								<td>D</td>
-							@endif
-								<td>{{$faltas_j}}</td>
-								<td>{{$falta_i}}</td>
-								<td></td>
-						@endforeach
+						 }
+						@endphp
+						<td>{{($promedio_final >= 9 && $promedio_final <= 10 ? 'A' : ($promedio_final >= 7 && $promedio_final <= 8.99 ? 'B' : ($promedio_final >= 4.01 &&  $promedio_final <= 6.99 ? 'C' : ($promedio_final <= 4  ? 'D' : 'Nota invalida'))))}}</td>
+						<td>{{$faltas_j}}</td>
+						<td>{{$falta_i}}</td>
+						<td></td>
                     @endif
 			</tr>
 		</tbody>
@@ -626,22 +618,22 @@ table#mitabla3 td {
 	<br><br><br><br><br><br><br><br><br><br>
 <div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
+	<p style="text-align: center;">{{$autoridad_secretaria}}</p>
 	<p style="text-align: center;">SECRETARIA</p>
 	</div>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Lic. Carmen Ramírez</p>
+	<p style="text-align: center;">{{$autoridad_rector}}</p>
 	<p style="text-align: center;">RECTORA</p>
 	</div><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Sra. Moserrate Ramírez</p>
+	<p style="text-align: center;">{{$autoridad_secretaria}}</p>
 	<p style="text-align: center;">SECRETARIA</p>
 	</div>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">
 	<div align="center">_______________________________</div>
-	<p style="text-align: center;">Lic. Carmen Ramírez</p>
+	<p style="text-align: center;">{{$autoridad_rector}}</p>
 	<p style="text-align: center;">RECTORA</p>
 	</div><br><br><br><br><br>
 	<div style="width:350px;float: left; font-size: 12px; font-weight: bold;">

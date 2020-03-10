@@ -1959,7 +1959,10 @@ class NotasController extends Controller
 
         }])
         ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias','parcial', 'quimestre'));
+
+        $autoridad_secretaria =  AutoridadesModel::secretariaNombre();
+        $autoridad_rector     =  AutoridadesModel::rectorNombre();
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','autoridad_secretaria','autoridad_rector','inspe','materias','parcial', 'quimestre'));
        return $pdf->download('libreta-individual.pdf');
 
     }
@@ -1971,7 +1974,7 @@ class NotasController extends Controller
 
     public function descargarLibretaColectiva(Request $request)
     {
-        $curso = $request->curso;
+      $curso = $request->curso;
       $quimestre = $request->quimestre;
       $parcial = $request->parcial;
       $paralelo = $request->paralelo;
@@ -2263,8 +2266,10 @@ class NotasController extends Controller
 
     }])
     ->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('matriculados.id')->get();
+    $autoridad_secretaria =  AutoridadesModel::secretariaNombre();
+    $autoridad_rector     =  AutoridadesModel::rectorNombre();
 
-       $pdf = PDF::loadView('pdf.libreta-colectiva', compact('notas', 'materias', 'inspe', 'parcial', 'quimestre','representante'));
+       $pdf = PDF::loadView('pdf.libreta-colectiva', compact('notas', 'autoridad_secretaria','autoridad_rector','materias', 'inspe', 'parcial', 'quimestre','representante'));
 
 
        return $pdf->download('libreta-colectiva.pdf');
