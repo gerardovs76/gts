@@ -94,14 +94,14 @@
                     {
                         grade = '1RO DE EGB';
                     }
-                    else if(grade== 'PRIMERO DE BACHILLERATO')
+                    else if(grade == 'PRIMERO DE BACHILLERATO')
                     {
                         grade = '1RO DE BGU';
                     }
                     else if(grade == 'SEGUNDO DE BACHILLERATO')
                     {
                         grade = '2DO DE BGU';
-                    }else if(grade = 'TERCERO DE BACHILLERATO')
+                    }else if(grade == 'TERCERO DE BACHILLERATO')
                     {
                         grade = '3RO DE BGU';
                     }
