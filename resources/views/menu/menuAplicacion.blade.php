@@ -141,24 +141,22 @@
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
                 <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Ingreso conducta sección básica</a>
                 @endcan
+                @can('notas.abanderados')
+                <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
+                @endcan
+                @if(Auth::user()->isRole('super-admin'))
+                <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Insertar alumnos nuevos</a>
+                @endif
                {{-- <a class="dropdown-item" href="{{ route('notas.enviar-libreta-individuales') }}">Enviar libretas individuales</a>-}}
           {{--       @can('notas.verNotasEspeciales')
                 <a class="dropdown-item" href="{{ route('notas.verNotasEspeciales') }}">Ver notas especiales profesores</a>
                 @endcan --}}
                 @can('notas.ver-notas-alumnos')
                 <a class="dropdown-item" href="{{route('notas.ver-notas-alumnos')}}">Ver notas alumnos</a>
-                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
-                @endcan
-                @can('notas.abanderados')
-                <a class="dropdown-item" href="{{route('notas.abanderados')}}">Archivo para abanderados</a>
                 @endcan
                 @if(Auth::user()->isRole('profesor'))
                 <a class="dropdown-item" href="{{route('notas.libretasQuimestrarlesProfesores')}}">Ver promedio individual alumnos</a>
                 @endif
-                @if(Auth::user()->isRole('super-admin'))
-                <a class="dropdown-item" href="{{route('notas.asignarNotasAlumnosNuevos')}}">Insertar alumnos nuevos</a>
-                @endif
-               
                 {{-- @can('notas.recuperacion')
                 <a class="dropdown-item" href="{{route('notas.recuperacion')}}">Recuperacion</a>
                 @endcan
@@ -171,15 +169,17 @@
                 @can('notas.gracia')
                 <a class="dropdown-item" href="{{ route('notas.gracia') }}">Gracia</a>
                 @endcan --}}
+                <div class="divider"></div>
                 @can('notas.reporte-individual-libreta')
                 <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
-                <a class="dropdown-item" href="{{ route('notas.libreta-individual-quimestre') }}">Libretas individual quimestres</a>
+             {{--    <a class="dropdown-item" href="{{ route('notas.libreta-individual-quimestre') }}">Libretas individual quimestres</a> --}}
                 @endcan
+                <div class="divider"></div>
                 @can('notas.libretaIndividual')
                 <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta colectivas parcial</a>
                 <a class="dropdown-item" href="{{ route('notas.libreta-colectiva-quimestre') }}">Libretas colectivas quimestres</a>
                 @endcan
-              
+                <div class="divider"></div>
                 @can('notas.reportesExcel')
                 <a class="dropdown-item" href="{{ route('notas.reportesExcel') }}">Reportes Excel Notas</a>
                 @endcan

@@ -6,6 +6,7 @@ public
 resources/views/inscripcion
 resources/views/pdf/inscritos.blade.php
 resources/views/welcome.blade.php
+app/AutoridadesModel.php
 <<<<<<< HEAD
 resources/views/libreta-individual.blade.php
 resources/views/libreta-individual-reporte.blade.php
