@@ -4998,8 +4998,9 @@ class NotasController extends Controller
 
         }])
         ->where('curso', $curso)->where('paralelo',$paralelo)->groupBy('id')->orderBy('apellidos')->get(); 
-       
-       $pdf = PDF::loadView('pdf.libreta-individual-quimestre', compact('notas','curso','materias','quimestre', 'inspe', 'inspe2', 'inspe3'));
+        $autoridad_secretaria =  AutoridadesModel::secretariaNombre();
+        $autoridad_rector     =  AutoridadesModel::rectorNombre();
+       $pdf = PDF::loadView('pdf.libreta-individual-quimestre', compact('notas','autoridad_secretaria','autoridad_rector','curso','materias','quimestre', 'inspe', 'inspe2', 'inspe3'));
                 
        return $pdf->download('libreta-individual-quimestre.pdf');
     }
