@@ -231,7 +231,7 @@ table#mitabla3 td {
 		</thead>
 		<tbody>
 			<tr>
-                <th><strong>AREAS INSTITUCIONALES</strong></th>
+                <th style="font-size: 8px;"><strong>AREAS INSTITUCIONALES</strong></th>
 			</tr>
 @foreach($materias as $materia)
 	@if($materia->tipo_materia == 'NO')
@@ -628,7 +628,7 @@ table#mitabla3 td {
 			@foreach($materias as $materia)
 			@if($materia->tipo_materia == 'SI')
 			<tr>
-			<td><strong>{{$materia->materia}}</strong></td>
+			<td style="font-size: 8px;"><strong>{{$materia->materia}}</strong></td>
 			@if($nota->notas_ta1 != [])
 				@foreach($nota->notas_ta1 as $notas_ta)
 					@if($notas_ta->materias_id == $materia->id)
