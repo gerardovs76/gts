@@ -2818,8 +2818,10 @@ class NotasController extends Controller
 
         }])
         ->where('codigo', $codigo)->groupBy('matriculados.id')->get();
+        $autoridad_secretaria =  AutoridadesModel::secretariaNombre();
+        $autoridad_rector     =  AutoridadesModel::rectorNombre();
 
-       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias','parcial', 'quimestre'));
+       $pdf = PDF::loadView('pdf.libreta-individual', compact('notas','inspe','materias','parcial', 'quimestre', 'autoridad_secretaria', 'autoridad_rector'));
        return $pdf->download('libreta-individual.pdf');
     }
     /* public function promediosFinales()
