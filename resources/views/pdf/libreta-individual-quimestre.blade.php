@@ -236,7 +236,7 @@ table#mitabla3 td {
 @foreach($materias as $materia)
 	@if($materia->tipo_materia == 'NO')
 		<tr>
-			<td><strong>{{$materia->materia}}</strong></td>
+			<td style="font-size: 10px;"><strong>{{$materia->materia}}</strong></td>
 				@if($nota->notas_ta != [])
 					@foreach($nota->notas_ta1 as $notas_ta)
 						@if($notas_ta->materias_id == $materia->id)
