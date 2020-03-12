@@ -10,7 +10,7 @@
     border-collapse: collapse;
     border: 1px solid #212121;
     margin: 0 auto;
-    font-size: 10px;
+    font-size: 9px;
 
 }
 
