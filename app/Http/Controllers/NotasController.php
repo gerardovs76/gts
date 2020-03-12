@@ -292,21 +292,38 @@ class NotasController extends Controller
 
         }
     }
-    if($request->id_nota_examen)
+    if($parcial == '3')
     {
-        foreach($matriculados_id as $key => $value){
-            $new_notas = Notas_examen::find($id_nota_examen[$key]);
-            $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
-            $new_notas->materias_id = $materias_id;
-            $new_notas->matriculado_id = $matriculados_id[$key];
-            $new_notas->quimestre = $quimestre;
-            $new_notas->autoridad_id = auth()->user()->id;
-            $new_notas->numero_tarea_exq = '1';
-            $new_notas->save();
+        if($request->id_nota_examen)
+        {
+            foreach($matriculados_id as $key => $value){
+                $new_notas = Notas_examen::find($id_nota_examen[$key]);
+                $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
+                $new_notas->materias_id = $materias_id;
+                $new_notas->matriculado_id = $matriculados_id[$key];
+                $new_notas->quimestre = $quimestre;
+                $new_notas->autoridad_id = auth()->user()->id;
+                $new_notas->numero_tarea_exq = '1';
+                $new_notas->save();
 
+            }
+        }
+        if($id_nota_examen == null)
+        {
+            foreach($matriculados_id as $key => $value){
+     
+                $new_notas = new Notas_examen;
+                $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
+                $new_notas->materias_id = $materias_id;
+                $new_notas->matriculado_id = $matriculados_id[$key];
+                $new_notas->quimestre = $quimestre;
+                $new_notas->autoridad_id = auth()->user()->id;
+                $new_notas->numero_tarea_exq = '1';
+                $new_notas->save();
+            }
         }
     }
-    if($id_nota_ta == null || $id_nota_ti == null || $id_nota_tg == null || $id_nota_le == null || $id_nota_ev == null || $id_nota_examen == null)
+    if($id_nota_ta == null || $id_nota_ti == null || $id_nota_tg == null || $id_nota_le == null || $id_nota_ev == null)
     {
         foreach($matriculados_id as $key => $value){
             $new_notas = new Nota_ta;
@@ -432,17 +449,6 @@ class NotasController extends Controller
             $new_notas->numero_tarea_ev5 = '1';
             $new_notas->save();
 
-        }
-        foreach($matriculados_id as $key => $value){
-     
-            $new_notas = new Notas_examen;
-            $new_notas->nota_exq = ($nota_examen[$key] == '' ? 0 : $nota_examen[$key]);
-            $new_notas->materias_id = $materias_id;
-            $new_notas->matriculado_id = $matriculados_id[$key];
-            $new_notas->quimestre = $quimestre;
-            $new_notas->autoridad_id = auth()->user()->id;
-            $new_notas->numero_tarea_exq = '1';
-            $new_notas->save();
         }
     }
         return redirect()->route('notas.store')->with('info', 'La nota se ha cargado correctamente');

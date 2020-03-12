@@ -1083,7 +1083,10 @@ table#mitabla3 td {
 							}
 						}
 					@endphp
-					{{($promedio_conducta_final / 3)}}
+					@php 
+					$promedio_conducta_final = ($promedio_conducta_final / 3);
+					@endphp
+					{{$promedio_conducta_final =  ($promedio_conducta_final >= 9 && $promedio_conducta_final <= 10 ? 'A' : ($promedio_conducta_final >= 7 && $promedio_conducta_final <= 8.99 ? 'B' : ($promedio_conducta_final >= 4.01 &&  $promedio_conducta_final <= 6.99 ? 'C' : ($promedio_conducta_final <= 4  ? 'D' : 'Nota invalida'))))}}
 			</td>
 				<td>
 					@php 
