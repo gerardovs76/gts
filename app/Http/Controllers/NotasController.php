@@ -5380,13 +5380,13 @@ class NotasController extends Controller
         }
         public function asignarNotasAlunosNuevoStore(Request $request)
         {
-             $curso      = $request->curso;
-            $paralelo   = $request->paralelo; 
-            $quimestre  = $request->quimestre;
-            $parcial    = $request->parcial;
-            $materia    = $request->materia;
-            $alumnos     = $request->alumnos;
-            if($paralelo == 3)
+            $curso          = $request->curso;
+            $paralelo       = $request->paralelo; 
+            $quimestre      = $request->quimestre;
+            $parcial        = $request->parcial;
+            $materia        = $request->materia;
+            $alumnos        = $request->alumnos;
+            if($parcial == 3)
             {
                 $notas_ta = new Nota_ta;
                 $notas_ta->nota_ta1 = 0;
@@ -5478,14 +5478,15 @@ class NotasController extends Controller
                 $notas_ev->save();
 
  
-                $new_notas = new Notas_examen;
-                $new_notas->nota_exq = 0;
-                $new_notas->materias_id = $materia;
-                $new_notas->matriculado_id = $alumnos;
-                $new_notas->quimestre = $quimestre;
-                $new_notas->autoridad_id = auth()->user()->id;
-                $new_notas->numero_tarea_exq = 1;
-                $new_notas->save();
+                $notas_examen                      = new Notas_examen;
+              
+                $notas_examen->nota_exq            = 0;
+                $notas_examen->materias_id         = $materia;
+                $notas_examen->matriculado_id      = $alumnos;
+                $notas_examen->quimestre           = $quimestre;
+                $notas_examen->autoridad_id        = auth()->user()->id;
+                $notas_examen->numero_tarea_exq = 1;
+                $notas_examen->save();
 
 
             }else {
