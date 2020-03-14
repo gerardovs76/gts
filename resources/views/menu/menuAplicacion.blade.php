@@ -170,10 +170,10 @@
                 <a class="dropdown-item" href="{{ route('notas.gracia') }}">Gracia</a>
                 @endcan --}}
                 <div class="divider"></div>
-                 @if(Auth::user()->isRole('alumno') || Auth::user()->isRole('super-admin'))
-                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial parcial parcial</a>
+                @can('notas.reporte-individual-libreta')
+                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
              {{--    <a class="dropdown-item" href="{{ route('notas.libreta-individual-quimestre') }}">Libretas individual quimestres</a> --}}
-                @endif
+                @endcan
                 <div class="divider"></div>
                 @can('notas.libretaIndividual')
                 <a class="dropdown-item" href="{{ route('notas.libretaIndividual') }}">Libreta colectivas parcial</a>
