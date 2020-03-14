@@ -171,7 +171,7 @@
                 @endcan --}}
                 <div class="divider"></div>
                  @if(Auth::user()->isRole('alumno') || Auth::user()->isRole('super-admin'))
-                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial</a>
+                <a class="dropdown-item" href="{{route('notas.reporte-individual-libreta')}}">Libreta individual parcial parcial parcial</a>
              {{--    <a class="dropdown-item" href="{{ route('notas.libreta-individual-quimestre') }}">Libretas individual quimestres</a> --}}
                 @endif
                 <div class="divider"></div>
