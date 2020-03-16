@@ -90,6 +90,7 @@
                      url: urlMaterias,
                      success: function(data)
                      {
+                        $('#checkboxes-materia').html('');
                          console.log(data)
                                  $('#materia').empty();
                                  var c = 0;

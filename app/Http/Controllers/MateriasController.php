@@ -191,7 +191,4 @@ class MateriasController extends Controller
         $materiasProfesor->delete();
         return back()->with('info', 'Materia eliminada a el profesor correctamente');
     }
-
-
-
 }

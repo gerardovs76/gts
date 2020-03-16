@@ -139,6 +139,7 @@
                 @endcan
                 @can('notas.cargadas')
                 <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Ver notas profesores</a>
+                <a class="dropdown-item" href="{{ route('notas.cargadas') }}">Exportar notas profesores a PDF</a>
                 <a class="dropdown-item" href="{{ route('notas.conductasIniciales')}}">Ingreso conducta sección básica</a>
                 @endcan
                 @can('notas.abanderados')

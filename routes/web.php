@@ -228,6 +228,8 @@ Route::get('notas-edit-tabla/{idestudiante}/{ttarea}/{parcial}/{quimestre}/{mate
 
 Route::get('notas-resumen/{ttarea}/{parcial}/{quimestre}/{materia}', 'NotasController@resumenNotaStore');
 
+Route::get('materias-ver', 'MateriasController@showMateria');
+
 Route::get('notas-delete-all-resumen/{descripcion}/{created_at}/{tt}', 'NotasController@deleteAllNotesResumen');
 
 Route::get('enviar-libreta-individuales', 'NotasController@enviarLibretasIndividuales')->name('notas.enviar-libreta-individuales');
