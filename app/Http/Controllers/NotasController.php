@@ -1053,50 +1053,94 @@ class NotasController extends Controller
         $quimestre = $request->quimestre;
         $parcial = $request->parcial;
         $materia = $request->materia;
-        $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
-            $query1
-            ->where('parcial', $parcial)
-            ->where('materias_id', $materia)
-            ->where('quimestre', $quimestre)
-            ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
-            ->groupBy('matriculado_id', 'materias_id');
-             }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
-                $query2
+        
+        if ($parcial != 'Q') { 
+        
+            $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
+                $query1
                 ->where('parcial', $parcial)
                 ->where('materias_id', $materia)
                 ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+                ->select('matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
                 ->groupBy('matriculado_id', 'materias_id');
-            }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
-                $query3
-                ->where('parcial', $parcial)
-                ->where('materias_id', $materia)
-                ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+                }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
+                    $query2
+                    ->where('parcial', $parcial)
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+                    ->groupBy('matriculado_id', 'materias_id');
+                }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
+                    $query3
+                    ->where('parcial', $parcial)
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+                    ->groupBy('matriculado_id', 'materias_id');
+                }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
+                    $query4
+                    ->where('parcial', $parcial)
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+                    ->groupBy('matriculado_id', 'materias_id');
+                }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
+                    $query5
+                    ->where('parcial', $parcial)
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
                 ->groupBy('matriculado_id', 'materias_id');
-            }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
-                $query4
-                ->where('parcial', $parcial)
-                ->where('materias_id', $materia)
-                ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+                }])->with(['notas_examen' => function($query6) use($quimestre, $materia){
+                    $query6
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id', 'nota_exq as nota_final_examen')
                 ->groupBy('matriculado_id', 'materias_id');
-            }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
-                $query5
-                ->where('parcial', $parcial)
-                ->where('materias_id', $materia)
-                ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
-               ->groupBy('matriculado_id', 'materias_id');
-            }])->with(['notas_examen' => function($query6) use($quimestre, $materia){
-                $query6
-                ->where('materias_id', $materia)
-                ->where('quimestre', $quimestre)
-                ->select('matriculado_id', 'materias_id', 'nota_exq as nota_final_examen')
-               ->groupBy('matriculado_id', 'materias_id');
-            }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
+                }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
 
-        return view('notas.vernotas', compact('notas', 'quimestre', 'parcial','curso', 'paralelo'))->with('info', 'Se ha cargado las notas correctamete');
+            return view('notas.vernotas', compact('notas', 'quimestre', 'parcial','curso', 'paralelo', 'materia'))->with('info', 'Se ha cargado las notas correctamete');
+        } else {
+            $notas = Matriculacion::with(['notas_ta' => function($query1) use($parcial, $quimestre, $materia){
+                $query1
+                ->where('materias_id', $materia)
+                ->where('quimestre', $quimestre)
+                ->select('parcial', 'matriculado_id', 'materias_id', 'nota_ta1', 'nota_ta2', 'nota_ta3', 'nota_ta4', 'nota_ta5')
+                ->groupBy('parcial', 'matriculado_id', 'materias_id');
+                }])->with(['notas_ti' => function($query2) use($parcial, $quimestre, $materia){
+                    $query2
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('parcial', 'matriculado_id', 'materias_id','nota_ti1', 'nota_ti2', 'nota_ti3', 'nota_ti4', 'nota_ti5')
+                    ->groupBy('parcial', 'matriculado_id', 'materias_id');
+                }])->with(['notas_tg' => function($query3) use($parcial, $quimestre, $materia){
+                    $query3
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('parcial', 'matriculado_id', 'materias_id', 'nota_tg1', 'nota_tg2', 'nota_tg3', 'nota_tg4', 'nota_tg5')
+                    ->groupBy('parcial', 'matriculado_id', 'materias_id');
+                }])->with(['notas_le' => function($query4) use($parcial, $quimestre, $materia){
+                    $query4
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('parcial', 'matriculado_id', 'materias_id', 'nota_le1', 'nota_le2', 'nota_le3', 'nota_le4', 'nota_le5')
+                    ->groupBy('parcial', 'matriculado_id', 'materias_id');
+                }])->with(['notas_ev' => function($query5) use($parcial, $quimestre, $materia){
+                    $query5
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('parcial', 'matriculado_id', 'materias_id', 'nota_ev1', 'nota_ev2', 'nota_ev3', 'nota_ev4', 'nota_ev5')
+                ->groupBy('parcial', 'matriculado_id', 'materias_id');
+                }])->with(['notas_examen' => function($query6) use($quimestre, $materia){
+                    $query6
+                    ->where('materias_id', $materia)
+                    ->where('quimestre', $quimestre)
+                    ->select('matriculado_id', 'materias_id', 'nota_exq as nota_final_examen')
+                ->groupBy('matriculado_id', 'materias_id');
+                }])->where('curso', $curso)->where('paralelo', $paralelo)->groupBy('id')->orderBy('apellidos')->get();
+
+            return view('notas.vernotas', compact('notas', 'quimestre', 'parcial','curso', 'paralelo', 'materia'))->with('info', 'Se ha cargado las notas correctamete');
+        }
 
     }
     public function notasEdit($idestudiante, $ttarea, $parcial, $quimestre, $materia)
@@ -5385,207 +5429,263 @@ class NotasController extends Controller
             $curso          = $request->curso;
             $paralelo       = $request->paralelo; 
             $quimestre      = $request->quimestre;
-            $parcial        = $request->parcial;
-            $materia        = $request->materia;
-            $alumnos        = $request->alumnos;
-            if($parcial == 3)
-            {
-                $notas_ta = new Nota_ta;
-                $notas_ta->nota_ta1 = 0;
-                $notas_ta->nota_ta2 = 0;
-                $notas_ta->nota_ta3 = 0;
-                $notas_ta->nota_ta4 = 0;
-                $notas_ta->nota_ta5 = 0;
-                $notas_ta->numero_tarea_ta1 = 1;
-                $notas_ta->numero_tarea_ta2 = 1;
-                $notas_ta->numero_tarea_ta3 = 1;
-                $notas_ta->numero_tarea_ta4 = 1;
-                $notas_ta->numero_tarea_ta5 = 1;
-                $notas_ta->matriculado_id   = $alumnos;
-                $notas_ta->materias_id      = $materia;
-                $notas_ta->parcial = $parcial;
-                $notas_ta->quimestre = $quimestre;
-                $notas_ta->save();
-    
-                
-                $notas_ti = new Notas_ti;
-                $notas_ti->nota_ti1 = 0;
-                $notas_ti->nota_ti2 = 0;
-                $notas_ti->nota_ti3 = 0;
-                $notas_ti->nota_ti4 = 0;
-                $notas_ti->nota_ti5 = 0;
-                $notas_ti->numero_tarea_ti1 = 1;
-                $notas_ti->numero_tarea_ti2 = 1;
-                $notas_ti->numero_tarea_ti3 = 1;
-                $notas_ti->numero_tarea_ti4 = 1;
-                $notas_ti->numero_tarea_ti5 = 1;
-                $notas_ti->matriculado_id   = $alumnos;
-                $notas_ti->materias_id      = $materia;
-                $notas_ti->parcial = $parcial;
-                $notas_ti->quimestre = $quimestre;
-                $notas_ti->save();
-    
-                
-                $notas_tg = new Notas_tg;
-                $notas_tg->nota_tg1 = 0;
-                $notas_tg->nota_tg2 = 0;
-                $notas_tg->nota_tg3 = 0;
-                $notas_tg->nota_tg4 = 0;
-                $notas_tg->nota_tg5 = 0;
-                $notas_tg->numero_tarea_tg1 = 1;
-                $notas_tg->numero_tarea_tg2 = 1;
-                $notas_tg->numero_tarea_tg3 = 1;
-                $notas_tg->numero_tarea_tg4 = 1;
-                $notas_tg->numero_tarea_tg5 = 1;
-                $notas_tg->matriculado_id   = $alumnos;
-                $notas_tg->materias_id      = $materia;
-                $notas_tg->parcial = $parcial;
-                $notas_tg->quimestre = $quimestre;
-                $notas_tg->save();
-    
-                
-                $notas_le = new Notas_le;
-                $notas_le->nota_le1 = 0;
-                $notas_le->nota_le2 = 0;
-                $notas_le->nota_le3 = 0;
-                $notas_le->nota_le4 = 0;
-                $notas_le->nota_le5 = 0;
-                $notas_le->numero_tarea_le1 = 1;
-                $notas_le->numero_tarea_le2 = 1;
-                $notas_le->numero_tarea_le3 = 1;
-                $notas_le->numero_tarea_le4 = 1;
-                $notas_le->numero_tarea_le5 = 1;
-                $notas_le->matriculado_id   = $alumnos;
-                $notas_le->materias_id      = $materia;
-                $notas_le->parcial = $parcial;
-                $notas_le->quimestre = $quimestre;
-                $notas_le->save();
-    
-                
-                $notas_ev = new Notas_ev;
-                $notas_ev->nota_ev1 = 0;
-                $notas_ev->nota_ev2 = 0;
-                $notas_ev->nota_ev3 = 0;
-                $notas_ev->nota_ev4 = 0;
-                $notas_ev->nota_ev5 = 0;
-                $notas_ev->numero_tarea_ev1 = 1;
-                $notas_ev->numero_tarea_ev2 = 1;
-                $notas_ev->numero_tarea_ev3 = 1;
-                $notas_ev->numero_tarea_ev4 = 1;
-                $notas_ev->numero_tarea_ev5 = 1;
-                $notas_ev->matriculado_id   = $alumnos;
-                $notas_ev->materias_id      = $materia;
-                $notas_ev->parcial = $parcial;
-                $notas_ev->quimestre = $quimestre;
-                $notas_ev->save();
-
- 
-                $notas_examen                      = new Notas_examen;
-              
-                $notas_examen->nota_exq            = 0;
-                $notas_examen->materias_id         = $materia;
-                $notas_examen->matriculado_id      = $alumnos;
-                $notas_examen->quimestre           = $quimestre;
-                $notas_examen->autoridad_id        = auth()->user()->id;
-                $notas_examen->numero_tarea_exq = 1;
-                $notas_examen->save();
-
-
-            }else {
-
-            $notas_ta = new Nota_ta;
-            $notas_ta->nota_ta1 = 0;
-            $notas_ta->nota_ta2 = 0;
-            $notas_ta->nota_ta3 = 0;
-            $notas_ta->nota_ta4 = 0;
-            $notas_ta->nota_ta5 = 0;
-            $notas_ta->numero_tarea_ta1 = 1;
-            $notas_ta->numero_tarea_ta2 = 1;
-            $notas_ta->numero_tarea_ta3 = 1;
-            $notas_ta->numero_tarea_ta4 = 1;
-            $notas_ta->numero_tarea_ta5 = 1;
-            $notas_ta->matriculado_id   = $alumnos;
-            $notas_ta->materias_id      = $materia;
-            $notas_ta->parcial = $parcial;
-            $notas_ta->quimestre = $quimestre;
-            $notas_ta->save();
-
-            
-            $notas_ti = new Notas_ti;
-            $notas_ti->nota_ti1 = 0;
-            $notas_ti->nota_ti2 = 0;
-            $notas_ti->nota_ti3 = 0;
-            $notas_ti->nota_ti4 = 0;
-            $notas_ti->nota_ti5 = 0;
-            $notas_ti->numero_tarea_ti1 = 1;
-            $notas_ti->numero_tarea_ti2 = 1;
-            $notas_ti->numero_tarea_ti3 = 1;
-            $notas_ti->numero_tarea_ti4 = 1;
-            $notas_ti->numero_tarea_ti5 = 1;
-            $notas_ti->matriculado_id   = $alumnos;
-            $notas_ti->materias_id      = $materia;
-            $notas_ti->parcial = $parcial;
-            $notas_ti->quimestre = $quimestre;
-            $notas_ti->save();
-
-            
-            $notas_tg = new Notas_tg;
-            $notas_tg->nota_tg1 = 0;
-            $notas_tg->nota_tg2 = 0;
-            $notas_tg->nota_tg3 = 0;
-            $notas_tg->nota_tg4 = 0;
-            $notas_tg->nota_tg5 = 0;
-            $notas_tg->numero_tarea_tg1 = 1;
-            $notas_tg->numero_tarea_tg2 = 1;
-            $notas_tg->numero_tarea_tg3 = 1;
-            $notas_tg->numero_tarea_tg4 = 1;
-            $notas_tg->numero_tarea_tg5 = 1;
-            $notas_tg->matriculado_id   = $alumnos;
-            $notas_tg->materias_id      = $materia;
-            $notas_tg->parcial = $parcial;
-            $notas_tg->quimestre = $quimestre;
-            $notas_tg->save();
-
-            
-            $notas_le = new Notas_le;
-            $notas_le->nota_le1 = 0;
-            $notas_le->nota_le2 = 0;
-            $notas_le->nota_le3 = 0;
-            $notas_le->nota_le4 = 0;
-            $notas_le->nota_le5 = 0;
-            $notas_le->numero_tarea_le1 = 1;
-            $notas_le->numero_tarea_le2 = 1;
-            $notas_le->numero_tarea_le3 = 1;
-            $notas_le->numero_tarea_le4 = 1;
-            $notas_le->numero_tarea_le5 = 1;
-            $notas_le->matriculado_id   = $alumnos;
-            $notas_le->materias_id      = $materia;
-            $notas_le->parcial = $parcial;
-            $notas_le->quimestre = $quimestre;
-            $notas_le->save();
-
-            
-            $notas_ev = new Notas_ev;
-            $notas_ev->nota_ev1 = 0;
-            $notas_ev->nota_ev2 = 0;
-            $notas_ev->nota_ev3 = 0;
-            $notas_ev->nota_ev4 = 0;
-            $notas_ev->nota_ev5 = 0;
-            $notas_ev->numero_tarea_ev1 = 1;
-            $notas_ev->numero_tarea_ev2 = 1;
-            $notas_ev->numero_tarea_ev3 = 1;
-            $notas_ev->numero_tarea_ev4 = 1;
-            $notas_ev->numero_tarea_ev5 = 1;
-            $notas_ev->matriculado_id   = $alumnos;
-            $notas_ev->materias_id      = $materia;
-            $notas_ev->parcial = $parcial;
-            $notas_ev->quimestre = $quimestre;
-            $notas_ev->save();
+            if ($request->parcial == 'Q') {
+                $parciales = array(1,2,3);
+            } else {
+                $parciales = array($request->parcial);
             }
+            
+            if ($request->materia0) {
+                $materias[] = $request->materia0;
+            }
+            if ($request->materia1) {
+                $materias[] = $request->materia1;
+            }
+            if ($request->materia2) {
+                $materias[] = $request->materia2;
+            }
+            if ($request->materia3) {
+                $materias[] = $request->materia3;
+            }
+            if ($request->materia4) {
+                $materias[] = $request->materia4;
+            }
+            if ($request->materia5) {
+                $materias[] = $request->materia5;
+            }
+            if ($request->materia6) {
+                $materias[] = $request->materia6;
+            }
+            if ($request->materia7) {
+                $materias[] = $request->materia7;
+            }
+            if ($request->materia8) {
+                $materias[] = $request->materia8;
+            }
+            if ($request->materia9) {
+                $materias[] = $request->materia9;
+            }
+            if ($request->materia10) {
+                $materias[] = $request->materia10;
+            }
+            if ($request->materia11) {
+                $materias[] = $request->materia11;
+            }
+            if ($request->materia12) {
+                $materias[] = $request->materia12;
+            }
+            if ($request->materia13) {
+                $materias[] = $request->materia13;
+            }
+            if ($request->materia14) {
+                $materias[] = $request->materia14;
+            }
+            //$materia        = $request->materia;
+            $alumnos        = $request->alumnos;
+
+            foreach ($materias as $materia) {
+                foreach ($parciales as $parcial) {
+                    if($parcial == 3)
+                    {
+                        $notas_ta = new Nota_ta;
+                        $notas_ta->nota_ta1 = 0;
+                        $notas_ta->nota_ta2 = 0;
+                        $notas_ta->nota_ta3 = 0;
+                        $notas_ta->nota_ta4 = 0;
+                        $notas_ta->nota_ta5 = 0;
+                        $notas_ta->numero_tarea_ta1 = 1;
+                        $notas_ta->numero_tarea_ta2 = 1;
+                        $notas_ta->numero_tarea_ta3 = 1;
+                        $notas_ta->numero_tarea_ta4 = 1;
+                        $notas_ta->numero_tarea_ta5 = 1;
+                        $notas_ta->matriculado_id   = $alumnos;
+                        $notas_ta->materias_id      = $materia;
+                        $notas_ta->parcial = $parcial;
+                        $notas_ta->quimestre = $quimestre;
+                        $notas_ta->save();
+            
+                        
+                        $notas_ti = new Notas_ti;
+                        $notas_ti->nota_ti1 = 0;
+                        $notas_ti->nota_ti2 = 0;
+                        $notas_ti->nota_ti3 = 0;
+                        $notas_ti->nota_ti4 = 0;
+                        $notas_ti->nota_ti5 = 0;
+                        $notas_ti->numero_tarea_ti1 = 1;
+                        $notas_ti->numero_tarea_ti2 = 1;
+                        $notas_ti->numero_tarea_ti3 = 1;
+                        $notas_ti->numero_tarea_ti4 = 1;
+                        $notas_ti->numero_tarea_ti5 = 1;
+                        $notas_ti->matriculado_id   = $alumnos;
+                        $notas_ti->materias_id      = $materia;
+                        $notas_ti->parcial = $parcial;
+                        $notas_ti->quimestre = $quimestre;
+                        $notas_ti->save();
+            
+                        
+                        $notas_tg = new Notas_tg;
+                        $notas_tg->nota_tg1 = 0;
+                        $notas_tg->nota_tg2 = 0;
+                        $notas_tg->nota_tg3 = 0;
+                        $notas_tg->nota_tg4 = 0;
+                        $notas_tg->nota_tg5 = 0;
+                        $notas_tg->numero_tarea_tg1 = 1;
+                        $notas_tg->numero_tarea_tg2 = 1;
+                        $notas_tg->numero_tarea_tg3 = 1;
+                        $notas_tg->numero_tarea_tg4 = 1;
+                        $notas_tg->numero_tarea_tg5 = 1;
+                        $notas_tg->matriculado_id   = $alumnos;
+                        $notas_tg->materias_id      = $materia;
+                        $notas_tg->parcial = $parcial;
+                        $notas_tg->quimestre = $quimestre;
+                        $notas_tg->save();
+            
+                        
+                        $notas_le = new Notas_le;
+                        $notas_le->nota_le1 = 0;
+                        $notas_le->nota_le2 = 0;
+                        $notas_le->nota_le3 = 0;
+                        $notas_le->nota_le4 = 0;
+                        $notas_le->nota_le5 = 0;
+                        $notas_le->numero_tarea_le1 = 1;
+                        $notas_le->numero_tarea_le2 = 1;
+                        $notas_le->numero_tarea_le3 = 1;
+                        $notas_le->numero_tarea_le4 = 1;
+                        $notas_le->numero_tarea_le5 = 1;
+                        $notas_le->matriculado_id   = $alumnos;
+                        $notas_le->materias_id      = $materia;
+                        $notas_le->parcial = $parcial;
+                        $notas_le->quimestre = $quimestre;
+                        $notas_le->save();
+            
+                        
+                        $notas_ev = new Notas_ev;
+                        $notas_ev->nota_ev1 = 0;
+                        $notas_ev->nota_ev2 = 0;
+                        $notas_ev->nota_ev3 = 0;
+                        $notas_ev->nota_ev4 = 0;
+                        $notas_ev->nota_ev5 = 0;
+                        $notas_ev->numero_tarea_ev1 = 1;
+                        $notas_ev->numero_tarea_ev2 = 1;
+                        $notas_ev->numero_tarea_ev3 = 1;
+                        $notas_ev->numero_tarea_ev4 = 1;
+                        $notas_ev->numero_tarea_ev5 = 1;
+                        $notas_ev->matriculado_id   = $alumnos;
+                        $notas_ev->materias_id      = $materia;
+                        $notas_ev->parcial = $parcial;
+                        $notas_ev->quimestre = $quimestre;
+                        $notas_ev->save();
+
+        
+                        $notas_examen                      = new Notas_examen;
+                    
+                        $notas_examen->nota_exq            = 0;
+                        $notas_examen->materias_id         = $materia;
+                        $notas_examen->matriculado_id      = $alumnos;
+                        $notas_examen->quimestre           = $quimestre;
+                        $notas_examen->autoridad_id        = auth()->user()->id;
+                        $notas_examen->numero_tarea_exq = 1;
+                        $notas_examen->save();
+
+
+                    }else {
+
+                    $notas_ta = new Nota_ta;
+                    $notas_ta->nota_ta1 = 0;
+                    $notas_ta->nota_ta2 = 0;
+                    $notas_ta->nota_ta3 = 0;
+                    $notas_ta->nota_ta4 = 0;
+                    $notas_ta->nota_ta5 = 0;
+                    $notas_ta->numero_tarea_ta1 = 1;
+                    $notas_ta->numero_tarea_ta2 = 1;
+                    $notas_ta->numero_tarea_ta3 = 1;
+                    $notas_ta->numero_tarea_ta4 = 1;
+                    $notas_ta->numero_tarea_ta5 = 1;
+                    $notas_ta->matriculado_id   = $alumnos;
+                    $notas_ta->materias_id      = $materia;
+                    $notas_ta->parcial = $parcial;
+                    $notas_ta->quimestre = $quimestre;
+                    $notas_ta->save();
+
+                    
+                    $notas_ti = new Notas_ti;
+                    $notas_ti->nota_ti1 = 0;
+                    $notas_ti->nota_ti2 = 0;
+                    $notas_ti->nota_ti3 = 0;
+                    $notas_ti->nota_ti4 = 0;
+                    $notas_ti->nota_ti5 = 0;
+                    $notas_ti->numero_tarea_ti1 = 1;
+                    $notas_ti->numero_tarea_ti2 = 1;
+                    $notas_ti->numero_tarea_ti3 = 1;
+                    $notas_ti->numero_tarea_ti4 = 1;
+                    $notas_ti->numero_tarea_ti5 = 1;
+                    $notas_ti->matriculado_id   = $alumnos;
+                    $notas_ti->materias_id      = $materia;
+                    $notas_ti->parcial = $parcial;
+                    $notas_ti->quimestre = $quimestre;
+                    $notas_ti->save();
+
+                    
+                    $notas_tg = new Notas_tg;
+                    $notas_tg->nota_tg1 = 0;
+                    $notas_tg->nota_tg2 = 0;
+                    $notas_tg->nota_tg3 = 0;
+                    $notas_tg->nota_tg4 = 0;
+                    $notas_tg->nota_tg5 = 0;
+                    $notas_tg->numero_tarea_tg1 = 1;
+                    $notas_tg->numero_tarea_tg2 = 1;
+                    $notas_tg->numero_tarea_tg3 = 1;
+                    $notas_tg->numero_tarea_tg4 = 1;
+                    $notas_tg->numero_tarea_tg5 = 1;
+                    $notas_tg->matriculado_id   = $alumnos;
+                    $notas_tg->materias_id      = $materia;
+                    $notas_tg->parcial = $parcial;
+                    $notas_tg->quimestre = $quimestre;
+                    $notas_tg->save();
+
+                    
+                    $notas_le = new Notas_le;
+                    $notas_le->nota_le1 = 0;
+                    $notas_le->nota_le2 = 0;
+                    $notas_le->nota_le3 = 0;
+                    $notas_le->nota_le4 = 0;
+                    $notas_le->nota_le5 = 0;
+                    $notas_le->numero_tarea_le1 = 1;
+                    $notas_le->numero_tarea_le2 = 1;
+                    $notas_le->numero_tarea_le3 = 1;
+                    $notas_le->numero_tarea_le4 = 1;
+                    $notas_le->numero_tarea_le5 = 1;
+                    $notas_le->matriculado_id   = $alumnos;
+                    $notas_le->materias_id      = $materia;
+                    $notas_le->parcial = $parcial;
+                    $notas_le->quimestre = $quimestre;
+                    $notas_le->save();
+
+                    
+                    $notas_ev = new Notas_ev;
+                    $notas_ev->nota_ev1 = 0;
+                    $notas_ev->nota_ev2 = 0;
+                    $notas_ev->nota_ev3 = 0;
+                    $notas_ev->nota_ev4 = 0;
+                    $notas_ev->nota_ev5 = 0;
+                    $notas_ev->numero_tarea_ev1 = 1;
+                    $notas_ev->numero_tarea_ev2 = 1;
+                    $notas_ev->numero_tarea_ev3 = 1;
+                    $notas_ev->numero_tarea_ev4 = 1;
+                    $notas_ev->numero_tarea_ev5 = 1;
+                    $notas_ev->matriculado_id   = $alumnos;
+                    $notas_ev->materias_id      = $materia;
+                    $notas_ev->parcial = $parcial;
+                    $notas_ev->quimestre = $quimestre;
+                    $notas_ev->save();
+                    }
+                }
+            }
+            
 
             return redirect()->route('notas.asignarNotasAlumnosNuevos')->with('info', 'La nota se ha editado correctamente');
             
-
+            //return $request;
 
 
 

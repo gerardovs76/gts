@@ -41,7 +41,7 @@
                                         <strong>4.- Materia: <br></strong>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                {{ Form::select('materia', [], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione la materia', 'id' => 'materia']) }}
+                                                <div id="checkboxes-materia"></div>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -55,7 +55,7 @@
                                             <strong>6.- Parcial: <br></strong>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-                                                {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
+                                                {{ Form::select('parcial',['1' => '1', '2' => '2', '3' => '3', 'Q' => 'Todos los parciales'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Seleccione el parcial', 'id' => 'parcial']) }}
                                             </div>
                                         </div>
 								<div class="form-group col-md-10">
@@ -90,10 +90,13 @@
                      url: urlMaterias,
                      success: function(data)
                      {
+                         console.log(data)
                                  $('#materia').empty();
+                                 var c = 0;
                              $.each(data, function(index, regenciesObj){
-                                 $('#materia').append('<option value="'+regenciesObj.id+'">'+ regenciesObj.materia +'</option>');
-                                 var materia = document.getElementById("materia").value;
+                                 $('#checkboxes-materia').append('<input type="checkbox" id="'+regenciesObj.id+'" name="materia'+c+'" value="'+regenciesObj.id+'"><label for="'+regenciesObj.id+'"> '+regenciesObj.materia+'</label><br>');
+                                 c++;
+                                 //var materia = document.getElementById("materia").value;
 
                               });
                      }
