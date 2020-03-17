@@ -97,8 +97,19 @@
             <div class="form-group col-md-4">
             <strong>Paralelo: <br></strong>
             <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-            {!! Form::select('paralelo',[], null, ['class' => 'form-control col-md-8', 'id' => 'paralelo','placeholder' => 'Ingrese el paralelo']) !!}
+                <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                <div id="checkboxes-paralelo" style="margin-left: 5px;">
+                    <input type="checkbox" id="paraleloA" name="paraleloA" value="A"> <label for="paraleloA"> Paralelo A</label><br>
+                    <input type="checkbox" id="paraleloB" name="paraleloB" value="B"> <label for="paraleloB"> Paralelo B</label><br>
+                    <input type="checkbox" id="paraleloC" name="paraleloC" value="C"> <label for="paraleloC"> Paralelo C</label><br>
+                    <input type="checkbox" id="paraleloD" name="paraleloD" value="D"> <label for="paraleloD"> Paralelo D</label><br>
+                    <input type="checkbox" id="paraleloE" name="paraleloE" value="E"> <label for="paraleloE"> Paralelo E</label><br>
+                    <input type="checkbox" id="paraleloF" name="paraleloF" value="F"> <label for="paraleloF"> Paralelo F</label><br>
+                    <input type="checkbox" id="paraleloG" name="paraleloG" value="G"> <label for="paraleloG"> Paralelo G</label><br>
+                    <input type="checkbox" id="paraleloH" name="paraleloH" value="H"> <label for="paraleloH"> Paralelo H</label><br>
+                    <input type="checkbox" id="paraleloI" name="paraleloI" value="I"> <label for="paraleloI"> Paralelo I</label><br>
+                    <input type="checkbox" id="paraleloJ" name="paraleloJ" value="J"> <label for="paraleloJ"> Paralelo J</label><br>
+                </div>
             </div>
             </div>
                 @endif
