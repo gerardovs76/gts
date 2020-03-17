@@ -52,7 +52,7 @@
                                     <strong>Seleccione el paralelo de la materia: <br></strong>
                                     <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-id-card-alt"></i></span>
-							{!! Form::select('curso_materia',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H'], null, ['class' => 'form-control col-md-6', 'id' => 'paralelo', 'placeholder' => 'Seleccione el curso...']) !!}
+							{!! Form::select('curso_materia',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-6', 'id' => 'paralelo', 'placeholder' => 'Seleccione el curso...']) !!}
                                 </div>
 								</div>
 								<div class="form-group col-md-4">
