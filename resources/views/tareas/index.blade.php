@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -63,9 +63,21 @@
           <div class="form-group col-md-4">
           <strong>Paralelo: <br></strong>
           <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
-          {!! Form::select('paralelo',['A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J'], null, ['class' => 'form-control col-md-8', 'placeholder' => 'Ingrese el paralelo']) !!}
+          <span class="input-group-text"><i class="fas fa-file-signature"></i></span> 
+            <div id="checkboxes-paralelo" style="margin-left: 5px;">
+                <input type="checkbox" id="paraleloA" name="paraleloA" value="A"> <label for="paraleloA"> Paralelo A</label><br>
+                <input type="checkbox" id="paraleloB" name="paraleloB" value="B"> <label for="paraleloB"> Paralelo B</label><br>
+                <input type="checkbox" id="paraleloC" name="paraleloC" value="C"> <label for="paraleloC"> Paralelo C</label><br>
+                <input type="checkbox" id="paraleloD" name="paraleloD" value="D"> <label for="paraleloD"> Paralelo D</label><br>
+                <input type="checkbox" id="paraleloE" name="paraleloE" value="E"> <label for="paraleloE"> Paralelo E</label><br>
+                <input type="checkbox" id="paraleloF" name="paraleloF" value="F"> <label for="paraleloF"> Paralelo F</label><br>
+                <input type="checkbox" id="paraleloG" name="paraleloG" value="G"> <label for="paraleloG"> Paralelo G</label><br>
+                <input type="checkbox" id="paraleloH" name="paraleloH" value="H"> <label for="paraleloH"> Paralelo H</label><br>
+                <input type="checkbox" id="paraleloI" name="paraleloI" value="I"> <label for="paraleloI"> Paralelo I</label><br>
+                <input type="checkbox" id="paraleloJ" name="paraleloJ" value="J"> <label for="paraleloJ"> Paralelo J</label><br>
+            </div>
           </div>
+          
           </div>
           @elseif(Auth::user()->isRole('profesor'))
           <div class="form-group col-md-4">
@@ -154,9 +166,15 @@
                 });
             });
         $.get('notas/cargar-notas-profesor-paralelo', function(response){
-            $.each(response, function(index, obj){
-                $('#paralelo').append('<option value="'+obj.paralelo+'">'+obj.paralelo+'</option>');
-            });
+            console.log('datos: ');
+            console.log(response);
+            if (response) {
+                $('#checkboxes-paralelo').html('');
+                $.each(response, function(index, Obj){
+                    $('#checkboxes-paralelo').append('<input type="checkbox" id="paralelo'+Obj.paralelo+'" name="paralelo'+Obj.paralelo+'" value="'+Obj.paralelo+'"> <label for="'+Obj.paralelo+'"> Paralelo '+Obj.paralelo+'</label><br>');
+               
+                });
+            }
         });
     });
     </script>

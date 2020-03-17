@@ -54,52 +54,87 @@ class TareasController extends Controller
      */
     public function store(TareasRequest $request)
     {
-        $tareas = new Tareas;
-        $tareas->profesor = $request->profesor;
-        $tareas->nombre_profesor = $request->profesorName;
-        $tareas->curso = $request->curso;
-        $tareas->especialidad = $request->especialidad;
-        $tareas->paralelo = $request->paralelo;
-        $tareas->fecha_entrega = $request->fecha_entrega;
-        $tareas->tipo_tarea = $request->tipo_tarea;
-        $tareas->titulo = $request->titulo;
-        $tareas->descripcion = $request->descripcion;
-        
-        if(isset($request->archivo)){
-        $archivo = $request->archivo;
-        $archivo2 = $archivo->getClientOriginalName();
-        $nombre2 = str_replace(' ', '', $archivo2);
-        $tareas->archivo = $nombre2;
+        if ($request->paraleloA) {
+            $paralelos[] = $request->paraleloA;
+        }
+        if ($request->paraleloB) {
+            $paralelos[] = $request->paraleloB;
+        }
+        if ($request->paraleloC) {
+            $paralelos[] = $request->paraleloC;
+        }
+        if ($request->paraleloD) {
+            $paralelos[] = $request->paraleloD;
+        }
+        if ($request->paraleloE) {
+            $paralelos[] = $request->paraleloE;
+        }
+        if ($request->paraleloF) {
+            $paralelos[] = $request->paraleloF;
+        }
+        if ($request->paraleloG) {
+            $paralelos[] = $request->paraleloG;
+        }
+        if ($request->paraleloH) {
+            $paralelos[] = $request->paraleloH;
+        }
+        if ($request->paraleloI) {
+            $paralelos[] = $request->paraleloI;
+        }
+        if ($request->paraleloJ) {
+            $paralelos[] = $request->paraleloJ;
+        }
+
+        foreach ($paralelos as $paralelo) {
+
+            $tareas = new Tareas;
+            $tareas->profesor = $request->profesor;
+            $tareas->nombre_profesor = $request->profesorName;
+            $tareas->curso = $request->curso;
+            $tareas->especialidad = $request->especialidad;
+            $tareas->paralelo = $paralelo;
+            $tareas->fecha_entrega = $request->fecha_entrega;
+            $tareas->tipo_tarea = $request->tipo_tarea;
+            $tareas->titulo = $request->titulo;
+            $tareas->descripcion = $request->descripcion;
             
-            }else{
-        $tareas->archivo = 'no-existe';
+            if(isset($request->archivo)){
+            $archivo = $request->archivo;
+            $archivo2 = $archivo->getClientOriginalName();
+            $nombre2 = str_replace(' ', '', $archivo2);
+            $tareas->archivo = $nombre2;
+                
+                }else{
+            $tareas->archivo = 'no-existe';
+                }
+            $tareas->save();
+            if(!empty($request->file('archivo')))
+                {
+            $file = $request->file('archivo');
+        $nombre = $file->getClientOriginalName();
+        $nombre2 = str_replace(' ', '', $nombre);
+        \Storage::disk('local')->put($nombre2,  \File::get($file));
+                }
+        
+            if(isset($tareas)){
+            Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
+
+                $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
+                        foreach($emails as $email){
+                $message->to($email->email)->subject('Novedades plataforma educativa GTS.');
+                $message->from('gtstechnologyforyou@gmail.com', 'GTS');
+
+                                                }
+            });
+        return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
+
             }
-        $tareas->save();
-        if(!empty($request->file('archivo')))
-            {
-        $file = $request->file('archivo');
-       $nombre = $file->getClientOriginalName();
-       $nombre2 = str_replace(' ', '', $nombre);
-       \Storage::disk('local')->put($nombre2,  \File::get($file));
+
+            else{
+                return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
             }
-     
-        if(isset($tareas)){
-        Mail::send('tareas-email', ['curso' => $request->curso, 'paralelo' => $request->paralelo, 'profesor' => $request->profesor, 'fecha_entrega' => $request->fecha_entrega, 'tipo_tarea' => $request->tipo_tarea, 'titulo' => $request->titulo, 'descripcion' => $request->descripcion, 'mensaje' => 'Notificaci¨®n de tarea pendiente'], function ($message) {
-
-            $emails = Inscripcion::join('matriculados', 'inscripciones.cedula', '=', 'matriculados.cedula')->where('matriculados.curso', Input::get('curso'))->where('matriculados.paralelo', Input::get('paralelo'))->select('inscripciones.email')->get();
-                    foreach($emails as $email){
-            $message->to($email->email)->subject('Novedades plataforma educativa GTS.');
-            $message->from('gtstechnologyforyou@gmail.com', 'GTS');
-
-                                            }
-        });
-       return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
-
         }
-
-        else{
-            return redirect()->route('tareas.index')->with('info', 'Se ha agregado la tarea/comunicado correctamente');
-        }
+        
 
 
 

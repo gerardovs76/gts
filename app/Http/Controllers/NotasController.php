@@ -945,7 +945,7 @@ class NotasController extends Controller
         $users = Auth::user()->cedula;
         if(Auth::user()->isRole('super-admin') || Auth::user()->isRole('admin') || Auth::user()->isRole('dece'))
         {
-
+            
         }
         elseif(Auth::user()->isRole('profesor'))
         {
