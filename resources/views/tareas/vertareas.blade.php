@@ -45,7 +45,7 @@
 			$.get('tareas_matriculados', function(response){
                 console.log(response);
 				$.each(response, function(index, obj){
-                    if(obj.archivo == 'no exite')
+                    if(obj.archivo == 'no existe')
                     {
                         $('#tbody').append('<tr><td>'+obj.nombre_profesor+'</td><td>'+obj.curso+'</td><td>'+obj.paralelo+'</td><td>'+obj.fecha_entrega+'</td><td>'+obj.tipo_tarea+'</td><td>'+obj.titulo+'</td><td>'+obj.descripcion+'</td><td></td></tr>');
 
