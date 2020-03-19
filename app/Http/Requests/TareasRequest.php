@@ -27,7 +27,6 @@ class TareasRequest extends FormRequest
             'profesor' => 'required',
             'curso' => 'required',
             'especialidad' => 'required',
-            'paralelo' => 'required',
             'fecha_entrega' => 'required',
             'tipo_tarea' => 'required',
             'titulo' => 'required',
