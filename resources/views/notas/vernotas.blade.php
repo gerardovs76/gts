@@ -355,6 +355,8 @@ $nota_promedio_ev1=0;
 $nota_promedio_ev2=0;
 $nota_promedio_ev3=0;
 $promedio_final=0;
+$nota_final_ex=0;
+$examen_20=0;
 @endphp
 {{-- Notas TA --}} 
 
